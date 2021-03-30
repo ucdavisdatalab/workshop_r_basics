@@ -5,7 +5,7 @@ author: [Nick Ulle]
 date: "`r Sys.Date()`"
 
 github-repo: ucdavisdatalab/workshop_r-basics
-url: "https://ucdavisdatalab.github.io/workshop_r-basics/"
+url: "https://ucdavisdatalab.github.io/workshop_r_basics/"
 
 site: "bookdown::bookdown_site"
 knit: "bookdown::render_book"
@@ -20,8 +20,8 @@ output:
           <li><a href="./" style="font-size: 18px">R Basics</a></li>
         collapse: section
       sharing: no
-      view: https://github.com/ucdavisdatalab/workshop_r-basics/blob/master/%s
-      edit: https://github.com/ucdavisdatalab/workshop_r-basics/edit/master/%s
+      view: https://github.com/ucdavisdatalab/workshop_r_basics/blob/master/%s
+      edit: https://github.com/ucdavisdatalab/workshop_r_basics/edit/master/%s
 ---
 
 # Overview {-}
