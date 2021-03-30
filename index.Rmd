@@ -1,0 +1,39 @@
+---
+title: R Basics
+subtitle: An Introduction to Programming for Researchers
+author: [Nick Ulle]
+date: "`r Sys.Date()`"
+
+github-repo: ucdavisdatalab/workshop_r-basics
+url: "https://ucdavisdatalab.github.io/workshop_r-basics/"
+
+site: "bookdown::bookdown_site"
+knit: "bookdown::render_book"
+output:
+  bookdown::gitbook:
+    config:
+      toc:
+        before: |
+          <li><a href="https://datalab.ucdavis.edu/">
+            <img src="https://datalab.ucdavis.edu/wp-content/uploads/2019/07/datalab-logo-full-color-rgb-1.png" style="height: 100%; width: 100%; object-fit: contain" />
+          </a></li>
+          <li><a href="./" style="font-size: 18px">R Basics</a></li>
+        collapse: section
+      sharing: no
+      view: https://github.com/ucdavisdatalab/workshop_r-basics/blob/master/%s
+      edit: https://github.com/ucdavisdatalab/workshop_r-basics/edit/master/%s
+---
+
+# Overview {-}
+
+This 4-part workshop series provides an introduction to using the R programming
+language for reproducible data analysis and scientific computing. Topics
+include programming basics, how to work with tabular data, how to break down
+programming problems, and how to organize code for clarity and reproducibility.
+
+After this workshop, learners will be able to load tabular data sets into R,
+compute simple summaries and visualizations, do common data-tidying tasks,
+write reusable functions, and identify where to go to learn more.
+
+No prior programming experience is necessary. All learners will need access to
+an internet-connected computer and the latest version of Zoom, R, and RStudio.
