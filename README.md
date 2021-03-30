@@ -1,4 +1,4 @@
-# Workshop: R Basics - Intro to Programming for Researchers
+# Workshop: R Basics
 
 _[UC Davis DataLab](https://datalab.ucdavis.edu/)_  
 _Spring 2021_  
@@ -19,8 +19,8 @@ an internet-connected computer and the latest version of Zoom, R, and RStudio.
 
 ## Common Links
 
-* Reader:
-* Event Page:
+* [Reader](https://ucdavisdatalab.github.io/workshop_r_basics/)
+* Event Page
 
 
 ## Contributing
