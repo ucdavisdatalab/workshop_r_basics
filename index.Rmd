@@ -11,6 +11,7 @@ site: "bookdown::bookdown_site"
 knit: "bookdown::render_book"
 output:
   bookdown::gitbook:
+    anchor_sections: TRUE
     config:
       toc:
         before: |

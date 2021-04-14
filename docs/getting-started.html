@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>1 Getting Started | R Basics</title>
+  <meta name="description" content="1 Getting Started | R Basics" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="1 Getting Started | R Basics" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://ucdavisdatalab.github.io/workshop_r_basics/" />
+  
+  
+  <meta name="github-repo" content="ucdavisdatalab/workshop_r-basics" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="1 Getting Started | R Basics" />
+  
+  
+  
+
+<meta name="author" content="Nick Ulle" />
+
+
+<meta name="date" content="2021-04-13" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+
+<script src="libs/header-attrs-2.6/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="https://datalab.ucdavis.edu/">
+  <img src="https://datalab.ucdavis.edu/wp-content/uploads/2019/07/datalab-logo-full-color-rgb-1.png" style="height: 100%; width: 100%; object-fit: contain" />
+</a></li>
+<li><a href="./" style="font-size: 18px">R Basics</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Overview</a></li>
+<li class="chapter" data-level="1" data-path="getting-started.html"><a href="getting-started.html"><i class="fa fa-check"></i><b>1</b> Getting Started</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="getting-started.html"><a href="getting-started.html#prerequisites"><i class="fa fa-check"></i><b>1.1</b> Prerequisites</a></li>
+<li class="chapter" data-level="1.2" data-path="getting-started.html"><a href="getting-started.html#the-r-interface"><i class="fa fa-check"></i><b>1.2</b> The R Interface</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="getting-started.html"><a href="getting-started.html#variables"><i class="fa fa-check"></i><b>1.2.1</b> Variables</a></li>
+<li class="chapter" data-level="1.2.2" data-path="getting-started.html"><a href="getting-started.html#calling-functions"><i class="fa fa-check"></i><b>1.2.2</b> Calling Functions</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="getting-started.html"><a href="getting-started.html#getting-help"><i class="fa fa-check"></i><b>1.3</b> Getting Help</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="getting-started.html"><a href="getting-started.html#what-to-do-when-something-goes-wrong"><i class="fa fa-check"></i><b>1.3.1</b> What to Do When Something Goes Wrong</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="getting-started.html"><a href="getting-started.html#file-systems"><i class="fa fa-check"></i><b>1.4</b> File Systems</a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path="getting-started.html"><a href="getting-started.html#the-working-directory"><i class="fa fa-check"></i><b>1.4.1</b> The Working Directory</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="getting-started.html"><a href="getting-started.html#reading-files"><i class="fa fa-check"></i><b>1.5</b> Reading Files</a></li>
+<li class="chapter" data-level="1.6" data-path="getting-started.html"><a href="getting-started.html#data-frames"><i class="fa fa-check"></i><b>1.6</b> Data Frames</a></li>
+<li class="chapter" data-level="1.7" data-path="getting-started.html"><a href="getting-started.html#vectors"><i class="fa fa-check"></i><b>1.7</b> Vectors</a></li>
+<li class="chapter" data-level="1.8" data-path="getting-started.html"><a href="getting-started.html#data-types"><i class="fa fa-check"></i><b>1.8</b> Data Types</a>
+<ul>
+<li class="chapter" data-level="1.8.1" data-path="getting-started.html"><a href="getting-started.html#matrices"><i class="fa fa-check"></i><b>1.8.1</b> Matrices</a></li>
+<li class="chapter" data-level="1.8.2" data-path="getting-started.html"><a href="getting-started.html#lists"><i class="fa fa-check"></i><b>1.8.2</b> Lists</a></li>
+<li class="chapter" data-level="1.8.3" data-path="getting-started.html"><a href="getting-started.html#special-values"><i class="fa fa-check"></i><b>1.8.3</b> Special Values</a></li>
+<li class="chapter" data-level="1.8.4" data-path="getting-started.html"><a href="getting-started.html#factors"><i class="fa fa-check"></i><b>1.8.4</b> Factors</a></li>
+</ul></li>
+<li class="chapter" data-level="1.9" data-path="getting-started.html"><a href="getting-started.html#indexing"><i class="fa fa-check"></i><b>1.9</b> Indexing</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R Basics</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="getting-started" class="section level1" number="1">
+<h1><span class="header-section-number">1</span> Getting Started</h1>
+<p>R is a program for statistical computing. It provides a rich set of built-in
+tools for cleaning, exploring, modeling, and visualizing data.</p>
+<p>The main way you’ll interact with R is by writing code or <em>expressions</em> in the
+R programming language. Most people use “R” as a blanket term to refer to both
+the program and the programming language. Usually, the distinction doesn’t
+matter, but in cases where it does, we’ll point it out and be specific.</p>
+<p>By writing code, you create an unambiguous record of every step taken in an
+analysis. This it one of the major advantages of R (and other programming
+languages) over point-and-click software like Tableau and Microsoft Excel.
+Code you write in R is <em>reproducible</em>: you can share it with someone else, and
+if they run it with the same inputs, they’ll get the same results.</p>
+<p>Another advantage of writing code is that it’s often <em>reusable</em>. This can mean
+automating a repetitive task within a single analysis, recycling code from one
+analysis into another, or <em>packaging</em> useful code for distribution to the
+general public. At the time of writing, there were over 17,000 user-contributed
+packages available for R, spanning a broad range of disciplines.</p>
+<p>R is one of many programming languages used in data science. Compared to other
+programming languages, R’s particular strengths are its interactivity, built-in
+support for handling missing data, the ease with which you can produce
+high-quality data visualizations, and its broad base of user-contributed
+packages (due to both its age and growing popularity).</p>
+<div id="prerequisites" class="section level2" number="1.1">
+<h2><span class="header-section-number">1.1</span> Prerequisites</h2>
+<p><img src="img/rlogo.png" width="10%"></p>
+<p>You can download R for free <a href="https://cloud.r-project.org/">here</a>, and can find
+an install guide <a href="">here</a>.</p>
+<p>In addition to R, you’ll need RStudio. RStudio is an <em>integrated development
+environment</em> (IDE), which means it’s a comprehensive program for writing,
+editing, searching, and running code. You can do all of these things without
+RStudio, but RStudio makes the process easier. You can download RStudio Desktop
+Open-Source Edition for free
+<a href="https://www.rstudio.com/products/rstudio/download/">here</a>, and can find an
+install guide <a href="">here</a>.</p>
+</div>
+<div id="the-r-interface" class="section level2" number="1.2">
+<h2><span class="header-section-number">1.2</span> The R Interface</h2>
+<p>The first time you open RStudio, you’ll see a window divided into several
+panes, like this:</p>
+<p><img src="img/rstudio_start.png"></p>
+<p>Don’t worry if the text in the panes isn’t exactly the same on your computer;
+it depends on your operating system and versions of R and RStudio. The console
+pane, on the left, is the main interface to R. If you type R code into the
+console and press the <code>Enter</code> key on your keyboard, R will run your code and
+return the result.</p>
+<p>On the right are the environment pane and the plots pane. The environment pane
+shows data in your R workspace. The plots pane shows any plots you make, and
+also has tabs to browse your file system and to view R’s built-in help files.
+We’ll learn more about these gradually, but to get started we’ll focus on the
+console pane.</p>
+<p>Let’s start by using R to do some arithmetic. In the console, you’ll see that
+the cursor is on a line that begins with <code>&gt;</code>, called the <em>prompt</em>. You can make
+R compute the sum <span class="math inline">\(2 + 2\)</span> by typing the code <code>2 + 2</code> after the prompt and then
+pressing the <code>Enter</code> key. Your code and the result from R should look like
+this:</p>
+<p><img src="img/arithmetic.png"></p>
+<p>R always puts the result on a separate line (or lines) from your code. In this
+case, the result begins with the tag <code>[1]</code>, which is a hint from R that the
+result is a <em>vector</em> and that this line starts with the <em>element</em> at position 1.
+We’ll learn more about vectors in Section <a href="getting-started.html#vectors">1.7</a>, and eventually learn
+about other data types that are displayed differently. The result of the sum,
+<code>4</code>, is displayed after the tag. In this reader, results from R will usually be
+typeset in monospace and further prefixed with <code>##</code> to indicate that they
+aren’t code.</p>
+<p>If you enter an incomplete expression, R will change the prompt to <code>+</code>, then
+wait for you to type the rest of the expression and press the <code>Enter</code> key.
+Here’s what it looks like if you only enter <code>2 +</code>:</p>
+<p><img src="img/incomplete.png"></p>
+<p>You can finish entering the expression, or you can cancel it by pressing the
+<code>Esc</code> key (or <code>Ctrl-c</code> if you’re using R without RStudio). R can only tell an
+expression is incomplete if it’s missing something, like the second operand in
+<code>2 +</code>. So if you mean to enter <code>2 + 2</code> but accidentally enter <code>2</code>, which is a
+complete expression by itself, don’t expect R to read your mind and wait for
+more input!</p>
+<p>Try out some other arithmetic in the R console. Besides <code>+</code> for addition, the
+other arithmetic operators are:</p>
+<ul>
+<li><code>-</code> for subtraction</li>
+<li><code>*</code> for multiplication</li>
+<li><code>/</code> for division</li>
+<li><code>%%</code> for remainder division (modulo)</li>
+<li><code>^</code> or <code>**</code> for exponentiation</li>
+</ul>
+<p>You can combine these and use parentheses to make more complicated expressions,
+just as you would when writing a mathematical expression. When R computes a
+result, it follows the standard order of operations: parentheses,
+exponentiation, multiplication, division, addition, and finally subtraction.
+For example, to estimate the area of a circle with radius 3, you can write:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="getting-started.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fl">3.14</span> <span class="sc">*</span> <span class="dv">3</span><span class="sc">^</span><span class="dv">2</span></span></code></pre></div>
+<pre><code>## [1] 28.26</code></pre>
+<p>You can write R expressions with any number of spaces (including none) around
+the operators and R will still compute the result. Nevertheless, putting spaces
+in your code makes it easier for you and others to read, so it’s good to make
+it a habit. Put spaces around most operators, after commas, and after keywords.</p>
+<div id="variables" class="section level3" number="1.2.1">
+<h3><span class="header-section-number">1.2.1</span> Variables</h3>
+<p>Since R is designed for mathematics and statistics, you might expect that it
+provides a better appoximation for <span class="math inline">\(\pi\)</span> than <code>3.14</code>. R and most other
+programming languages allow you to create named values, or <em>variables</em>. R
+provides a built-in variable called <code>pi</code> for the value of <span class="math inline">\(\pi\)</span>. You can
+display a variable’s value by entering its name in the console:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="getting-started.html#cb3-1" aria-hidden="true" tabindex="-1"></a>pi</span></code></pre></div>
+<pre><code>## [1] 3.141593</code></pre>
+<p>You can also use variables in expressions. For instance, here’s a more precise
+expression for the area of a circle with radius 3:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="getting-started.html#cb5-1" aria-hidden="true" tabindex="-1"></a>pi <span class="sc">*</span> <span class="dv">3</span><span class="sc">^</span><span class="dv">2</span></span></code></pre></div>
+<pre><code>## [1] 28.27433</code></pre>
+<p>You can define your own variables with the assignment operator <code>=</code> or <code>&lt;-</code>. In
+most circumstances these two operators are interchangeable. For clarity, it’s
+best to choose one you like and use it consistently in all of your R code. In
+this reader, we use <code>=</code> for assignment because this is the assignment operator
+in most programming languages.</p>
+<p>The main reason to use variables is to save results so that you can use them
+on other expressions later. For example, to save the area of the circle in a
+variable called <code>area</code>, we can write:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="getting-started.html#cb7-1" aria-hidden="true" tabindex="-1"></a>area <span class="ot">=</span> pi <span class="sc">*</span> <span class="dv">3</span><span class="sc">^</span><span class="dv">2</span></span></code></pre></div>
+<p>In R, variable names can contain any combination of letters, numbers, dots <code>.</code>,
+and underscores <code>_</code>, but must always start with a letter or a dot. Spaces and
+other symbols are not allowed in variable names.</p>
+<p>Now we can use the <code>area</code> variable anywhere we want the computed area. Notice
+that when you assign a result to a variable, R doesn’t automatically display
+that result. If you want to see the result as well, you have to enter the
+variable’s name as a separate expression:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="getting-started.html#cb8-1" aria-hidden="true" tabindex="-1"></a>area</span></code></pre></div>
+<pre><code>## [1] 28.27433</code></pre>
+<p>Another reason to use variables is to make an expression more general. For
+instance, you might want to compute the area of several circles with different
+radii. Then the expression <code>pi * 3^2</code> is too specific. You can rewrite it as
+<code>pi * r^2</code>, and then assign a value to the variable <code>r</code> just before you compute
+the area. Here’s the code to compute and display the area of a circle with
+radius 1 this way:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="getting-started.html#cb10-1" aria-hidden="true" tabindex="-1"></a>r <span class="ot">=</span> <span class="dv">1</span></span>
+<span id="cb10-2"><a href="getting-started.html#cb10-2" aria-hidden="true" tabindex="-1"></a>area <span class="ot">=</span> pi <span class="sc">*</span> r<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb10-3"><a href="getting-started.html#cb10-3" aria-hidden="true" tabindex="-1"></a>area</span></code></pre></div>
+<pre><code>## [1] 3.141593</code></pre>
+<p>Now if you want to compute the area for a different radius, all you have to do
+is change <code>r</code> and run the code again (R will not change <code>area</code> until you do
+this). Writing code that’s general enough to reuse across multiple problems can
+be a big time-saver in the long run. Later on, we’ll see ways to make this code
+even easier to reuse.</p>
+</div>
+<div id="calling-functions" class="section level3" number="1.2.2">
+<h3><span class="header-section-number">1.2.2</span> Calling Functions</h3>
+<p>R can do a lot more than just arithmetic. Most of R’s features are provided
+through <em>functions</em>, pieces of reusable code. You can think of a function as a
+machine that takes some inputs and uses them to produce some output. In
+programming jargon, the inputs to a function are called <em>arguments</em>, the output
+is called the <em>return value</em>, and when we use a function, we say we’re
+<em>calling</em> the function.</p>
+<p>To call a function, write its name followed by parentheses. Put any arguments
+to the function inside the parentheses. For example, in R, the sine function is
+named <code>sin</code> (there are also <code>cos</code> and <code>tan</code>). So we can compute the sine of
+<span class="math inline">\(\pi / 4\)</span> with this code:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="getting-started.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sin</span>(pi <span class="sc">/</span> <span class="dv">4</span>)</span></code></pre></div>
+<pre><code>## [1] 0.7071068</code></pre>
+<p>There are many functions that accept more than one argument. For instance, the
+<code>sum</code> function accepts any number of arguments and adds them all together. When
+you call a function with multiple arguments, separate the arguments with
+commas. So another way to compute <span class="math inline">\(2 + 2\)</span> in R is:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="getting-started.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="dv">2</span>, <span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## [1] 4</code></pre>
+<p>When you call a function, R assigns each argument to a <em>parameter</em>. Parameters
+are special variables that represent the inputs to a function and only exist
+while that function runs. For example, the <code>log</code> function, which computes a
+logarithm, has parameters <code>x</code> and <code>base</code> for the operand and base of the
+logaritm, respectively. The next section, Section <a href="getting-started.html#getting-help">1.3</a>, explains
+how to look up the parameters for a function.</p>
+<p>By default, R assigns arguments to parameters based on their order. The first
+argument is assigned to the function’s first parameter, the second to the
+second, and so on. So we can compute the logarithm of 64, base 2, with this
+code:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="getting-started.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span>(<span class="dv">64</span>, <span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## [1] 6</code></pre>
+<p>The argument 64 is assigned to the parameter <code>x</code>, and the argument 2 is
+assigned to the parameter <code>base</code>. You can also assign arguments to parameters
+by name with <code>=</code> (not <code>&lt;-</code>), overriding their positions. So some other ways we
+could write the call above are:</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="getting-started.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span>(<span class="dv">64</span>, <span class="at">base =</span> <span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## [1] 6</code></pre>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="getting-started.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span>(<span class="at">x =</span> <span class="dv">64</span>, <span class="at">base =</span> <span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## [1] 6</code></pre>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="getting-started.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span>(<span class="at">base =</span> <span class="dv">2</span>, <span class="at">x =</span> <span class="dv">64</span>)</span></code></pre></div>
+<pre><code>## [1] 6</code></pre>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="getting-started.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span>(<span class="at">base =</span> <span class="dv">2</span>, <span class="dv">64</span>)</span></code></pre></div>
+<pre><code>## [1] 6</code></pre>
+<p>All of these are equivalent. When you write code, choose whatever seems the
+clearest to you. Leaving parameter names out of calls saves typing, but
+including some or all of them can make the code easier to understand.</p>
+<p>Parameters are not regular variables, and only exist while their associated
+function runs. You can’t set them before a call, nor can you access them after
+a call. So this code causes an error:</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="getting-started.html#cb26-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="dv">64</span></span>
+<span id="cb26-2"><a href="getting-started.html#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span>(<span class="at">base =</span> <span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## Error in eval(expr, envir, enclos): argument &quot;x&quot; is missing, with no default</code></pre>
+<p>In the error message, R says that we forgot to assign an argument to the
+parameter <code>x</code>. We can keep the variable <code>x</code> and correct the call by making <code>x</code>
+an argument (for the parameter <code>x</code>):</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="getting-started.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span>(x, <span class="at">base =</span> <span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## [1] 6</code></pre>
+<p>Or, written more explicitly:</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="getting-started.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span>(<span class="at">x =</span> x, <span class="at">base =</span> <span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## [1] 6</code></pre>
+<p>In summary, variables and parameters are distinct, even if they happen to have
+the same name. The variable <code>x</code> is not the same thing as the parameter <code>x</code>.</p>
+</div>
+</div>
+<div id="getting-help" class="section level2" number="1.3">
+<h2><span class="header-section-number">1.3</span> Getting Help</h2>
+<p>Learning and using a language is hard, so it’s important to know how to get
+help. The first place to look for help is R’s built-in documentation. In the
+console, you can access a specific help page by name with <code>?</code> followed by the
+name of the page.</p>
+<p>There are help pages for all of R’s built-in functions, usually with the same
+name as the function itself. So the code to open the help page for the <code>log</code>
+function is:</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="getting-started.html#cb32-1" aria-hidden="true" tabindex="-1"></a>?log</span></code></pre></div>
+<p>For functions, help pages usually include a brief description, a list of
+parameters, a description of the return value, and some examples.</p>
+<p>There are also help pages for other topics, such as built-in mathematical
+constants (such as <code>?pi</code>), data sets (such as <code>?iris</code>), and operators. To look
+up the help page for an operator, put the operator’s name in single or double
+quotes. For example, this code opens the help page for the arithmetic
+operators:</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="getting-started.html#cb33-1" aria-hidden="true" tabindex="-1"></a>?<span class="st">&quot;+&quot;</span></span></code></pre></div>
+<p>It’s always okay to put quotes around the name of the page when you use <code>?</code>,
+but they’re only required if it contains non-alphabetic characters. So <code>?sqrt</code>,
+<code>?'sqrt'</code>, and <code>?"sqrt"</code> all open the documentation for <code>sqrt</code>, the square root
+function.</p>
+<p>R treats anything inside single or double quotes as literal text rather than as
+an expression to evaluate. In programming jargon, a piece of literal text is
+called a <em>string</em>. You can use whichever kind of quotes you prefer, but the
+quote at the beginning of the string must match the quote at the end.</p>
+<p>Sometimes you might not know the name of the help page you want to look up. You
+can do a general search of R’s help pages with <code>??</code> followed by a string of
+search terms. For example, to get a list of all help pages related to linear
+models:</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="getting-started.html#cb34-1" aria-hidden="true" tabindex="-1"></a>??<span class="st">&quot;linear model&quot;</span></span></code></pre></div>
+<p>This search function doesn’t always work well, and it’s often more efficient to
+use an online search engine. When you search for help with R online, include
+“R” as a search term. Alternatively, you can use <a href="https://rseek.org/">RSeek</a>, which
+restricts the search to a selection of R-related websites.</p>
+<div id="what-to-do-when-something-goes-wrong" class="section level3" number="1.3.1">
+<h3><span class="header-section-number">1.3.1</span> What to Do When Something Goes Wrong</h3>
+<p>As a programmer, sooner or later you’ll run some code and get an error message
+or result you didn’t expect. Don’t panic! Even experienced programmers make
+mistakes regularly, so learning how to diagnose and fix problems is vital.</p>
+<p>Try going through these steps:</p>
+<ol style="list-style-type: decimal">
+<li>If R returned a warning or error message, read it! If you’re not sure what
+the message means, try searching for it online.</li>
+<li>Check your code for typographical errors, including incorrect capitalization
+and missing or extra commas, quotes, and parentheses.</li>
+<li>Test your code one line at a time, starting from the beginning. After each
+line that assigns a variable, check that the value of the variable is what
+you expect. Try to determine the exact line where the problem originates
+(which may differ from the line that emits an error!).</li>
+</ol>
+<p>If none of these steps help, try asking online. <a href="https://stackoverflow.com/">Stack Overflow</a> is a
+popular question and answer website for programmers. Before posting, make sure
+to read about <a href="https://stackoverflow.com/help/how-to-ask">how to ask a good question</a>.</p>
+</div>
+</div>
+<div id="file-systems" class="section level2" number="1.4">
+<h2><span class="header-section-number">1.4</span> File Systems</h2>
+<p><img src="img/rstudio_script.png"></p>
+<div id="the-working-directory" class="section level3" number="1.4.1">
+<h3><span class="header-section-number">1.4.1</span> The Working Directory</h3>
+</div>
+</div>
+<div id="reading-files" class="section level2" number="1.5">
+<h2><span class="header-section-number">1.5</span> Reading Files</h2>
+</div>
+<div id="data-frames" class="section level2" number="1.6">
+<h2><span class="header-section-number">1.6</span> Data Frames</h2>
+</div>
+<div id="vectors" class="section level2" number="1.7">
+<h2><span class="header-section-number">1.7</span> Vectors</h2>
+</div>
+<div id="data-types" class="section level2" number="1.8">
+<h2><span class="header-section-number">1.8</span> Data Types</h2>
+<div id="matrices" class="section level3" number="1.8.1">
+<h3><span class="header-section-number">1.8.1</span> Matrices</h3>
+</div>
+<div id="lists" class="section level3" number="1.8.2">
+<h3><span class="header-section-number">1.8.2</span> Lists</h3>
+</div>
+<div id="special-values" class="section level3" number="1.8.3">
+<h3><span class="header-section-number">1.8.3</span> Special Values</h3>
+</div>
+<div id="factors" class="section level3" number="1.8.4">
+<h3><span class="header-section-number">1.8.4</span> Factors</h3>
+</div>
+</div>
+<div id="indexing" class="section level2" number="1.9">
+<h2><span class="header-section-number">1.9</span> Indexing</h2>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": false,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/ucdavisdatalab/workshop_r_basics/edit/master/01_r-basics.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": "https://github.com/ucdavisdatalab/workshop_r_basics/blob/master/01_r-basics.Rmd",
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
