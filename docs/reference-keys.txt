@@ -6,6 +6,8 @@ calling-functions
 getting-help
 what-to-do-when-something-goes-wrong
 file-systems
+absolute-relative-paths
+r-scripts
 the-working-directory
 reading-files
 data-frames

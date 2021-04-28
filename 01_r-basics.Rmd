@@ -355,9 +355,300 @@ to read about [how to ask a good question][goodq].
 File Systems
 ------------
 
+Most of the time, you won't just write code directly into the R console.
+Reproducibility and reusability are important benefits of R over
+point-and-click software, and in order to realize these, you have to save your
+code to your computer's hard drive. Let's start by reviewing how files on a
+computer work. You'll need to understand that before you can save your code,
+and it will also be important later on for loading data sets.
+
+Your computer's _file system_ is a collection of _files_ (chunks of data) and
+_directories_ (or "folders") that organize those files. For instance, the file
+system on a computer shared by [Ada][ada] and [Charles][chuck], two pioneers of
+computing, might look like this:
+
+[ada]: https://en.wikipedia.org/wiki/Ada_Lovelace
+[chuck]: https://en.wikipedia.org/wiki/Charles_Babbage
+
+<img src="img/filesystem.png" width="50%">
+
+Don't worry if your file system looks a bit different from the picture.
+
+File systems have a tree-like structure, with a top-level directory called the
+_root directory_. On Ada and Charles' computer, the root is called `/`, which
+is also what it's called on all macOS and Linux computers. On Windows, the root
+is usually called `C:/`, but sometimes other letters, like `D:/`, are also used
+depending on the computer's hardware.
+
+A _path_ is a list of directories that leads to a specific file or directory on
+a file system (imagine giving directons to someone as they walk through the
+file system). We use forward slashes `/` to separate the directories in a path,
+rather than commas or spaces. The root directory includes a forward slash as
+part of its name, and doesn't need an extra one.
+
+For example, suppose Ada wants to write a path to the file `cats.csv`. She can
+write the path like this:
+
+```
+/Users/ada/cats.csv
+```
+
+You can read this path from left-to-right as, "Starting from the root
+directory, go to the `Users` directory, then from there go to the `ada`
+directory, and from there go to the file `cats.csv`." Alternatively, you can
+read the path from right-to-left as, "The file `cats.csv` inside of the `ada`
+directory, which is inside of the `Users` directory, which is in the root
+directory."
+
+As another example, suppose Charles wants a path to the `Programs` directory.
+He can write:
+
+```
+/Programs/
+```
+
+The `/` at the end of this path is reminder that `Programs` is a directory, not
+a file. Charles could also write the path like this:
+
+```
+/Programs
+```
+
+This is still correct, but it's not as obvious that `Programs` is a directory.
+In other words, when a path leads to a directory, including a _trailing slash_
+is optional, but makes the meaning of the path clearer. Paths that lead to
+files never have a trailing slash.
+
+On Windows computers, paths are usually written with backslashes ```\``` to
+separate directories instead of forward slashes. Fortunately, R uses forward
+slashes `/` for all paths, regardless of the operating system. So when you're
+working in R, use forward slashes and don't worry about the operating system.
+This is especially convenient when you want to share code with someone that
+uses a different operating system than you.
+
+### Absolute & Relative Paths
+
+A path that starts from the root directory, like all of the ones we've seen so
+far, is called an _absolute path_. The path is "absolute" because it
+unambiguously describes where a file or directory is located. The downside is
+that absolute paths usually don't work well if you share your code.
+
+For example, suppose Ada uses the path `/Programs/ada/cats.csv` to load the
+`cats.csv` file in her code. If she shares her code with another pioneer of
+computing, say [Gladys][gladys], who also has a copy of `cats.csv`, it might
+not work. Even though Gladys has the file, she might not have it in a directory
+called `ada`, and might not even have a directory called `ada` on her computer.
+Because Ada used an absolute path, her code works on her own computer, but
+isn't portable to others.
+
+[gladys]: https://en.wikipedia.org/wiki/Gladys_West
+
+On the other hand, a _relative path_ is one that doesn't start from the root
+directory. The path is "relative" to an unspecified starting point, which
+usually depends on the context.
+
+For instance, suppose Ada's code is saved in the file `analysis.R` (more about
+`.R` files in Section \@ref(r-scripts)), which is in the same directory as
+`cats.csv` on her computer. Then instead of an absolute path, she can use a
+relative path in her code:
+
+```
+cats.csv
+```
+
+The context is the location of `analysis.R`, the file that contains the code.
+In other words, the starting point on Ada's computer is the `ada` directory. On
+other computers, the starting point will be different, depending on where the
+code is stored.
+
+Now suppose Ada sends her corrected code in `analysis.R` to Gladys, and tells
+Gladys to put it in the same directory as `cats.csv`. Since the path `cats.csv`
+is relative, the code will still work on Gladys' computer, as long as the two
+files are in the same directory. The name of that directory and its location in
+the file system don't matter, and don't have to be the same as on Ada's
+computer. Gladys can put the files in a directory `/Users/gladys/from_ada/` and
+the path (and code) will still work.
+
+Relative paths can include directories. For example, suppose that Charles wants
+to write a relative path from the `Users` directory to a cool selfie he took.
+Then he can write:
+
+```
+charles/cool_hair_selfie.jpg
+```
+
+You can read this path as, "Starting from wherever you are, go to the `charles`
+directory, and from there go to the `cool_hair_selfie.jpg` file." In other
+words, the relative path depends on the context of the code or program that
+uses it.
+
+When use you paths in R code, they should almost always be relative paths. This
+ensures that the code is portable to other computers, which is an important
+aspect of reproducibility. Another benefit is that relative paths tend to be
+shorter, making your code easier to read (and write).
+
+When you write paths, there are three shortcuts you can use. These are most
+useful in relative paths, but also work in absolute paths:
+
+* `.` means the current directory.
+* `..` means the directory above the current directory.
+* `~` means the _home directory_. Each user has their own home directory, whose
+  location depends on the operating system and their username. Home directories
+  are typically found inside `C:/Users/` on Windows, `/Users/` on macOS, and
+  `/home/` on Linux.
+
+As an example, suppose Ada wants to write a (relative) path from the `ada`
+directory to Charles' cool selfie. Using these shorcuts, she can write:
+
+```
+../charles/cool_hair_selfie.jpg
+```
+
+Read this as, "Starting from wherever you are, go up one directory, then go to
+the `charles` directory, and then go to the `cool_hair_selfie.jpg` file." Since
+`/Users/ada` is Ada's home directory, she could also write the path as:
+
+```
+~/../charles/cool_hair_selfie.jpg
+```
+
+This path has the same effect, but the meaning is slightly different. You can
+read it as "Starting from your home directory, go up one directory, then go to
+the `charles` directory, and then go to the `cool_hair_selfie.jpg` file."
+
+The `..` and `~` shortcut are frequently used and worth remembering. The `.`
+shortcut is included here in case you see it in someone else's code. Since it
+means the current directory, a path like `./cats.csv` is identical to
+`cats.csv`, and the latter is preferable for being simpler. There are a few
+specific situations where `.` is necessary, but they fall outside the scope of
+this text.
+
+
+### R Scripts
+
+Now that you know how file systems and paths work, you're ready to learn how to
+save your R code to a file. R code is usually saved into an _R script_
+(extension `.R`) or an _R Markdown file_ (extension `.Rmd`). R scripts are
+slightly simpler, so let's focus on those.
+
+In RStudio, you can create a new R script with this menu option:
+
+```
+File -> New File -> R Script
+```
+
+This will open a new pane in RStudio, like this:
+
 <img src="img/rstudio_script.png">
 
+The new pane is the scripts pane, which displays all of the R scripts you're
+editing. Each script appears in a separate tab. In the screenshot, only one
+script, the new script, is open.
+
+Editing a script is similar to editing any other text document. You can write,
+delete, copy, cut, and paste text. You can also save the file to your
+computer's file system. When you do, pay attention to where you save the file,
+as you might need it later.
+
+The contents of an R script should be R code. Anything else you want to write
+in the script (notes, documentation, etc.) should be in a _comment_. In R,
+comments begin with `#` and extend to the end of the line:
+
+```{r}
+# This is a comment.
+```
+
+R will ignore comments when you run your code.
+
+When you start a new project, it's a good idea to create a specific directory
+for all of the project's files. If you're using R, you should also create one
+or more R scripts in that directory. As you work, write your code directly into
+a script. Arrange your code in the order of the steps to solve the problem,
+even if you write some parts before others. Comment out or delete any lines of
+code that you try but ultimately decide you don't need. Make sure to save the
+file periodically so that you don't lose your work. Following these guidelines
+will help you stay organized and make it easier to share your code with others
+later.
+
+While editing, you can run the current line in the R console by pressing
+`Ctrl`+`Enter` on Windows and Linux, or `Cmd`+`Enter` on macOS. This way you
+can test and correct your code as you write it.
+
+If you want, you can instead run (or _source_) the entire R script, by calling
+the `source` function with the path to the script as an argument. This is also
+what the "Source on Save" check box refers to in RStudio. The code runs in
+order, only stopping if an error occurs.
+
+For instance, if you save the script as `my_cool_script.R`, then you can run
+`source("my_cool_script.R")` in the console to run the entire script (pay
+attention to the path---it may be different on your computer).
+
+R Markdown files are an alternative format for storing R code. They provide a
+richer set of formatting options, and are usually a better choice than R
+scripts if you're writing a report that contains code. You can learn more
+about R Markdown files [here][rmd].
+
+[rmd]: https://rmarkdown.rstudio.com/
+
+
 ### The Working Directory
+
+The _working directory_ is the starting point R uses for relative paths
+(Section \@ref(absolute-relative-paths)). Think of the working directory as the
+directory R is currently "at" or watching.
+
+The function `getwd` returns the absolute path for the current working
+directory, as a string. It doesn't require any arguments:
+
+```{r}
+getwd()
+```
+
+On your computer, the output from `getwd` will likely be different. This is a
+very useful function for getting your bearings when you write relative paths.
+If you write a relative path and it doesn't work as expected, the first thing
+to do is check the working directory.
+
+The related `setwd` function changes the working directory. It takes one
+argument: a path to the new working directory. Here's an example:
+
+```{r}
+setwd("..")
+
+# Now check the working directory.
+getwd()
+```
+
+Generally, you should avoid using calls to `setwd` in your R scripts and R
+Markdown files. Calling `setwd` makes your code more difficult to understand,
+and can always be avoided by using appropriate relative paths. If you call
+`setwd` with an absolute path, it also makes your code less portable to other
+computers. It's fine to use `setwd` interactively (in the R console), but avoid
+making your saved code dependent on it.
+ 
+Another function that's useful for dealing with the working directory and file
+system is `list.files`. The `list.files` function returns the names of all of
+the files and directories inside of a directory. It accepts a path to a
+directory as an argument, or assumes the working directory if you don't pass a
+path. For instance:
+
+```{r}
+# List files and directories in /home/.
+list.files("/home/")
+
+# List files and directories in the working directory.
+list.files()
+```
+
+As usual, since you have a different computer, you're likely to see different
+output if you run this code. If you call `list.files` with an invalid path or
+an empty directory, the output is `character(0)`:
+
+```{r}
+list.files("/this/path/is/fake/")
+```
+
+Later on, we'll learn about what `character(0)` means more generally.
 
 
 Reading Files
