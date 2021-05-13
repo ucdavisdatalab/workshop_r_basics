@@ -326,7 +326,7 @@ restricts the search to a selection of R-related websites.
 [rseek]: https://rseek.org/
 
 
-### What to Do When Something Goes Wrong
+### When Something Goes Wrong
 
 As a programmer, sooner or later you'll run some code and get an error message
 or result you didn't expect. Don't panic! Even experienced programmers make
@@ -593,9 +593,11 @@ about R Markdown files [here][rmd].
 
 ### The Working Directory
 
-The _working directory_ is the starting point R uses for relative paths
-(Section \@ref(absolute-relative-paths)). Think of the working directory as the
-directory R is currently "at" or watching.
+Section \@ref(absolute-relative-paths) explained that relative paths have a
+starting point that depends on the context where the path is used. We can make
+that idea more concrete for R. The _working directory_ is the starting point R
+uses for relative paths. Think of the working directory as the directory R is
+currently "at" or watching.
 
 The function `getwd` returns the absolute path for the current working
 directory, as a string. It doesn't require any arguments:
@@ -654,29 +656,547 @@ Later on, we'll learn about what `character(0)` means more generally.
 Reading Files
 -------------
 
+Analyzing data sets is one of the most common things to do in R. The first step
+is to get R to read your data. Data sets come in a variety of file formats, and
+you need to identify the format in order to tell R how to read the data.
+
+Most of the time, you can guess the format of a file by looking at its
+_extension_, the characters (usually three) after the last dot `.` in the
+filename. For example, the extension `.jpg` or `.jpeg` indicates a [JPEG image
+file][jpg]. Some operating systems hide extensions by default, but you can find
+instructions to change this setting online by searching for "show file
+extensions" and your operating system's name. The extension is just part of the
+file's name, so it should be taken as a hint about the file's format rather
+than a guarantee.
+
+[jpg]: https://en.wikipedia.org/wiki/JPEG
+
+R has built-in functions for reading a variety of formats. The R community also
+provides _packages_, shareable and reusable pieces of code, to read even more
+formats. You'll learn more about packages later, in Section \@ref(packages).
+For now, let's focus on data sets that can be read with R's built-in functions.
+
+Here are several formats that are frequently used to distribute data, along
+with the name of a built-in function or contributed package that can read the
+format:
+
+| Name                        | Extension  | Function or Package  | Tabular?  | Text?
+| :-------------------------- | :--------  | :------------------- | :-------- | :----
+| Comma-separated Values      | `.csv`     | `read.csv`           | Yes       | Yes
+| Tab-separated Values        | `.tsv`     | `read.delim`         | Yes       | Yes
+| Fixed-width File            | `.fwf`     | `read.fwf`           | Yes       | Yes
+| Microsoft Excel             | `.xlsx`    | **readr** package    | Yes       | No
+| Microsoft Excel 1993-2007   | `.xls`     | **readr** package    | Yes       | No
+| [Apache Arrow][arrow]       | `.feather` | **arrow** package    | Yes       | No
+| R Data                      | `.rds`     | `readRDS`            | Sometimes | No
+| R Data                      | `.rda`     | `load`               | Sometimes | No
+| Plaintext                   | `.txt`     | `readLines`          | Sometimes | Yes
+| Extensible Markup Language  | `.xml`     | **xml2** package     | No        | Yes
+| JavaScript Object Notation  | `.json`    | **jsonlite** package | No        | Yes
+
+[arrow]: https://arrow.apache.org/
+
+A _tabular_ data set is one that's structured as a table, with rows and columns.
+We'll focus on tabular data sets for most of this reader, since they're easier
+to get started with. Here's an example of a tabular data set:
+
+| Fruit  | Quantity | Price
+| :----  | -------: | ----:
+| apple  | 32       | 1.49
+| banana | 541      | 0.79
+| pear   | 10       | 1.99
+
+A _text_ file is one that contains human-readable lines of text. You can check
+this by opening the file with a text editor such as Microsoft Notepad or macOS
+TextEdit. Many file formats use text in order to make the format easier to work
+with.
+
+For instance, a _comma-separated values_ (CSV) file records a tabular data
+using one line per row, with commas separating columns. If you store the table
+above in a CSV file and open the file in a text editor, here's what you'll see:
+
+```
+Fruit,Quantity,Price
+apple,32,1.49
+banana,541,0.79
+pear,10,1.99
+```
+
+A _binary_ file is one that's not human-readable. You can't just read off the
+data if you open a binary file in a text editor, but they have a number of
+other advantages. Compared to text files, binary files are often faster to read
+and take up less storage space (bytes).
+
+As an example, R's built-in binary format is called _RDS_ (which may stand for
+"R data serialized"). RDS files are extremely useful for backing up work, since
+they can store any kind of R object, even ones that are not tabular. You can
+learn more about how to create an RDS file on the `?saveRDS` help page, and how
+to read one on the `?readRDS` help page.
+
+
+### Hello, Data!
+
+Let's read our first data set! Over the next few sections, we're going to
+explore data from the U.S. Bureau of Labor Statistics about median employee
+earnings. The data set was prepared as part of the Tidy Tuesday R community
+project. You can find more details about the data set [here][earn], and you can
+download the data set [here][earn-dl] (you may need to choose `File -> Save
+As...` in your browser's menu).
+
+[earn]: https://github.com/rfordatascience/tidytuesday/tree/master/data/2021/2021-02-23
+[earn-dl]: https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-02-23/earn.csv
+
+The data set is a file called `earn.csv`, which suggests it's a CSV file. In
+this case, the extension is correct, so we can read the file into R with the
+built-in `read.csv` function. The first argument is the path to where you saved
+the file, which may be different on your computer. The `read.csv` function
+returns the data set, but R won't keep the data in memory unless we assign the
+returned result to a variable:
+
+```{r}
+earn = read.csv("data/earn.csv")
+```
+
+The variable name `earn` here is arbitrary; you can choose something different
+if you want. However, in general, it's a good habit to choose variable names
+that describe the contents of the variable somehow.
+
+If you tried running the line of code above and got an error message, pay
+attention to what the error message says, and remember the strategies to get
+help in Section \@ref(getting-help). The most common mistake when reading a
+file is incorrectly specifying the path, so first check that you got the path
+right.
+
+If you ran the line of code and there was no error message, congratulations,
+you've read your first data set into R!
+
 
 Data Frames
 -----------
 
+Now that we've loaded the data, let's take a look at it. When you're working
+with a new data set, it's usually not a good idea to print it out directly (by
+typing `earn`, in this case) until you know how big it is. Big data sets can
+take a long time to print, and the output can be difficult to read.
+
+Instead, you can use the `head` function to print only the beginning, or
+_head_, of a data set. Let's take a peek:
+
+```{r}
+head(earn)
+```
+
+This data set is tabular---as you might have already guessed, since it came
+from a CSV file. In R, it's represented by a _data frame_, a table with rows
+and columns. R uses data frames to represent most (but not all) kinds of
+tabular data. The `read.csv` function, which we used to read this data, always
+returns a data frame.
+
+For a data frame, the `head` function only prints the first six rows. If there
+are lots of columns or the columns are wide, as is the case here, R wraps the
+output across lines.
+
+When you first read an object into R, you might not know whether it's a data
+frame. One way to check is visually, by printing it, as we just did. A better
+way to check is with the `class` function, which returns information about what
+an object is. For a data frame, the result will always contain `data.frame`:
+
+```{r}
+class(earn)
+```
+
+We'll learn more about classes in Section \@ref(data-types), but for now you
+can use this function to identify data frames.
+
+By counting the columns in the output from `head(earn)`, we can see that this
+data set has eight columns. A more convenient way to check the number of
+columns in a data set is with the `ncol` function:
+
+```{r}
+ncol(earn)
+```
+
+The similarly-named `nrow` function returns the number of rows:
+
+```{r}
+nrow(earn)
+```
+
+Alternatively, you can get both numbers at the same time with the `dim` (short
+for "dimensions") function.
+
+Since the columns have names, we might also want to get just these. You can do
+that with the `names` or `colnames` functions. Both return the same result:
+
+```{r}
+names(earn)
+colnames(earn)
+```
+
+If the rows have names, you can get those with the `rownames` function. For
+this particular data set, the rows don't have names.
+
+### Summarizing Data
+
+An efficient way to get a sense of what's actually in a data set is to have R
+compute summary information. This works especially well for data frames, but
+also applies to other data. R provides two different functions to get
+summaries: `str` and `summary`.
+
+The `str` function returns a _structural summary_ of an object. This kind of
+summary tells us about the structure of the data---the number of rows, the
+number and names of columns, what kind of data is in each column, and some
+sample values. Here's the structural summary for the earnings data:
+
+```{r}
+str(earn)
+```
+
+This summary lists information about each column, and includes most of what we
+found earlier by using several different functions separately. The summary uses
+`chr` to indicate columns of text ("characters") and `int` to indicate columns
+of integers.
+
+In contrast to `str`, the `summary` function returns a _statistical summary_ of
+an object. This summary includes summary statistics for each column, choosing
+appropriate statistics based on the kind of data in the column. For numbers,
+this is generally the mean, median, and quantiles. For categories, this is the
+frequencies. Other kinds of statistics are shown for other kinds of data.
+Here's the statistical summary for the earnings data:
+
+```{r}
+summary(earn)
+```
+
+### Selecting Columns
+
+You can select an individual column from a data frame by name with `$`, the
+dollar sign operator. The syntax is:
+
+```{r, eval = FALSE}
+VARIABLE$COLUMN_NAME
+```
+ 
+For instance, for the earnings data, `earn$age` selects
+the `age` column, and `earn$n_persons` selects the `n_persons` column. So one
+way to compute the mean of the `n_persons` column is:
+
+```{r}
+mean(earn$n_persons)
+```
+
+Similarly, to compute the range of the `year` column:
+
+```{r}
+range(earn$year)
+```
+
+You can also use the dollar sign operator to assign values to columns. For
+instance, to assign `0` to the entire `quarter` column:
+
+```{r}
+earn$quarter = 0
+```
+
+Be careful when you do this, as there is no undo. Fortunately, we haven't
+applied any transformations to the earnings data yet, so we can reset the
+`earn` variable back to what it was by reloading the data set:
+
+```{r}
+earn = read.csv("data/earn.csv")
+```
+
+In Section \@ref(indexing), we'll learn how to select rows and individual
+elements from a data frame, as well as other ways to select columns.
 
 Vectors
 -------
 
+A _vector_ is a collection of values. Vectors are the fundamental unit of data
+in R, and we've already used them in the previous sections.
+
+For instance, each column in a data frame is a vector. So the `quarter` column
+in the earnings data is a vector. Let's take a look at it. We can use `head`
+again to avoid printing too much, this time specifying with the second argument
+that we want to print exactly 10 values:
+
+```{r}
+head(earn$quarter, 10)
+```
+
+Like all vectors, this vector is ordered, which just means the values, or
+_elements_, have specific positions. The value of the 1st element is `1`, the
+2nd is `2`, the 5th is also `1`, and so on.
+
+Notice that the elements of this vector are all integers. This isn't just a
+quirk of the earnings data set. In R, the elements of a vector must all be the
+same type of data (we say the elements are _homogeneous_). A vector can contain
+integers, decimal numbers, strings, or several other types of data, but not a
+mix these all at once.
+
+The other columns in the earnings data frame are also vectors. For instance,
+the `age` column is a vector of strings:
+
+```{r}
+head(earn$age)
+```
+
+Vectors can have any number of elements, including 0 or 1 element. Unlike
+mathematics, R does not distinguish between vectors and _scalars_ (solitary
+values). So as far as R is concerned, a solitary value, like `3`, is a vector
+with 1 element.
+
+You can check the length of a vector (and other objects) with the `length`
+function:
+
+```{r}
+length(3)
+length("hello")
+length(earn$age)
+```
+
+Since the last of these is a column from the data frame `earn`, the length is
+the same as the number of rows in `earn`.
+
+### Creating Vectors
+
+Sometimes you'll want to create your own vectors. You can do this by
+concatenating several vectors together with the `c` function. It accepts any
+number of vector arguments, and combines them into a single vector:
+
+```{r}
+c(1, 2, 19, -3)
+c("hi", "hello")
+c(1, 2, c(3, 4))
+```
+
+If the arguments you pass to the `c` function have different data types, R will
+attempt to convert them to a common data type that preserves the information:
+
+```{r}
+c(1, "cool", 2.3)
+```
+
+The colon operator `:` creates vectors that contain sequences of integers. This
+is useful for creating "toy" data to test things on, and later we'll see that
+it's also important in several other contexts. Here are a few different
+sequences:
+
+```{r}
+1:3
+-3:5
+10:1
+```
+
+Beware that both endpoints are included in the sequence, even in sequences like
+`1:0`, and that the difference between elements is always `-1` or `1`. If you
+want more control over the generated sequence, use the `seq` function instead.
 
 
-Data Types
-----------
+### Vectorization
 
-### Matrices
+Let's look at what happens if we call a mathematical function, like `sin`, on a
+vector:
 
-### Lists
+```{r}
+x = c(1, 3, 0, pi)
+sin(x)
+```
 
-### Special Values
+This gives us the same result as if we had called the function separately on
+each element. That is, the result is the same as:
 
-### Factors
+```{r}
+c(sin(1), sin(3), sin(0), sin(pi))
+```
+
+Of course, the first version is much easier to type.
+
+Functions that take a vector argument and get applied element-by-element like
+this are said to be _vectorized_. Most functions in R are vectorized,
+especially math functions. Some examples include `sin`, `cos`, `tan`, `log`,
+`exp`, and `sqrt`.
+
+Functions that are not vectorized tend to be ones that combine or aggregate
+values in some way. For instance, the `sum`, `mean`, `median`, `length`, and
+`class` functions are not vectorized.
+
+A function can be vectorized across multiple arguments. This is easiest to
+understand in terms of the arithmetic operators. Let's see what happens if we
+add two vectors together:
+
+```{r}
+x = c(1, 2, 3, 4)
+y = c(-1, 7, 10, -10)
+x + y
+```
+
+The elements are paired up and added according to their positions. The other
+arithmetic operators are also vectorized:
+
+```{r}
+x - y
+x * y
+x / y
+```
+
+### Recycling
+
+When a function is vectorized across multiple arguments, what happens if the
+vectors have different lengths? Whenever you think of a question like this as
+you're learning R, the best way to find out is to create some toy data and test
+it yourself. Let's try that now:
+
+```{r}
+x = c(1, 2, 3, 4)
+y = c(-1, 1)
+x + y
+```
+
+The elements of the shorter vector are _recycled_ to match the length of the
+longer vector. That is, after the second element, the elements of `y` are
+repeated to make a vector with the same length as `x` (because `x` is longer),
+and then vectorized addition is carried out as usual.
+
+Here's what that looks like written down:
+
+```
+   1  2  3  4
++ -1  1 -1  1
+  -----------
+   0  3  2  5
+```
+
+If the length of the longer vector is not a multiple of the length of the
+shorter vector, R issues a warning, but still returns the result. The warning
+as meant as a reminder, because unintended recycling is a common source of
+bugs:
+
+```{r}
+x = c(1, 2, 3, 4, 5)
+y = c(-1, 1)
+x + y
+```
+
+Recycling might seem strange at first, but it's convenient if you want to use a
+specific value (or pattern of values) with a vector. For instance, suppose you
+want to multiply all the elements of a vector by `2`. Recycling makes this
+easy:
+
+```{r}
+2 * c(1, 2, 3)
+```
+
+When you use recycling, most of the time one of the arguments will be a scalar
+like this.
 
 
-Indexing
---------
+### Making Comparisons
 
+Comparisons are among the most common operations on vectors. The comparison
+operators are:
+
+* `<` for "less than"
+* `>` for "greater than"
+* `<=` for "less than or equal to"
+* `>=` for "greater than or equal to"
+* `==` for "equal to"
+* `!=` for "not equal to"
+* `%in%` for containment (explained below)
+
+The "equal to" operator uses two equal signs so that R can distinguish it from
+`=`, the assignment operator. Like the arithmetic operators, the comparison
+operators are vectorized.
+
+Let's look at a few examples with length-one vectors:
+
+```{r}
+1 < 3
+"a" == "b"
+3.1 == 3.1
+```
+
+When you make a comparison, R returns a _logical_ value, `TRUE` or `FALSE`, to
+indicate the result. Logical values are different from strings, so they are not
+quoted.
+
+Logical values just like most other data types. You can use them in
+computations, and you can create vectors of them. Here's some examples:
+
+```{r}
+TRUE
+c(TRUE, FALSE, FALSE)
+TRUE == FALSE
+```
+
+Now let's see what happens when we compare longer vectors:
+
+```{r}
+c(1, 2, 3) < c(1, 3, -3)
+c("he", "saw", "her") == c("she", "saw", "him")
+```
+
+Since the comparison operators are all vectorized, the elements of the vectors
+are compared element-by-element, and R returns a logical value for each pair.
+
+What if you want to test whether all the elements in a vector are equal (or
+unequal)? There are several ways to do this. One is to use the `all` function
+on the result of the comparison. The `all` function takes a vector of logical
+values and returns `TRUE` if all of them are `TRUE`, and returns `FALSE`
+otherwise:
+
+```{r}
+all(c(1, 2, 3) < c(1, 3, -3))
+```
+
+The related `any` function returns `TRUE` if any one element is `TRUE`, and
+returns `FALSE` otherwise:
+
+```{r}
+any(c("hi", "hello") == c("hi", "bye"))
+```
+
+There are two more ways to test whether objects are equal:
+
+1. The `all.equal` function tests whether objects are equal up to some
+   acceptable difference called the _tolerance_. You should generally use
+   `all.equal` rather than `==` to compare decimal numbers. Computer
+   representations for decimal numbers are inherently imprecise, so comparison
+   using a (small) tolerance is often necessary.
+
+2. The `identical` function checks whether objects are completely identical,
+   including their metadata (names, dimensions, and so on). Use this to compare
+   non-vector objects such as data frames. This function also works for
+   vectors, but most of the time `==` is sufficient.
+
+Another common comparison is to check whether elements of one vector are
+contained in another vector at any position. For instance, suppose you want to
+check whether `1` or `2` appear anywhere in a longer vector `x`. Here's how to
+do it:
+
+```{r}
+x = c(3, 4, 2, 7, 3, 7)
+c(1, 2) %in% x
+```
+
+R returns `FALSE` for the `1` because there's no `1` in `x`, and returns `TRUE`
+for the `2` because there is a `2` in `x`.
+
+Notice that this is different from comparing with `==`. If we use `==`, the
+shorter vector is recycled until its length matches the longer one, and then
+compared element-by-element. For the example, this means only the elements at
+odd-numbered positions are compared to `1`, and only the elements at
+even-numbered positions are compared to `2`:
+
+```{r}
+c(1, 2) == x
+```
+
+Finally, new programmers sometimes incorrectly think they need to append `==
+TRUE` to their comparisons. This is redundant, makes your code harder to
+understand, and wastes computational time. Comparisons already return logical
+values. If the result of the comparison is `TRUE`, then `TRUE == TRUE` is again
+just `TRUE`. If the result is `FALSE`, then `FALSE == TRUE` is again just
+`FALSE`. Likewise, if you want to invert a condition, choose an appropriate
+operator rather than appending `== FALSE`.
 

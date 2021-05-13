@@ -1,0 +1,27 @@
+Acknowledgements {-}
+====================
+
+Sincere thanks to:
+
+Duncan Temple Lang, whose guidance and encouragement has had outsize influence
+on the way I think about and teach data science.
+
+Deb Nolan, for being a role model as a data scientist, educator, and academic.
+Special thanks for the opportunity to collaborate on STAT 33 (on which this
+reader and workshop is loosely based) at Cal.
+
+The rest of the DataLab team, for support and many thoughtful discussions about
+data science:
+
+* Wesley Brooks
+* Glenda Gaines
+* Jared Joseph
+* Arthur Koehl
+* Oliver Kreylos
+* Pamela Reynolds
+* Tyler Shoemaker
+* Carl Stahmer
+* Michele Tobias
+
+Last but not least, every former student that asked questions or offered
+feedback when I taught.

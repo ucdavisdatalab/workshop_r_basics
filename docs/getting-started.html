@@ -24,7 +24,7 @@
 <meta name="author" content="Nick Ulle" />
 
 
-<meta name="date" content="2021-04-27" />
+<meta name="date" content="2021-05-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="index.html"/>
-
+<link rel="next" href="data-structures.html"/>
 <script src="libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -149,7 +149,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="1.3" data-path="getting-started.html"><a href="getting-started.html#getting-help"><i class="fa fa-check"></i><b>1.3</b> Getting Help</a>
 <ul>
-<li class="chapter" data-level="1.3.1" data-path="getting-started.html"><a href="getting-started.html#what-to-do-when-something-goes-wrong"><i class="fa fa-check"></i><b>1.3.1</b> What to Do When Something Goes Wrong</a></li>
+<li class="chapter" data-level="1.3.1" data-path="getting-started.html"><a href="getting-started.html#when-something-goes-wrong"><i class="fa fa-check"></i><b>1.3.1</b> When Something Goes Wrong</a></li>
 </ul></li>
 <li class="chapter" data-level="1.4" data-path="getting-started.html"><a href="getting-started.html#file-systems"><i class="fa fa-check"></i><b>1.4</b> File Systems</a>
 <ul>
@@ -157,18 +157,51 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.4.2" data-path="getting-started.html"><a href="getting-started.html#r-scripts"><i class="fa fa-check"></i><b>1.4.2</b> R Scripts</a></li>
 <li class="chapter" data-level="1.4.3" data-path="getting-started.html"><a href="getting-started.html#the-working-directory"><i class="fa fa-check"></i><b>1.4.3</b> The Working Directory</a></li>
 </ul></li>
-<li class="chapter" data-level="1.5" data-path="getting-started.html"><a href="getting-started.html#reading-files"><i class="fa fa-check"></i><b>1.5</b> Reading Files</a></li>
-<li class="chapter" data-level="1.6" data-path="getting-started.html"><a href="getting-started.html#data-frames"><i class="fa fa-check"></i><b>1.6</b> Data Frames</a></li>
-<li class="chapter" data-level="1.7" data-path="getting-started.html"><a href="getting-started.html#vectors"><i class="fa fa-check"></i><b>1.7</b> Vectors</a></li>
-<li class="chapter" data-level="1.8" data-path="getting-started.html"><a href="getting-started.html#data-types"><i class="fa fa-check"></i><b>1.8</b> Data Types</a>
+<li class="chapter" data-level="1.5" data-path="getting-started.html"><a href="getting-started.html#reading-files"><i class="fa fa-check"></i><b>1.5</b> Reading Files</a>
 <ul>
-<li class="chapter" data-level="1.8.1" data-path="getting-started.html"><a href="getting-started.html#matrices"><i class="fa fa-check"></i><b>1.8.1</b> Matrices</a></li>
-<li class="chapter" data-level="1.8.2" data-path="getting-started.html"><a href="getting-started.html#lists"><i class="fa fa-check"></i><b>1.8.2</b> Lists</a></li>
-<li class="chapter" data-level="1.8.3" data-path="getting-started.html"><a href="getting-started.html#special-values"><i class="fa fa-check"></i><b>1.8.3</b> Special Values</a></li>
-<li class="chapter" data-level="1.8.4" data-path="getting-started.html"><a href="getting-started.html#factors"><i class="fa fa-check"></i><b>1.8.4</b> Factors</a></li>
+<li class="chapter" data-level="1.5.1" data-path="getting-started.html"><a href="getting-started.html#hello-data"><i class="fa fa-check"></i><b>1.5.1</b> Hello, Data!</a></li>
 </ul></li>
-<li class="chapter" data-level="1.9" data-path="getting-started.html"><a href="getting-started.html#indexing"><i class="fa fa-check"></i><b>1.9</b> Indexing</a></li>
+<li class="chapter" data-level="1.6" data-path="getting-started.html"><a href="getting-started.html#data-frames"><i class="fa fa-check"></i><b>1.6</b> Data Frames</a>
+<ul>
+<li class="chapter" data-level="1.6.1" data-path="getting-started.html"><a href="getting-started.html#summarizing-data"><i class="fa fa-check"></i><b>1.6.1</b> Summarizing Data</a></li>
+<li class="chapter" data-level="1.6.2" data-path="getting-started.html"><a href="getting-started.html#selecting-columns"><i class="fa fa-check"></i><b>1.6.2</b> Selecting Columns</a></li>
 </ul></li>
+<li class="chapter" data-level="1.7" data-path="getting-started.html"><a href="getting-started.html#vectors"><i class="fa fa-check"></i><b>1.7</b> Vectors</a>
+<ul>
+<li class="chapter" data-level="1.7.1" data-path="getting-started.html"><a href="getting-started.html#creating-vectors"><i class="fa fa-check"></i><b>1.7.1</b> Creating Vectors</a></li>
+<li class="chapter" data-level="1.7.2" data-path="getting-started.html"><a href="getting-started.html#vectorization"><i class="fa fa-check"></i><b>1.7.2</b> Vectorization</a></li>
+<li class="chapter" data-level="1.7.3" data-path="getting-started.html"><a href="getting-started.html#recycling"><i class="fa fa-check"></i><b>1.7.3</b> Recycling</a></li>
+<li class="chapter" data-level="1.7.4" data-path="getting-started.html"><a href="getting-started.html#making-comparisons"><i class="fa fa-check"></i><b>1.7.4</b> Making Comparisons</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="data-structures.html"><a href="data-structures.html"><i class="fa fa-check"></i><b>2</b> Data Structures</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="data-structures.html"><a href="data-structures.html#data-types"><i class="fa fa-check"></i><b>2.1</b> Data Types</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="data-structures.html"><a href="data-structures.html#lists"><i class="fa fa-check"></i><b>2.1.1</b> Lists</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="data-structures.html"><a href="data-structures.html#special-values"><i class="fa fa-check"></i><b>2.2</b> Special Values</a></li>
+<li class="chapter" data-level="2.3" data-path="data-structures.html"><a href="data-structures.html#matrices"><i class="fa fa-check"></i><b>2.3</b> Matrices</a></li>
+<li class="chapter" data-level="2.4" data-path="data-structures.html"><a href="data-structures.html#factors"><i class="fa fa-check"></i><b>2.4</b> Factors</a></li>
+<li class="chapter" data-level="2.5" data-path="data-structures.html"><a href="data-structures.html#indexing"><i class="fa fa-check"></i><b>2.5</b> Indexing</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="exploring-your-data.html"><a href="exploring-your-data.html"><i class="fa fa-check"></i><b>3</b> Exploring Your Data</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="exploring-your-data.html"><a href="exploring-your-data.html#apply-functions"><i class="fa fa-check"></i><b>3.1</b> Apply Functions</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="exploring-your-data.html"><a href="exploring-your-data.html#the-split-apply-pattern"><i class="fa fa-check"></i><b>3.1.1</b> The Split-Apply Pattern</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="exploring-your-data.html"><a href="exploring-your-data.html#functions"><i class="fa fa-check"></i><b>3.2</b> Functions</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="exploring-your-data.html"><a href="exploring-your-data.html#variable-scope-lookup"><i class="fa fa-check"></i><b>3.2.1</b> Variable Scope &amp; Lookup</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="exploring-your-data.html"><a href="exploring-your-data.html#packages"><i class="fa fa-check"></i><b>3.3</b> Packages</a></li>
+<li class="chapter" data-level="3.4" data-path="exploring-your-data.html"><a href="exploring-your-data.html#data-visualization"><i class="fa fa-check"></i><b>3.4</b> Data Visualization</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="exploring-your-data.html"><a href="exploring-your-data.html#saving-your-plots"><i class="fa fa-check"></i><b>3.4.1</b> Saving Your Plots</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="acknowledgements.html"><a href="acknowledgements.html"><i class="fa fa-check"></i>Acknowledgements</a></li>
 </ul>
 
       </nav>
@@ -428,8 +461,8 @@ models:</p>
 use an online search engine. When you search for help with R online, include
 “R” as a search term. Alternatively, you can use <a href="https://rseek.org/">RSeek</a>, which
 restricts the search to a selection of R-related websites.</p>
-<div id="what-to-do-when-something-goes-wrong" class="section level3" number="1.3.1">
-<h3><span class="header-section-number">1.3.1</span> What to Do When Something Goes Wrong</h3>
+<div id="when-something-goes-wrong" class="section level3" number="1.3.1">
+<h3><span class="header-section-number">1.3.1</span> When Something Goes Wrong</h3>
 <p>As a programmer, sooner or later you’ll run some code and get an error message
 or result you didn’t expect. Don’t panic! Even experienced programmers make
 mistakes regularly, so learning how to diagnose and fix problems is vital.</p>
@@ -617,9 +650,11 @@ about R Markdown files <a href="https://rmarkdown.rstudio.com/">here</a>.</p>
 </div>
 <div id="the-working-directory" class="section level3" number="1.4.3">
 <h3><span class="header-section-number">1.4.3</span> The Working Directory</h3>
-<p>The <em>working directory</em> is the starting point R uses for relative paths
-(Section <a href="getting-started.html#absolute-relative-paths">1.4.1</a>). Think of the working directory as the
-directory R is currently “at” or watching.</p>
+<p>Section <a href="getting-started.html#absolute-relative-paths">1.4.1</a> explained that relative paths have a
+starting point that depends on the context where the path is used. We can make
+that idea more concrete for R. The <em>working directory</em> is the starting point R
+uses for relative paths. Think of the working directory as the directory R is
+currently “at” or watching.</p>
 <p>The function <code>getwd</code> returns the absolute path for the current working
 directory, as a string. It doesn’t require any arguments:</p>
 <div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="getting-started.html#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code></pre></div>
@@ -651,14 +686,16 @@ path. For instance:</p>
 <pre><code>## [1] &quot;lost+found&quot; &quot;nick&quot;</code></pre>
 <div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="getting-started.html#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># List files and directories in the working directory.</span></span>
 <span id="cb50-2"><a href="getting-started.html#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="fu">list.files</span>()</span></code></pre></div>
-<pre><code>##  [1] &quot;_bookdown.yml&quot;           &quot;_main.rds&quot;              
-##  [3] &quot;01_r-basics.Rmd&quot;         &quot;docs&quot;                   
-##  [5] &quot;img&quot;                     &quot;index.md&quot;               
-##  [7] &quot;index.Rmd&quot;               &quot;index.utf8.md&quot;          
-##  [9] &quot;knit.R&quot;                  &quot;makefile&quot;               
-## [11] &quot;raw&quot;                     &quot;README.md&quot;              
-## [13] &quot;render1c23a500ebb4f.rds&quot; &quot;renv&quot;                   
-## [15] &quot;renv.lock&quot;</code></pre>
+<pre><code>##  [1] &quot;_bookdown.yml&quot;              &quot;_main.rds&quot;                 
+##  [3] &quot;01_r-basics.Rmd&quot;            &quot;02_data-structures.Rmd&quot;    
+##  [5] &quot;03_exploring-your-data.Rmd&quot; &quot;99_acknowledgements.Rmd&quot;   
+##  [7] &quot;data&quot;                       &quot;docs&quot;                      
+##  [9] &quot;img&quot;                        &quot;index.md&quot;                  
+## [11] &quot;index.Rmd&quot;                  &quot;index.utf8.md&quot;             
+## [13] &quot;knit.R&quot;                     &quot;makefile&quot;                  
+## [15] &quot;raw&quot;                        &quot;README.md&quot;                 
+## [17] &quot;render4e1f343f2ce3e.rds&quot;    &quot;renv&quot;                      
+## [19] &quot;renv.lock&quot;</code></pre>
 <p>As usual, since you have a different computer, you’re likely to see different
 output if you run this code. If you call <code>list.files</code> with an invalid path or
 an empty directory, the output is <code>character(0)</code>:</p>
@@ -669,31 +706,547 @@ an empty directory, the output is <code>character(0)</code>:</p>
 </div>
 <div id="reading-files" class="section level2" number="1.5">
 <h2><span class="header-section-number">1.5</span> Reading Files</h2>
+<p>Analyzing data sets is one of the most common things to do in R. The first step
+is to get R to read your data. Data sets come in a variety of file formats, and
+you need to identify the format in order to tell R how to read the data.</p>
+<p>Most of the time, you can guess the format of a file by looking at its
+<em>extension</em>, the characters (usually three) after the last dot <code>.</code> in the
+filename. For example, the extension <code>.jpg</code> or <code>.jpeg</code> indicates a <a href="https://en.wikipedia.org/wiki/JPEG">JPEG image
+file</a>. Some operating systems hide extensions by default, but you can find
+instructions to change this setting online by searching for “show file
+extensions” and your operating system’s name. The extension is just part of the
+file’s name, so it should be taken as a hint about the file’s format rather
+than a guarantee.</p>
+<p>R has built-in functions for reading a variety of formats. The R community also
+provides <em>packages</em>, shareable and reusable pieces of code, to read even more
+formats. You’ll learn more about packages later, in Section <a href="exploring-your-data.html#packages">3.3</a>.
+For now, let’s focus on data sets that can be read with R’s built-in functions.</p>
+<p>Here are several formats that are frequently used to distribute data, along
+with the name of a built-in function or contributed package that can read the
+format:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Name</th>
+<th align="left">Extension</th>
+<th align="left">Function or Package</th>
+<th align="left">Tabular?</th>
+<th align="left">Text?</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Comma-separated Values</td>
+<td align="left"><code>.csv</code></td>
+<td align="left"><code>read.csv</code></td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+</tr>
+<tr class="even">
+<td align="left">Tab-separated Values</td>
+<td align="left"><code>.tsv</code></td>
+<td align="left"><code>read.delim</code></td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+</tr>
+<tr class="odd">
+<td align="left">Fixed-width File</td>
+<td align="left"><code>.fwf</code></td>
+<td align="left"><code>read.fwf</code></td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+</tr>
+<tr class="even">
+<td align="left">Microsoft Excel</td>
+<td align="left"><code>.xlsx</code></td>
+<td align="left"><strong>readr</strong> package</td>
+<td align="left">Yes</td>
+<td align="left">No</td>
+</tr>
+<tr class="odd">
+<td align="left">Microsoft Excel 1993-2007</td>
+<td align="left"><code>.xls</code></td>
+<td align="left"><strong>readr</strong> package</td>
+<td align="left">Yes</td>
+<td align="left">No</td>
+</tr>
+<tr class="even">
+<td align="left"><a href="https://arrow.apache.org/">Apache Arrow</a></td>
+<td align="left"><code>.feather</code></td>
+<td align="left"><strong>arrow</strong> package</td>
+<td align="left">Yes</td>
+<td align="left">No</td>
+</tr>
+<tr class="odd">
+<td align="left">R Data</td>
+<td align="left"><code>.rds</code></td>
+<td align="left"><code>readRDS</code></td>
+<td align="left">Sometimes</td>
+<td align="left">No</td>
+</tr>
+<tr class="even">
+<td align="left">R Data</td>
+<td align="left"><code>.rda</code></td>
+<td align="left"><code>load</code></td>
+<td align="left">Sometimes</td>
+<td align="left">No</td>
+</tr>
+<tr class="odd">
+<td align="left">Plaintext</td>
+<td align="left"><code>.txt</code></td>
+<td align="left"><code>readLines</code></td>
+<td align="left">Sometimes</td>
+<td align="left">Yes</td>
+</tr>
+<tr class="even">
+<td align="left">Extensible Markup Language</td>
+<td align="left"><code>.xml</code></td>
+<td align="left"><strong>xml2</strong> package</td>
+<td align="left">No</td>
+<td align="left">Yes</td>
+</tr>
+<tr class="odd">
+<td align="left">JavaScript Object Notation</td>
+<td align="left"><code>.json</code></td>
+<td align="left"><strong>jsonlite</strong> package</td>
+<td align="left">No</td>
+<td align="left">Yes</td>
+</tr>
+</tbody>
+</table>
+<p>A <em>tabular</em> data set is one that’s structured as a table, with rows and columns.
+We’ll focus on tabular data sets for most of this reader, since they’re easier
+to get started with. Here’s an example of a tabular data set:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Fruit</th>
+<th align="right">Quantity</th>
+<th align="right">Price</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">apple</td>
+<td align="right">32</td>
+<td align="right">1.49</td>
+</tr>
+<tr class="even">
+<td align="left">banana</td>
+<td align="right">541</td>
+<td align="right">0.79</td>
+</tr>
+<tr class="odd">
+<td align="left">pear</td>
+<td align="right">10</td>
+<td align="right">1.99</td>
+</tr>
+</tbody>
+</table>
+<p>A <em>text</em> file is one that contains human-readable lines of text. You can check
+this by opening the file with a text editor such as Microsoft Notepad or macOS
+TextEdit. Many file formats use text in order to make the format easier to work
+with.</p>
+<p>For instance, a <em>comma-separated values</em> (CSV) file records a tabular data
+using one line per row, with commas separating columns. If you store the table
+above in a CSV file and open the file in a text editor, here’s what you’ll see:</p>
+<pre><code>Fruit,Quantity,Price
+apple,32,1.49
+banana,541,0.79
+pear,10,1.99</code></pre>
+<p>A <em>binary</em> file is one that’s not human-readable. You can’t just read off the
+data if you open a binary file in a text editor, but they have a number of
+other advantages. Compared to text files, binary files are often faster to read
+and take up less storage space (bytes).</p>
+<p>As an example, R’s built-in binary format is called <em>RDS</em> (which may stand for
+“R data serialized”). RDS files are extremely useful for backing up work, since
+they can store any kind of R object, even ones that are not tabular. You can
+learn more about how to create an RDS file on the <code>?saveRDS</code> help page, and how
+to read one on the <code>?readRDS</code> help page.</p>
+<div id="hello-data" class="section level3" number="1.5.1">
+<h3><span class="header-section-number">1.5.1</span> Hello, Data!</h3>
+<p>Let’s read our first data set! Over the next few sections, we’re going to
+explore data from the U.S. Bureau of Labor Statistics about median employee
+earnings. The data set was prepared as part of the Tidy Tuesday R community
+project. You can find more details about the data set <a href="https://github.com/rfordatascience/tidytuesday/tree/master/data/2021/2021-02-23">here</a>, and you can
+download the data set <a href="https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-02-23/earn.csv">here</a> (you may need to choose <code>File -&gt; Save As...</code> in your browser’s menu).</p>
+<p>The data set is a file called <code>earn.csv</code>, which suggests it’s a CSV file. In
+this case, the extension is correct, so we can read the file into R with the
+built-in <code>read.csv</code> function. The first argument is the path to where you saved
+the file, which may be different on your computer. The <code>read.csv</code> function
+returns the data set, but R won’t keep the data in memory unless we assign the
+returned result to a variable:</p>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="getting-started.html#cb55-1" aria-hidden="true" tabindex="-1"></a>earn <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/earn.csv&quot;</span>)</span></code></pre></div>
+<p>The variable name <code>earn</code> here is arbitrary; you can choose something different
+if you want. However, in general, it’s a good habit to choose variable names
+that describe the contents of the variable somehow.</p>
+<p>If you tried running the line of code above and got an error message, pay
+attention to what the error message says, and remember the strategies to get
+help in Section <a href="getting-started.html#getting-help">1.3</a>. The most common mistake when reading a
+file is incorrectly specifying the path, so first check that you got the path
+right.</p>
+<p>If you ran the line of code and there was no error message, congratulations,
+you’ve read your first data set into R!</p>
+</div>
 </div>
 <div id="data-frames" class="section level2" number="1.6">
 <h2><span class="header-section-number">1.6</span> Data Frames</h2>
+<p>Now that we’ve loaded the data, let’s take a look at it. When you’re working
+with a new data set, it’s usually not a good idea to print it out directly (by
+typing <code>earn</code>, in this case) until you know how big it is. Big data sets can
+take a long time to print, and the output can be difficult to read.</p>
+<p>Instead, you can use the <code>head</code> function to print only the beginning, or
+<em>head</em>, of a data set. Let’s take a peek:</p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="getting-started.html#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(earn)</span></code></pre></div>
+<pre><code>##          sex      race ethnic_origin               age year quarter n_persons
+## 1 Both Sexes All Races   All Origins 16 years and over 2010       1  96821000
+## 2 Both Sexes All Races   All Origins 16 years and over 2010       2  99798000
+## 3 Both Sexes All Races   All Origins 16 years and over 2010       3 101385000
+## 4 Both Sexes All Races   All Origins 16 years and over 2010       4 100120000
+## 5 Both Sexes All Races   All Origins 16 years and over 2011       1  98329000
+## 6 Both Sexes All Races   All Origins 16 years and over 2011       2 100593000
+##   median_weekly_earn
+## 1                754
+## 2                740
+## 3                740
+## 4                752
+## 5                755
+## 6                753</code></pre>
+<p>This data set is tabular—as you might have already guessed, since it came
+from a CSV file. In R, it’s represented by a <em>data frame</em>, a table with rows
+and columns. R uses data frames to represent most (but not all) kinds of
+tabular data. The <code>read.csv</code> function, which we used to read this data, always
+returns a data frame.</p>
+<p>For a data frame, the <code>head</code> function only prints the first six rows. If there
+are lots of columns or the columns are wide, as is the case here, R wraps the
+output across lines.</p>
+<p>When you first read an object into R, you might not know whether it’s a data
+frame. One way to check is visually, by printing it, as we just did. A better
+way to check is with the <code>class</code> function, which returns information about what
+an object is. For a data frame, the result will always contain <code>data.frame</code>:</p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="getting-started.html#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(earn)</span></code></pre></div>
+<pre><code>## [1] &quot;data.frame&quot;</code></pre>
+<p>We’ll learn more about classes in Section <a href="data-structures.html#data-types">2.1</a>, but for now you
+can use this function to identify data frames.</p>
+<p>By counting the columns in the output from <code>head(earn)</code>, we can see that this
+data set has eight columns. A more convenient way to check the number of
+columns in a data set is with the <code>ncol</code> function:</p>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="getting-started.html#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ncol</span>(earn)</span></code></pre></div>
+<pre><code>## [1] 8</code></pre>
+<p>The similarly-named <code>nrow</code> function returns the number of rows:</p>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="getting-started.html#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(earn)</span></code></pre></div>
+<pre><code>## [1] 4224</code></pre>
+<p>Alternatively, you can get both numbers at the same time with the <code>dim</code> (short
+for “dimensions”) function.</p>
+<p>Since the columns have names, we might also want to get just these. You can do
+that with the <code>names</code> or <code>colnames</code> functions. Both return the same result:</p>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="getting-started.html#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(earn)</span></code></pre></div>
+<pre><code>## [1] &quot;sex&quot;                &quot;race&quot;               &quot;ethnic_origin&quot;     
+## [4] &quot;age&quot;                &quot;year&quot;               &quot;quarter&quot;           
+## [7] &quot;n_persons&quot;          &quot;median_weekly_earn&quot;</code></pre>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="getting-started.html#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(earn)</span></code></pre></div>
+<pre><code>## [1] &quot;sex&quot;                &quot;race&quot;               &quot;ethnic_origin&quot;     
+## [4] &quot;age&quot;                &quot;year&quot;               &quot;quarter&quot;           
+## [7] &quot;n_persons&quot;          &quot;median_weekly_earn&quot;</code></pre>
+<p>If the rows have names, you can get those with the <code>rownames</code> function. For
+this particular data set, the rows don’t have names.</p>
+<div id="summarizing-data" class="section level3" number="1.6.1">
+<h3><span class="header-section-number">1.6.1</span> Summarizing Data</h3>
+<p>An efficient way to get a sense of what’s actually in a data set is to have R
+compute summary information. This works especially well for data frames, but
+also applies to other data. R provides two different functions to get
+summaries: <code>str</code> and <code>summary</code>.</p>
+<p>The <code>str</code> function returns a <em>structural summary</em> of an object. This kind of
+summary tells us about the structure of the data—the number of rows, the
+number and names of columns, what kind of data is in each column, and some
+sample values. Here’s the structural summary for the earnings data:</p>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="getting-started.html#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(earn)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    4224 obs. of  8 variables:
+##  $ sex               : chr  &quot;Both Sexes&quot; &quot;Both Sexes&quot; &quot;Both Sexes&quot; &quot;Both Sexes&quot; ...
+##  $ race              : chr  &quot;All Races&quot; &quot;All Races&quot; &quot;All Races&quot; &quot;All Races&quot; ...
+##  $ ethnic_origin     : chr  &quot;All Origins&quot; &quot;All Origins&quot; &quot;All Origins&quot; &quot;All Origins&quot; ...
+##  $ age               : chr  &quot;16 years and over&quot; &quot;16 years and over&quot; &quot;16 years and over&quot; &quot;16 years and over&quot; ...
+##  $ year              : int  2010 2010 2010 2010 2011 2011 2011 2011 2012 2012 ...
+##  $ quarter           : int  1 2 3 4 1 2 3 4 1 2 ...
+##  $ n_persons         : int  96821000 99798000 101385000 100120000 98329000 100593000 101447000 101458000 100830000 102769000 ...
+##  $ median_weekly_earn: int  754 740 740 752 755 753 753 764 769 771 ...</code></pre>
+<p>This summary lists information about each column, and includes most of what we
+found earlier by using several different functions separately. The summary uses
+<code>chr</code> to indicate columns of text (“characters”) and <code>int</code> to indicate columns
+of integers.</p>
+<p>In contrast to <code>str</code>, the <code>summary</code> function returns a <em>statistical summary</em> of
+an object. This summary includes summary statistics for each column, choosing
+appropriate statistics based on the kind of data in the column. For numbers,
+this is generally the mean, median, and quantiles. For categories, this is the
+frequencies. Other kinds of statistics are shown for other kinds of data.
+Here’s the statistical summary for the earnings data:</p>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="getting-started.html#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(earn)</span></code></pre></div>
+<pre><code>##      sex                race           ethnic_origin          age           
+##  Length:4224        Length:4224        Length:4224        Length:4224       
+##  Class :character   Class :character   Class :character   Class :character  
+##  Mode  :character   Mode  :character   Mode  :character   Mode  :character  
+##                                                                             
+##                                                                             
+##                                                                             
+##       year         quarter       n_persons         median_weekly_earn
+##  Min.   :2010   Min.   :1.00   Min.   :   103000   Min.   : 318.0    
+##  1st Qu.:2012   1st Qu.:1.75   1st Qu.:  2614000   1st Qu.: 605.0    
+##  Median :2015   Median :2.50   Median :  7441000   Median : 755.0    
+##  Mean   :2015   Mean   :2.50   Mean   : 16268338   Mean   : 762.2    
+##  3rd Qu.:2018   3rd Qu.:3.25   3rd Qu.: 17555250   3rd Qu.: 911.0    
+##  Max.   :2020   Max.   :4.00   Max.   :118358000   Max.   :1709.0</code></pre>
+</div>
+<div id="selecting-columns" class="section level3" number="1.6.2">
+<h3><span class="header-section-number">1.6.2</span> Selecting Columns</h3>
+<p>You can select an individual column from a data frame by name with <code>$</code>, the
+dollar sign operator. The syntax is:</p>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="getting-started.html#cb72-1" aria-hidden="true" tabindex="-1"></a>VARIABLE<span class="sc">$</span>COLUMN_NAME</span></code></pre></div>
+<p>For instance, for the earnings data, <code>earn$age</code> selects
+the <code>age</code> column, and <code>earn$n_persons</code> selects the <code>n_persons</code> column. So one
+way to compute the mean of the <code>n_persons</code> column is:</p>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="getting-started.html#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(earn<span class="sc">$</span>n_persons)</span></code></pre></div>
+<pre><code>## [1] 16268338</code></pre>
+<p>Similarly, to compute the range of the <code>year</code> column:</p>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="getting-started.html#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(earn<span class="sc">$</span>year)</span></code></pre></div>
+<pre><code>## [1] 2010 2020</code></pre>
+<p>You can also use the dollar sign operator to assign values to columns. For
+instance, to assign <code>0</code> to the entire <code>quarter</code> column:</p>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="getting-started.html#cb77-1" aria-hidden="true" tabindex="-1"></a>earn<span class="sc">$</span>quarter <span class="ot">=</span> <span class="dv">0</span></span></code></pre></div>
+<p>Be careful when you do this, as there is no undo. Fortunately, we haven’t
+applied any transformations to the earnings data yet, so we can reset the
+<code>earn</code> variable back to what it was by reloading the data set:</p>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="getting-started.html#cb78-1" aria-hidden="true" tabindex="-1"></a>earn <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/earn.csv&quot;</span>)</span></code></pre></div>
+<p>In Section <a href="data-structures.html#indexing">2.5</a>, we’ll learn how to select rows and individual
+elements from a data frame, as well as other ways to select columns.</p>
+</div>
 </div>
 <div id="vectors" class="section level2" number="1.7">
 <h2><span class="header-section-number">1.7</span> Vectors</h2>
+<p>A <em>vector</em> is a collection of values. Vectors are the fundamental unit of data
+in R, and we’ve already used them in the previous sections.</p>
+<p>For instance, each column in a data frame is a vector. So the <code>quarter</code> column
+in the earnings data is a vector. Let’s take a look at it. We can use <code>head</code>
+again to avoid printing too much, this time specifying with the second argument
+that we want to print exactly 10 values:</p>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="getting-started.html#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(earn<span class="sc">$</span>quarter, <span class="dv">10</span>)</span></code></pre></div>
+<pre><code>##  [1] 1 2 3 4 1 2 3 4 1 2</code></pre>
+<p>Like all vectors, this vector is ordered, which just means the values, or
+<em>elements</em>, have specific positions. The value of the 1st element is <code>1</code>, the
+2nd is <code>2</code>, the 5th is also <code>1</code>, and so on.</p>
+<p>Notice that the elements of this vector are all integers. This isn’t just a
+quirk of the earnings data set. In R, the elements of a vector must all be the
+same type of data (we say the elements are <em>homogeneous</em>). A vector can contain
+integers, decimal numbers, strings, or several other types of data, but not a
+mix these all at once.</p>
+<p>The other columns in the earnings data frame are also vectors. For instance,
+the <code>age</code> column is a vector of strings:</p>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="getting-started.html#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(earn<span class="sc">$</span>age)</span></code></pre></div>
+<pre><code>## [1] &quot;16 years and over&quot; &quot;16 years and over&quot; &quot;16 years and over&quot;
+## [4] &quot;16 years and over&quot; &quot;16 years and over&quot; &quot;16 years and over&quot;</code></pre>
+<p>Vectors can have any number of elements, including 0 or 1 element. Unlike
+mathematics, R does not distinguish between vectors and <em>scalars</em> (solitary
+values). So as far as R is concerned, a solitary value, like <code>3</code>, is a vector
+with 1 element.</p>
+<p>You can check the length of a vector (and other objects) with the <code>length</code>
+function:</p>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="getting-started.html#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="dv">3</span>)</span></code></pre></div>
+<pre><code>## [1] 1</code></pre>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="getting-started.html#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="st">&quot;hello&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] 1</code></pre>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="getting-started.html#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(earn<span class="sc">$</span>age)</span></code></pre></div>
+<pre><code>## [1] 4224</code></pre>
+<p>Since the last of these is a column from the data frame <code>earn</code>, the length is
+the same as the number of rows in <code>earn</code>.</p>
+<div id="creating-vectors" class="section level3" number="1.7.1">
+<h3><span class="header-section-number">1.7.1</span> Creating Vectors</h3>
+<p>Sometimes you’ll want to create your own vectors. You can do this by
+concatenating several vectors together with the <code>c</code> function. It accepts any
+number of vector arguments, and combines them into a single vector:</p>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="getting-started.html#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">19</span>, <span class="sc">-</span><span class="dv">3</span>)</span></code></pre></div>
+<pre><code>## [1]  1  2 19 -3</code></pre>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="getting-started.html#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="st">&quot;hi&quot;</span>, <span class="st">&quot;hello&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;hi&quot;    &quot;hello&quot;</code></pre>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="getting-started.html#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">4</span>))</span></code></pre></div>
+<pre><code>## [1] 1 2 3 4</code></pre>
+<p>If the arguments you pass to the <code>c</code> function have different data types, R will
+attempt to convert them to a common data type that preserves the information:</p>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="getting-started.html#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>, <span class="st">&quot;cool&quot;</span>, <span class="fl">2.3</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;1&quot;    &quot;cool&quot; &quot;2.3&quot;</code></pre>
+<p>The colon operator <code>:</code> creates vectors that contain sequences of integers. This
+is useful for creating “toy” data to test things on, and later we’ll see that
+it’s also important in several other contexts. Here are a few different
+sequences:</p>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="getting-started.html#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">3</span></span></code></pre></div>
+<pre><code>## [1] 1 2 3</code></pre>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="getting-started.html#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span><span class="dv">3</span><span class="sc">:</span><span class="dv">5</span></span></code></pre></div>
+<pre><code>## [1] -3 -2 -1  0  1  2  3  4  5</code></pre>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="getting-started.html#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span><span class="sc">:</span><span class="dv">1</span></span></code></pre></div>
+<pre><code>##  [1] 10  9  8  7  6  5  4  3  2  1</code></pre>
+<p>Beware that both endpoints are included in the sequence, even in sequences like
+<code>1:0</code>, and that the difference between elements is always <code>-1</code> or <code>1</code>. If you
+want more control over the generated sequence, use the <code>seq</code> function instead.</p>
 </div>
-<div id="data-types" class="section level2" number="1.8">
-<h2><span class="header-section-number">1.8</span> Data Types</h2>
-<div id="matrices" class="section level3" number="1.8.1">
-<h3><span class="header-section-number">1.8.1</span> Matrices</h3>
+<div id="vectorization" class="section level3" number="1.7.2">
+<h3><span class="header-section-number">1.7.2</span> Vectorization</h3>
+<p>Let’s look at what happens if we call a mathematical function, like <code>sin</code>, on a
+vector:</p>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="getting-started.html#cb103-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">0</span>, pi)</span>
+<span id="cb103-2"><a href="getting-started.html#cb103-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sin</span>(x)</span></code></pre></div>
+<pre><code>## [1] 8.414710e-01 1.411200e-01 0.000000e+00 1.224647e-16</code></pre>
+<p>This gives us the same result as if we had called the function separately on
+each element. That is, the result is the same as:</p>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="getting-started.html#cb105-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="fu">sin</span>(<span class="dv">1</span>), <span class="fu">sin</span>(<span class="dv">3</span>), <span class="fu">sin</span>(<span class="dv">0</span>), <span class="fu">sin</span>(pi))</span></code></pre></div>
+<pre><code>## [1] 8.414710e-01 1.411200e-01 0.000000e+00 1.224647e-16</code></pre>
+<p>Of course, the first version is much easier to type.</p>
+<p>Functions that take a vector argument and get applied element-by-element like
+this are said to be <em>vectorized</em>. Most functions in R are vectorized,
+especially math functions. Some examples include <code>sin</code>, <code>cos</code>, <code>tan</code>, <code>log</code>,
+<code>exp</code>, and <code>sqrt</code>.</p>
+<p>Functions that are not vectorized tend to be ones that combine or aggregate
+values in some way. For instance, the <code>sum</code>, <code>mean</code>, <code>median</code>, <code>length</code>, and
+<code>class</code> functions are not vectorized.</p>
+<p>A function can be vectorized across multiple arguments. This is easiest to
+understand in terms of the arithmetic operators. Let’s see what happens if we
+add two vectors together:</p>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="getting-started.html#cb107-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)</span>
+<span id="cb107-2"><a href="getting-started.html#cb107-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">7</span>, <span class="dv">10</span>, <span class="sc">-</span><span class="dv">10</span>)</span>
+<span id="cb107-3"><a href="getting-started.html#cb107-3" aria-hidden="true" tabindex="-1"></a>x <span class="sc">+</span> y</span></code></pre></div>
+<pre><code>## [1]  0  9 13 -6</code></pre>
+<p>The elements are paired up and added according to their positions. The other
+arithmetic operators are also vectorized:</p>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="getting-started.html#cb109-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">-</span> y</span></code></pre></div>
+<pre><code>## [1]  2 -5 -7 14</code></pre>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="getting-started.html#cb111-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">*</span> y</span></code></pre></div>
+<pre><code>## [1]  -1  14  30 -40</code></pre>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="getting-started.html#cb113-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">/</span> y</span></code></pre></div>
+<pre><code>## [1] -1.0000000  0.2857143  0.3000000 -0.4000000</code></pre>
 </div>
-<div id="lists" class="section level3" number="1.8.2">
-<h3><span class="header-section-number">1.8.2</span> Lists</h3>
+<div id="recycling" class="section level3" number="1.7.3">
+<h3><span class="header-section-number">1.7.3</span> Recycling</h3>
+<p>When a function is vectorized across multiple arguments, what happens if the
+vectors have different lengths? Whenever you think of a question like this as
+you’re learning R, the best way to find out is to create some toy data and test
+it yourself. Let’s try that now:</p>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="getting-started.html#cb115-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)</span>
+<span id="cb115-2"><a href="getting-started.html#cb115-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="cb115-3"><a href="getting-started.html#cb115-3" aria-hidden="true" tabindex="-1"></a>x <span class="sc">+</span> y</span></code></pre></div>
+<pre><code>## [1] 0 3 2 5</code></pre>
+<p>The elements of the shorter vector are <em>recycled</em> to match the length of the
+longer vector. That is, after the second element, the elements of <code>y</code> are
+repeated to make a vector with the same length as <code>x</code> (because <code>x</code> is longer),
+and then vectorized addition is carried out as usual.</p>
+<p>Here’s what that looks like written down:</p>
+<pre><code>   1  2  3  4
++ -1  1 -1  1
+  -----------
+   0  3  2  5</code></pre>
+<p>If the length of the longer vector is not a multiple of the length of the
+shorter vector, R issues a warning, but still returns the result. The warning
+as meant as a reminder, because unintended recycling is a common source of
+bugs:</p>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="getting-started.html#cb118-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
+<span id="cb118-2"><a href="getting-started.html#cb118-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="cb118-3"><a href="getting-started.html#cb118-3" aria-hidden="true" tabindex="-1"></a>x <span class="sc">+</span> y</span></code></pre></div>
+<pre><code>## Warning in x + y: longer object length is not a multiple of shorter object
+## length</code></pre>
+<pre><code>## [1] 0 3 2 5 4</code></pre>
+<p>Recycling might seem strange at first, but it’s convenient if you want to use a
+specific value (or pattern of values) with a vector. For instance, suppose you
+want to multiply all the elements of a vector by <code>2</code>. Recycling makes this
+easy:</p>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="getting-started.html#cb121-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">*</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span></code></pre></div>
+<pre><code>## [1] 2 4 6</code></pre>
+<p>When you use recycling, most of the time one of the arguments will be a scalar
+like this.</p>
 </div>
-<div id="special-values" class="section level3" number="1.8.3">
-<h3><span class="header-section-number">1.8.3</span> Special Values</h3>
-</div>
-<div id="factors" class="section level3" number="1.8.4">
-<h3><span class="header-section-number">1.8.4</span> Factors</h3>
-</div>
-</div>
-<div id="indexing" class="section level2" number="1.9">
-<h2><span class="header-section-number">1.9</span> Indexing</h2>
+<div id="making-comparisons" class="section level3" number="1.7.4">
+<h3><span class="header-section-number">1.7.4</span> Making Comparisons</h3>
+<p>Comparisons are among the most common operations on vectors. The comparison
+operators are:</p>
+<ul>
+<li><code>&lt;</code> for “less than”</li>
+<li><code>&gt;</code> for “greater than”</li>
+<li><code>&lt;=</code> for “less than or equal to”</li>
+<li><code>&gt;=</code> for “greater than or equal to”</li>
+<li><code>==</code> for “equal to”</li>
+<li><code>!=</code> for “not equal to”</li>
+<li><code>%in%</code> for containment (explained below)</li>
+</ul>
+<p>The “equal to” operator uses two equal signs so that R can distinguish it from
+<code>=</code>, the assignment operator. Like the arithmetic operators, the comparison
+operators are vectorized.</p>
+<p>Let’s look at a few examples with length-one vectors:</p>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="getting-started.html#cb123-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">&lt;</span> <span class="dv">3</span></span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="getting-started.html#cb125-1" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;a&quot;</span> <span class="sc">==</span> <span class="st">&quot;b&quot;</span></span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="getting-started.html#cb127-1" aria-hidden="true" tabindex="-1"></a><span class="fl">3.1</span> <span class="sc">==</span> <span class="fl">3.1</span></span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<p>When you make a comparison, R returns a <em>logical</em> value, <code>TRUE</code> or <code>FALSE</code>, to
+indicate the result. Logical values are different from strings, so they are not
+quoted.</p>
+<p>Logical values just like most other data types. You can use them in
+computations, and you can create vectors of them. Here’s some examples:</p>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="getting-started.html#cb129-1" aria-hidden="true" tabindex="-1"></a><span class="cn">TRUE</span></span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="getting-started.html#cb131-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>)</span></code></pre></div>
+<pre><code>## [1]  TRUE FALSE FALSE</code></pre>
+<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="getting-started.html#cb133-1" aria-hidden="true" tabindex="-1"></a><span class="cn">TRUE</span> <span class="sc">==</span> <span class="cn">FALSE</span></span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<p>Now let’s see what happens when we compare longer vectors:</p>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="getting-started.html#cb135-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>) <span class="sc">&lt;</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="sc">-</span><span class="dv">3</span>)</span></code></pre></div>
+<pre><code>## [1] FALSE  TRUE FALSE</code></pre>
+<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="getting-started.html#cb137-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="st">&quot;he&quot;</span>, <span class="st">&quot;saw&quot;</span>, <span class="st">&quot;her&quot;</span>) <span class="sc">==</span> <span class="fu">c</span>(<span class="st">&quot;she&quot;</span>, <span class="st">&quot;saw&quot;</span>, <span class="st">&quot;him&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] FALSE  TRUE FALSE</code></pre>
+<p>Since the comparison operators are all vectorized, the elements of the vectors
+are compared element-by-element, and R returns a logical value for each pair.</p>
+<p>What if you want to test whether all the elements in a vector are equal (or
+unequal)? There are several ways to do this. One is to use the <code>all</code> function
+on the result of the comparison. The <code>all</code> function takes a vector of logical
+values and returns <code>TRUE</code> if all of them are <code>TRUE</code>, and returns <code>FALSE</code>
+otherwise:</p>
+<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="getting-started.html#cb139-1" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>) <span class="sc">&lt;</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="sc">-</span><span class="dv">3</span>))</span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<p>The related <code>any</code> function returns <code>TRUE</code> if any one element is <code>TRUE</code>, and
+returns <code>FALSE</code> otherwise:</p>
+<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="getting-started.html#cb141-1" aria-hidden="true" tabindex="-1"></a><span class="fu">any</span>(<span class="fu">c</span>(<span class="st">&quot;hi&quot;</span>, <span class="st">&quot;hello&quot;</span>) <span class="sc">==</span> <span class="fu">c</span>(<span class="st">&quot;hi&quot;</span>, <span class="st">&quot;bye&quot;</span>))</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<p>There are two more ways to test whether objects are equal:</p>
+<ol style="list-style-type: decimal">
+<li><p>The <code>all.equal</code> function tests whether objects are equal up to some
+acceptable difference called the <em>tolerance</em>. You should generally use
+<code>all.equal</code> rather than <code>==</code> to compare decimal numbers. Computer
+representations for decimal numbers are inherently imprecise, so comparison
+using a (small) tolerance is often necessary.</p></li>
+<li><p>The <code>identical</code> function checks whether objects are completely identical,
+including their metadata (names, dimensions, and so on). Use this to compare
+non-vector objects such as data frames. This function also works for
+vectors, but most of the time <code>==</code> is sufficient.</p></li>
+</ol>
+<p>Another common comparison is to check whether elements of one vector are
+contained in another vector at any position. For instance, suppose you want to
+check whether <code>1</code> or <code>2</code> appear anywhere in a longer vector <code>x</code>. Here’s how to
+do it:</p>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="getting-started.html#cb143-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">7</span>, <span class="dv">3</span>, <span class="dv">7</span>)</span>
+<span id="cb143-2"><a href="getting-started.html#cb143-2" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>) <span class="sc">%in%</span> x</span></code></pre></div>
+<pre><code>## [1] FALSE  TRUE</code></pre>
+<p>R returns <code>FALSE</code> for the <code>1</code> because there’s no <code>1</code> in <code>x</code>, and returns <code>TRUE</code>
+for the <code>2</code> because there is a <code>2</code> in <code>x</code>.</p>
+<p>Notice that this is different from comparing with <code>==</code>. If we use <code>==</code>, the
+shorter vector is recycled until its length matches the longer one, and then
+compared element-by-element. For the example, this means only the elements at
+odd-numbered positions are compared to <code>1</code>, and only the elements at
+even-numbered positions are compared to <code>2</code>:</p>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="getting-started.html#cb145-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>) <span class="sc">==</span> x</span></code></pre></div>
+<pre><code>## [1] FALSE FALSE FALSE FALSE FALSE FALSE</code></pre>
+<p>Finally, new programmers sometimes incorrectly think they need to append <code>== TRUE</code> to their comparisons. This is redundant, makes your code harder to
+understand, and wastes computational time. Comparisons already return logical
+values. If the result of the comparison is <code>TRUE</code>, then <code>TRUE == TRUE</code> is again
+just <code>TRUE</code>. If the result is <code>FALSE</code>, then <code>FALSE == TRUE</code> is again just
+<code>FALSE</code>. Likewise, if you want to invert a condition, choose an appropriate
+operator rather than appending <code>== FALSE</code>.</p>
 
+</div>
 </div>
 </div>
             </section>
@@ -701,8 +1254,8 @@ an empty directory, the output is <code>character(0)</code>:</p>
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="data-structures.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

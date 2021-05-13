@@ -1,0 +1,25 @@
+Exploring Your Data
+===================
+
+Apply Functions
+---------------
+
+### The Split-Apply Pattern
+
+
+Functions
+---------
+
+### Variable Scope & Lookup
+
+
+Packages
+--------
+
+
+Data Visualization
+------------------
+
+### Saving Your Plots
+
+
