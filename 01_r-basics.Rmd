@@ -805,8 +805,8 @@ an object is. For a data frame, the result will always contain `data.frame`:
 class(earn)
 ```
 
-We'll learn more about classes in Section \@ref(data-types), but for now you
-can use this function to identify data frames.
+We'll learn more about classes in Section \@ref(data-types-classes), but for
+now you can use this function to identify data frames.
 
 By counting the columns in the output from `head(earn)`, we can see that this
 data set has eight columns. A more convenient way to check the number of
@@ -958,6 +958,7 @@ length(earn$age)
 Since the last of these is a column from the data frame `earn`, the length is
 the same as the number of rows in `earn`.
 
+
 ### Creating Vectors
 
 Sometimes you'll want to create your own vectors. You can do this by
@@ -991,6 +992,43 @@ sequences:
 Beware that both endpoints are included in the sequence, even in sequences like
 `1:0`, and that the difference between elements is always `-1` or `1`. If you
 want more control over the generated sequence, use the `seq` function instead.
+
+
+### Indexing Vectors
+
+You can access individual elements of a vector with the _indexing operator_ `[`
+(also called the _square bracket operator_). The syntax is:
+
+```
+VECTOR[INDEXES]
+```
+
+Here `INDEXES` is a vector of positions of elements you want to get or set.
+
+For example, let's make a vector with 5 elements and get the 2nd element:
+
+```{r}
+x = c(4, 8, 3, 2, 1)
+x[2]
+```
+
+Now let's get the 3rd and 1st element:
+
+```{r}
+x[c(3, 1)]
+```
+
+You can use the indexing operator together with the assignment operator to
+assign elements of a vector:
+
+```{r}
+x[3] = 0
+x
+```
+
+Indexing is among the most frequently used operations in R, so take some time
+to try it out with few different vectors and indexes. We'll revisit indexing in
+Section \@ref(indexing) to learn a lot more about it.
 
 
 ### Vectorization
