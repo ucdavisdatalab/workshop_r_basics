@@ -1,28 +1,873 @@
 Exploring Your Data
 ===================
 
+Now that you have a solid foundation in the basic functions and data structures
+of R, we can move on to its most popular application: data analysis. In this
+chapter, we'll learn how to efficiently explore and summarize data, using
+statistical measurements and visualizations. Along the way, we'll learn how to
+use apply functions and how to write new functions, two more skills essential
+to fluency in R.
+
+```{r, echo = FALSE}
+earn = read.csv("data/earn.csv")
+```
+
 Apply Functions
 ---------------
 
+Section \@ref(vectorization) introduced vectorization, a convenient and
+efficient way to compute multiple results. That section also mentioned that
+some of R's functions---the ones that summarize or aggregate data---are not
+vectorized.
+
+The `class` function is an example of a function that's not vectorized. If we
+call the `class` function on the earnings data set, we get just one result for
+the data set as a whole:
+
+```{r}
+class(earn)
+```
+
+What if we want to get the class of each column? We can get the class for a
+single column by selecting the column with `$`, the dollar sign operator:
+
+```{r}
+class(earn$age)
+```
+
+But what if we want the classes for all the columns? We could write a call to
+`class` for each column, but that would be tedious. When you're working with a
+programming language, you should try to avoid tedium; there's usually a better,
+more automated way.
+
+Section \@ref(lists) pointed out that data frames are technically lists, where
+each column is one element. With that in mind, what we need here is a line of
+code that calls `class` on each element of the data frame. The idea is similar
+to vectorization, but since we have a list and a non-vectorized function, we
+have to do a bit more than just call `class(earn)`.
+
+The `lapply` function calls, or _applies_, a function on each element of a list
+or vector. The syntax is:
+
+```
+lapply(X, FUN, ...)
+```
+
+The function `FUN` is called once for each element of `X`, with the element as
+the first argument. The `...` is for additional arguments to `FUN`, which are
+held constant across all the elements.
+
+Let's try this out with the earnings data and the `class` function:
+
+```{r}
+lapply(earn, class)
+```
+
+The result is similar to if the `class` function was vectorized. In fact, if we
+use a vector and a vectorized function with `lapply`, the result is nearly
+identical to the result from vectorization:
+
+```{r}
+x = c(1, 2, pi)
+
+sin(x)
+
+lapply(x, sin)
+```
+
+The only difference is that the result from `lapply` is a list. In fact, the
+`lapply` function always returns a list with one element for each element of
+the input data. The "l" in `lapply` stands for "list".
+
+The `lapply` function is one member of a family of functions called _apply
+functions_. All of the apply functions provide ways to apply a function
+repeatedly to different parts of a data structure. We'll meet a few more apply
+functions soon.
+
+When you have a choice between using vectorization or an apply function, you
+should always choose vectorization. Vectorization is clearer---compare the two
+lines of code above---and it's also significantly more efficient. In fact,
+vectorization is the most efficient way to call a function repeatedly in R.
+
+As we saw with the `class` function, there are some situations where
+vectorization is not possible. That's when you should think about using an
+apply function.
+
+### The `sapply` Function
+
+The related `sapply` function calls a function on each element of a list or
+vector, and simplifies the result. That last part is the crucial difference
+compared to `lapply`. When results from the calls all have the same type and
+length, `sapply` returns a vector or matrix instead of a list. When the results
+have different types or lengths, the result is the same as for `lapply`. The
+"s" in `sapply` stands for "simplify".
+
+For instance, if we use `sapply` to find the classes of the columns in the
+earnings data, we get a character vector:
+
+```{r}
+sapply(earn, class)
+```
+
+Likewise, if we use `sapply` to compute the `sin` values, we get a numeric
+vector, the same as from vectorization:
+
+```{r}
+sapply(x, sin)
+```
+
+In spite of that, vectorization is still more efficient than `sapply`, so use
+vectorization instead when possible.
+
+Apply functions are incredibly useful for summarizing data. For example,
+suppose we want to compute the frequencies for all of the columns in the
+earnings data set that aren't numeric.
+
+First, we need to identify the columns. One way to do this is with the
+`is.numeric` function. Despite the name, this function actually tests whether
+its argument is a real number, not whether it its argument is a numeric vector.
+In other words, it also returns true for integer values. We can use `sapply` to
+apply this function to all of the columns in the earnings data set:
+
+```{r}
+is_not_number = !sapply(earn, is.numeric)
+is_not_number
+```
+
+Is it worth using R code to identify the non-numeric columns? Since there are
+only 8 columns in the earnings data set, maybe not. But if the data set was
+larger, with say 100 columns, it definitely would be.
+
+In general, it's a good habit to use R to do things rather than do them
+manually. You'll get more practice programming, and your code will be more
+flexible if you want to adapt it to other data sets.
+
+Now that we know which columns are non-numeric, we can use the `table` function
+to compute frequencies. We only want to compute frequencies for those columns,
+so we need to subset the data:
+
+```{r}
+lapply(earn[, is_not_number], table)
+```
+
+We use `lapply` rather than `sapply` for this step because the table for each
+column will have a different length (but try `sapply` and see what happens!).
+
+
 ### The Split-Apply Pattern
+
+In a data set with categorical features, it's often useful to compute something
+for each category. The `lapply` and `sapply` functions can compute something
+for each element of a data structure, but categories are not necessarily
+elements.
+
+For example, the earnings data set has three different categories in the `sex`
+column. If we want all of the rows in one category, one way to get them is by
+indexing:
+
+```{r}
+women = earn[earn$sex == "Women", ]
+head(women)
+```
+
+To get all three categories, we'd have to do this three times. If we want to
+compute something for each category, say the mean of the `n_persons` column, we
+also have to repeat that computation three times. Here's what it would look
+like for just the `women` category:
+
+```{r}
+mean(women$n_persons)
+```
+
+If the categories were elements, we could avoid writing code to index each
+category, and just use the `sapply` (or `lapply`) function to apply the `mean`
+function to each.
+
+The `split` function splits a vector or data frame into groups based on a
+vector of categories. The first argument to `split` is the data, and the
+second argument is a congruent vector of categories.
+
+We can use `split` to elegantly compute means of `n_persons` broken down by
+sex. First, we split the data by category. Since we only want to compute on the
+`n_persons` column, we only split that column:
+
+```{r}
+by_sex = split(earn$n_persons, earn$sex)
+class(by_sex)
+names(by_sex)
+```
+ 
+The result from `split` is a list with one element for each category. The
+individual elements contain pieces of the original `n_persons` column:
+
+```{r}
+head(by_sex$Women)
+```
+
+Since the categories are elements in the split data, now we can use `sapply`
+the same way we did in previous examples:
+
+```{r}
+sapply(by_sex, mean)
+```
+
+This two-step process is an R idiom called the _split-apply pattern_. First you
+use `split` to convert categories into list elements, then you use an apply
+function to compute something on each category. Any time you want to compute
+results by category, you should think of this pattern.
+
+The split-apply pattern is so useful that R provides the `tapply` function as a
+shortcut. The `tapply` function is equivalent to calling `split` and then
+`sapply`. Like `split`, the first argument is the data and the second argument
+is a congruent vector of categories. The third argument is a function to apply,
+like the function argument in `sapply`.
+
+We can use `tapply` to compute the `n_persons` means by `sex` for the earnings
+data:
+
+```{r}
+tapply(earn$n_persons, earn$sex, mean)
+```
+
+Notice that the result is identical to the one we computed before.
+
+The "t" in `tapply` stands for "table", because the `tapply` function is a
+generalization of the `table` function. If you use `length` as the third
+argument to `tapply`, you get the same results as you would from using the
+`table` function on the category vector.
+
+The `aggregate` function is closely related to `tapply`. It computes the same
+results, but organizes them into a data frame with one row for each category.
+In some cases, this format is more convenient. The arguments are the same,
+except that the second argument must be a list or data frame rather than a
+vector. 
+
+As an example, here's the result of using `aggregate` to compute the
+`n_persons` means:
+
+```{r}
+aggregate(earn$n_persons, list(earn$sex), mean)
+```
+
+The `lapply`, `sapply`, and `tapply` functions are the three most important
+functions in the family of apply functions, but there are many more. You can
+learn more about all of R's apply functions by reading [this StackOverflow
+post][apply].
+
+[apply]: https://stackoverflow.com/a/7141669
+
+
+Conditional Expressions
+-----------------------
+
+Sometimes you'll need code to do different things, depending on a condition.
+_If-statements_ provide a way to write conditional code.
+
+For example, suppose we want to greet one person differently from the others:
+```{r}
+name = "Nick"
+if (name == "Nick") {
+   # If name is Nick:
+   message("We went down the TRUE branch")
+   msg = "Hi Nick, nice to see you again!"
+} else {
+   # Anything else:
+   msg = "Nice to meet you!"
+}
+```
+
+Indent code inside of the if-statement by 2 or 4 spaces. Indentation makes your
+code easier to read.
+
+The condition in an if-statement has to be a scalar:
+```{r}
+name = c("Nick", "Susan")
+if (name == "Nick") {
+   msg = "Hi Nick!"
+} else {
+   msg = "Nice to meet you!"
+}
+```
+
+You can chain together if-statements:
+```{r}
+name = "Susan"
+if (name == "Nick") {
+   msg = "Hi Nick, nice to see you again!"
+} else if (name == "Peter") {
+   msg = "Go away Peter, I'm busy!"
+} else {
+   msg = "Nice to meet you!"
+}
+msg
+```
+
+If-statements return the value of the last expression in the evaluated block:
+```{r}
+name = "Tom"
+msg = if (name == "Nick") {
+   "Hi Nick, nice to see you again!"
+} else {
+   "Nice to meet you!"
+}
+msg
+```
+
+Curly braces `{ }` are optional for single-line expressions:
+```{r}
+name = "Nick"
+msg = if (name == "Nick") "Hi Nick, nice to see you again!" else
+   "Nice to meet you!"
+msg
+```
+
+But you have to be careful if you don't use them:
+```{r, error = TRUE}
+# NO GOOD:
+msg = if (name == "Nick")
+   "Hi Nick, nice to see you again!"
+else
+   "Nice to meet you!"
+```
+
+The `else` block is optional:
+```{r}
+msg = "Hi"
+name = "Tom"
+if (name == "Nick")
+   msg = "Hi Nick, nice to see you again!"
+msg
+```
+
+When there's no `else` block, the value of the `else` block is `NULL`:
+```{r}
+name = "Tom"
+msg = if (name == "Nick")
+   "Hi Nick, nice to see you again!"
+msg
+```
+
 
 
 Functions
 ---------
 
-### Variable Scope & Lookup
+The main way to interact with R is by calling functions, which was first
+explained way back in Section \@ref(calling-functions). Since then, you've
+learned how to use many of R's built-in functions. This section explains how
+you can write your own functions.
+
+To start, let's briefly review what functions are, and some of the jargon
+associated with them. It's useful to think of functions as factories: raw
+materials (inputs) go in, products (outputs) come out. We can also represent
+this visually:
+
+```
+         +-------+
+-- in -->|   f   |-- out -->
+         +-------+
+```
+
+Programmers use several specific terms to describe the parts and usage of
+functions:
+
+* _Parameters_ are placeholder variables for inputs.
+    + _Arguments_ are the actual values assigned to the parameters in a call.
+* The _return value_ is the output.
+* The _body_ is the code inside.
+* _Calling_ a function means using a function to compute something.
+
+Almost every command in R is a function, even the arithmetic operators and the
+parentheses! You can view the body of a function by typing its name without
+trailing parentheses (in contrast to how you call functions). The body of a
+function is usually surrounded by curly braces `{}`, although they're optional
+if the body only contains one line of code. Indenting code inside of curly
+braces by 2-4 spaces also helps make it visually distinct from other code.
+
+For example, let's look at the body of the `append` function, which appends a
+value to the end of a list or vector:
+
+```{r}
+append
+```
+
+Don't worry if you can't understand everything the `append` function's code
+does yet. It will make more sense later on, after you've written a few
+functions of your own.
+
+Many of R's built-in functions are not entirely written in R code. You can spot
+these by calls to the special `.Primitive` or `.Internal` functions in their
+code.
+
+For instance, the `sum` function is not written in R code:
+
+```{r}
+sum
+```
+
+The `function` keyword creates a new function. Here's the syntax:
+
+```
+function(parameter1, parameter2, ...) {
+  # Your code goes here
+  
+  # The result goes here
+}
+```
+
+A function can have any number of parameters, and will automatically return the
+value of the last line of its body.
+
+A function is a value, and like any other value, if you want to reuse it, you
+need to assign it to variable. Choosing descriptive variable names is a good
+habit. For functions, that means choosing a name that describes what the
+function does. It often makes sense to use verbs in function names.
+
+Let's create a function that detects negative numbers. It should take a vector
+of numbers as input, compare them to zero, and then return the logical result
+from the comparison as output. Here's the code to do that:
+
+```{r}
+is_negative = function(x) {
+  x < 0
+}
+
+# Since this is a one-line function, the curly braces are optional:
+is_negative = function(x) x < 0
+```
+The name of the function, `is_negative`, describes what the function does and
+includes a verb. The parameter `x` is the input. The return value is the result
+of `x < 0`, since we put that expression on the last line. 
+
+Any time you write a function, the first thing you should do afterwards is test
+that it actually works. Let's try the `is_negative` function on a few test
+cases:
+
+```{r}
+x = c(5, -1, -2, 0, 3)
+
+is_negative(6)
+is_negative(-1.1)
+is_negative(x)
+```
+
+Notice that the parameter `x` inside the function is different from the
+variable `x` we created outside the function. We'll learn more about this in
+Section \@ref(variable-scope-lookup), but for now just remember that parameters
+and variables inside of a function are separate from variables outside of a
+function.
+
+A _default argument_ is an argument assigned to a parameter if no argument is
+assigned in the call to the function. You can use `=` to assign default
+arguments to parameters when you define a function with the `function` keyword.
+
+
+For example, let's write a function that gets the largest values in a vector.
+We'll make the number of values to get a parameter, with a default argument of
+`5`. Here's the code and some test cases:
+
+```{r}
+top = function(x, n = 5) {
+  sorted = sort(x, decreasing = TRUE)
+  head(sorted, n)
+}
+
+y = c(-6, 7, 10, 3, 1, 15, -2)
+top(y, 3)
+top(y)
+```
+
+### Returning Values
+
+We've already seen that a function will automatically return the value of its
+last line.
+
+The `return` keyword causes a function to return a result immediately, without
+running any subsequent code in its body. It only makes sense to use `return`
+from inside of an if-statement. If your function doesn't have any
+if-statements, you don't need to use `return`.
+
+For example, suppose we want the `is_negative` function to return `NA` if the
+argument isn't a number. This is an ideal case to use `return`, since we skip
+the computation `x < 0` when the argument isn't a number. Here's the new
+version of the function, as well as a new test case:
+
+```{r}
+is_negative = function(x) {
+  if (!is.numeric(x))
+    return (NA)
+  
+  # TRUE for negative numbers, FALSE otherwise
+  x < 0
+}
+
+is_negative("hi")
+```
+
+It's idiomatic to only use `return` when strictly necessary. 
+
+A function returns one R object, but sometimes computations have multiple
+results. In that case, return the results in a vector, list, or other data
+structure.
+
+For example, let's make a function that computes the mean and median for a
+vector. We'll return the results in a named list, although we could also use a
+named vector:
+
+```{r}
+compute_mean_med = function(x) {
+  m1 = mean(x)
+  m2 = median(x)
+  list(mean = m1, median = m2)
+}
+compute_mean_med(c(1, 2, 3, 1))
+```
+
+The names make the result easier to understand for the caller of the function,
+although they certainly aren't required here.
+
+
+### Planning Your Functions
+
+Before you write a function, it's useful to go through several steps:
+
+1. Write down what you want to do, in detail. It can also help to
+   draw a picture of what needs to happen.
+
+2. Check whether there's already a built-in function. Search online and in the
+   R documentation.
+
+3. Write the code to handle a simple case first. For data science
+   problems, use a small dataset at this step.
+
+Let's apply this in one final example: a function that detects leap years. A
+year is a leap year if either of these conditions is true:
+
+* It is divisible by 4 and not 100
+* It is divisible by 400
+
+That means the years 2004 and 2000 are leap years, but the year 2200 is not.
+Here's the code and a few test cases:
+
+```{r}
+# If year is divisible by 4 and not 100 -> leap
+# If year is divisible by 400 -> leap
+year = 2004
+is_leap = function(year) {
+  if (year %% 4 == 0 & year %% 100 != 0) {
+    leap = TRUE
+  } else if (year %% 400 == 0) {
+    leap = TRUE
+  } else {
+    leap = FALSE
+  }
+  leap
+}
+is_leap(400)
+is_leap(1997)
+```
+
+Functions are the building blocks for solving larger problems. Take a
+divide-and-conquer approach, breaking large problems into smaller steps. Use a
+short function for each step. This approach makes it easier to:
+
+* Test that each step works correctly.
+* Modify, reuse, or repurpose a step.
+
+
+Variable Scope & Lookup
+-----------------------
+
+### Local Variables
+
+A variable's *scope* is the section of code where it exists and is accessible.
+The `exists` function checks whether a variable is in scope:
+
+```{r}
+exists("zz")
+zz = 3
+exists("zz")
+```
+
+When you create a function, you create a new scope. Variables defined inside of
+a function are *local* to the function. Local variables cannot be accessed from
+outside:
+
+```{r, error = TRUE}
+rescale = function(x, center, scale) {
+  centered = x - center
+  centered / scale
+}
+
+centered
+exists("centered")
+```
+
+Local variables are reset each time the function is called:
+
+```{r}
+f = function() {
+  is_z_in_scope = exists("z")
+  z = 42
+  
+  is_z_in_scope
+}
+
+f()
+f()
+```
+
+
+### Lexical Scoping
+
+A function can use variables defined outside (non-local), but only if those
+variables are in scope where the function was **defined**. This property is
+called *lexical scoping*.
+
+Let's see how this works in practice. First, we'll define a variable `cats` and
+then define a function `get_cats` in the same place (the top level, not inside
+any functions). As a result, the `cats` variable is in scope inside of the
+`get_cats` function:
+
+```{r}
+cats = 3
+get_cats = function() cats
+get_cats()
+```
+
+Now let's define a variable `dogs` inside of a function `create_dogs`. We'll
+also define a function `get_dogs` at the top level. The variable `dogs` is not
+in scope at the top level, so it's not in scope inside of the `get_dogs`
+function:
+
+```{r, error = TRUE}
+create_dogs = function() {
+  dogs = "hello"
+}
+get_dogs = function() dogs
+create_dogs()
+get_dogs()
+```
+
+Variables defined directly in the R console are *global* and available to any
+function.
+
+Local variables *mask* (hide) non-local variables with the same name:
+
+```{r}
+get_parrot = function() {
+  parrot = 3
+  
+  parrot
+}
+parrot = 42
+get_parrot()
+```
+
+There's one exception to this rule. We often use variables that refer to
+functions in calls:
+
+```{r}
+#mean()
+```
+
+In this case, the variable must refer to a function, so R ignores local
+variables that aren't functions. For example:
+
+```{r}
+my_mean = function() {
+  mean = 0
+  
+  mean(c(1, 2, 3))
+}
+my_mean()
+my_get_cats = function() {
+  get_cats = 10
+  
+  get_cats()
+}
+my_get_cats()
+```
+
+
+### Dynamic Lookup
+
+Variable lookup happens when a function is **called**, not when it's defined.
+This is called *dynamic lookup*.
+
+For example, the result from `get_cats`, which accesses the global variable
+`cats`, changes if we change the value of `cats`:
+
+```{r}
+cats = 10
+get_cats()
+cats = 20
+get_cats()
+```
+
+### Summary
+
+This section covered a lot of details about R's rules for variable scope and
+lookup. Here are the key takeaways:
+
+* Function definitions (or `local()`) create a new scope.
+
+* Local variables
+    + Are private
+    + Get reset for each call
+    + Mask non-local variables (exception: function calls)
+
+* *Lexical scoping*: where a function is **defined** determines which non-local
+  variables are in scope.
+
+* *Dynamic lookup*: when a function is **called** determines values of
+  non-local variables.
+
 
 
 Packages
 --------
 
+A _package_ is a collection of functions for use in R. Packages usually include
+documentation, and can also contain examples, vignettes, and data sets. Most
+packages are developed by members of the R community, so quality varies. There
+are also a few packages that are built into R but provide extra features. We'll
+use a package in Section \@ref(data-visualization), so we're learning about
+them now.
+
+The [Comprehensive R Archive Network][cran], or CRAN, is the main place people
+publish packages. As of writing, there were 17,634 packages posted to CRAN.
+This number has been steadily increasing as R has grown in popularity.
+
+[cran]: https://cran.r-project.org/
+
+Packages span a wide variety of topics and disciplines. There are packages
+related to statistics, social sciences, geography, genetics, physics, biology,
+pharmacology, economics, agriculture, and more. The best way to find packages
+is to search online, but the CRAN website also provides "task views" if you
+want to browse popular packages related to a specific discipline.
+
+The `install.packages` function installs one or more packages from CRAN. Its
+first argument is the packages to install, as a character vector.
+
+When you run `install.packages`, R will ask you to choose which _mirror_ to
+download the package from. A mirror is a web server that has the same set of
+files as some other server. Mirrors are used to make downloads faster and to
+provide redundancy so that if a server stops working, files are still available
+somewhere else. CRAN has dozens of mirrors; you should choose one that's
+geographically nearby, since that usually produces the best download speeds. If
+you aren't sure which mirror to choose, you can use the 0-Cloud mirror, which
+attempts to automatically choose a mirror near you.
+
+As an example, here's the code to install the remotes package:
+
+```{r, eval = FALSE}
+install.packages("remotes")
+```
+
+If you run the code above, you'll be asked to select a mirror, and then see
+output that looks something like this:
+
+```
+--- Please select a CRAN mirror for use in this session ---
+trying URL 'https://cloud.r-project.org/src/contrib/remotes_2.3.0.tar.gz'
+Content type 'application/x-gzip' length 148405 bytes (144 KB)
+==================================================
+downloaded 144 KB
+
+* installing *source* package ‘remotes’ ...
+** package ‘remotes’ successfully unpacked and MD5 sums checked
+** using staged installation
+** R
+** inst
+** byte-compile and prepare package for lazy loading
+** help
+*** installing help indices
+** building package indices
+** installing vignettes
+** testing if installed package can be loaded from temporary location
+** testing if installed package can be loaded from final location
+** testing if installed package keeps a record of temporary installation path
+* DONE (remotes)
+
+The downloaded source packages are in
+        ‘/tmp/Rtmp8t6iGa/downloaded_packages’
+```
+
+R goes through a variety of steps to install a package, even installing other
+packages that the package depends on. You can tell that a package installation
+succeeded by the final line `DONE`. When a package installation fails, R prints
+an error message explaining the problem instead.
+
+Once a package is installed, it stays on your computer until you remove it or
+remove R. This means you only need to install each package once. However, most
+packages are periodically updated. You can reinstall a package using
+`install.packages` the same way as above to get the latest version.
+
+Alternatively, you can update all of the R packages you have installed at once
+by calling the `update.packages` function. Beware that this may take a long
+time if you have a lot of packages installed.
+
+The function to remove packages is `remove.packages`. Like `install.packages`,
+this function's first argument is the packages to remove, as a character
+vector.
+
+If you want to see which packages are installed, you can use the
+`installed.packages` function. It does not require any arguments. It returns a
+matrix with one row for each package and columns that contain a variety of
+information. Here's an example:
+
+```{r}
+packages = installed.packages()
+# Just print the version numbers for 10 packages.
+packages[1:10, "Version"]
+```
+
+You'll see a different set of packages, since you have a different computer.
+
+Before you can use the functions (or other resources) in an installed package,
+you must load the package with the `library` function. R doesn't load packages
+automatically because each package you load uses memory and may conflict with
+other packages. Thus you should only load the packages you need for whatever
+it is that you want to do. When you restart R, the loaded packages are cleared
+and you must again load any packages you want to use.
+
+Let's load the remotes package we installed earlier:
+
+```{r}
+library("remotes")
+```
+
+The `library` function works with or without quotes around the package name, so
+you may also see people write things like `library(remotes)`. We recommend
+using quotes to make it unambiguous that you are not referring to a variable.
+
+A handful of packages print out a message when loaded, but the vast majority do
+not. Thus you can assume the call to `library` was successful if nothing is
+printed. If something goes wrong while loading a package, R will print out an
+error message explaining the problem.
+
+Finally, not all R packages are published to CRAN. [GitHub][gh] is another
+popular place to publish R packages, especially ones that are experimental or
+still in development. Unlike CRAN, GitHub is a general-purpose website for
+publishing code written in any programming language, so it contains much more
+than just R packages and is not specifically R-focused.
+
+[gh]: https://github.com/
+
+The remotes package that we just installed and loaded provides functions to
+install packages from GitHub. It is generally better to install packages from
+CRAN when they are available there, since the versions on CRAN tend to be more
+stable and intended for a wide audience. However, if you want to install a
+package from GitHub, you can learn more about the remotes package by reading
+its [online documentation][remotes].
+
+[remotes]: https://remotes.r-lib.org/
+
+
 
 Data Visualization
 ------------------
-
-```{r, echo = FALSE}
-earn = read.csv("data/earn.csv")
-```
 
 There are three popular systems for creating visualizations in R:
 
@@ -37,9 +882,11 @@ nice-looking visualization.
 
 The ggplot2 package is so popular that there are now knockoff packages for
 other data-science-oriented programming languages like Python and Julia. The
-package is also part of the Tidyverse. Because of these advantages, we'll use
+package is also part of the [_Tidyverse_][tidy], a popular collection of R
+packages designed to work well together. Because of these advantages, we'll use
 ggplot2 for visualizations in this and all future lessons.
 
+[tidy]: https://www.tidyverse.org/
 
 ggplot2 has detailed [documentation][ggplot2-docs] and also a
 [cheatsheet][ggplot2-cheat].
@@ -47,8 +894,8 @@ ggplot2 has detailed [documentation][ggplot2-docs] and also a
 [ggplot2-docs]: https://ggplot2.tidyverse.org/
 [ggplot2-cheat]: https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf
 
-The "gg" in ggplot2 stands for **grammar of graphics**. The idea of a grammar
-of graphics is that visualizations can be built up in layers. In ggplot2, the
+The "gg" in ggplot2 stands for _grammar of graphics_. The idea of a grammar of
+graphics is that visualizations can be built up in layers. In ggplot2, the
 three layers every plot must have are:
 
 * Data
@@ -76,20 +923,33 @@ library(ggplot2)
 ```
 
 What kind of plot should we make? It depends on what data we want the plot to
-show.
+show. Let's make a line plot that shows median earnings for each quarter in
+2019, with separate lines for men and women.
 
-Let's make a plot that shows the distance in miles (from the library)
-against the walking time in minutes for each place in the data. Both the
-distance and the walking time are recorded as numbers. A scatter plot is a good
-choice for displaying two numeric features. Later we'll learn about other
-options, but for now we'll make a scatter plot.
+Before plotting, we need to take a subset of the earnings that only contains
+information for 2019:
 
+```{r}
+earn19 = earn[earn$year == 2019, ]
+```
+
+The data is also broken down across `race`, `ethnic_origin`, and `age`. Since
+we aren't interested in these categories for the plot, we need to further
+subset the data:
+
+```{r}
+earn19 = earn19[earn19$race == "All Races" &
+  earn19$ethnic_origin == "All Origins" &
+  earn19$age == "16 years and over", ]
+```
+
+Now we're ready to make the plot.
 
 ### Layer 1: Data
 
 The data layer determines the data set used to make the plot. ggplot and most
-other Tidyverse packages are designed for working with **tidy** data frames.
-Tidy means:
+other Tidyverse packages are designed for working with _tidy_ data frames. Tidy
+means:
 
 1. Each observation has its own row.
 2. Each feature has its own column.
@@ -101,7 +961,7 @@ sets we work with are tidy.
 
 To set up the data layer, call the `ggplot` function on a data frame:
 ```{r}
-ggplot(earn)
+ggplot(earn19)
 ```
 
 This returns a blank plot. We still need to add a few more layers.
@@ -119,7 +979,7 @@ a function for each geometry, always prefixed with `geom_`.
 To add a geometry layer to the plot, choose the `geom_` function you want and
 add it to the plot with the `+` operator:
 ```{r, error=TRUE, fig.show="hide"}
-ggplot(earn) + geom_point()
+ggplot(earn19) + geom_line()
 ```
 
 This returns an error message that we're missing aesthetics `x` and `y`. We'll
@@ -147,10 +1007,11 @@ The names of the aesthetics depend on the geometry, but some common ones are
 `x`, `y`, `color`, `fill`, `shape`, and `size`. There is more information about
 and examples of aesthetic names in the documentation.
 
-For example, if we want to put the `distance_mi` feature on the x-axis, the
-aesthetic layer should be:
+For example, we want to put `quarter` on the x-axis and `median_weekly_earn` on
+the y-axis. We also want to use a separate line style for each `sex` category.
+So the aesthetic layer should be:
 ```{r, eval=FALSE}
-#aes(x = distance_mi)
+aes(x = quarter, y = median_weekly_earn, linetype = sex)
 ```
 
 In the `aes` function, column names are never quoted.
@@ -159,31 +1020,25 @@ Unlike most layers, the aesthetic layer is not added to the plot with the `+`
 operator. Instead, you can pass the aesthetic layer as the second argument to
 the `ggplot` function:
 ```{r}
-#ggplot(favs, aes(x = distance_mi, y = walk_min)) + geom_point()
+ggplot(earn19, aes(x = quarter, y = median_weekly_earn, linetype = sex)) +
+  geom_line()
 ```
 
 If you want to set an aesthetic to a constant value, rather than one that's
 data dependent, do so *outside* of the aesthetic layer. For instance, suppose
-we want to make the points blue:
+we want to make the lines blue:
 
 ```{r}
-#ggplot(favs, aes(x = distance_mi, y = walk_min)) + geom_point(color = "blue")
+ggplot(earn19, aes(x = quarter, y = median_weekly_earn, linetype = sex)) +
+  geom_line(color = "blue")
 ```
 
 If you set an aesthetic to a constant value inside of the aesthetic layer, the
 results you get might not be what you expect:
 ```{r}
-#ggplot(favs, aes(x = distance_mi, y = walk_min, color = "blue")) + geom_point()
+ggplot(earn19, aes(x = quarter, y = median_weekly_earn, linetype = sex,
+    color = "blue")) + geom_line()
 ```
-
-This plot also demonstrates the importance of visualization. We can see that
-one of the survey response distances is around 500 miles, which is probably
-erroneous. Before we continue, let's remove all responses that are more than
-100 miles from campus:
-```{r}
-#favs = favs[favs$distance_mi <= 100, ]
-```
-
 
 <!--
 #### Per-geometry Aesthetics {-}
@@ -225,9 +1080,9 @@ all of them.
 The `labs` function is especially important, because it's used to set the title
 and axis labels:
 ```{r}
-#ggplot(favs, aes(x = distance_mi, y = walk_min)) + geom_point() +
-#  labs(title = "Walking Distance vs Miles", x = "Distance (mi)",
-#    y = "Walking Distance (min)")
+ggplot(earn19, aes(x = quarter, y = median_weekly_earn, linetype = sex)) +
+  geom_line() + labs(x = "Quarter", y = "Median Weekly Salary (USD)",
+    title = "2019 Median Weekly Salaries, by Sex", linetype = "Sex")
 ```
 
 
@@ -236,7 +1091,7 @@ and axis labels:
 In ggplot2, use the `ggsave` function to save the most recent plot you created:
 
 ```{r, eval=FALSE}
-ggsave("scatter.png")
+ggsave("line.png")
 ```
 
 The file format is selected automatically based on the extension. Common
@@ -256,7 +1111,7 @@ This strategy works with any of R's graphics systems (not just ggplot2).
 Here's an example:
 ```{r, eval=FALSE}
 # Run these lines in the console, not the notebook!
-jpeg("scatter.jpeg")
+jpeg("line.jpeg")
 ggplot(favs, aes(x = distance_mi, y = walk_min)) + geom_point()
 dev.off()
 ```
@@ -264,42 +1119,55 @@ dev.off()
 
 ### Example: Bar Plot
 
-Let's say we want to plot the number of responses for each major. A bar plot is
-an appropriate way to represent this visually.
+Let's say we want to plot the number of persons for each sex, again using the
+earnings data set. A bar plot is an appropriate way to represent this visually.
 
 The geometry for a bar plot is `geom_bar`. Since bar plots are mainly used to
 display frequencies, the `geom_bar` function automatically computes frequencies
-when given mapped to a categorical feature. So we can write:
+when given mapped to a categorical feature.
 
+The `n_persons` feature is not categorical, so we don't need `geom_bar` to
+compute frequencies. To prevent `geom_bar` from computing frequencies
+automatically, set `stat = "identity"`.
+
+Here's the code to make the bar plot:
 ```{r}
-#ggplot(favs, aes(x = major)) + geom_bar() +
-#  labs(title = "Majors in Responses", x = "Major", y = "Count")
+ggplot(earn19, aes(x = quarter, y = n_persons, fill = sex)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  labs(x = "Quarter", y = "Number of Workers", fill = "Sex",
+    title = "Number of Workers by Quarter and Sex in 2019")
 ```
 
-To prevent `geom_bar` from computing frequencies automatically, set `stat =
-"identity"`. This is mainly useful if you want to plot quantities you've
-computed manually on the y-axis.
+The setting `position = "dodge"` instructs `geom_bar` to put the bars
+side-by-side rather than stacking them.
 
 
-### Designing a Visualization
+### Visualization Design
 
-What plot is appropriate?
+Designing high-quality visualizations goes beyond just mastering which R
+functions to call. You also need to think carefully about what kind of data you
+have and what message you want to convey. This section provides a few
+guidelines.
 
-Variable    | Versus      | Plot
------------ | ----------- | ----
-categorical |             | bar, dot
-categorical | categorical | bar, dot, mosaic
-numerical   |             | box, density, histogram
-numerical   | categorical | box, density, ridge
-numerical   | numerical   | line, scatter, smooth scatter
+The first step in data visualization is choosing an appropriate kind of plot.
+Here are some suggestions (not rules):
+
+| Feature 1   | Feature 2   | Plot
+| :---------- |:----------- |:----
+| categorical |             | bar, dot
+| categorical | categorical | bar, dot, mosaic
+| numerical   |             | box, density, histogram
+| numerical   | categorical | box, density, ridge
+| numerical   | numerical   | line, scatter, smooth scatter
 
 If you want to add a:
 
-* 3rd numerical variable, use it to change point/line sizes.
-* 3rd categorical variable, use it to change point/line styles.
-* 4th categorical variable, use side-by-side plots.
+* 3rd numerical feature, use it to change point/line sizes.
+* 3rd categorical feature, use it to change point/line styles.
+* 4th categorical feature, use side-by-side plots.
 
-Also:
+Once you've selected a plot, here are some rules you should almost always
+follow:
 
 * Always add a title and axis labels. These should be in plain English, not
   variable names!
@@ -325,3 +1193,10 @@ Also:
 
 * For side-by-side plots, use the same axis scales for both plots so that
   comparing them is not deceptive.
+
+Visualization design is a deep topic, and whole books have been written about
+it. One resource where you can learn more is DataLab's [Principles of Data
+Visualization Workshop Reader][dataviz].
+
+[dataviz]: https://ucdavisdatalab.github.io/workshop_data_viz_principles/
+
