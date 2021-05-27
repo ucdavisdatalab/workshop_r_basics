@@ -1,0 +1,50 @@
+Where to Learn More {-}
+=======================
+
+This reader provides an introduction to the basics of R, but there's lots more
+to learn. Fortunately, many R and data science learning resources are available
+for free online or through the library.
+
+Here are a few readers and notes created by DataLab staff:
+
+* [README, Write Me!][readme], our workshop about how to organize and document
+  computing projects.
+* [Principles of Data Visualization][data-viz], our workshop about how to
+  design clear and effective data visualizations.
+* [Adventures in Data Science][adventures], our course introducing humanities
+  undergraduates to data science techniques.
+* [My personal teaching notes][notes] from several years of teaching
+  statistical computing.
+
+[readme]: https://ucdavisdatalab.github.io/workshop_how-to-data-documentation/
+[data-viz]: https://ucdavisdatalab.github.io/workshop_data_viz_principles/
+[adventures]: https://ucdavisdatalab.github.io/adventures_in_data_science/
+[notes]: https://github.com/nick-ulle/teaching-notes
+
+And here are a few books created by others that we've found useful:
+
+* [R for Data Science][r4ds] by Wickham & Grolemund. An introduction to using R
+  for data science, but with a very heavy focus on Tidyverse packages.
+* [The Art of R Programming][art-of-r] by Matloff. A general reference on R
+  programming.
+* [Advanced R][adv-r] by Wickham. A description of how R works at a deeper
+  level, with many examples of R features that are important for
+  package/software development.
+* [The R Inferno][r-inferno] by Burns. A discussion of the most difficult and
+  confusing parts of R.
+
+[r4ds]: http://r4ds.had.co.nz/
+[art-of-r]: https://ebookcentral.proquest.com/lib/ucdavis/detail.action?docID=1137514
+[adv-r]: https://adv-r.hadley.nz/
+[r-inferno]: http://www.burns-stat.com/documents/books/the-r-inferno/
+
+Finally, here are some websites popular in the R community:
+
+* [R Graph Gallery](http://www.r-graph-gallery.com/). Examples of graphs you
+  can make in R, with code.
+* [RStudio Cheat Sheets](https://www.rstudio.com/resources/cheatsheets/). Cheat
+  sheets for a variety of R tools and packages.
+* [R Weekly](https://rweekly.org/). Weekly updates about what's happening in
+  the R community.
+* [R-bloggers](https://www.r-bloggers.com/). An aggregator for blog posts
+  about R.
