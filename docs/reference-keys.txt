@@ -61,3 +61,15 @@ layer-4-scales
 saving-plots
 example-bar-plot
 visualization-design
+cleaning-messy-data
+loops
+for-loops
+while-loops
+saving-multiple-results
+break-next
+example-fibonacci
+planning-for-iteration
+string-processing
+splitting-strings
+replacing-parts-of-strings
+date-processing

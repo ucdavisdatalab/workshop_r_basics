@@ -24,7 +24,7 @@
 <meta name="author" content="Nick Ulle" />
 
 
-<meta name="date" content="2021-05-25" />
+<meta name="date" content="2021-05-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -233,6 +233,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.6.6" data-path="exploring-your-data.html"><a href="exploring-your-data.html#example-bar-plot"><i class="fa fa-check"></i><b>3.6.6</b> Example: Bar Plot</a></li>
 <li class="chapter" data-level="3.6.7" data-path="exploring-your-data.html"><a href="exploring-your-data.html#visualization-design"><i class="fa fa-check"></i><b>3.6.7</b> Visualization Design</a></li>
 </ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="cleaning-messy-data.html"><a href="cleaning-messy-data.html"><i class="fa fa-check"></i><b>4</b> Cleaning Messy Data</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="cleaning-messy-data.html"><a href="cleaning-messy-data.html#loops"><i class="fa fa-check"></i><b>4.1</b> Loops</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="cleaning-messy-data.html"><a href="cleaning-messy-data.html#for-loops"><i class="fa fa-check"></i><b>4.1.1</b> For-loops</a></li>
+<li class="chapter" data-level="4.1.2" data-path="cleaning-messy-data.html"><a href="cleaning-messy-data.html#while-loops"><i class="fa fa-check"></i><b>4.1.2</b> While-loops</a></li>
+<li class="chapter" data-level="4.1.3" data-path="cleaning-messy-data.html"><a href="cleaning-messy-data.html#saving-multiple-results"><i class="fa fa-check"></i><b>4.1.3</b> Saving Multiple Results</a></li>
+<li class="chapter" data-level="4.1.4" data-path="cleaning-messy-data.html"><a href="cleaning-messy-data.html#break-next"><i class="fa fa-check"></i><b>4.1.4</b> Break &amp; Next</a></li>
+<li class="chapter" data-level="4.1.5" data-path="cleaning-messy-data.html"><a href="cleaning-messy-data.html#example-fibonacci"><i class="fa fa-check"></i><b>4.1.5</b> Example: Fibonacci</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="cleaning-messy-data.html"><a href="cleaning-messy-data.html#planning-for-iteration"><i class="fa fa-check"></i><b>4.2</b> Planning for Iteration</a></li>
+<li class="chapter" data-level="4.3" data-path="cleaning-messy-data.html"><a href="cleaning-messy-data.html#string-processing"><i class="fa fa-check"></i><b>4.3</b> String Processing</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="cleaning-messy-data.html"><a href="cleaning-messy-data.html#splitting-strings"><i class="fa fa-check"></i><b>4.3.1</b> Splitting Strings</a></li>
+<li class="chapter" data-level="4.3.2" data-path="cleaning-messy-data.html"><a href="cleaning-messy-data.html#replacing-parts-of-strings"><i class="fa fa-check"></i><b>4.3.2</b> Replacing Parts of Strings</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="cleaning-messy-data.html"><a href="cleaning-messy-data.html#date-processing"><i class="fa fa-check"></i><b>4.4</b> Date Processing</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="acknowledgements.html"><a href="acknowledgements.html"><i class="fa fa-check"></i>Acknowledgements</a></li>
 </ul>
@@ -719,19 +737,18 @@ path. For instance:</p>
 <pre><code>## [1] &quot;lost+found&quot; &quot;nick&quot;</code></pre>
 <div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="getting-started.html#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># List files and directories in the working directory.</span></span>
 <span id="cb50-2"><a href="getting-started.html#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="fu">list.files</span>()</span></code></pre></div>
-<pre><code>##  [1] &quot;_bookdown_files&quot;                &quot;_bookdown.yml&quot;                 
-##  [3] &quot;_main.rds&quot;                      &quot;01_r-basics.md&quot;                
-##  [5] &quot;01_r-basics.Rmd&quot;                &quot;01_r-basics.utf8.md&quot;           
-##  [7] &quot;02_data-structures.md&quot;          &quot;02_data-structures.Rmd&quot;        
-##  [9] &quot;02_data-structures.utf8.md&quot;     &quot;03_exploring-your-data_files&quot;  
-## [11] &quot;03_exploring-your-data.knit.md&quot; &quot;03_exploring-your-data.Rmd&quot;    
-## [13] &quot;99_acknowledgements.Rmd&quot;        &quot;data&quot;                          
-## [15] &quot;docs&quot;                           &quot;img&quot;                           
-## [17] &quot;index.md&quot;                       &quot;index.Rmd&quot;                     
-## [19] &quot;index.utf8.md&quot;                  &quot;knit.R&quot;                        
-## [21] &quot;makefile&quot;                       &quot;raw&quot;                           
-## [23] &quot;README.md&quot;                      &quot;render4c9f736c4b11.rds&quot;        
-## [25] &quot;renv&quot;                           &quot;renv.lock&quot;</code></pre>
+<pre><code>##  [1] &quot;_bookdown_files&quot;              &quot;_bookdown.yml&quot;               
+##  [3] &quot;_main.rds&quot;                    &quot;01_r-basics.Rmd&quot;             
+##  [5] &quot;02_data-structures.Rmd&quot;       &quot;03_exploring-your-data_files&quot;
+##  [7] &quot;03_exploring-your-data.Rmd&quot;   &quot;04_cleaning-messy-data.Rmd&quot;  
+##  [9] &quot;99_acknowledgements.Rmd&quot;      &quot;data&quot;                        
+## [11] &quot;docs&quot;                         &quot;img&quot;                         
+## [13] &quot;index.md&quot;                     &quot;index.Rmd&quot;                   
+## [15] &quot;index.utf8.md&quot;                &quot;knit.R&quot;                      
+## [17] &quot;makefile&quot;                     &quot;raw&quot;                         
+## [19] &quot;README.md&quot;                    &quot;render18e1b6f9daf59.rds&quot;     
+## [21] &quot;renv&quot;                         &quot;renv.lock&quot;                   
+## [23] &quot;video&quot;</code></pre>
 <p>As usual, since you have a different computer, you’re likely to see different
 output if you run this code. If you call <code>list.files</code> with an invalid path or
 an empty directory, the output is <code>character(0)</code>:</p>
