@@ -280,7 +280,7 @@ Indent code inside of the if-statement by 2 or 4 spaces. Indentation makes your
 code easier to read.
 
 The condition in an if-statement has to be a scalar:
-```{r}
+```{r, error = TRUE}
 name = c("Nick", "Susan")
 if (name == "Nick") {
    msg = "Hi Nick!"
