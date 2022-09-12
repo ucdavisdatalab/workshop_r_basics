@@ -24,7 +24,7 @@
 <meta name="author" content="Nick Ulle" />
 
 
-<meta name="date" content="2021-05-27" />
+<meta name="date" content="2022-09-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,7 @@
   
 <link rel="prev" href="data-structures.html"/>
 <link rel="next" href="cleaning-messy-data.html"/>
-<script src="libs/header-attrs-2.6/header-attrs.js"></script>
+<script src="libs/header-attrs-2.10/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -288,11 +288,11 @@ vectorized.</p>
 <p>The <code>class</code> function is an example of a function that’s not vectorized. If we
 call the <code>class</code> function on the earnings data set, we get just one result for
 the data set as a whole:</p>
-<div class="sourceCode" id="cb369"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb369-1"><a href="exploring-your-data.html#cb369-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(earn)</span></code></pre></div>
+<div class="sourceCode" id="cb370"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb370-1"><a href="exploring-your-data.html#cb370-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(earn)</span></code></pre></div>
 <pre><code>## [1] &quot;data.frame&quot;</code></pre>
 <p>What if we want to get the class of each column? We can get the class for a
 single column by selecting the column with <code>$</code>, the dollar sign operator:</p>
-<div class="sourceCode" id="cb371"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb371-1"><a href="exploring-your-data.html#cb371-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(earn<span class="sc">$</span>age)</span></code></pre></div>
+<div class="sourceCode" id="cb372"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb372-1"><a href="exploring-your-data.html#cb372-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(earn<span class="sc">$</span>age)</span></code></pre></div>
 <pre><code>## [1] &quot;character&quot;</code></pre>
 <p>But what if we want the classes for all the columns? We could write a call to
 <code>class</code> for each column, but that would be tedious. When you’re working with a
@@ -310,7 +310,7 @@ or vector. The syntax is:</p>
 the first argument. The <code>...</code> is for additional arguments to <code>FUN</code>, which are
 held constant across all the elements.</p>
 <p>Let’s try this out with the earnings data and the <code>class</code> function:</p>
-<div class="sourceCode" id="cb374"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb374-1"><a href="exploring-your-data.html#cb374-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(earn, class)</span></code></pre></div>
+<div class="sourceCode" id="cb375"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb375-1"><a href="exploring-your-data.html#cb375-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(earn, class)</span></code></pre></div>
 <pre><code>## $sex
 ## [1] &quot;character&quot;
 ## 
@@ -337,11 +337,11 @@ held constant across all the elements.</p>
 <p>The result is similar to if the <code>class</code> function was vectorized. In fact, if we
 use a vector and a vectorized function with <code>lapply</code>, the result is nearly
 identical to the result from vectorization:</p>
-<div class="sourceCode" id="cb376"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb376-1"><a href="exploring-your-data.html#cb376-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, pi)</span>
-<span id="cb376-2"><a href="exploring-your-data.html#cb376-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb376-3"><a href="exploring-your-data.html#cb376-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sin</span>(x)</span></code></pre></div>
+<div class="sourceCode" id="cb377"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb377-1"><a href="exploring-your-data.html#cb377-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, pi)</span>
+<span id="cb377-2"><a href="exploring-your-data.html#cb377-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb377-3"><a href="exploring-your-data.html#cb377-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sin</span>(x)</span></code></pre></div>
 <pre><code>## [1] 8.414710e-01 9.092974e-01 1.224647e-16</code></pre>
-<div class="sourceCode" id="cb378"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb378-1"><a href="exploring-your-data.html#cb378-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(x, sin)</span></code></pre></div>
+<div class="sourceCode" id="cb379"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb379-1"><a href="exploring-your-data.html#cb379-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(x, sin)</span></code></pre></div>
 <pre><code>## [[1]]
 ## [1] 0.841471
 ## 
@@ -374,14 +374,14 @@ have different types or lengths, the result is the same as for <code>lapply</cod
 “s” in <code>sapply</code> stands for “simplify”.</p>
 <p>For instance, if we use <code>sapply</code> to find the classes of the columns in the
 earnings data, we get a character vector:</p>
-<div class="sourceCode" id="cb380"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb380-1"><a href="exploring-your-data.html#cb380-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(earn, class)</span></code></pre></div>
+<div class="sourceCode" id="cb381"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb381-1"><a href="exploring-your-data.html#cb381-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(earn, class)</span></code></pre></div>
 <pre><code>##                sex               race      ethnic_origin                age 
 ##        &quot;character&quot;        &quot;character&quot;        &quot;character&quot;        &quot;character&quot; 
 ##               year            quarter          n_persons median_weekly_earn 
 ##          &quot;integer&quot;          &quot;integer&quot;          &quot;integer&quot;          &quot;integer&quot;</code></pre>
 <p>Likewise, if we use <code>sapply</code> to compute the <code>sin</code> values, we get a numeric
 vector, the same as from vectorization:</p>
-<div class="sourceCode" id="cb382"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb382-1"><a href="exploring-your-data.html#cb382-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(x, sin)</span></code></pre></div>
+<div class="sourceCode" id="cb383"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb383-1"><a href="exploring-your-data.html#cb383-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(x, sin)</span></code></pre></div>
 <pre><code>## [1] 8.414710e-01 9.092974e-01 1.224647e-16</code></pre>
 <p>In spite of that, vectorization is still more efficient than <code>sapply</code>, so use
 vectorization instead when possible.</p>
@@ -393,8 +393,8 @@ earnings data set that aren’t numeric.</p>
 its argument is a real number, not whether it its argument is a numeric vector.
 In other words, it also returns true for integer values. We can use <code>sapply</code> to
 apply this function to all of the columns in the earnings data set:</p>
-<div class="sourceCode" id="cb384"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb384-1"><a href="exploring-your-data.html#cb384-1" aria-hidden="true" tabindex="-1"></a>is_not_number <span class="ot">=</span> <span class="sc">!</span><span class="fu">sapply</span>(earn, is.numeric)</span>
-<span id="cb384-2"><a href="exploring-your-data.html#cb384-2" aria-hidden="true" tabindex="-1"></a>is_not_number</span></code></pre></div>
+<div class="sourceCode" id="cb385"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb385-1"><a href="exploring-your-data.html#cb385-1" aria-hidden="true" tabindex="-1"></a>is_not_number <span class="ot">=</span> <span class="sc">!</span><span class="fu">sapply</span>(earn, is.numeric)</span>
+<span id="cb385-2"><a href="exploring-your-data.html#cb385-2" aria-hidden="true" tabindex="-1"></a>is_not_number</span></code></pre></div>
 <pre><code>##                sex               race      ethnic_origin                age 
 ##               TRUE               TRUE               TRUE               TRUE 
 ##               year            quarter          n_persons median_weekly_earn 
@@ -408,7 +408,7 @@ flexible if you want to adapt it to other data sets.</p>
 <p>Now that we know which columns are non-numeric, we can use the <code>table</code> function
 to compute frequencies. We only want to compute frequencies for those columns,
 so we need to subset the data:</p>
-<div class="sourceCode" id="cb386"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb386-1"><a href="exploring-your-data.html#cb386-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(earn[, is_not_number], table)</span></code></pre></div>
+<div class="sourceCode" id="cb387"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb387-1"><a href="exploring-your-data.html#cb387-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(earn[, is_not_number], table)</span></code></pre></div>
 <pre><code>## $sex
 ## 
 ## Both Sexes        Men      Women 
@@ -446,8 +446,8 @@ elements.</p>
 <p>For example, the earnings data set has three different categories in the <code>sex</code>
 column. If we want all of the rows in one category, one way to get them is by
 indexing:</p>
-<div class="sourceCode" id="cb388"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb388-1"><a href="exploring-your-data.html#cb388-1" aria-hidden="true" tabindex="-1"></a>women <span class="ot">=</span> earn[earn<span class="sc">$</span>sex <span class="sc">==</span> <span class="st">&quot;Women&quot;</span>, ]</span>
-<span id="cb388-2"><a href="exploring-your-data.html#cb388-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(women)</span></code></pre></div>
+<div class="sourceCode" id="cb389"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb389-1"><a href="exploring-your-data.html#cb389-1" aria-hidden="true" tabindex="-1"></a>women <span class="ot">=</span> earn[earn<span class="sc">$</span>sex <span class="sc">==</span> <span class="st">&quot;Women&quot;</span>, ]</span>
+<span id="cb389-2"><a href="exploring-your-data.html#cb389-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(women)</span></code></pre></div>
 <pre><code>##      sex      race ethnic_origin               age year quarter n_persons
 ## 89 Women All Races   All Origins 16 years and over 2010       1  43794000
 ## 90 Women All Races   All Origins 16 years and over 2010       2  44562000
@@ -466,7 +466,7 @@ indexing:</p>
 compute something for each category, say the mean of the <code>n_persons</code> column, we
 also have to repeat that computation three times. Here’s what it would look
 like for just the <code>women</code> category:</p>
-<div class="sourceCode" id="cb390"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb390-1"><a href="exploring-your-data.html#cb390-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(women<span class="sc">$</span>n_persons)</span></code></pre></div>
+<div class="sourceCode" id="cb391"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb391-1"><a href="exploring-your-data.html#cb391-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(women<span class="sc">$</span>n_persons)</span></code></pre></div>
 <pre><code>## [1] 10758771</code></pre>
 <p>If the categories were elements, we could avoid writing code to index each
 category, and just use the <code>sapply</code> (or <code>lapply</code>) function to apply the <code>mean</code>
@@ -477,18 +477,18 @@ second argument is a congruent vector of categories.</p>
 <p>We can use <code>split</code> to elegantly compute means of <code>n_persons</code> broken down by
 sex. First, we split the data by category. Since we only want to compute on the
 <code>n_persons</code> column, we only split that column:</p>
-<div class="sourceCode" id="cb392"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb392-1"><a href="exploring-your-data.html#cb392-1" aria-hidden="true" tabindex="-1"></a>by_sex <span class="ot">=</span> <span class="fu">split</span>(earn<span class="sc">$</span>n_persons, earn<span class="sc">$</span>sex)</span>
-<span id="cb392-2"><a href="exploring-your-data.html#cb392-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(by_sex)</span></code></pre></div>
+<div class="sourceCode" id="cb393"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb393-1"><a href="exploring-your-data.html#cb393-1" aria-hidden="true" tabindex="-1"></a>by_sex <span class="ot">=</span> <span class="fu">split</span>(earn<span class="sc">$</span>n_persons, earn<span class="sc">$</span>sex)</span>
+<span id="cb393-2"><a href="exploring-your-data.html#cb393-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(by_sex)</span></code></pre></div>
 <pre><code>## [1] &quot;list&quot;</code></pre>
-<div class="sourceCode" id="cb394"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb394-1"><a href="exploring-your-data.html#cb394-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(by_sex)</span></code></pre></div>
+<div class="sourceCode" id="cb395"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb395-1"><a href="exploring-your-data.html#cb395-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(by_sex)</span></code></pre></div>
 <pre><code>## [1] &quot;Both Sexes&quot; &quot;Men&quot;        &quot;Women&quot;</code></pre>
 <p>The result from <code>split</code> is a list with one element for each category. The
 individual elements contain pieces of the original <code>n_persons</code> column:</p>
-<div class="sourceCode" id="cb396"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb396-1"><a href="exploring-your-data.html#cb396-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(by_sex<span class="sc">$</span>Women)</span></code></pre></div>
+<div class="sourceCode" id="cb397"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb397-1"><a href="exploring-your-data.html#cb397-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(by_sex<span class="sc">$</span>Women)</span></code></pre></div>
 <pre><code>## [1] 43794000 44562000 44912000 44620000 44077000 44539000</code></pre>
 <p>Since the categories are elements in the split data, now we can use <code>sapply</code>
 the same way we did in previous examples:</p>
-<div class="sourceCode" id="cb398"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb398-1"><a href="exploring-your-data.html#cb398-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(by_sex, mean)</span></code></pre></div>
+<div class="sourceCode" id="cb399"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb399-1"><a href="exploring-your-data.html#cb399-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(by_sex, mean)</span></code></pre></div>
 <pre><code>## Both Sexes        Men      Women 
 ##   24402515   13643727   10758771</code></pre>
 <p>This two-step process is an R idiom called the <em>split-apply pattern</em>. First you
@@ -502,7 +502,7 @@ is a congruent vector of categories. The third argument is a function to apply,
 like the function argument in <code>sapply</code>.</p>
 <p>We can use <code>tapply</code> to compute the <code>n_persons</code> means by <code>sex</code> for the earnings
 data:</p>
-<div class="sourceCode" id="cb400"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb400-1"><a href="exploring-your-data.html#cb400-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(earn<span class="sc">$</span>n_persons, earn<span class="sc">$</span>sex, mean)</span></code></pre></div>
+<div class="sourceCode" id="cb401"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb401-1"><a href="exploring-your-data.html#cb401-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(earn<span class="sc">$</span>n_persons, earn<span class="sc">$</span>sex, mean)</span></code></pre></div>
 <pre><code>## Both Sexes        Men      Women 
 ##   24402515   13643727   10758771</code></pre>
 <p>Notice that the result is identical to the one we computed before.</p>
@@ -517,7 +517,7 @@ except that the second argument must be a list or data frame rather than a
 vector.</p>
 <p>As an example, here’s the result of using <code>aggregate</code> to compute the
 <code>n_persons</code> means:</p>
-<div class="sourceCode" id="cb402"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb402-1"><a href="exploring-your-data.html#cb402-1" aria-hidden="true" tabindex="-1"></a><span class="fu">aggregate</span>(earn<span class="sc">$</span>n_persons, <span class="fu">list</span>(earn<span class="sc">$</span>sex), mean)</span></code></pre></div>
+<div class="sourceCode" id="cb403"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb403-1"><a href="exploring-your-data.html#cb403-1" aria-hidden="true" tabindex="-1"></a><span class="fu">aggregate</span>(earn<span class="sc">$</span>n_persons, <span class="fu">list</span>(earn<span class="sc">$</span>sex), mean)</span></code></pre></div>
 <pre><code>##      Group.1        x
 ## 1 Both Sexes 24402515
 ## 2        Men 13643727
@@ -533,75 +533,74 @@ post</a>.</p>
 <p>Sometimes you’ll need code to do different things, depending on a condition.
 <em>If-statements</em> provide a way to write conditional code.</p>
 <p>For example, suppose we want to greet one person differently from the others:</p>
-<div class="sourceCode" id="cb404"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb404-1"><a href="exploring-your-data.html#cb404-1" aria-hidden="true" tabindex="-1"></a>name <span class="ot">=</span> <span class="st">&quot;Nick&quot;</span></span>
-<span id="cb404-2"><a href="exploring-your-data.html#cb404-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (name <span class="sc">==</span> <span class="st">&quot;Nick&quot;</span>) {</span>
-<span id="cb404-3"><a href="exploring-your-data.html#cb404-3" aria-hidden="true" tabindex="-1"></a>   <span class="co"># If name is Nick:</span></span>
-<span id="cb404-4"><a href="exploring-your-data.html#cb404-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">message</span>(<span class="st">&quot;We went down the TRUE branch&quot;</span>)</span>
-<span id="cb404-5"><a href="exploring-your-data.html#cb404-5" aria-hidden="true" tabindex="-1"></a>   msg <span class="ot">=</span> <span class="st">&quot;Hi Nick, nice to see you again!&quot;</span></span>
-<span id="cb404-6"><a href="exploring-your-data.html#cb404-6" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
-<span id="cb404-7"><a href="exploring-your-data.html#cb404-7" aria-hidden="true" tabindex="-1"></a>   <span class="co"># Anything else:</span></span>
-<span id="cb404-8"><a href="exploring-your-data.html#cb404-8" aria-hidden="true" tabindex="-1"></a>   msg <span class="ot">=</span> <span class="st">&quot;Nice to meet you!&quot;</span></span>
-<span id="cb404-9"><a href="exploring-your-data.html#cb404-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb405"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb405-1"><a href="exploring-your-data.html#cb405-1" aria-hidden="true" tabindex="-1"></a>name <span class="ot">=</span> <span class="st">&quot;Nick&quot;</span></span>
+<span id="cb405-2"><a href="exploring-your-data.html#cb405-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (name <span class="sc">==</span> <span class="st">&quot;Nick&quot;</span>) {</span>
+<span id="cb405-3"><a href="exploring-your-data.html#cb405-3" aria-hidden="true" tabindex="-1"></a>   <span class="co"># If name is Nick:</span></span>
+<span id="cb405-4"><a href="exploring-your-data.html#cb405-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">message</span>(<span class="st">&quot;We went down the TRUE branch&quot;</span>)</span>
+<span id="cb405-5"><a href="exploring-your-data.html#cb405-5" aria-hidden="true" tabindex="-1"></a>   msg <span class="ot">=</span> <span class="st">&quot;Hi Nick, nice to see you again!&quot;</span></span>
+<span id="cb405-6"><a href="exploring-your-data.html#cb405-6" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb405-7"><a href="exploring-your-data.html#cb405-7" aria-hidden="true" tabindex="-1"></a>   <span class="co"># Anything else:</span></span>
+<span id="cb405-8"><a href="exploring-your-data.html#cb405-8" aria-hidden="true" tabindex="-1"></a>   msg <span class="ot">=</span> <span class="st">&quot;Nice to meet you!&quot;</span></span>
+<span id="cb405-9"><a href="exploring-your-data.html#cb405-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <pre><code>## We went down the TRUE branch</code></pre>
 <p>Indent code inside of the if-statement by 2 or 4 spaces. Indentation makes your
 code easier to read.</p>
 <p>The condition in an if-statement has to be a scalar:</p>
-<div class="sourceCode" id="cb406"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb406-1"><a href="exploring-your-data.html#cb406-1" aria-hidden="true" tabindex="-1"></a>name <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;Nick&quot;</span>, <span class="st">&quot;Susan&quot;</span>)</span>
-<span id="cb406-2"><a href="exploring-your-data.html#cb406-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (name <span class="sc">==</span> <span class="st">&quot;Nick&quot;</span>) {</span>
-<span id="cb406-3"><a href="exploring-your-data.html#cb406-3" aria-hidden="true" tabindex="-1"></a>   msg <span class="ot">=</span> <span class="st">&quot;Hi Nick!&quot;</span></span>
-<span id="cb406-4"><a href="exploring-your-data.html#cb406-4" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
-<span id="cb406-5"><a href="exploring-your-data.html#cb406-5" aria-hidden="true" tabindex="-1"></a>   msg <span class="ot">=</span> <span class="st">&quot;Nice to meet you!&quot;</span></span>
-<span id="cb406-6"><a href="exploring-your-data.html#cb406-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-<pre><code>## Warning in if (name == &quot;Nick&quot;) {: the condition has length &gt; 1 and only the
-## first element will be used</code></pre>
+<div class="sourceCode" id="cb407"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb407-1"><a href="exploring-your-data.html#cb407-1" aria-hidden="true" tabindex="-1"></a>name <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;Nick&quot;</span>, <span class="st">&quot;Susan&quot;</span>)</span>
+<span id="cb407-2"><a href="exploring-your-data.html#cb407-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (name <span class="sc">==</span> <span class="st">&quot;Nick&quot;</span>) {</span>
+<span id="cb407-3"><a href="exploring-your-data.html#cb407-3" aria-hidden="true" tabindex="-1"></a>   msg <span class="ot">=</span> <span class="st">&quot;Hi Nick!&quot;</span></span>
+<span id="cb407-4"><a href="exploring-your-data.html#cb407-4" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb407-5"><a href="exploring-your-data.html#cb407-5" aria-hidden="true" tabindex="-1"></a>   msg <span class="ot">=</span> <span class="st">&quot;Nice to meet you!&quot;</span></span>
+<span id="cb407-6"><a href="exploring-your-data.html#cb407-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>## Error in if (name == &quot;Nick&quot;) {: the condition has length &gt; 1</code></pre>
 <p>You can chain together if-statements:</p>
-<div class="sourceCode" id="cb408"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb408-1"><a href="exploring-your-data.html#cb408-1" aria-hidden="true" tabindex="-1"></a>name <span class="ot">=</span> <span class="st">&quot;Susan&quot;</span></span>
-<span id="cb408-2"><a href="exploring-your-data.html#cb408-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (name <span class="sc">==</span> <span class="st">&quot;Nick&quot;</span>) {</span>
-<span id="cb408-3"><a href="exploring-your-data.html#cb408-3" aria-hidden="true" tabindex="-1"></a>   msg <span class="ot">=</span> <span class="st">&quot;Hi Nick, nice to see you again!&quot;</span></span>
-<span id="cb408-4"><a href="exploring-your-data.html#cb408-4" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> (name <span class="sc">==</span> <span class="st">&quot;Peter&quot;</span>) {</span>
-<span id="cb408-5"><a href="exploring-your-data.html#cb408-5" aria-hidden="true" tabindex="-1"></a>   msg <span class="ot">=</span> <span class="st">&quot;Go away Peter, I&#39;m busy!&quot;</span></span>
-<span id="cb408-6"><a href="exploring-your-data.html#cb408-6" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
-<span id="cb408-7"><a href="exploring-your-data.html#cb408-7" aria-hidden="true" tabindex="-1"></a>   msg <span class="ot">=</span> <span class="st">&quot;Nice to meet you!&quot;</span></span>
-<span id="cb408-8"><a href="exploring-your-data.html#cb408-8" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb408-9"><a href="exploring-your-data.html#cb408-9" aria-hidden="true" tabindex="-1"></a>msg</span></code></pre></div>
+<div class="sourceCode" id="cb409"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb409-1"><a href="exploring-your-data.html#cb409-1" aria-hidden="true" tabindex="-1"></a>name <span class="ot">=</span> <span class="st">&quot;Susan&quot;</span></span>
+<span id="cb409-2"><a href="exploring-your-data.html#cb409-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (name <span class="sc">==</span> <span class="st">&quot;Nick&quot;</span>) {</span>
+<span id="cb409-3"><a href="exploring-your-data.html#cb409-3" aria-hidden="true" tabindex="-1"></a>   msg <span class="ot">=</span> <span class="st">&quot;Hi Nick, nice to see you again!&quot;</span></span>
+<span id="cb409-4"><a href="exploring-your-data.html#cb409-4" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> (name <span class="sc">==</span> <span class="st">&quot;Peter&quot;</span>) {</span>
+<span id="cb409-5"><a href="exploring-your-data.html#cb409-5" aria-hidden="true" tabindex="-1"></a>   msg <span class="ot">=</span> <span class="st">&quot;Go away Peter, I&#39;m busy!&quot;</span></span>
+<span id="cb409-6"><a href="exploring-your-data.html#cb409-6" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb409-7"><a href="exploring-your-data.html#cb409-7" aria-hidden="true" tabindex="-1"></a>   msg <span class="ot">=</span> <span class="st">&quot;Nice to meet you!&quot;</span></span>
+<span id="cb409-8"><a href="exploring-your-data.html#cb409-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb409-9"><a href="exploring-your-data.html#cb409-9" aria-hidden="true" tabindex="-1"></a>msg</span></code></pre></div>
 <pre><code>## [1] &quot;Nice to meet you!&quot;</code></pre>
 <p>If-statements return the value of the last expression in the evaluated block:</p>
-<div class="sourceCode" id="cb410"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb410-1"><a href="exploring-your-data.html#cb410-1" aria-hidden="true" tabindex="-1"></a>name <span class="ot">=</span> <span class="st">&quot;Tom&quot;</span></span>
-<span id="cb410-2"><a href="exploring-your-data.html#cb410-2" aria-hidden="true" tabindex="-1"></a>msg <span class="ot">=</span> <span class="cf">if</span> (name <span class="sc">==</span> <span class="st">&quot;Nick&quot;</span>) {</span>
-<span id="cb410-3"><a href="exploring-your-data.html#cb410-3" aria-hidden="true" tabindex="-1"></a>   <span class="st">&quot;Hi Nick, nice to see you again!&quot;</span></span>
-<span id="cb410-4"><a href="exploring-your-data.html#cb410-4" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
-<span id="cb410-5"><a href="exploring-your-data.html#cb410-5" aria-hidden="true" tabindex="-1"></a>   <span class="st">&quot;Nice to meet you!&quot;</span></span>
-<span id="cb410-6"><a href="exploring-your-data.html#cb410-6" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb410-7"><a href="exploring-your-data.html#cb410-7" aria-hidden="true" tabindex="-1"></a>msg</span></code></pre></div>
+<div class="sourceCode" id="cb411"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb411-1"><a href="exploring-your-data.html#cb411-1" aria-hidden="true" tabindex="-1"></a>name <span class="ot">=</span> <span class="st">&quot;Tom&quot;</span></span>
+<span id="cb411-2"><a href="exploring-your-data.html#cb411-2" aria-hidden="true" tabindex="-1"></a>msg <span class="ot">=</span> <span class="cf">if</span> (name <span class="sc">==</span> <span class="st">&quot;Nick&quot;</span>) {</span>
+<span id="cb411-3"><a href="exploring-your-data.html#cb411-3" aria-hidden="true" tabindex="-1"></a>   <span class="st">&quot;Hi Nick, nice to see you again!&quot;</span></span>
+<span id="cb411-4"><a href="exploring-your-data.html#cb411-4" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb411-5"><a href="exploring-your-data.html#cb411-5" aria-hidden="true" tabindex="-1"></a>   <span class="st">&quot;Nice to meet you!&quot;</span></span>
+<span id="cb411-6"><a href="exploring-your-data.html#cb411-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb411-7"><a href="exploring-your-data.html#cb411-7" aria-hidden="true" tabindex="-1"></a>msg</span></code></pre></div>
 <pre><code>## [1] &quot;Nice to meet you!&quot;</code></pre>
 <p>Curly braces <code>{ }</code> are optional for single-line expressions:</p>
-<div class="sourceCode" id="cb412"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb412-1"><a href="exploring-your-data.html#cb412-1" aria-hidden="true" tabindex="-1"></a>name <span class="ot">=</span> <span class="st">&quot;Nick&quot;</span></span>
-<span id="cb412-2"><a href="exploring-your-data.html#cb412-2" aria-hidden="true" tabindex="-1"></a>msg <span class="ot">=</span> <span class="cf">if</span> (name <span class="sc">==</span> <span class="st">&quot;Nick&quot;</span>) <span class="st">&quot;Hi Nick, nice to see you again!&quot;</span> <span class="cf">else</span></span>
-<span id="cb412-3"><a href="exploring-your-data.html#cb412-3" aria-hidden="true" tabindex="-1"></a>   <span class="st">&quot;Nice to meet you!&quot;</span></span>
-<span id="cb412-4"><a href="exploring-your-data.html#cb412-4" aria-hidden="true" tabindex="-1"></a>msg</span></code></pre></div>
+<div class="sourceCode" id="cb413"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb413-1"><a href="exploring-your-data.html#cb413-1" aria-hidden="true" tabindex="-1"></a>name <span class="ot">=</span> <span class="st">&quot;Nick&quot;</span></span>
+<span id="cb413-2"><a href="exploring-your-data.html#cb413-2" aria-hidden="true" tabindex="-1"></a>msg <span class="ot">=</span> <span class="cf">if</span> (name <span class="sc">==</span> <span class="st">&quot;Nick&quot;</span>) <span class="st">&quot;Hi Nick, nice to see you again!&quot;</span> <span class="cf">else</span></span>
+<span id="cb413-3"><a href="exploring-your-data.html#cb413-3" aria-hidden="true" tabindex="-1"></a>   <span class="st">&quot;Nice to meet you!&quot;</span></span>
+<span id="cb413-4"><a href="exploring-your-data.html#cb413-4" aria-hidden="true" tabindex="-1"></a>msg</span></code></pre></div>
 <pre><code>## [1] &quot;Hi Nick, nice to see you again!&quot;</code></pre>
 <p>But you have to be careful if you don’t use them:</p>
-<div class="sourceCode" id="cb414"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb414-1"><a href="exploring-your-data.html#cb414-1" aria-hidden="true" tabindex="-1"></a><span class="co"># NO GOOD:</span></span>
-<span id="cb414-2"><a href="exploring-your-data.html#cb414-2" aria-hidden="true" tabindex="-1"></a>msg <span class="ot">=</span> <span class="cf">if</span> (name <span class="sc">==</span> <span class="st">&quot;Nick&quot;</span>)</span>
-<span id="cb414-3"><a href="exploring-your-data.html#cb414-3" aria-hidden="true" tabindex="-1"></a>   <span class="st">&quot;Hi Nick, nice to see you again!&quot;</span></span>
-<span id="cb414-4"><a href="exploring-your-data.html#cb414-4" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span></span>
-<span id="cb414-5"><a href="exploring-your-data.html#cb414-5" aria-hidden="true" tabindex="-1"></a>   <span class="st">&quot;Nice to meet you!&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb415"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb415-1"><a href="exploring-your-data.html#cb415-1" aria-hidden="true" tabindex="-1"></a><span class="co"># NO GOOD:</span></span>
+<span id="cb415-2"><a href="exploring-your-data.html#cb415-2" aria-hidden="true" tabindex="-1"></a>msg <span class="ot">=</span> <span class="cf">if</span> (name <span class="sc">==</span> <span class="st">&quot;Nick&quot;</span>)</span>
+<span id="cb415-3"><a href="exploring-your-data.html#cb415-3" aria-hidden="true" tabindex="-1"></a>   <span class="st">&quot;Hi Nick, nice to see you again!&quot;</span></span>
+<span id="cb415-4"><a href="exploring-your-data.html#cb415-4" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span></span>
+<span id="cb415-5"><a href="exploring-your-data.html#cb415-5" aria-hidden="true" tabindex="-1"></a>   <span class="st">&quot;Nice to meet you!&quot;</span></span></code></pre></div>
 <pre><code>## Error: &lt;text&gt;:4:1: unexpected &#39;else&#39;
 ## 3:    &quot;Hi Nick, nice to see you again!&quot;
 ## 4: else
 ##    ^</code></pre>
 <p>The <code>else</code> block is optional:</p>
-<div class="sourceCode" id="cb416"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb416-1"><a href="exploring-your-data.html#cb416-1" aria-hidden="true" tabindex="-1"></a>msg <span class="ot">=</span> <span class="st">&quot;Hi&quot;</span></span>
-<span id="cb416-2"><a href="exploring-your-data.html#cb416-2" aria-hidden="true" tabindex="-1"></a>name <span class="ot">=</span> <span class="st">&quot;Tom&quot;</span></span>
-<span id="cb416-3"><a href="exploring-your-data.html#cb416-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (name <span class="sc">==</span> <span class="st">&quot;Nick&quot;</span>)</span>
-<span id="cb416-4"><a href="exploring-your-data.html#cb416-4" aria-hidden="true" tabindex="-1"></a>   msg <span class="ot">=</span> <span class="st">&quot;Hi Nick, nice to see you again!&quot;</span></span>
-<span id="cb416-5"><a href="exploring-your-data.html#cb416-5" aria-hidden="true" tabindex="-1"></a>msg</span></code></pre></div>
+<div class="sourceCode" id="cb417"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb417-1"><a href="exploring-your-data.html#cb417-1" aria-hidden="true" tabindex="-1"></a>msg <span class="ot">=</span> <span class="st">&quot;Hi&quot;</span></span>
+<span id="cb417-2"><a href="exploring-your-data.html#cb417-2" aria-hidden="true" tabindex="-1"></a>name <span class="ot">=</span> <span class="st">&quot;Tom&quot;</span></span>
+<span id="cb417-3"><a href="exploring-your-data.html#cb417-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (name <span class="sc">==</span> <span class="st">&quot;Nick&quot;</span>)</span>
+<span id="cb417-4"><a href="exploring-your-data.html#cb417-4" aria-hidden="true" tabindex="-1"></a>   msg <span class="ot">=</span> <span class="st">&quot;Hi Nick, nice to see you again!&quot;</span></span>
+<span id="cb417-5"><a href="exploring-your-data.html#cb417-5" aria-hidden="true" tabindex="-1"></a>msg</span></code></pre></div>
 <pre><code>## [1] &quot;Hi&quot;</code></pre>
 <p>When there’s no <code>else</code> block, the value of the <code>else</code> block is <code>NULL</code>:</p>
-<div class="sourceCode" id="cb418"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb418-1"><a href="exploring-your-data.html#cb418-1" aria-hidden="true" tabindex="-1"></a>name <span class="ot">=</span> <span class="st">&quot;Tom&quot;</span></span>
-<span id="cb418-2"><a href="exploring-your-data.html#cb418-2" aria-hidden="true" tabindex="-1"></a>msg <span class="ot">=</span> <span class="cf">if</span> (name <span class="sc">==</span> <span class="st">&quot;Nick&quot;</span>)</span>
-<span id="cb418-3"><a href="exploring-your-data.html#cb418-3" aria-hidden="true" tabindex="-1"></a>   <span class="st">&quot;Hi Nick, nice to see you again!&quot;</span></span>
-<span id="cb418-4"><a href="exploring-your-data.html#cb418-4" aria-hidden="true" tabindex="-1"></a>msg</span></code></pre></div>
+<div class="sourceCode" id="cb419"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb419-1"><a href="exploring-your-data.html#cb419-1" aria-hidden="true" tabindex="-1"></a>name <span class="ot">=</span> <span class="st">&quot;Tom&quot;</span></span>
+<span id="cb419-2"><a href="exploring-your-data.html#cb419-2" aria-hidden="true" tabindex="-1"></a>msg <span class="ot">=</span> <span class="cf">if</span> (name <span class="sc">==</span> <span class="st">&quot;Nick&quot;</span>)</span>
+<span id="cb419-3"><a href="exploring-your-data.html#cb419-3" aria-hidden="true" tabindex="-1"></a>   <span class="st">&quot;Hi Nick, nice to see you again!&quot;</span></span>
+<span id="cb419-4"><a href="exploring-your-data.html#cb419-4" aria-hidden="true" tabindex="-1"></a>msg</span></code></pre></div>
 <pre><code>## NULL</code></pre>
 </div>
 <div id="functions" class="section level2" number="3.3">
@@ -636,7 +635,7 @@ if the body only contains one line of code. Indenting code inside of curly
 braces by 2-4 spaces also helps make it visually distinct from other code.</p>
 <p>For example, let’s look at the body of the <code>append</code> function, which appends a
 value to the end of a list or vector:</p>
-<div class="sourceCode" id="cb421"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb421-1"><a href="exploring-your-data.html#cb421-1" aria-hidden="true" tabindex="-1"></a>append</span></code></pre></div>
+<div class="sourceCode" id="cb422"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb422-1"><a href="exploring-your-data.html#cb422-1" aria-hidden="true" tabindex="-1"></a>append</span></code></pre></div>
 <pre><code>## function (x, values, after = length(x)) 
 ## {
 ##     lengx &lt;- length(x)
@@ -646,7 +645,7 @@ value to the end of a list or vector:</p>
 ##         c(x, values)
 ##     else c(x[1L:after], values, x[(after + 1L):lengx])
 ## }
-## &lt;bytecode: 0x55ed8bc33190&gt;
+## &lt;bytecode: 0x5624ae762a20&gt;
 ## &lt;environment: namespace:base&gt;</code></pre>
 <p>Don’t worry if you can’t understand everything the <code>append</code> function’s code
 does yet. It will make more sense later on, after you’ve written a few
@@ -655,7 +654,7 @@ functions of your own.</p>
 these by calls to the special <code>.Primitive</code> or <code>.Internal</code> functions in their
 code.</p>
 <p>For instance, the <code>sum</code> function is not written in R code:</p>
-<div class="sourceCode" id="cb423"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb423-1"><a href="exploring-your-data.html#cb423-1" aria-hidden="true" tabindex="-1"></a>sum</span></code></pre></div>
+<div class="sourceCode" id="cb424"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb424-1"><a href="exploring-your-data.html#cb424-1" aria-hidden="true" tabindex="-1"></a>sum</span></code></pre></div>
 <pre><code>## function (..., na.rm = FALSE)  .Primitive(&quot;sum&quot;)</code></pre>
 <p>The <code>function</code> keyword creates a new function. Here’s the syntax:</p>
 <pre><code>function(parameter1, parameter2, ...) {
@@ -672,25 +671,25 @@ function does. It often makes sense to use verbs in function names.</p>
 <p>Let’s create a function that detects negative numbers. It should take a vector
 of numbers as input, compare them to zero, and then return the logical result
 from the comparison as output. Here’s the code to do that:</p>
-<div class="sourceCode" id="cb426"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb426-1"><a href="exploring-your-data.html#cb426-1" aria-hidden="true" tabindex="-1"></a>is_negative <span class="ot">=</span> <span class="cf">function</span>(x) {</span>
-<span id="cb426-2"><a href="exploring-your-data.html#cb426-2" aria-hidden="true" tabindex="-1"></a>  x <span class="sc">&lt;</span> <span class="dv">0</span></span>
-<span id="cb426-3"><a href="exploring-your-data.html#cb426-3" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb426-4"><a href="exploring-your-data.html#cb426-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb426-5"><a href="exploring-your-data.html#cb426-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Since this is a one-line function, the curly braces are optional:</span></span>
-<span id="cb426-6"><a href="exploring-your-data.html#cb426-6" aria-hidden="true" tabindex="-1"></a>is_negative <span class="ot">=</span> <span class="cf">function</span>(x) x <span class="sc">&lt;</span> <span class="dv">0</span></span></code></pre></div>
+<div class="sourceCode" id="cb427"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb427-1"><a href="exploring-your-data.html#cb427-1" aria-hidden="true" tabindex="-1"></a>is_negative <span class="ot">=</span> <span class="cf">function</span>(x) {</span>
+<span id="cb427-2"><a href="exploring-your-data.html#cb427-2" aria-hidden="true" tabindex="-1"></a>  x <span class="sc">&lt;</span> <span class="dv">0</span></span>
+<span id="cb427-3"><a href="exploring-your-data.html#cb427-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb427-4"><a href="exploring-your-data.html#cb427-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb427-5"><a href="exploring-your-data.html#cb427-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Since this is a one-line function, the curly braces are optional:</span></span>
+<span id="cb427-6"><a href="exploring-your-data.html#cb427-6" aria-hidden="true" tabindex="-1"></a>is_negative <span class="ot">=</span> <span class="cf">function</span>(x) x <span class="sc">&lt;</span> <span class="dv">0</span></span></code></pre></div>
 <p>The name of the function, <code>is_negative</code>, describes what the function does and
 includes a verb. The parameter <code>x</code> is the input. The return value is the result
 of <code>x &lt; 0</code>, since we put that expression on the last line.</p>
 <p>Any time you write a function, the first thing you should do afterwards is test
 that it actually works. Let’s try the <code>is_negative</code> function on a few test
 cases:</p>
-<div class="sourceCode" id="cb427"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb427-1"><a href="exploring-your-data.html#cb427-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="sc">-</span><span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">3</span>)</span>
-<span id="cb427-2"><a href="exploring-your-data.html#cb427-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb427-3"><a href="exploring-your-data.html#cb427-3" aria-hidden="true" tabindex="-1"></a><span class="fu">is_negative</span>(<span class="dv">6</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb428"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb428-1"><a href="exploring-your-data.html#cb428-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="sc">-</span><span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">3</span>)</span>
+<span id="cb428-2"><a href="exploring-your-data.html#cb428-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb428-3"><a href="exploring-your-data.html#cb428-3" aria-hidden="true" tabindex="-1"></a><span class="fu">is_negative</span>(<span class="dv">6</span>)</span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
-<div class="sourceCode" id="cb429"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb429-1"><a href="exploring-your-data.html#cb429-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is_negative</span>(<span class="sc">-</span><span class="fl">1.1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb430"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb430-1"><a href="exploring-your-data.html#cb430-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is_negative</span>(<span class="sc">-</span><span class="fl">1.1</span>)</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb431"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb431-1"><a href="exploring-your-data.html#cb431-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is_negative</span>(x)</span></code></pre></div>
+<div class="sourceCode" id="cb432"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb432-1"><a href="exploring-your-data.html#cb432-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is_negative</span>(x)</span></code></pre></div>
 <pre><code>## [1] FALSE  TRUE  TRUE FALSE FALSE</code></pre>
 <p>Notice that the parameter <code>x</code> inside the function is different from the
 variable <code>x</code> we created outside the function. We’ll learn more about this in
@@ -703,15 +702,15 @@ arguments to parameters when you define a function with the <code>function</code
 <p>For example, let’s write a function that gets the largest values in a vector.
 We’ll make the number of values to get a parameter, with a default argument of
 <code>5</code>. Here’s the code and some test cases:</p>
-<div class="sourceCode" id="cb433"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb433-1"><a href="exploring-your-data.html#cb433-1" aria-hidden="true" tabindex="-1"></a>top <span class="ot">=</span> <span class="cf">function</span>(x, <span class="at">n =</span> <span class="dv">5</span>) {</span>
-<span id="cb433-2"><a href="exploring-your-data.html#cb433-2" aria-hidden="true" tabindex="-1"></a>  sorted <span class="ot">=</span> <span class="fu">sort</span>(x, <span class="at">decreasing =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb433-3"><a href="exploring-your-data.html#cb433-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(sorted, n)</span>
-<span id="cb433-4"><a href="exploring-your-data.html#cb433-4" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb433-5"><a href="exploring-your-data.html#cb433-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb433-6"><a href="exploring-your-data.html#cb433-6" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">10</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">15</span>, <span class="sc">-</span><span class="dv">2</span>)</span>
-<span id="cb433-7"><a href="exploring-your-data.html#cb433-7" aria-hidden="true" tabindex="-1"></a><span class="fu">top</span>(y, <span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb434"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb434-1"><a href="exploring-your-data.html#cb434-1" aria-hidden="true" tabindex="-1"></a>top <span class="ot">=</span> <span class="cf">function</span>(x, <span class="at">n =</span> <span class="dv">5</span>) {</span>
+<span id="cb434-2"><a href="exploring-your-data.html#cb434-2" aria-hidden="true" tabindex="-1"></a>  sorted <span class="ot">=</span> <span class="fu">sort</span>(x, <span class="at">decreasing =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb434-3"><a href="exploring-your-data.html#cb434-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(sorted, n)</span>
+<span id="cb434-4"><a href="exploring-your-data.html#cb434-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb434-5"><a href="exploring-your-data.html#cb434-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb434-6"><a href="exploring-your-data.html#cb434-6" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">10</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">15</span>, <span class="sc">-</span><span class="dv">2</span>)</span>
+<span id="cb434-7"><a href="exploring-your-data.html#cb434-7" aria-hidden="true" tabindex="-1"></a><span class="fu">top</span>(y, <span class="dv">3</span>)</span></code></pre></div>
 <pre><code>## [1] 15 10  7</code></pre>
-<div class="sourceCode" id="cb435"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb435-1"><a href="exploring-your-data.html#cb435-1" aria-hidden="true" tabindex="-1"></a><span class="fu">top</span>(y)</span></code></pre></div>
+<div class="sourceCode" id="cb436"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb436-1"><a href="exploring-your-data.html#cb436-1" aria-hidden="true" tabindex="-1"></a><span class="fu">top</span>(y)</span></code></pre></div>
 <pre><code>## [1] 15 10  7  3  1</code></pre>
 <div id="returning-values" class="section level3" number="3.3.1">
 <h3><span class="header-section-number">3.3.1</span> Returning Values</h3>
@@ -725,15 +724,15 @@ if-statements, you don’t need to use <code>return</code>.</p>
 argument isn’t a number. This is an ideal case to use <code>return</code>, since we skip
 the computation <code>x &lt; 0</code> when the argument isn’t a number. Here’s the new
 version of the function, as well as a new test case:</p>
-<div class="sourceCode" id="cb437"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb437-1"><a href="exploring-your-data.html#cb437-1" aria-hidden="true" tabindex="-1"></a>is_negative <span class="ot">=</span> <span class="cf">function</span>(x) {</span>
-<span id="cb437-2"><a href="exploring-your-data.html#cb437-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.numeric</span>(x))</span>
-<span id="cb437-3"><a href="exploring-your-data.html#cb437-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span> (<span class="cn">NA</span>)</span>
-<span id="cb437-4"><a href="exploring-your-data.html#cb437-4" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb437-5"><a href="exploring-your-data.html#cb437-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># TRUE for negative numbers, FALSE otherwise</span></span>
-<span id="cb437-6"><a href="exploring-your-data.html#cb437-6" aria-hidden="true" tabindex="-1"></a>  x <span class="sc">&lt;</span> <span class="dv">0</span></span>
-<span id="cb437-7"><a href="exploring-your-data.html#cb437-7" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb437-8"><a href="exploring-your-data.html#cb437-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb437-9"><a href="exploring-your-data.html#cb437-9" aria-hidden="true" tabindex="-1"></a><span class="fu">is_negative</span>(<span class="st">&quot;hi&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb438"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb438-1"><a href="exploring-your-data.html#cb438-1" aria-hidden="true" tabindex="-1"></a>is_negative <span class="ot">=</span> <span class="cf">function</span>(x) {</span>
+<span id="cb438-2"><a href="exploring-your-data.html#cb438-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.numeric</span>(x))</span>
+<span id="cb438-3"><a href="exploring-your-data.html#cb438-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span> (<span class="cn">NA</span>)</span>
+<span id="cb438-4"><a href="exploring-your-data.html#cb438-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb438-5"><a href="exploring-your-data.html#cb438-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># TRUE for negative numbers, FALSE otherwise</span></span>
+<span id="cb438-6"><a href="exploring-your-data.html#cb438-6" aria-hidden="true" tabindex="-1"></a>  x <span class="sc">&lt;</span> <span class="dv">0</span></span>
+<span id="cb438-7"><a href="exploring-your-data.html#cb438-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb438-8"><a href="exploring-your-data.html#cb438-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb438-9"><a href="exploring-your-data.html#cb438-9" aria-hidden="true" tabindex="-1"></a><span class="fu">is_negative</span>(<span class="st">&quot;hi&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] NA</code></pre>
 <p>It’s idiomatic to only use <code>return</code> when strictly necessary.</p>
 <p>A function returns one R object, but sometimes computations have multiple
@@ -742,12 +741,12 @@ structure.</p>
 <p>For example, let’s make a function that computes the mean and median for a
 vector. We’ll return the results in a named list, although we could also use a
 named vector:</p>
-<div class="sourceCode" id="cb439"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb439-1"><a href="exploring-your-data.html#cb439-1" aria-hidden="true" tabindex="-1"></a>compute_mean_med <span class="ot">=</span> <span class="cf">function</span>(x) {</span>
-<span id="cb439-2"><a href="exploring-your-data.html#cb439-2" aria-hidden="true" tabindex="-1"></a>  m1 <span class="ot">=</span> <span class="fu">mean</span>(x)</span>
-<span id="cb439-3"><a href="exploring-your-data.html#cb439-3" aria-hidden="true" tabindex="-1"></a>  m2 <span class="ot">=</span> <span class="fu">median</span>(x)</span>
-<span id="cb439-4"><a href="exploring-your-data.html#cb439-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>(<span class="at">mean =</span> m1, <span class="at">median =</span> m2)</span>
-<span id="cb439-5"><a href="exploring-your-data.html#cb439-5" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb439-6"><a href="exploring-your-data.html#cb439-6" aria-hidden="true" tabindex="-1"></a><span class="fu">compute_mean_med</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">1</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb440"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb440-1"><a href="exploring-your-data.html#cb440-1" aria-hidden="true" tabindex="-1"></a>compute_mean_med <span class="ot">=</span> <span class="cf">function</span>(x) {</span>
+<span id="cb440-2"><a href="exploring-your-data.html#cb440-2" aria-hidden="true" tabindex="-1"></a>  m1 <span class="ot">=</span> <span class="fu">mean</span>(x)</span>
+<span id="cb440-3"><a href="exploring-your-data.html#cb440-3" aria-hidden="true" tabindex="-1"></a>  m2 <span class="ot">=</span> <span class="fu">median</span>(x)</span>
+<span id="cb440-4"><a href="exploring-your-data.html#cb440-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>(<span class="at">mean =</span> m1, <span class="at">median =</span> m2)</span>
+<span id="cb440-5"><a href="exploring-your-data.html#cb440-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb440-6"><a href="exploring-your-data.html#cb440-6" aria-hidden="true" tabindex="-1"></a><span class="fu">compute_mean_med</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">1</span>))</span></code></pre></div>
 <pre><code>## $mean
 ## [1] 1.75
 ## 
@@ -775,22 +774,22 @@ year is a leap year if either of these conditions is true:</p>
 </ul>
 <p>That means the years 2004 and 2000 are leap years, but the year 2200 is not.
 Here’s the code and a few test cases:</p>
-<div class="sourceCode" id="cb441"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb441-1"><a href="exploring-your-data.html#cb441-1" aria-hidden="true" tabindex="-1"></a><span class="co"># If year is divisible by 4 and not 100 -&gt; leap</span></span>
-<span id="cb441-2"><a href="exploring-your-data.html#cb441-2" aria-hidden="true" tabindex="-1"></a><span class="co"># If year is divisible by 400 -&gt; leap</span></span>
-<span id="cb441-3"><a href="exploring-your-data.html#cb441-3" aria-hidden="true" tabindex="-1"></a>year <span class="ot">=</span> <span class="dv">2004</span></span>
-<span id="cb441-4"><a href="exploring-your-data.html#cb441-4" aria-hidden="true" tabindex="-1"></a>is_leap <span class="ot">=</span> <span class="cf">function</span>(year) {</span>
-<span id="cb441-5"><a href="exploring-your-data.html#cb441-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (year <span class="sc">%%</span> <span class="dv">4</span> <span class="sc">==</span> <span class="dv">0</span> <span class="sc">&amp;</span> year <span class="sc">%%</span> <span class="dv">100</span> <span class="sc">!=</span> <span class="dv">0</span>) {</span>
-<span id="cb441-6"><a href="exploring-your-data.html#cb441-6" aria-hidden="true" tabindex="-1"></a>    leap <span class="ot">=</span> <span class="cn">TRUE</span></span>
-<span id="cb441-7"><a href="exploring-your-data.html#cb441-7" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (year <span class="sc">%%</span> <span class="dv">400</span> <span class="sc">==</span> <span class="dv">0</span>) {</span>
-<span id="cb441-8"><a href="exploring-your-data.html#cb441-8" aria-hidden="true" tabindex="-1"></a>    leap <span class="ot">=</span> <span class="cn">TRUE</span></span>
-<span id="cb441-9"><a href="exploring-your-data.html#cb441-9" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
-<span id="cb441-10"><a href="exploring-your-data.html#cb441-10" aria-hidden="true" tabindex="-1"></a>    leap <span class="ot">=</span> <span class="cn">FALSE</span></span>
-<span id="cb441-11"><a href="exploring-your-data.html#cb441-11" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb441-12"><a href="exploring-your-data.html#cb441-12" aria-hidden="true" tabindex="-1"></a>  leap</span>
-<span id="cb441-13"><a href="exploring-your-data.html#cb441-13" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb441-14"><a href="exploring-your-data.html#cb441-14" aria-hidden="true" tabindex="-1"></a><span class="fu">is_leap</span>(<span class="dv">400</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb442"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb442-1"><a href="exploring-your-data.html#cb442-1" aria-hidden="true" tabindex="-1"></a><span class="co"># If year is divisible by 4 and not 100 -&gt; leap</span></span>
+<span id="cb442-2"><a href="exploring-your-data.html#cb442-2" aria-hidden="true" tabindex="-1"></a><span class="co"># If year is divisible by 400 -&gt; leap</span></span>
+<span id="cb442-3"><a href="exploring-your-data.html#cb442-3" aria-hidden="true" tabindex="-1"></a>year <span class="ot">=</span> <span class="dv">2004</span></span>
+<span id="cb442-4"><a href="exploring-your-data.html#cb442-4" aria-hidden="true" tabindex="-1"></a>is_leap <span class="ot">=</span> <span class="cf">function</span>(year) {</span>
+<span id="cb442-5"><a href="exploring-your-data.html#cb442-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (year <span class="sc">%%</span> <span class="dv">4</span> <span class="sc">==</span> <span class="dv">0</span> <span class="sc">&amp;</span> year <span class="sc">%%</span> <span class="dv">100</span> <span class="sc">!=</span> <span class="dv">0</span>) {</span>
+<span id="cb442-6"><a href="exploring-your-data.html#cb442-6" aria-hidden="true" tabindex="-1"></a>    leap <span class="ot">=</span> <span class="cn">TRUE</span></span>
+<span id="cb442-7"><a href="exploring-your-data.html#cb442-7" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (year <span class="sc">%%</span> <span class="dv">400</span> <span class="sc">==</span> <span class="dv">0</span>) {</span>
+<span id="cb442-8"><a href="exploring-your-data.html#cb442-8" aria-hidden="true" tabindex="-1"></a>    leap <span class="ot">=</span> <span class="cn">TRUE</span></span>
+<span id="cb442-9"><a href="exploring-your-data.html#cb442-9" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb442-10"><a href="exploring-your-data.html#cb442-10" aria-hidden="true" tabindex="-1"></a>    leap <span class="ot">=</span> <span class="cn">FALSE</span></span>
+<span id="cb442-11"><a href="exploring-your-data.html#cb442-11" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb442-12"><a href="exploring-your-data.html#cb442-12" aria-hidden="true" tabindex="-1"></a>  leap</span>
+<span id="cb442-13"><a href="exploring-your-data.html#cb442-13" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb442-14"><a href="exploring-your-data.html#cb442-14" aria-hidden="true" tabindex="-1"></a><span class="fu">is_leap</span>(<span class="dv">400</span>)</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb443"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb443-1"><a href="exploring-your-data.html#cb443-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is_leap</span>(<span class="dv">1997</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb444"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb444-1"><a href="exploring-your-data.html#cb444-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is_leap</span>(<span class="dv">1997</span>)</span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
 <p>Functions are the building blocks for solving larger problems. Take a
 divide-and-conquer approach, breaking large problems into smaller steps. Use a
@@ -807,34 +806,34 @@ short function for each step. This approach makes it easier to:</p>
 <h3><span class="header-section-number">3.4.1</span> Local Variables</h3>
 <p>A variable’s <em>scope</em> is the section of code where it exists and is accessible.
 The <code>exists</code> function checks whether a variable is in scope:</p>
-<div class="sourceCode" id="cb445"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb445-1"><a href="exploring-your-data.html#cb445-1" aria-hidden="true" tabindex="-1"></a><span class="fu">exists</span>(<span class="st">&quot;zz&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb446"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb446-1"><a href="exploring-your-data.html#cb446-1" aria-hidden="true" tabindex="-1"></a><span class="fu">exists</span>(<span class="st">&quot;zz&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
-<div class="sourceCode" id="cb447"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb447-1"><a href="exploring-your-data.html#cb447-1" aria-hidden="true" tabindex="-1"></a>zz <span class="ot">=</span> <span class="dv">3</span></span>
-<span id="cb447-2"><a href="exploring-your-data.html#cb447-2" aria-hidden="true" tabindex="-1"></a><span class="fu">exists</span>(<span class="st">&quot;zz&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb448"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb448-1"><a href="exploring-your-data.html#cb448-1" aria-hidden="true" tabindex="-1"></a>zz <span class="ot">=</span> <span class="dv">3</span></span>
+<span id="cb448-2"><a href="exploring-your-data.html#cb448-2" aria-hidden="true" tabindex="-1"></a><span class="fu">exists</span>(<span class="st">&quot;zz&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <p>When you create a function, you create a new scope. Variables defined inside of
 a function are <em>local</em> to the function. Local variables cannot be accessed from
 outside:</p>
-<div class="sourceCode" id="cb449"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb449-1"><a href="exploring-your-data.html#cb449-1" aria-hidden="true" tabindex="-1"></a>rescale <span class="ot">=</span> <span class="cf">function</span>(x, center, scale) {</span>
-<span id="cb449-2"><a href="exploring-your-data.html#cb449-2" aria-hidden="true" tabindex="-1"></a>  centered <span class="ot">=</span> x <span class="sc">-</span> center</span>
-<span id="cb449-3"><a href="exploring-your-data.html#cb449-3" aria-hidden="true" tabindex="-1"></a>  centered <span class="sc">/</span> scale</span>
-<span id="cb449-4"><a href="exploring-your-data.html#cb449-4" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb449-5"><a href="exploring-your-data.html#cb449-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb449-6"><a href="exploring-your-data.html#cb449-6" aria-hidden="true" tabindex="-1"></a>centered</span></code></pre></div>
+<div class="sourceCode" id="cb450"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb450-1"><a href="exploring-your-data.html#cb450-1" aria-hidden="true" tabindex="-1"></a>rescale <span class="ot">=</span> <span class="cf">function</span>(x, center, scale) {</span>
+<span id="cb450-2"><a href="exploring-your-data.html#cb450-2" aria-hidden="true" tabindex="-1"></a>  centered <span class="ot">=</span> x <span class="sc">-</span> center</span>
+<span id="cb450-3"><a href="exploring-your-data.html#cb450-3" aria-hidden="true" tabindex="-1"></a>  centered <span class="sc">/</span> scale</span>
+<span id="cb450-4"><a href="exploring-your-data.html#cb450-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb450-5"><a href="exploring-your-data.html#cb450-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb450-6"><a href="exploring-your-data.html#cb450-6" aria-hidden="true" tabindex="-1"></a>centered</span></code></pre></div>
 <pre><code>## Error in eval(expr, envir, enclos): object &#39;centered&#39; not found</code></pre>
-<div class="sourceCode" id="cb451"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb451-1"><a href="exploring-your-data.html#cb451-1" aria-hidden="true" tabindex="-1"></a><span class="fu">exists</span>(<span class="st">&quot;centered&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb452"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb452-1"><a href="exploring-your-data.html#cb452-1" aria-hidden="true" tabindex="-1"></a><span class="fu">exists</span>(<span class="st">&quot;centered&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
 <p>Local variables are reset each time the function is called:</p>
-<div class="sourceCode" id="cb453"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb453-1"><a href="exploring-your-data.html#cb453-1" aria-hidden="true" tabindex="-1"></a>f <span class="ot">=</span> <span class="cf">function</span>() {</span>
-<span id="cb453-2"><a href="exploring-your-data.html#cb453-2" aria-hidden="true" tabindex="-1"></a>  is_z_in_scope <span class="ot">=</span> <span class="fu">exists</span>(<span class="st">&quot;z&quot;</span>)</span>
-<span id="cb453-3"><a href="exploring-your-data.html#cb453-3" aria-hidden="true" tabindex="-1"></a>  z <span class="ot">=</span> <span class="dv">42</span></span>
-<span id="cb453-4"><a href="exploring-your-data.html#cb453-4" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb453-5"><a href="exploring-your-data.html#cb453-5" aria-hidden="true" tabindex="-1"></a>  is_z_in_scope</span>
-<span id="cb453-6"><a href="exploring-your-data.html#cb453-6" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb453-7"><a href="exploring-your-data.html#cb453-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb453-8"><a href="exploring-your-data.html#cb453-8" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb454"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb454-1"><a href="exploring-your-data.html#cb454-1" aria-hidden="true" tabindex="-1"></a>f <span class="ot">=</span> <span class="cf">function</span>() {</span>
+<span id="cb454-2"><a href="exploring-your-data.html#cb454-2" aria-hidden="true" tabindex="-1"></a>  is_z_in_scope <span class="ot">=</span> <span class="fu">exists</span>(<span class="st">&quot;z&quot;</span>)</span>
+<span id="cb454-3"><a href="exploring-your-data.html#cb454-3" aria-hidden="true" tabindex="-1"></a>  z <span class="ot">=</span> <span class="dv">42</span></span>
+<span id="cb454-4"><a href="exploring-your-data.html#cb454-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb454-5"><a href="exploring-your-data.html#cb454-5" aria-hidden="true" tabindex="-1"></a>  is_z_in_scope</span>
+<span id="cb454-6"><a href="exploring-your-data.html#cb454-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb454-7"><a href="exploring-your-data.html#cb454-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb454-8"><a href="exploring-your-data.html#cb454-8" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>()</span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
-<div class="sourceCode" id="cb455"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb455-1"><a href="exploring-your-data.html#cb455-1" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb456"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb456-1"><a href="exploring-your-data.html#cb456-1" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>()</span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
 </div>
 <div id="lexical-scoping" class="section level3" number="3.4.2">
@@ -846,50 +845,50 @@ called <em>lexical scoping</em>.</p>
 then define a function <code>get_cats</code> in the same place (the top level, not inside
 any functions). As a result, the <code>cats</code> variable is in scope inside of the
 <code>get_cats</code> function:</p>
-<div class="sourceCode" id="cb457"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb457-1"><a href="exploring-your-data.html#cb457-1" aria-hidden="true" tabindex="-1"></a>cats <span class="ot">=</span> <span class="dv">3</span></span>
-<span id="cb457-2"><a href="exploring-your-data.html#cb457-2" aria-hidden="true" tabindex="-1"></a>get_cats <span class="ot">=</span> <span class="cf">function</span>() cats</span>
-<span id="cb457-3"><a href="exploring-your-data.html#cb457-3" aria-hidden="true" tabindex="-1"></a><span class="fu">get_cats</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb458"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb458-1"><a href="exploring-your-data.html#cb458-1" aria-hidden="true" tabindex="-1"></a>cats <span class="ot">=</span> <span class="dv">3</span></span>
+<span id="cb458-2"><a href="exploring-your-data.html#cb458-2" aria-hidden="true" tabindex="-1"></a>get_cats <span class="ot">=</span> <span class="cf">function</span>() cats</span>
+<span id="cb458-3"><a href="exploring-your-data.html#cb458-3" aria-hidden="true" tabindex="-1"></a><span class="fu">get_cats</span>()</span></code></pre></div>
 <pre><code>## [1] 3</code></pre>
 <p>Now let’s define a variable <code>dogs</code> inside of a function <code>create_dogs</code>. We’ll
 also define a function <code>get_dogs</code> at the top level. The variable <code>dogs</code> is not
 in scope at the top level, so it’s not in scope inside of the <code>get_dogs</code>
 function:</p>
-<div class="sourceCode" id="cb459"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb459-1"><a href="exploring-your-data.html#cb459-1" aria-hidden="true" tabindex="-1"></a>create_dogs <span class="ot">=</span> <span class="cf">function</span>() {</span>
-<span id="cb459-2"><a href="exploring-your-data.html#cb459-2" aria-hidden="true" tabindex="-1"></a>  dogs <span class="ot">=</span> <span class="st">&quot;hello&quot;</span></span>
-<span id="cb459-3"><a href="exploring-your-data.html#cb459-3" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb459-4"><a href="exploring-your-data.html#cb459-4" aria-hidden="true" tabindex="-1"></a>get_dogs <span class="ot">=</span> <span class="cf">function</span>() dogs</span>
-<span id="cb459-5"><a href="exploring-your-data.html#cb459-5" aria-hidden="true" tabindex="-1"></a><span class="fu">create_dogs</span>()</span>
-<span id="cb459-6"><a href="exploring-your-data.html#cb459-6" aria-hidden="true" tabindex="-1"></a><span class="fu">get_dogs</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb460"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb460-1"><a href="exploring-your-data.html#cb460-1" aria-hidden="true" tabindex="-1"></a>create_dogs <span class="ot">=</span> <span class="cf">function</span>() {</span>
+<span id="cb460-2"><a href="exploring-your-data.html#cb460-2" aria-hidden="true" tabindex="-1"></a>  dogs <span class="ot">=</span> <span class="st">&quot;hello&quot;</span></span>
+<span id="cb460-3"><a href="exploring-your-data.html#cb460-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb460-4"><a href="exploring-your-data.html#cb460-4" aria-hidden="true" tabindex="-1"></a>get_dogs <span class="ot">=</span> <span class="cf">function</span>() dogs</span>
+<span id="cb460-5"><a href="exploring-your-data.html#cb460-5" aria-hidden="true" tabindex="-1"></a><span class="fu">create_dogs</span>()</span>
+<span id="cb460-6"><a href="exploring-your-data.html#cb460-6" aria-hidden="true" tabindex="-1"></a><span class="fu">get_dogs</span>()</span></code></pre></div>
 <pre><code>## Error in get_dogs(): object &#39;dogs&#39; not found</code></pre>
 <p>Variables defined directly in the R console are <em>global</em> and available to any
 function.</p>
 <p>Local variables <em>mask</em> (hide) non-local variables with the same name:</p>
-<div class="sourceCode" id="cb461"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb461-1"><a href="exploring-your-data.html#cb461-1" aria-hidden="true" tabindex="-1"></a>get_parrot <span class="ot">=</span> <span class="cf">function</span>() {</span>
-<span id="cb461-2"><a href="exploring-your-data.html#cb461-2" aria-hidden="true" tabindex="-1"></a>  parrot <span class="ot">=</span> <span class="dv">3</span></span>
-<span id="cb461-3"><a href="exploring-your-data.html#cb461-3" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb461-4"><a href="exploring-your-data.html#cb461-4" aria-hidden="true" tabindex="-1"></a>  parrot</span>
-<span id="cb461-5"><a href="exploring-your-data.html#cb461-5" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb461-6"><a href="exploring-your-data.html#cb461-6" aria-hidden="true" tabindex="-1"></a>parrot <span class="ot">=</span> <span class="dv">42</span></span>
-<span id="cb461-7"><a href="exploring-your-data.html#cb461-7" aria-hidden="true" tabindex="-1"></a><span class="fu">get_parrot</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb462"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb462-1"><a href="exploring-your-data.html#cb462-1" aria-hidden="true" tabindex="-1"></a>get_parrot <span class="ot">=</span> <span class="cf">function</span>() {</span>
+<span id="cb462-2"><a href="exploring-your-data.html#cb462-2" aria-hidden="true" tabindex="-1"></a>  parrot <span class="ot">=</span> <span class="dv">3</span></span>
+<span id="cb462-3"><a href="exploring-your-data.html#cb462-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb462-4"><a href="exploring-your-data.html#cb462-4" aria-hidden="true" tabindex="-1"></a>  parrot</span>
+<span id="cb462-5"><a href="exploring-your-data.html#cb462-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb462-6"><a href="exploring-your-data.html#cb462-6" aria-hidden="true" tabindex="-1"></a>parrot <span class="ot">=</span> <span class="dv">42</span></span>
+<span id="cb462-7"><a href="exploring-your-data.html#cb462-7" aria-hidden="true" tabindex="-1"></a><span class="fu">get_parrot</span>()</span></code></pre></div>
 <pre><code>## [1] 3</code></pre>
 <p>There’s one exception to this rule. We often use variables that refer to
 functions in calls:</p>
-<div class="sourceCode" id="cb463"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb463-1"><a href="exploring-your-data.html#cb463-1" aria-hidden="true" tabindex="-1"></a><span class="co">#mean()</span></span></code></pre></div>
+<div class="sourceCode" id="cb464"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb464-1"><a href="exploring-your-data.html#cb464-1" aria-hidden="true" tabindex="-1"></a><span class="co">#mean()</span></span></code></pre></div>
 <p>In this case, the variable must refer to a function, so R ignores local
 variables that aren’t functions. For example:</p>
-<div class="sourceCode" id="cb464"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb464-1"><a href="exploring-your-data.html#cb464-1" aria-hidden="true" tabindex="-1"></a>my_mean <span class="ot">=</span> <span class="cf">function</span>() {</span>
-<span id="cb464-2"><a href="exploring-your-data.html#cb464-2" aria-hidden="true" tabindex="-1"></a>  mean <span class="ot">=</span> <span class="dv">0</span></span>
-<span id="cb464-3"><a href="exploring-your-data.html#cb464-3" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb464-4"><a href="exploring-your-data.html#cb464-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>))</span>
-<span id="cb464-5"><a href="exploring-your-data.html#cb464-5" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb464-6"><a href="exploring-your-data.html#cb464-6" aria-hidden="true" tabindex="-1"></a><span class="fu">my_mean</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb465"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb465-1"><a href="exploring-your-data.html#cb465-1" aria-hidden="true" tabindex="-1"></a>my_mean <span class="ot">=</span> <span class="cf">function</span>() {</span>
+<span id="cb465-2"><a href="exploring-your-data.html#cb465-2" aria-hidden="true" tabindex="-1"></a>  mean <span class="ot">=</span> <span class="dv">0</span></span>
+<span id="cb465-3"><a href="exploring-your-data.html#cb465-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb465-4"><a href="exploring-your-data.html#cb465-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>))</span>
+<span id="cb465-5"><a href="exploring-your-data.html#cb465-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb465-6"><a href="exploring-your-data.html#cb465-6" aria-hidden="true" tabindex="-1"></a><span class="fu">my_mean</span>()</span></code></pre></div>
 <pre><code>## [1] 2</code></pre>
-<div class="sourceCode" id="cb466"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb466-1"><a href="exploring-your-data.html#cb466-1" aria-hidden="true" tabindex="-1"></a>my_get_cats <span class="ot">=</span> <span class="cf">function</span>() {</span>
-<span id="cb466-2"><a href="exploring-your-data.html#cb466-2" aria-hidden="true" tabindex="-1"></a>  get_cats <span class="ot">=</span> <span class="dv">10</span></span>
-<span id="cb466-3"><a href="exploring-your-data.html#cb466-3" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb466-4"><a href="exploring-your-data.html#cb466-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">get_cats</span>()</span>
-<span id="cb466-5"><a href="exploring-your-data.html#cb466-5" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb466-6"><a href="exploring-your-data.html#cb466-6" aria-hidden="true" tabindex="-1"></a><span class="fu">my_get_cats</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb467"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb467-1"><a href="exploring-your-data.html#cb467-1" aria-hidden="true" tabindex="-1"></a>my_get_cats <span class="ot">=</span> <span class="cf">function</span>() {</span>
+<span id="cb467-2"><a href="exploring-your-data.html#cb467-2" aria-hidden="true" tabindex="-1"></a>  get_cats <span class="ot">=</span> <span class="dv">10</span></span>
+<span id="cb467-3"><a href="exploring-your-data.html#cb467-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb467-4"><a href="exploring-your-data.html#cb467-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">get_cats</span>()</span>
+<span id="cb467-5"><a href="exploring-your-data.html#cb467-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb467-6"><a href="exploring-your-data.html#cb467-6" aria-hidden="true" tabindex="-1"></a><span class="fu">my_get_cats</span>()</span></code></pre></div>
 <pre><code>## [1] 3</code></pre>
 </div>
 <div id="dynamic-lookup" class="section level3" number="3.4.3">
@@ -898,11 +897,11 @@ variables that aren’t functions. For example:</p>
 This is called <em>dynamic lookup</em>.</p>
 <p>For example, the result from <code>get_cats</code>, which accesses the global variable
 <code>cats</code>, changes if we change the value of <code>cats</code>:</p>
-<div class="sourceCode" id="cb468"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb468-1"><a href="exploring-your-data.html#cb468-1" aria-hidden="true" tabindex="-1"></a>cats <span class="ot">=</span> <span class="dv">10</span></span>
-<span id="cb468-2"><a href="exploring-your-data.html#cb468-2" aria-hidden="true" tabindex="-1"></a><span class="fu">get_cats</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb469"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb469-1"><a href="exploring-your-data.html#cb469-1" aria-hidden="true" tabindex="-1"></a>cats <span class="ot">=</span> <span class="dv">10</span></span>
+<span id="cb469-2"><a href="exploring-your-data.html#cb469-2" aria-hidden="true" tabindex="-1"></a><span class="fu">get_cats</span>()</span></code></pre></div>
 <pre><code>## [1] 10</code></pre>
-<div class="sourceCode" id="cb470"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb470-1"><a href="exploring-your-data.html#cb470-1" aria-hidden="true" tabindex="-1"></a>cats <span class="ot">=</span> <span class="dv">20</span></span>
-<span id="cb470-2"><a href="exploring-your-data.html#cb470-2" aria-hidden="true" tabindex="-1"></a><span class="fu">get_cats</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb471"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb471-1"><a href="exploring-your-data.html#cb471-1" aria-hidden="true" tabindex="-1"></a>cats <span class="ot">=</span> <span class="dv">20</span></span>
+<span id="cb471-2"><a href="exploring-your-data.html#cb471-2" aria-hidden="true" tabindex="-1"></a><span class="fu">get_cats</span>()</span></code></pre></div>
 <pre><code>## [1] 20</code></pre>
 </div>
 <div id="summary" class="section level3" number="3.4.4">
@@ -951,7 +950,7 @@ geographically nearby, since that usually produces the best download speeds. If
 you aren’t sure which mirror to choose, you can use the 0-Cloud mirror, which
 attempts to automatically choose a mirror near you.</p>
 <p>As an example, here’s the code to install the remotes package:</p>
-<div class="sourceCode" id="cb472"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb472-1"><a href="exploring-your-data.html#cb472-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;remotes&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb473"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb473-1"><a href="exploring-your-data.html#cb473-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;remotes&quot;</span>)</span></code></pre></div>
 <p>If you run the code above, you’ll be asked to select a mirror, and then see
 output that looks something like this:</p>
 <pre><code>--- Please select a CRAN mirror for use in this session ---
@@ -995,15 +994,13 @@ vector.</p>
 <code>installed.packages</code> function. It does not require any arguments. It returns a
 matrix with one row for each package and columns that contain a variety of
 information. Here’s an example:</p>
-<div class="sourceCode" id="cb474"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb474-1"><a href="exploring-your-data.html#cb474-1" aria-hidden="true" tabindex="-1"></a>packages <span class="ot">=</span> <span class="fu">installed.packages</span>()</span>
-<span id="cb474-2"><a href="exploring-your-data.html#cb474-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Just print the version numbers for 10 packages.</span></span>
-<span id="cb474-3"><a href="exploring-your-data.html#cb474-3" aria-hidden="true" tabindex="-1"></a>packages[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="st">&quot;Version&quot;</span>]</span></code></pre></div>
-<pre><code>##              abind               brio       CodeAnalysis            diffobj 
-##            &quot;1.4-5&quot;            &quot;1.1.1&quot;            &quot;0.1-1&quot;            &quot;0.3.3&quot; 
-##             httpuv          lcap.sec2            mapproj               maps 
-##            &quot;1.5.5&quot;            &quot;0.1-1&quot;            &quot;1.2.7&quot;            &quot;3.3.0&quot; 
-##            mapview NativeCodeAnalysis 
-##            &quot;2.9.8&quot;            &quot;0.1-0&quot;</code></pre>
+<div class="sourceCode" id="cb475"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb475-1"><a href="exploring-your-data.html#cb475-1" aria-hidden="true" tabindex="-1"></a>packages <span class="ot">=</span> <span class="fu">installed.packages</span>()</span>
+<span id="cb475-2"><a href="exploring-your-data.html#cb475-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Just print the version numbers for 10 packages.</span></span>
+<span id="cb475-3"><a href="exploring-your-data.html#cb475-3" aria-hidden="true" tabindex="-1"></a>packages[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="st">&quot;Version&quot;</span>]</span></code></pre></div>
+<pre><code>##       abind        brio CodeDepends     diffobj      GGally     ggplot2 
+##     &quot;1.4-5&quot;     &quot;1.1.1&quot;     &quot;0.6.6&quot;     &quot;0.3.3&quot;     &quot;2.1.2&quot;     &quot;3.3.6&quot; 
+##      httpuv   lcap.sec2    lmerTest      magick 
+##     &quot;1.5.5&quot;     &quot;0.1-1&quot;     &quot;3.1-3&quot;     &quot;2.7.3&quot;</code></pre>
 <p>You’ll see a different set of packages, since you have a different computer.</p>
 <p>Before you can use the functions (or other resources) in an installed package,
 you must load the package with the <code>library</code> function. R doesn’t load packages
@@ -1012,7 +1009,7 @@ other packages. Thus you should only load the packages you need for whatever
 it is that you want to do. When you restart R, the loaded packages are cleared
 and you must again load any packages you want to use.</p>
 <p>Let’s load the remotes package we installed earlier:</p>
-<div class="sourceCode" id="cb476"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb476-1"><a href="exploring-your-data.html#cb476-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;remotes&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb477"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb477-1"><a href="exploring-your-data.html#cb477-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;remotes&quot;</span>)</span></code></pre></div>
 <p>The <code>library</code> function works with or without quotes around the package name, so
 you may also see people write things like <code>library(remotes)</code>. We recommend
 using quotes to make it unambiguous that you are not referring to a variable.</p>
@@ -1093,20 +1090,24 @@ three layers every plot must have are:</p>
 <p>As an example, let’s plot the earnings data. First, we need to load ggplot2. As
 always, if this is your first time using the package, you’ll have to install
 it. Then you can load the package:</p>
-<div class="sourceCode" id="cb477"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb477-1"><a href="exploring-your-data.html#cb477-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;ggplot2&quot;)</span></span>
-<span id="cb477-2"><a href="exploring-your-data.html#cb477-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div>
+<div class="sourceCode" id="cb478"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb478-1"><a href="exploring-your-data.html#cb478-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;ggplot2&quot;)</span></span>
+<span id="cb478-2"><a href="exploring-your-data.html#cb478-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div>
+<pre><code>## Registered S3 methods overwritten by &#39;tibble&#39;:
+##   method     from  
+##   format.tbl pillar
+##   print.tbl  pillar</code></pre>
 <p>What kind of plot should we make? It depends on what data we want the plot to
 show. Let’s make a line plot that shows median earnings for each quarter in
 2019, with separate lines for men and women.</p>
 <p>Before plotting, we need to take a subset of the earnings that only contains
 information for 2019:</p>
-<div class="sourceCode" id="cb478"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb478-1"><a href="exploring-your-data.html#cb478-1" aria-hidden="true" tabindex="-1"></a>earn19 <span class="ot">=</span> earn[earn<span class="sc">$</span>year <span class="sc">==</span> <span class="dv">2019</span>, ]</span></code></pre></div>
+<div class="sourceCode" id="cb480"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb480-1"><a href="exploring-your-data.html#cb480-1" aria-hidden="true" tabindex="-1"></a>earn19 <span class="ot">=</span> earn[earn<span class="sc">$</span>year <span class="sc">==</span> <span class="dv">2019</span>, ]</span></code></pre></div>
 <p>The data is also broken down across <code>race</code>, <code>ethnic_origin</code>, and <code>age</code>. Since
 we aren’t interested in these categories for the plot, we need to further
 subset the data:</p>
-<div class="sourceCode" id="cb479"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb479-1"><a href="exploring-your-data.html#cb479-1" aria-hidden="true" tabindex="-1"></a>earn19 <span class="ot">=</span> earn19[earn19<span class="sc">$</span>race <span class="sc">==</span> <span class="st">&quot;All Races&quot;</span> <span class="sc">&amp;</span></span>
-<span id="cb479-2"><a href="exploring-your-data.html#cb479-2" aria-hidden="true" tabindex="-1"></a>  earn19<span class="sc">$</span>ethnic_origin <span class="sc">==</span> <span class="st">&quot;All Origins&quot;</span> <span class="sc">&amp;</span></span>
-<span id="cb479-3"><a href="exploring-your-data.html#cb479-3" aria-hidden="true" tabindex="-1"></a>  earn19<span class="sc">$</span>age <span class="sc">==</span> <span class="st">&quot;16 years and over&quot;</span>, ]</span></code></pre></div>
+<div class="sourceCode" id="cb481"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb481-1"><a href="exploring-your-data.html#cb481-1" aria-hidden="true" tabindex="-1"></a>earn19 <span class="ot">=</span> earn19[earn19<span class="sc">$</span>race <span class="sc">==</span> <span class="st">&quot;All Races&quot;</span> <span class="sc">&amp;</span></span>
+<span id="cb481-2"><a href="exploring-your-data.html#cb481-2" aria-hidden="true" tabindex="-1"></a>  earn19<span class="sc">$</span>ethnic_origin <span class="sc">==</span> <span class="st">&quot;All Origins&quot;</span> <span class="sc">&amp;</span></span>
+<span id="cb481-3"><a href="exploring-your-data.html#cb481-3" aria-hidden="true" tabindex="-1"></a>  earn19<span class="sc">$</span>age <span class="sc">==</span> <span class="st">&quot;16 years and over&quot;</span>, ]</span></code></pre></div>
 <p>Now we’re ready to make the plot.</p>
 <div id="layer-1-data" class="section level3" number="3.6.1">
 <h3><span class="header-section-number">3.6.1</span> Layer 1: Data</h3>
@@ -1122,7 +1123,7 @@ means:</p>
 an untidy data set tidy. Until then, we’ll take it for granted that the data
 sets we work with are tidy.</p>
 <p>To set up the data layer, call the <code>ggplot</code> function on a data frame:</p>
-<div class="sourceCode" id="cb480"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb480-1"><a href="exploring-your-data.html#cb480-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(earn19)</span></code></pre></div>
+<div class="sourceCode" id="cb482"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb482-1"><a href="exploring-your-data.html#cb482-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(earn19)</span></code></pre></div>
 <p><img src="03_exploring-your-data_files/figure-html/unnamed-chunk-48-1.png" width="672" /></p>
 <p>This returns a blank plot. We still need to add a few more layers.</p>
 </div>
@@ -1135,8 +1136,9 @@ of plot to make: one with points, lines, boxes, or something else.</p>
 a function for each geometry, always prefixed with <code>geom_</code>.</p>
 <p>To add a geometry layer to the plot, choose the <code>geom_</code> function you want and
 add it to the plot with the <code>+</code> operator:</p>
-<div class="sourceCode" id="cb481"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb481-1"><a href="exploring-your-data.html#cb481-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(earn19) <span class="sc">+</span> <span class="fu">geom_line</span>()</span></code></pre></div>
-<pre><code>## Error: geom_line requires the following missing aesthetics: x and y</code></pre>
+<div class="sourceCode" id="cb483"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb483-1"><a href="exploring-your-data.html#cb483-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(earn19) <span class="sc">+</span> <span class="fu">geom_line</span>()</span></code></pre></div>
+<pre><code>## Error in `check_required_aesthetics()`:
+## ! geom_line requires the following missing aesthetics: x and y</code></pre>
 <p>This returns an error message that we’re missing aesthetics <code>x</code> and <code>y</code>. We’ll
 learn more about aesthetics in the next section, but this error message is
 especially helpful: it tells us exactly what we’re missing. When you use a
@@ -1158,24 +1160,24 @@ and examples of aesthetic names in the documentation.</p>
 <p>For example, we want to put <code>quarter</code> on the x-axis and <code>median_weekly_earn</code> on
 the y-axis. We also want to use a separate line style for each <code>sex</code> category.
 So the aesthetic layer should be:</p>
-<div class="sourceCode" id="cb484"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb484-1"><a href="exploring-your-data.html#cb484-1" aria-hidden="true" tabindex="-1"></a><span class="fu">aes</span>(<span class="at">x =</span> quarter, <span class="at">y =</span> median_weekly_earn, <span class="at">linetype =</span> sex)</span></code></pre></div>
+<div class="sourceCode" id="cb486"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb486-1"><a href="exploring-your-data.html#cb486-1" aria-hidden="true" tabindex="-1"></a><span class="fu">aes</span>(<span class="at">x =</span> quarter, <span class="at">y =</span> median_weekly_earn, <span class="at">linetype =</span> sex)</span></code></pre></div>
 <p>In the <code>aes</code> function, column names are never quoted.</p>
 <p>Unlike most layers, the aesthetic layer is not added to the plot with the <code>+</code>
 operator. Instead, you can pass the aesthetic layer as the second argument to
 the <code>ggplot</code> function:</p>
-<div class="sourceCode" id="cb485"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb485-1"><a href="exploring-your-data.html#cb485-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(earn19, <span class="fu">aes</span>(<span class="at">x =</span> quarter, <span class="at">y =</span> median_weekly_earn, <span class="at">linetype =</span> sex)) <span class="sc">+</span></span>
-<span id="cb485-2"><a href="exploring-your-data.html#cb485-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb487"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb487-1"><a href="exploring-your-data.html#cb487-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(earn19, <span class="fu">aes</span>(<span class="at">x =</span> quarter, <span class="at">y =</span> median_weekly_earn, <span class="at">linetype =</span> sex)) <span class="sc">+</span></span>
+<span id="cb487-2"><a href="exploring-your-data.html#cb487-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()</span></code></pre></div>
 <p><img src="03_exploring-your-data_files/figure-html/unnamed-chunk-51-1.png" width="672" /></p>
 <p>If you want to set an aesthetic to a constant value, rather than one that’s
 data dependent, do so <em>outside</em> of the aesthetic layer. For instance, suppose
 we want to make the lines blue:</p>
-<div class="sourceCode" id="cb486"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb486-1"><a href="exploring-your-data.html#cb486-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(earn19, <span class="fu">aes</span>(<span class="at">x =</span> quarter, <span class="at">y =</span> median_weekly_earn, <span class="at">linetype =</span> sex)) <span class="sc">+</span></span>
-<span id="cb486-2"><a href="exploring-your-data.html#cb486-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">color =</span> <span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb488"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb488-1"><a href="exploring-your-data.html#cb488-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(earn19, <span class="fu">aes</span>(<span class="at">x =</span> quarter, <span class="at">y =</span> median_weekly_earn, <span class="at">linetype =</span> sex)) <span class="sc">+</span></span>
+<span id="cb488-2"><a href="exploring-your-data.html#cb488-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">color =</span> <span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
 <p><img src="03_exploring-your-data_files/figure-html/unnamed-chunk-52-1.png" width="672" /></p>
 <p>If you set an aesthetic to a constant value inside of the aesthetic layer, the
 results you get might not be what you expect:</p>
-<div class="sourceCode" id="cb487"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb487-1"><a href="exploring-your-data.html#cb487-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(earn19, <span class="fu">aes</span>(<span class="at">x =</span> quarter, <span class="at">y =</span> median_weekly_earn, <span class="at">linetype =</span> sex,</span>
-<span id="cb487-2"><a href="exploring-your-data.html#cb487-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">&quot;blue&quot;</span>)) <span class="sc">+</span> <span class="fu">geom_line</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb489"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb489-1"><a href="exploring-your-data.html#cb489-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(earn19, <span class="fu">aes</span>(<span class="at">x =</span> quarter, <span class="at">y =</span> median_weekly_earn, <span class="at">linetype =</span> sex,</span>
+<span id="cb489-2"><a href="exploring-your-data.html#cb489-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">&quot;blue&quot;</span>)) <span class="sc">+</span> <span class="fu">geom_line</span>()</span></code></pre></div>
 <p><img src="03_exploring-your-data_files/figure-html/unnamed-chunk-53-1.png" width="672" /></p>
 <!--
 #### Per-geometry Aesthetics {-}
@@ -1219,15 +1221,15 @@ Most of the functions in the scales layer are prefixed with <code>scale_</code>,
 all of them.</p>
 <p>The <code>labs</code> function is especially important, because it’s used to set the title
 and axis labels:</p>
-<div class="sourceCode" id="cb488"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb488-1"><a href="exploring-your-data.html#cb488-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(earn19, <span class="fu">aes</span>(<span class="at">x =</span> quarter, <span class="at">y =</span> median_weekly_earn, <span class="at">linetype =</span> sex)) <span class="sc">+</span></span>
-<span id="cb488-2"><a href="exploring-your-data.html#cb488-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Quarter&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Median Weekly Salary (USD)&quot;</span>,</span>
-<span id="cb488-3"><a href="exploring-your-data.html#cb488-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;2019 Median Weekly Salaries, by Sex&quot;</span>, <span class="at">linetype =</span> <span class="st">&quot;Sex&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb490"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb490-1"><a href="exploring-your-data.html#cb490-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(earn19, <span class="fu">aes</span>(<span class="at">x =</span> quarter, <span class="at">y =</span> median_weekly_earn, <span class="at">linetype =</span> sex)) <span class="sc">+</span></span>
+<span id="cb490-2"><a href="exploring-your-data.html#cb490-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Quarter&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Median Weekly Salary (USD)&quot;</span>,</span>
+<span id="cb490-3"><a href="exploring-your-data.html#cb490-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;2019 Median Weekly Salaries, by Sex&quot;</span>, <span class="at">linetype =</span> <span class="st">&quot;Sex&quot;</span>)</span></code></pre></div>
 <p><img src="03_exploring-your-data_files/figure-html/unnamed-chunk-58-1.png" width="672" /></p>
 </div>
 <div id="saving-plots" class="section level3" number="3.6.5">
 <h3><span class="header-section-number">3.6.5</span> Saving Plots</h3>
 <p>In ggplot2, use the <code>ggsave</code> function to save the most recent plot you created:</p>
-<div class="sourceCode" id="cb489"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb489-1"><a href="exploring-your-data.html#cb489-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">&quot;line.png&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb491"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb491-1"><a href="exploring-your-data.html#cb491-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">&quot;line.png&quot;</span>)</span></code></pre></div>
 <p>The file format is selected automatically based on the extension. Common
 formats are PNG and PDF.</p>
 <div id="the-plot-device" class="section level4 unnumbered">
@@ -1241,10 +1243,10 @@ are:</p>
 </ol>
 <p>This strategy works with any of R’s graphics systems (not just ggplot2).</p>
 <p>Here’s an example:</p>
-<div class="sourceCode" id="cb490"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb490-1"><a href="exploring-your-data.html#cb490-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Run these lines in the console, not the notebook!</span></span>
-<span id="cb490-2"><a href="exploring-your-data.html#cb490-2" aria-hidden="true" tabindex="-1"></a><span class="fu">jpeg</span>(<span class="st">&quot;line.jpeg&quot;</span>)</span>
-<span id="cb490-3"><a href="exploring-your-data.html#cb490-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(favs, <span class="fu">aes</span>(<span class="at">x =</span> distance_mi, <span class="at">y =</span> walk_min)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span>
-<span id="cb490-4"><a href="exploring-your-data.html#cb490-4" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb492"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb492-1"><a href="exploring-your-data.html#cb492-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Run these lines in the console, not the notebook!</span></span>
+<span id="cb492-2"><a href="exploring-your-data.html#cb492-2" aria-hidden="true" tabindex="-1"></a><span class="fu">jpeg</span>(<span class="st">&quot;line.jpeg&quot;</span>)</span>
+<span id="cb492-3"><a href="exploring-your-data.html#cb492-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(favs, <span class="fu">aes</span>(<span class="at">x =</span> distance_mi, <span class="at">y =</span> walk_min)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span>
+<span id="cb492-4"><a href="exploring-your-data.html#cb492-4" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
 </div>
 </div>
 <div id="example-bar-plot" class="section level3" number="3.6.6">
@@ -1258,10 +1260,10 @@ when given mapped to a categorical feature.</p>
 compute frequencies. To prevent <code>geom_bar</code> from computing frequencies
 automatically, set <code>stat = "identity"</code>.</p>
 <p>Here’s the code to make the bar plot:</p>
-<div class="sourceCode" id="cb491"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb491-1"><a href="exploring-your-data.html#cb491-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(earn19, <span class="fu">aes</span>(<span class="at">x =</span> quarter, <span class="at">y =</span> n_persons, <span class="at">fill =</span> sex)) <span class="sc">+</span></span>
-<span id="cb491-2"><a href="exploring-your-data.html#cb491-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="at">position =</span> <span class="st">&quot;dodge&quot;</span>) <span class="sc">+</span></span>
-<span id="cb491-3"><a href="exploring-your-data.html#cb491-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Quarter&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Number of Workers&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;Sex&quot;</span>,</span>
-<span id="cb491-4"><a href="exploring-your-data.html#cb491-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Number of Workers by Quarter and Sex in 2019&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb493"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb493-1"><a href="exploring-your-data.html#cb493-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(earn19, <span class="fu">aes</span>(<span class="at">x =</span> quarter, <span class="at">y =</span> n_persons, <span class="at">fill =</span> sex)) <span class="sc">+</span></span>
+<span id="cb493-2"><a href="exploring-your-data.html#cb493-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="at">position =</span> <span class="st">&quot;dodge&quot;</span>) <span class="sc">+</span></span>
+<span id="cb493-3"><a href="exploring-your-data.html#cb493-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Quarter&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Number of Workers&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;Sex&quot;</span>,</span>
+<span id="cb493-4"><a href="exploring-your-data.html#cb493-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Number of Workers by Quarter and Sex in 2019&quot;</span>)</span></code></pre></div>
 <p><img src="03_exploring-your-data_files/figure-html/unnamed-chunk-61-1.png" width="672" /></p>
 <p>The setting <code>position = "dodge"</code> instructs <code>geom_bar</code> to put the bars
 side-by-side rather than stacking them.</p>

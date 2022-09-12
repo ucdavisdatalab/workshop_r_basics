@@ -24,7 +24,7 @@
 <meta name="author" content="Nick Ulle" />
 
 
-<meta name="date" content="2021-05-27" />
+<meta name="date" content="2022-09-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,7 @@
   
 <link rel="prev" href="exploring-your-data.html"/>
 <link rel="next" href="where-to-learn-more.html"/>
-<script src="libs/header-attrs-2.6/header-attrs.js"></script>
+<script src="libs/header-attrs-2.10/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -314,14 +314,14 @@ you want to save must be assigned to a variable.</p>
 <p>For example, let’s make a loop that repeatedly adds a number to a running total
 and squares the new total. We’ll use a variable <code>total</code> to keep track of the
 running total as the loop iterates:</p>
-<div class="sourceCode" id="cb493"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb493-1"><a href="cleaning-messy-data.html#cb493-1" aria-hidden="true" tabindex="-1"></a>numbers <span class="ot">=</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>, <span class="sc">-</span><span class="dv">3</span>, <span class="dv">2</span>)</span>
-<span id="cb493-2"><a href="cleaning-messy-data.html#cb493-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb493-3"><a href="cleaning-messy-data.html#cb493-3" aria-hidden="true" tabindex="-1"></a>total <span class="ot">=</span> <span class="dv">0</span></span>
-<span id="cb493-4"><a href="cleaning-messy-data.html#cb493-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (number <span class="cf">in</span> numbers) {</span>
-<span id="cb493-5"><a href="cleaning-messy-data.html#cb493-5" aria-hidden="true" tabindex="-1"></a>  total <span class="ot">=</span> (total <span class="sc">+</span> number)<span class="sc">^</span><span class="dv">2</span></span>
-<span id="cb493-6"><a href="cleaning-messy-data.html#cb493-6" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb493-7"><a href="cleaning-messy-data.html#cb493-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb493-8"><a href="cleaning-messy-data.html#cb493-8" aria-hidden="true" tabindex="-1"></a>total</span></code></pre></div>
+<div class="sourceCode" id="cb495"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb495-1"><a href="cleaning-messy-data.html#cb495-1" aria-hidden="true" tabindex="-1"></a>numbers <span class="ot">=</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>, <span class="sc">-</span><span class="dv">3</span>, <span class="dv">2</span>)</span>
+<span id="cb495-2"><a href="cleaning-messy-data.html#cb495-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb495-3"><a href="cleaning-messy-data.html#cb495-3" aria-hidden="true" tabindex="-1"></a>total <span class="ot">=</span> <span class="dv">0</span></span>
+<span id="cb495-4"><a href="cleaning-messy-data.html#cb495-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (number <span class="cf">in</span> numbers) {</span>
+<span id="cb495-5"><a href="cleaning-messy-data.html#cb495-5" aria-hidden="true" tabindex="-1"></a>  total <span class="ot">=</span> (total <span class="sc">+</span> number)<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb495-6"><a href="cleaning-messy-data.html#cb495-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb495-7"><a href="cleaning-messy-data.html#cb495-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb495-8"><a href="cleaning-messy-data.html#cb495-8" aria-hidden="true" tabindex="-1"></a>total</span></code></pre></div>
 <pre><code>## [1] 9</code></pre>
 <p>Use for-loops when some or all of the iterations depend on results from other
 iterations. If the iterations are not dependent, use one of:</p>
@@ -332,7 +332,7 @@ iterations. If the iterations are not dependent, use one of:</p>
 <p>In some cases, you can use vectorization even when the iterations are
 dependent. For example, you can use vectorization to compute the sum of the
 cubes of several numbers:</p>
-<div class="sourceCode" id="cb495"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb495-1"><a href="cleaning-messy-data.html#cb495-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(numbers<span class="sc">^</span><span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb497"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb497-1"><a href="cleaning-messy-data.html#cb497-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(numbers<span class="sc">^</span><span class="dv">3</span>)</span></code></pre></div>
 <pre><code>## [1] -19</code></pre>
 </div>
 <div id="while-loops" class="section level3" number="4.1.2">
@@ -348,15 +348,15 @@ exits if it is <code>FALSE</code>. As always, the curly braces <code>{ }</code> 
 the body contains multiple lines of code.</p>
 <p>For example, suppose you want to add up numbers from 0 to 50, but stop as soon
 as the total is greater than 50:</p>
-<div class="sourceCode" id="cb498"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb498-1"><a href="cleaning-messy-data.html#cb498-1" aria-hidden="true" tabindex="-1"></a>num50 <span class="ot">=</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">50</span>)</span>
-<span id="cb498-2"><a href="cleaning-messy-data.html#cb498-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb498-3"><a href="cleaning-messy-data.html#cb498-3" aria-hidden="true" tabindex="-1"></a>total <span class="ot">=</span> <span class="dv">0</span></span>
-<span id="cb498-4"><a href="cleaning-messy-data.html#cb498-4" aria-hidden="true" tabindex="-1"></a>i <span class="ot">=</span> <span class="dv">1</span></span>
-<span id="cb498-5"><a href="cleaning-messy-data.html#cb498-5" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> (total <span class="sc">&lt;</span> <span class="dv">50</span>) {</span>
-<span id="cb498-6"><a href="cleaning-messy-data.html#cb498-6" aria-hidden="true" tabindex="-1"></a>  total <span class="ot">=</span> total <span class="sc">+</span> num50[i]</span>
-<span id="cb498-7"><a href="cleaning-messy-data.html#cb498-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">message</span>(<span class="st">&quot;i is &quot;</span>, i, <span class="st">&quot; total is &quot;</span>, total)</span>
-<span id="cb498-8"><a href="cleaning-messy-data.html#cb498-8" aria-hidden="true" tabindex="-1"></a>  i <span class="ot">=</span> i <span class="sc">+</span> <span class="dv">1</span></span>
-<span id="cb498-9"><a href="cleaning-messy-data.html#cb498-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb500"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb500-1"><a href="cleaning-messy-data.html#cb500-1" aria-hidden="true" tabindex="-1"></a>num50 <span class="ot">=</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">50</span>)</span>
+<span id="cb500-2"><a href="cleaning-messy-data.html#cb500-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb500-3"><a href="cleaning-messy-data.html#cb500-3" aria-hidden="true" tabindex="-1"></a>total <span class="ot">=</span> <span class="dv">0</span></span>
+<span id="cb500-4"><a href="cleaning-messy-data.html#cb500-4" aria-hidden="true" tabindex="-1"></a>i <span class="ot">=</span> <span class="dv">1</span></span>
+<span id="cb500-5"><a href="cleaning-messy-data.html#cb500-5" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> (total <span class="sc">&lt;</span> <span class="dv">50</span>) {</span>
+<span id="cb500-6"><a href="cleaning-messy-data.html#cb500-6" aria-hidden="true" tabindex="-1"></a>  total <span class="ot">=</span> total <span class="sc">+</span> num50[i]</span>
+<span id="cb500-7"><a href="cleaning-messy-data.html#cb500-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">message</span>(<span class="st">&quot;i is &quot;</span>, i, <span class="st">&quot; total is &quot;</span>, total)</span>
+<span id="cb500-8"><a href="cleaning-messy-data.html#cb500-8" aria-hidden="true" tabindex="-1"></a>  i <span class="ot">=</span> i <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb500-9"><a href="cleaning-messy-data.html#cb500-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <pre><code>## i is 1 total is 0</code></pre>
 <pre><code>## i is 2 total is 1</code></pre>
 <pre><code>## i is 3 total is 3</code></pre>
@@ -368,9 +368,9 @@ as the total is greater than 50:</p>
 <pre><code>## i is 9 total is 36</code></pre>
 <pre><code>## i is 10 total is 45</code></pre>
 <pre><code>## i is 11 total is 55</code></pre>
-<div class="sourceCode" id="cb510"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb510-1"><a href="cleaning-messy-data.html#cb510-1" aria-hidden="true" tabindex="-1"></a>total</span></code></pre></div>
+<div class="sourceCode" id="cb512"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb512-1"><a href="cleaning-messy-data.html#cb512-1" aria-hidden="true" tabindex="-1"></a>total</span></code></pre></div>
 <pre><code>## [1] 55</code></pre>
-<div class="sourceCode" id="cb512"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb512-1"><a href="cleaning-messy-data.html#cb512-1" aria-hidden="true" tabindex="-1"></a>i</span></code></pre></div>
+<div class="sourceCode" id="cb514"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb514-1"><a href="cleaning-messy-data.html#cb514-1" aria-hidden="true" tabindex="-1"></a>i</span></code></pre></div>
 <pre><code>## [1] 12</code></pre>
 <p>While-loops are a generalization of for-loops. They tend to be most useful when
 you don’t know how many iterations will be necessary. For example, suppose you
@@ -385,7 +385,7 @@ more than one result, there are a few things you must do.</p>
 the number of iterations or the input. The <code>seq_along</code> function returns a
 congruent index vector when passed a vector or list. For instance, let’s make
 in index for the <code>numbers</code> vector from Section <a href="cleaning-messy-data.html#for-loops">4.1.1</a>:</p>
-<div class="sourceCode" id="cb514"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb514-1"><a href="cleaning-messy-data.html#cb514-1" aria-hidden="true" tabindex="-1"></a>index <span class="ot">=</span> <span class="fu">seq_along</span>(numbers)</span></code></pre></div>
+<div class="sourceCode" id="cb516"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb516-1"><a href="cleaning-messy-data.html#cb516-1" aria-hidden="true" tabindex="-1"></a>index <span class="ot">=</span> <span class="fu">seq_along</span>(numbers)</span></code></pre></div>
 <p>The loop will iterate over the index rather than the input, so the induction
 variable will track the current iteration number. On the first iteration, the
 induction variable will be 1, on the second it will be 2, and so on. Then you
@@ -403,15 +403,15 @@ empty vector with a specific type and length</p></li>
 </ul>
 <p>Empty vectors are filled with <code>FALSE</code>, <code>0</code>, or <code>""</code>, depending on the type of
 the vector. Here are some examples:</p>
-<div class="sourceCode" id="cb515"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb515-1"><a href="cleaning-messy-data.html#cb515-1" aria-hidden="true" tabindex="-1"></a><span class="fu">logical</span>(<span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb517"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb517-1"><a href="cleaning-messy-data.html#cb517-1" aria-hidden="true" tabindex="-1"></a><span class="fu">logical</span>(<span class="dv">3</span>)</span></code></pre></div>
 <pre><code>## [1] FALSE FALSE FALSE</code></pre>
-<div class="sourceCode" id="cb517"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb517-1"><a href="cleaning-messy-data.html#cb517-1" aria-hidden="true" tabindex="-1"></a><span class="fu">numeric</span>(<span class="dv">4</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb519"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb519-1"><a href="cleaning-messy-data.html#cb519-1" aria-hidden="true" tabindex="-1"></a><span class="fu">numeric</span>(<span class="dv">4</span>)</span></code></pre></div>
 <pre><code>## [1] 0 0 0 0</code></pre>
-<div class="sourceCode" id="cb519"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb519-1"><a href="cleaning-messy-data.html#cb519-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb521"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb521-1"><a href="cleaning-messy-data.html#cb521-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## [1] 1 2 1 2</code></pre>
 <p>Let’s create an empty numeric vector congruent to <code>numbers</code>:</p>
-<div class="sourceCode" id="cb521"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb521-1"><a href="cleaning-messy-data.html#cb521-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">=</span> <span class="fu">length</span>(numbers)</span>
-<span id="cb521-2"><a href="cleaning-messy-data.html#cb521-2" aria-hidden="true" tabindex="-1"></a>result <span class="ot">=</span> <span class="fu">numeric</span>(n)</span></code></pre></div>
+<div class="sourceCode" id="cb523"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb523-1"><a href="cleaning-messy-data.html#cb523-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">=</span> <span class="fu">length</span>(numbers)</span>
+<span id="cb523-2"><a href="cleaning-messy-data.html#cb523-2" aria-hidden="true" tabindex="-1"></a>result <span class="ot">=</span> <span class="fu">numeric</span>(n)</span></code></pre></div>
 <p>As with the input, you can use the induction variable and indexing to set the
 output for each iteration.</p>
 <p>Creating a vector or list in advance to store something, as we’ve just done, is
@@ -420,11 +420,11 @@ loops. Avoid the temptation to use <code>c</code> or <code>append</code> to buil
 by bit in each iteration.</p>
 <p>Finally, write the loop, making sure to get the input and set the output.
 Here’s the loop for the squared sums example:</p>
-<div class="sourceCode" id="cb522"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb522-1"><a href="cleaning-messy-data.html#cb522-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> index) {</span>
-<span id="cb522-2"><a href="cleaning-messy-data.html#cb522-2" aria-hidden="true" tabindex="-1"></a>  prev <span class="ot">=</span> <span class="cf">if</span> (i <span class="sc">&gt;</span> <span class="dv">1</span>) result[i <span class="sc">-</span> <span class="dv">1</span>] <span class="cf">else</span> <span class="dv">0</span></span>
-<span id="cb522-3"><a href="cleaning-messy-data.html#cb522-3" aria-hidden="true" tabindex="-1"></a>  result[i] <span class="ot">=</span> (numbers[i] <span class="sc">+</span> prev)<span class="sc">^</span><span class="dv">2</span></span>
-<span id="cb522-4"><a href="cleaning-messy-data.html#cb522-4" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb522-5"><a href="cleaning-messy-data.html#cb522-5" aria-hidden="true" tabindex="-1"></a>result</span></code></pre></div>
+<div class="sourceCode" id="cb524"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb524-1"><a href="cleaning-messy-data.html#cb524-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> index) {</span>
+<span id="cb524-2"><a href="cleaning-messy-data.html#cb524-2" aria-hidden="true" tabindex="-1"></a>  prev <span class="ot">=</span> <span class="cf">if</span> (i <span class="sc">&gt;</span> <span class="dv">1</span>) result[i <span class="sc">-</span> <span class="dv">1</span>] <span class="cf">else</span> <span class="dv">0</span></span>
+<span id="cb524-3"><a href="cleaning-messy-data.html#cb524-3" aria-hidden="true" tabindex="-1"></a>  result[i] <span class="ot">=</span> (numbers[i] <span class="sc">+</span> prev)<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb524-4"><a href="cleaning-messy-data.html#cb524-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb524-5"><a href="cleaning-messy-data.html#cb524-5" aria-hidden="true" tabindex="-1"></a>result</span></code></pre></div>
 <pre><code>## [1] 1 4 1 9</code></pre>
 </div>
 <div id="break-next" class="section level3" number="4.1.4">
@@ -433,26 +433,26 @@ Here’s the loop for the squared sums example:</p>
 use <code>break</code> inside of an if-statement.</p>
 <p>For example, suppose we want to print each string in a vector, but stop at the
 first missing value. We can do this with <code>break</code>:</p>
-<div class="sourceCode" id="cb524"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb524-1"><a href="cleaning-messy-data.html#cb524-1" aria-hidden="true" tabindex="-1"></a>my_messages <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;Hi&quot;</span>, <span class="st">&quot;Hello&quot;</span>, <span class="cn">NA</span>, <span class="st">&quot;Goodbye&quot;</span>)</span>
-<span id="cb524-2"><a href="cleaning-messy-data.html#cb524-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb524-3"><a href="cleaning-messy-data.html#cb524-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (msg <span class="cf">in</span> my_messages) {</span>
-<span id="cb524-4"><a href="cleaning-messy-data.html#cb524-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">is.na</span>(msg))</span>
-<span id="cb524-5"><a href="cleaning-messy-data.html#cb524-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">break</span></span>
-<span id="cb524-6"><a href="cleaning-messy-data.html#cb524-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb524-7"><a href="cleaning-messy-data.html#cb524-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">message</span>(msg)</span>
-<span id="cb524-8"><a href="cleaning-messy-data.html#cb524-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb526"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb526-1"><a href="cleaning-messy-data.html#cb526-1" aria-hidden="true" tabindex="-1"></a>my_messages <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;Hi&quot;</span>, <span class="st">&quot;Hello&quot;</span>, <span class="cn">NA</span>, <span class="st">&quot;Goodbye&quot;</span>)</span>
+<span id="cb526-2"><a href="cleaning-messy-data.html#cb526-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb526-3"><a href="cleaning-messy-data.html#cb526-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (msg <span class="cf">in</span> my_messages) {</span>
+<span id="cb526-4"><a href="cleaning-messy-data.html#cb526-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">is.na</span>(msg))</span>
+<span id="cb526-5"><a href="cleaning-messy-data.html#cb526-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">break</span></span>
+<span id="cb526-6"><a href="cleaning-messy-data.html#cb526-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb526-7"><a href="cleaning-messy-data.html#cb526-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">message</span>(msg)</span>
+<span id="cb526-8"><a href="cleaning-messy-data.html#cb526-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <pre><code>## Hi</code></pre>
 <pre><code>## Hello</code></pre>
 <p>The <code>next</code> keyword causes a loop to immediately go to the next iteration. As
 with <code>break</code>, it only makes sense to use <code>next</code> inside of an if-statement.</p>
 <p>Let’s modify the previous example so that missing values are skipped, but don’t
 cause printing to stop. Here’s the code:</p>
-<div class="sourceCode" id="cb527"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb527-1"><a href="cleaning-messy-data.html#cb527-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (msg <span class="cf">in</span> my_messages) {</span>
-<span id="cb527-2"><a href="cleaning-messy-data.html#cb527-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">is.na</span>(msg))</span>
-<span id="cb527-3"><a href="cleaning-messy-data.html#cb527-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">next</span></span>
-<span id="cb527-4"><a href="cleaning-messy-data.html#cb527-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb527-5"><a href="cleaning-messy-data.html#cb527-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">message</span>(msg)</span>
-<span id="cb527-6"><a href="cleaning-messy-data.html#cb527-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb529"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb529-1"><a href="cleaning-messy-data.html#cb529-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (msg <span class="cf">in</span> my_messages) {</span>
+<span id="cb529-2"><a href="cleaning-messy-data.html#cb529-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">is.na</span>(msg))</span>
+<span id="cb529-3"><a href="cleaning-messy-data.html#cb529-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">next</span></span>
+<span id="cb529-4"><a href="cleaning-messy-data.html#cb529-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb529-5"><a href="cleaning-messy-data.html#cb529-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">message</span>(msg)</span>
+<span id="cb529-6"><a href="cleaning-messy-data.html#cb529-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <pre><code>## Hi</code></pre>
 <pre><code>## Hello</code></pre>
 <pre><code>## Goodbye</code></pre>
@@ -466,27 +466,27 @@ numbers are:</p>
 <pre><code>1 1 2 3 5 8 13</code></pre>
 <p>We can use a loop to compute the first <code>n</code> Fibonacci numbers. Make sure to
 choose an appropriate index and to preallocate for the output:</p>
-<div class="sourceCode" id="cb532"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb532-1"><a href="cleaning-messy-data.html#cb532-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">=</span> <span class="dv">10</span></span>
-<span id="cb532-2"><a href="cleaning-messy-data.html#cb532-2" aria-hidden="true" tabindex="-1"></a>fib <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="fu">numeric</span>(n <span class="sc">-</span> <span class="dv">2</span>))</span>
-<span id="cb532-3"><a href="cleaning-messy-data.html#cb532-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb532-4"><a href="cleaning-messy-data.html#cb532-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">3</span><span class="sc">:</span>n) {</span>
-<span id="cb532-5"><a href="cleaning-messy-data.html#cb532-5" aria-hidden="true" tabindex="-1"></a>  fib[i] <span class="ot">=</span> fib[i <span class="sc">-</span> <span class="dv">1</span>] <span class="sc">+</span> fib[i <span class="sc">-</span> <span class="dv">2</span>]</span>
-<span id="cb532-6"><a href="cleaning-messy-data.html#cb532-6" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb532-7"><a href="cleaning-messy-data.html#cb532-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb532-8"><a href="cleaning-messy-data.html#cb532-8" aria-hidden="true" tabindex="-1"></a>fib</span></code></pre></div>
+<div class="sourceCode" id="cb534"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb534-1"><a href="cleaning-messy-data.html#cb534-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">=</span> <span class="dv">10</span></span>
+<span id="cb534-2"><a href="cleaning-messy-data.html#cb534-2" aria-hidden="true" tabindex="-1"></a>fib <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="fu">numeric</span>(n <span class="sc">-</span> <span class="dv">2</span>))</span>
+<span id="cb534-3"><a href="cleaning-messy-data.html#cb534-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb534-4"><a href="cleaning-messy-data.html#cb534-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">3</span><span class="sc">:</span>n) {</span>
+<span id="cb534-5"><a href="cleaning-messy-data.html#cb534-5" aria-hidden="true" tabindex="-1"></a>  fib[i] <span class="ot">=</span> fib[i <span class="sc">-</span> <span class="dv">1</span>] <span class="sc">+</span> fib[i <span class="sc">-</span> <span class="dv">2</span>]</span>
+<span id="cb534-6"><a href="cleaning-messy-data.html#cb534-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb534-7"><a href="cleaning-messy-data.html#cb534-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb534-8"><a href="cleaning-messy-data.html#cb534-8" aria-hidden="true" tabindex="-1"></a>fib</span></code></pre></div>
 <pre><code>##  [1]  1  1  2  3  5  8 13 21 34 55</code></pre>
 <p>If you want to reuse this code, you could make it a function:</p>
-<div class="sourceCode" id="cb534"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb534-1"><a href="cleaning-messy-data.html#cb534-1" aria-hidden="true" tabindex="-1"></a>fibonacci <span class="ot">=</span> <span class="cf">function</span>(<span class="at">n =</span> <span class="dv">10</span>) {</span>
-<span id="cb534-2"><a href="cleaning-messy-data.html#cb534-2" aria-hidden="true" tabindex="-1"></a>  fib <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="fu">numeric</span>(n <span class="sc">-</span> <span class="dv">2</span>))</span>
-<span id="cb534-3"><a href="cleaning-messy-data.html#cb534-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb534-4"><a href="cleaning-messy-data.html#cb534-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">3</span><span class="sc">:</span>n) {</span>
-<span id="cb534-5"><a href="cleaning-messy-data.html#cb534-5" aria-hidden="true" tabindex="-1"></a>    fib[i] <span class="ot">=</span> fib[i <span class="sc">-</span> <span class="dv">1</span>] <span class="sc">+</span> fib[i <span class="sc">-</span> <span class="dv">2</span>]</span>
-<span id="cb534-6"><a href="cleaning-messy-data.html#cb534-6" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb534-7"><a href="cleaning-messy-data.html#cb534-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb534-8"><a href="cleaning-messy-data.html#cb534-8" aria-hidden="true" tabindex="-1"></a>  fib</span>
-<span id="cb534-9"><a href="cleaning-messy-data.html#cb534-9" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb534-10"><a href="cleaning-messy-data.html#cb534-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb534-11"><a href="cleaning-messy-data.html#cb534-11" aria-hidden="true" tabindex="-1"></a><span class="fu">fibonacci</span>(<span class="dv">30</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb536"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb536-1"><a href="cleaning-messy-data.html#cb536-1" aria-hidden="true" tabindex="-1"></a>fibonacci <span class="ot">=</span> <span class="cf">function</span>(<span class="at">n =</span> <span class="dv">10</span>) {</span>
+<span id="cb536-2"><a href="cleaning-messy-data.html#cb536-2" aria-hidden="true" tabindex="-1"></a>  fib <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="fu">numeric</span>(n <span class="sc">-</span> <span class="dv">2</span>))</span>
+<span id="cb536-3"><a href="cleaning-messy-data.html#cb536-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb536-4"><a href="cleaning-messy-data.html#cb536-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">3</span><span class="sc">:</span>n) {</span>
+<span id="cb536-5"><a href="cleaning-messy-data.html#cb536-5" aria-hidden="true" tabindex="-1"></a>    fib[i] <span class="ot">=</span> fib[i <span class="sc">-</span> <span class="dv">1</span>] <span class="sc">+</span> fib[i <span class="sc">-</span> <span class="dv">2</span>]</span>
+<span id="cb536-6"><a href="cleaning-messy-data.html#cb536-6" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb536-7"><a href="cleaning-messy-data.html#cb536-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb536-8"><a href="cleaning-messy-data.html#cb536-8" aria-hidden="true" tabindex="-1"></a>  fib</span>
+<span id="cb536-9"><a href="cleaning-messy-data.html#cb536-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb536-10"><a href="cleaning-messy-data.html#cb536-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb536-11"><a href="cleaning-messy-data.html#cb536-11" aria-hidden="true" tabindex="-1"></a><span class="fu">fibonacci</span>(<span class="dv">30</span>)</span></code></pre></div>
 <pre><code>##  [1]      1      1      2      3      5      8     13     21     34     55
 ## [11]     89    144    233    377    610    987   1597   2584   4181   6765
 ## [21]  10946  17711  28657  46368  75025 121393 196418 317811 514229 832040</code></pre>
@@ -539,8 +539,8 @@ to learn and remember.</p>
 <p>The first time you use stringr, you’ll have to install it with
 <code>install.packages</code> (the same as any other package). Then you can load the
 package with the <code>library</code> function:</p>
-<div class="sourceCode" id="cb536"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb536-1"><a href="cleaning-messy-data.html#cb536-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;stringr&quot;)</span></span>
-<span id="cb536-2"><a href="cleaning-messy-data.html#cb536-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span></code></pre></div>
+<div class="sourceCode" id="cb538"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb538-1"><a href="cleaning-messy-data.html#cb538-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;stringr&quot;)</span></span>
+<span id="cb538-2"><a href="cleaning-messy-data.html#cb538-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span></code></pre></div>
 <p>The typical syntax of a stringr function is:</p>
 <pre><code>str_NAME(string, pattern, ...)</code></pre>
 <p>Where:</p>
@@ -552,22 +552,22 @@ package with the <code>library</code> function:</p>
 </ul>
 <p>The <code>str_detect</code> function detects whether the pattern appears within the
 string. Here’s an example:</p>
-<div class="sourceCode" id="cb538"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb538-1"><a href="cleaning-messy-data.html#cb538-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_detect</span>(<span class="st">&quot;hello&quot;</span>, <span class="st">&quot;el&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb540"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb540-1"><a href="cleaning-messy-data.html#cb540-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_detect</span>(<span class="st">&quot;hello&quot;</span>, <span class="st">&quot;el&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb540"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb540-1"><a href="cleaning-messy-data.html#cb540-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_detect</span>(<span class="st">&quot;hello&quot;</span>, <span class="st">&quot;ol&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb542"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb542-1"><a href="cleaning-messy-data.html#cb542-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_detect</span>(<span class="st">&quot;hello&quot;</span>, <span class="st">&quot;ol&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
 <p>Most of the stringr functions are vectorized in the <code>string</code> parameter. For
 instance:</p>
-<div class="sourceCode" id="cb542"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb542-1"><a href="cleaning-messy-data.html#cb542-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_detect</span>(<span class="fu">c</span>(<span class="st">&quot;hello&quot;</span>, <span class="st">&quot;goodbye&quot;</span>, <span class="st">&quot;lo&quot;</span>), <span class="st">&quot;lo&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb544"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb544-1"><a href="cleaning-messy-data.html#cb544-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_detect</span>(<span class="fu">c</span>(<span class="st">&quot;hello&quot;</span>, <span class="st">&quot;goodbye&quot;</span>, <span class="st">&quot;lo&quot;</span>), <span class="st">&quot;lo&quot;</span>)</span></code></pre></div>
 <pre><code>## [1]  TRUE FALSE  TRUE</code></pre>
 <p>Most of the stringr functions also have support for <a href="https://en.wikipedia.org/wiki/Regular_expression"><em>regular
 expressions</em></a>, a powerful language for describing patterns. Several
 punctuation characters, such as <code>.</code> and <code>?</code> have special meanings in the
 regular expressions language. You can disable these special meanings by putting
 the pattern in a call to <code>fixed</code>:</p>
-<div class="sourceCode" id="cb544"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb544-1"><a href="cleaning-messy-data.html#cb544-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_detect</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;.&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb546"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb546-1"><a href="cleaning-messy-data.html#cb546-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_detect</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;.&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb546"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb546-1"><a href="cleaning-messy-data.html#cb546-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_detect</span>(<span class="st">&quot;a&quot;</span>, <span class="fu">fixed</span>(<span class="st">&quot;.&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb548"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb548-1"><a href="cleaning-messy-data.html#cb548-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_detect</span>(<span class="st">&quot;a&quot;</span>, <span class="fu">fixed</span>(<span class="st">&quot;.&quot;</span>))</span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
 <p>You can learn more about regular expressions <a href="https://r4ds.had.co.nz/strings.html#matching-patterns-with-regular-expressions">here</a>.</p>
 <p>There are a lot of stringr functions. We’ll focus on two that are especially
@@ -584,16 +584,16 @@ documentation.</p>
 pattern. The characters that match are thrown away.</p>
 <p>For example, suppose we want to split a sentence into words. Since there’s a
 space between each word, we can use a space as the pattern:</p>
-<div class="sourceCode" id="cb548"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb548-1"><a href="cleaning-messy-data.html#cb548-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="st">&quot;The students in this workshop are great!&quot;</span></span>
-<span id="cb548-2"><a href="cleaning-messy-data.html#cb548-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb548-3"><a href="cleaning-messy-data.html#cb548-3" aria-hidden="true" tabindex="-1"></a>result <span class="ot">=</span> <span class="fu">str_split</span>(x, <span class="st">&quot; &quot;</span>)</span>
-<span id="cb548-4"><a href="cleaning-messy-data.html#cb548-4" aria-hidden="true" tabindex="-1"></a>result</span></code></pre></div>
+<div class="sourceCode" id="cb550"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb550-1"><a href="cleaning-messy-data.html#cb550-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="st">&quot;The students in this workshop are great!&quot;</span></span>
+<span id="cb550-2"><a href="cleaning-messy-data.html#cb550-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb550-3"><a href="cleaning-messy-data.html#cb550-3" aria-hidden="true" tabindex="-1"></a>result <span class="ot">=</span> <span class="fu">str_split</span>(x, <span class="st">&quot; &quot;</span>)</span>
+<span id="cb550-4"><a href="cleaning-messy-data.html#cb550-4" aria-hidden="true" tabindex="-1"></a>result</span></code></pre></div>
 <pre><code>## [[1]]
 ## [1] &quot;The&quot;      &quot;students&quot; &quot;in&quot;       &quot;this&quot;     &quot;workshop&quot; &quot;are&quot;      &quot;great!&quot;</code></pre>
 <p>The <code>str_split</code> function always returns a list with one element for each input
 string. Here the list only has one element because <code>x</code> only has one element. We
 can get the first element with:</p>
-<div class="sourceCode" id="cb550"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb550-1"><a href="cleaning-messy-data.html#cb550-1" aria-hidden="true" tabindex="-1"></a>result[[<span class="dv">1</span>]]</span></code></pre></div>
+<div class="sourceCode" id="cb552"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb552-1"><a href="cleaning-messy-data.html#cb552-1" aria-hidden="true" tabindex="-1"></a>result[[<span class="dv">1</span>]]</span></code></pre></div>
 <pre><code>## [1] &quot;The&quot;      &quot;students&quot; &quot;in&quot;       &quot;this&quot;     &quot;workshop&quot; &quot;are&quot;      &quot;great!&quot;</code></pre>
 <p>We have to use the extraction operator <code>[[</code> here because <code>x</code> is a list (for a
 vector, we could use the indexing operator <code>[</code> instead). Notice that in the
@@ -601,12 +601,12 @@ printout for <code>result</code>, R gives us a hint that we should use <code>[[<
 <code>[[1]]</code>.</p>
 <p>To see why the function returns a list, consider what happens if we try to
 split two different sentences at once:</p>
-<div class="sourceCode" id="cb552"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb552-1"><a href="cleaning-messy-data.html#cb552-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(x, <span class="st">&quot;Are you listening?&quot;</span>)</span>
-<span id="cb552-2"><a href="cleaning-messy-data.html#cb552-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb552-3"><a href="cleaning-messy-data.html#cb552-3" aria-hidden="true" tabindex="-1"></a>result <span class="ot">=</span> <span class="fu">str_split</span>(x, <span class="st">&quot; &quot;</span>)</span>
-<span id="cb552-4"><a href="cleaning-messy-data.html#cb552-4" aria-hidden="true" tabindex="-1"></a>result[[<span class="dv">1</span>]]</span></code></pre></div>
+<div class="sourceCode" id="cb554"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb554-1"><a href="cleaning-messy-data.html#cb554-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(x, <span class="st">&quot;Are you listening?&quot;</span>)</span>
+<span id="cb554-2"><a href="cleaning-messy-data.html#cb554-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb554-3"><a href="cleaning-messy-data.html#cb554-3" aria-hidden="true" tabindex="-1"></a>result <span class="ot">=</span> <span class="fu">str_split</span>(x, <span class="st">&quot; &quot;</span>)</span>
+<span id="cb554-4"><a href="cleaning-messy-data.html#cb554-4" aria-hidden="true" tabindex="-1"></a>result[[<span class="dv">1</span>]]</span></code></pre></div>
 <pre><code>## [1] &quot;The&quot;      &quot;students&quot; &quot;in&quot;       &quot;this&quot;     &quot;workshop&quot; &quot;are&quot;      &quot;great!&quot;</code></pre>
-<div class="sourceCode" id="cb554"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb554-1"><a href="cleaning-messy-data.html#cb554-1" aria-hidden="true" tabindex="-1"></a>result[[<span class="dv">2</span>]]</span></code></pre></div>
+<div class="sourceCode" id="cb556"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb556-1"><a href="cleaning-messy-data.html#cb556-1" aria-hidden="true" tabindex="-1"></a>result[[<span class="dv">2</span>]]</span></code></pre></div>
 <pre><code>## [1] &quot;Are&quot;        &quot;you&quot;        &quot;listening?&quot;</code></pre>
 <p>Each sentence has a different number of words, so the vectors in the result
 have different lengths. So a list is the only way to store both.</p>
@@ -614,7 +614,7 @@ have different lengths. So a list is the only way to store both.</p>
 third argument for the maximum number of splits to make. Because the number of
 splits is fixed, the function can return the result in a matrix instead of a
 list. For example:</p>
-<div class="sourceCode" id="cb556"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb556-1"><a href="cleaning-messy-data.html#cb556-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_split_fixed</span>(x, <span class="st">&quot; &quot;</span>, <span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb558"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb558-1"><a href="cleaning-messy-data.html#cb558-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_split_fixed</span>(x, <span class="st">&quot; &quot;</span>, <span class="dv">3</span>)</span></code></pre></div>
 <pre><code>##      [,1]  [,2]       [,3]                         
 ## [1,] &quot;The&quot; &quot;students&quot; &quot;in this workshop are great!&quot;
 ## [2,] &quot;Are&quot; &quot;you&quot;      &quot;listening?&quot;</code></pre>
@@ -622,10 +622,10 @@ list. For example:</p>
 because the <code>n</code>th piece of each input string is just the <code>n</code>th column of the
 result.</p>
 <p>For example, suppose we want to get the area code from some phone numbers:</p>
-<div class="sourceCode" id="cb558"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb558-1"><a href="cleaning-messy-data.html#cb558-1" aria-hidden="true" tabindex="-1"></a>phones <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;717-555-3421&quot;</span>, <span class="st">&quot;629-555-8902&quot;</span>, <span class="st">&quot;903-555-6781&quot;</span>)</span>
-<span id="cb558-2"><a href="cleaning-messy-data.html#cb558-2" aria-hidden="true" tabindex="-1"></a>result <span class="ot">=</span> <span class="fu">str_split_fixed</span>(phones, <span class="st">&quot;-&quot;</span>, <span class="dv">3</span>)</span>
-<span id="cb558-3"><a href="cleaning-messy-data.html#cb558-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb558-4"><a href="cleaning-messy-data.html#cb558-4" aria-hidden="true" tabindex="-1"></a>result[, <span class="dv">1</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb560"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb560-1"><a href="cleaning-messy-data.html#cb560-1" aria-hidden="true" tabindex="-1"></a>phones <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;717-555-3421&quot;</span>, <span class="st">&quot;629-555-8902&quot;</span>, <span class="st">&quot;903-555-6781&quot;</span>)</span>
+<span id="cb560-2"><a href="cleaning-messy-data.html#cb560-2" aria-hidden="true" tabindex="-1"></a>result <span class="ot">=</span> <span class="fu">str_split_fixed</span>(phones, <span class="st">&quot;-&quot;</span>, <span class="dv">3</span>)</span>
+<span id="cb560-3"><a href="cleaning-messy-data.html#cb560-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb560-4"><a href="cleaning-messy-data.html#cb560-4" aria-hidden="true" tabindex="-1"></a>result[, <span class="dv">1</span>]</span></code></pre></div>
 <pre><code>## [1] &quot;717&quot; &quot;629&quot; &quot;903&quot;</code></pre>
 </div>
 <div id="replacing-parts-of-strings" class="section level3" number="4.3.2">
@@ -633,17 +633,17 @@ result.</p>
 <p>The <code>str_replace</code> function replaces the pattern the first time it appears in
 the string. The replacement goes in the third argument.</p>
 <p>For instance, suppose we want to change the word <code>"dog"</code> to <code>"cat"</code>:</p>
-<div class="sourceCode" id="cb560"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb560-1"><a href="cleaning-messy-data.html#cb560-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;dogs are great, dogs are fun&quot;</span>, <span class="st">&quot;dogs are fluffy&quot;</span>)</span>
-<span id="cb560-2"><a href="cleaning-messy-data.html#cb560-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_replace</span>(x, <span class="st">&quot;dog&quot;</span>, <span class="st">&quot;cat&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb562"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb562-1"><a href="cleaning-messy-data.html#cb562-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;dogs are great, dogs are fun&quot;</span>, <span class="st">&quot;dogs are fluffy&quot;</span>)</span>
+<span id="cb562-2"><a href="cleaning-messy-data.html#cb562-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_replace</span>(x, <span class="st">&quot;dog&quot;</span>, <span class="st">&quot;cat&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;cats are great, dogs are fun&quot; &quot;cats are fluffy&quot;</code></pre>
 <p>The <code>str_replace_all</code> function replaces the pattern every time it appears in
 the string:</p>
-<div class="sourceCode" id="cb562"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb562-1"><a href="cleaning-messy-data.html#cb562-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_replace_all</span>(x, <span class="st">&quot;dog&quot;</span>, <span class="st">&quot;cat&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb564"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb564-1"><a href="cleaning-messy-data.html#cb564-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_replace_all</span>(x, <span class="st">&quot;dog&quot;</span>, <span class="st">&quot;cat&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;cats are great, cats are fun&quot; &quot;cats are fluffy&quot;</code></pre>
 <p>We can also use the <code>str_replace</code> and <code>str_replace_all</code> functions to delete
 part of a string by setting the replacement to the empty string <code>""</code>.</p>
 <p>For example, suppose we want to delete the comma:</p>
-<div class="sourceCode" id="cb564"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb564-1"><a href="cleaning-messy-data.html#cb564-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_replace</span>(x, <span class="st">&quot;,&quot;</span>, <span class="st">&quot;&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb566"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb566-1"><a href="cleaning-messy-data.html#cb566-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_replace</span>(x, <span class="st">&quot;,&quot;</span>, <span class="st">&quot;&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;dogs are great dogs are fun&quot; &quot;dogs are fluffy&quot;</code></pre>
 <p>In general, stringr functions with the <code>_all</code> suffix affect all matches.
 Functions without <code>_all</code> only affect the first match.</p>
@@ -667,8 +667,8 @@ packages for processing dates and times:</p>
 </ul>
 <p>We’ll focus on the lubridate package. As always, you’ll have to install the
 package if you haven’t already, and then load it:</p>
-<div class="sourceCode" id="cb566"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb566-1"><a href="cleaning-messy-data.html#cb566-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;lubridate&quot;)</span></span>
-<span id="cb566-2"><a href="cleaning-messy-data.html#cb566-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span></code></pre></div>
+<div class="sourceCode" id="cb568"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb568-1"><a href="cleaning-messy-data.html#cb568-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;lubridate&quot;)</span></span>
+<span id="cb568-2"><a href="cleaning-messy-data.html#cb568-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span></code></pre></div>
 <pre><code>## 
 ## Attaching package: &#39;lubridate&#39;</code></pre>
 <pre><code>## The following objects are masked from &#39;package:base&#39;:
@@ -676,8 +676,8 @@ package if you haven’t already, and then load it:</p>
 ##     date, intersect, setdiff, union</code></pre>
 <p>The most common task is to convert a string into a date or time class. For
 instance, when you load a data set, you might have dates that look like this:</p>
-<div class="sourceCode" id="cb569"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb569-1"><a href="cleaning-messy-data.html#cb569-1" aria-hidden="true" tabindex="-1"></a>dates <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;Jan 10, 2021&quot;</span>, <span class="st">&quot;Sep 3, 2018&quot;</span>, <span class="st">&quot;Feb 28, 1982&quot;</span>)</span>
-<span id="cb569-2"><a href="cleaning-messy-data.html#cb569-2" aria-hidden="true" tabindex="-1"></a>dates</span></code></pre></div>
+<div class="sourceCode" id="cb571"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb571-1"><a href="cleaning-messy-data.html#cb571-1" aria-hidden="true" tabindex="-1"></a>dates <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;Jan 10, 2021&quot;</span>, <span class="st">&quot;Sep 3, 2018&quot;</span>, <span class="st">&quot;Feb 28, 1982&quot;</span>)</span>
+<span id="cb571-2"><a href="cleaning-messy-data.html#cb571-2" aria-hidden="true" tabindex="-1"></a>dates</span></code></pre></div>
 <pre><code>## [1] &quot;Jan 10, 2021&quot; &quot;Sep 3, 2018&quot;  &quot;Feb 28, 1982&quot;</code></pre>
 <p>These are strings, so it’s relatively difficult to sort the dates, do
 arithmetic on them, or extract just one part (such as the year). There are
@@ -685,10 +685,10 @@ several lubridate functions to automatically convert strings into dates. They
 are named with one letter for each part of the date. For instance, the dates in
 the example have the month (m), then the day (d), and then the year (y), so we
 can use the <code>mdy</code> function:</p>
-<div class="sourceCode" id="cb571"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb571-1"><a href="cleaning-messy-data.html#cb571-1" aria-hidden="true" tabindex="-1"></a>result <span class="ot">=</span> <span class="fu">mdy</span>(dates)</span>
-<span id="cb571-2"><a href="cleaning-messy-data.html#cb571-2" aria-hidden="true" tabindex="-1"></a>result</span></code></pre></div>
+<div class="sourceCode" id="cb573"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb573-1"><a href="cleaning-messy-data.html#cb573-1" aria-hidden="true" tabindex="-1"></a>result <span class="ot">=</span> <span class="fu">mdy</span>(dates)</span>
+<span id="cb573-2"><a href="cleaning-messy-data.html#cb573-2" aria-hidden="true" tabindex="-1"></a>result</span></code></pre></div>
 <pre><code>## [1] &quot;2021-01-10&quot; &quot;2018-09-03&quot; &quot;1982-02-28&quot;</code></pre>
-<div class="sourceCode" id="cb573"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb573-1"><a href="cleaning-messy-data.html#cb573-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(result)</span></code></pre></div>
+<div class="sourceCode" id="cb575"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb575-1"><a href="cleaning-messy-data.html#cb575-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(result)</span></code></pre></div>
 <pre><code>## [1] &quot;Date&quot;</code></pre>
 <p>Notice that the dates now have class <code>Date</code>, one of R’s built-in classes for
 representing dates, and that they print differently. You can find a full list
@@ -753,8 +753,8 @@ a few of the most useful ones:</p>
 format string do not have any special meaning. Write the format string so that
 it matches the format of the dates you want to convert.</p>
 <p>For example, let’s try converting an unusual time format:</p>
-<div class="sourceCode" id="cb575"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb575-1"><a href="cleaning-messy-data.html#cb575-1" aria-hidden="true" tabindex="-1"></a>odd_time <span class="ot">=</span> <span class="st">&quot;6 minutes, 32 seconds after 10 o&#39;clock&quot;</span></span>
-<span id="cb575-2"><a href="cleaning-messy-data.html#cb575-2" aria-hidden="true" tabindex="-1"></a><span class="fu">fast_strptime</span>(odd_time, <span class="st">&quot;%M minutes, %S seconds after %H o&#39;clock&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb577"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb577-1"><a href="cleaning-messy-data.html#cb577-1" aria-hidden="true" tabindex="-1"></a>odd_time <span class="ot">=</span> <span class="st">&quot;6 minutes, 32 seconds after 10 o&#39;clock&quot;</span></span>
+<span id="cb577-2"><a href="cleaning-messy-data.html#cb577-2" aria-hidden="true" tabindex="-1"></a><span class="fu">fast_strptime</span>(odd_time, <span class="st">&quot;%M minutes, %S seconds after %H o&#39;clock&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;0-01-01 10:06:32 UTC&quot;</code></pre>
 <p>R usually represents dates with the class <code>Date</code>, and date-times with the
 classes <code>POSIXct</code> and <code>POSIXlt</code>. The difference between the two date-time
@@ -765,9 +765,9 @@ the example above includes a date. Nonetheless, the hms package provides the
 <p>Once you’ve converted a string to a date, the lubridate package provides a
 variety of functions to get or set the parts individually. Here are a few
 examples:</p>
-<div class="sourceCode" id="cb577"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb577-1"><a href="cleaning-messy-data.html#cb577-1" aria-hidden="true" tabindex="-1"></a><span class="fu">day</span>(result)</span></code></pre></div>
+<div class="sourceCode" id="cb579"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb579-1"><a href="cleaning-messy-data.html#cb579-1" aria-hidden="true" tabindex="-1"></a><span class="fu">day</span>(result)</span></code></pre></div>
 <pre><code>## [1] 10  3 28</code></pre>
-<div class="sourceCode" id="cb579"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb579-1"><a href="cleaning-messy-data.html#cb579-1" aria-hidden="true" tabindex="-1"></a><span class="fu">month</span>(result)</span></code></pre></div>
+<div class="sourceCode" id="cb581"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb581-1"><a href="cleaning-messy-data.html#cb581-1" aria-hidden="true" tabindex="-1"></a><span class="fu">month</span>(result)</span></code></pre></div>
 <pre><code>## [1] 1 9 2</code></pre>
 <p>You can find a complete list in the lubridate documentation.</p>
 

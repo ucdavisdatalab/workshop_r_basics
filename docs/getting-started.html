@@ -24,7 +24,7 @@
 <meta name="author" content="Nick Ulle" />
 
 
-<meta name="date" content="2021-05-27" />
+<meta name="date" content="2022-09-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,7 @@
   
 <link rel="prev" href="index.html"/>
 <link rel="next" href="data-structures.html"/>
-<script src="libs/header-attrs-2.6/header-attrs.js"></script>
+<script src="libs/header-attrs-2.10/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -710,7 +710,7 @@ currently “at” or watching.</p>
 <p>The function <code>getwd</code> returns the absolute path for the current working
 directory, as a string. It doesn’t require any arguments:</p>
 <div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="getting-started.html#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code></pre></div>
-<pre><code>## [1] &quot;/home/nick/workshop/datalab/workshop_r_basics&quot;</code></pre>
+<pre><code>## [1] &quot;/home/nick/workshop/datalab/workshops/r_basics&quot;</code></pre>
 <p>On your computer, the output from <code>getwd</code> will likely be different. This is a
 very useful function for getting your bearings when you write relative paths.
 If you write a relative path and it doesn’t work as expected, the first thing
@@ -721,7 +721,7 @@ argument: a path to the new working directory. Here’s an example:</p>
 <span id="cb46-2"><a href="getting-started.html#cb46-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb46-3"><a href="getting-started.html#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Now check the working directory.</span></span>
 <span id="cb46-4"><a href="getting-started.html#cb46-4" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code></pre></div>
-<pre><code>## [1] &quot;/home/nick/workshop/datalab&quot;</code></pre>
+<pre><code>## [1] &quot;/home/nick/workshop/datalab/workshops&quot;</code></pre>
 <p>Generally, you should avoid using calls to <code>setwd</code> in your R scripts and R
 Markdown files. Calling <code>setwd</code> makes your code more difficult to understand,
 and can always be avoided by using appropriate relative paths. If you call
@@ -738,19 +738,20 @@ path. For instance:</p>
 <pre><code>## [1] &quot;lost+found&quot; &quot;nick&quot;</code></pre>
 <div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="getting-started.html#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># List files and directories in the working directory.</span></span>
 <span id="cb50-2"><a href="getting-started.html#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="fu">list.files</span>()</span></code></pre></div>
-<pre><code>##  [1] &quot;_bookdown_files&quot;              &quot;_bookdown.yml&quot;               
-##  [3] &quot;_main.rds&quot;                    &quot;01_r-basics.Rmd&quot;             
-##  [5] &quot;02_data-structures.Rmd&quot;       &quot;03_exploring-your-data_files&quot;
-##  [7] &quot;03_exploring-your-data.Rmd&quot;   &quot;04_cleaning-messy-data.Rmd&quot;  
-##  [9] &quot;97_where-to-learn-more.Rmd&quot;   &quot;98_references.Rmd&quot;           
-## [11] &quot;99_acknowledgements.Rmd&quot;      &quot;data&quot;                        
-## [13] &quot;docs&quot;                         &quot;graphviz&quot;                    
-## [15] &quot;img&quot;                          &quot;index.md&quot;                    
-## [17] &quot;index.Rmd&quot;                    &quot;index.utf8.md&quot;               
-## [19] &quot;knit.R&quot;                       &quot;makefile&quot;                    
-## [21] &quot;raw&quot;                          &quot;README.md&quot;                   
-## [23] &quot;render19b9a7e9f4b2.rds&quot;       &quot;renv&quot;                        
-## [25] &quot;renv.lock&quot;                    &quot;video&quot;</code></pre>
+<pre><code>##  [1] &quot;_bookdown_files&quot;                &quot;_bookdown.yml&quot;                 
+##  [3] &quot;_main.rds&quot;                      &quot;01_r-basics.md&quot;                
+##  [5] &quot;01_r-basics.Rmd&quot;                &quot;02_data-structures.md&quot;         
+##  [7] &quot;02_data-structures.Rmd&quot;         &quot;03_exploring-your-data_files&quot;  
+##  [9] &quot;03_exploring-your-data.knit.md&quot; &quot;03_exploring-your-data.Rmd&quot;    
+## [11] &quot;04_cleaning-messy-data.Rmd&quot;     &quot;97_where-to-learn-more.Rmd&quot;    
+## [13] &quot;99_acknowledgements.Rmd&quot;        &quot;data&quot;                          
+## [15] &quot;docs&quot;                           &quot;graphviz&quot;                      
+## [17] &quot;img&quot;                            &quot;index.md&quot;                      
+## [19] &quot;index.Rmd&quot;                      &quot;knit.R&quot;                        
+## [21] &quot;LICENSE&quot;                        &quot;makefile&quot;                      
+## [23] &quot;raw&quot;                            &quot;README.md&quot;                     
+## [25] &quot;render64e2027df4499.rds&quot;        &quot;renv&quot;                          
+## [27] &quot;renv.lock&quot;</code></pre>
 <p>As usual, since you have a different computer, you’re likely to see different
 output if you run this code. If you call <code>list.files</code> with an invalid path or
 an empty directory, the output is <code>character(0)</code>:</p>
@@ -779,7 +780,14 @@ For now, let’s focus on data sets that can be read with R’s built-in functio
 <p>Here are several formats that are frequently used to distribute data, along
 with the name of a built-in function or contributed package that can read the
 format:</p>
-<table>
+<table style="width:100%;">
+<colgroup>
+<col width="38%" />
+<col width="12%" />
+<col width="28%" />
+<col width="12%" />
+<col width="7%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th align="left">Name</th>

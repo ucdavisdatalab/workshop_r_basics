@@ -24,7 +24,7 @@
 <meta name="author" content="Nick Ulle" />
 
 
-<meta name="date" content="2021-05-27" />
+<meta name="date" content="2022-09-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,7 @@
   
 <link rel="prev" href="getting-started.html"/>
 <link rel="next" href="exploring-your-data.html"/>
-<script src="libs/header-attrs-2.6/header-attrs.js"></script>
+<script src="libs/header-attrs-2.10/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -314,6 +314,11 @@ what an object is, checking its classes should be the first thing you do.</p>
 <p>The built-in classes you’ll use all the time correspond to vectors and lists
 (which we’ll learn more about in Section <a href="data-structures.html#lists">2.1.1</a>):</p>
 <table>
+<colgroup>
+<col width="21%" />
+<col width="30%" />
+<col width="47%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th align="left">Class</th>
@@ -392,6 +397,10 @@ the <code>double</code> default:</p>
 <p>Besides the classes for vectors and lists, there are several built-in classes
 that represent more sophisticated data structures:</p>
 <table>
+<colgroup>
+<col width="31%" />
+<col width="68%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th align="left">Class</th>
@@ -982,6 +991,11 @@ determine the result. Here are some of these:</p>
 <div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb336-1"><a href="data-structures.html#cb336-1" aria-hidden="true" tabindex="-1"></a><span class="cn">TRUE</span> <span class="sc">||</span> <span class="cn">TRUE</span></span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <div class="sourceCode" id="cb338"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb338-1"><a href="data-structures.html#cb338-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>) <span class="sc">&amp;&amp;</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## Warning in c(TRUE, FALSE) &amp;&amp; c(TRUE, TRUE): &#39;length(x) = 2 &gt; 1&#39; in coercion to
+## &#39;logical(1)&#39;
+
+## Warning in c(TRUE, FALSE) &amp;&amp; c(TRUE, TRUE): &#39;length(x) = 2 &gt; 1&#39; in coercion to
+## &#39;logical(1)&#39;</code></pre>
 <pre><code>## [1] TRUE</code></pre>
 <p>For the final expression, notice R only combines the first element of each
 vector. The others are ignored. In other words, the short-circuit operators are
@@ -996,19 +1010,19 @@ for if-statements, which we’ll learn about later on.</p>
 element from a list, you can either keep the container (the list) or discard
 it. The indexing operator <code>[</code> almost always keeps containers.</p>
 <p>As an example, let’s get some elements from a small list:</p>
-<div class="sourceCode" id="cb340"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb340-1"><a href="data-structures.html#cb340-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">list</span>(<span class="at">first =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>), <span class="at">second =</span> sin, <span class="at">third =</span> <span class="fu">c</span>(<span class="st">&quot;hi&quot;</span>, <span class="st">&quot;hello&quot;</span>))</span>
-<span id="cb340-2"><a href="data-structures.html#cb340-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> x[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>)]</span>
-<span id="cb340-3"><a href="data-structures.html#cb340-3" aria-hidden="true" tabindex="-1"></a>y</span></code></pre></div>
+<div class="sourceCode" id="cb341"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb341-1"><a href="data-structures.html#cb341-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">list</span>(<span class="at">first =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>), <span class="at">second =</span> sin, <span class="at">third =</span> <span class="fu">c</span>(<span class="st">&quot;hi&quot;</span>, <span class="st">&quot;hello&quot;</span>))</span>
+<span id="cb341-2"><a href="data-structures.html#cb341-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> x[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>)]</span>
+<span id="cb341-3"><a href="data-structures.html#cb341-3" aria-hidden="true" tabindex="-1"></a>y</span></code></pre></div>
 <pre><code>## $first
 ## [1] 1 2 3
 ## 
 ## $third
 ## [1] &quot;hi&quot;    &quot;hello&quot;</code></pre>
-<div class="sourceCode" id="cb342"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb342-1"><a href="data-structures.html#cb342-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(y)</span></code></pre></div>
+<div class="sourceCode" id="cb343"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb343-1"><a href="data-structures.html#cb343-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(y)</span></code></pre></div>
 <pre><code>## [1] &quot;list&quot;</code></pre>
 <p>The result is still a list. Even if we get just one element, the result of
 indexing a list with <code>[</code> is a list:</p>
-<div class="sourceCode" id="cb344"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb344-1"><a href="data-structures.html#cb344-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x[<span class="dv">1</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb345"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb345-1"><a href="data-structures.html#cb345-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x[<span class="dv">1</span>])</span></code></pre></div>
 <pre><code>## [1] &quot;list&quot;</code></pre>
 <p>Sometimes this will be exactly what we want. But what if we want to get the
 first element of <code>x</code> so that we can use it in a vectorized function? Or in a
@@ -1019,9 +1033,9 @@ called the <em>double square bracket operator</em>. The extraction operator is t
 primary way to get and set elements of lists and other containers.</p>
 <p>Unlike the indexing operator <code>[</code>, the extraction operator always discards the
 container:</p>
-<div class="sourceCode" id="cb346"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb346-1"><a href="data-structures.html#cb346-1" aria-hidden="true" tabindex="-1"></a>x[[<span class="dv">1</span>]]</span></code></pre></div>
+<div class="sourceCode" id="cb347"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb347-1"><a href="data-structures.html#cb347-1" aria-hidden="true" tabindex="-1"></a>x[[<span class="dv">1</span>]]</span></code></pre></div>
 <pre><code>## [1] 1 2 3</code></pre>
-<div class="sourceCode" id="cb348"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb348-1"><a href="data-structures.html#cb348-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x[[<span class="dv">1</span>]])</span></code></pre></div>
+<div class="sourceCode" id="cb349"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb349-1"><a href="data-structures.html#cb349-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x[[<span class="dv">1</span>]])</span></code></pre></div>
 <pre><code>## [1] &quot;numeric&quot;</code></pre>
 <p>The tradeoff is that the extraction operator can only get or set one element at
 a time. Note that the element can be a vector, as above. Because it can only
@@ -1030,14 +1044,14 @@ position or name. Blank and logical indexes are not allowed.</p>
 <p>The final difference between the index operator <code>[</code> and the extraction operator
 <code>[[</code> has to do with how they handle invalid indexes. The index operator <code>[</code>
 returns <code>NA</code> for invalid vector elements, and <code>NULL</code> for invalid list elements:</p>
-<div class="sourceCode" id="cb350"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb350-1"><a href="data-structures.html#cb350-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>)[<span class="dv">10</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb351"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb351-1"><a href="data-structures.html#cb351-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>)[<span class="dv">10</span>]</span></code></pre></div>
 <pre><code>## [1] NA</code></pre>
-<div class="sourceCode" id="cb352"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb352-1"><a href="data-structures.html#cb352-1" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">10</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb353"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb353-1"><a href="data-structures.html#cb353-1" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">10</span>]</span></code></pre></div>
 <pre><code>## $&lt;NA&gt;
 ## NULL</code></pre>
 <p>On the other hand, the extraction operator <code>[[</code> raises an error for invalid
 elements:</p>
-<div class="sourceCode" id="cb354"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb354-1"><a href="data-structures.html#cb354-1" aria-hidden="true" tabindex="-1"></a>x[[<span class="dv">10</span>]]</span></code></pre></div>
+<div class="sourceCode" id="cb355"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb355-1"><a href="data-structures.html#cb355-1" aria-hidden="true" tabindex="-1"></a>x[[<span class="dv">10</span>]]</span></code></pre></div>
 <pre><code>## Error in x[[10]]: subscript out of bounds</code></pre>
 <p>The indexing operator <code>[</code> and the extraction operator <code>[[</code> both work with any
 data structure that has elements. However, you’ll generally use the indexing
@@ -1051,7 +1065,7 @@ indexing operator <code>[</code> or the extraction operator <code>[[</code> a se
 dimension. The rows come first:</p>
 <pre><code>DATA[ROWS, COLUMNS]</code></pre>
 <p>For instance, let’s get the first 3 rows and all columns of the earnings data:</p>
-<div class="sourceCode" id="cb357"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb357-1"><a href="data-structures.html#cb357-1" aria-hidden="true" tabindex="-1"></a>earn[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, ]</span></code></pre></div>
+<div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb358-1"><a href="data-structures.html#cb358-1" aria-hidden="true" tabindex="-1"></a>earn[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, ]</span></code></pre></div>
 <pre><code>##          sex      race ethnic_origin               age year quarter n_persons
 ## 1 Both Sexes All Races   All Origins 16 years and over 2010       1  96821000
 ## 2 Both Sexes All Races   All Origins 16 years and over 2010       2  99798000
@@ -1063,21 +1077,21 @@ dimension. The rows come first:</p>
 <p>As we saw in Section <a href="data-structures.html#all-elements">2.5.1</a>, leaving an index blank means all
 elements.</p>
 <p>As another example, let’s get the 3rd and 5th row, and the 2nd and 4th column:</p>
-<div class="sourceCode" id="cb359"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb359-1"><a href="data-structures.html#cb359-1" aria-hidden="true" tabindex="-1"></a>earn[<span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">5</span>), <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>)]</span></code></pre></div>
+<div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb360-1"><a href="data-structures.html#cb360-1" aria-hidden="true" tabindex="-1"></a>earn[<span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">5</span>), <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>)]</span></code></pre></div>
 <pre><code>##        race               age
 ## 3 All Races 16 years and over
 ## 5 All Races 16 years and over</code></pre>
 <p>Mixing several different ways of indexing is allowed. So for example, we can
 get the same above, but use column names instead of positions:</p>
-<div class="sourceCode" id="cb361"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb361-1"><a href="data-structures.html#cb361-1" aria-hidden="true" tabindex="-1"></a>earn[<span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">5</span>), <span class="fu">c</span>(<span class="st">&quot;race&quot;</span>, <span class="st">&quot;age&quot;</span>)]</span></code></pre></div>
+<div class="sourceCode" id="cb362"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb362-1"><a href="data-structures.html#cb362-1" aria-hidden="true" tabindex="-1"></a>earn[<span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">5</span>), <span class="fu">c</span>(<span class="st">&quot;race&quot;</span>, <span class="st">&quot;age&quot;</span>)]</span></code></pre></div>
 <pre><code>##        race               age
 ## 3 All Races 16 years and over
 ## 5 All Races 16 years and over</code></pre>
 <p>For data frames, it’s especially common to index the rows by condition and the
 columns by name. For instance, let’s get the <code>sex</code>, <code>age</code>, and <code>n_persons</code>
 columns for all rows that pertain to women:</p>
-<div class="sourceCode" id="cb363"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb363-1"><a href="data-structures.html#cb363-1" aria-hidden="true" tabindex="-1"></a>result <span class="ot">=</span> earn[earn<span class="sc">$</span>sex <span class="sc">==</span> <span class="st">&quot;Women&quot;</span>, <span class="fu">c</span>(<span class="st">&quot;sex&quot;</span>, <span class="st">&quot;age&quot;</span>, <span class="st">&quot;n_persons&quot;</span>)]</span>
-<span id="cb363-2"><a href="data-structures.html#cb363-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(result)</span></code></pre></div>
+<div class="sourceCode" id="cb364"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb364-1"><a href="data-structures.html#cb364-1" aria-hidden="true" tabindex="-1"></a>result <span class="ot">=</span> earn[earn<span class="sc">$</span>sex <span class="sc">==</span> <span class="st">&quot;Women&quot;</span>, <span class="fu">c</span>(<span class="st">&quot;sex&quot;</span>, <span class="st">&quot;age&quot;</span>, <span class="st">&quot;n_persons&quot;</span>)]</span>
+<span id="cb364-2"><a href="data-structures.html#cb364-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(result)</span></code></pre></div>
 <pre><code>##      sex               age n_persons
 ## 89 Women 16 years and over  43794000
 ## 90 Women 16 years and over  44562000
@@ -1089,14 +1103,14 @@ columns for all rows that pertain to women:</p>
 <h4>The Drop Parameter</h4>
 <p>If you use two-dimensional indexing with <code>[</code> to select exactly one column, you
 get a vector:</p>
-<div class="sourceCode" id="cb365"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb365-1"><a href="data-structures.html#cb365-1" aria-hidden="true" tabindex="-1"></a>result <span class="ot">=</span> earn[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="dv">2</span>]</span>
-<span id="cb365-2"><a href="data-structures.html#cb365-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(result)</span></code></pre></div>
+<div class="sourceCode" id="cb366"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb366-1"><a href="data-structures.html#cb366-1" aria-hidden="true" tabindex="-1"></a>result <span class="ot">=</span> earn[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="dv">2</span>]</span>
+<span id="cb366-2"><a href="data-structures.html#cb366-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(result)</span></code></pre></div>
 <pre><code>## [1] &quot;character&quot;</code></pre>
 <p>The container is dropped, even though the indexing operator <code>[</code> usually keeps
 containers. This also occurs for matrices. You can control this behavior with
 the <code>drop</code> parameter:</p>
-<div class="sourceCode" id="cb367"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb367-1"><a href="data-structures.html#cb367-1" aria-hidden="true" tabindex="-1"></a>result <span class="ot">=</span> earn[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="dv">2</span>, drop <span class="ot">=</span> <span class="cn">FALSE</span>]</span>
-<span id="cb367-2"><a href="data-structures.html#cb367-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(result)</span></code></pre></div>
+<div class="sourceCode" id="cb368"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb368-1"><a href="data-structures.html#cb368-1" aria-hidden="true" tabindex="-1"></a>result <span class="ot">=</span> earn[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="dv">2</span>, drop <span class="ot">=</span> <span class="cn">FALSE</span>]</span>
+<span id="cb368-2"><a href="data-structures.html#cb368-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(result)</span></code></pre></div>
 <pre><code>## [1] &quot;data.frame&quot;</code></pre>
 <p>The default is <code>drop = TRUE</code>.</p>
 
