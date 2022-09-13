@@ -142,6 +142,8 @@ class(result)
 ```
 
 The default is `drop = TRUE`.
+
+
 Packages
 --------
 
