@@ -119,41 +119,6 @@ the operators and R will still compute the result. Nevertheless, putting spaces
 in your code makes it easier for you and others to read, so it's good to make
 it a habit. Put spaces around most operators, after commas, and after keywords.
 
-Comparisons are among the most common operations on vectors. The comparison
-operators are:
-
-* `<` for "less than"
-* `>` for "greater than"
-* `<=` for "less than or equal to"
-* `>=` for "greater than or equal to"
-* `==` for "equal to"
-* `!=` for "not equal to"
-
-The "equal to" operator uses two equal signs so that R can distinguish it from
-`=`, the assignment operator. Like the arithmetic operators, the comparison
-operators are vectorized.
-
-Let's look at a few examples with length-one vectors:
-
-```{r}
-1 < 3
-"a" == "b"
-3.1 == 3.1
-```
-
-When you make a comparison, R returns a _logical_ value, `TRUE` or `FALSE`, to
-indicate the result. Logical values are different from strings, so they are not
-quoted.
-
-Logical values just like most other data types. You can use them in
-computations, and you can create vectors of them. Here's some examples:
-
-```{r}
-TRUE
-c(TRUE, FALSE, FALSE)
-TRUE == FALSE
-```
-
 
 ### Variables
 
@@ -220,14 +185,85 @@ this). Writing code that's general enough to reuse across multiple problems can
 be a big time-saver in the long run. Later on, we'll see ways to make this code
 even easier to reuse.
 
+### Strings
+
+R treats anything inside single or double quotes as literal text rather than as
+an expression to evaluate. In programming jargon, a piece of literal text is
+called a _string_. You can use whichever kind of quotes you prefer, but the
+quote at the beginning of the string must match the quote at the end.
+
+```{r}
+'Hi'
+"Hello!"
+```
+
+Numbers and strings are not the same thing, so for example R considers `1`
+different from `"1"`. As a result, you can't use strings with most of R's
+arithmetic operators:
+
+```{r, error = TRUE}
+"1" + 3
+```
+
+
+### Comparisons
+
+Besides arithmetic, you can also use R to compare values. The comparison
+operators are:
+
+* `<` for "less than"
+* `>` for "greater than"
+* `<=` for "less than or equal to"
+* `>=` for "greater than or equal to"
+* `==` for "equal to"
+* `!=` for "not equal to"
+
+The "equal to" operator uses two equal signs so that R can distinguish it from
+`=`, the assignment operator.
+
+Let's look at a few examples:
+```{r}
+1.5 < 3
+"a" > "b"
+pi == 3.14
+"hi" == 'hi'
+```
+
+When you make a comparison, R returns a _logical_ value, `TRUE` or `FALSE`, to
+indicate the result. Logical values are not the same as strings, so they are
+not quoted.
+
+Logical values are values, so you can use them in other computations. For
+example:
+
+```{r}
+TRUE
+TRUE == FALSE
+```
+
+Section \@ref(logic) describes more ways to use and combine logical values.
+
+Beware that the equality operators don't always return `FALSE` when you compare
+two different types of data:
+
+```{r}
+"1" == 1
+"TRUE" <= TRUE
+"FALSE" <= TRUE
+```
+
+Section \@ref(implicit-coercion) explains why this happens, and Appendix
+\@ref(more-ways-to-compare-values) explains several other ways to compare
+values.
+
+
 ### Calling Functions
 
-R can do a lot more than just arithmetic. Most of R's features are provided
-through _functions_, pieces of reusable code. You can think of a function as a
-machine that takes some inputs and uses them to produce some output. In
-programming jargon, the inputs to a function are called _arguments_, the output
-is called the _return value_, and when we use a function, we say we're
-_calling_ the function.
+Most of R's features are provided through _functions_, pieces of reusable code.
+You can think of a function as a machine that takes some inputs and uses them
+to produce some output. In programming jargon, the inputs to a function are
+called _arguments_, the output is called the _return value_, and when we use a
+function, we say we're _calling_ the function.
 
 To call a function, write its name followed by parentheses. Put any arguments
 to the function inside the parentheses. For example, in R, the sine function is
@@ -339,11 +375,6 @@ It's always okay to put quotes around the name of the page when you use `?`,
 but they're only required if it contains non-alphabetic characters. So `?sqrt`,
 `?'sqrt'`, and `?"sqrt"` all open the documentation for `sqrt`, the square root
 function.
-
-R treats anything inside single or double quotes as literal text rather than as
-an expression to evaluate. In programming jargon, a piece of literal text is
-called a _string_. You can use whichever kind of quotes you prefer, but the
-quote at the beginning of the string must match the quote at the end. 
 
 Sometimes you might not know the name of the help page you want to look up. You
 can do a general search of R's help pages with `??` followed by a string of
@@ -663,7 +694,7 @@ and can always be avoided by using appropriate relative paths. If you call
 `setwd` with an absolute path, it also makes your code less portable to other
 computers. It's fine to use `setwd` interactively (in the R console), but avoid
 making your saved code dependent on it.
- 
+
 Another function that's useful for dealing with the working directory and file
 system is `list.files`. The `list.files` function returns the names of all of
 the files and directories inside of a directory. It accepts a path to a
@@ -912,7 +943,7 @@ dollar sign operator. The syntax is:
 ```{r, eval = FALSE}
 VARIABLE$COLUMN_NAME
 ```
- 
+
 For instance, for the earnings data, `earn$age` selects
 the `age` column, and `earn$n_persons` selects the `n_persons` column. So one
 way to compute the mean of the `n_persons` column is:
