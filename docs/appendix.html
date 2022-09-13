@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>5 Appendix | R Basics</title>
+  <meta name="description" content="5 Appendix | R Basics" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="5 Appendix | R Basics" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://ucdavisdatalab.github.io/workshop_r_basics/" />
+  
+  
+  <meta name="github-repo" content="ucdavisdatalab/workshop_r-basics" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="5 Appendix | R Basics" />
+  
+  
+  
+
+<meta name="author" content="Nick Ulle" />
+
+
+<meta name="date" content="2022-09-12" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="automating-tasks.html"/>
+<link rel="next" href="where-to-learn-more.html"/>
+<script src="libs/header-attrs-2.10/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="https://datalab.ucdavis.edu/">
+  <img src="https://datalab.ucdavis.edu/wp-content/uploads/2019/07/datalab-logo-full-color-rgb-1.png" style="height: 100%; width: 100%; object-fit: contain" />
+</a></li>
+<li><a href="./" style="font-size: 18px">R Basics</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Overview</a></li>
+<li class="chapter" data-level="1" data-path="getting-started.html"><a href="getting-started.html"><i class="fa fa-check"></i><b>1</b> Getting Started</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="getting-started.html"><a href="getting-started.html#prerequisites"><i class="fa fa-check"></i><b>1.1</b> Prerequisites</a></li>
+<li class="chapter" data-level="1.2" data-path="getting-started.html"><a href="getting-started.html#the-r-interface"><i class="fa fa-check"></i><b>1.2</b> The R Interface</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="getting-started.html"><a href="getting-started.html#variables"><i class="fa fa-check"></i><b>1.2.1</b> Variables</a></li>
+<li class="chapter" data-level="1.2.2" data-path="getting-started.html"><a href="getting-started.html#strings"><i class="fa fa-check"></i><b>1.2.2</b> Strings</a></li>
+<li class="chapter" data-level="1.2.3" data-path="getting-started.html"><a href="getting-started.html#comparisons"><i class="fa fa-check"></i><b>1.2.3</b> Comparisons</a></li>
+<li class="chapter" data-level="1.2.4" data-path="getting-started.html"><a href="getting-started.html#calling-functions"><i class="fa fa-check"></i><b>1.2.4</b> Calling Functions</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="getting-started.html"><a href="getting-started.html#getting-help"><i class="fa fa-check"></i><b>1.3</b> Getting Help</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="getting-started.html"><a href="getting-started.html#when-something-goes-wrong"><i class="fa fa-check"></i><b>1.3.1</b> When Something Goes Wrong</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="getting-started.html"><a href="getting-started.html#file-systems"><i class="fa fa-check"></i><b>1.4</b> File Systems</a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path="getting-started.html"><a href="getting-started.html#absolute-relative-paths"><i class="fa fa-check"></i><b>1.4.1</b> Absolute &amp; Relative Paths</a></li>
+<li class="chapter" data-level="1.4.2" data-path="getting-started.html"><a href="getting-started.html#r-scripts"><i class="fa fa-check"></i><b>1.4.2</b> R Scripts</a></li>
+<li class="chapter" data-level="1.4.3" data-path="getting-started.html"><a href="getting-started.html#the-working-directory"><i class="fa fa-check"></i><b>1.4.3</b> The Working Directory</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="getting-started.html"><a href="getting-started.html#reading-files"><i class="fa fa-check"></i><b>1.5</b> Reading Files</a>
+<ul>
+<li class="chapter" data-level="1.5.1" data-path="getting-started.html"><a href="getting-started.html#hello-data"><i class="fa fa-check"></i><b>1.5.1</b> Hello, Data!</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="getting-started.html"><a href="getting-started.html#data-frames"><i class="fa fa-check"></i><b>1.6</b> Data Frames</a>
+<ul>
+<li class="chapter" data-level="1.6.1" data-path="getting-started.html"><a href="getting-started.html#summarizing-data"><i class="fa fa-check"></i><b>1.6.1</b> Summarizing Data</a></li>
+<li class="chapter" data-level="1.6.2" data-path="getting-started.html"><a href="getting-started.html#selecting-columns"><i class="fa fa-check"></i><b>1.6.2</b> Selecting Columns</a></li>
+</ul></li>
+<li class="chapter" data-level="1.7" data-path="getting-started.html"><a href="getting-started.html#exercises"><i class="fa fa-check"></i><b>1.7</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="data-structures.html"><a href="data-structures.html"><i class="fa fa-check"></i><b>2</b> Data Structures</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="data-structures.html"><a href="data-structures.html#vectors"><i class="fa fa-check"></i><b>2.1</b> Vectors</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="data-structures.html"><a href="data-structures.html#creating-vectors"><i class="fa fa-check"></i><b>2.1.1</b> Creating Vectors</a></li>
+<li class="chapter" data-level="2.1.2" data-path="data-structures.html"><a href="data-structures.html#indexing-vectors"><i class="fa fa-check"></i><b>2.1.2</b> Indexing Vectors</a></li>
+<li class="chapter" data-level="2.1.3" data-path="data-structures.html"><a href="data-structures.html#vectorization"><i class="fa fa-check"></i><b>2.1.3</b> Vectorization</a></li>
+<li class="chapter" data-level="2.1.4" data-path="data-structures.html"><a href="data-structures.html#recycling"><i class="fa fa-check"></i><b>2.1.4</b> Recycling</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="data-structures.html"><a href="data-structures.html#data-types-classes"><i class="fa fa-check"></i><b>2.2</b> Data Types &amp; Classes</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="data-structures.html"><a href="data-structures.html#lists"><i class="fa fa-check"></i><b>2.2.1</b> Lists</a></li>
+<li class="chapter" data-level="2.2.2" data-path="data-structures.html"><a href="data-structures.html#implicit-coercion"><i class="fa fa-check"></i><b>2.2.2</b> Implicit Coercion</a></li>
+<li class="chapter" data-level="2.2.3" data-path="data-structures.html"><a href="data-structures.html#matrices-arrays"><i class="fa fa-check"></i><b>2.2.3</b> Matrices &amp; Arrays</a></li>
+<li class="chapter" data-level="2.2.4" data-path="data-structures.html"><a href="data-structures.html#factors"><i class="fa fa-check"></i><b>2.2.4</b> Factors</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="data-structures.html"><a href="data-structures.html#special-values"><i class="fa fa-check"></i><b>2.3</b> Special Values</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="data-structures.html"><a href="data-structures.html#missing-values"><i class="fa fa-check"></i><b>2.3.1</b> Missing Values</a></li>
+<li class="chapter" data-level="2.3.2" data-path="data-structures.html"><a href="data-structures.html#infinity"><i class="fa fa-check"></i><b>2.3.2</b> Infinity</a></li>
+<li class="chapter" data-level="2.3.3" data-path="data-structures.html"><a href="data-structures.html#not-a-number"><i class="fa fa-check"></i><b>2.3.3</b> Not a Number</a></li>
+<li class="chapter" data-level="2.3.4" data-path="data-structures.html"><a href="data-structures.html#null"><i class="fa fa-check"></i><b>2.3.4</b> Null</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="data-structures.html"><a href="data-structures.html#indexing"><i class="fa fa-check"></i><b>2.4</b> Indexing</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="data-structures.html"><a href="data-structures.html#all-elements"><i class="fa fa-check"></i><b>2.4.1</b> All Elements</a></li>
+<li class="chapter" data-level="2.4.2" data-path="data-structures.html"><a href="data-structures.html#by-position"><i class="fa fa-check"></i><b>2.4.2</b> By Position</a></li>
+<li class="chapter" data-level="2.4.3" data-path="data-structures.html"><a href="data-structures.html#by-name"><i class="fa fa-check"></i><b>2.4.3</b> By Name</a></li>
+<li class="chapter" data-level="2.4.4" data-path="data-structures.html"><a href="data-structures.html#by-condition"><i class="fa fa-check"></i><b>2.4.4</b> By Condition</a></li>
+<li class="chapter" data-level="2.4.5" data-path="data-structures.html"><a href="data-structures.html#logic"><i class="fa fa-check"></i><b>2.4.5</b> Logic</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="data-structures.html"><a href="data-structures.html#exercises-1"><i class="fa fa-check"></i><b>2.5</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="exploring-data.html"><a href="exploring-data.html"><i class="fa fa-check"></i><b>3</b> Exploring Data</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="exploring-data.html"><a href="exploring-data.html#indexing-data-frames"><i class="fa fa-check"></i><b>3.1</b> Indexing Data Frames</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="exploring-data.html"><a href="exploring-data.html#indexing-lists"><i class="fa fa-check"></i><b>3.1.1</b> Indexing Lists</a></li>
+<li class="chapter" data-level="3.1.2" data-path="exploring-data.html"><a href="exploring-data.html#two-dimensional-indexing"><i class="fa fa-check"></i><b>3.1.2</b> Two-dimensional Indexing</a></li>
+<li class="chapter" data-level="3.1.3" data-path="exploring-data.html"><a href="exploring-data.html#the-drop-parameter"><i class="fa fa-check"></i><b>3.1.3</b> The <code>drop</code> Parameter</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="exploring-data.html"><a href="exploring-data.html#packages"><i class="fa fa-check"></i><b>3.2</b> Packages</a></li>
+<li class="chapter" data-level="3.3" data-path="exploring-data.html"><a href="exploring-data.html#data-visualization"><i class="fa fa-check"></i><b>3.3</b> Data Visualization</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="exploring-data.html"><a href="exploring-data.html#layer-1-data"><i class="fa fa-check"></i><b>3.3.1</b> Layer 1: Data</a></li>
+<li class="chapter" data-level="3.3.2" data-path="exploring-data.html"><a href="exploring-data.html#layer-2-geometry"><i class="fa fa-check"></i><b>3.3.2</b> Layer 2: Geometry</a></li>
+<li class="chapter" data-level="3.3.3" data-path="exploring-data.html"><a href="exploring-data.html#layer-3-aesthetics"><i class="fa fa-check"></i><b>3.3.3</b> Layer 3: Aesthetics</a></li>
+<li class="chapter" data-level="3.3.4" data-path="exploring-data.html"><a href="exploring-data.html#layer-4-scales"><i class="fa fa-check"></i><b>3.3.4</b> Layer 4: Scales</a></li>
+<li class="chapter" data-level="3.3.5" data-path="exploring-data.html"><a href="exploring-data.html#saving-plots"><i class="fa fa-check"></i><b>3.3.5</b> Saving Plots</a></li>
+<li class="chapter" data-level="3.3.6" data-path="exploring-data.html"><a href="exploring-data.html#example-bar-plot"><i class="fa fa-check"></i><b>3.3.6</b> Example: Bar Plot</a></li>
+<li class="chapter" data-level="3.3.7" data-path="exploring-data.html"><a href="exploring-data.html#visualization-design"><i class="fa fa-check"></i><b>3.3.7</b> Visualization Design</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="exploring-data.html"><a href="exploring-data.html#apply-functions"><i class="fa fa-check"></i><b>3.4</b> Apply Functions</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="exploring-data.html"><a href="exploring-data.html#the-sapply-function"><i class="fa fa-check"></i><b>3.4.1</b> The <code>sapply</code> Function</a></li>
+<li class="chapter" data-level="3.4.2" data-path="exploring-data.html"><a href="exploring-data.html#the-split-apply-pattern"><i class="fa fa-check"></i><b>3.4.2</b> The Split-Apply Pattern</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="exploring-data.html"><a href="exploring-data.html#exercises-2"><i class="fa fa-check"></i><b>3.5</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="automating-tasks.html"><a href="automating-tasks.html"><i class="fa fa-check"></i><b>4</b> Automating Tasks</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="automating-tasks.html"><a href="automating-tasks.html#conditional-expressions"><i class="fa fa-check"></i><b>4.1</b> Conditional Expressions</a></li>
+<li class="chapter" data-level="4.2" data-path="automating-tasks.html"><a href="automating-tasks.html#functions"><i class="fa fa-check"></i><b>4.2</b> Functions</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="automating-tasks.html"><a href="automating-tasks.html#returning-values"><i class="fa fa-check"></i><b>4.2.1</b> Returning Values</a></li>
+<li class="chapter" data-level="4.2.2" data-path="automating-tasks.html"><a href="automating-tasks.html#planning-your-functions"><i class="fa fa-check"></i><b>4.2.2</b> Planning Your Functions</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="automating-tasks.html"><a href="automating-tasks.html#loops"><i class="fa fa-check"></i><b>4.3</b> Loops</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="automating-tasks.html"><a href="automating-tasks.html#for-loops"><i class="fa fa-check"></i><b>4.3.1</b> For-loops</a></li>
+<li class="chapter" data-level="4.3.2" data-path="automating-tasks.html"><a href="automating-tasks.html#while-loops"><i class="fa fa-check"></i><b>4.3.2</b> While-loops</a></li>
+<li class="chapter" data-level="4.3.3" data-path="automating-tasks.html"><a href="automating-tasks.html#saving-multiple-results"><i class="fa fa-check"></i><b>4.3.3</b> Saving Multiple Results</a></li>
+<li class="chapter" data-level="4.3.4" data-path="automating-tasks.html"><a href="automating-tasks.html#break-next"><i class="fa fa-check"></i><b>4.3.4</b> Break &amp; Next</a></li>
+<li class="chapter" data-level="4.3.5" data-path="automating-tasks.html"><a href="automating-tasks.html#example-fibonacci"><i class="fa fa-check"></i><b>4.3.5</b> Example: Fibonacci</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="automating-tasks.html"><a href="automating-tasks.html#planning-for-iteration"><i class="fa fa-check"></i><b>4.4</b> Planning for Iteration</a></li>
+<li class="chapter" data-level="4.5" data-path="automating-tasks.html"><a href="automating-tasks.html#exercises-3"><i class="fa fa-check"></i><b>4.5</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i><b>5</b> Appendix</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="appendix.html"><a href="appendix.html#more-ways-to-compare-values"><i class="fa fa-check"></i><b>5.1</b> More Ways to Compare Values</a></li>
+<li class="chapter" data-level="5.2" data-path="appendix.html"><a href="appendix.html#variable-scope-lookup"><i class="fa fa-check"></i><b>5.2</b> Variable Scope &amp; Lookup</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="appendix.html"><a href="appendix.html#local-variables"><i class="fa fa-check"></i><b>5.2.1</b> Local Variables</a></li>
+<li class="chapter" data-level="5.2.2" data-path="appendix.html"><a href="appendix.html#lexical-scoping"><i class="fa fa-check"></i><b>5.2.2</b> Lexical Scoping</a></li>
+<li class="chapter" data-level="5.2.3" data-path="appendix.html"><a href="appendix.html#dynamic-lookup"><i class="fa fa-check"></i><b>5.2.3</b> Dynamic Lookup</a></li>
+<li class="chapter" data-level="5.2.4" data-path="appendix.html"><a href="appendix.html#summary"><i class="fa fa-check"></i><b>5.2.4</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="appendix.html"><a href="appendix.html#string-processing"><i class="fa fa-check"></i><b>5.3</b> String Processing</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="appendix.html"><a href="appendix.html#splitting-strings"><i class="fa fa-check"></i><b>5.3.1</b> Splitting Strings</a></li>
+<li class="chapter" data-level="5.3.2" data-path="appendix.html"><a href="appendix.html#replacing-parts-of-strings"><i class="fa fa-check"></i><b>5.3.2</b> Replacing Parts of Strings</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="appendix.html"><a href="appendix.html#date-processing"><i class="fa fa-check"></i><b>5.4</b> Date Processing</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="where-to-learn-more.html"><a href="where-to-learn-more.html"><i class="fa fa-check"></i>Where to Learn More</a></li>
+<li class="chapter" data-level="" data-path="acknowledgements.html"><a href="acknowledgements.html"><i class="fa fa-check"></i>Acknowledgements</a></li>
+<li class="chapter" data-level="" data-path="assessment.html"><a href="assessment.html"><i class="fa fa-check"></i>Assessment</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R Basics</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="appendix" class="section level1" number="5">
+<h1><span class="header-section-number">5</span> Appendix</h1>
+<div id="more-ways-to-compare-values" class="section level2" number="5.1">
+<h2><span class="header-section-number">5.1</span> More Ways to Compare Values</h2>
+<ul>
+<li><code>%in%</code> for containment (explained below)</li>
+</ul>
+<p>Now let’s see what happens when we compare longer vectors:</p>
+<div class="sourceCode" id="cb511"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb511-1"><a href="appendix.html#cb511-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>) <span class="sc">&lt;</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="sc">-</span><span class="dv">3</span>)</span></code></pre></div>
+<pre><code>## [1] FALSE  TRUE FALSE</code></pre>
+<div class="sourceCode" id="cb513"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb513-1"><a href="appendix.html#cb513-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="st">&quot;he&quot;</span>, <span class="st">&quot;saw&quot;</span>, <span class="st">&quot;her&quot;</span>) <span class="sc">==</span> <span class="fu">c</span>(<span class="st">&quot;she&quot;</span>, <span class="st">&quot;saw&quot;</span>, <span class="st">&quot;him&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] FALSE  TRUE FALSE</code></pre>
+<p>Since the comparison operators are all vectorized, the elements of the vectors
+are compared element-by-element, and R returns a logical value for each pair.</p>
+<p>What if you want to test whether all the elements in a vector are equal (or
+unequal)? There are several ways to do this. One is to use the <code>all</code> function
+on the result of the comparison. The <code>all</code> function takes a vector of logical
+values and returns <code>TRUE</code> if all of them are <code>TRUE</code>, and returns <code>FALSE</code>
+otherwise:</p>
+<div class="sourceCode" id="cb515"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb515-1"><a href="appendix.html#cb515-1" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>) <span class="sc">&lt;</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="sc">-</span><span class="dv">3</span>))</span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<p>The related <code>any</code> function returns <code>TRUE</code> if any one element is <code>TRUE</code>, and
+returns <code>FALSE</code> otherwise:</p>
+<div class="sourceCode" id="cb517"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb517-1"><a href="appendix.html#cb517-1" aria-hidden="true" tabindex="-1"></a><span class="fu">any</span>(<span class="fu">c</span>(<span class="st">&quot;hi&quot;</span>, <span class="st">&quot;hello&quot;</span>) <span class="sc">==</span> <span class="fu">c</span>(<span class="st">&quot;hi&quot;</span>, <span class="st">&quot;bye&quot;</span>))</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<p>There are two more ways to test whether objects are equal:</p>
+<ol style="list-style-type: decimal">
+<li><p>The <code>all.equal</code> function tests whether objects are equal up to some
+acceptable difference called the <em>tolerance</em>. You should generally use
+<code>all.equal</code> rather than <code>==</code> to compare decimal numbers. Computer
+representations for decimal numbers are inherently imprecise, so comparison
+using a (small) tolerance is often necessary.</p></li>
+<li><p>The <code>identical</code> function checks whether objects are completely identical,
+including their metadata (names, dimensions, and so on). Use this to compare
+non-vector objects such as data frames. This function also works for
+vectors, but most of the time <code>==</code> is sufficient.</p></li>
+</ol>
+<p>Another common comparison is to check whether elements of one vector are
+contained in another vector at any position. For instance, suppose you want to
+check whether <code>1</code> or <code>2</code> appear anywhere in a longer vector <code>x</code>. Here’s how to
+do it:</p>
+<div class="sourceCode" id="cb519"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb519-1"><a href="appendix.html#cb519-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">7</span>, <span class="dv">3</span>, <span class="dv">7</span>)</span>
+<span id="cb519-2"><a href="appendix.html#cb519-2" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>) <span class="sc">%in%</span> x</span></code></pre></div>
+<pre><code>## [1] FALSE  TRUE</code></pre>
+<p>R returns <code>FALSE</code> for the <code>1</code> because there’s no <code>1</code> in <code>x</code>, and returns <code>TRUE</code>
+for the <code>2</code> because there is a <code>2</code> in <code>x</code>.</p>
+<p>Notice that this is different from comparing with <code>==</code>. If we use <code>==</code>, the
+shorter vector is recycled until its length matches the longer one, and then
+compared element-by-element. For the example, this means only the elements at
+odd-numbered positions are compared to <code>1</code>, and only the elements at
+even-numbered positions are compared to <code>2</code>:</p>
+<div class="sourceCode" id="cb521"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb521-1"><a href="appendix.html#cb521-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>) <span class="sc">==</span> x</span></code></pre></div>
+<pre><code>## [1] FALSE FALSE FALSE FALSE FALSE FALSE</code></pre>
+<p>Finally, new programmers sometimes incorrectly think they need to append <code>== TRUE</code> to their comparisons. This is redundant, makes your code harder to
+understand, and wastes computational time. Comparisons already return logical
+values. If the result of the comparison is <code>TRUE</code>, then <code>TRUE == TRUE</code> is again
+just <code>TRUE</code>. If the result is <code>FALSE</code>, then <code>FALSE == TRUE</code> is again just
+<code>FALSE</code>. Likewise, if you want to invert a condition, choose an appropriate
+operator rather than appending <code>== FALSE</code>.</p>
+</div>
+<div id="variable-scope-lookup" class="section level2" number="5.2">
+<h2><span class="header-section-number">5.2</span> Variable Scope &amp; Lookup</h2>
+<div id="local-variables" class="section level3" number="5.2.1">
+<h3><span class="header-section-number">5.2.1</span> Local Variables</h3>
+<p>A variable’s <em>scope</em> is the section of code where it exists and is accessible.
+The <code>exists</code> function checks whether a variable is in scope:</p>
+<div class="sourceCode" id="cb523"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb523-1"><a href="appendix.html#cb523-1" aria-hidden="true" tabindex="-1"></a><span class="fu">exists</span>(<span class="st">&quot;zz&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb525"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb525-1"><a href="appendix.html#cb525-1" aria-hidden="true" tabindex="-1"></a>zz <span class="ot">=</span> <span class="dv">3</span></span>
+<span id="cb525-2"><a href="appendix.html#cb525-2" aria-hidden="true" tabindex="-1"></a><span class="fu">exists</span>(<span class="st">&quot;zz&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<p>When you create a function, you create a new scope. Variables defined inside of
+a function are <em>local</em> to the function. Local variables cannot be accessed from
+outside:</p>
+<div class="sourceCode" id="cb527"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb527-1"><a href="appendix.html#cb527-1" aria-hidden="true" tabindex="-1"></a>rescale <span class="ot">=</span> <span class="cf">function</span>(x, center, scale) {</span>
+<span id="cb527-2"><a href="appendix.html#cb527-2" aria-hidden="true" tabindex="-1"></a>  centered <span class="ot">=</span> x <span class="sc">-</span> center</span>
+<span id="cb527-3"><a href="appendix.html#cb527-3" aria-hidden="true" tabindex="-1"></a>  centered <span class="sc">/</span> scale</span>
+<span id="cb527-4"><a href="appendix.html#cb527-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb527-5"><a href="appendix.html#cb527-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb527-6"><a href="appendix.html#cb527-6" aria-hidden="true" tabindex="-1"></a>centered</span></code></pre></div>
+<pre><code>## Error in eval(expr, envir, enclos): object &#39;centered&#39; not found</code></pre>
+<div class="sourceCode" id="cb529"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb529-1"><a href="appendix.html#cb529-1" aria-hidden="true" tabindex="-1"></a><span class="fu">exists</span>(<span class="st">&quot;centered&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<p>Local variables are reset each time the function is called:</p>
+<div class="sourceCode" id="cb531"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb531-1"><a href="appendix.html#cb531-1" aria-hidden="true" tabindex="-1"></a>f <span class="ot">=</span> <span class="cf">function</span>() {</span>
+<span id="cb531-2"><a href="appendix.html#cb531-2" aria-hidden="true" tabindex="-1"></a>  is_z_in_scope <span class="ot">=</span> <span class="fu">exists</span>(<span class="st">&quot;z&quot;</span>)</span>
+<span id="cb531-3"><a href="appendix.html#cb531-3" aria-hidden="true" tabindex="-1"></a>  z <span class="ot">=</span> <span class="dv">42</span></span>
+<span id="cb531-4"><a href="appendix.html#cb531-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb531-5"><a href="appendix.html#cb531-5" aria-hidden="true" tabindex="-1"></a>  is_z_in_scope</span>
+<span id="cb531-6"><a href="appendix.html#cb531-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb531-7"><a href="appendix.html#cb531-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb531-8"><a href="appendix.html#cb531-8" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>()</span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb533"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb533-1"><a href="appendix.html#cb533-1" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>()</span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+</div>
+<div id="lexical-scoping" class="section level3" number="5.2.2">
+<h3><span class="header-section-number">5.2.2</span> Lexical Scoping</h3>
+<p>A function can use variables defined outside (non-local), but only if those
+variables are in scope where the function was <strong>defined</strong>. This property is
+called <em>lexical scoping</em>.</p>
+<p>Let’s see how this works in practice. First, we’ll define a variable <code>cats</code> and
+then define a function <code>get_cats</code> in the same place (the top level, not inside
+any functions). As a result, the <code>cats</code> variable is in scope inside of the
+<code>get_cats</code> function:</p>
+<div class="sourceCode" id="cb535"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb535-1"><a href="appendix.html#cb535-1" aria-hidden="true" tabindex="-1"></a>cats <span class="ot">=</span> <span class="dv">3</span></span>
+<span id="cb535-2"><a href="appendix.html#cb535-2" aria-hidden="true" tabindex="-1"></a>get_cats <span class="ot">=</span> <span class="cf">function</span>() cats</span>
+<span id="cb535-3"><a href="appendix.html#cb535-3" aria-hidden="true" tabindex="-1"></a><span class="fu">get_cats</span>()</span></code></pre></div>
+<pre><code>## [1] 3</code></pre>
+<p>Now let’s define a variable <code>dogs</code> inside of a function <code>create_dogs</code>. We’ll
+also define a function <code>get_dogs</code> at the top level. The variable <code>dogs</code> is not
+in scope at the top level, so it’s not in scope inside of the <code>get_dogs</code>
+function:</p>
+<div class="sourceCode" id="cb537"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb537-1"><a href="appendix.html#cb537-1" aria-hidden="true" tabindex="-1"></a>create_dogs <span class="ot">=</span> <span class="cf">function</span>() {</span>
+<span id="cb537-2"><a href="appendix.html#cb537-2" aria-hidden="true" tabindex="-1"></a>  dogs <span class="ot">=</span> <span class="st">&quot;hello&quot;</span></span>
+<span id="cb537-3"><a href="appendix.html#cb537-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb537-4"><a href="appendix.html#cb537-4" aria-hidden="true" tabindex="-1"></a>get_dogs <span class="ot">=</span> <span class="cf">function</span>() dogs</span>
+<span id="cb537-5"><a href="appendix.html#cb537-5" aria-hidden="true" tabindex="-1"></a><span class="fu">create_dogs</span>()</span>
+<span id="cb537-6"><a href="appendix.html#cb537-6" aria-hidden="true" tabindex="-1"></a><span class="fu">get_dogs</span>()</span></code></pre></div>
+<pre><code>## Error in get_dogs(): object &#39;dogs&#39; not found</code></pre>
+<p>Variables defined directly in the R console are <em>global</em> and available to any
+function.</p>
+<p>Local variables <em>mask</em> (hide) non-local variables with the same name:</p>
+<div class="sourceCode" id="cb539"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb539-1"><a href="appendix.html#cb539-1" aria-hidden="true" tabindex="-1"></a>get_parrot <span class="ot">=</span> <span class="cf">function</span>() {</span>
+<span id="cb539-2"><a href="appendix.html#cb539-2" aria-hidden="true" tabindex="-1"></a>  parrot <span class="ot">=</span> <span class="dv">3</span></span>
+<span id="cb539-3"><a href="appendix.html#cb539-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb539-4"><a href="appendix.html#cb539-4" aria-hidden="true" tabindex="-1"></a>  parrot</span>
+<span id="cb539-5"><a href="appendix.html#cb539-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb539-6"><a href="appendix.html#cb539-6" aria-hidden="true" tabindex="-1"></a>parrot <span class="ot">=</span> <span class="dv">42</span></span>
+<span id="cb539-7"><a href="appendix.html#cb539-7" aria-hidden="true" tabindex="-1"></a><span class="fu">get_parrot</span>()</span></code></pre></div>
+<pre><code>## [1] 3</code></pre>
+<p>There’s one exception to this rule. We often use variables that refer to
+functions in calls:</p>
+<div class="sourceCode" id="cb541"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb541-1"><a href="appendix.html#cb541-1" aria-hidden="true" tabindex="-1"></a><span class="co">#mean()</span></span></code></pre></div>
+<p>In this case, the variable must refer to a function, so R ignores local
+variables that aren’t functions. For example:</p>
+<div class="sourceCode" id="cb542"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb542-1"><a href="appendix.html#cb542-1" aria-hidden="true" tabindex="-1"></a>my_mean <span class="ot">=</span> <span class="cf">function</span>() {</span>
+<span id="cb542-2"><a href="appendix.html#cb542-2" aria-hidden="true" tabindex="-1"></a>  mean <span class="ot">=</span> <span class="dv">0</span></span>
+<span id="cb542-3"><a href="appendix.html#cb542-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb542-4"><a href="appendix.html#cb542-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>))</span>
+<span id="cb542-5"><a href="appendix.html#cb542-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb542-6"><a href="appendix.html#cb542-6" aria-hidden="true" tabindex="-1"></a><span class="fu">my_mean</span>()</span></code></pre></div>
+<pre><code>## [1] 2</code></pre>
+<div class="sourceCode" id="cb544"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb544-1"><a href="appendix.html#cb544-1" aria-hidden="true" tabindex="-1"></a>my_get_cats <span class="ot">=</span> <span class="cf">function</span>() {</span>
+<span id="cb544-2"><a href="appendix.html#cb544-2" aria-hidden="true" tabindex="-1"></a>  get_cats <span class="ot">=</span> <span class="dv">10</span></span>
+<span id="cb544-3"><a href="appendix.html#cb544-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb544-4"><a href="appendix.html#cb544-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">get_cats</span>()</span>
+<span id="cb544-5"><a href="appendix.html#cb544-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb544-6"><a href="appendix.html#cb544-6" aria-hidden="true" tabindex="-1"></a><span class="fu">my_get_cats</span>()</span></code></pre></div>
+<pre><code>## [1] 3</code></pre>
+</div>
+<div id="dynamic-lookup" class="section level3" number="5.2.3">
+<h3><span class="header-section-number">5.2.3</span> Dynamic Lookup</h3>
+<p>Variable lookup happens when a function is <strong>called</strong>, not when it’s defined.
+This is called <em>dynamic lookup</em>.</p>
+<p>For example, the result from <code>get_cats</code>, which accesses the global variable
+<code>cats</code>, changes if we change the value of <code>cats</code>:</p>
+<div class="sourceCode" id="cb546"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb546-1"><a href="appendix.html#cb546-1" aria-hidden="true" tabindex="-1"></a>cats <span class="ot">=</span> <span class="dv">10</span></span>
+<span id="cb546-2"><a href="appendix.html#cb546-2" aria-hidden="true" tabindex="-1"></a><span class="fu">get_cats</span>()</span></code></pre></div>
+<pre><code>## [1] 10</code></pre>
+<div class="sourceCode" id="cb548"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb548-1"><a href="appendix.html#cb548-1" aria-hidden="true" tabindex="-1"></a>cats <span class="ot">=</span> <span class="dv">20</span></span>
+<span id="cb548-2"><a href="appendix.html#cb548-2" aria-hidden="true" tabindex="-1"></a><span class="fu">get_cats</span>()</span></code></pre></div>
+<pre><code>## [1] 20</code></pre>
+</div>
+<div id="summary" class="section level3" number="5.2.4">
+<h3><span class="header-section-number">5.2.4</span> Summary</h3>
+<p>This section covered a lot of details about R’s rules for variable scope and
+lookup. Here are the key takeaways:</p>
+<ul>
+<li><p>Function definitions (or <code>local()</code>) create a new scope.</p></li>
+<li><p>Local variables</p>
+<ul>
+<li>Are private</li>
+<li>Get reset for each call</li>
+<li>Mask non-local variables (exception: function calls)</li>
+</ul></li>
+<li><p><em>Lexical scoping</em>: where a function is <strong>defined</strong> determines which non-local
+variables are in scope.</p></li>
+<li><p><em>Dynamic lookup</em>: when a function is <strong>called</strong> determines values of
+non-local variables.</p></li>
+</ul>
+</div>
+</div>
+<div id="string-processing" class="section level2" number="5.3">
+<h2><span class="header-section-number">5.3</span> String Processing</h2>
+<p>So far, we’ve mostly worked with numbers or categories that are ready to use
+for data analysis. In practice, data sets often require some cleaning before or
+during data analysis. One common data cleaning task is editing or extracting
+parts of strings.</p>
+<p>We’ll use the stringr package to process strings. Like ggplot2 (Section
+<a href="exploring-data.html#data-visualization">3.3</a>), the package is part of the <a href="https://www.tidyverse.org/">Tidyverse</a>. R
+also has built-in functions for string processing. The main advantage of
+stringr is that its functions use a common set of parameters, so they’re easier
+to learn and remember.</p>
+<p>stringr has detailed <a href="https://stringr.tidyverse.org/">documentation</a> and also a
+<a href="https://github.com/rstudio/cheatsheets/blob/master/strings.pdf">cheatsheet</a>.</p>
+<p>The first time you use stringr, you’ll have to install it with
+<code>install.packages</code> (the same as any other package). Then you can load the
+package with the <code>library</code> function:</p>
+<div class="sourceCode" id="cb550"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb550-1"><a href="appendix.html#cb550-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;stringr&quot;)</span></span>
+<span id="cb550-2"><a href="appendix.html#cb550-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;stringr&quot;</span>)</span></code></pre></div>
+<p>The typical syntax of a stringr function is:</p>
+<pre><code>str_NAME(string, pattern, ...)</code></pre>
+<p>Where:</p>
+<ul>
+<li><code>NAME</code> describes what the function does</li>
+<li><code>string</code> is the string to search within or transform</li>
+<li><code>pattern</code> is the pattern to search for</li>
+<li><code>...</code> is additional, function-specific arguments</li>
+</ul>
+<p>The <code>str_detect</code> function detects whether the pattern appears within the
+string. Here’s an example:</p>
+<div class="sourceCode" id="cb552"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb552-1"><a href="appendix.html#cb552-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_detect</span>(<span class="st">&quot;hello&quot;</span>, <span class="st">&quot;el&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb554"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb554-1"><a href="appendix.html#cb554-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_detect</span>(<span class="st">&quot;hello&quot;</span>, <span class="st">&quot;ol&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<p>Most of the stringr functions are vectorized in the <code>string</code> parameter. For
+instance:</p>
+<div class="sourceCode" id="cb556"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb556-1"><a href="appendix.html#cb556-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_detect</span>(<span class="fu">c</span>(<span class="st">&quot;hello&quot;</span>, <span class="st">&quot;goodbye&quot;</span>, <span class="st">&quot;lo&quot;</span>), <span class="st">&quot;lo&quot;</span>)</span></code></pre></div>
+<pre><code>## [1]  TRUE FALSE  TRUE</code></pre>
+<p>Most of the stringr functions also have support for <a href="https://en.wikipedia.org/wiki/Regular_expression"><em>regular
+expressions</em></a>, a powerful language for describing patterns. Several
+punctuation characters, such as <code>.</code> and <code>?</code> have special meanings in the
+regular expressions language. You can disable these special meanings by putting
+the pattern in a call to <code>fixed</code>:</p>
+<div class="sourceCode" id="cb558"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb558-1"><a href="appendix.html#cb558-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_detect</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;.&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb560"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb560-1"><a href="appendix.html#cb560-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_detect</span>(<span class="st">&quot;a&quot;</span>, <span class="fu">fixed</span>(<span class="st">&quot;.&quot;</span>))</span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<p>You can learn more about regular expressions <a href="https://r4ds.had.co.nz/strings.html#matching-patterns-with-regular-expressions">here</a>.</p>
+<p>There are a lot of stringr functions. We’ll focus on two that are especially
+important, and some of their variants:</p>
+<ul>
+<li><code>str_split</code></li>
+<li><code>str_replace</code></li>
+</ul>
+<p>You can find a complete list of stringr functions, with examples, in the
+documentation.</p>
+<div id="splitting-strings" class="section level3" number="5.3.1">
+<h3><span class="header-section-number">5.3.1</span> Splitting Strings</h3>
+<p>The <code>str_split</code> function splits the string at each position that matches the
+pattern. The characters that match are thrown away.</p>
+<p>For example, suppose we want to split a sentence into words. Since there’s a
+space between each word, we can use a space as the pattern:</p>
+<div class="sourceCode" id="cb562"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb562-1"><a href="appendix.html#cb562-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="st">&quot;The students in this workshop are great!&quot;</span></span>
+<span id="cb562-2"><a href="appendix.html#cb562-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb562-3"><a href="appendix.html#cb562-3" aria-hidden="true" tabindex="-1"></a>result <span class="ot">=</span> <span class="fu">str_split</span>(x, <span class="st">&quot; &quot;</span>)</span>
+<span id="cb562-4"><a href="appendix.html#cb562-4" aria-hidden="true" tabindex="-1"></a>result</span></code></pre></div>
+<pre><code>## [[1]]
+## [1] &quot;The&quot;      &quot;students&quot; &quot;in&quot;       &quot;this&quot;     &quot;workshop&quot; &quot;are&quot;      &quot;great!&quot;</code></pre>
+<p>The <code>str_split</code> function always returns a list with one element for each input
+string. Here the list only has one element because <code>x</code> only has one element. We
+can get the first element with:</p>
+<div class="sourceCode" id="cb564"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb564-1"><a href="appendix.html#cb564-1" aria-hidden="true" tabindex="-1"></a>result[[<span class="dv">1</span>]]</span></code></pre></div>
+<pre><code>## [1] &quot;The&quot;      &quot;students&quot; &quot;in&quot;       &quot;this&quot;     &quot;workshop&quot; &quot;are&quot;      &quot;great!&quot;</code></pre>
+<p>We have to use the extraction operator <code>[[</code> here because <code>x</code> is a list (for a
+vector, we could use the indexing operator <code>[</code> instead). Notice that in the
+printout for <code>result</code>, R gives us a hint that we should use <code>[[</code> by printing
+<code>[[1]]</code>.</p>
+<p>To see why the function returns a list, consider what happens if we try to
+split two different sentences at once:</p>
+<div class="sourceCode" id="cb566"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb566-1"><a href="appendix.html#cb566-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(x, <span class="st">&quot;Are you listening?&quot;</span>)</span>
+<span id="cb566-2"><a href="appendix.html#cb566-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb566-3"><a href="appendix.html#cb566-3" aria-hidden="true" tabindex="-1"></a>result <span class="ot">=</span> <span class="fu">str_split</span>(x, <span class="st">&quot; &quot;</span>)</span>
+<span id="cb566-4"><a href="appendix.html#cb566-4" aria-hidden="true" tabindex="-1"></a>result[[<span class="dv">1</span>]]</span></code></pre></div>
+<pre><code>## [1] &quot;The&quot;      &quot;students&quot; &quot;in&quot;       &quot;this&quot;     &quot;workshop&quot; &quot;are&quot;      &quot;great!&quot;</code></pre>
+<div class="sourceCode" id="cb568"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb568-1"><a href="appendix.html#cb568-1" aria-hidden="true" tabindex="-1"></a>result[[<span class="dv">2</span>]]</span></code></pre></div>
+<pre><code>## [1] &quot;Are&quot;        &quot;you&quot;        &quot;listening?&quot;</code></pre>
+<p>Each sentence has a different number of words, so the vectors in the result
+have different lengths. So a list is the only way to store both.</p>
+<p>The <code>str_split_fixed</code> function is almost the same as <code>str_split</code>, but takes a
+third argument for the maximum number of splits to make. Because the number of
+splits is fixed, the function can return the result in a matrix instead of a
+list. For example:</p>
+<div class="sourceCode" id="cb570"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb570-1"><a href="appendix.html#cb570-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_split_fixed</span>(x, <span class="st">&quot; &quot;</span>, <span class="dv">3</span>)</span></code></pre></div>
+<pre><code>##      [,1]  [,2]       [,3]                         
+## [1,] &quot;The&quot; &quot;students&quot; &quot;in this workshop are great!&quot;
+## [2,] &quot;Are&quot; &quot;you&quot;      &quot;listening?&quot;</code></pre>
+<p>The <code>str_split_fixed</code> function is often more convenient than <code>str_split</code>
+because the <code>n</code>th piece of each input string is just the <code>n</code>th column of the
+result.</p>
+<p>For example, suppose we want to get the area code from some phone numbers:</p>
+<div class="sourceCode" id="cb572"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb572-1"><a href="appendix.html#cb572-1" aria-hidden="true" tabindex="-1"></a>phones <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;717-555-3421&quot;</span>, <span class="st">&quot;629-555-8902&quot;</span>, <span class="st">&quot;903-555-6781&quot;</span>)</span>
+<span id="cb572-2"><a href="appendix.html#cb572-2" aria-hidden="true" tabindex="-1"></a>result <span class="ot">=</span> <span class="fu">str_split_fixed</span>(phones, <span class="st">&quot;-&quot;</span>, <span class="dv">3</span>)</span>
+<span id="cb572-3"><a href="appendix.html#cb572-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb572-4"><a href="appendix.html#cb572-4" aria-hidden="true" tabindex="-1"></a>result[, <span class="dv">1</span>]</span></code></pre></div>
+<pre><code>## [1] &quot;717&quot; &quot;629&quot; &quot;903&quot;</code></pre>
+</div>
+<div id="replacing-parts-of-strings" class="section level3" number="5.3.2">
+<h3><span class="header-section-number">5.3.2</span> Replacing Parts of Strings</h3>
+<p>The <code>str_replace</code> function replaces the pattern the first time it appears in
+the string. The replacement goes in the third argument.</p>
+<p>For instance, suppose we want to change the word <code>"dog"</code> to <code>"cat"</code>:</p>
+<div class="sourceCode" id="cb574"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb574-1"><a href="appendix.html#cb574-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;dogs are great, dogs are fun&quot;</span>, <span class="st">&quot;dogs are fluffy&quot;</span>)</span>
+<span id="cb574-2"><a href="appendix.html#cb574-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_replace</span>(x, <span class="st">&quot;dog&quot;</span>, <span class="st">&quot;cat&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;cats are great, dogs are fun&quot; &quot;cats are fluffy&quot;</code></pre>
+<p>The <code>str_replace_all</code> function replaces the pattern every time it appears in
+the string:</p>
+<div class="sourceCode" id="cb576"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb576-1"><a href="appendix.html#cb576-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_replace_all</span>(x, <span class="st">&quot;dog&quot;</span>, <span class="st">&quot;cat&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;cats are great, cats are fun&quot; &quot;cats are fluffy&quot;</code></pre>
+<p>We can also use the <code>str_replace</code> and <code>str_replace_all</code> functions to delete
+part of a string by setting the replacement to the empty string <code>""</code>.</p>
+<p>For example, suppose we want to delete the comma:</p>
+<div class="sourceCode" id="cb578"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb578-1"><a href="appendix.html#cb578-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_replace</span>(x, <span class="st">&quot;,&quot;</span>, <span class="st">&quot;&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;dogs are great dogs are fun&quot; &quot;dogs are fluffy&quot;</code></pre>
+<p>In general, stringr functions with the <code>_all</code> suffix affect all matches.
+Functions without <code>_all</code> only affect the first match.</p>
+</div>
+</div>
+<div id="date-processing" class="section level2" number="5.4">
+<h2><span class="header-section-number">5.4</span> Date Processing</h2>
+<p>Besides strings, dates and times are another kind of data that require special
+attention to prepare for analysis. This is especially important if you want to
+do anything that involves sorting dates, like making a line plot with dates on
+one axis. Dates may not be sorted correctly if they haven’t been converted to
+one of R’s date classes.</p>
+<p>There several built-in functions and also many packages for date processing. As
+with visualization and string processing, the Tidyverse packages have the best
+combination of simple design and clear documentation. There are three Tidyverse
+packages for processing dates and times:</p>
+<ul>
+<li><a href="https://lubridate.tidyverse.org/">lubridate</a>, the primary package for working with dates and times</li>
+<li><a href="https://hms.tidyverse.org/">hms</a>, a package specifically for working with times</li>
+<li><a href="https://clock.r-lib.org/">clock</a>, a new package for working with dates and times</li>
+</ul>
+<p>We’ll focus on the lubridate package. As always, you’ll have to install the
+package if you haven’t already, and then load it:</p>
+<div class="sourceCode" id="cb580"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb580-1"><a href="appendix.html#cb580-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;lubridate&quot;)</span></span>
+<span id="cb580-2"><a href="appendix.html#cb580-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;lubridate&quot;</span>)</span></code></pre></div>
+<pre><code>## 
+## Attaching package: &#39;lubridate&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:base&#39;:
+## 
+##     date, intersect, setdiff, union</code></pre>
+<p>The most common task is to convert a string into a date or time class. For
+instance, when you load a data set, you might have dates that look like this:</p>
+<div class="sourceCode" id="cb583"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb583-1"><a href="appendix.html#cb583-1" aria-hidden="true" tabindex="-1"></a>dates <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;Jan 10, 2021&quot;</span>, <span class="st">&quot;Sep 3, 2018&quot;</span>, <span class="st">&quot;Feb 28, 1982&quot;</span>)</span>
+<span id="cb583-2"><a href="appendix.html#cb583-2" aria-hidden="true" tabindex="-1"></a>dates</span></code></pre></div>
+<pre><code>## [1] &quot;Jan 10, 2021&quot; &quot;Sep 3, 2018&quot;  &quot;Feb 28, 1982&quot;</code></pre>
+<p>These are strings, so it’s relatively difficult to sort the dates, do
+arithmetic on them, or extract just one part (such as the year). There are
+several lubridate functions to automatically convert strings into dates. They
+are named with one letter for each part of the date. For instance, the dates in
+the example have the month (m), then the day (d), and then the year (y), so we
+can use the <code>mdy</code> function:</p>
+<div class="sourceCode" id="cb585"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb585-1"><a href="appendix.html#cb585-1" aria-hidden="true" tabindex="-1"></a>result <span class="ot">=</span> <span class="fu">mdy</span>(dates)</span>
+<span id="cb585-2"><a href="appendix.html#cb585-2" aria-hidden="true" tabindex="-1"></a>result</span></code></pre></div>
+<pre><code>## [1] &quot;2021-01-10&quot; &quot;2018-09-03&quot; &quot;1982-02-28&quot;</code></pre>
+<div class="sourceCode" id="cb587"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb587-1"><a href="appendix.html#cb587-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(result)</span></code></pre></div>
+<pre><code>## [1] &quot;Date&quot;</code></pre>
+<p>Notice that the dates now have class <code>Date</code>, one of R’s built-in classes for
+representing dates, and that they print differently. You can find a full list
+of the automatic string to date conversion functions in the lubridate
+documentation.</p>
+<p>Occasionally, a date string may have a format that lubridate can’t convert
+automatically. In that case, you can use the <code>fast_strptime</code> function to
+describe the format in detail. At a minimum, the function requires two
+arguments: the vector of strings to convert and a format string.</p>
+<p>The format string describes the format of the dates, and is based on the syntax
+of <code>strptime</code>, a function provided by many programming languages for converting
+strings to dates (including R). In a format string, a percent sign <code>%</code> followed
+by a character is called a <em>specification</em> and has a special meaning. Here are
+a few of the most useful ones:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Specification</th>
+<th align="left">Description</th>
+<th align="left">January 29, 2015</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>%Y</code></td>
+<td align="left">4-digit year</td>
+<td align="left">2015</td>
+</tr>
+<tr class="even">
+<td align="left"><code>%y</code></td>
+<td align="left">2-digit year</td>
+<td align="left">15</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>%m</code></td>
+<td align="left">2-digit month</td>
+<td align="left">01</td>
+</tr>
+<tr class="even">
+<td align="left"><code>%B</code></td>
+<td align="left">full month name</td>
+<td align="left">January</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>%b</code></td>
+<td align="left">short month name</td>
+<td align="left">Jan</td>
+</tr>
+<tr class="even">
+<td align="left"><code>%d</code></td>
+<td align="left">day of month</td>
+<td align="left">29</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>%%</code></td>
+<td align="left">literal %</td>
+<td align="left">%</td>
+</tr>
+</tbody>
+</table>
+<p>You can find a complete list in <code>?fast_strptime</code>. Other characters in the
+format string do not have any special meaning. Write the format string so that
+it matches the format of the dates you want to convert.</p>
+<p>For example, let’s try converting an unusual time format:</p>
+<div class="sourceCode" id="cb589"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb589-1"><a href="appendix.html#cb589-1" aria-hidden="true" tabindex="-1"></a>odd_time <span class="ot">=</span> <span class="st">&quot;6 minutes, 32 seconds after 10 o&#39;clock&quot;</span></span>
+<span id="cb589-2"><a href="appendix.html#cb589-2" aria-hidden="true" tabindex="-1"></a><span class="fu">fast_strptime</span>(odd_time, <span class="st">&quot;%M minutes, %S seconds after %H o&#39;clock&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;0-01-01 10:06:32 UTC&quot;</code></pre>
+<p>R usually represents dates with the class <code>Date</code>, and date-times with the
+classes <code>POSIXct</code> and <code>POSIXlt</code>. The difference between the two date-time
+classes is somewhat technical, but you can read more about it in <code>?POSIXlt</code>.</p>
+<p>There is no built-in class to represent times alone, which is why the result in
+the example above includes a date. Nonetheless, the hms package provides the
+<code>hms</code> class to represent times without dates.</p>
+<p>Once you’ve converted a string to a date, the lubridate package provides a
+variety of functions to get or set the parts individually. Here are a few
+examples:</p>
+<div class="sourceCode" id="cb591"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb591-1"><a href="appendix.html#cb591-1" aria-hidden="true" tabindex="-1"></a><span class="fu">day</span>(result)</span></code></pre></div>
+<pre><code>## [1] 10  3 28</code></pre>
+<div class="sourceCode" id="cb593"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb593-1"><a href="appendix.html#cb593-1" aria-hidden="true" tabindex="-1"></a><span class="fu">month</span>(result)</span></code></pre></div>
+<pre><code>## [1] 1 9 2</code></pre>
+<p>You can find a complete list in the lubridate documentation.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="automating-tasks.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="where-to-learn-more.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": false,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/ucdavisdatalab/workshop_r_basics/edit/master/96_appendix.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": "https://github.com/ucdavisdatalab/workshop_r_basics/blob/master/96_appendix.Rmd",
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
