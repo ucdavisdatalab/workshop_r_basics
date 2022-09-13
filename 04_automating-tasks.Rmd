@@ -1,0 +1,619 @@
+Automating Tasks
+================
+
+By now, we've learned all of the basic skills necessary to explore a data set
+in R. This final chapter is a collection of different topics relevant to
+cleaning data sets before and during analysis. Some of them, like loops, also
+have other applications.
+
+
+Conditional Expressions
+-----------------------
+
+Sometimes you'll need code to do different things, depending on a condition.
+_If-statements_ provide a way to write conditional code.
+
+For example, suppose we want to greet one person differently from the others:
+```{r}
+name = "Nick"
+if (name == "Nick") {
+   # If name is Nick:
+   message("We went down the TRUE branch")
+   msg = "Hi Nick, nice to see you again!"
+} else {
+   # Anything else:
+   msg = "Nice to meet you!"
+}
+```
+
+Indent code inside of the if-statement by 2 or 4 spaces. Indentation makes your
+code easier to read.
+
+The condition in an if-statement has to be a scalar:
+```{r, error = TRUE}
+name = c("Nick", "Susan")
+if (name == "Nick") {
+   msg = "Hi Nick!"
+} else {
+   msg = "Nice to meet you!"
+}
+```
+
+You can chain together if-statements:
+```{r}
+name = "Susan"
+if (name == "Nick") {
+   msg = "Hi Nick, nice to see you again!"
+} else if (name == "Peter") {
+   msg = "Go away Peter, I'm busy!"
+} else {
+   msg = "Nice to meet you!"
+}
+msg
+```
+
+If-statements return the value of the last expression in the evaluated block:
+```{r}
+name = "Tom"
+msg = if (name == "Nick") {
+   "Hi Nick, nice to see you again!"
+} else {
+   "Nice to meet you!"
+}
+msg
+```
+
+Curly braces `{ }` are optional for single-line expressions:
+```{r}
+name = "Nick"
+msg = if (name == "Nick") "Hi Nick, nice to see you again!" else
+   "Nice to meet you!"
+msg
+```
+
+But you have to be careful if you don't use them:
+```{r, error = TRUE}
+# NO GOOD:
+msg = if (name == "Nick")
+   "Hi Nick, nice to see you again!"
+else
+   "Nice to meet you!"
+```
+
+The `else` block is optional:
+```{r}
+msg = "Hi"
+name = "Tom"
+if (name == "Nick")
+   msg = "Hi Nick, nice to see you again!"
+msg
+```
+
+When there's no `else` block, the value of the `else` block is `NULL`:
+```{r}
+name = "Tom"
+msg = if (name == "Nick")
+   "Hi Nick, nice to see you again!"
+msg
+```
+
+
+Functions
+---------
+
+The main way to interact with R is by calling functions, which was first
+explained way back in Section \@ref(calling-functions). Since then, you've
+learned how to use many of R's built-in functions. This section explains how
+you can write your own functions.
+
+To start, let's briefly review what functions are, and some of the jargon
+associated with them. It's useful to think of functions as factories: raw
+materials (inputs) go in, products (outputs) come out. We can also represent
+this visually:
+
+```
+         +-------+
+-- in -->|   f   |-- out -->
+         +-------+
+```
+
+Programmers use several specific terms to describe the parts and usage of
+functions:
+
+* _Parameters_ are placeholder variables for inputs.
+    + _Arguments_ are the actual values assigned to the parameters in a call.
+* The _return value_ is the output.
+* The _body_ is the code inside.
+* _Calling_ a function means using a function to compute something.
+
+Almost every command in R is a function, even the arithmetic operators and the
+parentheses! You can view the body of a function by typing its name without
+trailing parentheses (in contrast to how you call functions). The body of a
+function is usually surrounded by curly braces `{}`, although they're optional
+if the body only contains one line of code. Indenting code inside of curly
+braces by 2-4 spaces also helps make it visually distinct from other code.
+
+For example, let's look at the body of the `append` function, which appends a
+value to the end of a list or vector:
+
+```{r}
+append
+```
+
+Don't worry if you can't understand everything the `append` function's code
+does yet. It will make more sense later on, after you've written a few
+functions of your own.
+
+Many of R's built-in functions are not entirely written in R code. You can spot
+these by calls to the special `.Primitive` or `.Internal` functions in their
+code.
+
+For instance, the `sum` function is not written in R code:
+
+```{r}
+sum
+```
+
+The `function` keyword creates a new function. Here's the syntax:
+
+```
+function(parameter1, parameter2, ...) {
+  # Your code goes here
+  
+  # The result goes here
+}
+```
+
+A function can have any number of parameters, and will automatically return the
+value of the last line of its body.
+
+A function is a value, and like any other value, if you want to reuse it, you
+need to assign it to variable. Choosing descriptive variable names is a good
+habit. For functions, that means choosing a name that describes what the
+function does. It often makes sense to use verbs in function names.
+
+Let's create a function that detects negative numbers. It should take a vector
+of numbers as input, compare them to zero, and then return the logical result
+from the comparison as output. Here's the code to do that:
+
+```{r}
+is_negative = function(x) {
+  x < 0
+}
+
+# Since this is a one-line function, the curly braces are optional:
+is_negative = function(x) x < 0
+```
+The name of the function, `is_negative`, describes what the function does and
+includes a verb. The parameter `x` is the input. The return value is the result
+of `x < 0`, since we put that expression on the last line. 
+
+Any time you write a function, the first thing you should do afterwards is test
+that it actually works. Let's try the `is_negative` function on a few test
+cases:
+
+```{r}
+x = c(5, -1, -2, 0, 3)
+
+is_negative(6)
+is_negative(-1.1)
+is_negative(x)
+```
+
+Notice that the parameter `x` inside the function is different from the
+variable `x` we created outside the function. We'll learn more about this in
+Section \@ref(variable-scope-lookup), but for now just remember that parameters
+and variables inside of a function are separate from variables outside of a
+function.
+
+A _default argument_ is an argument assigned to a parameter if no argument is
+assigned in the call to the function. You can use `=` to assign default
+arguments to parameters when you define a function with the `function` keyword.
+
+
+For example, let's write a function that gets the largest values in a vector.
+We'll make the number of values to get a parameter, with a default argument of
+`5`. Here's the code and some test cases:
+
+```{r}
+top = function(x, n = 5) {
+  sorted = sort(x, decreasing = TRUE)
+  head(sorted, n)
+}
+
+y = c(-6, 7, 10, 3, 1, 15, -2)
+top(y, 3)
+top(y)
+```
+
+### Returning Values
+
+We've already seen that a function will automatically return the value of its
+last line.
+
+The `return` keyword causes a function to return a result immediately, without
+running any subsequent code in its body. It only makes sense to use `return`
+from inside of an if-statement. If your function doesn't have any
+if-statements, you don't need to use `return`.
+
+For example, suppose we want the `is_negative` function to return `NA` if the
+argument isn't a number. This is an ideal case to use `return`, since we skip
+the computation `x < 0` when the argument isn't a number. Here's the new
+version of the function, as well as a new test case:
+
+```{r}
+is_negative = function(x) {
+  if (!is.numeric(x))
+    return (NA)
+  
+  # TRUE for negative numbers, FALSE otherwise
+  x < 0
+}
+
+is_negative("hi")
+```
+
+It's idiomatic to only use `return` when strictly necessary. 
+
+A function returns one R object, but sometimes computations have multiple
+results. In that case, return the results in a vector, list, or other data
+structure.
+
+For example, let's make a function that computes the mean and median for a
+vector. We'll return the results in a named list, although we could also use a
+named vector:
+
+```{r}
+compute_mean_med = function(x) {
+  m1 = mean(x)
+  m2 = median(x)
+  list(mean = m1, median = m2)
+}
+compute_mean_med(c(1, 2, 3, 1))
+```
+
+The names make the result easier to understand for the caller of the function,
+although they certainly aren't required here.
+
+
+### Planning Your Functions
+
+Before you write a function, it's useful to go through several steps:
+
+1. Write down what you want to do, in detail. It can also help to
+   draw a picture of what needs to happen.
+
+2. Check whether there's already a built-in function. Search online and in the
+   R documentation.
+
+3. Write the code to handle a simple case first. For data science
+   problems, use a small dataset at this step.
+
+Let's apply this in one final example: a function that detects leap years. A
+year is a leap year if either of these conditions is true:
+
+* It is divisible by 4 and not 100
+* It is divisible by 400
+
+That means the years 2004 and 2000 are leap years, but the year 2200 is not.
+Here's the code and a few test cases:
+
+```{r}
+# If year is divisible by 4 and not 100 -> leap
+# If year is divisible by 400 -> leap
+year = 2004
+is_leap = function(year) {
+  if (year %% 4 == 0 & year %% 100 != 0) {
+    leap = TRUE
+  } else if (year %% 400 == 0) {
+    leap = TRUE
+  } else {
+    leap = FALSE
+  }
+  leap
+}
+is_leap(400)
+is_leap(1997)
+```
+
+Functions are the building blocks for solving larger problems. Take a
+divide-and-conquer approach, breaking large problems into smaller steps. Use a
+short function for each step. This approach makes it easier to:
+
+* Test that each step works correctly.
+* Modify, reuse, or repurpose a step.
+
+
+Loops
+-----
+
+One major benefit of using a programming language like R is that repetitive
+tasks can be automated. We've already seen two ways to do this:
+
+1. Vectorization, introduced in Section \@ref(vectorization)
+
+2. Apply functions, introduced in Section \@ref(apply-functions)
+
+Both of these are _iteration strategies_. They _iterate_ over some object, and
+compute something for each element. Each one of these computations is one
+_iteration_. Vectorization is the most efficient iteration strategy, but only
+works with vectorized functions and vectors. Apply functions are more
+flexible---they work with any function and any data structure with
+elements---but less efficient and less concise.
+
+A _loop_ is another iteration strategy, one that's even more flexible than
+apply functions. Besides being flexible, loops are a feature of almost all
+modern programming languages, so it's useful to understand them. In R, there
+are two kinds of loops. We'll learn both.
+
+### For-loops
+
+A _for-loop_ runs a block of code once for each element of a vector or list.
+The `for` keyword creates a for-loop. Here's the syntax:
+
+```
+for (I in DATA) {
+  # Your code goes here
+}
+```
+
+The variable `I` is called the _induction variable_. At the beginning of each
+iteration, `I` is assigned the next element of the vector or list `DATA`. The
+loop iterates once for each element of `DATA`, unless you use a keyword to exit
+the loop early (more about this in Section \@ref(break-next)). As with
+if-statements and functions, the curly braces `{ }` are only required if the
+body contains multiple lines of code.
+
+Unlike the other iteration strategies, loops do not automatically return a
+result. You have complete control over the output, which means that anything
+you want to save must be assigned to a variable.
+
+For example, let's make a loop that repeatedly adds a number to a running total
+and squares the new total. We'll use a variable `total` to keep track of the
+running total as the loop iterates:
+
+```{r}
+numbers = c(-1, 1, -3, 2)
+
+total = 0
+for (number in numbers) {
+  total = (total + number)^2
+}
+
+total
+```
+
+Use for-loops when some or all of the iterations depend on results from other
+iterations. If the iterations are not dependent, use one of:
+
+1. Vectorization (because it's faster)
+2. Apply functions (because they're idiomatic)
+
+In some cases, you can use vectorization even when the iterations are
+dependent. For example, you can use vectorization to compute the sum of the
+cubes of several numbers:
+
+```{r}
+sum(numbers^3)
+```
+
+### While-loops
+
+A _while-loop_ runs a block of code repeatedly as long as some condition is
+`TRUE`. The `while` keyword creates a while-loop. Here's the syntax:
+
+```
+while (CONDITION) {
+  # Your code goes here
+}
+```
+
+The `CONDITION` should be a scalar logical value or an expression that returns
+one. At the beginning of each iteration, `CONDITION` is checked, and the loop
+exits if it is `FALSE`. As always, the curly braces `{ }` are only required if
+the body contains multiple lines of code.
+
+For example, suppose you want to add up numbers from 0 to 50, but stop as soon
+as the total is greater than 50:
+
+```{r}
+num50 = seq(0, 50)
+
+total = 0
+i = 1
+while (total < 50) {
+  total = total + num50[i]
+  message("i is ", i, " total is ", total)
+  i = i + 1
+}
+
+total
+i
+```
+
+While-loops are a generalization of for-loops. They tend to be most useful when
+you don't know how many iterations will be necessary. For example, suppose you
+want to repeat a computation until the result falls within some range of
+values.
+
+
+### Saving Multiple Results
+
+Loops often produce a different result for each iteration. If you want to save
+more than one result, there are a few things you must do.
+
+First, set up an index vector. The index vector should usually be congruent to
+the number of iterations or the input. The `seq_along` function returns a
+congruent index vector when passed a vector or list. For instance, let's make
+in index for the `numbers` vector from Section \@ref(for-loops):
+
+```{r}
+index = seq_along(numbers)
+```
+
+The loop will iterate over the index rather than the input, so the induction
+variable will track the current iteration number. On the first iteration, the
+induction variable will be 1, on the second it will be 2, and so on. Then you
+can use the induction variable and indexing to get the input for each
+iteration.
+
+Second, set up an empty output vector or list. This should usually be congruent
+to the input, or one element longer (the extra element comes from the initial
+value). R has several functions for creating vectors. We've already seen a few,
+but here are more:
+
+* `logical`, `integer`, `numeric`, `complex`, and `character` to create an
+  empty vector with a specific type and length
+
+* `vector` to create an empty vector with a specific type and length
+
+* `rep` to create a vector by repeating elements of some other vector
+
+Empty vectors are filled with `FALSE`, `0`, or `""`, depending on the type of
+the vector. Here are some examples:
+
+```{r}
+logical(3)
+numeric(4)
+rep(c(1, 2), 2)
+```
+
+Let's create an empty numeric vector congruent to `numbers`:
+
+```{r}
+n = length(numbers)
+result = numeric(n)
+```
+
+As with the input, you can use the induction variable and indexing to set the
+output for each iteration.
+
+Creating a vector or list in advance to store something, as we've just done, is
+called _preallocation_. Preallocation is extremely important for efficiency in
+loops. Avoid the temptation to use `c` or `append` to build up the output bit
+by bit in each iteration.
+
+Finally, write the loop, making sure to get the input and set the output.
+Here's the loop for the squared sums example:
+
+```{r}
+for (i in index) {
+  prev = if (i > 1) result[i - 1] else 0
+  result[i] = (numbers[i] + prev)^2
+}
+result
+```
+
+
+### Break & Next
+
+The `break` keyword causes a loop to immediately exit. It only makes sense to
+use `break` inside of an if-statement.
+
+For example, suppose we want to print each string in a vector, but stop at the
+first missing value. We can do this with `break`:
+
+```{r}
+my_messages = c("Hi", "Hello", NA, "Goodbye")
+
+for (msg in my_messages) {
+  if (is.na(msg))
+    break
+
+  message(msg)
+}
+```
+
+The `next` keyword causes a loop to immediately go to the next iteration. As
+with `break`, it only makes sense to use `next` inside of an if-statement.
+
+Let's modify the previous example so that missing values are skipped, but don't
+cause printing to stop. Here's the code:
+
+```{r}
+for (msg in my_messages) {
+  if (is.na(msg))
+    next
+
+  message(msg)
+}
+```
+
+These keywords work with both for-loops and while-loops.
+
+
+### Example: Fibonacci
+
+
+As a final example, let's use a loop to compute Fibonacci numbers. Each
+Fibonacci number is the sum of the previous two. The first few Fibonacci
+numbers are:
+
+```
+1 1 2 3 5 8 13
+```
+
+We can use a loop to compute the first `n` Fibonacci numbers. Make sure to
+choose an appropriate index and to preallocate for the output:
+
+```{r}
+n = 10
+fib = c(1, 1, numeric(n - 2))
+
+for (i in 3:n) {
+  fib[i] = fib[i - 1] + fib[i - 2]
+}
+
+fib
+```
+
+If you want to reuse this code, you could make it a function:
+
+```{r}
+fibonacci = function(n = 10) {
+  fib = c(1, 1, numeric(n - 2))
+
+  for (i in 3:n) {
+    fib[i] = fib[i - 1] + fib[i - 2]
+  }
+
+  fib
+}
+
+fibonacci(30)
+```
+
+
+
+Planning for Iteration
+----------------------
+
+At first it may seem difficult to decide if and what kind of iteration to use.
+Start by thinking about whether you need to do something over and over. If you
+don't, then you probably don't need to use iteration. If you do, then try
+iteration strategies in this order:
+
+1. vectorization
+2. apply functions
+    * Try an apply function if iterations are independent.
+3. for/while-loops
+    * Try a for-loop if some iterations depend on others.
+    * Try a while-loop if the number of iterations is unknown.
+4. recursion (which isn't covered here)
+    * Convenient for naturally recursive problems (like Fibonacci),
+      but often there are faster solutions.
+
+
+Start by writing the code for just one iteration. Make sure that code works;
+it's easy to test code for one iteration.
+
+When you have one iteration working, then try using the code with an iteration
+strategy (you will have to make some small changes). If it doesn't work, try to
+figure out which iteration is causing the problem. One way to do this is to use
+`message` to print out information. Then try to write the code for the broken
+iteration, get that iteration working, and repeat this whole process.
+
+
+Exercises
+---------
+

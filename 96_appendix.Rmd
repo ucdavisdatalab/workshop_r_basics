@@ -1,300 +1,230 @@
-Cleaning Messy Data
-===================
+Appendix
+========
 
-By now, we've learned all of the basic skills necessary to explore a data set
-in R. This final chapter is a collection of different topics relevant to
-cleaning data sets before and during analysis. Some of them, like loops, also
-have other applications.
+More Ways to Compare Values
+---------------------------
 
+* `%in%` for containment (explained below)
 
-Loops
------
-
-One major benefit of using a programming language like R is that repetitive
-tasks can be automated. We've already seen two ways to do this:
-
-1. Vectorization, introduced in Section \@ref(vectorization)
-
-2. Apply functions, introduced in Section \@ref(apply-functions)
-
-Both of these are _iteration strategies_. They _iterate_ over some object, and
-compute something for each element. Each one of these computations is one
-_iteration_. Vectorization is the most efficient iteration strategy, but only
-works with vectorized functions and vectors. Apply functions are more
-flexible---they work with any function and any data structure with
-elements---but less efficient and less concise.
-
-A _loop_ is another iteration strategy, one that's even more flexible than
-apply functions. Besides being flexible, loops are a feature of almost all
-modern programming languages, so it's useful to understand them. In R, there
-are two kinds of loops. We'll learn both.
-
-### For-loops
-
-A _for-loop_ runs a block of code once for each element of a vector or list.
-The `for` keyword creates a for-loop. Here's the syntax:
-
-```
-for (I in DATA) {
-  # Your code goes here
-}
-```
-
-The variable `I` is called the _induction variable_. At the beginning of each
-iteration, `I` is assigned the next element of the vector or list `DATA`. The
-loop iterates once for each element of `DATA`, unless you use a keyword to exit
-the loop early (more about this in Section \@ref(break-next)). As with
-if-statements and functions, the curly braces `{ }` are only required if the
-body contains multiple lines of code.
-
-Unlike the other iteration strategies, loops do not automatically return a
-result. You have complete control over the output, which means that anything
-you want to save must be assigned to a variable.
-
-For example, let's make a loop that repeatedly adds a number to a running total
-and squares the new total. We'll use a variable `total` to keep track of the
-running total as the loop iterates:
+Now let's see what happens when we compare longer vectors:
 
 ```{r}
-numbers = c(-1, 1, -3, 2)
-
-total = 0
-for (number in numbers) {
-  total = (total + number)^2
-}
-
-total
+c(1, 2, 3) < c(1, 3, -3)
+c("he", "saw", "her") == c("she", "saw", "him")
 ```
 
-Use for-loops when some or all of the iterations depend on results from other
-iterations. If the iterations are not dependent, use one of:
+Since the comparison operators are all vectorized, the elements of the vectors
+are compared element-by-element, and R returns a logical value for each pair.
 
-1. Vectorization (because it's faster)
-2. Apply functions (because they're idiomatic)
-
-In some cases, you can use vectorization even when the iterations are
-dependent. For example, you can use vectorization to compute the sum of the
-cubes of several numbers:
+What if you want to test whether all the elements in a vector are equal (or
+unequal)? There are several ways to do this. One is to use the `all` function
+on the result of the comparison. The `all` function takes a vector of logical
+values and returns `TRUE` if all of them are `TRUE`, and returns `FALSE`
+otherwise:
 
 ```{r}
-sum(numbers^3)
+all(c(1, 2, 3) < c(1, 3, -3))
 ```
 
-### While-loops
-
-A _while-loop_ runs a block of code repeatedly as long as some condition is
-`TRUE`. The `while` keyword creates a while-loop. Here's the syntax:
-
-```
-while (CONDITION) {
-  # Your code goes here
-}
-```
-
-The `CONDITION` should be a scalar logical value or an expression that returns
-one. At the beginning of each iteration, `CONDITION` is checked, and the loop
-exits if it is `FALSE`. As always, the curly braces `{ }` are only required if
-the body contains multiple lines of code.
-
-For example, suppose you want to add up numbers from 0 to 50, but stop as soon
-as the total is greater than 50:
+The related `any` function returns `TRUE` if any one element is `TRUE`, and
+returns `FALSE` otherwise:
 
 ```{r}
-num50 = seq(0, 50)
+any(c("hi", "hello") == c("hi", "bye"))
+```
 
-total = 0
-i = 1
-while (total < 50) {
-  total = total + num50[i]
-  message("i is ", i, " total is ", total)
-  i = i + 1
+There are two more ways to test whether objects are equal:
+
+1. The `all.equal` function tests whether objects are equal up to some
+   acceptable difference called the _tolerance_. You should generally use
+   `all.equal` rather than `==` to compare decimal numbers. Computer
+   representations for decimal numbers are inherently imprecise, so comparison
+   using a (small) tolerance is often necessary.
+
+2. The `identical` function checks whether objects are completely identical,
+   including their metadata (names, dimensions, and so on). Use this to compare
+   non-vector objects such as data frames. This function also works for
+   vectors, but most of the time `==` is sufficient.
+
+Another common comparison is to check whether elements of one vector are
+contained in another vector at any position. For instance, suppose you want to
+check whether `1` or `2` appear anywhere in a longer vector `x`. Here's how to
+do it:
+
+```{r}
+x = c(3, 4, 2, 7, 3, 7)
+c(1, 2) %in% x
+```
+
+R returns `FALSE` for the `1` because there's no `1` in `x`, and returns `TRUE`
+for the `2` because there is a `2` in `x`.
+
+Notice that this is different from comparing with `==`. If we use `==`, the
+shorter vector is recycled until its length matches the longer one, and then
+compared element-by-element. For the example, this means only the elements at
+odd-numbered positions are compared to `1`, and only the elements at
+even-numbered positions are compared to `2`:
+
+```{r}
+c(1, 2) == x
+```
+
+Finally, new programmers sometimes incorrectly think they need to append `==
+TRUE` to their comparisons. This is redundant, makes your code harder to
+understand, and wastes computational time. Comparisons already return logical
+values. If the result of the comparison is `TRUE`, then `TRUE == TRUE` is again
+just `TRUE`. If the result is `FALSE`, then `FALSE == TRUE` is again just
+`FALSE`. Likewise, if you want to invert a condition, choose an appropriate
+operator rather than appending `== FALSE`.
+
+
+Variable Scope & Lookup
+-----------------------
+
+### Local Variables
+
+A variable's *scope* is the section of code where it exists and is accessible.
+The `exists` function checks whether a variable is in scope:
+
+```{r}
+exists("zz")
+zz = 3
+exists("zz")
+```
+
+When you create a function, you create a new scope. Variables defined inside of
+a function are *local* to the function. Local variables cannot be accessed from
+outside:
+
+```{r, error = TRUE}
+rescale = function(x, center, scale) {
+  centered = x - center
+  centered / scale
 }
 
-total
-i
+centered
+exists("centered")
 ```
 
-While-loops are a generalization of for-loops. They tend to be most useful when
-you don't know how many iterations will be necessary. For example, suppose you
-want to repeat a computation until the result falls within some range of
-values.
-
-
-### Saving Multiple Results
-
-Loops often produce a different result for each iteration. If you want to save
-more than one result, there are a few things you must do.
-
-First, set up an index vector. The index vector should usually be congruent to
-the number of iterations or the input. The `seq_along` function returns a
-congruent index vector when passed a vector or list. For instance, let's make
-in index for the `numbers` vector from Section \@ref(for-loops):
+Local variables are reset each time the function is called:
 
 ```{r}
-index = seq_along(numbers)
-```
-
-The loop will iterate over the index rather than the input, so the induction
-variable will track the current iteration number. On the first iteration, the
-induction variable will be 1, on the second it will be 2, and so on. Then you
-can use the induction variable and indexing to get the input for each
-iteration.
-
-Second, set up an empty output vector or list. This should usually be congruent
-to the input, or one element longer (the extra element comes from the initial
-value). R has several functions for creating vectors. We've already seen a few,
-but here are more:
-
-* `logical`, `integer`, `numeric`, `complex`, and `character` to create an
-  empty vector with a specific type and length
-
-* `vector` to create an empty vector with a specific type and length
-
-* `rep` to create a vector by repeating elements of some other vector
-
-Empty vectors are filled with `FALSE`, `0`, or `""`, depending on the type of
-the vector. Here are some examples:
-
-```{r}
-logical(3)
-numeric(4)
-rep(c(1, 2), 2)
-```
-
-Let's create an empty numeric vector congruent to `numbers`:
-
-```{r}
-n = length(numbers)
-result = numeric(n)
-```
-
-As with the input, you can use the induction variable and indexing to set the
-output for each iteration.
-
-Creating a vector or list in advance to store something, as we've just done, is
-called _preallocation_. Preallocation is extremely important for efficiency in
-loops. Avoid the temptation to use `c` or `append` to build up the output bit
-by bit in each iteration.
-
-Finally, write the loop, making sure to get the input and set the output.
-Here's the loop for the squared sums example:
-
-```{r}
-for (i in index) {
-  prev = if (i > 1) result[i - 1] else 0
-  result[i] = (numbers[i] + prev)^2
-}
-result
-```
-
-
-### Break & Next
-
-The `break` keyword causes a loop to immediately exit. It only makes sense to
-use `break` inside of an if-statement.
-
-For example, suppose we want to print each string in a vector, but stop at the
-first missing value. We can do this with `break`:
-
-```{r}
-my_messages = c("Hi", "Hello", NA, "Goodbye")
-
-for (msg in my_messages) {
-  if (is.na(msg))
-    break
-
-  message(msg)
-}
-```
-
-The `next` keyword causes a loop to immediately go to the next iteration. As
-with `break`, it only makes sense to use `next` inside of an if-statement.
-
-Let's modify the previous example so that missing values are skipped, but don't
-cause printing to stop. Here's the code:
-
-```{r}
-for (msg in my_messages) {
-  if (is.na(msg))
-    next
-
-  message(msg)
-}
-```
-
-These keywords work with both for-loops and while-loops.
-
-
-### Example: Fibonacci
-
-
-As a final example, let's use a loop to compute Fibonacci numbers. Each
-Fibonacci number is the sum of the previous two. The first few Fibonacci
-numbers are:
-
-```
-1 1 2 3 5 8 13
-```
-
-We can use a loop to compute the first `n` Fibonacci numbers. Make sure to
-choose an appropriate index and to preallocate for the output:
-
-```{r}
-n = 10
-fib = c(1, 1, numeric(n - 2))
-
-for (i in 3:n) {
-  fib[i] = fib[i - 1] + fib[i - 2]
+f = function() {
+  is_z_in_scope = exists("z")
+  z = 42
+  
+  is_z_in_scope
 }
 
-fib
+f()
+f()
 ```
 
-If you want to reuse this code, you could make it a function:
+
+### Lexical Scoping
+
+A function can use variables defined outside (non-local), but only if those
+variables are in scope where the function was **defined**. This property is
+called *lexical scoping*.
+
+Let's see how this works in practice. First, we'll define a variable `cats` and
+then define a function `get_cats` in the same place (the top level, not inside
+any functions). As a result, the `cats` variable is in scope inside of the
+`get_cats` function:
 
 ```{r}
-fibonacci = function(n = 10) {
-  fib = c(1, 1, numeric(n - 2))
+cats = 3
+get_cats = function() cats
+get_cats()
+```
 
-  for (i in 3:n) {
-    fib[i] = fib[i - 1] + fib[i - 2]
-  }
+Now let's define a variable `dogs` inside of a function `create_dogs`. We'll
+also define a function `get_dogs` at the top level. The variable `dogs` is not
+in scope at the top level, so it's not in scope inside of the `get_dogs`
+function:
 
-  fib
+```{r, error = TRUE}
+create_dogs = function() {
+  dogs = "hello"
 }
+get_dogs = function() dogs
+create_dogs()
+get_dogs()
+```
 
-fibonacci(30)
+Variables defined directly in the R console are *global* and available to any
+function.
+
+Local variables *mask* (hide) non-local variables with the same name:
+
+```{r}
+get_parrot = function() {
+  parrot = 3
+  
+  parrot
+}
+parrot = 42
+get_parrot()
+```
+
+There's one exception to this rule. We often use variables that refer to
+functions in calls:
+
+```{r}
+#mean()
+```
+
+In this case, the variable must refer to a function, so R ignores local
+variables that aren't functions. For example:
+
+```{r}
+my_mean = function() {
+  mean = 0
+  
+  mean(c(1, 2, 3))
+}
+my_mean()
+my_get_cats = function() {
+  get_cats = 10
+  
+  get_cats()
+}
+my_get_cats()
 ```
 
 
+### Dynamic Lookup
 
-Planning for Iteration
-----------------------
+Variable lookup happens when a function is **called**, not when it's defined.
+This is called *dynamic lookup*.
 
-At first it may seem difficult to decide if and what kind of iteration to use.
-Start by thinking about whether you need to do something over and over. If you
-don't, then you probably don't need to use iteration. If you do, then try
-iteration strategies in this order:
+For example, the result from `get_cats`, which accesses the global variable
+`cats`, changes if we change the value of `cats`:
 
-1. vectorization
-2. apply functions
-    * Try an apply function if iterations are independent.
-3. for/while-loops
-    * Try a for-loop if some iterations depend on others.
-    * Try a while-loop if the number of iterations is unknown.
-4. recursion (which isn't covered here)
-    * Convenient for naturally recursive problems (like Fibonacci),
-      but often there are faster solutions.
+```{r}
+cats = 10
+get_cats()
+cats = 20
+get_cats()
+```
 
+### Summary
 
-Start by writing the code for just one iteration. Make sure that code works;
-it's easy to test code for one iteration.
+This section covered a lot of details about R's rules for variable scope and
+lookup. Here are the key takeaways:
 
-When you have one iteration working, then try using the code with an iteration
-strategy (you will have to make some small changes). If it doesn't work, try to
-figure out which iteration is causing the problem. One way to do this is to use
-`message` to print out information. Then try to write the code for the broken
-iteration, get that iteration working, and repeat this whole process.
+* Function definitions (or `local()`) create a new scope.
+
+* Local variables
+    + Are private
+    + Get reset for each call
+    + Mask non-local variables (exception: function calls)
+
+* *Lexical scoping*: where a function is **defined** determines which non-local
+  variables are in scope.
+
+* *Dynamic lookup*: when a function is **called** determines values of
+  non-local variables.
 
 
 String Processing
@@ -324,7 +254,7 @@ package with the `library` function:
 
 ```{r}
 # install.packages("stringr")
-library(stringr)
+library("stringr")
 ```
 
 The typical syntax of a stringr function is:
@@ -503,7 +433,7 @@ package if you haven't already, and then load it:
 
 ```{r}
 # install.packages("lubridate")
-library(lubridate)
+library("lubridate")
 ```
 
 The most common task is to convert a string into a date or time class. For

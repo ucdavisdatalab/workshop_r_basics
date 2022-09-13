@@ -8,6 +8,229 @@ term. Specifically, we're going to take a deep dive into R's various data
 structures, then learn a variety of ways to get and set their elements.
 
 
+Vectors
+-------
+
+```{r, echo = FALSE}
+earn = read.csv("data/earn.csv")
+```
+
+A _vector_ is a collection of values. Vectors are the fundamental unit of data
+in R, and we've already used them in the previous sections.
+
+For instance, each column in a data frame is a vector. So the `quarter` column
+in the earnings data is a vector. Let's take a look at it. We can use `head`
+again to avoid printing too much, this time specifying with the second argument
+that we want to print exactly 10 values:
+
+```{r}
+head(earn$quarter, 10)
+```
+
+Like all vectors, this vector is ordered, which just means the values, or
+_elements_, have specific positions. The value of the 1st element is `1`, the
+2nd is `2`, the 5th is also `1`, and so on.
+
+Notice that the elements of this vector are all integers. This isn't just a
+quirk of the earnings data set. In R, the elements of a vector must all be the
+same type of data (we say the elements are _homogeneous_). A vector can contain
+integers, decimal numbers, strings, or several other types of data, but not a
+mix these all at once.
+
+The other columns in the earnings data frame are also vectors. For instance,
+the `age` column is a vector of strings:
+
+```{r}
+head(earn$age)
+```
+
+Vectors can have any number of elements, including 0 or 1 element. Unlike
+mathematics, R does not distinguish between vectors and _scalars_ (solitary
+values). So as far as R is concerned, a solitary value, like `3`, is a vector
+with 1 element.
+
+You can check the length of a vector (and other objects) with the `length`
+function:
+
+```{r}
+length(3)
+length("hello")
+length(earn$age)
+```
+
+Since the last of these is a column from the data frame `earn`, the length is
+the same as the number of rows in `earn`.
+
+
+### Creating Vectors
+
+Sometimes you'll want to create your own vectors. You can do this by
+concatenating several vectors together with the `c` function. It accepts any
+number of vector arguments, and combines them into a single vector:
+
+```{r}
+c(1, 2, 19, -3)
+c("hi", "hello")
+c(1, 2, c(3, 4))
+```
+
+If the arguments you pass to the `c` function have different data types, R will
+attempt to convert them to a common data type that preserves the information:
+
+```{r}
+c(1, "cool", 2.3)
+```
+
+The colon operator `:` creates vectors that contain sequences of integers. This
+is useful for creating "toy" data to test things on, and later we'll see that
+it's also important in several other contexts. Here are a few different
+sequences:
+
+```{r}
+1:3
+-3:5
+10:1
+```
+
+Beware that both endpoints are included in the sequence, even in sequences like
+`1:0`, and that the difference between elements is always `-1` or `1`. If you
+want more control over the generated sequence, use the `seq` function instead.
+
+
+### Indexing Vectors
+
+You can access individual elements of a vector with the _indexing operator_ `[`
+(also called the _square bracket operator_). The syntax is:
+
+```
+VECTOR[INDEXES]
+```
+
+Here `INDEXES` is a vector of positions of elements you want to get or set.
+
+For example, let's make a vector with 5 elements and get the 2nd element:
+
+```{r}
+x = c(4, 8, 3, 2, 1)
+x[2]
+```
+
+Now let's get the 3rd and 1st element:
+
+```{r}
+x[c(3, 1)]
+```
+
+You can use the indexing operator together with the assignment operator to
+assign elements of a vector:
+
+```{r}
+x[3] = 0
+x
+```
+
+Indexing is among the most frequently used operations in R, so take some time
+to try it out with few different vectors and indexes. We'll revisit indexing in
+Section \@ref(indexing) to learn a lot more about it.
+
+
+### Vectorization
+
+Let's look at what happens if we call a mathematical function, like `sin`, on a
+vector:
+
+```{r}
+x = c(1, 3, 0, pi)
+sin(x)
+```
+
+This gives us the same result as if we had called the function separately on
+each element. That is, the result is the same as:
+
+```{r}
+c(sin(1), sin(3), sin(0), sin(pi))
+```
+
+Of course, the first version is much easier to type.
+
+Functions that take a vector argument and get applied element-by-element like
+this are said to be _vectorized_. Most functions in R are vectorized,
+especially math functions. Some examples include `sin`, `cos`, `tan`, `log`,
+`exp`, and `sqrt`.
+
+Functions that are not vectorized tend to be ones that combine or aggregate
+values in some way. For instance, the `sum`, `mean`, `median`, `length`, and
+`class` functions are not vectorized.
+
+A function can be vectorized across multiple arguments. This is easiest to
+understand in terms of the arithmetic operators. Let's see what happens if we
+add two vectors together:
+
+```{r}
+x = c(1, 2, 3, 4)
+y = c(-1, 7, 10, -10)
+x + y
+```
+
+The elements are paired up and added according to their positions. The other
+arithmetic operators are also vectorized:
+
+```{r}
+x - y
+x * y
+x / y
+```
+
+### Recycling
+
+When a function is vectorized across multiple arguments, what happens if the
+vectors have different lengths? Whenever you think of a question like this as
+you're learning R, the best way to find out is to create some toy data and test
+it yourself. Let's try that now:
+
+```{r}
+x = c(1, 2, 3, 4)
+y = c(-1, 1)
+x + y
+```
+
+The elements of the shorter vector are _recycled_ to match the length of the
+longer vector. That is, after the second element, the elements of `y` are
+repeated to make a vector with the same length as `x` (because `x` is longer),
+and then vectorized addition is carried out as usual.
+
+Here's what that looks like written down:
+
+```
+   1  2  3  4
++ -1  1 -1  1
+  -----------
+   0  3  2  5
+```
+
+If the length of the longer vector is not a multiple of the length of the
+shorter vector, R issues a warning, but still returns the result. The warning
+as meant as a reminder, because unintended recycling is a common source of
+bugs:
+
+```{r}
+x = c(1, 2, 3, 4, 5)
+y = c(-1, 1)
+x + y
+```
+
+Recycling might seem strange at first, but it's convenient if you want to use a
+specific value (or pattern of values) with a vector. For instance, suppose you
+want to multiply all the elements of a vector by `2`. Recycling makes this
+easy:
+
+```{r}
+2 * c(1, 2, 3)
+```
+
+When you use recycling, most of the time one of the arguments will be a scalar
+like this.
+
 Data Types & Classes
 --------------------
 
@@ -115,10 +338,6 @@ most of these later on.
 
 ### Lists
 
-```{r, echo = FALSE}
-earn = read.csv("data/earn.csv")
-```
-
 A _list_ is an ordered data structure where the elements can have different
 types (they are _heterogeneous_). This differs from a vector, where the
 elements all have to have the same type, as we saw in Section \@ref(vectors).
@@ -225,6 +444,135 @@ If you still don't quite understand how the code above works, try inspecting
 each variable. In general, inspecting each step or variable is a good strategy
 for understanding why a piece of code works (or doesn't work!). Here the
 implicit coercion happens in the third line.
+
+
+### Matrices & Arrays
+
+A _matrix_ is the two-dimensional analogue of a vector. The elements, which are
+arranged into rows and columns, are ordered and homogeneous.
+
+You can create a matrix from a vector with the `matrix` function. By default,
+the columns are filled first:
+
+```{r}
+# A matrix with 2 rows and 3 columns:
+matrix(1:6, 2, 3)
+```
+
+The class of a matrix is always `matrix`, and the type matches the type of the
+elements:
+```{r}
+x = matrix(c("a", "b", NA, "c"), 2, 2)
+x
+class(x)
+typeof(x)
+```
+
+You can use the matrix multiplication operator `%*%` to multiply two matrices
+with compatible dimensions.
+
+An _array_ is a further generalization of matrices to higher dimensions. You
+can create an array from a vector with the `array` function. The
+characteristics of arrays are almost identical to matrices, but the class of an
+array is always `array`.
+
+
+### Factors
+
+A feature is _categorical_ if it measures a qualitative category. For example,
+the genres `rock`, `blues`, `alternative`, `folk`, `pop` are categories.
+
+R uses the class `factor` to represent categorical data. Visualizations and
+statistical models sometimes treat factors differently than other data types,
+so it's important to make sure you have the right data type. If you're ever
+unsure, remember that you can check the class of an object with the `class`
+function.
+
+When you load a data set, R usually can't tell which features are categorical.
+That means identifying and converting the categorical features is up to you.
+For beginners, it can be difficult to understand whether a feature is
+categorical or not. The key is to think about whether you want to use the
+feature to divide the data into groups.
+
+For example, if we want to know how many songs are in the `rock` genre, we
+first need to divide the songs by genre, and then count the number of songs in
+each group (or at least the `rock` group).
+
+As a second example, months recorded as numbers can be categorical or not,
+depending on how you want to use them. You might want to treat them as
+categorical (for example, to compute max rainfall in each month) or you might
+want to treat them as numbers (for example, to compute the number of months
+time between two events).
+
+The bottom line is that you have to think about what you'll be doing in the
+analysis. In some cases, you might treat a feature as categorical only for part
+of the analysis.
+
+Let's think about which features are categorical in earnings data set. To
+refresh our memory of what's in the data set, we can look at the structural
+summary:
+
+```{r}
+str(earn)
+```
+
+The columns `n_persons` and `median_weekly_earn` are quantitative rather than
+categorical, since they measure quantities of people and dollars, respectively.
+
+The `sex`, `race`, `ethnic_origin`, and `age` columns are all categorical,
+since they are all qualitative measurements. We can see this better if we use
+the `table` function to compute frequencies for the values in the columns:
+
+```{r}
+table(earn$sex)
+
+table(earn$race)
+
+table(earn$ethnic_origin)
+
+table(earn$age)
+```
+
+Each column has only a few unique values, repeated many times. These are ideal
+for grouping the data. If age had been recorded as a number, rather than a
+range, it would probably be better to treat it as quantitative, since there
+would be far more unique values. Columns with many unique values don't make
+good categorical features, because each group will only have a few elements!
+
+That leaves us with the `year` and `quarter` columns. It's easy to imagine
+grouping the data by year or quarter, but these are also clearly numbers. These
+columns can be treated as quantitative or categorical data, depending on how we
+want to use them to analyze the data.
+
+Let's convert the `age` column to a factor. To do this, use the `factor`
+function:
+```{r}
+age = factor(earn$age)
+head(age)
+```
+
+Notice that factors are printed differently than strings.
+
+The categories of a factor are called _levels_. You can list the levels with
+the `levels` function:
+```{r}
+levels(age)
+```
+
+Factors remember all possible levels even if you take a subset:
+```{r}
+age[1:3]
+```
+
+This is another way factors are different from strings. Factors "remember" all
+possible levels even if they aren't present. This ensures that if you plot a
+factor, the missing levels will still be represented on the plot.
+
+You can make a factor forget levels that aren't present with the `droplevels`
+function:
+```{r}
+droplevels(age[1:3])
+```
 
 
 Special Values
@@ -348,139 +696,6 @@ is.null("null")
 
 is.null(NULL)
 ```
-
-
-
-Matrices & Arrays
------------------
-
-A _matrix_ is the two-dimensional analogue of a vector. The elements, which are
-arranged into rows and columns, are ordered and homogeneous.
-
-You can create a matrix from a vector with the `matrix` function. By default,
-the columns are filled first:
-
-```{r}
-# A matrix with 2 rows and 3 columns:
-matrix(1:6, 2, 3)
-```
-
-The class of a matrix is always `matrix`, and the type matches the type of the
-elements:
-```{r}
-x = matrix(c("a", "b", NA, "c"), 2, 2)
-x
-class(x)
-typeof(x)
-```
-
-You can use the matrix multiplication operator `%*%` to multiply two matrices
-with compatible dimensions.
-
-An _array_ is a further generalization of matrices to higher dimensions. You
-can create an array from a vector with the `array` function. The
-characteristics of arrays are almost identical to matrices, but the class of an
-array is always `array`.
-
-
-Factors
--------
-
-A feature is _categorical_ if it measures a qualitative category. For example,
-the genres `rock`, `blues`, `alternative`, `folk`, `pop` are categories.
-
-R uses the class `factor` to represent categorical data. Visualizations and
-statistical models sometimes treat factors differently than other data types,
-so it's important to make sure you have the right data type. If you're ever
-unsure, remember that you can check the class of an object with the `class`
-function.
-
-When you load a data set, R usually can't tell which features are categorical.
-That means identifying and converting the categorical features is up to you.
-For beginners, it can be difficult to understand whether a feature is
-categorical or not. The key is to think about whether you want to use the
-feature to divide the data into groups.
-
-For example, if we want to know how many songs are in the `rock` genre, we
-first need to divide the songs by genre, and then count the number of songs in
-each group (or at least the `rock` group).
-
-As a second example, months recorded as numbers can be categorical or not,
-depending on how you want to use them. You might want to treat them as
-categorical (for example, to compute max rainfall in each month) or you might
-want to treat them as numbers (for example, to compute the number of months
-time between two events).
-
-The bottom line is that you have to think about what you'll be doing in the
-analysis. In some cases, you might treat a feature as categorical only for part
-of the analysis.
-
-Let's think about which features are categorical in earnings data set. To
-refresh our memory of what's in the data set, we can look at the structural
-summary:
-
-```{r}
-str(earn)
-```
-
-The columns `n_persons` and `median_weekly_earn` are quantitative rather than
-categorical, since they measure quantities of people and dollars, respectively.
-
-The `sex`, `race`, `ethnic_origin`, and `age` columns are all categorical,
-since they are all qualitative measurements. We can see this better if we use
-the `table` function to compute frequencies for the values in the columns:
-
-```{r}
-table(earn$sex)
-
-table(earn$race)
-
-table(earn$ethnic_origin)
-
-table(earn$age)
-```
-
-Each column has only a few unique values, repeated many times. These are ideal
-for grouping the data. If age had been recorded as a number, rather than a
-range, it would probably be better to treat it as quantitative, since there
-would be far more unique values. Columns with many unique values don't make
-good categorical features, because each group will only have a few elements!
-
-That leaves us with the `year` and `quarter` columns. It's easy to imagine
-grouping the data by year or quarter, but these are also clearly numbers. These
-columns can be treated as quantitative or categorical data, depending on how we
-want to use them to analyze the data.
-
-Let's convert the `age` column to a factor. To do this, use the `factor`
-function:
-```{r}
-age = factor(earn$age)
-head(age)
-```
-
-Notice that factors are printed differently than strings.
-
-The categories of a factor are called _levels_. You can list the levels with
-the `levels` function:
-```{r}
-levels(age)
-```
-
-Factors remember all possible levels even if you take a subset:
-```{r}
-age[1:3]
-```
-
-This is another way factors are different from strings. Factors "remember" all
-possible levels even if they aren't present. This ensures that if you plot a
-factor, the missing levels will still be represented on the plot.
-
-You can make a factor forget levels that aren't present with the `droplevels`
-function:
-```{r}
-droplevels(age[1:3])
-```
-
 
 
 Indexing
@@ -809,130 +1024,7 @@ _not_ vectorized! Because of this, generally you **should not use** the
 short-circuit operators for indexing. Their main use is in writing conditions
 for if-statements, which we'll learn about later on.
 
-### Indexing Lists
 
-Lists are a _container_ for other types of R objects. When you select an
-element from a list, you can either keep the container (the list) or discard
-it. The indexing operator `[` almost always keeps containers.
+Exercises
+---------
 
-As an example, let's get some elements from a small list:
-
-```{r}
-x = list(first = c(1, 2, 3), second = sin, third = c("hi", "hello"))
-y = x[c(1, 3)]
-y
-class(y)
-```
-
-The result is still a list. Even if we get just one element, the result of
-indexing a list with `[` is a list:
-
-```{r}
-class(x[1])
-```
-
-Sometimes this will be exactly what we want. But what if we want to get the
-first element of `x` so that we can use it in a vectorized function? Or in a
-function that only accepts numeric arguments? We need to somehow get the
-element and discard the container.
-
-The solution to this problem is the _extraction operator_ `[[`, which is also
-called the _double square bracket operator_. The extraction operator is the
-primary way to get and set elements of lists and other containers.
-
-Unlike the indexing operator `[`, the extraction operator always discards the
-container:
-
-```{r}
-x[[1]]
-class(x[[1]])
-```
-
-The tradeoff is that the extraction operator can only get or set one element at
-a time. Note that the element can be a vector, as above. Because it can only
-get or set one element at a time, the extraction operator can only index by
-position or name. Blank and logical indexes are not allowed.
-
-The final difference between the index operator `[` and the extraction operator
-`[[` has to do with how they handle invalid indexes. The index operator `[`
-returns `NA` for invalid vector elements, and `NULL` for invalid list elements:
-
-```{r}
-c(1, 2)[10]
-x[10]
-```
-
-On the other hand, the extraction operator `[[` raises an error for invalid
-elements:
-
-```{r, error = TRUE}
-x[[10]]
-```
-
-The indexing operator `[` and the extraction operator `[[` both work with any
-data structure that has elements. However, you'll generally use the indexing
-operator `[` to index vectors, and the extraction operator `[[` to index
-containers (such as lists).
-
-
-### Indexing Data Frames
-
-For two-dimensional objects, like matrices and data frames, you can pass the
-indexing operator `[` or the extraction operator `[[` a separate index for each
-dimension. The rows come first:
-
-```
-DATA[ROWS, COLUMNS]
-```
-
-For instance, let's get the first 3 rows and all columns of the earnings data:
-
-```{r}
-earn[1:3, ]
-```
-
-As we saw in Section \@ref(all-elements), leaving an index blank means all
-elements.
-
-As another example, let's get the 3rd and 5th row, and the 2nd and 4th column:
-
-```{r}
-earn[c(3, 5), c(2, 4)]
-```
-
-Mixing several different ways of indexing is allowed. So for example, we can
-get the same above, but use column names instead of positions:
-
-```{r}
-earn[c(3, 5), c("race", "age")]
-```
-
-For data frames, it's especially common to index the rows by condition and the
-columns by name. For instance, let's get the `sex`, `age`, and `n_persons`
-columns for all rows that pertain to women:
-
-```{r}
-result = earn[earn$sex == "Women", c("sex", "age", "n_persons")]
-head(result)
-```
-
-#### The Drop Parameter {-}
-
-If you use two-dimensional indexing with `[` to select exactly one column, you
-get a vector:
-
-```{r}
-result = earn[1:3, 2]
-class(result)
-```
-
-The container is dropped, even though the indexing operator `[` usually keeps
-containers. This also occurs for matrices. You can control this behavior with
-the `drop` parameter:
-
-```{r}
-result = earn[1:3, 2, drop = FALSE]
-class(result)
-```
-
-The default is `drop = TRUE`.
