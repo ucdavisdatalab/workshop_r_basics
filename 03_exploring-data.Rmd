@@ -2,18 +2,22 @@ Exploring Data
 ==============
 
 Now that you have a solid foundation in the basic functions and data structures
-of R, we can move on to its most popular application: data analysis. In this
-chapter, we'll learn how to efficiently explore and summarize data, using
-statistical measurements and visualizations. Along the way, we'll learn how to
-use apply functions and how to write new functions, two more skills essential
-to fluency in R.
+of R, you can move on to its most popular application: data analysis. In this
+chapter, you'll learn how to efficiently explore and summarize data with
+visualizations and statistics. Along the way, you'll also learn how to use
+apply functions, which are essential to fluency in R.
 
 ```{r, echo = FALSE}
 earn = read.csv("data/earn.csv")
 ```
 
-Indexing Data Frames & Lists
-----------------------------
+Indexing Data Frames
+--------------------
+
+This section explains how to get and set data in a data frame, expanding on the
+indexing techniques you learned in Section \@ref(indexing). Under the hood,
+every data frame is a list, so first you'll learn about indexing lists.
+
 
 ### Indexing Lists
 
@@ -81,7 +85,7 @@ operator `[` to index vectors, and the extraction operator `[[` to index
 containers (such as lists).
 
 
-### Indexing Data Frames
+### Two-dimensional Indexing
 
 For two-dimensional objects, like matrices and data frames, you can pass the
 indexing operator `[` or the extraction operator `[[` a separate index for each
@@ -122,7 +126,7 @@ result = earn[earn$sex == "Women", c("sex", "age", "n_persons")]
 head(result)
 ```
 
-#### The Drop Parameter {-}
+### The `drop` Parameter
 
 If you use two-dimensional indexing with `[` to select exactly one column, you
 get a vector:
