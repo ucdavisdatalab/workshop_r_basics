@@ -17,6 +17,9 @@ data-frames
 summarizing-data
 selecting-columns
 exercises
+exercise
+exercise-1
+exercise-2
 data-structures
 vectors
 creating-vectors
@@ -40,6 +43,10 @@ by-name
 by-condition
 logic
 exercises-1
+exercise-3
+exercise-4
+exercise-5
+exercise-6
 exploring-data
 indexing-data-frames
 indexing-lists
