@@ -1032,3 +1032,46 @@ for if-statements, which we'll learn about later on.
 Exercises
 ---------
 
+### Exercise
+
+The `rep` function is another way to create a vector. Read the help file for
+the `rep` function.
+
+1. What does the `rep` function do to create a vector? Give an example.
+2. The `rep` function has parameters `times` and `each`. What does each do, and
+   how do they differ? Give examples for both.
+3. Can you set both of `times` and `each` in a single call to `rep`? If the
+   function raises an error, explain what the error message means. If the
+   function returns a result, explain how the result corresponds to the
+   arguments you chose.
+
+
+### Exercise
+
+Considering how implicit coercion works (Section \@ref(implicit-coercion)):
+
+1. Why does `"3" + 4` raise an error?
+2. Why does `"TRUE" == TRUE` return `TRUE`?
+3. Why does `"FALSE" < TRUE` return TRUE?
+
+
+### Exercise
+
+1. Section \@ref(missing-values) described the missing value as a "chameleon"
+   because it can have many different types. Is `Inf` also a chameleon? Use
+   examples to justify your answer.
+
+2. The missing value is also "contagious" because using it as an argument
+   usually produces another missing value. Is `Inf` contagious? Again, use
+   examples to justify your answer.
+
+
+### Exercise
+
+The `table` function is useful for counting all sorts of things, not just level
+frequencies for a factor. For instance, you can use `table` to count how many
+`TRUE` and `FALSE` values there are in a logical vector.
+
+1. For the earnings data, how many rows had median weekly earnings below \$750?
+2. Based on how the data is structured, is your answer in part 1 the same as
+   the number of quarters that had median weekly earnings below \$750? Explain.
