@@ -199,11 +199,13 @@ quote at the beginning of the string must match the quote at the end.
 
 Numbers and strings are not the same thing, so for example R considers `1`
 different from `"1"`. As a result, you can't use strings with most of R's
-arithmetic operators:
+arithmetic operators. For instance, this code causes an error:
 
 ```{r, error = TRUE}
 "1" + 3
 ```
+
+The error message notes that `+` is not defined for non-numeric values.
 
 
 ### Comparisons
