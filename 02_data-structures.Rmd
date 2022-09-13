@@ -4,8 +4,8 @@ Data Structures
 The previous chapter introduced R and gave you enough background to do some
 simple computations on data sets. This chapter focuses on the foundational
 knowledge and skills you'll need in order to use R effectively in the long
-term. Specifically, we're going to take a deep dive into R's various data
-structures, then learn a variety of ways to get and set their elements.
+term. Specifically, it begins with a deep dive into R's various data structures
+and data types, then explains a variety of ways to get and set their elements.
 
 
 Vectors
@@ -16,18 +16,18 @@ earn = read.csv("data/earn.csv")
 ```
 
 A _vector_ is a collection of values. Vectors are the fundamental unit of data
-in R, and we've already used them in the previous sections.
+in R, and you've already used them in the previous sections.
 
 For instance, each column in a data frame is a vector. So the `quarter` column
-in the earnings data is a vector. Let's take a look at it. We can use `head`
-again to avoid printing too much, this time specifying with the second argument
-that we want to print exactly 10 values:
+in the earnings data from Section \@ref(data-frames) is a vector. Take a look
+at it now. You can use `head` to avoid printing too much. Set the second
+argument to `10` so that exactly 10 values are printed:
 
 ```{r}
 head(earn$quarter, 10)
 ```
 
-Like all vectors, this vector is ordered, which just means the values, or
+Like all vectors, this vector is _ordered_, which just means the values, or
 _elements_, have specific positions. The value of the 1st element is `1`, the
 2nd is `2`, the 5th is also `1`, and so on.
 
@@ -44,7 +44,7 @@ the `age` column is a vector of strings:
 head(earn$age)
 ```
 
-Vectors can have any number of elements, including 0 or 1 element. Unlike
+Vectors can contain any number of elements, including 0 or 1 element. Unlike
 mathematics, R does not distinguish between vectors and _scalars_ (solitary
 values). So as far as R is concerned, a solitary value, like `3`, is a vector
 with 1 element.
@@ -80,6 +80,9 @@ attempt to convert them to a common data type that preserves the information:
 ```{r}
 c(1, "cool", 2.3)
 ```
+
+Section \@ref(implicit-coercion) explains the rules for this conversion in more
+detail.
 
 The colon operator `:` creates vectors that contain sequences of integers. This
 is useful for creating "toy" data to test things on, and later we'll see that
@@ -231,6 +234,7 @@ easy:
 When you use recycling, most of the time one of the arguments will be a scalar
 like this.
 
+
 Data Types & Classes
 --------------------
 
@@ -276,15 +280,15 @@ The built-in classes you'll use all the time correspond to vectors and lists
 | character | `"hi"`, `"YAY"`       | Text strings
 | list      | `list(TRUE, 1, "hi")` | Ordered collection of heterogeneous elements
 
-R doesn't distinguish between scalars and vectors (see Section \@ref(vectors)),
-so the class of a vector is the same as the class of its elements:
+R doesn't distinguish between scalars and vectors, so the class of a vector is
+the same as the class of its elements:
 
 ```{r}
 class("hi")
 class(c("hello", "hi"))
 ```
 
-In addition, for ordinary vectors, the class and the type are the same:
+In addition, for most vectors, the class and the type are the same:
 
 ```{r}
 x = c(TRUE, FALSE)
