@@ -6,6 +6,13 @@ in R. This final chapter is a collection of different topics relevant to
 cleaning data sets before and during analysis. Some of them, like loops, also
 have other applications.
 
+#### Learning Objectives {-}
+
+* Run some code if a condition is satified with an if-statement
+* Write functions to make code reusable
+* Run some code repeatedly with a for-loop
+* Describe differences between types of loops and how to choose
+
 
 Conditional Expressions
 -----------------------

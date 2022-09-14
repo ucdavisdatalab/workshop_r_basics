@@ -11,6 +11,18 @@ apply functions, which are essential to fluency in R.
 earn = read.csv("data/earn.csv")
 ```
 
+#### Learning Objectives {-}
+
+* Describe when to use `[` versus `[[`
+* Index data frames to get specific rows, columns, or subsets
+* Install and load packages
+* Describe the grammar of graphics
+* Make a plot
+* Save a plot to an image file
+* Call a function repeatedly with `sapply` or `lapply`
+* Split data into groups and apply a function to each
+
+
 Indexing Data Frames
 --------------------
 

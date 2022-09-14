@@ -7,6 +7,18 @@ knowledge and skills you'll need in order to use R effectively in the long
 term. Specifically, it begins with a deep dive into R's various data structures
 and data types, then explains a variety of ways to get and set their elements.
 
+#### Learning Objectives {-}
+
+* Create vectors, including sequences
+* Identify whether a function is vectorized or not
+* Check the type and class of an object
+* Coerce an object to a different type
+* Describe matrices and lists
+* Describe and differentiate `NA`, `NaN`, `Inf`, `NULL`
+* Identify, create, and relevel factors
+* Index vectors with empty, integer, string, and logical arguments
+* Negate or combine conditions with logic operators
+
 
 Vectors
 -------
