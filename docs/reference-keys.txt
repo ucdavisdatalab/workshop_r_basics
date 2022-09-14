@@ -79,7 +79,14 @@ example-fibonacci
 planning-for-iteration
 exercises-3
 appendix
-more-ways-to-compare-values
+more-about-comparisons
+equality
+the-operator
+the-all.equal-function
+the-identical-function
+the-in-operator
+summarizing-comparisons
+other-pitfalls
 variable-scope-lookup
 local-variables
 lexical-scoping
