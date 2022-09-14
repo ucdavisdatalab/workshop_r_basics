@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Assessment | R Basics</title>
   <meta name="description" content="Assessment | R Basics" />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Assessment | R Basics" />
   <meta property="og:type" content="book" />
-  <meta property="og:url" content="https://ucdavisdatalab.github.io/workshop_r_basics/" />
   
   
   <meta name="github-repo" content="ucdavisdatalab/workshop_r-basics" />
@@ -33,8 +32,8 @@
   
 <link rel="prev" href="acknowledgements.html"/>
 
-<script src="libs/header-attrs-2.10/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -50,9 +49,9 @@
 
 
 
-
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -120,6 +119,7 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+
 </head>
 
 <body>
@@ -138,147 +138,147 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./" style="font-size: 18px">R Basics</a></li>
 
 <li class="divider"></li>
-<li><a href="index.html#overview" id="toc-overview">Overview</a></li>
-<li><a href="getting-started.html#getting-started" id="toc-getting-started"><span class="toc-section-number">1</span> Getting Started</a>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Overview</a></li>
+<li class="chapter" data-level="1" data-path="getting-started.html"><a href="getting-started.html"><i class="fa fa-check"></i><b>1</b> Getting Started</a>
 <ul>
-<li><a href="getting-started.html#prerequisites" id="toc-prerequisites"><span class="toc-section-number">1.1</span> Prerequisites</a></li>
-<li><a href="getting-started.html#the-r-interface" id="toc-the-r-interface"><span class="toc-section-number">1.2</span> The R Interface</a>
+<li class="chapter" data-level="1.1" data-path="getting-started.html"><a href="getting-started.html#prerequisites"><i class="fa fa-check"></i><b>1.1</b> Prerequisites</a></li>
+<li class="chapter" data-level="1.2" data-path="getting-started.html"><a href="getting-started.html#the-r-interface"><i class="fa fa-check"></i><b>1.2</b> The R Interface</a>
 <ul>
-<li><a href="getting-started.html#variables" id="toc-variables"><span class="toc-section-number">1.2.1</span> Variables</a></li>
-<li><a href="getting-started.html#strings" id="toc-strings"><span class="toc-section-number">1.2.2</span> Strings</a></li>
-<li><a href="getting-started.html#comparisons" id="toc-comparisons"><span class="toc-section-number">1.2.3</span> Comparisons</a></li>
-<li><a href="getting-started.html#calling-functions" id="toc-calling-functions"><span class="toc-section-number">1.2.4</span> Calling Functions</a></li>
+<li class="chapter" data-level="1.2.1" data-path="getting-started.html"><a href="getting-started.html#variables"><i class="fa fa-check"></i><b>1.2.1</b> Variables</a></li>
+<li class="chapter" data-level="1.2.2" data-path="getting-started.html"><a href="getting-started.html#strings"><i class="fa fa-check"></i><b>1.2.2</b> Strings</a></li>
+<li class="chapter" data-level="1.2.3" data-path="getting-started.html"><a href="getting-started.html#comparisons"><i class="fa fa-check"></i><b>1.2.3</b> Comparisons</a></li>
+<li class="chapter" data-level="1.2.4" data-path="getting-started.html"><a href="getting-started.html#calling-functions"><i class="fa fa-check"></i><b>1.2.4</b> Calling Functions</a></li>
 </ul></li>
-<li><a href="getting-started.html#getting-help" id="toc-getting-help"><span class="toc-section-number">1.3</span> Getting Help</a>
+<li class="chapter" data-level="1.3" data-path="getting-started.html"><a href="getting-started.html#getting-help"><i class="fa fa-check"></i><b>1.3</b> Getting Help</a>
 <ul>
-<li><a href="getting-started.html#when-something-goes-wrong" id="toc-when-something-goes-wrong"><span class="toc-section-number">1.3.1</span> When Something Goes Wrong</a></li>
+<li class="chapter" data-level="1.3.1" data-path="getting-started.html"><a href="getting-started.html#when-something-goes-wrong"><i class="fa fa-check"></i><b>1.3.1</b> When Something Goes Wrong</a></li>
 </ul></li>
-<li><a href="getting-started.html#file-systems" id="toc-file-systems"><span class="toc-section-number">1.4</span> File Systems</a>
+<li class="chapter" data-level="1.4" data-path="getting-started.html"><a href="getting-started.html#file-systems"><i class="fa fa-check"></i><b>1.4</b> File Systems</a>
 <ul>
-<li><a href="getting-started.html#absolute-relative-paths" id="toc-absolute-relative-paths"><span class="toc-section-number">1.4.1</span> Absolute &amp; Relative Paths</a></li>
-<li><a href="getting-started.html#r-scripts" id="toc-r-scripts"><span class="toc-section-number">1.4.2</span> R Scripts</a></li>
-<li><a href="getting-started.html#the-working-directory" id="toc-the-working-directory"><span class="toc-section-number">1.4.3</span> The Working Directory</a></li>
+<li class="chapter" data-level="1.4.1" data-path="getting-started.html"><a href="getting-started.html#absolute-relative-paths"><i class="fa fa-check"></i><b>1.4.1</b> Absolute &amp; Relative Paths</a></li>
+<li class="chapter" data-level="1.4.2" data-path="getting-started.html"><a href="getting-started.html#r-scripts"><i class="fa fa-check"></i><b>1.4.2</b> R Scripts</a></li>
+<li class="chapter" data-level="1.4.3" data-path="getting-started.html"><a href="getting-started.html#the-working-directory"><i class="fa fa-check"></i><b>1.4.3</b> The Working Directory</a></li>
 </ul></li>
-<li><a href="getting-started.html#reading-files" id="toc-reading-files"><span class="toc-section-number">1.5</span> Reading Files</a>
+<li class="chapter" data-level="1.5" data-path="getting-started.html"><a href="getting-started.html#reading-files"><i class="fa fa-check"></i><b>1.5</b> Reading Files</a>
 <ul>
-<li><a href="getting-started.html#hello-data" id="toc-hello-data"><span class="toc-section-number">1.5.1</span> Hello, Data!</a></li>
+<li class="chapter" data-level="1.5.1" data-path="getting-started.html"><a href="getting-started.html#hello-data"><i class="fa fa-check"></i><b>1.5.1</b> Hello, Data!</a></li>
 </ul></li>
-<li><a href="getting-started.html#data-frames" id="toc-data-frames"><span class="toc-section-number">1.6</span> Data Frames</a>
+<li class="chapter" data-level="1.6" data-path="getting-started.html"><a href="getting-started.html#data-frames"><i class="fa fa-check"></i><b>1.6</b> Data Frames</a>
 <ul>
-<li><a href="getting-started.html#summarizing-data" id="toc-summarizing-data"><span class="toc-section-number">1.6.1</span> Summarizing Data</a></li>
-<li><a href="getting-started.html#selecting-columns" id="toc-selecting-columns"><span class="toc-section-number">1.6.2</span> Selecting Columns</a></li>
+<li class="chapter" data-level="1.6.1" data-path="getting-started.html"><a href="getting-started.html#summarizing-data"><i class="fa fa-check"></i><b>1.6.1</b> Summarizing Data</a></li>
+<li class="chapter" data-level="1.6.2" data-path="getting-started.html"><a href="getting-started.html#selecting-columns"><i class="fa fa-check"></i><b>1.6.2</b> Selecting Columns</a></li>
 </ul></li>
-<li><a href="getting-started.html#exercises" id="toc-exercises"><span class="toc-section-number">1.7</span> Exercises</a>
+<li class="chapter" data-level="1.7" data-path="getting-started.html"><a href="getting-started.html#exercises"><i class="fa fa-check"></i><b>1.7</b> Exercises</a>
 <ul>
-<li><a href="getting-started.html#exercise" id="toc-exercise"><span class="toc-section-number">1.7.1</span> Exercise</a></li>
-<li><a href="getting-started.html#exercise-1" id="toc-exercise-1"><span class="toc-section-number">1.7.2</span> Exercise</a></li>
-<li><a href="getting-started.html#exercise-2" id="toc-exercise-2"><span class="toc-section-number">1.7.3</span> Exercise</a></li>
-</ul></li>
-</ul></li>
-<li><a href="data-structures.html#data-structures" id="toc-data-structures"><span class="toc-section-number">2</span> Data Structures</a>
-<ul>
-<li><a href="data-structures.html#vectors" id="toc-vectors"><span class="toc-section-number">2.1</span> Vectors</a>
-<ul>
-<li><a href="data-structures.html#creating-vectors" id="toc-creating-vectors"><span class="toc-section-number">2.1.1</span> Creating Vectors</a></li>
-<li><a href="data-structures.html#indexing-vectors" id="toc-indexing-vectors"><span class="toc-section-number">2.1.2</span> Indexing Vectors</a></li>
-<li><a href="data-structures.html#vectorization" id="toc-vectorization"><span class="toc-section-number">2.1.3</span> Vectorization</a></li>
-<li><a href="data-structures.html#recycling" id="toc-recycling"><span class="toc-section-number">2.1.4</span> Recycling</a></li>
-</ul></li>
-<li><a href="data-structures.html#data-types-classes" id="toc-data-types-classes"><span class="toc-section-number">2.2</span> Data Types &amp; Classes</a>
-<ul>
-<li><a href="data-structures.html#lists" id="toc-lists"><span class="toc-section-number">2.2.1</span> Lists</a></li>
-<li><a href="data-structures.html#implicit-coercion" id="toc-implicit-coercion"><span class="toc-section-number">2.2.2</span> Implicit Coercion</a></li>
-<li><a href="data-structures.html#matrices-arrays" id="toc-matrices-arrays"><span class="toc-section-number">2.2.3</span> Matrices &amp; Arrays</a></li>
-<li><a href="data-structures.html#factors" id="toc-factors"><span class="toc-section-number">2.2.4</span> Factors</a></li>
-</ul></li>
-<li><a href="data-structures.html#special-values" id="toc-special-values"><span class="toc-section-number">2.3</span> Special Values</a>
-<ul>
-<li><a href="data-structures.html#missing-values" id="toc-missing-values"><span class="toc-section-number">2.3.1</span> Missing Values</a></li>
-<li><a href="data-structures.html#infinity" id="toc-infinity"><span class="toc-section-number">2.3.2</span> Infinity</a></li>
-<li><a href="data-structures.html#not-a-number" id="toc-not-a-number"><span class="toc-section-number">2.3.3</span> Not a Number</a></li>
-<li><a href="data-structures.html#null" id="toc-null"><span class="toc-section-number">2.3.4</span> Null</a></li>
-</ul></li>
-<li><a href="data-structures.html#indexing" id="toc-indexing"><span class="toc-section-number">2.4</span> Indexing</a>
-<ul>
-<li><a href="data-structures.html#all-elements" id="toc-all-elements"><span class="toc-section-number">2.4.1</span> All Elements</a></li>
-<li><a href="data-structures.html#by-position" id="toc-by-position"><span class="toc-section-number">2.4.2</span> By Position</a></li>
-<li><a href="data-structures.html#by-name" id="toc-by-name"><span class="toc-section-number">2.4.3</span> By Name</a></li>
-<li><a href="data-structures.html#by-condition" id="toc-by-condition"><span class="toc-section-number">2.4.4</span> By Condition</a></li>
-<li><a href="data-structures.html#logic" id="toc-logic"><span class="toc-section-number">2.4.5</span> Logic</a></li>
-</ul></li>
-<li><a href="data-structures.html#exercises-1" id="toc-exercises-1"><span class="toc-section-number">2.5</span> Exercises</a>
-<ul>
-<li><a href="data-structures.html#exercise-3" id="toc-exercise-3"><span class="toc-section-number">2.5.1</span> Exercise</a></li>
-<li><a href="data-structures.html#exercise-4" id="toc-exercise-4"><span class="toc-section-number">2.5.2</span> Exercise</a></li>
-<li><a href="data-structures.html#exercise-5" id="toc-exercise-5"><span class="toc-section-number">2.5.3</span> Exercise</a></li>
-<li><a href="data-structures.html#exercise-6" id="toc-exercise-6"><span class="toc-section-number">2.5.4</span> Exercise</a></li>
+<li class="chapter" data-level="1.7.1" data-path="getting-started.html"><a href="getting-started.html#exercise"><i class="fa fa-check"></i><b>1.7.1</b> Exercise</a></li>
+<li class="chapter" data-level="1.7.2" data-path="getting-started.html"><a href="getting-started.html#exercise-1"><i class="fa fa-check"></i><b>1.7.2</b> Exercise</a></li>
+<li class="chapter" data-level="1.7.3" data-path="getting-started.html"><a href="getting-started.html#exercise-2"><i class="fa fa-check"></i><b>1.7.3</b> Exercise</a></li>
 </ul></li>
 </ul></li>
-<li><a href="exploring-data.html#exploring-data" id="toc-exploring-data"><span class="toc-section-number">3</span> Exploring Data</a>
+<li class="chapter" data-level="2" data-path="data-structures.html"><a href="data-structures.html"><i class="fa fa-check"></i><b>2</b> Data Structures</a>
 <ul>
-<li><a href="exploring-data.html#indexing-data-frames" id="toc-indexing-data-frames"><span class="toc-section-number">3.1</span> Indexing Data Frames</a>
+<li class="chapter" data-level="2.1" data-path="data-structures.html"><a href="data-structures.html#vectors"><i class="fa fa-check"></i><b>2.1</b> Vectors</a>
 <ul>
-<li><a href="exploring-data.html#indexing-lists" id="toc-indexing-lists"><span class="toc-section-number">3.1.1</span> Indexing Lists</a></li>
-<li><a href="exploring-data.html#two-dimensional-indexing" id="toc-two-dimensional-indexing"><span class="toc-section-number">3.1.2</span> Two-dimensional Indexing</a></li>
-<li><a href="exploring-data.html#the-drop-parameter" id="toc-the-drop-parameter"><span class="toc-section-number">3.1.3</span> The <code>drop</code> Parameter</a></li>
+<li class="chapter" data-level="2.1.1" data-path="data-structures.html"><a href="data-structures.html#creating-vectors"><i class="fa fa-check"></i><b>2.1.1</b> Creating Vectors</a></li>
+<li class="chapter" data-level="2.1.2" data-path="data-structures.html"><a href="data-structures.html#indexing-vectors"><i class="fa fa-check"></i><b>2.1.2</b> Indexing Vectors</a></li>
+<li class="chapter" data-level="2.1.3" data-path="data-structures.html"><a href="data-structures.html#vectorization"><i class="fa fa-check"></i><b>2.1.3</b> Vectorization</a></li>
+<li class="chapter" data-level="2.1.4" data-path="data-structures.html"><a href="data-structures.html#recycling"><i class="fa fa-check"></i><b>2.1.4</b> Recycling</a></li>
 </ul></li>
-<li><a href="exploring-data.html#packages" id="toc-packages"><span class="toc-section-number">3.2</span> Packages</a></li>
-<li><a href="exploring-data.html#data-visualization" id="toc-data-visualization"><span class="toc-section-number">3.3</span> Data Visualization</a>
+<li class="chapter" data-level="2.2" data-path="data-structures.html"><a href="data-structures.html#data-types-classes"><i class="fa fa-check"></i><b>2.2</b> Data Types &amp; Classes</a>
 <ul>
-<li><a href="exploring-data.html#layer-1-data" id="toc-layer-1-data"><span class="toc-section-number">3.3.1</span> Layer 1: Data</a></li>
-<li><a href="exploring-data.html#layer-2-geometry" id="toc-layer-2-geometry"><span class="toc-section-number">3.3.2</span> Layer 2: Geometry</a></li>
-<li><a href="exploring-data.html#layer-3-aesthetics" id="toc-layer-3-aesthetics"><span class="toc-section-number">3.3.3</span> Layer 3: Aesthetics</a></li>
-<li><a href="exploring-data.html#layer-4-scales" id="toc-layer-4-scales"><span class="toc-section-number">3.3.4</span> Layer 4: Scales</a></li>
-<li><a href="exploring-data.html#saving-plots" id="toc-saving-plots"><span class="toc-section-number">3.3.5</span> Saving Plots</a></li>
-<li><a href="exploring-data.html#example-bar-plot" id="toc-example-bar-plot"><span class="toc-section-number">3.3.6</span> Example: Bar Plot</a></li>
-<li><a href="exploring-data.html#visualization-design" id="toc-visualization-design"><span class="toc-section-number">3.3.7</span> Visualization Design</a></li>
+<li class="chapter" data-level="2.2.1" data-path="data-structures.html"><a href="data-structures.html#lists"><i class="fa fa-check"></i><b>2.2.1</b> Lists</a></li>
+<li class="chapter" data-level="2.2.2" data-path="data-structures.html"><a href="data-structures.html#implicit-coercion"><i class="fa fa-check"></i><b>2.2.2</b> Implicit Coercion</a></li>
+<li class="chapter" data-level="2.2.3" data-path="data-structures.html"><a href="data-structures.html#matrices-arrays"><i class="fa fa-check"></i><b>2.2.3</b> Matrices &amp; Arrays</a></li>
+<li class="chapter" data-level="2.2.4" data-path="data-structures.html"><a href="data-structures.html#factors"><i class="fa fa-check"></i><b>2.2.4</b> Factors</a></li>
 </ul></li>
-<li><a href="exploring-data.html#apply-functions" id="toc-apply-functions"><span class="toc-section-number">3.4</span> Apply Functions</a>
+<li class="chapter" data-level="2.3" data-path="data-structures.html"><a href="data-structures.html#special-values"><i class="fa fa-check"></i><b>2.3</b> Special Values</a>
 <ul>
-<li><a href="exploring-data.html#the-sapply-function" id="toc-the-sapply-function"><span class="toc-section-number">3.4.1</span> The <code>sapply</code> Function</a></li>
-<li><a href="exploring-data.html#the-split-apply-pattern" id="toc-the-split-apply-pattern"><span class="toc-section-number">3.4.2</span> The Split-Apply Pattern</a></li>
+<li class="chapter" data-level="2.3.1" data-path="data-structures.html"><a href="data-structures.html#missing-values"><i class="fa fa-check"></i><b>2.3.1</b> Missing Values</a></li>
+<li class="chapter" data-level="2.3.2" data-path="data-structures.html"><a href="data-structures.html#infinity"><i class="fa fa-check"></i><b>2.3.2</b> Infinity</a></li>
+<li class="chapter" data-level="2.3.3" data-path="data-structures.html"><a href="data-structures.html#not-a-number"><i class="fa fa-check"></i><b>2.3.3</b> Not a Number</a></li>
+<li class="chapter" data-level="2.3.4" data-path="data-structures.html"><a href="data-structures.html#null"><i class="fa fa-check"></i><b>2.3.4</b> Null</a></li>
 </ul></li>
-<li><a href="exploring-data.html#exercises-2" id="toc-exercises-2"><span class="toc-section-number">3.5</span> Exercises</a></li>
-</ul></li>
-<li><a href="automating-tasks.html#automating-tasks" id="toc-automating-tasks"><span class="toc-section-number">4</span> Automating Tasks</a>
+<li class="chapter" data-level="2.4" data-path="data-structures.html"><a href="data-structures.html#indexing"><i class="fa fa-check"></i><b>2.4</b> Indexing</a>
 <ul>
-<li><a href="automating-tasks.html#conditional-expressions" id="toc-conditional-expressions"><span class="toc-section-number">4.1</span> Conditional Expressions</a></li>
-<li><a href="automating-tasks.html#functions" id="toc-functions"><span class="toc-section-number">4.2</span> Functions</a>
+<li class="chapter" data-level="2.4.1" data-path="data-structures.html"><a href="data-structures.html#all-elements"><i class="fa fa-check"></i><b>2.4.1</b> All Elements</a></li>
+<li class="chapter" data-level="2.4.2" data-path="data-structures.html"><a href="data-structures.html#by-position"><i class="fa fa-check"></i><b>2.4.2</b> By Position</a></li>
+<li class="chapter" data-level="2.4.3" data-path="data-structures.html"><a href="data-structures.html#by-name"><i class="fa fa-check"></i><b>2.4.3</b> By Name</a></li>
+<li class="chapter" data-level="2.4.4" data-path="data-structures.html"><a href="data-structures.html#by-condition"><i class="fa fa-check"></i><b>2.4.4</b> By Condition</a></li>
+<li class="chapter" data-level="2.4.5" data-path="data-structures.html"><a href="data-structures.html#logic"><i class="fa fa-check"></i><b>2.4.5</b> Logic</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="data-structures.html"><a href="data-structures.html#exercises-1"><i class="fa fa-check"></i><b>2.5</b> Exercises</a>
 <ul>
-<li><a href="automating-tasks.html#returning-values" id="toc-returning-values"><span class="toc-section-number">4.2.1</span> Returning Values</a></li>
-<li><a href="automating-tasks.html#planning-your-functions" id="toc-planning-your-functions"><span class="toc-section-number">4.2.2</span> Planning Your Functions</a></li>
+<li class="chapter" data-level="2.5.1" data-path="data-structures.html"><a href="data-structures.html#exercise-3"><i class="fa fa-check"></i><b>2.5.1</b> Exercise</a></li>
+<li class="chapter" data-level="2.5.2" data-path="data-structures.html"><a href="data-structures.html#exercise-4"><i class="fa fa-check"></i><b>2.5.2</b> Exercise</a></li>
+<li class="chapter" data-level="2.5.3" data-path="data-structures.html"><a href="data-structures.html#exercise-5"><i class="fa fa-check"></i><b>2.5.3</b> Exercise</a></li>
+<li class="chapter" data-level="2.5.4" data-path="data-structures.html"><a href="data-structures.html#exercise-6"><i class="fa fa-check"></i><b>2.5.4</b> Exercise</a></li>
 </ul></li>
-<li><a href="automating-tasks.html#loops" id="toc-loops"><span class="toc-section-number">4.3</span> Loops</a>
+</ul></li>
+<li class="chapter" data-level="3" data-path="exploring-data.html"><a href="exploring-data.html"><i class="fa fa-check"></i><b>3</b> Exploring Data</a>
 <ul>
-<li><a href="automating-tasks.html#for-loops" id="toc-for-loops"><span class="toc-section-number">4.3.1</span> For-loops</a></li>
-<li><a href="automating-tasks.html#while-loops" id="toc-while-loops"><span class="toc-section-number">4.3.2</span> While-loops</a></li>
-<li><a href="automating-tasks.html#saving-multiple-results" id="toc-saving-multiple-results"><span class="toc-section-number">4.3.3</span> Saving Multiple Results</a></li>
-<li><a href="automating-tasks.html#break-next" id="toc-break-next"><span class="toc-section-number">4.3.4</span> Break &amp; Next</a></li>
-<li><a href="automating-tasks.html#example-fibonacci" id="toc-example-fibonacci"><span class="toc-section-number">4.3.5</span> Example: Fibonacci</a></li>
-</ul></li>
-<li><a href="automating-tasks.html#planning-for-iteration" id="toc-planning-for-iteration"><span class="toc-section-number">4.4</span> Planning for Iteration</a></li>
-<li><a href="automating-tasks.html#exercises-3" id="toc-exercises-3"><span class="toc-section-number">4.5</span> Exercises</a></li>
-</ul></li>
-<li><a href="appendix.html#appendix" id="toc-appendix"><span class="toc-section-number">5</span> Appendix</a>
+<li class="chapter" data-level="3.1" data-path="exploring-data.html"><a href="exploring-data.html#indexing-data-frames"><i class="fa fa-check"></i><b>3.1</b> Indexing Data Frames</a>
 <ul>
-<li><a href="appendix.html#more-ways-to-compare-values" id="toc-more-ways-to-compare-values"><span class="toc-section-number">5.1</span> More Ways to Compare Values</a></li>
-<li><a href="appendix.html#variable-scope-lookup" id="toc-variable-scope-lookup"><span class="toc-section-number">5.2</span> Variable Scope &amp; Lookup</a>
+<li class="chapter" data-level="3.1.1" data-path="exploring-data.html"><a href="exploring-data.html#indexing-lists"><i class="fa fa-check"></i><b>3.1.1</b> Indexing Lists</a></li>
+<li class="chapter" data-level="3.1.2" data-path="exploring-data.html"><a href="exploring-data.html#two-dimensional-indexing"><i class="fa fa-check"></i><b>3.1.2</b> Two-dimensional Indexing</a></li>
+<li class="chapter" data-level="3.1.3" data-path="exploring-data.html"><a href="exploring-data.html#the-drop-parameter"><i class="fa fa-check"></i><b>3.1.3</b> The <code>drop</code> Parameter</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="exploring-data.html"><a href="exploring-data.html#packages"><i class="fa fa-check"></i><b>3.2</b> Packages</a></li>
+<li class="chapter" data-level="3.3" data-path="exploring-data.html"><a href="exploring-data.html#data-visualization"><i class="fa fa-check"></i><b>3.3</b> Data Visualization</a>
 <ul>
-<li><a href="appendix.html#local-variables" id="toc-local-variables"><span class="toc-section-number">5.2.1</span> Local Variables</a></li>
-<li><a href="appendix.html#lexical-scoping" id="toc-lexical-scoping"><span class="toc-section-number">5.2.2</span> Lexical Scoping</a></li>
-<li><a href="appendix.html#dynamic-lookup" id="toc-dynamic-lookup"><span class="toc-section-number">5.2.3</span> Dynamic Lookup</a></li>
-<li><a href="appendix.html#summary" id="toc-summary"><span class="toc-section-number">5.2.4</span> Summary</a></li>
+<li class="chapter" data-level="3.3.1" data-path="exploring-data.html"><a href="exploring-data.html#layer-1-data"><i class="fa fa-check"></i><b>3.3.1</b> Layer 1: Data</a></li>
+<li class="chapter" data-level="3.3.2" data-path="exploring-data.html"><a href="exploring-data.html#layer-2-geometry"><i class="fa fa-check"></i><b>3.3.2</b> Layer 2: Geometry</a></li>
+<li class="chapter" data-level="3.3.3" data-path="exploring-data.html"><a href="exploring-data.html#layer-3-aesthetics"><i class="fa fa-check"></i><b>3.3.3</b> Layer 3: Aesthetics</a></li>
+<li class="chapter" data-level="3.3.4" data-path="exploring-data.html"><a href="exploring-data.html#layer-4-scales"><i class="fa fa-check"></i><b>3.3.4</b> Layer 4: Scales</a></li>
+<li class="chapter" data-level="3.3.5" data-path="exploring-data.html"><a href="exploring-data.html#saving-plots"><i class="fa fa-check"></i><b>3.3.5</b> Saving Plots</a></li>
+<li class="chapter" data-level="3.3.6" data-path="exploring-data.html"><a href="exploring-data.html#example-bar-plot"><i class="fa fa-check"></i><b>3.3.6</b> Example: Bar Plot</a></li>
+<li class="chapter" data-level="3.3.7" data-path="exploring-data.html"><a href="exploring-data.html#visualization-design"><i class="fa fa-check"></i><b>3.3.7</b> Visualization Design</a></li>
 </ul></li>
-<li><a href="appendix.html#string-processing" id="toc-string-processing"><span class="toc-section-number">5.3</span> String Processing</a>
+<li class="chapter" data-level="3.4" data-path="exploring-data.html"><a href="exploring-data.html#apply-functions"><i class="fa fa-check"></i><b>3.4</b> Apply Functions</a>
 <ul>
-<li><a href="appendix.html#splitting-strings" id="toc-splitting-strings"><span class="toc-section-number">5.3.1</span> Splitting Strings</a></li>
-<li><a href="appendix.html#replacing-parts-of-strings" id="toc-replacing-parts-of-strings"><span class="toc-section-number">5.3.2</span> Replacing Parts of Strings</a></li>
+<li class="chapter" data-level="3.4.1" data-path="exploring-data.html"><a href="exploring-data.html#the-sapply-function"><i class="fa fa-check"></i><b>3.4.1</b> The <code>sapply</code> Function</a></li>
+<li class="chapter" data-level="3.4.2" data-path="exploring-data.html"><a href="exploring-data.html#the-split-apply-pattern"><i class="fa fa-check"></i><b>3.4.2</b> The Split-Apply Pattern</a></li>
 </ul></li>
-<li><a href="appendix.html#date-processing" id="toc-date-processing"><span class="toc-section-number">5.4</span> Date Processing</a></li>
+<li class="chapter" data-level="3.5" data-path="exploring-data.html"><a href="exploring-data.html#exercises-2"><i class="fa fa-check"></i><b>3.5</b> Exercises</a></li>
 </ul></li>
-<li><a href="where-to-learn-more.html#where-to-learn-more" id="toc-where-to-learn-more">Where to Learn More</a></li>
-<li><a href="acknowledgements.html#acknowledgements" id="toc-acknowledgements">Acknowledgements</a></li>
-<li><a href="assessment.html#assessment" id="toc-assessment">Assessment</a></li>
+<li class="chapter" data-level="4" data-path="automating-tasks.html"><a href="automating-tasks.html"><i class="fa fa-check"></i><b>4</b> Automating Tasks</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="automating-tasks.html"><a href="automating-tasks.html#conditional-expressions"><i class="fa fa-check"></i><b>4.1</b> Conditional Expressions</a></li>
+<li class="chapter" data-level="4.2" data-path="automating-tasks.html"><a href="automating-tasks.html#functions"><i class="fa fa-check"></i><b>4.2</b> Functions</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="automating-tasks.html"><a href="automating-tasks.html#returning-values"><i class="fa fa-check"></i><b>4.2.1</b> Returning Values</a></li>
+<li class="chapter" data-level="4.2.2" data-path="automating-tasks.html"><a href="automating-tasks.html#planning-your-functions"><i class="fa fa-check"></i><b>4.2.2</b> Planning Your Functions</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="automating-tasks.html"><a href="automating-tasks.html#loops"><i class="fa fa-check"></i><b>4.3</b> Loops</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="automating-tasks.html"><a href="automating-tasks.html#for-loops"><i class="fa fa-check"></i><b>4.3.1</b> For-loops</a></li>
+<li class="chapter" data-level="4.3.2" data-path="automating-tasks.html"><a href="automating-tasks.html#while-loops"><i class="fa fa-check"></i><b>4.3.2</b> While-loops</a></li>
+<li class="chapter" data-level="4.3.3" data-path="automating-tasks.html"><a href="automating-tasks.html#saving-multiple-results"><i class="fa fa-check"></i><b>4.3.3</b> Saving Multiple Results</a></li>
+<li class="chapter" data-level="4.3.4" data-path="automating-tasks.html"><a href="automating-tasks.html#break-next"><i class="fa fa-check"></i><b>4.3.4</b> Break &amp; Next</a></li>
+<li class="chapter" data-level="4.3.5" data-path="automating-tasks.html"><a href="automating-tasks.html#example-fibonacci"><i class="fa fa-check"></i><b>4.3.5</b> Example: Fibonacci</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="automating-tasks.html"><a href="automating-tasks.html#planning-for-iteration"><i class="fa fa-check"></i><b>4.4</b> Planning for Iteration</a></li>
+<li class="chapter" data-level="4.5" data-path="automating-tasks.html"><a href="automating-tasks.html#exercises-3"><i class="fa fa-check"></i><b>4.5</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i><b>5</b> Appendix</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="appendix.html"><a href="appendix.html#more-ways-to-compare-values"><i class="fa fa-check"></i><b>5.1</b> More Ways to Compare Values</a></li>
+<li class="chapter" data-level="5.2" data-path="appendix.html"><a href="appendix.html#variable-scope-lookup"><i class="fa fa-check"></i><b>5.2</b> Variable Scope &amp; Lookup</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="appendix.html"><a href="appendix.html#local-variables"><i class="fa fa-check"></i><b>5.2.1</b> Local Variables</a></li>
+<li class="chapter" data-level="5.2.2" data-path="appendix.html"><a href="appendix.html#lexical-scoping"><i class="fa fa-check"></i><b>5.2.2</b> Lexical Scoping</a></li>
+<li class="chapter" data-level="5.2.3" data-path="appendix.html"><a href="appendix.html#dynamic-lookup"><i class="fa fa-check"></i><b>5.2.3</b> Dynamic Lookup</a></li>
+<li class="chapter" data-level="5.2.4" data-path="appendix.html"><a href="appendix.html#summary"><i class="fa fa-check"></i><b>5.2.4</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="appendix.html"><a href="appendix.html#string-processing"><i class="fa fa-check"></i><b>5.3</b> String Processing</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="appendix.html"><a href="appendix.html#splitting-strings"><i class="fa fa-check"></i><b>5.3.1</b> Splitting Strings</a></li>
+<li class="chapter" data-level="5.3.2" data-path="appendix.html"><a href="appendix.html#replacing-parts-of-strings"><i class="fa fa-check"></i><b>5.3.2</b> Replacing Parts of Strings</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="appendix.html"><a href="appendix.html#date-processing"><i class="fa fa-check"></i><b>5.4</b> Date Processing</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="where-to-learn-more.html"><a href="where-to-learn-more.html"><i class="fa fa-check"></i>Where to Learn More</a></li>
+<li class="chapter" data-level="" data-path="acknowledgements.html"><a href="acknowledgements.html"><i class="fa fa-check"></i>Acknowledgements</a></li>
+<li class="chapter" data-level="" data-path="assessment.html"><a href="assessment.html"><i class="fa fa-check"></i>Assessment</a></li>
 </ul>
 
       </nav>
@@ -296,8 +296,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="assessment" class="section level1 unnumbered">
-<h1>Assessment</h1>
+<div id="assessment" class="section level1 unnumbered hasAnchor">
+<h1>Assessment<a href="assessment.html#assessment" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>The assessment will be posted by Sep 19, 2022.</p>
 
 </div>
@@ -311,7 +311,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -341,6 +340,10 @@ gitbook.start({
 "text": null
 },
 "download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "section"
 }
@@ -354,7 +357,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>2 Data Structures | R Basics</title>
   <meta name="description" content="2 Data Structures | R Basics" />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
 
   <meta property="og:title" content="2 Data Structures | R Basics" />
   <meta property="og:type" content="book" />
-  <meta property="og:url" content="https://ucdavisdatalab.github.io/workshop_r_basics/" />
   
   
   <meta name="github-repo" content="ucdavisdatalab/workshop_r-basics" />
@@ -33,8 +32,8 @@
   
 <link rel="prev" href="getting-started.html"/>
 <link rel="next" href="exploring-data.html"/>
-<script src="libs/header-attrs-2.10/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -50,9 +49,9 @@
 
 
 
-
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -120,6 +119,7 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+
 </head>
 
 <body>
@@ -138,147 +138,147 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./" style="font-size: 18px">R Basics</a></li>
 
 <li class="divider"></li>
-<li><a href="index.html#overview" id="toc-overview">Overview</a></li>
-<li><a href="getting-started.html#getting-started" id="toc-getting-started"><span class="toc-section-number">1</span> Getting Started</a>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Overview</a></li>
+<li class="chapter" data-level="1" data-path="getting-started.html"><a href="getting-started.html"><i class="fa fa-check"></i><b>1</b> Getting Started</a>
 <ul>
-<li><a href="getting-started.html#prerequisites" id="toc-prerequisites"><span class="toc-section-number">1.1</span> Prerequisites</a></li>
-<li><a href="getting-started.html#the-r-interface" id="toc-the-r-interface"><span class="toc-section-number">1.2</span> The R Interface</a>
+<li class="chapter" data-level="1.1" data-path="getting-started.html"><a href="getting-started.html#prerequisites"><i class="fa fa-check"></i><b>1.1</b> Prerequisites</a></li>
+<li class="chapter" data-level="1.2" data-path="getting-started.html"><a href="getting-started.html#the-r-interface"><i class="fa fa-check"></i><b>1.2</b> The R Interface</a>
 <ul>
-<li><a href="getting-started.html#variables" id="toc-variables"><span class="toc-section-number">1.2.1</span> Variables</a></li>
-<li><a href="getting-started.html#strings" id="toc-strings"><span class="toc-section-number">1.2.2</span> Strings</a></li>
-<li><a href="getting-started.html#comparisons" id="toc-comparisons"><span class="toc-section-number">1.2.3</span> Comparisons</a></li>
-<li><a href="getting-started.html#calling-functions" id="toc-calling-functions"><span class="toc-section-number">1.2.4</span> Calling Functions</a></li>
+<li class="chapter" data-level="1.2.1" data-path="getting-started.html"><a href="getting-started.html#variables"><i class="fa fa-check"></i><b>1.2.1</b> Variables</a></li>
+<li class="chapter" data-level="1.2.2" data-path="getting-started.html"><a href="getting-started.html#strings"><i class="fa fa-check"></i><b>1.2.2</b> Strings</a></li>
+<li class="chapter" data-level="1.2.3" data-path="getting-started.html"><a href="getting-started.html#comparisons"><i class="fa fa-check"></i><b>1.2.3</b> Comparisons</a></li>
+<li class="chapter" data-level="1.2.4" data-path="getting-started.html"><a href="getting-started.html#calling-functions"><i class="fa fa-check"></i><b>1.2.4</b> Calling Functions</a></li>
 </ul></li>
-<li><a href="getting-started.html#getting-help" id="toc-getting-help"><span class="toc-section-number">1.3</span> Getting Help</a>
+<li class="chapter" data-level="1.3" data-path="getting-started.html"><a href="getting-started.html#getting-help"><i class="fa fa-check"></i><b>1.3</b> Getting Help</a>
 <ul>
-<li><a href="getting-started.html#when-something-goes-wrong" id="toc-when-something-goes-wrong"><span class="toc-section-number">1.3.1</span> When Something Goes Wrong</a></li>
+<li class="chapter" data-level="1.3.1" data-path="getting-started.html"><a href="getting-started.html#when-something-goes-wrong"><i class="fa fa-check"></i><b>1.3.1</b> When Something Goes Wrong</a></li>
 </ul></li>
-<li><a href="getting-started.html#file-systems" id="toc-file-systems"><span class="toc-section-number">1.4</span> File Systems</a>
+<li class="chapter" data-level="1.4" data-path="getting-started.html"><a href="getting-started.html#file-systems"><i class="fa fa-check"></i><b>1.4</b> File Systems</a>
 <ul>
-<li><a href="getting-started.html#absolute-relative-paths" id="toc-absolute-relative-paths"><span class="toc-section-number">1.4.1</span> Absolute &amp; Relative Paths</a></li>
-<li><a href="getting-started.html#r-scripts" id="toc-r-scripts"><span class="toc-section-number">1.4.2</span> R Scripts</a></li>
-<li><a href="getting-started.html#the-working-directory" id="toc-the-working-directory"><span class="toc-section-number">1.4.3</span> The Working Directory</a></li>
+<li class="chapter" data-level="1.4.1" data-path="getting-started.html"><a href="getting-started.html#absolute-relative-paths"><i class="fa fa-check"></i><b>1.4.1</b> Absolute &amp; Relative Paths</a></li>
+<li class="chapter" data-level="1.4.2" data-path="getting-started.html"><a href="getting-started.html#r-scripts"><i class="fa fa-check"></i><b>1.4.2</b> R Scripts</a></li>
+<li class="chapter" data-level="1.4.3" data-path="getting-started.html"><a href="getting-started.html#the-working-directory"><i class="fa fa-check"></i><b>1.4.3</b> The Working Directory</a></li>
 </ul></li>
-<li><a href="getting-started.html#reading-files" id="toc-reading-files"><span class="toc-section-number">1.5</span> Reading Files</a>
+<li class="chapter" data-level="1.5" data-path="getting-started.html"><a href="getting-started.html#reading-files"><i class="fa fa-check"></i><b>1.5</b> Reading Files</a>
 <ul>
-<li><a href="getting-started.html#hello-data" id="toc-hello-data"><span class="toc-section-number">1.5.1</span> Hello, Data!</a></li>
+<li class="chapter" data-level="1.5.1" data-path="getting-started.html"><a href="getting-started.html#hello-data"><i class="fa fa-check"></i><b>1.5.1</b> Hello, Data!</a></li>
 </ul></li>
-<li><a href="getting-started.html#data-frames" id="toc-data-frames"><span class="toc-section-number">1.6</span> Data Frames</a>
+<li class="chapter" data-level="1.6" data-path="getting-started.html"><a href="getting-started.html#data-frames"><i class="fa fa-check"></i><b>1.6</b> Data Frames</a>
 <ul>
-<li><a href="getting-started.html#summarizing-data" id="toc-summarizing-data"><span class="toc-section-number">1.6.1</span> Summarizing Data</a></li>
-<li><a href="getting-started.html#selecting-columns" id="toc-selecting-columns"><span class="toc-section-number">1.6.2</span> Selecting Columns</a></li>
+<li class="chapter" data-level="1.6.1" data-path="getting-started.html"><a href="getting-started.html#summarizing-data"><i class="fa fa-check"></i><b>1.6.1</b> Summarizing Data</a></li>
+<li class="chapter" data-level="1.6.2" data-path="getting-started.html"><a href="getting-started.html#selecting-columns"><i class="fa fa-check"></i><b>1.6.2</b> Selecting Columns</a></li>
 </ul></li>
-<li><a href="getting-started.html#exercises" id="toc-exercises"><span class="toc-section-number">1.7</span> Exercises</a>
+<li class="chapter" data-level="1.7" data-path="getting-started.html"><a href="getting-started.html#exercises"><i class="fa fa-check"></i><b>1.7</b> Exercises</a>
 <ul>
-<li><a href="getting-started.html#exercise" id="toc-exercise"><span class="toc-section-number">1.7.1</span> Exercise</a></li>
-<li><a href="getting-started.html#exercise-1" id="toc-exercise-1"><span class="toc-section-number">1.7.2</span> Exercise</a></li>
-<li><a href="getting-started.html#exercise-2" id="toc-exercise-2"><span class="toc-section-number">1.7.3</span> Exercise</a></li>
-</ul></li>
-</ul></li>
-<li><a href="data-structures.html#data-structures" id="toc-data-structures"><span class="toc-section-number">2</span> Data Structures</a>
-<ul>
-<li><a href="data-structures.html#vectors" id="toc-vectors"><span class="toc-section-number">2.1</span> Vectors</a>
-<ul>
-<li><a href="data-structures.html#creating-vectors" id="toc-creating-vectors"><span class="toc-section-number">2.1.1</span> Creating Vectors</a></li>
-<li><a href="data-structures.html#indexing-vectors" id="toc-indexing-vectors"><span class="toc-section-number">2.1.2</span> Indexing Vectors</a></li>
-<li><a href="data-structures.html#vectorization" id="toc-vectorization"><span class="toc-section-number">2.1.3</span> Vectorization</a></li>
-<li><a href="data-structures.html#recycling" id="toc-recycling"><span class="toc-section-number">2.1.4</span> Recycling</a></li>
-</ul></li>
-<li><a href="data-structures.html#data-types-classes" id="toc-data-types-classes"><span class="toc-section-number">2.2</span> Data Types &amp; Classes</a>
-<ul>
-<li><a href="data-structures.html#lists" id="toc-lists"><span class="toc-section-number">2.2.1</span> Lists</a></li>
-<li><a href="data-structures.html#implicit-coercion" id="toc-implicit-coercion"><span class="toc-section-number">2.2.2</span> Implicit Coercion</a></li>
-<li><a href="data-structures.html#matrices-arrays" id="toc-matrices-arrays"><span class="toc-section-number">2.2.3</span> Matrices &amp; Arrays</a></li>
-<li><a href="data-structures.html#factors" id="toc-factors"><span class="toc-section-number">2.2.4</span> Factors</a></li>
-</ul></li>
-<li><a href="data-structures.html#special-values" id="toc-special-values"><span class="toc-section-number">2.3</span> Special Values</a>
-<ul>
-<li><a href="data-structures.html#missing-values" id="toc-missing-values"><span class="toc-section-number">2.3.1</span> Missing Values</a></li>
-<li><a href="data-structures.html#infinity" id="toc-infinity"><span class="toc-section-number">2.3.2</span> Infinity</a></li>
-<li><a href="data-structures.html#not-a-number" id="toc-not-a-number"><span class="toc-section-number">2.3.3</span> Not a Number</a></li>
-<li><a href="data-structures.html#null" id="toc-null"><span class="toc-section-number">2.3.4</span> Null</a></li>
-</ul></li>
-<li><a href="data-structures.html#indexing" id="toc-indexing"><span class="toc-section-number">2.4</span> Indexing</a>
-<ul>
-<li><a href="data-structures.html#all-elements" id="toc-all-elements"><span class="toc-section-number">2.4.1</span> All Elements</a></li>
-<li><a href="data-structures.html#by-position" id="toc-by-position"><span class="toc-section-number">2.4.2</span> By Position</a></li>
-<li><a href="data-structures.html#by-name" id="toc-by-name"><span class="toc-section-number">2.4.3</span> By Name</a></li>
-<li><a href="data-structures.html#by-condition" id="toc-by-condition"><span class="toc-section-number">2.4.4</span> By Condition</a></li>
-<li><a href="data-structures.html#logic" id="toc-logic"><span class="toc-section-number">2.4.5</span> Logic</a></li>
-</ul></li>
-<li><a href="data-structures.html#exercises-1" id="toc-exercises-1"><span class="toc-section-number">2.5</span> Exercises</a>
-<ul>
-<li><a href="data-structures.html#exercise-3" id="toc-exercise-3"><span class="toc-section-number">2.5.1</span> Exercise</a></li>
-<li><a href="data-structures.html#exercise-4" id="toc-exercise-4"><span class="toc-section-number">2.5.2</span> Exercise</a></li>
-<li><a href="data-structures.html#exercise-5" id="toc-exercise-5"><span class="toc-section-number">2.5.3</span> Exercise</a></li>
-<li><a href="data-structures.html#exercise-6" id="toc-exercise-6"><span class="toc-section-number">2.5.4</span> Exercise</a></li>
+<li class="chapter" data-level="1.7.1" data-path="getting-started.html"><a href="getting-started.html#exercise"><i class="fa fa-check"></i><b>1.7.1</b> Exercise</a></li>
+<li class="chapter" data-level="1.7.2" data-path="getting-started.html"><a href="getting-started.html#exercise-1"><i class="fa fa-check"></i><b>1.7.2</b> Exercise</a></li>
+<li class="chapter" data-level="1.7.3" data-path="getting-started.html"><a href="getting-started.html#exercise-2"><i class="fa fa-check"></i><b>1.7.3</b> Exercise</a></li>
 </ul></li>
 </ul></li>
-<li><a href="exploring-data.html#exploring-data" id="toc-exploring-data"><span class="toc-section-number">3</span> Exploring Data</a>
+<li class="chapter" data-level="2" data-path="data-structures.html"><a href="data-structures.html"><i class="fa fa-check"></i><b>2</b> Data Structures</a>
 <ul>
-<li><a href="exploring-data.html#indexing-data-frames" id="toc-indexing-data-frames"><span class="toc-section-number">3.1</span> Indexing Data Frames</a>
+<li class="chapter" data-level="2.1" data-path="data-structures.html"><a href="data-structures.html#vectors"><i class="fa fa-check"></i><b>2.1</b> Vectors</a>
 <ul>
-<li><a href="exploring-data.html#indexing-lists" id="toc-indexing-lists"><span class="toc-section-number">3.1.1</span> Indexing Lists</a></li>
-<li><a href="exploring-data.html#two-dimensional-indexing" id="toc-two-dimensional-indexing"><span class="toc-section-number">3.1.2</span> Two-dimensional Indexing</a></li>
-<li><a href="exploring-data.html#the-drop-parameter" id="toc-the-drop-parameter"><span class="toc-section-number">3.1.3</span> The <code>drop</code> Parameter</a></li>
+<li class="chapter" data-level="2.1.1" data-path="data-structures.html"><a href="data-structures.html#creating-vectors"><i class="fa fa-check"></i><b>2.1.1</b> Creating Vectors</a></li>
+<li class="chapter" data-level="2.1.2" data-path="data-structures.html"><a href="data-structures.html#indexing-vectors"><i class="fa fa-check"></i><b>2.1.2</b> Indexing Vectors</a></li>
+<li class="chapter" data-level="2.1.3" data-path="data-structures.html"><a href="data-structures.html#vectorization"><i class="fa fa-check"></i><b>2.1.3</b> Vectorization</a></li>
+<li class="chapter" data-level="2.1.4" data-path="data-structures.html"><a href="data-structures.html#recycling"><i class="fa fa-check"></i><b>2.1.4</b> Recycling</a></li>
 </ul></li>
-<li><a href="exploring-data.html#packages" id="toc-packages"><span class="toc-section-number">3.2</span> Packages</a></li>
-<li><a href="exploring-data.html#data-visualization" id="toc-data-visualization"><span class="toc-section-number">3.3</span> Data Visualization</a>
+<li class="chapter" data-level="2.2" data-path="data-structures.html"><a href="data-structures.html#data-types-classes"><i class="fa fa-check"></i><b>2.2</b> Data Types &amp; Classes</a>
 <ul>
-<li><a href="exploring-data.html#layer-1-data" id="toc-layer-1-data"><span class="toc-section-number">3.3.1</span> Layer 1: Data</a></li>
-<li><a href="exploring-data.html#layer-2-geometry" id="toc-layer-2-geometry"><span class="toc-section-number">3.3.2</span> Layer 2: Geometry</a></li>
-<li><a href="exploring-data.html#layer-3-aesthetics" id="toc-layer-3-aesthetics"><span class="toc-section-number">3.3.3</span> Layer 3: Aesthetics</a></li>
-<li><a href="exploring-data.html#layer-4-scales" id="toc-layer-4-scales"><span class="toc-section-number">3.3.4</span> Layer 4: Scales</a></li>
-<li><a href="exploring-data.html#saving-plots" id="toc-saving-plots"><span class="toc-section-number">3.3.5</span> Saving Plots</a></li>
-<li><a href="exploring-data.html#example-bar-plot" id="toc-example-bar-plot"><span class="toc-section-number">3.3.6</span> Example: Bar Plot</a></li>
-<li><a href="exploring-data.html#visualization-design" id="toc-visualization-design"><span class="toc-section-number">3.3.7</span> Visualization Design</a></li>
+<li class="chapter" data-level="2.2.1" data-path="data-structures.html"><a href="data-structures.html#lists"><i class="fa fa-check"></i><b>2.2.1</b> Lists</a></li>
+<li class="chapter" data-level="2.2.2" data-path="data-structures.html"><a href="data-structures.html#implicit-coercion"><i class="fa fa-check"></i><b>2.2.2</b> Implicit Coercion</a></li>
+<li class="chapter" data-level="2.2.3" data-path="data-structures.html"><a href="data-structures.html#matrices-arrays"><i class="fa fa-check"></i><b>2.2.3</b> Matrices &amp; Arrays</a></li>
+<li class="chapter" data-level="2.2.4" data-path="data-structures.html"><a href="data-structures.html#factors"><i class="fa fa-check"></i><b>2.2.4</b> Factors</a></li>
 </ul></li>
-<li><a href="exploring-data.html#apply-functions" id="toc-apply-functions"><span class="toc-section-number">3.4</span> Apply Functions</a>
+<li class="chapter" data-level="2.3" data-path="data-structures.html"><a href="data-structures.html#special-values"><i class="fa fa-check"></i><b>2.3</b> Special Values</a>
 <ul>
-<li><a href="exploring-data.html#the-sapply-function" id="toc-the-sapply-function"><span class="toc-section-number">3.4.1</span> The <code>sapply</code> Function</a></li>
-<li><a href="exploring-data.html#the-split-apply-pattern" id="toc-the-split-apply-pattern"><span class="toc-section-number">3.4.2</span> The Split-Apply Pattern</a></li>
+<li class="chapter" data-level="2.3.1" data-path="data-structures.html"><a href="data-structures.html#missing-values"><i class="fa fa-check"></i><b>2.3.1</b> Missing Values</a></li>
+<li class="chapter" data-level="2.3.2" data-path="data-structures.html"><a href="data-structures.html#infinity"><i class="fa fa-check"></i><b>2.3.2</b> Infinity</a></li>
+<li class="chapter" data-level="2.3.3" data-path="data-structures.html"><a href="data-structures.html#not-a-number"><i class="fa fa-check"></i><b>2.3.3</b> Not a Number</a></li>
+<li class="chapter" data-level="2.3.4" data-path="data-structures.html"><a href="data-structures.html#null"><i class="fa fa-check"></i><b>2.3.4</b> Null</a></li>
 </ul></li>
-<li><a href="exploring-data.html#exercises-2" id="toc-exercises-2"><span class="toc-section-number">3.5</span> Exercises</a></li>
-</ul></li>
-<li><a href="automating-tasks.html#automating-tasks" id="toc-automating-tasks"><span class="toc-section-number">4</span> Automating Tasks</a>
+<li class="chapter" data-level="2.4" data-path="data-structures.html"><a href="data-structures.html#indexing"><i class="fa fa-check"></i><b>2.4</b> Indexing</a>
 <ul>
-<li><a href="automating-tasks.html#conditional-expressions" id="toc-conditional-expressions"><span class="toc-section-number">4.1</span> Conditional Expressions</a></li>
-<li><a href="automating-tasks.html#functions" id="toc-functions"><span class="toc-section-number">4.2</span> Functions</a>
+<li class="chapter" data-level="2.4.1" data-path="data-structures.html"><a href="data-structures.html#all-elements"><i class="fa fa-check"></i><b>2.4.1</b> All Elements</a></li>
+<li class="chapter" data-level="2.4.2" data-path="data-structures.html"><a href="data-structures.html#by-position"><i class="fa fa-check"></i><b>2.4.2</b> By Position</a></li>
+<li class="chapter" data-level="2.4.3" data-path="data-structures.html"><a href="data-structures.html#by-name"><i class="fa fa-check"></i><b>2.4.3</b> By Name</a></li>
+<li class="chapter" data-level="2.4.4" data-path="data-structures.html"><a href="data-structures.html#by-condition"><i class="fa fa-check"></i><b>2.4.4</b> By Condition</a></li>
+<li class="chapter" data-level="2.4.5" data-path="data-structures.html"><a href="data-structures.html#logic"><i class="fa fa-check"></i><b>2.4.5</b> Logic</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="data-structures.html"><a href="data-structures.html#exercises-1"><i class="fa fa-check"></i><b>2.5</b> Exercises</a>
 <ul>
-<li><a href="automating-tasks.html#returning-values" id="toc-returning-values"><span class="toc-section-number">4.2.1</span> Returning Values</a></li>
-<li><a href="automating-tasks.html#planning-your-functions" id="toc-planning-your-functions"><span class="toc-section-number">4.2.2</span> Planning Your Functions</a></li>
+<li class="chapter" data-level="2.5.1" data-path="data-structures.html"><a href="data-structures.html#exercise-3"><i class="fa fa-check"></i><b>2.5.1</b> Exercise</a></li>
+<li class="chapter" data-level="2.5.2" data-path="data-structures.html"><a href="data-structures.html#exercise-4"><i class="fa fa-check"></i><b>2.5.2</b> Exercise</a></li>
+<li class="chapter" data-level="2.5.3" data-path="data-structures.html"><a href="data-structures.html#exercise-5"><i class="fa fa-check"></i><b>2.5.3</b> Exercise</a></li>
+<li class="chapter" data-level="2.5.4" data-path="data-structures.html"><a href="data-structures.html#exercise-6"><i class="fa fa-check"></i><b>2.5.4</b> Exercise</a></li>
 </ul></li>
-<li><a href="automating-tasks.html#loops" id="toc-loops"><span class="toc-section-number">4.3</span> Loops</a>
+</ul></li>
+<li class="chapter" data-level="3" data-path="exploring-data.html"><a href="exploring-data.html"><i class="fa fa-check"></i><b>3</b> Exploring Data</a>
 <ul>
-<li><a href="automating-tasks.html#for-loops" id="toc-for-loops"><span class="toc-section-number">4.3.1</span> For-loops</a></li>
-<li><a href="automating-tasks.html#while-loops" id="toc-while-loops"><span class="toc-section-number">4.3.2</span> While-loops</a></li>
-<li><a href="automating-tasks.html#saving-multiple-results" id="toc-saving-multiple-results"><span class="toc-section-number">4.3.3</span> Saving Multiple Results</a></li>
-<li><a href="automating-tasks.html#break-next" id="toc-break-next"><span class="toc-section-number">4.3.4</span> Break &amp; Next</a></li>
-<li><a href="automating-tasks.html#example-fibonacci" id="toc-example-fibonacci"><span class="toc-section-number">4.3.5</span> Example: Fibonacci</a></li>
-</ul></li>
-<li><a href="automating-tasks.html#planning-for-iteration" id="toc-planning-for-iteration"><span class="toc-section-number">4.4</span> Planning for Iteration</a></li>
-<li><a href="automating-tasks.html#exercises-3" id="toc-exercises-3"><span class="toc-section-number">4.5</span> Exercises</a></li>
-</ul></li>
-<li><a href="appendix.html#appendix" id="toc-appendix"><span class="toc-section-number">5</span> Appendix</a>
+<li class="chapter" data-level="3.1" data-path="exploring-data.html"><a href="exploring-data.html#indexing-data-frames"><i class="fa fa-check"></i><b>3.1</b> Indexing Data Frames</a>
 <ul>
-<li><a href="appendix.html#more-ways-to-compare-values" id="toc-more-ways-to-compare-values"><span class="toc-section-number">5.1</span> More Ways to Compare Values</a></li>
-<li><a href="appendix.html#variable-scope-lookup" id="toc-variable-scope-lookup"><span class="toc-section-number">5.2</span> Variable Scope &amp; Lookup</a>
+<li class="chapter" data-level="3.1.1" data-path="exploring-data.html"><a href="exploring-data.html#indexing-lists"><i class="fa fa-check"></i><b>3.1.1</b> Indexing Lists</a></li>
+<li class="chapter" data-level="3.1.2" data-path="exploring-data.html"><a href="exploring-data.html#two-dimensional-indexing"><i class="fa fa-check"></i><b>3.1.2</b> Two-dimensional Indexing</a></li>
+<li class="chapter" data-level="3.1.3" data-path="exploring-data.html"><a href="exploring-data.html#the-drop-parameter"><i class="fa fa-check"></i><b>3.1.3</b> The <code>drop</code> Parameter</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="exploring-data.html"><a href="exploring-data.html#packages"><i class="fa fa-check"></i><b>3.2</b> Packages</a></li>
+<li class="chapter" data-level="3.3" data-path="exploring-data.html"><a href="exploring-data.html#data-visualization"><i class="fa fa-check"></i><b>3.3</b> Data Visualization</a>
 <ul>
-<li><a href="appendix.html#local-variables" id="toc-local-variables"><span class="toc-section-number">5.2.1</span> Local Variables</a></li>
-<li><a href="appendix.html#lexical-scoping" id="toc-lexical-scoping"><span class="toc-section-number">5.2.2</span> Lexical Scoping</a></li>
-<li><a href="appendix.html#dynamic-lookup" id="toc-dynamic-lookup"><span class="toc-section-number">5.2.3</span> Dynamic Lookup</a></li>
-<li><a href="appendix.html#summary" id="toc-summary"><span class="toc-section-number">5.2.4</span> Summary</a></li>
+<li class="chapter" data-level="3.3.1" data-path="exploring-data.html"><a href="exploring-data.html#layer-1-data"><i class="fa fa-check"></i><b>3.3.1</b> Layer 1: Data</a></li>
+<li class="chapter" data-level="3.3.2" data-path="exploring-data.html"><a href="exploring-data.html#layer-2-geometry"><i class="fa fa-check"></i><b>3.3.2</b> Layer 2: Geometry</a></li>
+<li class="chapter" data-level="3.3.3" data-path="exploring-data.html"><a href="exploring-data.html#layer-3-aesthetics"><i class="fa fa-check"></i><b>3.3.3</b> Layer 3: Aesthetics</a></li>
+<li class="chapter" data-level="3.3.4" data-path="exploring-data.html"><a href="exploring-data.html#layer-4-scales"><i class="fa fa-check"></i><b>3.3.4</b> Layer 4: Scales</a></li>
+<li class="chapter" data-level="3.3.5" data-path="exploring-data.html"><a href="exploring-data.html#saving-plots"><i class="fa fa-check"></i><b>3.3.5</b> Saving Plots</a></li>
+<li class="chapter" data-level="3.3.6" data-path="exploring-data.html"><a href="exploring-data.html#example-bar-plot"><i class="fa fa-check"></i><b>3.3.6</b> Example: Bar Plot</a></li>
+<li class="chapter" data-level="3.3.7" data-path="exploring-data.html"><a href="exploring-data.html#visualization-design"><i class="fa fa-check"></i><b>3.3.7</b> Visualization Design</a></li>
 </ul></li>
-<li><a href="appendix.html#string-processing" id="toc-string-processing"><span class="toc-section-number">5.3</span> String Processing</a>
+<li class="chapter" data-level="3.4" data-path="exploring-data.html"><a href="exploring-data.html#apply-functions"><i class="fa fa-check"></i><b>3.4</b> Apply Functions</a>
 <ul>
-<li><a href="appendix.html#splitting-strings" id="toc-splitting-strings"><span class="toc-section-number">5.3.1</span> Splitting Strings</a></li>
-<li><a href="appendix.html#replacing-parts-of-strings" id="toc-replacing-parts-of-strings"><span class="toc-section-number">5.3.2</span> Replacing Parts of Strings</a></li>
+<li class="chapter" data-level="3.4.1" data-path="exploring-data.html"><a href="exploring-data.html#the-sapply-function"><i class="fa fa-check"></i><b>3.4.1</b> The <code>sapply</code> Function</a></li>
+<li class="chapter" data-level="3.4.2" data-path="exploring-data.html"><a href="exploring-data.html#the-split-apply-pattern"><i class="fa fa-check"></i><b>3.4.2</b> The Split-Apply Pattern</a></li>
 </ul></li>
-<li><a href="appendix.html#date-processing" id="toc-date-processing"><span class="toc-section-number">5.4</span> Date Processing</a></li>
+<li class="chapter" data-level="3.5" data-path="exploring-data.html"><a href="exploring-data.html#exercises-2"><i class="fa fa-check"></i><b>3.5</b> Exercises</a></li>
 </ul></li>
-<li><a href="where-to-learn-more.html#where-to-learn-more" id="toc-where-to-learn-more">Where to Learn More</a></li>
-<li><a href="acknowledgements.html#acknowledgements" id="toc-acknowledgements">Acknowledgements</a></li>
-<li><a href="assessment.html#assessment" id="toc-assessment">Assessment</a></li>
+<li class="chapter" data-level="4" data-path="automating-tasks.html"><a href="automating-tasks.html"><i class="fa fa-check"></i><b>4</b> Automating Tasks</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="automating-tasks.html"><a href="automating-tasks.html#conditional-expressions"><i class="fa fa-check"></i><b>4.1</b> Conditional Expressions</a></li>
+<li class="chapter" data-level="4.2" data-path="automating-tasks.html"><a href="automating-tasks.html#functions"><i class="fa fa-check"></i><b>4.2</b> Functions</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="automating-tasks.html"><a href="automating-tasks.html#returning-values"><i class="fa fa-check"></i><b>4.2.1</b> Returning Values</a></li>
+<li class="chapter" data-level="4.2.2" data-path="automating-tasks.html"><a href="automating-tasks.html#planning-your-functions"><i class="fa fa-check"></i><b>4.2.2</b> Planning Your Functions</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="automating-tasks.html"><a href="automating-tasks.html#loops"><i class="fa fa-check"></i><b>4.3</b> Loops</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="automating-tasks.html"><a href="automating-tasks.html#for-loops"><i class="fa fa-check"></i><b>4.3.1</b> For-loops</a></li>
+<li class="chapter" data-level="4.3.2" data-path="automating-tasks.html"><a href="automating-tasks.html#while-loops"><i class="fa fa-check"></i><b>4.3.2</b> While-loops</a></li>
+<li class="chapter" data-level="4.3.3" data-path="automating-tasks.html"><a href="automating-tasks.html#saving-multiple-results"><i class="fa fa-check"></i><b>4.3.3</b> Saving Multiple Results</a></li>
+<li class="chapter" data-level="4.3.4" data-path="automating-tasks.html"><a href="automating-tasks.html#break-next"><i class="fa fa-check"></i><b>4.3.4</b> Break &amp; Next</a></li>
+<li class="chapter" data-level="4.3.5" data-path="automating-tasks.html"><a href="automating-tasks.html#example-fibonacci"><i class="fa fa-check"></i><b>4.3.5</b> Example: Fibonacci</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="automating-tasks.html"><a href="automating-tasks.html#planning-for-iteration"><i class="fa fa-check"></i><b>4.4</b> Planning for Iteration</a></li>
+<li class="chapter" data-level="4.5" data-path="automating-tasks.html"><a href="automating-tasks.html#exercises-3"><i class="fa fa-check"></i><b>4.5</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i><b>5</b> Appendix</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="appendix.html"><a href="appendix.html#more-ways-to-compare-values"><i class="fa fa-check"></i><b>5.1</b> More Ways to Compare Values</a></li>
+<li class="chapter" data-level="5.2" data-path="appendix.html"><a href="appendix.html#variable-scope-lookup"><i class="fa fa-check"></i><b>5.2</b> Variable Scope &amp; Lookup</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="appendix.html"><a href="appendix.html#local-variables"><i class="fa fa-check"></i><b>5.2.1</b> Local Variables</a></li>
+<li class="chapter" data-level="5.2.2" data-path="appendix.html"><a href="appendix.html#lexical-scoping"><i class="fa fa-check"></i><b>5.2.2</b> Lexical Scoping</a></li>
+<li class="chapter" data-level="5.2.3" data-path="appendix.html"><a href="appendix.html#dynamic-lookup"><i class="fa fa-check"></i><b>5.2.3</b> Dynamic Lookup</a></li>
+<li class="chapter" data-level="5.2.4" data-path="appendix.html"><a href="appendix.html#summary"><i class="fa fa-check"></i><b>5.2.4</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="appendix.html"><a href="appendix.html#string-processing"><i class="fa fa-check"></i><b>5.3</b> String Processing</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="appendix.html"><a href="appendix.html#splitting-strings"><i class="fa fa-check"></i><b>5.3.1</b> Splitting Strings</a></li>
+<li class="chapter" data-level="5.3.2" data-path="appendix.html"><a href="appendix.html#replacing-parts-of-strings"><i class="fa fa-check"></i><b>5.3.2</b> Replacing Parts of Strings</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="appendix.html"><a href="appendix.html#date-processing"><i class="fa fa-check"></i><b>5.4</b> Date Processing</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="where-to-learn-more.html"><a href="where-to-learn-more.html"><i class="fa fa-check"></i>Where to Learn More</a></li>
+<li class="chapter" data-level="" data-path="acknowledgements.html"><a href="acknowledgements.html"><i class="fa fa-check"></i>Acknowledgements</a></li>
+<li class="chapter" data-level="" data-path="assessment.html"><a href="assessment.html"><i class="fa fa-check"></i>Assessment</a></li>
 </ul>
 
       </nav>
@@ -296,15 +296,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="data-structures" class="section level1" number="2">
-<h1><span class="header-section-number">2</span> Data Structures</h1>
+<div id="data-structures" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">2</span> Data Structures<a href="data-structures.html#data-structures" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>The previous chapter introduced R and gave you enough background to do some
 simple computations on data sets. This chapter focuses on the foundational
 knowledge and skills you’ll need in order to use R effectively in the long
 term. Specifically, it begins with a deep dive into R’s various data structures
 and data types, then explains a variety of ways to get and set their elements.</p>
-<div id="vectors" class="section level2" number="2.1">
-<h2><span class="header-section-number">2.1</span> Vectors</h2>
+<div id="vectors" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> Vectors<a href="data-structures.html#vectors" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>A <em>vector</em> is a collection of values. Vectors are the fundamental unit of data
 in R, and you’ve already used them in the previous sections.</p>
 <p>For instance, each column in a data frame is a vector. So the <code>quarter</code> column
@@ -340,8 +340,8 @@ function:</p>
 <pre><code>## [1] 4224</code></pre>
 <p>Since the last of these is a column from the data frame <code>earn</code>, the length is
 the same as the number of rows in <code>earn</code>.</p>
-<div id="creating-vectors" class="section level3" number="2.1.1">
-<h3><span class="header-section-number">2.1.1</span> Creating Vectors</h3>
+<div id="creating-vectors" class="section level3 hasAnchor" number="2.1.1">
+<h3><span class="header-section-number">2.1.1</span> Creating Vectors<a href="data-structures.html#creating-vectors" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Sometimes you’ll want to create your own vectors. You can do this by
 concatenating several vectors together with the <code>c</code> function. It accepts any
 number of vector arguments, and combines them into a single vector:</p>
@@ -371,8 +371,8 @@ sequences:</p>
 <code>1:0</code>, and that the difference between elements is always <code>-1</code> or <code>1</code>. If you
 want more control over the generated sequence, use the <code>seq</code> function instead.</p>
 </div>
-<div id="indexing-vectors" class="section level3" number="2.1.2">
-<h3><span class="header-section-number">2.1.2</span> Indexing Vectors</h3>
+<div id="indexing-vectors" class="section level3 hasAnchor" number="2.1.2">
+<h3><span class="header-section-number">2.1.2</span> Indexing Vectors<a href="data-structures.html#indexing-vectors" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>You can access individual elements of a vector with the <em>indexing operator</em> <code>[</code>
 (also called the <em>square bracket operator</em>). The syntax is:</p>
 <pre><code>VECTOR[INDEXES]</code></pre>
@@ -393,8 +393,8 @@ assign elements of a vector:</p>
 to try it out with few different vectors and indexes. We’ll revisit indexing in
 Section <a href="data-structures.html#indexing">2.4</a> to learn a lot more about it.</p>
 </div>
-<div id="vectorization" class="section level3" number="2.1.3">
-<h3><span class="header-section-number">2.1.3</span> Vectorization</h3>
+<div id="vectorization" class="section level3 hasAnchor" number="2.1.3">
+<h3><span class="header-section-number">2.1.3</span> Vectorization<a href="data-structures.html#vectorization" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Let’s look at what happens if we call a mathematical function, like <code>sin</code>, on a
 vector:</p>
 <div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="data-structures.html#cb134-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">0</span>, pi)</span>
@@ -428,8 +428,8 @@ arithmetic operators are also vectorized:</p>
 <div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="data-structures.html#cb144-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">/</span> y</span></code></pre></div>
 <pre><code>## [1] -1.0000000  0.2857143  0.3000000 -0.4000000</code></pre>
 </div>
-<div id="recycling" class="section level3" number="2.1.4">
-<h3><span class="header-section-number">2.1.4</span> Recycling</h3>
+<div id="recycling" class="section level3 hasAnchor" number="2.1.4">
+<h3><span class="header-section-number">2.1.4</span> Recycling<a href="data-structures.html#recycling" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>When a function is vectorized across multiple arguments, what happens if the
 vectors have different lengths? Whenever you think of a question like this as
 you’re learning R, the best way to find out is to create some toy data and test
@@ -467,8 +467,8 @@ easy:</p>
 like this.</p>
 </div>
 </div>
-<div id="data-types-classes" class="section level2" number="2.2">
-<h2><span class="header-section-number">2.2</span> Data Types &amp; Classes</h2>
+<div id="data-types-classes" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> Data Types &amp; Classes<a href="data-structures.html#data-types-classes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Data can be categorized into different <em>types</em> based on sets of shared
 characteristics. For instance, statisticians tend to think about whether data
 are numeric or categorical:</p>
@@ -621,8 +621,8 @@ that represent more sophisticated data structures:</p>
 </table>
 <p>For these, the class is usually different from the type. We’ll learn more about
 most of these later on.</p>
-<div id="lists" class="section level3" number="2.2.1">
-<h3><span class="header-section-number">2.2.1</span> Lists</h3>
+<div id="lists" class="section level3 hasAnchor" number="2.2.1">
+<h3><span class="header-section-number">2.2.1</span> Lists<a href="data-structures.html#lists" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>A <em>list</em> is an ordered data structure where the elements can have different
 types (they are <em>heterogeneous</em>). This differs from a vector, where the
 elements all have to have the same type, as we saw in Section <a href="data-structures.html#vectors">2.1</a>.
@@ -646,8 +646,8 @@ Because the class is <code>data.frame</code> rather than <code>list</code>, R tr
 differently from ordinary lists. This difference is apparent in how data frames
 are printed compared to ordinary lists.</p>
 </div>
-<div id="implicit-coercion" class="section level3" number="2.2.2">
-<h3><span class="header-section-number">2.2.2</span> Implicit Coercion</h3>
+<div id="implicit-coercion" class="section level3 hasAnchor" number="2.2.2">
+<h3><span class="header-section-number">2.2.2</span> Implicit Coercion<a href="data-structures.html#implicit-coercion" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>R’s types fall into a natural hierarchy of expressiveness:</p>
 <p><img src="img/types.png"></p>
 <p>Each type on the right is more expressive than the ones to its left. That is,
@@ -701,8 +701,8 @@ each variable. In general, inspecting each step or variable is a good strategy
 for understanding why a piece of code works (or doesn’t work!). Here the
 implicit coercion happens in the third line.</p>
 </div>
-<div id="matrices-arrays" class="section level3" number="2.2.3">
-<h3><span class="header-section-number">2.2.3</span> Matrices &amp; Arrays</h3>
+<div id="matrices-arrays" class="section level3 hasAnchor" number="2.2.3">
+<h3><span class="header-section-number">2.2.3</span> Matrices &amp; Arrays<a href="data-structures.html#matrices-arrays" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>A <em>matrix</em> is the two-dimensional analogue of a vector. The elements, which are
 arranged into rows and columns, are ordered and homogeneous.</p>
 <p>You can create a matrix from a vector with the <code>matrix</code> function. By default,
@@ -730,8 +730,8 @@ can create an array from a vector with the <code>array</code> function. The
 characteristics of arrays are almost identical to matrices, but the class of an
 array is always <code>array</code>.</p>
 </div>
-<div id="factors" class="section level3" number="2.2.4">
-<h3><span class="header-section-number">2.2.4</span> Factors</h3>
+<div id="factors" class="section level3 hasAnchor" number="2.2.4">
+<h3><span class="header-section-number">2.2.4</span> Factors<a href="data-structures.html#factors" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>A feature is <em>categorical</em> if it measures a qualitative category. For example,
 the genres <code>rock</code>, <code>blues</code>, <code>alternative</code>, <code>folk</code>, <code>pop</code> are categories.</p>
 <p>R uses the class <code>factor</code> to represent categorical data. Visualizations and
@@ -833,11 +833,11 @@ function:</p>
 ## Levels: 16 years and over</code></pre>
 </div>
 </div>
-<div id="special-values" class="section level2" number="2.3">
-<h2><span class="header-section-number">2.3</span> Special Values</h2>
+<div id="special-values" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> Special Values<a href="data-structures.html#special-values" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>R has four <em>special</em> values to represent missing or invalid data.</p>
-<div id="missing-values" class="section level3" number="2.3.1">
-<h3><span class="header-section-number">2.3.1</span> Missing Values</h3>
+<div id="missing-values" class="section level3 hasAnchor" number="2.3.1">
+<h3><span class="header-section-number">2.3.1</span> Missing Values<a href="data-structures.html#missing-values" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The value <code>NA</code>, called the <em>missing value</em>, represents missing entries in a
 data set. It’s implied that the entries are missing due to how the data was
 collected, although there are exceptions. As an example, imagine the data came
@@ -876,8 +876,8 @@ the output:</p>
 <p>Missing values are a feature that sets R apart from most other programming
 languages.</p>
 </div>
-<div id="infinity" class="section level3" number="2.3.2">
-<h3><span class="header-section-number">2.3.2</span> Infinity</h3>
+<div id="infinity" class="section level3 hasAnchor" number="2.3.2">
+<h3><span class="header-section-number">2.3.2</span> Infinity<a href="data-structures.html#infinity" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The value <code>Inf</code> represents infinity, and can be numeric or complex. You’re most
 likely to encounter it as the result of certain computations:</p>
 <div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="data-structures.html#cb242-1" aria-hidden="true" tabindex="-1"></a><span class="dv">13</span> <span class="sc">/</span> <span class="dv">0</span></span></code></pre></div>
@@ -890,8 +890,8 @@ likely to encounter it as the result of certain computations:</p>
 <div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="data-structures.html#cb248-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.infinite</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="cn">Inf</span>, <span class="dv">0</span>, <span class="cn">Inf</span>))</span></code></pre></div>
 <pre><code>## [1]  TRUE FALSE  TRUE</code></pre>
 </div>
-<div id="not-a-number" class="section level3" number="2.3.3">
-<h3><span class="header-section-number">2.3.3</span> Not a Number</h3>
+<div id="not-a-number" class="section level3 hasAnchor" number="2.3.3">
+<h3><span class="header-section-number">2.3.3</span> Not a Number<a href="data-structures.html#not-a-number" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The value <code>NaN</code>, called <em>not a number</em>, represents a quantity that’s undefined
 mathematically. For instance, dividing 0 by 0 is undefined:</p>
 <div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb250-1"><a href="data-structures.html#cb250-1" aria-hidden="true" tabindex="-1"></a><span class="dv">0</span> <span class="sc">/</span> <span class="dv">0</span></span></code></pre></div>
@@ -904,8 +904,8 @@ mathematically. For instance, dividing 0 by 0 is undefined:</p>
 <pre><code>## Warning in log(-1): NaNs produced</code></pre>
 <pre><code>## [1] FALSE  TRUE FALSE</code></pre>
 </div>
-<div id="null" class="section level3" number="2.3.4">
-<h3><span class="header-section-number">2.3.4</span> Null</h3>
+<div id="null" class="section level3 hasAnchor" number="2.3.4">
+<h3><span class="header-section-number">2.3.4</span> Null<a href="data-structures.html#null" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The value <code>NULL</code> represents a quantity that’s undefined in R. Most of the time,
 <code>NULL</code> indicates the absence of a result. For instance, vectors don’t have
 dimensions, so the <code>dim</code> function returns <code>NULL</code> for vectors:</p>
@@ -923,8 +923,8 @@ dimensions, so the <code>dim</code> function returns <code>NULL</code> for vecto
 <pre><code>## [1] TRUE</code></pre>
 </div>
 </div>
-<div id="indexing" class="section level2" number="2.4">
-<h2><span class="header-section-number">2.4</span> Indexing</h2>
+<div id="indexing" class="section level2 hasAnchor" number="2.4">
+<h2><span class="header-section-number">2.4</span> Indexing<a href="data-structures.html#indexing" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The way to get and set elements of a data structure is by <em>indexing</em>. Sometimes
 this is also called <em>subsetting</em> or (element) <em>extraction</em>. Indexing is a
 fundamental operation in R, key to reasoning about how to solve problems with
@@ -951,8 +951,8 @@ things concise:</p>
 <p>Even though we’re using a vector here, the indexing operator works with almost
 all data structures, including factors, lists, matrices, and data frames. We’ll
 look at unique behavior for some of these later on.</p>
-<div id="all-elements" class="section level3" number="2.4.1">
-<h3><span class="header-section-number">2.4.1</span> All Elements</h3>
+<div id="all-elements" class="section level3 hasAnchor" number="2.4.1">
+<h3><span class="header-section-number">2.4.1</span> All Elements<a href="data-structures.html#all-elements" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The first way to use <code>[</code> to select elements is to leave the index blank. This
 selects all elements:</p>
 <div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb269-1"><a href="data-structures.html#cb269-1" aria-hidden="true" tabindex="-1"></a>x[]</span></code></pre></div>
@@ -979,8 +979,8 @@ variable.</p>
 <p>Let’s reset <code>x</code> one more time, so that we can use it again in the next example:</p>
 <div class="sourceCode" id="cb275"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb275-1"><a href="data-structures.html#cb275-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="at">a =</span> <span class="dv">10</span>, <span class="at">b =</span> <span class="dv">20</span>, <span class="at">c =</span> <span class="dv">30</span>, <span class="at">d =</span> <span class="dv">40</span>, <span class="at">e =</span> <span class="dv">50</span>)</span></code></pre></div>
 </div>
-<div id="by-position" class="section level3" number="2.4.2">
-<h3><span class="header-section-number">2.4.2</span> By Position</h3>
+<div id="by-position" class="section level3 hasAnchor" number="2.4.2">
+<h3><span class="header-section-number">2.4.2</span> By Position<a href="data-structures.html#by-position" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The second way to use <code>[</code> is to select elements by position. This happens when
 you use an integer or numeric index. We already saw the basics of this in
 Section <a href="data-structures.html#indexing-vectors">2.1.2</a>.</p>
@@ -1016,8 +1016,8 @@ rather than returning elements, since it’s unclear what the result should be:<
 <div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb284-1"><a href="data-structures.html#cb284-1" aria-hidden="true" tabindex="-1"></a>x[<span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">2</span>)]</span></code></pre></div>
 <pre><code>## Error in x[c(-1, 2)]: only 0&#39;s may be mixed with negative subscripts</code></pre>
 </div>
-<div id="by-name" class="section level3" number="2.4.3">
-<h3><span class="header-section-number">2.4.3</span> By Name</h3>
+<div id="by-name" class="section level3 hasAnchor" number="2.4.3">
+<h3><span class="header-section-number">2.4.3</span> By Name<a href="data-structures.html#by-name" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The third way to use <code>[</code> is to select elements by name. This happens when you
 use a character vector as the index, and only works with named data structures.</p>
 <p>Like indexing by position, you can use indexing by name to get or set elements.
@@ -1035,14 +1035,14 @@ or sets the first element whose name matches the index:</p>
 <p>Let’s reset <code>x</code> again to prepare for learning about the final way to index:</p>
 <div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb290-1"><a href="data-structures.html#cb290-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="at">a =</span> <span class="dv">10</span>, <span class="at">b =</span> <span class="dv">20</span>, <span class="at">c =</span> <span class="dv">30</span>, <span class="at">d =</span> <span class="dv">40</span>, <span class="at">e =</span> <span class="dv">50</span>)</span></code></pre></div>
 </div>
-<div id="by-condition" class="section level3" number="2.4.4">
-<h3><span class="header-section-number">2.4.4</span> By Condition</h3>
+<div id="by-condition" class="section level3 hasAnchor" number="2.4.4">
+<h3><span class="header-section-number">2.4.4</span> By Condition<a href="data-structures.html#by-condition" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The fourth and final way to use <code>[</code> is to select elements based on a condition.
 This happens when you use a logical vector as the index. The logical vector
 should have the same length as what you’re indexing, and will be recycled if it
 doesn’t.</p>
-<div id="congruent-vectors" class="section level4 unnumbered">
-<h4>Congruent Vectors</h4>
+<div id="congruent-vectors" class="section level4 unnumbered hasAnchor">
+<h4>Congruent Vectors<a href="data-structures.html#congruent-vectors" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>To understand indexing by condition, we first need to learn about congruent
 vectors. Two vectors are <em>congruent</em> if they have the same length and they
 correspond element-by-element.</p>
@@ -1056,8 +1056,8 @@ length:</p>
 2nd person, and so on. These vectors are congruent.</p>
 <p>Notice that columns in a data frame are always congruent!</p>
 </div>
-<div id="back-to-indexing" class="section level4 unnumbered">
-<h4>Back to Indexing</h4>
+<div id="back-to-indexing" class="section level4 unnumbered hasAnchor">
+<h4>Back to Indexing<a href="data-structures.html#back-to-indexing" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>When you index by condition, the index should generally be congruent to the
 object you’re indexing. Elements where the index is <code>TRUE</code> are kept and
 elements where the index is <code>FALSE</code> are dropped.</p>
@@ -1091,14 +1091,14 @@ elements of <code>x</code> that are greater than <code>10</code> to the missing 
 ## 10 NA NA NA NA</code></pre>
 </div>
 </div>
-<div id="logic" class="section level3" number="2.4.5">
-<h3><span class="header-section-number">2.4.5</span> Logic</h3>
+<div id="logic" class="section level3 hasAnchor" number="2.4.5">
+<h3><span class="header-section-number">2.4.5</span> Logic<a href="data-structures.html#logic" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>All of the conditions we’ve seen so far have been written in terms of a single
 test. If you want to use more sophisticated conditions, R provides operators to
 negate and combine logical vectors. These operators are useful for working with
 logical vectors even outside the context of indexing.</p>
-<div id="negation" class="section level4 unnumbered">
-<h4>Negation</h4>
+<div id="negation" class="section level4 unnumbered hasAnchor">
+<h4>Negation<a href="data-structures.html#negation" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>The <em>NOT operator</em> <code>!</code> converts <code>TRUE</code> to <code>FALSE</code> and <code>FALSE</code> to <code>TRUE</code>:</p>
 <div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="data-structures.html#cb300-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>, <span class="cn">TRUE</span>, <span class="cn">NA</span>)</span>
 <span id="cb300-2"><a href="data-structures.html#cb300-2" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
@@ -1111,8 +1111,8 @@ logical vectors even outside the context of indexing.</p>
 <pre><code>## [1] FALSE  TRUE</code></pre>
 <p>The NOT operator is vectorized.</p>
 </div>
-<div id="combinations" class="section level4 unnumbered">
-<h4>Combinations</h4>
+<div id="combinations" class="section level4 unnumbered hasAnchor">
+<h4>Combinations<a href="data-structures.html#combinations" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>R also has operators for combining logical values.</p>
 <p>The <em>AND operator</em> <code>&amp;</code> returns <code>TRUE</code> only when both arguments are <code>TRUE</code>. Here
 are some examples:</p>
@@ -1157,8 +1157,8 @@ example:</p>
 <pre><code>## [1] FALSE</code></pre>
 <p>The AND, OR, and XOR operators are vectorized.</p>
 </div>
-<div id="short-circuiting" class="section level4 unnumbered">
-<h4>Short-circuiting</h4>
+<div id="short-circuiting" class="section level4 unnumbered hasAnchor">
+<h4>Short-circuiting<a href="data-structures.html#short-circuiting" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>The second argument is irrelevant in some conditions:</p>
 <ul>
 <li><code>FALSE &amp;</code> is always <code>FALSE</code></li>
@@ -1194,10 +1194,10 @@ for if-statements, which we’ll learn about later on.</p>
 </div>
 </div>
 </div>
-<div id="exercises-1" class="section level2" number="2.5">
-<h2><span class="header-section-number">2.5</span> Exercises</h2>
-<div id="exercise-3" class="section level3" number="2.5.1">
-<h3><span class="header-section-number">2.5.1</span> Exercise</h3>
+<div id="exercises-1" class="section level2 hasAnchor" number="2.5">
+<h2><span class="header-section-number">2.5</span> Exercises<a href="data-structures.html#exercises-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="exercise-3" class="section level3 hasAnchor" number="2.5.1">
+<h3><span class="header-section-number">2.5.1</span> Exercise<a href="data-structures.html#exercise-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The <code>rep</code> function is another way to create a vector. Read the help file for
 the <code>rep</code> function.</p>
 <ol style="list-style-type: decimal">
@@ -1210,8 +1210,8 @@ function returns a result, explain how the result corresponds to the
 arguments you chose.</li>
 </ol>
 </div>
-<div id="exercise-4" class="section level3" number="2.5.2">
-<h3><span class="header-section-number">2.5.2</span> Exercise</h3>
+<div id="exercise-4" class="section level3 hasAnchor" number="2.5.2">
+<h3><span class="header-section-number">2.5.2</span> Exercise<a href="data-structures.html#exercise-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Considering how implicit coercion works (Section <a href="data-structures.html#implicit-coercion">2.2.2</a>):</p>
 <ol style="list-style-type: decimal">
 <li>Why does <code>"3" + 4</code> raise an error?</li>
@@ -1219,8 +1219,8 @@ arguments you chose.</li>
 <li>Why does <code>"FALSE" &lt; TRUE</code> return TRUE?</li>
 </ol>
 </div>
-<div id="exercise-5" class="section level3" number="2.5.3">
-<h3><span class="header-section-number">2.5.3</span> Exercise</h3>
+<div id="exercise-5" class="section level3 hasAnchor" number="2.5.3">
+<h3><span class="header-section-number">2.5.3</span> Exercise<a href="data-structures.html#exercise-5" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ol style="list-style-type: decimal">
 <li><p>Section <a href="data-structures.html#missing-values">2.3.1</a> described the missing value as a “chameleon”
 because it can have many different types. Is <code>Inf</code> also a chameleon? Use
@@ -1230,8 +1230,8 @@ usually produces another missing value. Is <code>Inf</code> contagious? Again, u
 examples to justify your answer.</p></li>
 </ol>
 </div>
-<div id="exercise-6" class="section level3" number="2.5.4">
-<h3><span class="header-section-number">2.5.4</span> Exercise</h3>
+<div id="exercise-6" class="section level3 hasAnchor" number="2.5.4">
+<h3><span class="header-section-number">2.5.4</span> Exercise<a href="data-structures.html#exercise-6" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The <code>table</code> function is useful for counting all sorts of things, not just level
 frequencies for a factor. For instance, you can use <code>table</code> to count how many
 <code>TRUE</code> and <code>FALSE</code> values there are in a logical vector.</p>
@@ -1254,7 +1254,6 @@ the number of quarters that had median weekly earnings below $750? Explain.</li>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -1284,6 +1283,10 @@ gitbook.start({
 "text": null
 },
 "download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "section"
 }
@@ -1297,7 +1300,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');
