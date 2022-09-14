@@ -266,7 +266,7 @@ two different types of data:
 ```
 
 Section \@ref(implicit-coercion) explains why this happens, and Appendix
-\@ref(more-ways-to-compare-values) explains several other ways to compare
+\@ref(more-about-comparisons) explains several other ways to compare
 values.
 
 

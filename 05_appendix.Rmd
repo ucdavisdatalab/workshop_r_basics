@@ -1,26 +1,147 @@
 Appendix
 ========
 
-More Ways to Compare Values
----------------------------
+More About Comparisons
+----------------------
 
-* `%in%` for containment (explained below)
 
-Now let's see what happens when we compare longer vectors:
+### Equality
+
+The `==` operator is the primary way to test whether two values are equal, as
+explained in Section \@ref(comparisons). Nonetheless, equality can be defined
+in many different ways, especially when dealing with computers. As a result, R
+also provides several different functions to test for different kinds of
+equality. This describes tests of equality in more detail, and also describes
+some other important details of comparisons.
+
+
+#### The `==` Operator
+
+The `==` operator tests whether its two arguments have the exact same
+representation as a _[binary number][binary]_ in your computer's memory. Before
+testing the arguments, the operator applies R's rules for vectorization
+(Section \@ref(vectorization)), recycling (Section \@ref(recycling)), and
+implicit coercion (Section \@ref(implicit-coercion)). Until you've fully
+internalized these three rules, some results from the equality operator  may
+seem surprising. For example:
+
+```{r}
+# Recycling:
+c(1, 2) == c(1, 2, 1, 2)
+
+# Implicit coercion:
+TRUE == 1
+TRUE == "TRUE"
+1 == "TRUE"
+```
+
+The length of the result from the equality operator is usually the same as its
+longest argument (with some exceptions).
+
+[binary]: https://en.wikipedia.org/wiki/Binary_number
+
+
+#### The `all.equal` Function
+
+The `all.equal` function tests whether its two arguments are equal up to some
+acceptable difference called a _tolerance_. Computer representations for
+decimal numbers are inherently imprecise, so it's necessary to allow for very
+small differences between computed numbers. For example:
+
+```{r}
+x = 0.5 - 0.3
+y = 0.3 - 0.1
+
+# FALSE on most machines:
+x == y
+
+# TRUE:
+all.equal(x, y)
+```
+
+The `all.equal` function does not apply R's rules for vectorization, recycling,
+or implicit coercion. The function returns `TRUE` when the arguments are equal,
+and returns a string summarizing the differences when they are not. For
+instance:
+
+```{r}
+all.equal(1, c(1, 2, 1))
+```
+
+The `all.equal` function is often used together with the `isTRUE` function,
+which tests whether the result is `TRUE`:
+
+```{r}
+all.equal(3, 4)
+isTRUE(all.equal(3, 4))
+```
+
+You should generally use the `all.equal` function when you want to compare
+decimal numbers.
+
+
+#### The `identical` Function
+
+The `identical` function checks whether its arguments are completely identical,
+including their metadata (names, dimensions, and so on). For instance:
+
+```{r}
+x = list(a = 1)
+y = list(a = 1)
+z = list(1)
+
+identical(x, y)
+identical(x, z)
+```
+
+The `identical` function does not apply R's rules for vectorization, recycling,
+or implicit coercion. The result is always a single logical value.
+
+You'll generally use the `identical` function to compare non-vector objects
+such as lists or data frames. The function also works for vectors, but most of
+the time the equality operator `==` is sufficient.
+
+
+### The `%in%` Operator
+
+Another common comparison is to check whether elements of one vector are
+_contained_ in another vector at any position. For instance, suppose you want
+to check whether `1` or `2` appear anywhere in a longer vector `x`. Here's how
+to do it:
+
+```{r}
+x = c(3, 4, 2, 7, 3, 7)
+c(1, 2) %in% x
+```
+
+R returns `FALSE` for the `1` because there's no `1` in `x`, and returns `TRUE`
+for the `2` because there is a `2` in `x`.
+
+Notice that this is different from comparing with the equality operator `==`.
+If you use use the equality operator, the shorter vector is recycled until its
+length matches the longer one, and then compared element-by-element. For the
+example, this means only the elements at odd-numbered positions are compared to
+`1`, and only the elements at even-numbered positions are compared to `2`:
+
+```{r}
+c(1, 2) == x
+```
+
+
+### Summarizing Comparisons
+
+The comparison operators are vectorized, so they compare their arguments
+element-by-element:
 
 ```{r}
 c(1, 2, 3) < c(1, 3, -3)
 c("he", "saw", "her") == c("she", "saw", "him")
 ```
 
-Since the comparison operators are all vectorized, the elements of the vectors
-are compared element-by-element, and R returns a logical value for each pair.
-
-What if you want to test whether all the elements in a vector are equal (or
-unequal)? There are several ways to do this. One is to use the `all` function
-on the result of the comparison. The `all` function takes a vector of logical
-values and returns `TRUE` if all of them are `TRUE`, and returns `FALSE`
-otherwise:
+What if you want to summarize whether all the elements in a vector are equal
+(or unequal)? You can use the `all` function on any logical vector to get a
+summary. The `all` function takes a vector of logical values and returns `TRUE`
+if all of them are `TRUE`, and returns `FALSE` otherwise:
 
 ```{r}
 all(c(1, 2, 3) < c(1, 3, -3))
@@ -33,49 +154,17 @@ returns `FALSE` otherwise:
 any(c("hi", "hello") == c("hi", "bye"))
 ```
 
-There are two more ways to test whether objects are equal:
+  
+### Other Pitfalls
 
-1. The `all.equal` function tests whether objects are equal up to some
-   acceptable difference called the _tolerance_. You should generally use
-   `all.equal` rather than `==` to compare decimal numbers. Computer
-   representations for decimal numbers are inherently imprecise, so comparison
-   using a (small) tolerance is often necessary.
+New programmers sometimes incorrectly think they need to append `== TRUE` to
+their comparisons. This is redundant, makes your code harder to understand, and
+wastes computational time. Comparisons already return logical values. If the
+result of the comparison is `TRUE`, then `TRUE == TRUE` is again just `TRUE`.
+If the result is `FALSE`, then `FALSE == TRUE` is again just `FALSE`. Likewise,
+if you want to invert a condition, choose an appropriate operator rather than
+appending `== FALSE`.
 
-2. The `identical` function checks whether objects are completely identical,
-   including their metadata (names, dimensions, and so on). Use this to compare
-   non-vector objects such as data frames. This function also works for
-   vectors, but most of the time `==` is sufficient.
-
-Another common comparison is to check whether elements of one vector are
-contained in another vector at any position. For instance, suppose you want to
-check whether `1` or `2` appear anywhere in a longer vector `x`. Here's how to
-do it:
-
-```{r}
-x = c(3, 4, 2, 7, 3, 7)
-c(1, 2) %in% x
-```
-
-R returns `FALSE` for the `1` because there's no `1` in `x`, and returns `TRUE`
-for the `2` because there is a `2` in `x`.
-
-Notice that this is different from comparing with `==`. If we use `==`, the
-shorter vector is recycled until its length matches the longer one, and then
-compared element-by-element. For the example, this means only the elements at
-odd-numbered positions are compared to `1`, and only the elements at
-even-numbered positions are compared to `2`:
-
-```{r}
-c(1, 2) == x
-```
-
-Finally, new programmers sometimes incorrectly think they need to append `==
-TRUE` to their comparisons. This is redundant, makes your code harder to
-understand, and wastes computational time. Comparisons already return logical
-values. If the result of the comparison is `TRUE`, then `TRUE == TRUE` is again
-just `TRUE`. If the result is `FALSE`, then `FALSE == TRUE` is again just
-`FALSE`. Likewise, if you want to invert a condition, choose an appropriate
-operator rather than appending `== FALSE`.
 
 
 Variable Scope & Lookup
