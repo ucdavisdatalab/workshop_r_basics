@@ -1,17 +1,20 @@
 Automating Tasks
 ================
 
-By now, we've learned all of the basic skills necessary to explore a data set
-in R. This final chapter is a collection of different topics relevant to
-cleaning data sets before and during analysis. Some of them, like loops, also
-have other applications.
+By now, you've learned all of the basic skills necessary to explore a data set
+in R. The focus of this chapter is how to organize your code so that it's
+concise, clear, and easy to automate. This will help you and your collaborators
+avoid tedious, redundant work, reproduce results efficiently, and run code in
+specialized environments for scientific computing, such as high-performance
+computing clusters.
+
 
 #### Learning Objectives {-}
 
-* Run some code if a condition is satified with an if-statement
-* Write functions to make code reusable
-* Run some code repeatedly with a for-loop
-* Describe differences between types of loops and how to choose
+* Create code that only runs when a condition is satisfied
+* Create custom functions in order to organize and reuse code
+* Run code repeatedly in a for-loop
+* Describe the different types of loops and how to choose between them
 
 
 Conditional Expressions
@@ -118,11 +121,7 @@ associated with them. It's useful to think of functions as factories: raw
 materials (inputs) go in, products (outputs) come out. We can also represent
 this visually:
 
-```
-         +-------+
--- in -->|   f   |-- out -->
-         +-------+
-```
+<img src="img/functions.png">
 
 Programmers use several specific terms to describe the parts and usage of
 functions:
