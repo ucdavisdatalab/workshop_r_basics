@@ -165,7 +165,7 @@ The `function` keyword creates a new function. Here's the syntax:
 ```
 function(parameter1, parameter2, ...) {
   # Your code goes here
-  
+
   # The result goes here
 }
 ```
@@ -178,59 +178,78 @@ need to assign it to variable. Choosing descriptive variable names is a good
 habit. For functions, that means choosing a name that describes what the
 function does. It often makes sense to use verbs in function names.
 
-Let's create a function that detects negative numbers. It should take a vector
-of numbers as input, compare them to zero, and then return the logical result
-from the comparison as output. Here's the code to do that:
+Let's write a function that gets the largest values in a vector. The inputs or
+arguments to the function will be the vector in question and also the number of
+values to get. Let's call these `vec` and `n`, respectively. The result will be
+a vector of the `n` largest elements. Here's one way to write the function:
 
 ```{r}
-is_negative = function(x) {
-  x < 0
+get_largest = function(vec, n) {
+  sorted = sort(vec, decreasing = TRUE)
+  head(sorted, n)
 }
-
-# Since this is a one-line function, the curly braces are optional:
-is_negative = function(x) x < 0
 ```
-The name of the function, `is_negative`, describes what the function does and
-includes a verb. The parameter `x` is the input. The return value is the result
-of `x < 0`, since we put that expression on the last line. 
+
+The name of the function, `get_largest`, describes what the function does and
+includes a verb. If this function will be used frequently, a shorter name, such
+as `largest`, might be preferable (compare to the `head` function).
+
 
 Any time you write a function, the first thing you should do afterwards is test
-that it actually works. Let's try the `is_negative` function on a few test
+that it actually works. Let's try the `get_largest` function on a few test
 cases:
 
 ```{r}
-x = c(5, -1, -2, 0, 3)
+x = c(1, 10, 20, -3)
+get_largest(x, 2)
+get_largest(x, 3)
 
-is_negative(6)
-is_negative(-1.1)
-is_negative(x)
+y = c(-1, -2, -3)
+get_largest(y, 2)
+
+z = c("d", "a", "t", "a", "l", "a", "b")
+get_largest(z, 3)
 ```
 
-Notice that the parameter `x` inside the function is different from the
-variable `x` we created outside the function. We'll learn more about this in
-Section \@ref(variable-scope-lookup), but for now just remember that parameters
-and variables inside of a function are separate from variables outside of a
-function.
+Notice that the parameters `vec` and `n` inside the function do not exist as
+variables outside of the function:
 
-A _default argument_ is an argument assigned to a parameter if no argument is
-assigned in the call to the function. You can use `=` to assign default
-arguments to parameters when you define a function with the `function` keyword.
+```{r, error = TRUE}
+vec
+```
+
+In general, R keeps parameters and variables you define inside of a function
+separate from variables you define outside of a function. You can read more
+about the specific rules for how R searches for variables in Section
+\@ref(variable-scope-lookup).
 
 
-For example, let's write a function that gets the largest values in a vector.
-We'll make the number of values to get a parameter, with a default argument of
-`5`. Here's the code and some test cases:
+As a function for quickly summarizing data, `get_largest` would be more
+convenient if the parameter `n` for the number of values to return was optional
+(again, compare to the `head` function). You can make the parameter `n`
+optional by setting a _default argument_: an argument assigned to the parameter
+if no argument is assigned in the call to the function. You can use `=` to
+assign default arguments to parameters when you define a function with the
+`function` keyword. Here's a new definition of the function with the default `n
+= 5`:
 
 ```{r}
-top = function(x, n = 5) {
-  sorted = sort(x, decreasing = TRUE)
+get_largest = function(vec, n = 5) {
+  sorted = sort(vec, decreasing = TRUE)
   head(sorted, n)
 }
-
-y = c(-6, 7, 10, 3, 1, 15, -2)
-top(y, 3)
-top(y)
 ```
+
+After making this change, it's a good idea to test the function again:
+
+```{r}
+get_largest(x)
+
+get_largest(y)
+
+get_largest(z)
+```
+
 
 ### Returning Values
 
@@ -242,24 +261,32 @@ running any subsequent code in its body. It only makes sense to use `return`
 from inside of an if-statement. If your function doesn't have any
 if-statements, you don't need to use `return`.
 
-For example, suppose we want the `is_negative` function to return `NA` if the
-argument isn't a number. This is an ideal case to use `return`, since we skip
-the computation `x < 0` when the argument isn't a number. Here's the new
-version of the function, as well as a new test case:
+For example, suppose you want the `get_largest` function to immediately return
+`NULL` if the argument for `vec` is a list. Here's the code, along with some
+test cases:
 
 ```{r}
-is_negative = function(x) {
-  if (!is.numeric(x))
-    return (NA)
-  
-  # TRUE for negative numbers, FALSE otherwise
-  x < 0
+get_largest = function(vec, n = 5) {
+  if (is.list(vec))
+    return(NULL)
+
+  sorted = sort(vec, decreasing = TRUE)
+  head(sorted, n)
 }
 
-is_negative("hi")
+get_largest(x)
+
+get_largest(z)
+
+get_largest(list(1, 2))
 ```
 
-It's idiomatic to only use `return` when strictly necessary. 
+Alternatively, you could make the function raise an error by calling the `stop`
+function. Whether it makes more sense to return `NULL` or print an error
+depends on how you plan to use the `get_largest` function.
+
+Notice that the last line of the `get_largest` function still doesn't use the
+`return` keyword. It's idiomatic to only use `return` when strictly necessary.
 
 A function returns one R object, but sometimes computations have multiple
 results. In that case, return the results in a vector, list, or other data
@@ -547,48 +574,47 @@ for (msg in my_messages) {
 
 These keywords work with both for-loops and while-loops.
 
+### Example: The Collatz Conjecture
 
-### Example: Fibonacci
+The [Collatz Conjecture][collatz] is a conjecture in math that was introduced
+in 1937 by Lothar Collatz and remains unproven today, despite being relatively
+easy to explain. Here's a statement of the conjecture:
 
+[collatz]:
 
-As a final example, let's use a loop to compute Fibonacci numbers. Each
-Fibonacci number is the sum of the previous two. The first few Fibonacci
-numbers are:
+> Start from any positive integer. If the integer is even, divide by 2. If the
+> integer is odd, multiply by 3 and add 1.
+>
+> If the result is not 1, repeat using the result as the new starting value.
+>
+> The result will always reach 1 eventually, regardless of the starting value.
 
-```
-1 1 2 3 5 8 13
-```
+The sequences of numbers this process generates are called _Collatz sequences_.
+For instance, the Collatz sequence starting from 2 is `2, 1`. The Collatz
+sequence starting from 12 is `12, 6, 3, 10, 5, 16, 8, 4, 2, 1`.
 
-We can use a loop to compute the first `n` Fibonacci numbers. Make sure to
-choose an appropriate index and to preallocate for the output:
-
-```{r}
-n = 10
-fib = c(1, 1, numeric(n - 2))
-
-for (i in 3:n) {
-  fib[i] = fib[i - 1] + fib[i - 2]
-}
-
-fib
-```
-
-If you want to reuse this code, you could make it a function:
+As a final loop example, let's use a while-loop to compute Collatz sequences.
+Here's the code:
 
 ```{r}
-fibonacci = function(n = 10) {
-  fib = c(1, 1, numeric(n - 2))
-
-  for (i in 3:n) {
-    fib[i] = fib[i - 1] + fib[i - 2]
+n = 5
+i = 0
+while (n != 1) {
+  i = i + 1
+  if (n %% 2 == 0) {
+    n = n / 2
+  } else {
+    n = 3 * n + 1
   }
-
-  fib
+  message(paste0(n, " "))
 }
-
-fibonacci(30)
 ```
 
+As of 2020, scientists have used computers to check the Collatz sequences for
+every number up to approximately $2^{64}$. For more details about the Collatz
+Conjecture, check out [this video][collatz-video].
+
+[collatz-video]: https://www.youtube.com/watch?v=094y1Z2wpJg
 
 
 Planning for Iteration
@@ -623,3 +649,18 @@ iteration, get that iteration working, and repeat this whole process.
 Exercises
 ---------
 
+_These exercises are meant to challenge you, so they're quite difficult
+compared to the previous ones. Don't get disheartened, and if you're able to
+complete them, excellent work!_
+
+
+### Exercise
+
+Create a function `compute_day` which uses the [Doomsday algorithm][doomsday]
+to compute the day of week for any given date in the 1900s. The function's
+parameters should be `year`, `month`, and `day`. The function's return value
+should be a day of week, as a string (for example, `"Saturday"`).
+
+_Hint: the modulo operator is `%%` in R._
+
+[doomsday]: https://en.wikipedia.org/wiki/Doomsday_rule
