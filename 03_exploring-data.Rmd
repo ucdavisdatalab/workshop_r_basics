@@ -894,3 +894,12 @@ post][apply].
 Exercises
 ---------
 
+### Exercise
+Count how many rows of the `earn` data have `median_weekly_earn` greater than $700.
+
+### Exercise
+Calculate the median of `median_weekly_earn` for men in 2018.
+
+### Exercise
+1. Adjust the line plot of weekly earnings by quarter so that there is one line per age group.
+2. Further adjust this plot so that each age group line is a different color.
