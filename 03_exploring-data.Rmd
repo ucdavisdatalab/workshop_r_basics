@@ -458,7 +458,8 @@ Unlike most layers, the aesthetic layer is not added to the plot with the `+`
 operator. Instead, you can pass the aesthetic layer as the second argument to
 the `ggplot` function:
 ```{r}
-ggplot(earn19, aes(x = quarter, y = median_weekly_earn, linetype = sex)) +
+ggplot(earn19) +
+  aes(x = quarter, y = median_weekly_earn, linetype = sex) +
   geom_line()
 ```
 
@@ -467,15 +468,17 @@ data dependent, do so *outside* of the aesthetic layer. For instance, suppose
 we want to make the lines blue:
 
 ```{r}
-ggplot(earn19, aes(x = quarter, y = median_weekly_earn, linetype = sex)) +
+ggplot(earn19) +
+  aes(x = quarter, y = median_weekly_earn, linetype = sex) +
   geom_line(color = "blue")
 ```
 
 If you set an aesthetic to a constant value inside of the aesthetic layer, the
 results you get might not be what you expect:
 ```{r}
-ggplot(earn19, aes(x = quarter, y = median_weekly_earn, linetype = sex,
-    color = "blue")) + geom_line()
+ggplot(earn19) +
+  aes(x = quarter, y = median_weekly_earn, linetype = sex, color = "blue") +
+  geom_line()
 ```
 
 <!--
@@ -518,8 +521,10 @@ all of them.
 The `labs` function is especially important, because it's used to set the title
 and axis labels:
 ```{r}
-ggplot(earn19, aes(x = quarter, y = median_weekly_earn, linetype = sex)) +
-  geom_line() + labs(x = "Quarter", y = "Median Weekly Salary (USD)",
+ggplot(earn19) +
+  aes(x = quarter, y = median_weekly_earn, linetype = sex) +
+  geom_line() +
+  labs(x = "Quarter", y = "Median Weekly Salary (USD)",
     title = "2019 Median Weekly Salaries, by Sex", linetype = "Sex")
 ```
 
@@ -550,7 +555,9 @@ Here's an example:
 ```{r, eval=FALSE}
 # Run these lines in the console, not the notebook!
 jpeg("line.jpeg")
-ggplot(favs, aes(x = distance_mi, y = walk_min)) + geom_point()
+ggplot(earn19) +
+  aes(x = quarter, y = median_weekly_earn) +
+  geom_point()
 dev.off()
 ```
 
@@ -570,7 +577,8 @@ automatically, set `stat = "identity"`.
 
 Here's the code to make the bar plot:
 ```{r}
-ggplot(earn19, aes(x = quarter, y = n_persons, fill = sex)) +
+ggplot(earn19) +
+  aes(x = quarter, y = n_persons, fill = sex) +
   geom_bar(stat = "identity", position = "dodge") +
   labs(x = "Quarter", y = "Number of Workers", fill = "Sex",
     title = "Number of Workers by Quarter and Sex in 2019")
