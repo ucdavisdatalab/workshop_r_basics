@@ -23,7 +23,7 @@
 <meta name="author" content="Nick Ulle" />
 
 
-<meta name="date" content="2022-09-14" />
+<meta name="date" content="2022-09-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -327,74 +327,74 @@ computing clusters.</p>
 <p>Sometimes you’ll need code to do different things, depending on a condition.
 <em>If-statements</em> provide a way to write conditional code.</p>
 <p>For example, suppose we want to greet one person differently from the others:</p>
-<div class="sourceCode" id="cb425"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb425-1"><a href="automating-tasks.html#cb425-1" aria-hidden="true" tabindex="-1"></a>name <span class="ot">=</span> <span class="st">&quot;Nick&quot;</span></span>
-<span id="cb425-2"><a href="automating-tasks.html#cb425-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (name <span class="sc">==</span> <span class="st">&quot;Nick&quot;</span>) {</span>
-<span id="cb425-3"><a href="automating-tasks.html#cb425-3" aria-hidden="true" tabindex="-1"></a>   <span class="co"># If name is Nick:</span></span>
-<span id="cb425-4"><a href="automating-tasks.html#cb425-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">message</span>(<span class="st">&quot;We went down the TRUE branch&quot;</span>)</span>
-<span id="cb425-5"><a href="automating-tasks.html#cb425-5" aria-hidden="true" tabindex="-1"></a>   msg <span class="ot">=</span> <span class="st">&quot;Hi Nick, nice to see you again!&quot;</span></span>
-<span id="cb425-6"><a href="automating-tasks.html#cb425-6" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
-<span id="cb425-7"><a href="automating-tasks.html#cb425-7" aria-hidden="true" tabindex="-1"></a>   <span class="co"># Anything else:</span></span>
-<span id="cb425-8"><a href="automating-tasks.html#cb425-8" aria-hidden="true" tabindex="-1"></a>   msg <span class="ot">=</span> <span class="st">&quot;Nice to meet you!&quot;</span></span>
-<span id="cb425-9"><a href="automating-tasks.html#cb425-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb424"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb424-1"><a href="automating-tasks.html#cb424-1" aria-hidden="true" tabindex="-1"></a>name <span class="ot">=</span> <span class="st">&quot;Nick&quot;</span></span>
+<span id="cb424-2"><a href="automating-tasks.html#cb424-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (name <span class="sc">==</span> <span class="st">&quot;Nick&quot;</span>) {</span>
+<span id="cb424-3"><a href="automating-tasks.html#cb424-3" aria-hidden="true" tabindex="-1"></a>   <span class="co"># If name is Nick:</span></span>
+<span id="cb424-4"><a href="automating-tasks.html#cb424-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">message</span>(<span class="st">&quot;We went down the TRUE branch&quot;</span>)</span>
+<span id="cb424-5"><a href="automating-tasks.html#cb424-5" aria-hidden="true" tabindex="-1"></a>   msg <span class="ot">=</span> <span class="st">&quot;Hi Nick, nice to see you again!&quot;</span></span>
+<span id="cb424-6"><a href="automating-tasks.html#cb424-6" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb424-7"><a href="automating-tasks.html#cb424-7" aria-hidden="true" tabindex="-1"></a>   <span class="co"># Anything else:</span></span>
+<span id="cb424-8"><a href="automating-tasks.html#cb424-8" aria-hidden="true" tabindex="-1"></a>   msg <span class="ot">=</span> <span class="st">&quot;Nice to meet you!&quot;</span></span>
+<span id="cb424-9"><a href="automating-tasks.html#cb424-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <pre><code>## We went down the TRUE branch</code></pre>
 <p>Indent code inside of the if-statement by 2 or 4 spaces. Indentation makes your
 code easier to read.</p>
 <p>The condition in an if-statement has to be a scalar:</p>
-<div class="sourceCode" id="cb427"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb427-1"><a href="automating-tasks.html#cb427-1" aria-hidden="true" tabindex="-1"></a>name <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;Nick&quot;</span>, <span class="st">&quot;Susan&quot;</span>)</span>
-<span id="cb427-2"><a href="automating-tasks.html#cb427-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (name <span class="sc">==</span> <span class="st">&quot;Nick&quot;</span>) {</span>
-<span id="cb427-3"><a href="automating-tasks.html#cb427-3" aria-hidden="true" tabindex="-1"></a>   msg <span class="ot">=</span> <span class="st">&quot;Hi Nick!&quot;</span></span>
-<span id="cb427-4"><a href="automating-tasks.html#cb427-4" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
-<span id="cb427-5"><a href="automating-tasks.html#cb427-5" aria-hidden="true" tabindex="-1"></a>   msg <span class="ot">=</span> <span class="st">&quot;Nice to meet you!&quot;</span></span>
-<span id="cb427-6"><a href="automating-tasks.html#cb427-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb426"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb426-1"><a href="automating-tasks.html#cb426-1" aria-hidden="true" tabindex="-1"></a>name <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;Nick&quot;</span>, <span class="st">&quot;Susan&quot;</span>)</span>
+<span id="cb426-2"><a href="automating-tasks.html#cb426-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (name <span class="sc">==</span> <span class="st">&quot;Nick&quot;</span>) {</span>
+<span id="cb426-3"><a href="automating-tasks.html#cb426-3" aria-hidden="true" tabindex="-1"></a>   msg <span class="ot">=</span> <span class="st">&quot;Hi Nick!&quot;</span></span>
+<span id="cb426-4"><a href="automating-tasks.html#cb426-4" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb426-5"><a href="automating-tasks.html#cb426-5" aria-hidden="true" tabindex="-1"></a>   msg <span class="ot">=</span> <span class="st">&quot;Nice to meet you!&quot;</span></span>
+<span id="cb426-6"><a href="automating-tasks.html#cb426-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <pre><code>## Error in if (name == &quot;Nick&quot;) {: the condition has length &gt; 1</code></pre>
 <p>You can chain together if-statements:</p>
-<div class="sourceCode" id="cb429"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb429-1"><a href="automating-tasks.html#cb429-1" aria-hidden="true" tabindex="-1"></a>name <span class="ot">=</span> <span class="st">&quot;Susan&quot;</span></span>
-<span id="cb429-2"><a href="automating-tasks.html#cb429-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (name <span class="sc">==</span> <span class="st">&quot;Nick&quot;</span>) {</span>
-<span id="cb429-3"><a href="automating-tasks.html#cb429-3" aria-hidden="true" tabindex="-1"></a>   msg <span class="ot">=</span> <span class="st">&quot;Hi Nick, nice to see you again!&quot;</span></span>
-<span id="cb429-4"><a href="automating-tasks.html#cb429-4" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> (name <span class="sc">==</span> <span class="st">&quot;Peter&quot;</span>) {</span>
-<span id="cb429-5"><a href="automating-tasks.html#cb429-5" aria-hidden="true" tabindex="-1"></a>   msg <span class="ot">=</span> <span class="st">&quot;Go away Peter, I&#39;m busy!&quot;</span></span>
-<span id="cb429-6"><a href="automating-tasks.html#cb429-6" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
-<span id="cb429-7"><a href="automating-tasks.html#cb429-7" aria-hidden="true" tabindex="-1"></a>   msg <span class="ot">=</span> <span class="st">&quot;Nice to meet you!&quot;</span></span>
-<span id="cb429-8"><a href="automating-tasks.html#cb429-8" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb429-9"><a href="automating-tasks.html#cb429-9" aria-hidden="true" tabindex="-1"></a>msg</span></code></pre></div>
+<div class="sourceCode" id="cb428"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb428-1"><a href="automating-tasks.html#cb428-1" aria-hidden="true" tabindex="-1"></a>name <span class="ot">=</span> <span class="st">&quot;Susan&quot;</span></span>
+<span id="cb428-2"><a href="automating-tasks.html#cb428-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (name <span class="sc">==</span> <span class="st">&quot;Nick&quot;</span>) {</span>
+<span id="cb428-3"><a href="automating-tasks.html#cb428-3" aria-hidden="true" tabindex="-1"></a>   msg <span class="ot">=</span> <span class="st">&quot;Hi Nick, nice to see you again!&quot;</span></span>
+<span id="cb428-4"><a href="automating-tasks.html#cb428-4" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> (name <span class="sc">==</span> <span class="st">&quot;Peter&quot;</span>) {</span>
+<span id="cb428-5"><a href="automating-tasks.html#cb428-5" aria-hidden="true" tabindex="-1"></a>   msg <span class="ot">=</span> <span class="st">&quot;Go away Peter, I&#39;m busy!&quot;</span></span>
+<span id="cb428-6"><a href="automating-tasks.html#cb428-6" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb428-7"><a href="automating-tasks.html#cb428-7" aria-hidden="true" tabindex="-1"></a>   msg <span class="ot">=</span> <span class="st">&quot;Nice to meet you!&quot;</span></span>
+<span id="cb428-8"><a href="automating-tasks.html#cb428-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb428-9"><a href="automating-tasks.html#cb428-9" aria-hidden="true" tabindex="-1"></a>msg</span></code></pre></div>
 <pre><code>## [1] &quot;Nice to meet you!&quot;</code></pre>
 <p>If-statements return the value of the last expression in the evaluated block:</p>
-<div class="sourceCode" id="cb431"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb431-1"><a href="automating-tasks.html#cb431-1" aria-hidden="true" tabindex="-1"></a>name <span class="ot">=</span> <span class="st">&quot;Tom&quot;</span></span>
-<span id="cb431-2"><a href="automating-tasks.html#cb431-2" aria-hidden="true" tabindex="-1"></a>msg <span class="ot">=</span> <span class="cf">if</span> (name <span class="sc">==</span> <span class="st">&quot;Nick&quot;</span>) {</span>
-<span id="cb431-3"><a href="automating-tasks.html#cb431-3" aria-hidden="true" tabindex="-1"></a>   <span class="st">&quot;Hi Nick, nice to see you again!&quot;</span></span>
-<span id="cb431-4"><a href="automating-tasks.html#cb431-4" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
-<span id="cb431-5"><a href="automating-tasks.html#cb431-5" aria-hidden="true" tabindex="-1"></a>   <span class="st">&quot;Nice to meet you!&quot;</span></span>
-<span id="cb431-6"><a href="automating-tasks.html#cb431-6" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb431-7"><a href="automating-tasks.html#cb431-7" aria-hidden="true" tabindex="-1"></a>msg</span></code></pre></div>
+<div class="sourceCode" id="cb430"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb430-1"><a href="automating-tasks.html#cb430-1" aria-hidden="true" tabindex="-1"></a>name <span class="ot">=</span> <span class="st">&quot;Tom&quot;</span></span>
+<span id="cb430-2"><a href="automating-tasks.html#cb430-2" aria-hidden="true" tabindex="-1"></a>msg <span class="ot">=</span> <span class="cf">if</span> (name <span class="sc">==</span> <span class="st">&quot;Nick&quot;</span>) {</span>
+<span id="cb430-3"><a href="automating-tasks.html#cb430-3" aria-hidden="true" tabindex="-1"></a>   <span class="st">&quot;Hi Nick, nice to see you again!&quot;</span></span>
+<span id="cb430-4"><a href="automating-tasks.html#cb430-4" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb430-5"><a href="automating-tasks.html#cb430-5" aria-hidden="true" tabindex="-1"></a>   <span class="st">&quot;Nice to meet you!&quot;</span></span>
+<span id="cb430-6"><a href="automating-tasks.html#cb430-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb430-7"><a href="automating-tasks.html#cb430-7" aria-hidden="true" tabindex="-1"></a>msg</span></code></pre></div>
 <pre><code>## [1] &quot;Nice to meet you!&quot;</code></pre>
 <p>Curly braces <code>{ }</code> are optional for single-line expressions:</p>
-<div class="sourceCode" id="cb433"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb433-1"><a href="automating-tasks.html#cb433-1" aria-hidden="true" tabindex="-1"></a>name <span class="ot">=</span> <span class="st">&quot;Nick&quot;</span></span>
-<span id="cb433-2"><a href="automating-tasks.html#cb433-2" aria-hidden="true" tabindex="-1"></a>msg <span class="ot">=</span> <span class="cf">if</span> (name <span class="sc">==</span> <span class="st">&quot;Nick&quot;</span>) <span class="st">&quot;Hi Nick, nice to see you again!&quot;</span> <span class="cf">else</span></span>
-<span id="cb433-3"><a href="automating-tasks.html#cb433-3" aria-hidden="true" tabindex="-1"></a>   <span class="st">&quot;Nice to meet you!&quot;</span></span>
-<span id="cb433-4"><a href="automating-tasks.html#cb433-4" aria-hidden="true" tabindex="-1"></a>msg</span></code></pre></div>
+<div class="sourceCode" id="cb432"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb432-1"><a href="automating-tasks.html#cb432-1" aria-hidden="true" tabindex="-1"></a>name <span class="ot">=</span> <span class="st">&quot;Nick&quot;</span></span>
+<span id="cb432-2"><a href="automating-tasks.html#cb432-2" aria-hidden="true" tabindex="-1"></a>msg <span class="ot">=</span> <span class="cf">if</span> (name <span class="sc">==</span> <span class="st">&quot;Nick&quot;</span>) <span class="st">&quot;Hi Nick, nice to see you again!&quot;</span> <span class="cf">else</span></span>
+<span id="cb432-3"><a href="automating-tasks.html#cb432-3" aria-hidden="true" tabindex="-1"></a>   <span class="st">&quot;Nice to meet you!&quot;</span></span>
+<span id="cb432-4"><a href="automating-tasks.html#cb432-4" aria-hidden="true" tabindex="-1"></a>msg</span></code></pre></div>
 <pre><code>## [1] &quot;Hi Nick, nice to see you again!&quot;</code></pre>
 <p>But you have to be careful if you don’t use them:</p>
-<div class="sourceCode" id="cb435"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb435-1"><a href="automating-tasks.html#cb435-1" aria-hidden="true" tabindex="-1"></a><span class="co"># NO GOOD:</span></span>
-<span id="cb435-2"><a href="automating-tasks.html#cb435-2" aria-hidden="true" tabindex="-1"></a>msg <span class="ot">=</span> <span class="cf">if</span> (name <span class="sc">==</span> <span class="st">&quot;Nick&quot;</span>)</span>
-<span id="cb435-3"><a href="automating-tasks.html#cb435-3" aria-hidden="true" tabindex="-1"></a>   <span class="st">&quot;Hi Nick, nice to see you again!&quot;</span></span>
-<span id="cb435-4"><a href="automating-tasks.html#cb435-4" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span></span>
-<span id="cb435-5"><a href="automating-tasks.html#cb435-5" aria-hidden="true" tabindex="-1"></a>   <span class="st">&quot;Nice to meet you!&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb434"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb434-1"><a href="automating-tasks.html#cb434-1" aria-hidden="true" tabindex="-1"></a><span class="co"># NO GOOD:</span></span>
+<span id="cb434-2"><a href="automating-tasks.html#cb434-2" aria-hidden="true" tabindex="-1"></a>msg <span class="ot">=</span> <span class="cf">if</span> (name <span class="sc">==</span> <span class="st">&quot;Nick&quot;</span>)</span>
+<span id="cb434-3"><a href="automating-tasks.html#cb434-3" aria-hidden="true" tabindex="-1"></a>   <span class="st">&quot;Hi Nick, nice to see you again!&quot;</span></span>
+<span id="cb434-4"><a href="automating-tasks.html#cb434-4" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span></span>
+<span id="cb434-5"><a href="automating-tasks.html#cb434-5" aria-hidden="true" tabindex="-1"></a>   <span class="st">&quot;Nice to meet you!&quot;</span></span></code></pre></div>
 <pre><code>## Error: &lt;text&gt;:4:1: unexpected &#39;else&#39;
 ## 3:    &quot;Hi Nick, nice to see you again!&quot;
 ## 4: else
 ##    ^</code></pre>
 <p>The <code>else</code> block is optional:</p>
-<div class="sourceCode" id="cb437"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb437-1"><a href="automating-tasks.html#cb437-1" aria-hidden="true" tabindex="-1"></a>msg <span class="ot">=</span> <span class="st">&quot;Hi&quot;</span></span>
-<span id="cb437-2"><a href="automating-tasks.html#cb437-2" aria-hidden="true" tabindex="-1"></a>name <span class="ot">=</span> <span class="st">&quot;Tom&quot;</span></span>
-<span id="cb437-3"><a href="automating-tasks.html#cb437-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (name <span class="sc">==</span> <span class="st">&quot;Nick&quot;</span>)</span>
-<span id="cb437-4"><a href="automating-tasks.html#cb437-4" aria-hidden="true" tabindex="-1"></a>   msg <span class="ot">=</span> <span class="st">&quot;Hi Nick, nice to see you again!&quot;</span></span>
-<span id="cb437-5"><a href="automating-tasks.html#cb437-5" aria-hidden="true" tabindex="-1"></a>msg</span></code></pre></div>
+<div class="sourceCode" id="cb436"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb436-1"><a href="automating-tasks.html#cb436-1" aria-hidden="true" tabindex="-1"></a>msg <span class="ot">=</span> <span class="st">&quot;Hi&quot;</span></span>
+<span id="cb436-2"><a href="automating-tasks.html#cb436-2" aria-hidden="true" tabindex="-1"></a>name <span class="ot">=</span> <span class="st">&quot;Tom&quot;</span></span>
+<span id="cb436-3"><a href="automating-tasks.html#cb436-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (name <span class="sc">==</span> <span class="st">&quot;Nick&quot;</span>)</span>
+<span id="cb436-4"><a href="automating-tasks.html#cb436-4" aria-hidden="true" tabindex="-1"></a>   msg <span class="ot">=</span> <span class="st">&quot;Hi Nick, nice to see you again!&quot;</span></span>
+<span id="cb436-5"><a href="automating-tasks.html#cb436-5" aria-hidden="true" tabindex="-1"></a>msg</span></code></pre></div>
 <pre><code>## [1] &quot;Hi&quot;</code></pre>
 <p>When there’s no <code>else</code> block, the value of the <code>else</code> block is <code>NULL</code>:</p>
-<div class="sourceCode" id="cb439"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb439-1"><a href="automating-tasks.html#cb439-1" aria-hidden="true" tabindex="-1"></a>name <span class="ot">=</span> <span class="st">&quot;Tom&quot;</span></span>
-<span id="cb439-2"><a href="automating-tasks.html#cb439-2" aria-hidden="true" tabindex="-1"></a>msg <span class="ot">=</span> <span class="cf">if</span> (name <span class="sc">==</span> <span class="st">&quot;Nick&quot;</span>)</span>
-<span id="cb439-3"><a href="automating-tasks.html#cb439-3" aria-hidden="true" tabindex="-1"></a>   <span class="st">&quot;Hi Nick, nice to see you again!&quot;</span></span>
-<span id="cb439-4"><a href="automating-tasks.html#cb439-4" aria-hidden="true" tabindex="-1"></a>msg</span></code></pre></div>
+<div class="sourceCode" id="cb438"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb438-1"><a href="automating-tasks.html#cb438-1" aria-hidden="true" tabindex="-1"></a>name <span class="ot">=</span> <span class="st">&quot;Tom&quot;</span></span>
+<span id="cb438-2"><a href="automating-tasks.html#cb438-2" aria-hidden="true" tabindex="-1"></a>msg <span class="ot">=</span> <span class="cf">if</span> (name <span class="sc">==</span> <span class="st">&quot;Nick&quot;</span>)</span>
+<span id="cb438-3"><a href="automating-tasks.html#cb438-3" aria-hidden="true" tabindex="-1"></a>   <span class="st">&quot;Hi Nick, nice to see you again!&quot;</span></span>
+<span id="cb438-4"><a href="automating-tasks.html#cb438-4" aria-hidden="true" tabindex="-1"></a>msg</span></code></pre></div>
 <pre><code>## NULL</code></pre>
 </div>
 <div id="functions" class="section level2 hasAnchor" number="4.2">
@@ -427,7 +427,7 @@ if the body only contains one line of code. Indenting code inside of curly
 braces by 2-4 spaces also helps make it visually distinct from other code.</p>
 <p>For example, let’s look at the body of the <code>append</code> function, which appends a
 value to the end of a list or vector:</p>
-<div class="sourceCode" id="cb441"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb441-1"><a href="automating-tasks.html#cb441-1" aria-hidden="true" tabindex="-1"></a>append</span></code></pre></div>
+<div class="sourceCode" id="cb440"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb440-1"><a href="automating-tasks.html#cb440-1" aria-hidden="true" tabindex="-1"></a>append</span></code></pre></div>
 <pre><code>## function (x, values, after = length(x)) 
 ## {
 ##     lengx &lt;- length(x)
@@ -437,7 +437,7 @@ value to the end of a list or vector:</p>
 ##         c(x, values)
 ##     else c(x[1L:after], values, x[(after + 1L):lengx])
 ## }
-## &lt;bytecode: 0x55ca8a78bea0&gt;
+## &lt;bytecode: 0x7fad59c7c078&gt;
 ## &lt;environment: namespace:base&gt;</code></pre>
 <p>Don’t worry if you can’t understand everything the <code>append</code> function’s code
 does yet. It will make more sense later on, after you’ve written a few
@@ -446,12 +446,12 @@ functions of your own.</p>
 these by calls to the special <code>.Primitive</code> or <code>.Internal</code> functions in their
 code.</p>
 <p>For instance, the <code>sum</code> function is not written in R code:</p>
-<div class="sourceCode" id="cb443"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb443-1"><a href="automating-tasks.html#cb443-1" aria-hidden="true" tabindex="-1"></a>sum</span></code></pre></div>
+<div class="sourceCode" id="cb442"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb442-1"><a href="automating-tasks.html#cb442-1" aria-hidden="true" tabindex="-1"></a>sum</span></code></pre></div>
 <pre><code>## function (..., na.rm = FALSE)  .Primitive(&quot;sum&quot;)</code></pre>
 <p>The <code>function</code> keyword creates a new function. Here’s the syntax:</p>
 <pre><code>function(parameter1, parameter2, ...) {
   # Your code goes here
-  
+
   # The result goes here
 }</code></pre>
 <p>A function can have any number of parameters, and will automatically return the
@@ -464,30 +464,30 @@ function does. It often makes sense to use verbs in function names.</p>
 arguments to the function will be the vector in question and also the number of
 values to get. Let’s call these <code>vec</code> and <code>n</code>, respectively. The result will be
 a vector of the <code>n</code> largest elements. Here’s one way to write the function:</p>
-<div class="sourceCode" id="cb446"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb446-1"><a href="automating-tasks.html#cb446-1" aria-hidden="true" tabindex="-1"></a>get_largest <span class="ot">=</span> <span class="cf">function</span>(vec, n) {</span>
-<span id="cb446-2"><a href="automating-tasks.html#cb446-2" aria-hidden="true" tabindex="-1"></a>  sorted <span class="ot">=</span> <span class="fu">sort</span>(vec, <span class="at">decreasing =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb446-3"><a href="automating-tasks.html#cb446-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(sorted, n)</span>
-<span id="cb446-4"><a href="automating-tasks.html#cb446-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb445"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb445-1"><a href="automating-tasks.html#cb445-1" aria-hidden="true" tabindex="-1"></a>get_largest <span class="ot">=</span> <span class="cf">function</span>(vec, n) {</span>
+<span id="cb445-2"><a href="automating-tasks.html#cb445-2" aria-hidden="true" tabindex="-1"></a>  sorted <span class="ot">=</span> <span class="fu">sort</span>(vec, <span class="at">decreasing =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb445-3"><a href="automating-tasks.html#cb445-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(sorted, n)</span>
+<span id="cb445-4"><a href="automating-tasks.html#cb445-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>The name of the function, <code>get_largest</code>, describes what the function does and
 includes a verb. If this function will be used frequently, a shorter name, such
 as <code>largest</code>, might be preferable (compare to the <code>head</code> function).</p>
 <p>Any time you write a function, the first thing you should do afterwards is test
 that it actually works. Let’s try the <code>get_largest</code> function on a few test
 cases:</p>
-<div class="sourceCode" id="cb447"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb447-1"><a href="automating-tasks.html#cb447-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">20</span>, <span class="sc">-</span><span class="dv">3</span>)</span>
-<span id="cb447-2"><a href="automating-tasks.html#cb447-2" aria-hidden="true" tabindex="-1"></a><span class="fu">get_largest</span>(x, <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb446"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb446-1"><a href="automating-tasks.html#cb446-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">20</span>, <span class="sc">-</span><span class="dv">3</span>)</span>
+<span id="cb446-2"><a href="automating-tasks.html#cb446-2" aria-hidden="true" tabindex="-1"></a><span class="fu">get_largest</span>(x, <span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## [1] 20 10</code></pre>
-<div class="sourceCode" id="cb449"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb449-1"><a href="automating-tasks.html#cb449-1" aria-hidden="true" tabindex="-1"></a><span class="fu">get_largest</span>(x, <span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb448"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb448-1"><a href="automating-tasks.html#cb448-1" aria-hidden="true" tabindex="-1"></a><span class="fu">get_largest</span>(x, <span class="dv">3</span>)</span></code></pre></div>
 <pre><code>## [1] 20 10  1</code></pre>
-<div class="sourceCode" id="cb451"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb451-1"><a href="automating-tasks.html#cb451-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="sc">-</span><span class="dv">2</span>, <span class="sc">-</span><span class="dv">3</span>)</span>
-<span id="cb451-2"><a href="automating-tasks.html#cb451-2" aria-hidden="true" tabindex="-1"></a><span class="fu">get_largest</span>(y, <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb450"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb450-1"><a href="automating-tasks.html#cb450-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="sc">-</span><span class="dv">2</span>, <span class="sc">-</span><span class="dv">3</span>)</span>
+<span id="cb450-2"><a href="automating-tasks.html#cb450-2" aria-hidden="true" tabindex="-1"></a><span class="fu">get_largest</span>(y, <span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## [1] -1 -2</code></pre>
-<div class="sourceCode" id="cb453"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb453-1"><a href="automating-tasks.html#cb453-1" aria-hidden="true" tabindex="-1"></a>z <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;d&quot;</span>, <span class="st">&quot;a&quot;</span>, <span class="st">&quot;t&quot;</span>, <span class="st">&quot;a&quot;</span>, <span class="st">&quot;l&quot;</span>, <span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>)</span>
-<span id="cb453-2"><a href="automating-tasks.html#cb453-2" aria-hidden="true" tabindex="-1"></a><span class="fu">get_largest</span>(z, <span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb452"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb452-1"><a href="automating-tasks.html#cb452-1" aria-hidden="true" tabindex="-1"></a>z <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;d&quot;</span>, <span class="st">&quot;a&quot;</span>, <span class="st">&quot;t&quot;</span>, <span class="st">&quot;a&quot;</span>, <span class="st">&quot;l&quot;</span>, <span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>)</span>
+<span id="cb452-2"><a href="automating-tasks.html#cb452-2" aria-hidden="true" tabindex="-1"></a><span class="fu">get_largest</span>(z, <span class="dv">3</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;t&quot; &quot;l&quot; &quot;d&quot;</code></pre>
 <p>Notice that the parameters <code>vec</code> and <code>n</code> inside the function do not exist as
 variables outside of the function:</p>
-<div class="sourceCode" id="cb455"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb455-1"><a href="automating-tasks.html#cb455-1" aria-hidden="true" tabindex="-1"></a>vec</span></code></pre></div>
+<div class="sourceCode" id="cb454"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb454-1"><a href="automating-tasks.html#cb454-1" aria-hidden="true" tabindex="-1"></a>vec</span></code></pre></div>
 <pre><code>## Error in eval(expr, envir, enclos): object &#39;vec&#39; not found</code></pre>
 <p>In general, R keeps parameters and variables you define inside of a function
 separate from variables you define outside of a function. You can read more
@@ -500,16 +500,16 @@ optional by setting a <em>default argument</em>: an argument assigned to the par
 if no argument is assigned in the call to the function. You can use <code>=</code> to
 assign default arguments to parameters when you define a function with the
 <code>function</code> keyword. Here’s a new definition of the function with the default <code>n = 5</code>:</p>
-<div class="sourceCode" id="cb457"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb457-1"><a href="automating-tasks.html#cb457-1" aria-hidden="true" tabindex="-1"></a>get_largest <span class="ot">=</span> <span class="cf">function</span>(vec, <span class="at">n =</span> <span class="dv">5</span>) {</span>
-<span id="cb457-2"><a href="automating-tasks.html#cb457-2" aria-hidden="true" tabindex="-1"></a>  sorted <span class="ot">=</span> <span class="fu">sort</span>(vec, <span class="at">decreasing =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb457-3"><a href="automating-tasks.html#cb457-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(sorted, n)</span>
-<span id="cb457-4"><a href="automating-tasks.html#cb457-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb456"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb456-1"><a href="automating-tasks.html#cb456-1" aria-hidden="true" tabindex="-1"></a>get_largest <span class="ot">=</span> <span class="cf">function</span>(vec, <span class="at">n =</span> <span class="dv">5</span>) {</span>
+<span id="cb456-2"><a href="automating-tasks.html#cb456-2" aria-hidden="true" tabindex="-1"></a>  sorted <span class="ot">=</span> <span class="fu">sort</span>(vec, <span class="at">decreasing =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb456-3"><a href="automating-tasks.html#cb456-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(sorted, n)</span>
+<span id="cb456-4"><a href="automating-tasks.html#cb456-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>After making this change, it’s a good idea to test the function again:</p>
-<div class="sourceCode" id="cb458"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb458-1"><a href="automating-tasks.html#cb458-1" aria-hidden="true" tabindex="-1"></a><span class="fu">get_largest</span>(x)</span></code></pre></div>
+<div class="sourceCode" id="cb457"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb457-1"><a href="automating-tasks.html#cb457-1" aria-hidden="true" tabindex="-1"></a><span class="fu">get_largest</span>(x)</span></code></pre></div>
 <pre><code>## [1] 20 10  1 -3</code></pre>
-<div class="sourceCode" id="cb460"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb460-1"><a href="automating-tasks.html#cb460-1" aria-hidden="true" tabindex="-1"></a><span class="fu">get_largest</span>(y)</span></code></pre></div>
+<div class="sourceCode" id="cb459"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb459-1"><a href="automating-tasks.html#cb459-1" aria-hidden="true" tabindex="-1"></a><span class="fu">get_largest</span>(y)</span></code></pre></div>
 <pre><code>## [1] -1 -2 -3</code></pre>
-<div class="sourceCode" id="cb462"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb462-1"><a href="automating-tasks.html#cb462-1" aria-hidden="true" tabindex="-1"></a><span class="fu">get_largest</span>(z)</span></code></pre></div>
+<div class="sourceCode" id="cb461"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb461-1"><a href="automating-tasks.html#cb461-1" aria-hidden="true" tabindex="-1"></a><span class="fu">get_largest</span>(z)</span></code></pre></div>
 <pre><code>## [1] &quot;t&quot; &quot;l&quot; &quot;d&quot; &quot;b&quot; &quot;a&quot;</code></pre>
 <div id="returning-values" class="section level3 hasAnchor" number="4.2.1">
 <h3><span class="header-section-number">4.2.1</span> Returning Values<a href="automating-tasks.html#returning-values" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -522,19 +522,19 @@ if-statements, you don’t need to use <code>return</code>.</p>
 <p>For example, suppose you want the <code>get_largest</code> function to immediately return
 <code>NULL</code> if the argument for <code>vec</code> is a list. Here’s the code, along with some
 test cases:</p>
-<div class="sourceCode" id="cb464"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb464-1"><a href="automating-tasks.html#cb464-1" aria-hidden="true" tabindex="-1"></a>get_largest <span class="ot">=</span> <span class="cf">function</span>(vec, <span class="at">n =</span> <span class="dv">5</span>) {</span>
-<span id="cb464-2"><a href="automating-tasks.html#cb464-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">is.list</span>(vec))</span>
-<span id="cb464-3"><a href="automating-tasks.html#cb464-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="cn">NULL</span>)</span>
-<span id="cb464-4"><a href="automating-tasks.html#cb464-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb464-5"><a href="automating-tasks.html#cb464-5" aria-hidden="true" tabindex="-1"></a>  sorted <span class="ot">=</span> <span class="fu">sort</span>(vec, <span class="at">decreasing =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb464-6"><a href="automating-tasks.html#cb464-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(sorted, n)</span>
-<span id="cb464-7"><a href="automating-tasks.html#cb464-7" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb464-8"><a href="automating-tasks.html#cb464-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb464-9"><a href="automating-tasks.html#cb464-9" aria-hidden="true" tabindex="-1"></a><span class="fu">get_largest</span>(x)</span></code></pre></div>
+<div class="sourceCode" id="cb463"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb463-1"><a href="automating-tasks.html#cb463-1" aria-hidden="true" tabindex="-1"></a>get_largest <span class="ot">=</span> <span class="cf">function</span>(vec, <span class="at">n =</span> <span class="dv">5</span>) {</span>
+<span id="cb463-2"><a href="automating-tasks.html#cb463-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">is.list</span>(vec))</span>
+<span id="cb463-3"><a href="automating-tasks.html#cb463-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="cn">NULL</span>)</span>
+<span id="cb463-4"><a href="automating-tasks.html#cb463-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb463-5"><a href="automating-tasks.html#cb463-5" aria-hidden="true" tabindex="-1"></a>  sorted <span class="ot">=</span> <span class="fu">sort</span>(vec, <span class="at">decreasing =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb463-6"><a href="automating-tasks.html#cb463-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(sorted, n)</span>
+<span id="cb463-7"><a href="automating-tasks.html#cb463-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb463-8"><a href="automating-tasks.html#cb463-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb463-9"><a href="automating-tasks.html#cb463-9" aria-hidden="true" tabindex="-1"></a><span class="fu">get_largest</span>(x)</span></code></pre></div>
 <pre><code>## [1] 20 10  1 -3</code></pre>
-<div class="sourceCode" id="cb466"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb466-1"><a href="automating-tasks.html#cb466-1" aria-hidden="true" tabindex="-1"></a><span class="fu">get_largest</span>(z)</span></code></pre></div>
+<div class="sourceCode" id="cb465"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb465-1"><a href="automating-tasks.html#cb465-1" aria-hidden="true" tabindex="-1"></a><span class="fu">get_largest</span>(z)</span></code></pre></div>
 <pre><code>## [1] &quot;t&quot; &quot;l&quot; &quot;d&quot; &quot;b&quot; &quot;a&quot;</code></pre>
-<div class="sourceCode" id="cb468"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb468-1"><a href="automating-tasks.html#cb468-1" aria-hidden="true" tabindex="-1"></a><span class="fu">get_largest</span>(<span class="fu">list</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb467"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb467-1"><a href="automating-tasks.html#cb467-1" aria-hidden="true" tabindex="-1"></a><span class="fu">get_largest</span>(<span class="fu">list</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span></code></pre></div>
 <pre><code>## NULL</code></pre>
 <p>Alternatively, you could make the function raise an error by calling the <code>stop</code>
 function. Whether it makes more sense to return <code>NULL</code> or print an error
@@ -547,12 +547,12 @@ structure.</p>
 <p>For example, let’s make a function that computes the mean and median for a
 vector. We’ll return the results in a named list, although we could also use a
 named vector:</p>
-<div class="sourceCode" id="cb470"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb470-1"><a href="automating-tasks.html#cb470-1" aria-hidden="true" tabindex="-1"></a>compute_mean_med <span class="ot">=</span> <span class="cf">function</span>(x) {</span>
-<span id="cb470-2"><a href="automating-tasks.html#cb470-2" aria-hidden="true" tabindex="-1"></a>  m1 <span class="ot">=</span> <span class="fu">mean</span>(x)</span>
-<span id="cb470-3"><a href="automating-tasks.html#cb470-3" aria-hidden="true" tabindex="-1"></a>  m2 <span class="ot">=</span> <span class="fu">median</span>(x)</span>
-<span id="cb470-4"><a href="automating-tasks.html#cb470-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>(<span class="at">mean =</span> m1, <span class="at">median =</span> m2)</span>
-<span id="cb470-5"><a href="automating-tasks.html#cb470-5" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb470-6"><a href="automating-tasks.html#cb470-6" aria-hidden="true" tabindex="-1"></a><span class="fu">compute_mean_med</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">1</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb469"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb469-1"><a href="automating-tasks.html#cb469-1" aria-hidden="true" tabindex="-1"></a>compute_mean_med <span class="ot">=</span> <span class="cf">function</span>(x) {</span>
+<span id="cb469-2"><a href="automating-tasks.html#cb469-2" aria-hidden="true" tabindex="-1"></a>  m1 <span class="ot">=</span> <span class="fu">mean</span>(x)</span>
+<span id="cb469-3"><a href="automating-tasks.html#cb469-3" aria-hidden="true" tabindex="-1"></a>  m2 <span class="ot">=</span> <span class="fu">median</span>(x)</span>
+<span id="cb469-4"><a href="automating-tasks.html#cb469-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>(<span class="at">mean =</span> m1, <span class="at">median =</span> m2)</span>
+<span id="cb469-5"><a href="automating-tasks.html#cb469-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb469-6"><a href="automating-tasks.html#cb469-6" aria-hidden="true" tabindex="-1"></a><span class="fu">compute_mean_med</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">1</span>))</span></code></pre></div>
 <pre><code>## $mean
 ## [1] 1.75
 ## 
@@ -580,22 +580,22 @@ year is a leap year if either of these conditions is true:</p>
 </ul>
 <p>That means the years 2004 and 2000 are leap years, but the year 2200 is not.
 Here’s the code and a few test cases:</p>
-<div class="sourceCode" id="cb472"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb472-1"><a href="automating-tasks.html#cb472-1" aria-hidden="true" tabindex="-1"></a><span class="co"># If year is divisible by 4 and not 100 -&gt; leap</span></span>
-<span id="cb472-2"><a href="automating-tasks.html#cb472-2" aria-hidden="true" tabindex="-1"></a><span class="co"># If year is divisible by 400 -&gt; leap</span></span>
-<span id="cb472-3"><a href="automating-tasks.html#cb472-3" aria-hidden="true" tabindex="-1"></a>year <span class="ot">=</span> <span class="dv">2004</span></span>
-<span id="cb472-4"><a href="automating-tasks.html#cb472-4" aria-hidden="true" tabindex="-1"></a>is_leap <span class="ot">=</span> <span class="cf">function</span>(year) {</span>
-<span id="cb472-5"><a href="automating-tasks.html#cb472-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (year <span class="sc">%%</span> <span class="dv">4</span> <span class="sc">==</span> <span class="dv">0</span> <span class="sc">&amp;</span> year <span class="sc">%%</span> <span class="dv">100</span> <span class="sc">!=</span> <span class="dv">0</span>) {</span>
-<span id="cb472-6"><a href="automating-tasks.html#cb472-6" aria-hidden="true" tabindex="-1"></a>    leap <span class="ot">=</span> <span class="cn">TRUE</span></span>
-<span id="cb472-7"><a href="automating-tasks.html#cb472-7" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (year <span class="sc">%%</span> <span class="dv">400</span> <span class="sc">==</span> <span class="dv">0</span>) {</span>
-<span id="cb472-8"><a href="automating-tasks.html#cb472-8" aria-hidden="true" tabindex="-1"></a>    leap <span class="ot">=</span> <span class="cn">TRUE</span></span>
-<span id="cb472-9"><a href="automating-tasks.html#cb472-9" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
-<span id="cb472-10"><a href="automating-tasks.html#cb472-10" aria-hidden="true" tabindex="-1"></a>    leap <span class="ot">=</span> <span class="cn">FALSE</span></span>
-<span id="cb472-11"><a href="automating-tasks.html#cb472-11" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb472-12"><a href="automating-tasks.html#cb472-12" aria-hidden="true" tabindex="-1"></a>  leap</span>
-<span id="cb472-13"><a href="automating-tasks.html#cb472-13" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb472-14"><a href="automating-tasks.html#cb472-14" aria-hidden="true" tabindex="-1"></a><span class="fu">is_leap</span>(<span class="dv">400</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb471"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb471-1"><a href="automating-tasks.html#cb471-1" aria-hidden="true" tabindex="-1"></a><span class="co"># If year is divisible by 4 and not 100 -&gt; leap</span></span>
+<span id="cb471-2"><a href="automating-tasks.html#cb471-2" aria-hidden="true" tabindex="-1"></a><span class="co"># If year is divisible by 400 -&gt; leap</span></span>
+<span id="cb471-3"><a href="automating-tasks.html#cb471-3" aria-hidden="true" tabindex="-1"></a>year <span class="ot">=</span> <span class="dv">2004</span></span>
+<span id="cb471-4"><a href="automating-tasks.html#cb471-4" aria-hidden="true" tabindex="-1"></a>is_leap <span class="ot">=</span> <span class="cf">function</span>(year) {</span>
+<span id="cb471-5"><a href="automating-tasks.html#cb471-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (year <span class="sc">%%</span> <span class="dv">4</span> <span class="sc">==</span> <span class="dv">0</span> <span class="sc">&amp;</span> year <span class="sc">%%</span> <span class="dv">100</span> <span class="sc">!=</span> <span class="dv">0</span>) {</span>
+<span id="cb471-6"><a href="automating-tasks.html#cb471-6" aria-hidden="true" tabindex="-1"></a>    leap <span class="ot">=</span> <span class="cn">TRUE</span></span>
+<span id="cb471-7"><a href="automating-tasks.html#cb471-7" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (year <span class="sc">%%</span> <span class="dv">400</span> <span class="sc">==</span> <span class="dv">0</span>) {</span>
+<span id="cb471-8"><a href="automating-tasks.html#cb471-8" aria-hidden="true" tabindex="-1"></a>    leap <span class="ot">=</span> <span class="cn">TRUE</span></span>
+<span id="cb471-9"><a href="automating-tasks.html#cb471-9" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb471-10"><a href="automating-tasks.html#cb471-10" aria-hidden="true" tabindex="-1"></a>    leap <span class="ot">=</span> <span class="cn">FALSE</span></span>
+<span id="cb471-11"><a href="automating-tasks.html#cb471-11" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb471-12"><a href="automating-tasks.html#cb471-12" aria-hidden="true" tabindex="-1"></a>  leap</span>
+<span id="cb471-13"><a href="automating-tasks.html#cb471-13" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb471-14"><a href="automating-tasks.html#cb471-14" aria-hidden="true" tabindex="-1"></a><span class="fu">is_leap</span>(<span class="dv">400</span>)</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb474"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb474-1"><a href="automating-tasks.html#cb474-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is_leap</span>(<span class="dv">1997</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb473"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb473-1"><a href="automating-tasks.html#cb473-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is_leap</span>(<span class="dv">1997</span>)</span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
 <p>Functions are the building blocks for solving larger problems. Take a
 divide-and-conquer approach, breaking large problems into smaller steps. Use a
@@ -643,14 +643,14 @@ you want to save must be assigned to a variable.</p>
 <p>For example, let’s make a loop that repeatedly adds a number to a running total
 and squares the new total. We’ll use a variable <code>total</code> to keep track of the
 running total as the loop iterates:</p>
-<div class="sourceCode" id="cb477"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb477-1"><a href="automating-tasks.html#cb477-1" aria-hidden="true" tabindex="-1"></a>numbers <span class="ot">=</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>, <span class="sc">-</span><span class="dv">3</span>, <span class="dv">2</span>)</span>
-<span id="cb477-2"><a href="automating-tasks.html#cb477-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb477-3"><a href="automating-tasks.html#cb477-3" aria-hidden="true" tabindex="-1"></a>total <span class="ot">=</span> <span class="dv">0</span></span>
-<span id="cb477-4"><a href="automating-tasks.html#cb477-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (number <span class="cf">in</span> numbers) {</span>
-<span id="cb477-5"><a href="automating-tasks.html#cb477-5" aria-hidden="true" tabindex="-1"></a>  total <span class="ot">=</span> (total <span class="sc">+</span> number)<span class="sc">^</span><span class="dv">2</span></span>
-<span id="cb477-6"><a href="automating-tasks.html#cb477-6" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb477-7"><a href="automating-tasks.html#cb477-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb477-8"><a href="automating-tasks.html#cb477-8" aria-hidden="true" tabindex="-1"></a>total</span></code></pre></div>
+<div class="sourceCode" id="cb476"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb476-1"><a href="automating-tasks.html#cb476-1" aria-hidden="true" tabindex="-1"></a>numbers <span class="ot">=</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>, <span class="sc">-</span><span class="dv">3</span>, <span class="dv">2</span>)</span>
+<span id="cb476-2"><a href="automating-tasks.html#cb476-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb476-3"><a href="automating-tasks.html#cb476-3" aria-hidden="true" tabindex="-1"></a>total <span class="ot">=</span> <span class="dv">0</span></span>
+<span id="cb476-4"><a href="automating-tasks.html#cb476-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (number <span class="cf">in</span> numbers) {</span>
+<span id="cb476-5"><a href="automating-tasks.html#cb476-5" aria-hidden="true" tabindex="-1"></a>  total <span class="ot">=</span> (total <span class="sc">+</span> number)<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb476-6"><a href="automating-tasks.html#cb476-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb476-7"><a href="automating-tasks.html#cb476-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb476-8"><a href="automating-tasks.html#cb476-8" aria-hidden="true" tabindex="-1"></a>total</span></code></pre></div>
 <pre><code>## [1] 9</code></pre>
 <p>Use for-loops when some or all of the iterations depend on results from other
 iterations. If the iterations are not dependent, use one of:</p>
@@ -661,7 +661,7 @@ iterations. If the iterations are not dependent, use one of:</p>
 <p>In some cases, you can use vectorization even when the iterations are
 dependent. For example, you can use vectorization to compute the sum of the
 cubes of several numbers:</p>
-<div class="sourceCode" id="cb479"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb479-1"><a href="automating-tasks.html#cb479-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(numbers<span class="sc">^</span><span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb478"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb478-1"><a href="automating-tasks.html#cb478-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(numbers<span class="sc">^</span><span class="dv">3</span>)</span></code></pre></div>
 <pre><code>## [1] -19</code></pre>
 </div>
 <div id="while-loops" class="section level3 hasAnchor" number="4.3.2">
@@ -677,15 +677,15 @@ exits if it is <code>FALSE</code>. As always, the curly braces <code>{ }</code> 
 the body contains multiple lines of code.</p>
 <p>For example, suppose you want to add up numbers from 0 to 50, but stop as soon
 as the total is greater than 50:</p>
-<div class="sourceCode" id="cb482"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb482-1"><a href="automating-tasks.html#cb482-1" aria-hidden="true" tabindex="-1"></a>num50 <span class="ot">=</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">50</span>)</span>
-<span id="cb482-2"><a href="automating-tasks.html#cb482-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb482-3"><a href="automating-tasks.html#cb482-3" aria-hidden="true" tabindex="-1"></a>total <span class="ot">=</span> <span class="dv">0</span></span>
-<span id="cb482-4"><a href="automating-tasks.html#cb482-4" aria-hidden="true" tabindex="-1"></a>i <span class="ot">=</span> <span class="dv">1</span></span>
-<span id="cb482-5"><a href="automating-tasks.html#cb482-5" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> (total <span class="sc">&lt;</span> <span class="dv">50</span>) {</span>
-<span id="cb482-6"><a href="automating-tasks.html#cb482-6" aria-hidden="true" tabindex="-1"></a>  total <span class="ot">=</span> total <span class="sc">+</span> num50[i]</span>
-<span id="cb482-7"><a href="automating-tasks.html#cb482-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">message</span>(<span class="st">&quot;i is &quot;</span>, i, <span class="st">&quot; total is &quot;</span>, total)</span>
-<span id="cb482-8"><a href="automating-tasks.html#cb482-8" aria-hidden="true" tabindex="-1"></a>  i <span class="ot">=</span> i <span class="sc">+</span> <span class="dv">1</span></span>
-<span id="cb482-9"><a href="automating-tasks.html#cb482-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb481"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb481-1"><a href="automating-tasks.html#cb481-1" aria-hidden="true" tabindex="-1"></a>num50 <span class="ot">=</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">50</span>)</span>
+<span id="cb481-2"><a href="automating-tasks.html#cb481-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb481-3"><a href="automating-tasks.html#cb481-3" aria-hidden="true" tabindex="-1"></a>total <span class="ot">=</span> <span class="dv">0</span></span>
+<span id="cb481-4"><a href="automating-tasks.html#cb481-4" aria-hidden="true" tabindex="-1"></a>i <span class="ot">=</span> <span class="dv">1</span></span>
+<span id="cb481-5"><a href="automating-tasks.html#cb481-5" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> (total <span class="sc">&lt;</span> <span class="dv">50</span>) {</span>
+<span id="cb481-6"><a href="automating-tasks.html#cb481-6" aria-hidden="true" tabindex="-1"></a>  total <span class="ot">=</span> total <span class="sc">+</span> num50[i]</span>
+<span id="cb481-7"><a href="automating-tasks.html#cb481-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">message</span>(<span class="st">&quot;i is &quot;</span>, i, <span class="st">&quot; total is &quot;</span>, total)</span>
+<span id="cb481-8"><a href="automating-tasks.html#cb481-8" aria-hidden="true" tabindex="-1"></a>  i <span class="ot">=</span> i <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb481-9"><a href="automating-tasks.html#cb481-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <pre><code>## i is 1 total is 0</code></pre>
 <pre><code>## i is 2 total is 1</code></pre>
 <pre><code>## i is 3 total is 3</code></pre>
@@ -697,9 +697,9 @@ as the total is greater than 50:</p>
 <pre><code>## i is 9 total is 36</code></pre>
 <pre><code>## i is 10 total is 45</code></pre>
 <pre><code>## i is 11 total is 55</code></pre>
-<div class="sourceCode" id="cb494"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb494-1"><a href="automating-tasks.html#cb494-1" aria-hidden="true" tabindex="-1"></a>total</span></code></pre></div>
+<div class="sourceCode" id="cb493"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb493-1"><a href="automating-tasks.html#cb493-1" aria-hidden="true" tabindex="-1"></a>total</span></code></pre></div>
 <pre><code>## [1] 55</code></pre>
-<div class="sourceCode" id="cb496"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb496-1"><a href="automating-tasks.html#cb496-1" aria-hidden="true" tabindex="-1"></a>i</span></code></pre></div>
+<div class="sourceCode" id="cb495"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb495-1"><a href="automating-tasks.html#cb495-1" aria-hidden="true" tabindex="-1"></a>i</span></code></pre></div>
 <pre><code>## [1] 12</code></pre>
 <p>While-loops are a generalization of for-loops. They tend to be most useful when
 you don’t know how many iterations will be necessary. For example, suppose you
@@ -714,7 +714,7 @@ more than one result, there are a few things you must do.</p>
 the number of iterations or the input. The <code>seq_along</code> function returns a
 congruent index vector when passed a vector or list. For instance, let’s make
 in index for the <code>numbers</code> vector from Section <a href="automating-tasks.html#for-loops">4.3.1</a>:</p>
-<div class="sourceCode" id="cb498"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb498-1"><a href="automating-tasks.html#cb498-1" aria-hidden="true" tabindex="-1"></a>index <span class="ot">=</span> <span class="fu">seq_along</span>(numbers)</span></code></pre></div>
+<div class="sourceCode" id="cb497"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb497-1"><a href="automating-tasks.html#cb497-1" aria-hidden="true" tabindex="-1"></a>index <span class="ot">=</span> <span class="fu">seq_along</span>(numbers)</span></code></pre></div>
 <p>The loop will iterate over the index rather than the input, so the induction
 variable will track the current iteration number. On the first iteration, the
 induction variable will be 1, on the second it will be 2, and so on. Then you
@@ -732,15 +732,15 @@ empty vector with a specific type and length</p></li>
 </ul>
 <p>Empty vectors are filled with <code>FALSE</code>, <code>0</code>, or <code>""</code>, depending on the type of
 the vector. Here are some examples:</p>
-<div class="sourceCode" id="cb499"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb499-1"><a href="automating-tasks.html#cb499-1" aria-hidden="true" tabindex="-1"></a><span class="fu">logical</span>(<span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb498"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb498-1"><a href="automating-tasks.html#cb498-1" aria-hidden="true" tabindex="-1"></a><span class="fu">logical</span>(<span class="dv">3</span>)</span></code></pre></div>
 <pre><code>## [1] FALSE FALSE FALSE</code></pre>
-<div class="sourceCode" id="cb501"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb501-1"><a href="automating-tasks.html#cb501-1" aria-hidden="true" tabindex="-1"></a><span class="fu">numeric</span>(<span class="dv">4</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb500"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb500-1"><a href="automating-tasks.html#cb500-1" aria-hidden="true" tabindex="-1"></a><span class="fu">numeric</span>(<span class="dv">4</span>)</span></code></pre></div>
 <pre><code>## [1] 0 0 0 0</code></pre>
-<div class="sourceCode" id="cb503"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb503-1"><a href="automating-tasks.html#cb503-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb502"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb502-1"><a href="automating-tasks.html#cb502-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## [1] 1 2 1 2</code></pre>
 <p>Let’s create an empty numeric vector congruent to <code>numbers</code>:</p>
-<div class="sourceCode" id="cb505"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb505-1"><a href="automating-tasks.html#cb505-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">=</span> <span class="fu">length</span>(numbers)</span>
-<span id="cb505-2"><a href="automating-tasks.html#cb505-2" aria-hidden="true" tabindex="-1"></a>result <span class="ot">=</span> <span class="fu">numeric</span>(n)</span></code></pre></div>
+<div class="sourceCode" id="cb504"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb504-1"><a href="automating-tasks.html#cb504-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">=</span> <span class="fu">length</span>(numbers)</span>
+<span id="cb504-2"><a href="automating-tasks.html#cb504-2" aria-hidden="true" tabindex="-1"></a>result <span class="ot">=</span> <span class="fu">numeric</span>(n)</span></code></pre></div>
 <p>As with the input, you can use the induction variable and indexing to set the
 output for each iteration.</p>
 <p>Creating a vector or list in advance to store something, as we’ve just done, is
@@ -749,11 +749,11 @@ loops. Avoid the temptation to use <code>c</code> or <code>append</code> to buil
 by bit in each iteration.</p>
 <p>Finally, write the loop, making sure to get the input and set the output.
 Here’s the loop for the squared sums example:</p>
-<div class="sourceCode" id="cb506"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb506-1"><a href="automating-tasks.html#cb506-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> index) {</span>
-<span id="cb506-2"><a href="automating-tasks.html#cb506-2" aria-hidden="true" tabindex="-1"></a>  prev <span class="ot">=</span> <span class="cf">if</span> (i <span class="sc">&gt;</span> <span class="dv">1</span>) result[i <span class="sc">-</span> <span class="dv">1</span>] <span class="cf">else</span> <span class="dv">0</span></span>
-<span id="cb506-3"><a href="automating-tasks.html#cb506-3" aria-hidden="true" tabindex="-1"></a>  result[i] <span class="ot">=</span> (numbers[i] <span class="sc">+</span> prev)<span class="sc">^</span><span class="dv">2</span></span>
-<span id="cb506-4"><a href="automating-tasks.html#cb506-4" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb506-5"><a href="automating-tasks.html#cb506-5" aria-hidden="true" tabindex="-1"></a>result</span></code></pre></div>
+<div class="sourceCode" id="cb505"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb505-1"><a href="automating-tasks.html#cb505-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> index) {</span>
+<span id="cb505-2"><a href="automating-tasks.html#cb505-2" aria-hidden="true" tabindex="-1"></a>  prev <span class="ot">=</span> <span class="cf">if</span> (i <span class="sc">&gt;</span> <span class="dv">1</span>) result[i <span class="sc">-</span> <span class="dv">1</span>] <span class="cf">else</span> <span class="dv">0</span></span>
+<span id="cb505-3"><a href="automating-tasks.html#cb505-3" aria-hidden="true" tabindex="-1"></a>  result[i] <span class="ot">=</span> (numbers[i] <span class="sc">+</span> prev)<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb505-4"><a href="automating-tasks.html#cb505-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb505-5"><a href="automating-tasks.html#cb505-5" aria-hidden="true" tabindex="-1"></a>result</span></code></pre></div>
 <pre><code>## [1] 1 4 1 9</code></pre>
 </div>
 <div id="break-next" class="section level3 hasAnchor" number="4.3.4">
@@ -762,26 +762,26 @@ Here’s the loop for the squared sums example:</p>
 use <code>break</code> inside of an if-statement.</p>
 <p>For example, suppose we want to print each string in a vector, but stop at the
 first missing value. We can do this with <code>break</code>:</p>
-<div class="sourceCode" id="cb508"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb508-1"><a href="automating-tasks.html#cb508-1" aria-hidden="true" tabindex="-1"></a>my_messages <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;Hi&quot;</span>, <span class="st">&quot;Hello&quot;</span>, <span class="cn">NA</span>, <span class="st">&quot;Goodbye&quot;</span>)</span>
-<span id="cb508-2"><a href="automating-tasks.html#cb508-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb508-3"><a href="automating-tasks.html#cb508-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (msg <span class="cf">in</span> my_messages) {</span>
-<span id="cb508-4"><a href="automating-tasks.html#cb508-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">is.na</span>(msg))</span>
-<span id="cb508-5"><a href="automating-tasks.html#cb508-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">break</span></span>
-<span id="cb508-6"><a href="automating-tasks.html#cb508-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb508-7"><a href="automating-tasks.html#cb508-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">message</span>(msg)</span>
-<span id="cb508-8"><a href="automating-tasks.html#cb508-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb507"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb507-1"><a href="automating-tasks.html#cb507-1" aria-hidden="true" tabindex="-1"></a>my_messages <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;Hi&quot;</span>, <span class="st">&quot;Hello&quot;</span>, <span class="cn">NA</span>, <span class="st">&quot;Goodbye&quot;</span>)</span>
+<span id="cb507-2"><a href="automating-tasks.html#cb507-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb507-3"><a href="automating-tasks.html#cb507-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (msg <span class="cf">in</span> my_messages) {</span>
+<span id="cb507-4"><a href="automating-tasks.html#cb507-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">is.na</span>(msg))</span>
+<span id="cb507-5"><a href="automating-tasks.html#cb507-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">break</span></span>
+<span id="cb507-6"><a href="automating-tasks.html#cb507-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb507-7"><a href="automating-tasks.html#cb507-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">message</span>(msg)</span>
+<span id="cb507-8"><a href="automating-tasks.html#cb507-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <pre><code>## Hi</code></pre>
 <pre><code>## Hello</code></pre>
 <p>The <code>next</code> keyword causes a loop to immediately go to the next iteration. As
 with <code>break</code>, it only makes sense to use <code>next</code> inside of an if-statement.</p>
 <p>Let’s modify the previous example so that missing values are skipped, but don’t
 cause printing to stop. Here’s the code:</p>
-<div class="sourceCode" id="cb511"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb511-1"><a href="automating-tasks.html#cb511-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (msg <span class="cf">in</span> my_messages) {</span>
-<span id="cb511-2"><a href="automating-tasks.html#cb511-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">is.na</span>(msg))</span>
-<span id="cb511-3"><a href="automating-tasks.html#cb511-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">next</span></span>
-<span id="cb511-4"><a href="automating-tasks.html#cb511-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb511-5"><a href="automating-tasks.html#cb511-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">message</span>(msg)</span>
-<span id="cb511-6"><a href="automating-tasks.html#cb511-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb510"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb510-1"><a href="automating-tasks.html#cb510-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (msg <span class="cf">in</span> my_messages) {</span>
+<span id="cb510-2"><a href="automating-tasks.html#cb510-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">is.na</span>(msg))</span>
+<span id="cb510-3"><a href="automating-tasks.html#cb510-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">next</span></span>
+<span id="cb510-4"><a href="automating-tasks.html#cb510-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb510-5"><a href="automating-tasks.html#cb510-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">message</span>(msg)</span>
+<span id="cb510-6"><a href="automating-tasks.html#cb510-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <pre><code>## Hi</code></pre>
 <pre><code>## Hello</code></pre>
 <pre><code>## Goodbye</code></pre>
@@ -803,17 +803,17 @@ For instance, the Collatz sequence starting from 2 is <code>2, 1</code>. The Col
 sequence starting from 12 is <code>12, 6, 3, 10, 5, 16, 8, 4, 2, 1</code>.</p>
 <p>As a final loop example, let’s use a while-loop to compute Collatz sequences.
 Here’s the code:</p>
-<div class="sourceCode" id="cb515"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb515-1"><a href="automating-tasks.html#cb515-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">=</span> <span class="dv">5</span></span>
-<span id="cb515-2"><a href="automating-tasks.html#cb515-2" aria-hidden="true" tabindex="-1"></a>i <span class="ot">=</span> <span class="dv">0</span></span>
-<span id="cb515-3"><a href="automating-tasks.html#cb515-3" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> (n <span class="sc">!=</span> <span class="dv">1</span>) {</span>
-<span id="cb515-4"><a href="automating-tasks.html#cb515-4" aria-hidden="true" tabindex="-1"></a>  i <span class="ot">=</span> i <span class="sc">+</span> <span class="dv">1</span></span>
-<span id="cb515-5"><a href="automating-tasks.html#cb515-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (n <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">0</span>) {</span>
-<span id="cb515-6"><a href="automating-tasks.html#cb515-6" aria-hidden="true" tabindex="-1"></a>    n <span class="ot">=</span> n <span class="sc">/</span> <span class="dv">2</span></span>
-<span id="cb515-7"><a href="automating-tasks.html#cb515-7" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
-<span id="cb515-8"><a href="automating-tasks.html#cb515-8" aria-hidden="true" tabindex="-1"></a>    n <span class="ot">=</span> <span class="dv">3</span> <span class="sc">*</span> n <span class="sc">+</span> <span class="dv">1</span></span>
-<span id="cb515-9"><a href="automating-tasks.html#cb515-9" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb515-10"><a href="automating-tasks.html#cb515-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">message</span>(<span class="fu">paste0</span>(n, <span class="st">&quot; &quot;</span>))</span>
-<span id="cb515-11"><a href="automating-tasks.html#cb515-11" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb514"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb514-1"><a href="automating-tasks.html#cb514-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">=</span> <span class="dv">5</span></span>
+<span id="cb514-2"><a href="automating-tasks.html#cb514-2" aria-hidden="true" tabindex="-1"></a>i <span class="ot">=</span> <span class="dv">0</span></span>
+<span id="cb514-3"><a href="automating-tasks.html#cb514-3" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> (n <span class="sc">!=</span> <span class="dv">1</span>) {</span>
+<span id="cb514-4"><a href="automating-tasks.html#cb514-4" aria-hidden="true" tabindex="-1"></a>  i <span class="ot">=</span> i <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb514-5"><a href="automating-tasks.html#cb514-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (n <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">0</span>) {</span>
+<span id="cb514-6"><a href="automating-tasks.html#cb514-6" aria-hidden="true" tabindex="-1"></a>    n <span class="ot">=</span> n <span class="sc">/</span> <span class="dv">2</span></span>
+<span id="cb514-7"><a href="automating-tasks.html#cb514-7" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb514-8"><a href="automating-tasks.html#cb514-8" aria-hidden="true" tabindex="-1"></a>    n <span class="ot">=</span> <span class="dv">3</span> <span class="sc">*</span> n <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb514-9"><a href="automating-tasks.html#cb514-9" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb514-10"><a href="automating-tasks.html#cb514-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">message</span>(<span class="fu">paste0</span>(n, <span class="st">&quot; &quot;</span>))</span>
+<span id="cb514-11"><a href="automating-tasks.html#cb514-11" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <pre><code>## 16</code></pre>
 <pre><code>## 8</code></pre>
 <pre><code>## 4</code></pre>

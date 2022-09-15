@@ -23,7 +23,7 @@
 <meta name="author" content="Nick Ulle" />
 
 
-<meta name="date" content="2022-09-14" />
+<meta name="date" content="2022-09-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -336,19 +336,19 @@ every data frame is a list, so first you’ll learn about indexing lists.</p>
 element from a list, you can either keep the container (the list) or discard
 it. The indexing operator <code>[</code> almost always keeps containers.</p>
 <p>As an example, let’s get some elements from a small list:</p>
-<div class="sourceCode" id="cb341"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb341-1"><a href="exploring-data.html#cb341-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">list</span>(<span class="at">first =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>), <span class="at">second =</span> sin, <span class="at">third =</span> <span class="fu">c</span>(<span class="st">&quot;hi&quot;</span>, <span class="st">&quot;hello&quot;</span>))</span>
-<span id="cb341-2"><a href="exploring-data.html#cb341-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> x[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>)]</span>
-<span id="cb341-3"><a href="exploring-data.html#cb341-3" aria-hidden="true" tabindex="-1"></a>y</span></code></pre></div>
+<div class="sourceCode" id="cb340"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb340-1"><a href="exploring-data.html#cb340-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">list</span>(<span class="at">first =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>), <span class="at">second =</span> sin, <span class="at">third =</span> <span class="fu">c</span>(<span class="st">&quot;hi&quot;</span>, <span class="st">&quot;hello&quot;</span>))</span>
+<span id="cb340-2"><a href="exploring-data.html#cb340-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> x[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>)]</span>
+<span id="cb340-3"><a href="exploring-data.html#cb340-3" aria-hidden="true" tabindex="-1"></a>y</span></code></pre></div>
 <pre><code>## $first
 ## [1] 1 2 3
 ## 
 ## $third
 ## [1] &quot;hi&quot;    &quot;hello&quot;</code></pre>
-<div class="sourceCode" id="cb343"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb343-1"><a href="exploring-data.html#cb343-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(y)</span></code></pre></div>
+<div class="sourceCode" id="cb342"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb342-1"><a href="exploring-data.html#cb342-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(y)</span></code></pre></div>
 <pre><code>## [1] &quot;list&quot;</code></pre>
 <p>The result is still a list. Even if we get just one element, the result of
 indexing a list with <code>[</code> is a list:</p>
-<div class="sourceCode" id="cb345"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb345-1"><a href="exploring-data.html#cb345-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x[<span class="dv">1</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb344"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb344-1"><a href="exploring-data.html#cb344-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x[<span class="dv">1</span>])</span></code></pre></div>
 <pre><code>## [1] &quot;list&quot;</code></pre>
 <p>Sometimes this will be exactly what we want. But what if we want to get the
 first element of <code>x</code> so that we can use it in a vectorized function? Or in a
@@ -359,9 +359,9 @@ called the <em>double square bracket operator</em>. The extraction operator is t
 primary way to get and set elements of lists and other containers.</p>
 <p>Unlike the indexing operator <code>[</code>, the extraction operator always discards the
 container:</p>
-<div class="sourceCode" id="cb347"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb347-1"><a href="exploring-data.html#cb347-1" aria-hidden="true" tabindex="-1"></a>x[[<span class="dv">1</span>]]</span></code></pre></div>
+<div class="sourceCode" id="cb346"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb346-1"><a href="exploring-data.html#cb346-1" aria-hidden="true" tabindex="-1"></a>x[[<span class="dv">1</span>]]</span></code></pre></div>
 <pre><code>## [1] 1 2 3</code></pre>
-<div class="sourceCode" id="cb349"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb349-1"><a href="exploring-data.html#cb349-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x[[<span class="dv">1</span>]])</span></code></pre></div>
+<div class="sourceCode" id="cb348"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb348-1"><a href="exploring-data.html#cb348-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x[[<span class="dv">1</span>]])</span></code></pre></div>
 <pre><code>## [1] &quot;numeric&quot;</code></pre>
 <p>The tradeoff is that the extraction operator can only get or set one element at
 a time. Note that the element can be a vector, as above. Because it can only
@@ -370,14 +370,14 @@ position or name. Blank and logical indexes are not allowed.</p>
 <p>The final difference between the index operator <code>[</code> and the extraction operator
 <code>[[</code> has to do with how they handle invalid indexes. The index operator <code>[</code>
 returns <code>NA</code> for invalid vector elements, and <code>NULL</code> for invalid list elements:</p>
-<div class="sourceCode" id="cb351"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb351-1"><a href="exploring-data.html#cb351-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>)[<span class="dv">10</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb350"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb350-1"><a href="exploring-data.html#cb350-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>)[<span class="dv">10</span>]</span></code></pre></div>
 <pre><code>## [1] NA</code></pre>
-<div class="sourceCode" id="cb353"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb353-1"><a href="exploring-data.html#cb353-1" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">10</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb352"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb352-1"><a href="exploring-data.html#cb352-1" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">10</span>]</span></code></pre></div>
 <pre><code>## $&lt;NA&gt;
 ## NULL</code></pre>
 <p>On the other hand, the extraction operator <code>[[</code> raises an error for invalid
 elements:</p>
-<div class="sourceCode" id="cb355"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb355-1"><a href="exploring-data.html#cb355-1" aria-hidden="true" tabindex="-1"></a>x[[<span class="dv">10</span>]]</span></code></pre></div>
+<div class="sourceCode" id="cb354"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb354-1"><a href="exploring-data.html#cb354-1" aria-hidden="true" tabindex="-1"></a>x[[<span class="dv">10</span>]]</span></code></pre></div>
 <pre><code>## Error in x[[10]]: subscript out of bounds</code></pre>
 <p>The indexing operator <code>[</code> and the extraction operator <code>[[</code> both work with any
 data structure that has elements. However, you’ll generally use the indexing
@@ -391,7 +391,7 @@ indexing operator <code>[</code> or the extraction operator <code>[[</code> a se
 dimension. The rows come first:</p>
 <pre><code>DATA[ROWS, COLUMNS]</code></pre>
 <p>For instance, let’s get the first 3 rows and all columns of the earnings data:</p>
-<div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb358-1"><a href="exploring-data.html#cb358-1" aria-hidden="true" tabindex="-1"></a>earn[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, ]</span></code></pre></div>
+<div class="sourceCode" id="cb357"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb357-1"><a href="exploring-data.html#cb357-1" aria-hidden="true" tabindex="-1"></a>earn[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, ]</span></code></pre></div>
 <pre><code>##          sex      race ethnic_origin               age year quarter n_persons
 ## 1 Both Sexes All Races   All Origins 16 years and over 2010       1  96821000
 ## 2 Both Sexes All Races   All Origins 16 years and over 2010       2  99798000
@@ -403,21 +403,21 @@ dimension. The rows come first:</p>
 <p>As we saw in Section <a href="data-structures.html#all-elements">2.4.1</a>, leaving an index blank means all
 elements.</p>
 <p>As another example, let’s get the 3rd and 5th row, and the 2nd and 4th column:</p>
-<div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb360-1"><a href="exploring-data.html#cb360-1" aria-hidden="true" tabindex="-1"></a>earn[<span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">5</span>), <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>)]</span></code></pre></div>
+<div class="sourceCode" id="cb359"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb359-1"><a href="exploring-data.html#cb359-1" aria-hidden="true" tabindex="-1"></a>earn[<span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">5</span>), <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>)]</span></code></pre></div>
 <pre><code>##        race               age
 ## 3 All Races 16 years and over
 ## 5 All Races 16 years and over</code></pre>
 <p>Mixing several different ways of indexing is allowed. So for example, we can
 get the same above, but use column names instead of positions:</p>
-<div class="sourceCode" id="cb362"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb362-1"><a href="exploring-data.html#cb362-1" aria-hidden="true" tabindex="-1"></a>earn[<span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">5</span>), <span class="fu">c</span>(<span class="st">&quot;race&quot;</span>, <span class="st">&quot;age&quot;</span>)]</span></code></pre></div>
+<div class="sourceCode" id="cb361"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb361-1"><a href="exploring-data.html#cb361-1" aria-hidden="true" tabindex="-1"></a>earn[<span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">5</span>), <span class="fu">c</span>(<span class="st">&quot;race&quot;</span>, <span class="st">&quot;age&quot;</span>)]</span></code></pre></div>
 <pre><code>##        race               age
 ## 3 All Races 16 years and over
 ## 5 All Races 16 years and over</code></pre>
 <p>For data frames, it’s especially common to index the rows by condition and the
 columns by name. For instance, let’s get the <code>sex</code>, <code>age</code>, and <code>n_persons</code>
 columns for all rows that pertain to women:</p>
-<div class="sourceCode" id="cb364"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb364-1"><a href="exploring-data.html#cb364-1" aria-hidden="true" tabindex="-1"></a>result <span class="ot">=</span> earn[earn<span class="sc">$</span>sex <span class="sc">==</span> <span class="st">&quot;Women&quot;</span>, <span class="fu">c</span>(<span class="st">&quot;sex&quot;</span>, <span class="st">&quot;age&quot;</span>, <span class="st">&quot;n_persons&quot;</span>)]</span>
-<span id="cb364-2"><a href="exploring-data.html#cb364-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(result)</span></code></pre></div>
+<div class="sourceCode" id="cb363"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb363-1"><a href="exploring-data.html#cb363-1" aria-hidden="true" tabindex="-1"></a>result <span class="ot">=</span> earn[earn<span class="sc">$</span>sex <span class="sc">==</span> <span class="st">&quot;Women&quot;</span>, <span class="fu">c</span>(<span class="st">&quot;sex&quot;</span>, <span class="st">&quot;age&quot;</span>, <span class="st">&quot;n_persons&quot;</span>)]</span>
+<span id="cb363-2"><a href="exploring-data.html#cb363-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(result)</span></code></pre></div>
 <pre><code>##      sex               age n_persons
 ## 89 Women 16 years and over  43794000
 ## 90 Women 16 years and over  44562000
@@ -430,14 +430,14 @@ columns for all rows that pertain to women:</p>
 <h3><span class="header-section-number">3.1.3</span> The <code>drop</code> Parameter<a href="exploring-data.html#the-drop-parameter" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>If you use two-dimensional indexing with <code>[</code> to select exactly one column, you
 get a vector:</p>
-<div class="sourceCode" id="cb366"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb366-1"><a href="exploring-data.html#cb366-1" aria-hidden="true" tabindex="-1"></a>result <span class="ot">=</span> earn[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="dv">2</span>]</span>
-<span id="cb366-2"><a href="exploring-data.html#cb366-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(result)</span></code></pre></div>
+<div class="sourceCode" id="cb365"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb365-1"><a href="exploring-data.html#cb365-1" aria-hidden="true" tabindex="-1"></a>result <span class="ot">=</span> earn[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="dv">2</span>]</span>
+<span id="cb365-2"><a href="exploring-data.html#cb365-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(result)</span></code></pre></div>
 <pre><code>## [1] &quot;character&quot;</code></pre>
 <p>The container is dropped, even though the indexing operator <code>[</code> usually keeps
 containers. This also occurs for matrices. You can control this behavior with
 the <code>drop</code> parameter:</p>
-<div class="sourceCode" id="cb368"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb368-1"><a href="exploring-data.html#cb368-1" aria-hidden="true" tabindex="-1"></a>result <span class="ot">=</span> earn[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="dv">2</span>, drop <span class="ot">=</span> <span class="cn">FALSE</span>]</span>
-<span id="cb368-2"><a href="exploring-data.html#cb368-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(result)</span></code></pre></div>
+<div class="sourceCode" id="cb367"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb367-1"><a href="exploring-data.html#cb367-1" aria-hidden="true" tabindex="-1"></a>result <span class="ot">=</span> earn[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="dv">2</span>, drop <span class="ot">=</span> <span class="cn">FALSE</span>]</span>
+<span id="cb367-2"><a href="exploring-data.html#cb367-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(result)</span></code></pre></div>
 <pre><code>## [1] &quot;data.frame&quot;</code></pre>
 <p>The default is <code>drop = TRUE</code>.</p>
 </div>
@@ -470,7 +470,7 @@ geographically nearby, since that usually produces the best download speeds. If
 you aren’t sure which mirror to choose, you can use the 0-Cloud mirror, which
 attempts to automatically choose a mirror near you.</p>
 <p>As an example, here’s the code to install the remotes package:</p>
-<div class="sourceCode" id="cb370"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb370-1"><a href="exploring-data.html#cb370-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;remotes&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb369"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb369-1"><a href="exploring-data.html#cb369-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;remotes&quot;</span>)</span></code></pre></div>
 <p>If you run the code above, you’ll be asked to select a mirror, and then see
 output that looks something like this:</p>
 <pre><code>--- Please select a CRAN mirror for use in this session ---
@@ -514,13 +514,13 @@ vector.</p>
 <code>installed.packages</code> function. It does not require any arguments. It returns a
 matrix with one row for each package and columns that contain a variety of
 information. Here’s an example:</p>
-<div class="sourceCode" id="cb372"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb372-1"><a href="exploring-data.html#cb372-1" aria-hidden="true" tabindex="-1"></a>packages <span class="ot">=</span> <span class="fu">installed.packages</span>()</span>
-<span id="cb372-2"><a href="exploring-data.html#cb372-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Just print the version numbers for 10 packages.</span></span>
-<span id="cb372-3"><a href="exploring-data.html#cb372-3" aria-hidden="true" tabindex="-1"></a>packages[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="st">&quot;Version&quot;</span>]</span></code></pre></div>
-<pre><code>##  base64enc   bookdown      bslib     cachem        cli colorspace      cpp11 
-##    &quot;0.1-3&quot;     &quot;0.29&quot;    &quot;0.4.0&quot;    &quot;1.0.6&quot;    &quot;3.4.0&quot;    &quot;2.0-3&quot;    &quot;0.4.2&quot; 
-##     digest   evaluate      fansi 
-##   &quot;0.6.29&quot;     &quot;0.16&quot;    &quot;1.0.3&quot;</code></pre>
+<div class="sourceCode" id="cb371"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb371-1"><a href="exploring-data.html#cb371-1" aria-hidden="true" tabindex="-1"></a>packages <span class="ot">=</span> <span class="fu">installed.packages</span>()</span>
+<span id="cb371-2"><a href="exploring-data.html#cb371-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Just print the version numbers for 10 packages.</span></span>
+<span id="cb371-3"><a href="exploring-data.html#cb371-3" aria-hidden="true" tabindex="-1"></a>packages[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="st">&quot;Version&quot;</span>]</span></code></pre></div>
+<pre><code>##      base base64enc  bookdown      boot     bslib    cachem     class       cli 
+##   &quot;4.2.1&quot;   &quot;0.1-3&quot;    &quot;0.29&quot;  &quot;1.3-28&quot;   &quot;0.4.0&quot;   &quot;1.0.6&quot;  &quot;7.3-20&quot;   &quot;3.4.0&quot; 
+##   cluster codetools 
+##   &quot;2.1.3&quot;  &quot;0.2-18&quot;</code></pre>
 <p>You’ll see a different set of packages, since you have a different computer.</p>
 <p>Before you can use the functions (or other resources) in an installed package,
 you must load the package with the <code>library</code> function. R doesn’t load packages
@@ -529,7 +529,7 @@ other packages. Thus you should only load the packages you need for whatever
 it is that you want to do. When you restart R, the loaded packages are cleared
 and you must again load any packages you want to use.</p>
 <p>Let’s load the remotes package we installed earlier:</p>
-<div class="sourceCode" id="cb374"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb374-1"><a href="exploring-data.html#cb374-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;remotes&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb373"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb373-1"><a href="exploring-data.html#cb373-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;remotes&quot;</span>)</span></code></pre></div>
 <p>The <code>library</code> function works with or without quotes around the package name, so
 you may also see people write things like <code>library(remotes)</code>. We recommend
 using quotes to make it unambiguous that you are not referring to a variable.</p>
@@ -610,20 +610,20 @@ three layers every plot must have are:</p>
 <p>As an example, let’s plot the earnings data. First, we need to load ggplot2. As
 always, if this is your first time using the package, you’ll have to install
 it. Then you can load the package:</p>
-<div class="sourceCode" id="cb375"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb375-1"><a href="exploring-data.html#cb375-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;ggplot2&quot;)</span></span>
-<span id="cb375-2"><a href="exploring-data.html#cb375-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;ggplot2&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb374"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb374-1"><a href="exploring-data.html#cb374-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;ggplot2&quot;)</span></span>
+<span id="cb374-2"><a href="exploring-data.html#cb374-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;ggplot2&quot;</span>)</span></code></pre></div>
 <p>What kind of plot should we make? It depends on what data we want the plot to
 show. Let’s make a line plot that shows median earnings for each quarter in
 2019, with separate lines for men and women.</p>
 <p>Before plotting, we need to take a subset of the earnings that only contains
 information for 2019:</p>
-<div class="sourceCode" id="cb376"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb376-1"><a href="exploring-data.html#cb376-1" aria-hidden="true" tabindex="-1"></a>earn19 <span class="ot">=</span> earn[earn<span class="sc">$</span>year <span class="sc">==</span> <span class="dv">2019</span>, ]</span></code></pre></div>
+<div class="sourceCode" id="cb375"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb375-1"><a href="exploring-data.html#cb375-1" aria-hidden="true" tabindex="-1"></a>earn19 <span class="ot">=</span> earn[earn<span class="sc">$</span>year <span class="sc">==</span> <span class="dv">2019</span>, ]</span></code></pre></div>
 <p>The data is also broken down across <code>race</code>, <code>ethnic_origin</code>, and <code>age</code>. Since
 we aren’t interested in these categories for the plot, we need to further
 subset the data:</p>
-<div class="sourceCode" id="cb377"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb377-1"><a href="exploring-data.html#cb377-1" aria-hidden="true" tabindex="-1"></a>earn19 <span class="ot">=</span> earn19[earn19<span class="sc">$</span>race <span class="sc">==</span> <span class="st">&quot;All Races&quot;</span> <span class="sc">&amp;</span></span>
-<span id="cb377-2"><a href="exploring-data.html#cb377-2" aria-hidden="true" tabindex="-1"></a>  earn19<span class="sc">$</span>ethnic_origin <span class="sc">==</span> <span class="st">&quot;All Origins&quot;</span> <span class="sc">&amp;</span></span>
-<span id="cb377-3"><a href="exploring-data.html#cb377-3" aria-hidden="true" tabindex="-1"></a>  earn19<span class="sc">$</span>age <span class="sc">==</span> <span class="st">&quot;16 years and over&quot;</span>, ]</span></code></pre></div>
+<div class="sourceCode" id="cb376"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb376-1"><a href="exploring-data.html#cb376-1" aria-hidden="true" tabindex="-1"></a>earn19 <span class="ot">=</span> earn19[earn19<span class="sc">$</span>race <span class="sc">==</span> <span class="st">&quot;All Races&quot;</span> <span class="sc">&amp;</span></span>
+<span id="cb376-2"><a href="exploring-data.html#cb376-2" aria-hidden="true" tabindex="-1"></a>  earn19<span class="sc">$</span>ethnic_origin <span class="sc">==</span> <span class="st">&quot;All Origins&quot;</span> <span class="sc">&amp;</span></span>
+<span id="cb376-3"><a href="exploring-data.html#cb376-3" aria-hidden="true" tabindex="-1"></a>  earn19<span class="sc">$</span>age <span class="sc">==</span> <span class="st">&quot;16 years and over&quot;</span>, ]</span></code></pre></div>
 <p>Now we’re ready to make the plot.</p>
 <div id="layer-1-data" class="section level3 hasAnchor" number="3.3.1">
 <h3><span class="header-section-number">3.3.1</span> Layer 1: Data<a href="exploring-data.html#layer-1-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -639,7 +639,7 @@ means:</p>
 an untidy data set tidy. Until then, we’ll take it for granted that the data
 sets we work with are tidy.</p>
 <p>To set up the data layer, call the <code>ggplot</code> function on a data frame:</p>
-<div class="sourceCode" id="cb378"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb378-1"><a href="exploring-data.html#cb378-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(earn19)</span></code></pre></div>
+<div class="sourceCode" id="cb377"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb377-1"><a href="exploring-data.html#cb377-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(earn19)</span></code></pre></div>
 <p><img src="03_exploring-data_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
 <p>This returns a blank plot. We still need to add a few more layers.</p>
 </div>
@@ -652,7 +652,7 @@ of plot to make: one with points, lines, boxes, or something else.</p>
 a function for each geometry, always prefixed with <code>geom_</code>.</p>
 <p>To add a geometry layer to the plot, choose the <code>geom_</code> function you want and
 add it to the plot with the <code>+</code> operator:</p>
-<div class="sourceCode" id="cb379"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb379-1"><a href="exploring-data.html#cb379-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(earn19) <span class="sc">+</span> <span class="fu">geom_line</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb378"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb378-1"><a href="exploring-data.html#cb378-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(earn19) <span class="sc">+</span> <span class="fu">geom_line</span>()</span></code></pre></div>
 <pre><code>## Error in `check_required_aesthetics()`:
 ## ! geom_line requires the following missing aesthetics: x and y</code></pre>
 <p>This returns an error message that we’re missing aesthetics <code>x</code> and <code>y</code>. We’ll
@@ -676,24 +676,27 @@ and examples of aesthetic names in the documentation.</p>
 <p>For example, we want to put <code>quarter</code> on the x-axis and <code>median_weekly_earn</code> on
 the y-axis. We also want to use a separate line style for each <code>sex</code> category.
 So the aesthetic layer should be:</p>
-<div class="sourceCode" id="cb382"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb382-1"><a href="exploring-data.html#cb382-1" aria-hidden="true" tabindex="-1"></a><span class="fu">aes</span>(<span class="at">x =</span> quarter, <span class="at">y =</span> median_weekly_earn, <span class="at">linetype =</span> sex)</span></code></pre></div>
+<div class="sourceCode" id="cb381"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb381-1"><a href="exploring-data.html#cb381-1" aria-hidden="true" tabindex="-1"></a><span class="fu">aes</span>(<span class="at">x =</span> quarter, <span class="at">y =</span> median_weekly_earn, <span class="at">linetype =</span> sex)</span></code></pre></div>
 <p>In the <code>aes</code> function, column names are never quoted.</p>
 <p>Unlike most layers, the aesthetic layer is not added to the plot with the <code>+</code>
 operator. Instead, you can pass the aesthetic layer as the second argument to
 the <code>ggplot</code> function:</p>
-<div class="sourceCode" id="cb383"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb383-1"><a href="exploring-data.html#cb383-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(earn19, <span class="fu">aes</span>(<span class="at">x =</span> quarter, <span class="at">y =</span> median_weekly_earn, <span class="at">linetype =</span> sex)) <span class="sc">+</span></span>
-<span id="cb383-2"><a href="exploring-data.html#cb383-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb382"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb382-1"><a href="exploring-data.html#cb382-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(earn19) <span class="sc">+</span></span>
+<span id="cb382-2"><a href="exploring-data.html#cb382-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> quarter, <span class="at">y =</span> median_weekly_earn, <span class="at">linetype =</span> sex) <span class="sc">+</span></span>
+<span id="cb382-3"><a href="exploring-data.html#cb382-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()</span></code></pre></div>
 <p><img src="03_exploring-data_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
 <p>If you want to set an aesthetic to a constant value, rather than one that’s
 data dependent, do so <em>outside</em> of the aesthetic layer. For instance, suppose
 we want to make the lines blue:</p>
-<div class="sourceCode" id="cb384"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb384-1"><a href="exploring-data.html#cb384-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(earn19, <span class="fu">aes</span>(<span class="at">x =</span> quarter, <span class="at">y =</span> median_weekly_earn, <span class="at">linetype =</span> sex)) <span class="sc">+</span></span>
-<span id="cb384-2"><a href="exploring-data.html#cb384-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">color =</span> <span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb383"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb383-1"><a href="exploring-data.html#cb383-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(earn19) <span class="sc">+</span></span>
+<span id="cb383-2"><a href="exploring-data.html#cb383-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> quarter, <span class="at">y =</span> median_weekly_earn, <span class="at">linetype =</span> sex) <span class="sc">+</span></span>
+<span id="cb383-3"><a href="exploring-data.html#cb383-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">color =</span> <span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
 <p><img src="03_exploring-data_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
 <p>If you set an aesthetic to a constant value inside of the aesthetic layer, the
 results you get might not be what you expect:</p>
-<div class="sourceCode" id="cb385"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb385-1"><a href="exploring-data.html#cb385-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(earn19, <span class="fu">aes</span>(<span class="at">x =</span> quarter, <span class="at">y =</span> median_weekly_earn, <span class="at">linetype =</span> sex,</span>
-<span id="cb385-2"><a href="exploring-data.html#cb385-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">&quot;blue&quot;</span>)) <span class="sc">+</span> <span class="fu">geom_line</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb384"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb384-1"><a href="exploring-data.html#cb384-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(earn19) <span class="sc">+</span></span>
+<span id="cb384-2"><a href="exploring-data.html#cb384-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> quarter, <span class="at">y =</span> median_weekly_earn, <span class="at">linetype =</span> sex, <span class="at">color =</span> <span class="st">&quot;blue&quot;</span>) <span class="sc">+</span></span>
+<span id="cb384-3"><a href="exploring-data.html#cb384-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()</span></code></pre></div>
 <p><img src="03_exploring-data_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
 <!--
 #### Per-geometry Aesthetics {-}
@@ -737,15 +740,17 @@ Most of the functions in the scales layer are prefixed with <code>scale_</code>,
 all of them.</p>
 <p>The <code>labs</code> function is especially important, because it’s used to set the title
 and axis labels:</p>
-<div class="sourceCode" id="cb386"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb386-1"><a href="exploring-data.html#cb386-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(earn19, <span class="fu">aes</span>(<span class="at">x =</span> quarter, <span class="at">y =</span> median_weekly_earn, <span class="at">linetype =</span> sex)) <span class="sc">+</span></span>
-<span id="cb386-2"><a href="exploring-data.html#cb386-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Quarter&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Median Weekly Salary (USD)&quot;</span>,</span>
-<span id="cb386-3"><a href="exploring-data.html#cb386-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;2019 Median Weekly Salaries, by Sex&quot;</span>, <span class="at">linetype =</span> <span class="st">&quot;Sex&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb385"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb385-1"><a href="exploring-data.html#cb385-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(earn19) <span class="sc">+</span></span>
+<span id="cb385-2"><a href="exploring-data.html#cb385-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> quarter, <span class="at">y =</span> median_weekly_earn, <span class="at">linetype =</span> sex) <span class="sc">+</span></span>
+<span id="cb385-3"><a href="exploring-data.html#cb385-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb385-4"><a href="exploring-data.html#cb385-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Quarter&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Median Weekly Salary (USD)&quot;</span>,</span>
+<span id="cb385-5"><a href="exploring-data.html#cb385-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;2019 Median Weekly Salaries, by Sex&quot;</span>, <span class="at">linetype =</span> <span class="st">&quot;Sex&quot;</span>)</span></code></pre></div>
 <p><img src="03_exploring-data_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
 </div>
 <div id="saving-plots" class="section level3 hasAnchor" number="3.3.5">
 <h3><span class="header-section-number">3.3.5</span> Saving Plots<a href="exploring-data.html#saving-plots" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>In ggplot2, use the <code>ggsave</code> function to save the most recent plot you created:</p>
-<div class="sourceCode" id="cb387"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb387-1"><a href="exploring-data.html#cb387-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">&quot;line.png&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb386"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb386-1"><a href="exploring-data.html#cb386-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">&quot;line.png&quot;</span>)</span></code></pre></div>
 <p>The file format is selected automatically based on the extension. Common
 formats are PNG and PDF.</p>
 <div id="the-plot-device" class="section level4 unnumbered hasAnchor">
@@ -759,10 +764,12 @@ are:</p>
 </ol>
 <p>This strategy works with any of R’s graphics systems (not just ggplot2).</p>
 <p>Here’s an example:</p>
-<div class="sourceCode" id="cb388"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb388-1"><a href="exploring-data.html#cb388-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Run these lines in the console, not the notebook!</span></span>
-<span id="cb388-2"><a href="exploring-data.html#cb388-2" aria-hidden="true" tabindex="-1"></a><span class="fu">jpeg</span>(<span class="st">&quot;line.jpeg&quot;</span>)</span>
-<span id="cb388-3"><a href="exploring-data.html#cb388-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(favs, <span class="fu">aes</span>(<span class="at">x =</span> distance_mi, <span class="at">y =</span> walk_min)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span>
-<span id="cb388-4"><a href="exploring-data.html#cb388-4" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb387"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb387-1"><a href="exploring-data.html#cb387-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Run these lines in the console, not the notebook!</span></span>
+<span id="cb387-2"><a href="exploring-data.html#cb387-2" aria-hidden="true" tabindex="-1"></a><span class="fu">jpeg</span>(<span class="st">&quot;line.jpeg&quot;</span>)</span>
+<span id="cb387-3"><a href="exploring-data.html#cb387-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(earn19) <span class="sc">+</span></span>
+<span id="cb387-4"><a href="exploring-data.html#cb387-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> quarter, <span class="at">y =</span> median_weekly_earn) <span class="sc">+</span></span>
+<span id="cb387-5"><a href="exploring-data.html#cb387-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span>
+<span id="cb387-6"><a href="exploring-data.html#cb387-6" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
 </div>
 </div>
 <div id="example-bar-plot" class="section level3 hasAnchor" number="3.3.6">
@@ -776,10 +783,11 @@ when given mapped to a categorical feature.</p>
 compute frequencies. To prevent <code>geom_bar</code> from computing frequencies
 automatically, set <code>stat = "identity"</code>.</p>
 <p>Here’s the code to make the bar plot:</p>
-<div class="sourceCode" id="cb389"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb389-1"><a href="exploring-data.html#cb389-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(earn19, <span class="fu">aes</span>(<span class="at">x =</span> quarter, <span class="at">y =</span> n_persons, <span class="at">fill =</span> sex)) <span class="sc">+</span></span>
-<span id="cb389-2"><a href="exploring-data.html#cb389-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="at">position =</span> <span class="st">&quot;dodge&quot;</span>) <span class="sc">+</span></span>
-<span id="cb389-3"><a href="exploring-data.html#cb389-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Quarter&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Number of Workers&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;Sex&quot;</span>,</span>
-<span id="cb389-4"><a href="exploring-data.html#cb389-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Number of Workers by Quarter and Sex in 2019&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb388"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb388-1"><a href="exploring-data.html#cb388-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(earn19) <span class="sc">+</span></span>
+<span id="cb388-2"><a href="exploring-data.html#cb388-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> quarter, <span class="at">y =</span> n_persons, <span class="at">fill =</span> sex) <span class="sc">+</span></span>
+<span id="cb388-3"><a href="exploring-data.html#cb388-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="at">position =</span> <span class="st">&quot;dodge&quot;</span>) <span class="sc">+</span></span>
+<span id="cb388-4"><a href="exploring-data.html#cb388-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Quarter&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Number of Workers&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;Sex&quot;</span>,</span>
+<span id="cb388-5"><a href="exploring-data.html#cb388-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Number of Workers by Quarter and Sex in 2019&quot;</span>)</span></code></pre></div>
 <p><img src="03_exploring-data_files/figure-html/unnamed-chunk-32-1.png" width="672" /></p>
 <p>The setting <code>position = "dodge"</code> instructs <code>geom_bar</code> to put the bars
 side-by-side rather than stacking them.</p>
@@ -870,11 +878,11 @@ vectorized.</p>
 <p>The <code>class</code> function is an example of a function that’s not vectorized. If we
 call the <code>class</code> function on the earnings data set, we get just one result for
 the data set as a whole:</p>
-<div class="sourceCode" id="cb390"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb390-1"><a href="exploring-data.html#cb390-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(earn)</span></code></pre></div>
+<div class="sourceCode" id="cb389"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb389-1"><a href="exploring-data.html#cb389-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(earn)</span></code></pre></div>
 <pre><code>## [1] &quot;data.frame&quot;</code></pre>
 <p>What if we want to get the class of each column? We can get the class for a
 single column by selecting the column with <code>$</code>, the dollar sign operator:</p>
-<div class="sourceCode" id="cb392"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb392-1"><a href="exploring-data.html#cb392-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(earn<span class="sc">$</span>age)</span></code></pre></div>
+<div class="sourceCode" id="cb391"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb391-1"><a href="exploring-data.html#cb391-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(earn<span class="sc">$</span>age)</span></code></pre></div>
 <pre><code>## [1] &quot;character&quot;</code></pre>
 <p>But what if we want the classes for all the columns? We could write a call to
 <code>class</code> for each column, but that would be tedious. When you’re working with a
@@ -892,7 +900,7 @@ or vector. The syntax is:</p>
 the first argument. The <code>...</code> is for additional arguments to <code>FUN</code>, which are
 held constant across all the elements.</p>
 <p>Let’s try this out with the earnings data and the <code>class</code> function:</p>
-<div class="sourceCode" id="cb395"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb395-1"><a href="exploring-data.html#cb395-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(earn, class)</span></code></pre></div>
+<div class="sourceCode" id="cb394"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb394-1"><a href="exploring-data.html#cb394-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(earn, class)</span></code></pre></div>
 <pre><code>## $sex
 ## [1] &quot;character&quot;
 ## 
@@ -919,11 +927,11 @@ held constant across all the elements.</p>
 <p>The result is similar to if the <code>class</code> function was vectorized. In fact, if we
 use a vector and a vectorized function with <code>lapply</code>, the result is nearly
 identical to the result from vectorization:</p>
-<div class="sourceCode" id="cb397"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb397-1"><a href="exploring-data.html#cb397-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, pi)</span>
-<span id="cb397-2"><a href="exploring-data.html#cb397-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb397-3"><a href="exploring-data.html#cb397-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sin</span>(x)</span></code></pre></div>
+<div class="sourceCode" id="cb396"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb396-1"><a href="exploring-data.html#cb396-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, pi)</span>
+<span id="cb396-2"><a href="exploring-data.html#cb396-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb396-3"><a href="exploring-data.html#cb396-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sin</span>(x)</span></code></pre></div>
 <pre><code>## [1] 8.414710e-01 9.092974e-01 1.224647e-16</code></pre>
-<div class="sourceCode" id="cb399"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb399-1"><a href="exploring-data.html#cb399-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(x, sin)</span></code></pre></div>
+<div class="sourceCode" id="cb398"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb398-1"><a href="exploring-data.html#cb398-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(x, sin)</span></code></pre></div>
 <pre><code>## [[1]]
 ## [1] 0.841471
 ## 
@@ -956,14 +964,14 @@ have different types or lengths, the result is the same as for <code>lapply</cod
 “s” in <code>sapply</code> stands for “simplify”.</p>
 <p>For instance, if we use <code>sapply</code> to find the classes of the columns in the
 earnings data, we get a character vector:</p>
-<div class="sourceCode" id="cb401"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb401-1"><a href="exploring-data.html#cb401-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(earn, class)</span></code></pre></div>
+<div class="sourceCode" id="cb400"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb400-1"><a href="exploring-data.html#cb400-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(earn, class)</span></code></pre></div>
 <pre><code>##                sex               race      ethnic_origin                age 
 ##        &quot;character&quot;        &quot;character&quot;        &quot;character&quot;        &quot;character&quot; 
 ##               year            quarter          n_persons median_weekly_earn 
 ##          &quot;integer&quot;          &quot;integer&quot;          &quot;integer&quot;          &quot;integer&quot;</code></pre>
 <p>Likewise, if we use <code>sapply</code> to compute the <code>sin</code> values, we get a numeric
 vector, the same as from vectorization:</p>
-<div class="sourceCode" id="cb403"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb403-1"><a href="exploring-data.html#cb403-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(x, sin)</span></code></pre></div>
+<div class="sourceCode" id="cb402"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb402-1"><a href="exploring-data.html#cb402-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(x, sin)</span></code></pre></div>
 <pre><code>## [1] 8.414710e-01 9.092974e-01 1.224647e-16</code></pre>
 <p>In spite of that, vectorization is still more efficient than <code>sapply</code>, so use
 vectorization instead when possible.</p>
@@ -975,8 +983,8 @@ earnings data set that aren’t numeric.</p>
 its argument is a real number, not whether it its argument is a numeric vector.
 In other words, it also returns true for integer values. We can use <code>sapply</code> to
 apply this function to all of the columns in the earnings data set:</p>
-<div class="sourceCode" id="cb405"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb405-1"><a href="exploring-data.html#cb405-1" aria-hidden="true" tabindex="-1"></a>is_not_number <span class="ot">=</span> <span class="sc">!</span><span class="fu">sapply</span>(earn, is.numeric)</span>
-<span id="cb405-2"><a href="exploring-data.html#cb405-2" aria-hidden="true" tabindex="-1"></a>is_not_number</span></code></pre></div>
+<div class="sourceCode" id="cb404"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb404-1"><a href="exploring-data.html#cb404-1" aria-hidden="true" tabindex="-1"></a>is_not_number <span class="ot">=</span> <span class="sc">!</span><span class="fu">sapply</span>(earn, is.numeric)</span>
+<span id="cb404-2"><a href="exploring-data.html#cb404-2" aria-hidden="true" tabindex="-1"></a>is_not_number</span></code></pre></div>
 <pre><code>##                sex               race      ethnic_origin                age 
 ##               TRUE               TRUE               TRUE               TRUE 
 ##               year            quarter          n_persons median_weekly_earn 
@@ -990,7 +998,7 @@ flexible if you want to adapt it to other data sets.</p>
 <p>Now that we know which columns are non-numeric, we can use the <code>table</code> function
 to compute frequencies. We only want to compute frequencies for those columns,
 so we need to subset the data:</p>
-<div class="sourceCode" id="cb407"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb407-1"><a href="exploring-data.html#cb407-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(earn[, is_not_number], table)</span></code></pre></div>
+<div class="sourceCode" id="cb406"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb406-1"><a href="exploring-data.html#cb406-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(earn[, is_not_number], table)</span></code></pre></div>
 <pre><code>## $sex
 ## 
 ## Both Sexes        Men      Women 
@@ -1028,8 +1036,8 @@ elements.</p>
 <p>For example, the earnings data set has three different categories in the <code>sex</code>
 column. If we want all of the rows in one category, one way to get them is by
 indexing:</p>
-<div class="sourceCode" id="cb409"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb409-1"><a href="exploring-data.html#cb409-1" aria-hidden="true" tabindex="-1"></a>women <span class="ot">=</span> earn[earn<span class="sc">$</span>sex <span class="sc">==</span> <span class="st">&quot;Women&quot;</span>, ]</span>
-<span id="cb409-2"><a href="exploring-data.html#cb409-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(women)</span></code></pre></div>
+<div class="sourceCode" id="cb408"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb408-1"><a href="exploring-data.html#cb408-1" aria-hidden="true" tabindex="-1"></a>women <span class="ot">=</span> earn[earn<span class="sc">$</span>sex <span class="sc">==</span> <span class="st">&quot;Women&quot;</span>, ]</span>
+<span id="cb408-2"><a href="exploring-data.html#cb408-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(women)</span></code></pre></div>
 <pre><code>##      sex      race ethnic_origin               age year quarter n_persons
 ## 89 Women All Races   All Origins 16 years and over 2010       1  43794000
 ## 90 Women All Races   All Origins 16 years and over 2010       2  44562000
@@ -1048,7 +1056,7 @@ indexing:</p>
 compute something for each category, say the mean of the <code>n_persons</code> column, we
 also have to repeat that computation three times. Here’s what it would look
 like for just the <code>women</code> category:</p>
-<div class="sourceCode" id="cb411"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb411-1"><a href="exploring-data.html#cb411-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(women<span class="sc">$</span>n_persons)</span></code></pre></div>
+<div class="sourceCode" id="cb410"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb410-1"><a href="exploring-data.html#cb410-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(women<span class="sc">$</span>n_persons)</span></code></pre></div>
 <pre><code>## [1] 10758771</code></pre>
 <p>If the categories were elements, we could avoid writing code to index each
 category, and just use the <code>sapply</code> (or <code>lapply</code>) function to apply the <code>mean</code>
@@ -1059,18 +1067,18 @@ second argument is a congruent vector of categories.</p>
 <p>We can use <code>split</code> to elegantly compute means of <code>n_persons</code> broken down by
 sex. First, we split the data by category. Since we only want to compute on the
 <code>n_persons</code> column, we only split that column:</p>
-<div class="sourceCode" id="cb413"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb413-1"><a href="exploring-data.html#cb413-1" aria-hidden="true" tabindex="-1"></a>by_sex <span class="ot">=</span> <span class="fu">split</span>(earn<span class="sc">$</span>n_persons, earn<span class="sc">$</span>sex)</span>
-<span id="cb413-2"><a href="exploring-data.html#cb413-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(by_sex)</span></code></pre></div>
+<div class="sourceCode" id="cb412"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb412-1"><a href="exploring-data.html#cb412-1" aria-hidden="true" tabindex="-1"></a>by_sex <span class="ot">=</span> <span class="fu">split</span>(earn<span class="sc">$</span>n_persons, earn<span class="sc">$</span>sex)</span>
+<span id="cb412-2"><a href="exploring-data.html#cb412-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(by_sex)</span></code></pre></div>
 <pre><code>## [1] &quot;list&quot;</code></pre>
-<div class="sourceCode" id="cb415"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb415-1"><a href="exploring-data.html#cb415-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(by_sex)</span></code></pre></div>
+<div class="sourceCode" id="cb414"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb414-1"><a href="exploring-data.html#cb414-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(by_sex)</span></code></pre></div>
 <pre><code>## [1] &quot;Both Sexes&quot; &quot;Men&quot;        &quot;Women&quot;</code></pre>
 <p>The result from <code>split</code> is a list with one element for each category. The
 individual elements contain pieces of the original <code>n_persons</code> column:</p>
-<div class="sourceCode" id="cb417"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb417-1"><a href="exploring-data.html#cb417-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(by_sex<span class="sc">$</span>Women)</span></code></pre></div>
+<div class="sourceCode" id="cb416"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb416-1"><a href="exploring-data.html#cb416-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(by_sex<span class="sc">$</span>Women)</span></code></pre></div>
 <pre><code>## [1] 43794000 44562000 44912000 44620000 44077000 44539000</code></pre>
 <p>Since the categories are elements in the split data, now we can use <code>sapply</code>
 the same way we did in previous examples:</p>
-<div class="sourceCode" id="cb419"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb419-1"><a href="exploring-data.html#cb419-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(by_sex, mean)</span></code></pre></div>
+<div class="sourceCode" id="cb418"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb418-1"><a href="exploring-data.html#cb418-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(by_sex, mean)</span></code></pre></div>
 <pre><code>## Both Sexes        Men      Women 
 ##   24402515   13643727   10758771</code></pre>
 <p>This two-step process is an R idiom called the <em>split-apply pattern</em>. First you
@@ -1084,7 +1092,7 @@ is a congruent vector of categories. The third argument is a function to apply,
 like the function argument in <code>sapply</code>.</p>
 <p>We can use <code>tapply</code> to compute the <code>n_persons</code> means by <code>sex</code> for the earnings
 data:</p>
-<div class="sourceCode" id="cb421"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb421-1"><a href="exploring-data.html#cb421-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(earn<span class="sc">$</span>n_persons, earn<span class="sc">$</span>sex, mean)</span></code></pre></div>
+<div class="sourceCode" id="cb420"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb420-1"><a href="exploring-data.html#cb420-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(earn<span class="sc">$</span>n_persons, earn<span class="sc">$</span>sex, mean)</span></code></pre></div>
 <pre><code>## Both Sexes        Men      Women 
 ##   24402515   13643727   10758771</code></pre>
 <p>Notice that the result is identical to the one we computed before.</p>
@@ -1099,7 +1107,7 @@ except that the second argument must be a list or data frame rather than a
 vector.</p>
 <p>As an example, here’s the result of using <code>aggregate</code> to compute the
 <code>n_persons</code> means:</p>
-<div class="sourceCode" id="cb423"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb423-1"><a href="exploring-data.html#cb423-1" aria-hidden="true" tabindex="-1"></a><span class="fu">aggregate</span>(earn<span class="sc">$</span>n_persons, <span class="fu">list</span>(earn<span class="sc">$</span>sex), mean)</span></code></pre></div>
+<div class="sourceCode" id="cb422"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb422-1"><a href="exploring-data.html#cb422-1" aria-hidden="true" tabindex="-1"></a><span class="fu">aggregate</span>(earn<span class="sc">$</span>n_persons, <span class="fu">list</span>(earn<span class="sc">$</span>sex), mean)</span></code></pre></div>
 <pre><code>##      Group.1        x
 ## 1 Both Sexes 24402515
 ## 2        Men 13643727

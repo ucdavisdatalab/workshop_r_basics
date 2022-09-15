@@ -23,7 +23,7 @@
 <meta name="author" content="Nick Ulle" />
 
 
-<meta name="date" content="2022-09-14" />
+<meta name="date" content="2022-09-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -814,7 +814,7 @@ currently “at” or watching.</p>
 <p>The function <code>getwd</code> returns the absolute path for the current working
 directory, as a string. It doesn’t require any arguments:</p>
 <div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="getting-started.html#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code></pre></div>
-<pre><code>## [1] &quot;/home/nick/workshop/datalab/workshops/r_basics&quot;</code></pre>
+<pre><code>## [1] &quot;/Users/wesley/misc/workshop_r_basics&quot;</code></pre>
 <p>On your computer, the output from <code>getwd</code> will likely be different. This is a
 very useful function for getting your bearings when you write relative paths.
 If you write a relative path and it doesn’t work as expected, the first thing
@@ -825,7 +825,6 @@ argument: a path to the new working directory. Here’s an example:</p>
 <span id="cb70-2"><a href="getting-started.html#cb70-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb70-3"><a href="getting-started.html#cb70-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Now check the working directory.</span></span>
 <span id="cb70-4"><a href="getting-started.html#cb70-4" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code></pre></div>
-<pre><code>## [1] &quot;/home/nick/workshop/datalab/workshops&quot;</code></pre>
 <p>Generally, you should avoid using calls to <code>setwd</code> in your R scripts and R
 Markdown files. Calling <code>setwd</code> makes your code more difficult to understand,
 and can always be avoided by using appropriate relative paths. If you call
@@ -837,29 +836,30 @@ system is <code>list.files</code>. The <code>list.files</code> function returns 
 the files and directories inside of a directory. It accepts a path to a
 directory as an argument, or assumes the working directory if you don’t pass a
 path. For instance:</p>
-<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="getting-started.html#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="co"># List files and directories in /home/.</span></span>
-<span id="cb72-2"><a href="getting-started.html#cb72-2" aria-hidden="true" tabindex="-1"></a><span class="fu">list.files</span>(<span class="st">&quot;/home/&quot;</span>)</span></code></pre></div>
-<pre><code>## [1] &quot;lost+found&quot; &quot;nick&quot;</code></pre>
-<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="getting-started.html#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="co"># List files and directories in the working directory.</span></span>
-<span id="cb74-2"><a href="getting-started.html#cb74-2" aria-hidden="true" tabindex="-1"></a><span class="fu">list.files</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="getting-started.html#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="co"># List files and directories in /home/.</span></span>
+<span id="cb71-2"><a href="getting-started.html#cb71-2" aria-hidden="true" tabindex="-1"></a><span class="fu">list.files</span>(<span class="st">&quot;/home/&quot;</span>)</span></code></pre></div>
+<pre><code>## character(0)</code></pre>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="getting-started.html#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="co"># List files and directories in the working directory.</span></span>
+<span id="cb73-2"><a href="getting-started.html#cb73-2" aria-hidden="true" tabindex="-1"></a><span class="fu">list.files</span>()</span></code></pre></div>
 <pre><code>##  [1] &quot;_bookdown_files&quot;            &quot;_bookdown.yml&quot;             
-##  [3] &quot;_main.rds&quot;                  &quot;01_getting-started.Rmd&quot;    
-##  [5] &quot;02_data-structures.Rmd&quot;     &quot;03_exploring-data_files&quot;   
-##  [7] &quot;03_exploring-data.Rmd&quot;      &quot;04_automating-tasks.Rmd&quot;   
-##  [9] &quot;05_appendix.Rmd&quot;            &quot;97_where-to-learn-more.Rmd&quot;
-## [11] &quot;98_acknowledgements.Rmd&quot;    &quot;99_assessment.Rmd&quot;         
-## [13] &quot;data&quot;                       &quot;docs&quot;                      
-## [15] &quot;graphviz&quot;                   &quot;img&quot;                       
-## [17] &quot;index.md&quot;                   &quot;index.Rmd&quot;                 
-## [19] &quot;knit.R&quot;                     &quot;LICENSE&quot;                   
-## [21] &quot;makefile&quot;                   &quot;notes&quot;                     
-## [23] &quot;raw&quot;                        &quot;README.md&quot;                 
-## [25] &quot;renderde1451f56c4.rds&quot;      &quot;renv&quot;                      
-## [27] &quot;renv.lock&quot;</code></pre>
+##  [3] &quot;_main.rds&quot;                  &quot;01_getting-started.md&quot;     
+##  [5] &quot;01_getting-started.Rmd&quot;     &quot;02_data-structures.md&quot;     
+##  [7] &quot;02_data-structures.Rmd&quot;     &quot;03_exploring-data_files&quot;   
+##  [9] &quot;03_exploring-data.md&quot;       &quot;03_exploring-data.Rmd&quot;     
+## [11] &quot;04_automating-tasks.md&quot;     &quot;04_automating-tasks.Rmd&quot;   
+## [13] &quot;05_appendix.knit.md&quot;        &quot;05_appendix.Rmd&quot;           
+## [15] &quot;97_where-to-learn-more.Rmd&quot; &quot;98_acknowledgements.Rmd&quot;   
+## [17] &quot;99_assessment.Rmd&quot;          &quot;data&quot;                      
+## [19] &quot;docs&quot;                       &quot;img&quot;                       
+## [21] &quot;index.md&quot;                   &quot;index.Rmd&quot;                 
+## [23] &quot;knit.R&quot;                     &quot;LICENSE&quot;                   
+## [25] &quot;makefile&quot;                   &quot;notes&quot;                     
+## [27] &quot;README.md&quot;                  &quot;render696a62a86257.rds&quot;    
+## [29] &quot;renv&quot;                       &quot;renv.lock&quot;</code></pre>
 <p>As usual, since you have a different computer, you’re likely to see different
 output if you run this code. If you call <code>list.files</code> with an invalid path or
 an empty directory, the output is <code>character(0)</code>:</p>
-<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="getting-started.html#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="fu">list.files</span>(<span class="st">&quot;/this/path/is/fake/&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="getting-started.html#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="fu">list.files</span>(<span class="st">&quot;/this/path/is/fake/&quot;</span>)</span></code></pre></div>
 <pre><code>## character(0)</code></pre>
 <p>Later on, we’ll learn about what <code>character(0)</code> means more generally.</p>
 </div>
@@ -1043,7 +1043,7 @@ built-in <code>read.csv</code> function. The first argument is the path to where
 the file, which may be different on your computer. The <code>read.csv</code> function
 returns the data set, but R won’t keep the data in memory unless we assign the
 returned result to a variable:</p>
-<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="getting-started.html#cb79-1" aria-hidden="true" tabindex="-1"></a>earn <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/earn.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="getting-started.html#cb78-1" aria-hidden="true" tabindex="-1"></a>earn <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/earn.csv&quot;</span>)</span></code></pre></div>
 <p>The variable name <code>earn</code> here is arbitrary; you can choose something different
 if you want. However, in general, it’s a good habit to choose variable names
 that describe the contents of the variable somehow.</p>
@@ -1064,7 +1064,7 @@ typing <code>earn</code>, in this case) until you know how big it is. Big data s
 take a long time to print, and the output can be difficult to read.</p>
 <p>Instead, you can use the <code>head</code> function to print only the beginning, or
 <em>head</em>, of a data set. Let’s take a peek:</p>
-<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="getting-started.html#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(earn)</span></code></pre></div>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="getting-started.html#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(earn)</span></code></pre></div>
 <pre><code>##          sex      race ethnic_origin               age year quarter n_persons
 ## 1 Both Sexes All Races   All Origins 16 years and over 2010       1  96821000
 ## 2 Both Sexes All Races   All Origins 16 years and over 2010       2  99798000
@@ -1091,27 +1091,27 @@ output across lines.</p>
 frame. One way to check is visually, by printing it, as we just did. A better
 way to check is with the <code>class</code> function, which returns information about what
 an object is. For a data frame, the result will always contain <code>data.frame</code>:</p>
-<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="getting-started.html#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(earn)</span></code></pre></div>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="getting-started.html#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(earn)</span></code></pre></div>
 <pre><code>## [1] &quot;data.frame&quot;</code></pre>
 <p>We’ll learn more about classes in Section <a href="data-structures.html#data-types-classes">2.2</a>, but for
 now you can use this function to identify data frames.</p>
 <p>By counting the columns in the output from <code>head(earn)</code>, we can see that this
 data set has eight columns. A more convenient way to check the number of
 columns in a data set is with the <code>ncol</code> function:</p>
-<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="getting-started.html#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ncol</span>(earn)</span></code></pre></div>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="getting-started.html#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ncol</span>(earn)</span></code></pre></div>
 <pre><code>## [1] 8</code></pre>
 <p>The similarly-named <code>nrow</code> function returns the number of rows:</p>
-<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="getting-started.html#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(earn)</span></code></pre></div>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="getting-started.html#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(earn)</span></code></pre></div>
 <pre><code>## [1] 4224</code></pre>
 <p>Alternatively, you can get both numbers at the same time with the <code>dim</code> (short
 for “dimensions”) function.</p>
 <p>Since the columns have names, we might also want to get just these. You can do
 that with the <code>names</code> or <code>colnames</code> functions. Both return the same result:</p>
-<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="getting-started.html#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(earn)</span></code></pre></div>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="getting-started.html#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(earn)</span></code></pre></div>
 <pre><code>## [1] &quot;sex&quot;                &quot;race&quot;               &quot;ethnic_origin&quot;     
 ## [4] &quot;age&quot;                &quot;year&quot;               &quot;quarter&quot;           
 ## [7] &quot;n_persons&quot;          &quot;median_weekly_earn&quot;</code></pre>
-<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="getting-started.html#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(earn)</span></code></pre></div>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="getting-started.html#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(earn)</span></code></pre></div>
 <pre><code>## [1] &quot;sex&quot;                &quot;race&quot;               &quot;ethnic_origin&quot;     
 ## [4] &quot;age&quot;                &quot;year&quot;               &quot;quarter&quot;           
 ## [7] &quot;n_persons&quot;          &quot;median_weekly_earn&quot;</code></pre>
@@ -1127,7 +1127,7 @@ summaries: <code>str</code> and <code>summary</code>.</p>
 summary tells us about the structure of the data—the number of rows, the
 number and names of columns, what kind of data is in each column, and some
 sample values. Here’s the structural summary for the earnings data:</p>
-<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="getting-started.html#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(earn)</span></code></pre></div>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="getting-started.html#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(earn)</span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    4224 obs. of  8 variables:
 ##  $ sex               : chr  &quot;Both Sexes&quot; &quot;Both Sexes&quot; &quot;Both Sexes&quot; &quot;Both Sexes&quot; ...
 ##  $ race              : chr  &quot;All Races&quot; &quot;All Races&quot; &quot;All Races&quot; &quot;All Races&quot; ...
@@ -1147,7 +1147,7 @@ appropriate statistics based on the kind of data in the column. For numbers,
 this is generally the mean, median, and quantiles. For categories, this is the
 frequencies. Other kinds of statistics are shown for other kinds of data.
 Here’s the statistical summary for the earnings data:</p>
-<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="getting-started.html#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(earn)</span></code></pre></div>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="getting-started.html#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(earn)</span></code></pre></div>
 <pre><code>##      sex                race           ethnic_origin          age           
 ##  Length:4224        Length:4224        Length:4224        Length:4224       
 ##  Class :character   Class :character   Class :character   Class :character  
@@ -1167,22 +1167,22 @@ Here’s the statistical summary for the earnings data:</p>
 <h3><span class="header-section-number">1.6.2</span> Selecting Columns<a href="getting-started.html#selecting-columns" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>You can select an individual column from a data frame by name with <code>$</code>, the
 dollar sign operator. The syntax is:</p>
-<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="getting-started.html#cb96-1" aria-hidden="true" tabindex="-1"></a>VARIABLE<span class="sc">$</span>COLUMN_NAME</span></code></pre></div>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="getting-started.html#cb95-1" aria-hidden="true" tabindex="-1"></a>VARIABLE<span class="sc">$</span>COLUMN_NAME</span></code></pre></div>
 <p>For instance, for the earnings data, <code>earn$age</code> selects
 the <code>age</code> column, and <code>earn$n_persons</code> selects the <code>n_persons</code> column. So one
 way to compute the mean of the <code>n_persons</code> column is:</p>
-<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="getting-started.html#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(earn<span class="sc">$</span>n_persons)</span></code></pre></div>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="getting-started.html#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(earn<span class="sc">$</span>n_persons)</span></code></pre></div>
 <pre><code>## [1] 16268338</code></pre>
 <p>Similarly, to compute the range of the <code>year</code> column:</p>
-<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="getting-started.html#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(earn<span class="sc">$</span>year)</span></code></pre></div>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="getting-started.html#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(earn<span class="sc">$</span>year)</span></code></pre></div>
 <pre><code>## [1] 2010 2020</code></pre>
 <p>You can also use the dollar sign operator to assign values to columns. For
 instance, to assign <code>0</code> to the entire <code>quarter</code> column:</p>
-<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="getting-started.html#cb101-1" aria-hidden="true" tabindex="-1"></a>earn<span class="sc">$</span>quarter <span class="ot">=</span> <span class="dv">0</span></span></code></pre></div>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="getting-started.html#cb100-1" aria-hidden="true" tabindex="-1"></a>earn<span class="sc">$</span>quarter <span class="ot">=</span> <span class="dv">0</span></span></code></pre></div>
 <p>Be careful when you do this, as there is no undo. Fortunately, we haven’t
 applied any transformations to the earnings data yet, so we can reset the
 <code>earn</code> variable back to what it was by reloading the data set:</p>
-<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="getting-started.html#cb102-1" aria-hidden="true" tabindex="-1"></a>earn <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/earn.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="getting-started.html#cb101-1" aria-hidden="true" tabindex="-1"></a>earn <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/earn.csv&quot;</span>)</span></code></pre></div>
 <p>In Section <a href="data-structures.html#indexing">2.4</a>, we’ll learn how to select rows and individual
 elements from a data frame, as well as other ways to select columns.</p>
 </div>
