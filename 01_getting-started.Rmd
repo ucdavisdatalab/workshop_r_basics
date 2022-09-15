@@ -694,7 +694,7 @@ to do is check the working directory.
 The related `setwd` function changes the working directory. It takes one
 argument: a path to the new working directory. Here's an example:
 
-```{r}
+```{r eval=FALSE}
 setwd("..")
 
 # Now check the working directory.
