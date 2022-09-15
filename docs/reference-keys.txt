@@ -65,6 +65,9 @@ apply-functions
 the-sapply-function
 the-split-apply-pattern
 exercises-2
+exercise-7
+exercise-8
+exercise-9
 automating-tasks
 conditional-expressions
 functions
@@ -78,7 +81,7 @@ break-next
 example-the-collatz-conjecture
 planning-for-iteration
 exercises-3
-exercise-7
+exercise-10
 appendix
 more-about-comparisons
 equality

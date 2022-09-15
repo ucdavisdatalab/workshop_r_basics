@@ -238,7 +238,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.4.1" data-path="exploring-data.html"><a href="exploring-data.html#the-sapply-function"><i class="fa fa-check"></i><b>3.4.1</b> The <code>sapply</code> Function</a></li>
 <li class="chapter" data-level="3.4.2" data-path="exploring-data.html"><a href="exploring-data.html#the-split-apply-pattern"><i class="fa fa-check"></i><b>3.4.2</b> The Split-Apply Pattern</a></li>
 </ul></li>
-<li class="chapter" data-level="3.5" data-path="exploring-data.html"><a href="exploring-data.html#exercises-2"><i class="fa fa-check"></i><b>3.5</b> Exercises</a></li>
+<li class="chapter" data-level="3.5" data-path="exploring-data.html"><a href="exploring-data.html#exercises-2"><i class="fa fa-check"></i><b>3.5</b> Exercises</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="exploring-data.html"><a href="exploring-data.html#exercise-7"><i class="fa fa-check"></i><b>3.5.1</b> Exercise</a></li>
+<li class="chapter" data-level="3.5.2" data-path="exploring-data.html"><a href="exploring-data.html#exercise-8"><i class="fa fa-check"></i><b>3.5.2</b> Exercise</a></li>
+<li class="chapter" data-level="3.5.3" data-path="exploring-data.html"><a href="exploring-data.html#exercise-9"><i class="fa fa-check"></i><b>3.5.3</b> Exercise</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="automating-tasks.html"><a href="automating-tasks.html"><i class="fa fa-check"></i><b>4</b> Automating Tasks</a>
 <ul>
@@ -259,7 +264,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.4" data-path="automating-tasks.html"><a href="automating-tasks.html#planning-for-iteration"><i class="fa fa-check"></i><b>4.4</b> Planning for Iteration</a></li>
 <li class="chapter" data-level="4.5" data-path="automating-tasks.html"><a href="automating-tasks.html#exercises-3"><i class="fa fa-check"></i><b>4.5</b> Exercises</a>
 <ul>
-<li class="chapter" data-level="4.5.1" data-path="automating-tasks.html"><a href="automating-tasks.html#exercise-7"><i class="fa fa-check"></i><b>4.5.1</b> Exercise</a></li>
+<li class="chapter" data-level="4.5.1" data-path="automating-tasks.html"><a href="automating-tasks.html#exercise-10"><i class="fa fa-check"></i><b>4.5.1</b> Exercise</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i><b>5</b> Appendix</a>
@@ -842,20 +847,18 @@ path. For instance:</p>
 <div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="getting-started.html#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="co"># List files and directories in the working directory.</span></span>
 <span id="cb73-2"><a href="getting-started.html#cb73-2" aria-hidden="true" tabindex="-1"></a><span class="fu">list.files</span>()</span></code></pre></div>
 <pre><code>##  [1] &quot;_bookdown_files&quot;            &quot;_bookdown.yml&quot;             
-##  [3] &quot;_main.rds&quot;                  &quot;01_getting-started.md&quot;     
-##  [5] &quot;01_getting-started.Rmd&quot;     &quot;02_data-structures.md&quot;     
-##  [7] &quot;02_data-structures.Rmd&quot;     &quot;03_exploring-data_files&quot;   
-##  [9] &quot;03_exploring-data.md&quot;       &quot;03_exploring-data.Rmd&quot;     
-## [11] &quot;04_automating-tasks.md&quot;     &quot;04_automating-tasks.Rmd&quot;   
-## [13] &quot;05_appendix.knit.md&quot;        &quot;05_appendix.Rmd&quot;           
-## [15] &quot;97_where-to-learn-more.Rmd&quot; &quot;98_acknowledgements.Rmd&quot;   
-## [17] &quot;99_assessment.Rmd&quot;          &quot;data&quot;                      
-## [19] &quot;docs&quot;                       &quot;img&quot;                       
-## [21] &quot;index.md&quot;                   &quot;index.Rmd&quot;                 
-## [23] &quot;knit.R&quot;                     &quot;LICENSE&quot;                   
-## [25] &quot;makefile&quot;                   &quot;notes&quot;                     
-## [27] &quot;README.md&quot;                  &quot;render696a62a86257.rds&quot;    
-## [29] &quot;renv&quot;                       &quot;renv.lock&quot;</code></pre>
+##  [3] &quot;_main.rds&quot;                  &quot;01_getting-started.Rmd&quot;    
+##  [5] &quot;02_data-structures.Rmd&quot;     &quot;03_exploring-data_files&quot;   
+##  [7] &quot;03_exploring-data.Rmd&quot;      &quot;04_automating-tasks.Rmd&quot;   
+##  [9] &quot;05_appendix.Rmd&quot;            &quot;97_where-to-learn-more.Rmd&quot;
+## [11] &quot;98_acknowledgements.Rmd&quot;    &quot;99_assessment.Rmd&quot;         
+## [13] &quot;data&quot;                       &quot;docs&quot;                      
+## [15] &quot;img&quot;                        &quot;index.md&quot;                  
+## [17] &quot;index.Rmd&quot;                  &quot;knit.R&quot;                    
+## [19] &quot;LICENSE&quot;                    &quot;makefile&quot;                  
+## [21] &quot;notes&quot;                      &quot;README.md&quot;                 
+## [23] &quot;render696a1ef668b1.rds&quot;     &quot;renv&quot;                      
+## [25] &quot;renv.lock&quot;</code></pre>
 <p>As usual, since you have a different computer, you’re likely to see different
 output if you run this code. If you call <code>list.files</code> with an invalid path or
 an empty directory, the output is <code>character(0)</code>:</p>

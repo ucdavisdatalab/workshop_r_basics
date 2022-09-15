@@ -238,7 +238,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.4.1" data-path="exploring-data.html"><a href="exploring-data.html#the-sapply-function"><i class="fa fa-check"></i><b>3.4.1</b> The <code>sapply</code> Function</a></li>
 <li class="chapter" data-level="3.4.2" data-path="exploring-data.html"><a href="exploring-data.html#the-split-apply-pattern"><i class="fa fa-check"></i><b>3.4.2</b> The Split-Apply Pattern</a></li>
 </ul></li>
-<li class="chapter" data-level="3.5" data-path="exploring-data.html"><a href="exploring-data.html#exercises-2"><i class="fa fa-check"></i><b>3.5</b> Exercises</a></li>
+<li class="chapter" data-level="3.5" data-path="exploring-data.html"><a href="exploring-data.html#exercises-2"><i class="fa fa-check"></i><b>3.5</b> Exercises</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="exploring-data.html"><a href="exploring-data.html#exercise-7"><i class="fa fa-check"></i><b>3.5.1</b> Exercise</a></li>
+<li class="chapter" data-level="3.5.2" data-path="exploring-data.html"><a href="exploring-data.html#exercise-8"><i class="fa fa-check"></i><b>3.5.2</b> Exercise</a></li>
+<li class="chapter" data-level="3.5.3" data-path="exploring-data.html"><a href="exploring-data.html#exercise-9"><i class="fa fa-check"></i><b>3.5.3</b> Exercise</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="automating-tasks.html"><a href="automating-tasks.html"><i class="fa fa-check"></i><b>4</b> Automating Tasks</a>
 <ul>
@@ -259,7 +264,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.4" data-path="automating-tasks.html"><a href="automating-tasks.html#planning-for-iteration"><i class="fa fa-check"></i><b>4.4</b> Planning for Iteration</a></li>
 <li class="chapter" data-level="4.5" data-path="automating-tasks.html"><a href="automating-tasks.html#exercises-3"><i class="fa fa-check"></i><b>4.5</b> Exercises</a>
 <ul>
-<li class="chapter" data-level="4.5.1" data-path="automating-tasks.html"><a href="automating-tasks.html#exercise-7"><i class="fa fa-check"></i><b>4.5.1</b> Exercise</a></li>
+<li class="chapter" data-level="4.5.1" data-path="automating-tasks.html"><a href="automating-tasks.html#exercise-10"><i class="fa fa-check"></i><b>4.5.1</b> Exercise</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i><b>5</b> Appendix</a>
@@ -437,7 +442,7 @@ value to the end of a list or vector:</p>
 ##         c(x, values)
 ##     else c(x[1L:after], values, x[(after + 1L):lengx])
 ## }
-## &lt;bytecode: 0x7fad59c7c078&gt;
+## &lt;bytecode: 0x7fb537aeb478&gt;
 ## &lt;environment: namespace:base&gt;</code></pre>
 <p>Don’t worry if you can’t understand everything the <code>append</code> function’s code
 does yet. It will make more sense later on, after you’ve written a few
@@ -860,8 +865,8 @@ iteration, get that iteration working, and repeat this whole process.</p>
 <p><em>These exercises are meant to challenge you, so they’re quite difficult
 compared to the previous ones. Don’t get disheartened, and if you’re able to
 complete them, excellent work!</em></p>
-<div id="exercise-7" class="section level3 hasAnchor" number="4.5.1">
-<h3><span class="header-section-number">4.5.1</span> Exercise<a href="automating-tasks.html#exercise-7" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="exercise-10" class="section level3 hasAnchor" number="4.5.1">
+<h3><span class="header-section-number">4.5.1</span> Exercise<a href="automating-tasks.html#exercise-10" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Create a function <code>compute_day</code> which uses the <a href="https://en.wikipedia.org/wiki/Doomsday_rule">Doomsday algorithm</a>
 to compute the day of week for any given date in the 1900s. The function’s
 parameters should be <code>year</code>, <code>month</code>, and <code>day</code>. The function’s return value
