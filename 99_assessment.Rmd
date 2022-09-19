@@ -1,4 +1,8 @@
 Assessment {-}
 ==============
 
-The assessment will be posted by Sep 19, 2022.
+If you are taking this workshop to complete a GradPathways Pathway, you can
+download the assessment instructions [here][assessment].
+
+[assessment]: https://github.com/ucdavisdatalab/workshop_r_basics/blob/master/assessment/r_basics_assessment.R
+
