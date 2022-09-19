@@ -23,7 +23,7 @@
 <meta name="author" content="Nick Ulle" />
 
 
-<meta name="date" content="2022-09-15" />
+<meta name="date" content="2022-09-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -797,7 +797,7 @@ it matches the format of the dates you want to convert.</p>
 <p>For example, let’s try converting an unusual time format:</p>
 <div class="sourceCode" id="cb620"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb620-1"><a href="appendix.html#cb620-1" aria-hidden="true" tabindex="-1"></a>odd_time <span class="ot">=</span> <span class="st">&quot;6 minutes, 32 seconds after 10 o&#39;clock&quot;</span></span>
 <span id="cb620-2"><a href="appendix.html#cb620-2" aria-hidden="true" tabindex="-1"></a><span class="fu">fast_strptime</span>(odd_time, <span class="st">&quot;%M minutes, %S seconds after %H o&#39;clock&quot;</span>)</span></code></pre></div>
-<pre><code>## [1] &quot;0000-01-01 10:06:32 UTC&quot;</code></pre>
+<pre><code>## [1] &quot;0-01-01 10:06:32 UTC&quot;</code></pre>
 <p>R usually represents dates with the class <code>Date</code>, and date-times with the
 classes <code>POSIXct</code> and <code>POSIXlt</code>. The difference between the two date-time
 classes is somewhat technical, but you can read more about it in <code>?POSIXlt</code>.</p>

@@ -23,7 +23,7 @@
 <meta name="author" content="Nick Ulle" />
 
 
-<meta name="date" content="2022-09-15" />
+<meta name="date" content="2022-09-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -522,10 +522,10 @@ information. Here’s an example:</p>
 <div class="sourceCode" id="cb371"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb371-1"><a href="exploring-data.html#cb371-1" aria-hidden="true" tabindex="-1"></a>packages <span class="ot">=</span> <span class="fu">installed.packages</span>()</span>
 <span id="cb371-2"><a href="exploring-data.html#cb371-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Just print the version numbers for 10 packages.</span></span>
 <span id="cb371-3"><a href="exploring-data.html#cb371-3" aria-hidden="true" tabindex="-1"></a>packages[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="st">&quot;Version&quot;</span>]</span></code></pre></div>
-<pre><code>##      base base64enc  bookdown      boot     bslib    cachem     class       cli 
-##   &quot;4.2.1&quot;   &quot;0.1-3&quot;    &quot;0.29&quot;  &quot;1.3-28&quot;   &quot;0.4.0&quot;   &quot;1.0.6&quot;  &quot;7.3-20&quot;   &quot;3.4.0&quot; 
-##   cluster codetools 
-##   &quot;2.1.3&quot;  &quot;0.2-18&quot;</code></pre>
+<pre><code>##  base64enc   bookdown      bslib     cachem        cli colorspace      cpp11 
+##    &quot;0.1-3&quot;     &quot;0.29&quot;    &quot;0.4.0&quot;    &quot;1.0.6&quot;    &quot;3.4.0&quot;    &quot;2.0-3&quot;    &quot;0.4.2&quot; 
+##     digest   evaluate      fansi 
+##   &quot;0.6.29&quot;     &quot;0.16&quot;    &quot;1.0.3&quot;</code></pre>
 <p>You’ll see a different set of packages, since you have a different computer.</p>
 <p>Before you can use the functions (or other resources) in an installed package,
 you must load the package with the <code>library</code> function. R doesn’t load packages

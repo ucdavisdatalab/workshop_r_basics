@@ -23,7 +23,7 @@
 <meta name="author" content="Nick Ulle" />
 
 
-<meta name="date" content="2022-09-15" />
+<meta name="date" content="2022-09-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -819,7 +819,7 @@ currently “at” or watching.</p>
 <p>The function <code>getwd</code> returns the absolute path for the current working
 directory, as a string. It doesn’t require any arguments:</p>
 <div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="getting-started.html#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code></pre></div>
-<pre><code>## [1] &quot;/Users/wesley/misc/workshop_r_basics&quot;</code></pre>
+<pre><code>## [1] &quot;/home/nick/workshop/datalab/workshops/r_basics&quot;</code></pre>
 <p>On your computer, the output from <code>getwd</code> will likely be different. This is a
 very useful function for getting your bearings when you write relative paths.
 If you write a relative path and it doesn’t work as expected, the first thing
@@ -843,7 +843,7 @@ directory as an argument, or assumes the working directory if you don’t pass a
 path. For instance:</p>
 <div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="getting-started.html#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="co"># List files and directories in /home/.</span></span>
 <span id="cb71-2"><a href="getting-started.html#cb71-2" aria-hidden="true" tabindex="-1"></a><span class="fu">list.files</span>(<span class="st">&quot;/home/&quot;</span>)</span></code></pre></div>
-<pre><code>## character(0)</code></pre>
+<pre><code>## [1] &quot;lost+found&quot; &quot;nick&quot;</code></pre>
 <div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="getting-started.html#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="co"># List files and directories in the working directory.</span></span>
 <span id="cb73-2"><a href="getting-started.html#cb73-2" aria-hidden="true" tabindex="-1"></a><span class="fu">list.files</span>()</span></code></pre></div>
 <pre><code>##  [1] &quot;_bookdown_files&quot;            &quot;_bookdown.yml&quot;             
@@ -852,13 +852,15 @@ path. For instance:</p>
 ##  [7] &quot;03_exploring-data.Rmd&quot;      &quot;04_automating-tasks.Rmd&quot;   
 ##  [9] &quot;05_appendix.Rmd&quot;            &quot;97_where-to-learn-more.Rmd&quot;
 ## [11] &quot;98_acknowledgements.Rmd&quot;    &quot;99_assessment.Rmd&quot;         
-## [13] &quot;data&quot;                       &quot;docs&quot;                      
-## [15] &quot;img&quot;                        &quot;index.md&quot;                  
-## [17] &quot;index.Rmd&quot;                  &quot;knit.R&quot;                    
-## [19] &quot;LICENSE&quot;                    &quot;makefile&quot;                  
-## [21] &quot;notes&quot;                      &quot;README.md&quot;                 
-## [23] &quot;render696a1ef668b1.rds&quot;     &quot;renv&quot;                      
-## [25] &quot;renv.lock&quot;</code></pre>
+## [13] &quot;assessment&quot;                 &quot;data&quot;                      
+## [15] &quot;docs&quot;                       &quot;graphviz&quot;                  
+## [17] &quot;img&quot;                        &quot;index.md&quot;                  
+## [19] &quot;index.Rmd&quot;                  &quot;knit.R&quot;                    
+## [21] &quot;LICENSE&quot;                    &quot;makefile&quot;                  
+## [23] &quot;notes&quot;                      &quot;R&quot;                         
+## [25] &quot;raw&quot;                        &quot;README.md&quot;                 
+## [27] &quot;rendere73e1982629f.rds&quot;     &quot;renv&quot;                      
+## [29] &quot;renv.lock&quot;</code></pre>
 <p>As usual, since you have a different computer, you’re likely to see different
 output if you run this code. If you call <code>list.files</code> with an invalid path or
 an empty directory, the output is <code>character(0)</code>:</p>
