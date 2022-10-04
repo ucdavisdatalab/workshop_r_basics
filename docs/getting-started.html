@@ -6,10 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>1 Getting Started | R Basics</title>
   <meta name="description" content="1 Getting Started | R Basics" />
-  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
   <meta property="og:title" content="1 Getting Started | R Basics" />
   <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://ucdavisdatalab.github.io/workshop_r_basics/" />
   
   
   <meta name="github-repo" content="ucdavisdatalab/workshop_r-basics" />
@@ -23,7 +24,7 @@
 <meta name="author" content="Nick Ulle" />
 
 
-<meta name="date" content="2022-09-19" />
+<meta name="date" content="2022-10-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,8 +33,8 @@
   
 <link rel="prev" href="index.html"/>
 <link rel="next" href="data-structures.html"/>
-<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<script src="libs/header-attrs-2.10/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -49,9 +50,9 @@
 
 
 
-<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
-<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -119,7 +120,6 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
-
 </head>
 
 <body>
@@ -138,161 +138,161 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./" style="font-size: 18px">R Basics</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Overview</a></li>
-<li class="chapter" data-level="1" data-path="getting-started.html"><a href="getting-started.html"><i class="fa fa-check"></i><b>1</b> Getting Started</a>
+<li><a href="index.html#overview" id="toc-overview">Overview</a></li>
+<li><a href="getting-started.html#getting-started" id="toc-getting-started"><span class="toc-section-number">1</span> Getting Started</a>
 <ul>
-<li class="chapter" data-level="1.1" data-path="getting-started.html"><a href="getting-started.html#prerequisites"><i class="fa fa-check"></i><b>1.1</b> Prerequisites</a></li>
-<li class="chapter" data-level="1.2" data-path="getting-started.html"><a href="getting-started.html#the-r-interface"><i class="fa fa-check"></i><b>1.2</b> The R Interface</a>
+<li><a href="getting-started.html#prerequisites" id="toc-prerequisites"><span class="toc-section-number">1.1</span> Prerequisites</a></li>
+<li><a href="getting-started.html#the-r-interface" id="toc-the-r-interface"><span class="toc-section-number">1.2</span> The R Interface</a>
 <ul>
-<li class="chapter" data-level="1.2.1" data-path="getting-started.html"><a href="getting-started.html#variables"><i class="fa fa-check"></i><b>1.2.1</b> Variables</a></li>
-<li class="chapter" data-level="1.2.2" data-path="getting-started.html"><a href="getting-started.html#strings"><i class="fa fa-check"></i><b>1.2.2</b> Strings</a></li>
-<li class="chapter" data-level="1.2.3" data-path="getting-started.html"><a href="getting-started.html#comparisons"><i class="fa fa-check"></i><b>1.2.3</b> Comparisons</a></li>
-<li class="chapter" data-level="1.2.4" data-path="getting-started.html"><a href="getting-started.html#calling-functions"><i class="fa fa-check"></i><b>1.2.4</b> Calling Functions</a></li>
+<li><a href="getting-started.html#variables" id="toc-variables"><span class="toc-section-number">1.2.1</span> Variables</a></li>
+<li><a href="getting-started.html#strings" id="toc-strings"><span class="toc-section-number">1.2.2</span> Strings</a></li>
+<li><a href="getting-started.html#comparisons" id="toc-comparisons"><span class="toc-section-number">1.2.3</span> Comparisons</a></li>
+<li><a href="getting-started.html#calling-functions" id="toc-calling-functions"><span class="toc-section-number">1.2.4</span> Calling Functions</a></li>
 </ul></li>
-<li class="chapter" data-level="1.3" data-path="getting-started.html"><a href="getting-started.html#getting-help"><i class="fa fa-check"></i><b>1.3</b> Getting Help</a>
+<li><a href="getting-started.html#getting-help" id="toc-getting-help"><span class="toc-section-number">1.3</span> Getting Help</a>
 <ul>
-<li class="chapter" data-level="1.3.1" data-path="getting-started.html"><a href="getting-started.html#when-something-goes-wrong"><i class="fa fa-check"></i><b>1.3.1</b> When Something Goes Wrong</a></li>
+<li><a href="getting-started.html#when-something-goes-wrong" id="toc-when-something-goes-wrong"><span class="toc-section-number">1.3.1</span> When Something Goes Wrong</a></li>
 </ul></li>
-<li class="chapter" data-level="1.4" data-path="getting-started.html"><a href="getting-started.html#file-systems"><i class="fa fa-check"></i><b>1.4</b> File Systems</a>
+<li><a href="getting-started.html#file-systems" id="toc-file-systems"><span class="toc-section-number">1.4</span> File Systems</a>
 <ul>
-<li class="chapter" data-level="1.4.1" data-path="getting-started.html"><a href="getting-started.html#absolute-relative-paths"><i class="fa fa-check"></i><b>1.4.1</b> Absolute &amp; Relative Paths</a></li>
-<li class="chapter" data-level="1.4.2" data-path="getting-started.html"><a href="getting-started.html#r-scripts"><i class="fa fa-check"></i><b>1.4.2</b> R Scripts</a></li>
-<li class="chapter" data-level="1.4.3" data-path="getting-started.html"><a href="getting-started.html#the-working-directory"><i class="fa fa-check"></i><b>1.4.3</b> The Working Directory</a></li>
+<li><a href="getting-started.html#absolute-relative-paths" id="toc-absolute-relative-paths"><span class="toc-section-number">1.4.1</span> Absolute &amp; Relative Paths</a></li>
+<li><a href="getting-started.html#r-scripts" id="toc-r-scripts"><span class="toc-section-number">1.4.2</span> R Scripts</a></li>
+<li><a href="getting-started.html#the-working-directory" id="toc-the-working-directory"><span class="toc-section-number">1.4.3</span> The Working Directory</a></li>
 </ul></li>
-<li class="chapter" data-level="1.5" data-path="getting-started.html"><a href="getting-started.html#reading-files"><i class="fa fa-check"></i><b>1.5</b> Reading Files</a>
+<li><a href="getting-started.html#reading-files" id="toc-reading-files"><span class="toc-section-number">1.5</span> Reading Files</a>
 <ul>
-<li class="chapter" data-level="1.5.1" data-path="getting-started.html"><a href="getting-started.html#hello-data"><i class="fa fa-check"></i><b>1.5.1</b> Hello, Data!</a></li>
+<li><a href="getting-started.html#hello-data" id="toc-hello-data"><span class="toc-section-number">1.5.1</span> Hello, Data!</a></li>
 </ul></li>
-<li class="chapter" data-level="1.6" data-path="getting-started.html"><a href="getting-started.html#data-frames"><i class="fa fa-check"></i><b>1.6</b> Data Frames</a>
+<li><a href="getting-started.html#data-frames" id="toc-data-frames"><span class="toc-section-number">1.6</span> Data Frames</a>
 <ul>
-<li class="chapter" data-level="1.6.1" data-path="getting-started.html"><a href="getting-started.html#summarizing-data"><i class="fa fa-check"></i><b>1.6.1</b> Summarizing Data</a></li>
-<li class="chapter" data-level="1.6.2" data-path="getting-started.html"><a href="getting-started.html#selecting-columns"><i class="fa fa-check"></i><b>1.6.2</b> Selecting Columns</a></li>
+<li><a href="getting-started.html#summarizing-data" id="toc-summarizing-data"><span class="toc-section-number">1.6.1</span> Summarizing Data</a></li>
+<li><a href="getting-started.html#selecting-columns" id="toc-selecting-columns"><span class="toc-section-number">1.6.2</span> Selecting Columns</a></li>
 </ul></li>
-<li class="chapter" data-level="1.7" data-path="getting-started.html"><a href="getting-started.html#exercises"><i class="fa fa-check"></i><b>1.7</b> Exercises</a>
+<li><a href="getting-started.html#exercises" id="toc-exercises"><span class="toc-section-number">1.7</span> Exercises</a>
 <ul>
-<li class="chapter" data-level="1.7.1" data-path="getting-started.html"><a href="getting-started.html#exercise"><i class="fa fa-check"></i><b>1.7.1</b> Exercise</a></li>
-<li class="chapter" data-level="1.7.2" data-path="getting-started.html"><a href="getting-started.html#exercise-1"><i class="fa fa-check"></i><b>1.7.2</b> Exercise</a></li>
-<li class="chapter" data-level="1.7.3" data-path="getting-started.html"><a href="getting-started.html#exercise-2"><i class="fa fa-check"></i><b>1.7.3</b> Exercise</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="2" data-path="data-structures.html"><a href="data-structures.html"><i class="fa fa-check"></i><b>2</b> Data Structures</a>
-<ul>
-<li class="chapter" data-level="2.1" data-path="data-structures.html"><a href="data-structures.html#vectors"><i class="fa fa-check"></i><b>2.1</b> Vectors</a>
-<ul>
-<li class="chapter" data-level="2.1.1" data-path="data-structures.html"><a href="data-structures.html#creating-vectors"><i class="fa fa-check"></i><b>2.1.1</b> Creating Vectors</a></li>
-<li class="chapter" data-level="2.1.2" data-path="data-structures.html"><a href="data-structures.html#indexing-vectors"><i class="fa fa-check"></i><b>2.1.2</b> Indexing Vectors</a></li>
-<li class="chapter" data-level="2.1.3" data-path="data-structures.html"><a href="data-structures.html#vectorization"><i class="fa fa-check"></i><b>2.1.3</b> Vectorization</a></li>
-<li class="chapter" data-level="2.1.4" data-path="data-structures.html"><a href="data-structures.html#recycling"><i class="fa fa-check"></i><b>2.1.4</b> Recycling</a></li>
-</ul></li>
-<li class="chapter" data-level="2.2" data-path="data-structures.html"><a href="data-structures.html#data-types-classes"><i class="fa fa-check"></i><b>2.2</b> Data Types &amp; Classes</a>
-<ul>
-<li class="chapter" data-level="2.2.1" data-path="data-structures.html"><a href="data-structures.html#lists"><i class="fa fa-check"></i><b>2.2.1</b> Lists</a></li>
-<li class="chapter" data-level="2.2.2" data-path="data-structures.html"><a href="data-structures.html#implicit-coercion"><i class="fa fa-check"></i><b>2.2.2</b> Implicit Coercion</a></li>
-<li class="chapter" data-level="2.2.3" data-path="data-structures.html"><a href="data-structures.html#matrices-arrays"><i class="fa fa-check"></i><b>2.2.3</b> Matrices &amp; Arrays</a></li>
-<li class="chapter" data-level="2.2.4" data-path="data-structures.html"><a href="data-structures.html#factors"><i class="fa fa-check"></i><b>2.2.4</b> Factors</a></li>
-</ul></li>
-<li class="chapter" data-level="2.3" data-path="data-structures.html"><a href="data-structures.html#special-values"><i class="fa fa-check"></i><b>2.3</b> Special Values</a>
-<ul>
-<li class="chapter" data-level="2.3.1" data-path="data-structures.html"><a href="data-structures.html#missing-values"><i class="fa fa-check"></i><b>2.3.1</b> Missing Values</a></li>
-<li class="chapter" data-level="2.3.2" data-path="data-structures.html"><a href="data-structures.html#infinity"><i class="fa fa-check"></i><b>2.3.2</b> Infinity</a></li>
-<li class="chapter" data-level="2.3.3" data-path="data-structures.html"><a href="data-structures.html#not-a-number"><i class="fa fa-check"></i><b>2.3.3</b> Not a Number</a></li>
-<li class="chapter" data-level="2.3.4" data-path="data-structures.html"><a href="data-structures.html#null"><i class="fa fa-check"></i><b>2.3.4</b> Null</a></li>
-</ul></li>
-<li class="chapter" data-level="2.4" data-path="data-structures.html"><a href="data-structures.html#indexing"><i class="fa fa-check"></i><b>2.4</b> Indexing</a>
-<ul>
-<li class="chapter" data-level="2.4.1" data-path="data-structures.html"><a href="data-structures.html#all-elements"><i class="fa fa-check"></i><b>2.4.1</b> All Elements</a></li>
-<li class="chapter" data-level="2.4.2" data-path="data-structures.html"><a href="data-structures.html#by-position"><i class="fa fa-check"></i><b>2.4.2</b> By Position</a></li>
-<li class="chapter" data-level="2.4.3" data-path="data-structures.html"><a href="data-structures.html#by-name"><i class="fa fa-check"></i><b>2.4.3</b> By Name</a></li>
-<li class="chapter" data-level="2.4.4" data-path="data-structures.html"><a href="data-structures.html#by-condition"><i class="fa fa-check"></i><b>2.4.4</b> By Condition</a></li>
-<li class="chapter" data-level="2.4.5" data-path="data-structures.html"><a href="data-structures.html#logic"><i class="fa fa-check"></i><b>2.4.5</b> Logic</a></li>
-</ul></li>
-<li class="chapter" data-level="2.5" data-path="data-structures.html"><a href="data-structures.html#exercises-1"><i class="fa fa-check"></i><b>2.5</b> Exercises</a>
-<ul>
-<li class="chapter" data-level="2.5.1" data-path="data-structures.html"><a href="data-structures.html#exercise-3"><i class="fa fa-check"></i><b>2.5.1</b> Exercise</a></li>
-<li class="chapter" data-level="2.5.2" data-path="data-structures.html"><a href="data-structures.html#exercise-4"><i class="fa fa-check"></i><b>2.5.2</b> Exercise</a></li>
-<li class="chapter" data-level="2.5.3" data-path="data-structures.html"><a href="data-structures.html#exercise-5"><i class="fa fa-check"></i><b>2.5.3</b> Exercise</a></li>
-<li class="chapter" data-level="2.5.4" data-path="data-structures.html"><a href="data-structures.html#exercise-6"><i class="fa fa-check"></i><b>2.5.4</b> Exercise</a></li>
+<li><a href="getting-started.html#exercise" id="toc-exercise"><span class="toc-section-number">1.7.1</span> Exercise</a></li>
+<li><a href="getting-started.html#exercise-1" id="toc-exercise-1"><span class="toc-section-number">1.7.2</span> Exercise</a></li>
+<li><a href="getting-started.html#exercise-2" id="toc-exercise-2"><span class="toc-section-number">1.7.3</span> Exercise</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="exploring-data.html"><a href="exploring-data.html"><i class="fa fa-check"></i><b>3</b> Exploring Data</a>
+<li><a href="data-structures.html#data-structures" id="toc-data-structures"><span class="toc-section-number">2</span> Data Structures</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="exploring-data.html"><a href="exploring-data.html#indexing-data-frames"><i class="fa fa-check"></i><b>3.1</b> Indexing Data Frames</a>
+<li><a href="data-structures.html#vectors" id="toc-vectors"><span class="toc-section-number">2.1</span> Vectors</a>
 <ul>
-<li class="chapter" data-level="3.1.1" data-path="exploring-data.html"><a href="exploring-data.html#indexing-lists"><i class="fa fa-check"></i><b>3.1.1</b> Indexing Lists</a></li>
-<li class="chapter" data-level="3.1.2" data-path="exploring-data.html"><a href="exploring-data.html#two-dimensional-indexing"><i class="fa fa-check"></i><b>3.1.2</b> Two-dimensional Indexing</a></li>
-<li class="chapter" data-level="3.1.3" data-path="exploring-data.html"><a href="exploring-data.html#the-drop-parameter"><i class="fa fa-check"></i><b>3.1.3</b> The <code>drop</code> Parameter</a></li>
+<li><a href="data-structures.html#creating-vectors" id="toc-creating-vectors"><span class="toc-section-number">2.1.1</span> Creating Vectors</a></li>
+<li><a href="data-structures.html#indexing-vectors" id="toc-indexing-vectors"><span class="toc-section-number">2.1.2</span> Indexing Vectors</a></li>
+<li><a href="data-structures.html#vectorization" id="toc-vectorization"><span class="toc-section-number">2.1.3</span> Vectorization</a></li>
+<li><a href="data-structures.html#recycling" id="toc-recycling"><span class="toc-section-number">2.1.4</span> Recycling</a></li>
 </ul></li>
-<li class="chapter" data-level="3.2" data-path="exploring-data.html"><a href="exploring-data.html#packages"><i class="fa fa-check"></i><b>3.2</b> Packages</a></li>
-<li class="chapter" data-level="3.3" data-path="exploring-data.html"><a href="exploring-data.html#data-visualization"><i class="fa fa-check"></i><b>3.3</b> Data Visualization</a>
+<li><a href="data-structures.html#data-types-classes" id="toc-data-types-classes"><span class="toc-section-number">2.2</span> Data Types &amp; Classes</a>
 <ul>
-<li class="chapter" data-level="3.3.1" data-path="exploring-data.html"><a href="exploring-data.html#layer-1-data"><i class="fa fa-check"></i><b>3.3.1</b> Layer 1: Data</a></li>
-<li class="chapter" data-level="3.3.2" data-path="exploring-data.html"><a href="exploring-data.html#layer-2-geometry"><i class="fa fa-check"></i><b>3.3.2</b> Layer 2: Geometry</a></li>
-<li class="chapter" data-level="3.3.3" data-path="exploring-data.html"><a href="exploring-data.html#layer-3-aesthetics"><i class="fa fa-check"></i><b>3.3.3</b> Layer 3: Aesthetics</a></li>
-<li class="chapter" data-level="3.3.4" data-path="exploring-data.html"><a href="exploring-data.html#layer-4-scales"><i class="fa fa-check"></i><b>3.3.4</b> Layer 4: Scales</a></li>
-<li class="chapter" data-level="3.3.5" data-path="exploring-data.html"><a href="exploring-data.html#saving-plots"><i class="fa fa-check"></i><b>3.3.5</b> Saving Plots</a></li>
-<li class="chapter" data-level="3.3.6" data-path="exploring-data.html"><a href="exploring-data.html#example-bar-plot"><i class="fa fa-check"></i><b>3.3.6</b> Example: Bar Plot</a></li>
-<li class="chapter" data-level="3.3.7" data-path="exploring-data.html"><a href="exploring-data.html#visualization-design"><i class="fa fa-check"></i><b>3.3.7</b> Visualization Design</a></li>
+<li><a href="data-structures.html#lists" id="toc-lists"><span class="toc-section-number">2.2.1</span> Lists</a></li>
+<li><a href="data-structures.html#implicit-coercion" id="toc-implicit-coercion"><span class="toc-section-number">2.2.2</span> Implicit Coercion</a></li>
+<li><a href="data-structures.html#matrices-arrays" id="toc-matrices-arrays"><span class="toc-section-number">2.2.3</span> Matrices &amp; Arrays</a></li>
+<li><a href="data-structures.html#factors" id="toc-factors"><span class="toc-section-number">2.2.4</span> Factors</a></li>
 </ul></li>
-<li class="chapter" data-level="3.4" data-path="exploring-data.html"><a href="exploring-data.html#apply-functions"><i class="fa fa-check"></i><b>3.4</b> Apply Functions</a>
+<li><a href="data-structures.html#special-values" id="toc-special-values"><span class="toc-section-number">2.3</span> Special Values</a>
 <ul>
-<li class="chapter" data-level="3.4.1" data-path="exploring-data.html"><a href="exploring-data.html#the-sapply-function"><i class="fa fa-check"></i><b>3.4.1</b> The <code>sapply</code> Function</a></li>
-<li class="chapter" data-level="3.4.2" data-path="exploring-data.html"><a href="exploring-data.html#the-split-apply-pattern"><i class="fa fa-check"></i><b>3.4.2</b> The Split-Apply Pattern</a></li>
+<li><a href="data-structures.html#missing-values" id="toc-missing-values"><span class="toc-section-number">2.3.1</span> Missing Values</a></li>
+<li><a href="data-structures.html#infinity" id="toc-infinity"><span class="toc-section-number">2.3.2</span> Infinity</a></li>
+<li><a href="data-structures.html#not-a-number" id="toc-not-a-number"><span class="toc-section-number">2.3.3</span> Not a Number</a></li>
+<li><a href="data-structures.html#null" id="toc-null"><span class="toc-section-number">2.3.4</span> Null</a></li>
 </ul></li>
-<li class="chapter" data-level="3.5" data-path="exploring-data.html"><a href="exploring-data.html#exercises-2"><i class="fa fa-check"></i><b>3.5</b> Exercises</a>
+<li><a href="data-structures.html#indexing" id="toc-indexing"><span class="toc-section-number">2.4</span> Indexing</a>
 <ul>
-<li class="chapter" data-level="3.5.1" data-path="exploring-data.html"><a href="exploring-data.html#exercise-7"><i class="fa fa-check"></i><b>3.5.1</b> Exercise</a></li>
-<li class="chapter" data-level="3.5.2" data-path="exploring-data.html"><a href="exploring-data.html#exercise-8"><i class="fa fa-check"></i><b>3.5.2</b> Exercise</a></li>
-<li class="chapter" data-level="3.5.3" data-path="exploring-data.html"><a href="exploring-data.html#exercise-9"><i class="fa fa-check"></i><b>3.5.3</b> Exercise</a></li>
+<li><a href="data-structures.html#all-elements" id="toc-all-elements"><span class="toc-section-number">2.4.1</span> All Elements</a></li>
+<li><a href="data-structures.html#by-position" id="toc-by-position"><span class="toc-section-number">2.4.2</span> By Position</a></li>
+<li><a href="data-structures.html#by-name" id="toc-by-name"><span class="toc-section-number">2.4.3</span> By Name</a></li>
+<li><a href="data-structures.html#by-condition" id="toc-by-condition"><span class="toc-section-number">2.4.4</span> By Condition</a></li>
+<li><a href="data-structures.html#logic" id="toc-logic"><span class="toc-section-number">2.4.5</span> Logic</a></li>
 </ul></li>
-</ul></li>
-<li class="chapter" data-level="4" data-path="automating-tasks.html"><a href="automating-tasks.html"><i class="fa fa-check"></i><b>4</b> Automating Tasks</a>
+<li><a href="data-structures.html#exercises-1" id="toc-exercises-1"><span class="toc-section-number">2.5</span> Exercises</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="automating-tasks.html"><a href="automating-tasks.html#conditional-expressions"><i class="fa fa-check"></i><b>4.1</b> Conditional Expressions</a></li>
-<li class="chapter" data-level="4.2" data-path="automating-tasks.html"><a href="automating-tasks.html#functions"><i class="fa fa-check"></i><b>4.2</b> Functions</a>
-<ul>
-<li class="chapter" data-level="4.2.1" data-path="automating-tasks.html"><a href="automating-tasks.html#returning-values"><i class="fa fa-check"></i><b>4.2.1</b> Returning Values</a></li>
-<li class="chapter" data-level="4.2.2" data-path="automating-tasks.html"><a href="automating-tasks.html#planning-your-functions"><i class="fa fa-check"></i><b>4.2.2</b> Planning Your Functions</a></li>
-</ul></li>
-<li class="chapter" data-level="4.3" data-path="automating-tasks.html"><a href="automating-tasks.html#loops"><i class="fa fa-check"></i><b>4.3</b> Loops</a>
-<ul>
-<li class="chapter" data-level="4.3.1" data-path="automating-tasks.html"><a href="automating-tasks.html#for-loops"><i class="fa fa-check"></i><b>4.3.1</b> For-loops</a></li>
-<li class="chapter" data-level="4.3.2" data-path="automating-tasks.html"><a href="automating-tasks.html#while-loops"><i class="fa fa-check"></i><b>4.3.2</b> While-loops</a></li>
-<li class="chapter" data-level="4.3.3" data-path="automating-tasks.html"><a href="automating-tasks.html#saving-multiple-results"><i class="fa fa-check"></i><b>4.3.3</b> Saving Multiple Results</a></li>
-<li class="chapter" data-level="4.3.4" data-path="automating-tasks.html"><a href="automating-tasks.html#break-next"><i class="fa fa-check"></i><b>4.3.4</b> Break &amp; Next</a></li>
-<li class="chapter" data-level="4.3.5" data-path="automating-tasks.html"><a href="automating-tasks.html#example-the-collatz-conjecture"><i class="fa fa-check"></i><b>4.3.5</b> Example: The Collatz Conjecture</a></li>
-</ul></li>
-<li class="chapter" data-level="4.4" data-path="automating-tasks.html"><a href="automating-tasks.html#planning-for-iteration"><i class="fa fa-check"></i><b>4.4</b> Planning for Iteration</a></li>
-<li class="chapter" data-level="4.5" data-path="automating-tasks.html"><a href="automating-tasks.html#exercises-3"><i class="fa fa-check"></i><b>4.5</b> Exercises</a>
-<ul>
-<li class="chapter" data-level="4.5.1" data-path="automating-tasks.html"><a href="automating-tasks.html#exercise-10"><i class="fa fa-check"></i><b>4.5.1</b> Exercise</a></li>
+<li><a href="data-structures.html#exercise-3" id="toc-exercise-3"><span class="toc-section-number">2.5.1</span> Exercise</a></li>
+<li><a href="data-structures.html#exercise-4" id="toc-exercise-4"><span class="toc-section-number">2.5.2</span> Exercise</a></li>
+<li><a href="data-structures.html#exercise-5" id="toc-exercise-5"><span class="toc-section-number">2.5.3</span> Exercise</a></li>
+<li><a href="data-structures.html#exercise-6" id="toc-exercise-6"><span class="toc-section-number">2.5.4</span> Exercise</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i><b>5</b> Appendix</a>
+<li><a href="exploring-data.html#exploring-data" id="toc-exploring-data"><span class="toc-section-number">3</span> Exploring Data</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="appendix.html"><a href="appendix.html#more-about-comparisons"><i class="fa fa-check"></i><b>5.1</b> More About Comparisons</a>
+<li><a href="exploring-data.html#indexing-data-frames" id="toc-indexing-data-frames"><span class="toc-section-number">3.1</span> Indexing Data Frames</a>
 <ul>
-<li class="chapter" data-level="5.1.1" data-path="appendix.html"><a href="appendix.html#equality"><i class="fa fa-check"></i><b>5.1.1</b> Equality</a></li>
-<li class="chapter" data-level="5.1.2" data-path="appendix.html"><a href="appendix.html#the-in-operator"><i class="fa fa-check"></i><b>5.1.2</b> The <code>%in%</code> Operator</a></li>
-<li class="chapter" data-level="5.1.3" data-path="appendix.html"><a href="appendix.html#summarizing-comparisons"><i class="fa fa-check"></i><b>5.1.3</b> Summarizing Comparisons</a></li>
-<li class="chapter" data-level="5.1.4" data-path="appendix.html"><a href="appendix.html#other-pitfalls"><i class="fa fa-check"></i><b>5.1.4</b> Other Pitfalls</a></li>
+<li><a href="exploring-data.html#indexing-lists" id="toc-indexing-lists"><span class="toc-section-number">3.1.1</span> Indexing Lists</a></li>
+<li><a href="exploring-data.html#two-dimensional-indexing" id="toc-two-dimensional-indexing"><span class="toc-section-number">3.1.2</span> Two-dimensional Indexing</a></li>
+<li><a href="exploring-data.html#the-drop-parameter" id="toc-the-drop-parameter"><span class="toc-section-number">3.1.3</span> The <code>drop</code> Parameter</a></li>
 </ul></li>
-<li class="chapter" data-level="5.2" data-path="appendix.html"><a href="appendix.html#variable-scope-lookup"><i class="fa fa-check"></i><b>5.2</b> Variable Scope &amp; Lookup</a>
+<li><a href="exploring-data.html#packages" id="toc-packages"><span class="toc-section-number">3.2</span> Packages</a></li>
+<li><a href="exploring-data.html#data-visualization" id="toc-data-visualization"><span class="toc-section-number">3.3</span> Data Visualization</a>
 <ul>
-<li class="chapter" data-level="5.2.1" data-path="appendix.html"><a href="appendix.html#local-variables"><i class="fa fa-check"></i><b>5.2.1</b> Local Variables</a></li>
-<li class="chapter" data-level="5.2.2" data-path="appendix.html"><a href="appendix.html#lexical-scoping"><i class="fa fa-check"></i><b>5.2.2</b> Lexical Scoping</a></li>
-<li class="chapter" data-level="5.2.3" data-path="appendix.html"><a href="appendix.html#dynamic-lookup"><i class="fa fa-check"></i><b>5.2.3</b> Dynamic Lookup</a></li>
-<li class="chapter" data-level="5.2.4" data-path="appendix.html"><a href="appendix.html#summary"><i class="fa fa-check"></i><b>5.2.4</b> Summary</a></li>
+<li><a href="exploring-data.html#layer-1-data" id="toc-layer-1-data"><span class="toc-section-number">3.3.1</span> Layer 1: Data</a></li>
+<li><a href="exploring-data.html#layer-2-geometry" id="toc-layer-2-geometry"><span class="toc-section-number">3.3.2</span> Layer 2: Geometry</a></li>
+<li><a href="exploring-data.html#layer-3-aesthetics" id="toc-layer-3-aesthetics"><span class="toc-section-number">3.3.3</span> Layer 3: Aesthetics</a></li>
+<li><a href="exploring-data.html#layer-4-scales" id="toc-layer-4-scales"><span class="toc-section-number">3.3.4</span> Layer 4: Scales</a></li>
+<li><a href="exploring-data.html#saving-plots" id="toc-saving-plots"><span class="toc-section-number">3.3.5</span> Saving Plots</a></li>
+<li><a href="exploring-data.html#example-bar-plot" id="toc-example-bar-plot"><span class="toc-section-number">3.3.6</span> Example: Bar Plot</a></li>
+<li><a href="exploring-data.html#visualization-design" id="toc-visualization-design"><span class="toc-section-number">3.3.7</span> Visualization Design</a></li>
 </ul></li>
-<li class="chapter" data-level="5.3" data-path="appendix.html"><a href="appendix.html#string-processing"><i class="fa fa-check"></i><b>5.3</b> String Processing</a>
+<li><a href="exploring-data.html#apply-functions" id="toc-apply-functions"><span class="toc-section-number">3.4</span> Apply Functions</a>
 <ul>
-<li class="chapter" data-level="5.3.1" data-path="appendix.html"><a href="appendix.html#splitting-strings"><i class="fa fa-check"></i><b>5.3.1</b> Splitting Strings</a></li>
-<li class="chapter" data-level="5.3.2" data-path="appendix.html"><a href="appendix.html#replacing-parts-of-strings"><i class="fa fa-check"></i><b>5.3.2</b> Replacing Parts of Strings</a></li>
+<li><a href="exploring-data.html#the-sapply-function" id="toc-the-sapply-function"><span class="toc-section-number">3.4.1</span> The <code>sapply</code> Function</a></li>
+<li><a href="exploring-data.html#the-split-apply-pattern" id="toc-the-split-apply-pattern"><span class="toc-section-number">3.4.2</span> The Split-Apply Pattern</a></li>
 </ul></li>
-<li class="chapter" data-level="5.4" data-path="appendix.html"><a href="appendix.html#date-processing"><i class="fa fa-check"></i><b>5.4</b> Date Processing</a></li>
+<li><a href="exploring-data.html#exercises-2" id="toc-exercises-2"><span class="toc-section-number">3.5</span> Exercises</a>
+<ul>
+<li><a href="exploring-data.html#exercise-7" id="toc-exercise-7"><span class="toc-section-number">3.5.1</span> Exercise</a></li>
+<li><a href="exploring-data.html#exercise-8" id="toc-exercise-8"><span class="toc-section-number">3.5.2</span> Exercise</a></li>
+<li><a href="exploring-data.html#exercise-9" id="toc-exercise-9"><span class="toc-section-number">3.5.3</span> Exercise</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="where-to-learn-more.html"><a href="where-to-learn-more.html"><i class="fa fa-check"></i>Where to Learn More</a></li>
-<li class="chapter" data-level="" data-path="acknowledgements.html"><a href="acknowledgements.html"><i class="fa fa-check"></i>Acknowledgements</a></li>
-<li class="chapter" data-level="" data-path="assessment.html"><a href="assessment.html"><i class="fa fa-check"></i>Assessment</a></li>
+</ul></li>
+<li><a href="automating-tasks.html#automating-tasks" id="toc-automating-tasks"><span class="toc-section-number">4</span> Automating Tasks</a>
+<ul>
+<li><a href="automating-tasks.html#conditional-expressions" id="toc-conditional-expressions"><span class="toc-section-number">4.1</span> Conditional Expressions</a></li>
+<li><a href="automating-tasks.html#functions" id="toc-functions"><span class="toc-section-number">4.2</span> Functions</a>
+<ul>
+<li><a href="automating-tasks.html#returning-values" id="toc-returning-values"><span class="toc-section-number">4.2.1</span> Returning Values</a></li>
+<li><a href="automating-tasks.html#planning-your-functions" id="toc-planning-your-functions"><span class="toc-section-number">4.2.2</span> Planning Your Functions</a></li>
+</ul></li>
+<li><a href="automating-tasks.html#loops" id="toc-loops"><span class="toc-section-number">4.3</span> Loops</a>
+<ul>
+<li><a href="automating-tasks.html#for-loops" id="toc-for-loops"><span class="toc-section-number">4.3.1</span> For-loops</a></li>
+<li><a href="automating-tasks.html#while-loops" id="toc-while-loops"><span class="toc-section-number">4.3.2</span> While-loops</a></li>
+<li><a href="automating-tasks.html#saving-multiple-results" id="toc-saving-multiple-results"><span class="toc-section-number">4.3.3</span> Saving Multiple Results</a></li>
+<li><a href="automating-tasks.html#break-next" id="toc-break-next"><span class="toc-section-number">4.3.4</span> Break &amp; Next</a></li>
+<li><a href="automating-tasks.html#example-the-collatz-conjecture" id="toc-example-the-collatz-conjecture"><span class="toc-section-number">4.3.5</span> Example: The Collatz Conjecture</a></li>
+</ul></li>
+<li><a href="automating-tasks.html#planning-for-iteration" id="toc-planning-for-iteration"><span class="toc-section-number">4.4</span> Planning for Iteration</a></li>
+<li><a href="automating-tasks.html#exercises-3" id="toc-exercises-3"><span class="toc-section-number">4.5</span> Exercises</a>
+<ul>
+<li><a href="automating-tasks.html#exercise-10" id="toc-exercise-10"><span class="toc-section-number">4.5.1</span> Exercise</a></li>
+</ul></li>
+</ul></li>
+<li><a href="appendix.html#appendix" id="toc-appendix"><span class="toc-section-number">5</span> Appendix</a>
+<ul>
+<li><a href="appendix.html#more-about-comparisons" id="toc-more-about-comparisons"><span class="toc-section-number">5.1</span> More About Comparisons</a>
+<ul>
+<li><a href="appendix.html#equality" id="toc-equality"><span class="toc-section-number">5.1.1</span> Equality</a></li>
+<li><a href="appendix.html#the-in-operator" id="toc-the-in-operator"><span class="toc-section-number">5.1.2</span> The <code>%in%</code> Operator</a></li>
+<li><a href="appendix.html#summarizing-comparisons" id="toc-summarizing-comparisons"><span class="toc-section-number">5.1.3</span> Summarizing Comparisons</a></li>
+<li><a href="appendix.html#other-pitfalls" id="toc-other-pitfalls"><span class="toc-section-number">5.1.4</span> Other Pitfalls</a></li>
+</ul></li>
+<li><a href="appendix.html#variable-scope-lookup" id="toc-variable-scope-lookup"><span class="toc-section-number">5.2</span> Variable Scope &amp; Lookup</a>
+<ul>
+<li><a href="appendix.html#local-variables" id="toc-local-variables"><span class="toc-section-number">5.2.1</span> Local Variables</a></li>
+<li><a href="appendix.html#lexical-scoping" id="toc-lexical-scoping"><span class="toc-section-number">5.2.2</span> Lexical Scoping</a></li>
+<li><a href="appendix.html#dynamic-lookup" id="toc-dynamic-lookup"><span class="toc-section-number">5.2.3</span> Dynamic Lookup</a></li>
+<li><a href="appendix.html#summary" id="toc-summary"><span class="toc-section-number">5.2.4</span> Summary</a></li>
+</ul></li>
+<li><a href="appendix.html#string-processing" id="toc-string-processing"><span class="toc-section-number">5.3</span> String Processing</a>
+<ul>
+<li><a href="appendix.html#splitting-strings" id="toc-splitting-strings"><span class="toc-section-number">5.3.1</span> Splitting Strings</a></li>
+<li><a href="appendix.html#replacing-parts-of-strings" id="toc-replacing-parts-of-strings"><span class="toc-section-number">5.3.2</span> Replacing Parts of Strings</a></li>
+</ul></li>
+<li><a href="appendix.html#date-processing" id="toc-date-processing"><span class="toc-section-number">5.4</span> Date Processing</a></li>
+</ul></li>
+<li><a href="where-to-learn-more.html#where-to-learn-more" id="toc-where-to-learn-more">Where to Learn More</a></li>
+<li><a href="acknowledgements.html#acknowledgements" id="toc-acknowledgements">Acknowledgements</a></li>
+<li><a href="assessment.html#assessment" id="toc-assessment">Assessment</a></li>
 </ul>
 
       </nav>
@@ -310,8 +310,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="getting-started" class="section level1 hasAnchor" number="1">
-<h1><span class="header-section-number">1</span> Getting Started<a href="getting-started.html#getting-started" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="getting-started" class="section level1" number="1">
+<h1><span class="header-section-number">1</span> Getting Started</h1>
 <p>R is a program for statistical computing. It provides a rich set of built-in
 tools for cleaning, exploring, modeling, and visualizing data.</p>
 <p>The main way you’ll interact with R is by writing code or <em>expressions</em> in the
@@ -333,8 +333,8 @@ programming languages, R’s particular strengths are its interactivity, built-i
 support for handling missing data, the ease with which you can produce
 high-quality data visualizations, and its broad base of user-contributed
 packages (due to both its age and growing popularity).</p>
-<div id="learning-objectives" class="section level4 unnumbered hasAnchor">
-<h4>Learning Objectives<a href="getting-started.html#learning-objectives" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="learning-objectives" class="section level4 unnumbered">
+<h4>Learning Objectives</h4>
 <ul>
 <li>Run code in the R console</li>
 <li>Call functions and create variables</li>
@@ -346,8 +346,8 @@ packages (due to both its age and growing popularity).</p>
 <li>Inspect the structure of a data frame</li>
 </ul>
 </div>
-<div id="prerequisites" class="section level2 hasAnchor" number="1.1">
-<h2><span class="header-section-number">1.1</span> Prerequisites<a href="getting-started.html#prerequisites" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="prerequisites" class="section level2" number="1.1">
+<h2><span class="header-section-number">1.1</span> Prerequisites</h2>
 <p><img src="img/rlogo.png" width="10%"></p>
 <p>You can download R for free <a href="https://cloud.r-project.org/">here</a>, and can find
 an install guide <a href="">here</a>.</p>
@@ -359,8 +359,8 @@ Open-Source Edition for free
 <a href="https://www.rstudio.com/products/rstudio/download/">here</a>, and can find an
 install guide <a href="">here</a>.</p>
 </div>
-<div id="the-r-interface" class="section level2 hasAnchor" number="1.2">
-<h2><span class="header-section-number">1.2</span> The R Interface<a href="getting-started.html#the-r-interface" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="the-r-interface" class="section level2" number="1.2">
+<h2><span class="header-section-number">1.2</span> The R Interface</h2>
 <p>The first time you open RStudio, you’ll see a window divided into several
 panes, like this:</p>
 <p><img src="img/rstudio_start.png"></p>
@@ -418,8 +418,8 @@ For example, to estimate the area of a circle with radius 3, you can write:</p>
 the operators and R will still compute the result. Nevertheless, putting spaces
 in your code makes it easier for you and others to read, so it’s good to make
 it a habit. Put spaces around most operators, after commas, and after keywords.</p>
-<div id="variables" class="section level3 hasAnchor" number="1.2.1">
-<h3><span class="header-section-number">1.2.1</span> Variables<a href="getting-started.html#variables" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="variables" class="section level3" number="1.2.1">
+<h3><span class="header-section-number">1.2.1</span> Variables</h3>
 <p>Since R is designed for mathematics and statistics, you might expect that it
 provides a better appoximation for <span class="math inline">\(\pi\)</span> than <code>3.14</code>. R and most other
 programming languages allow you to create named values, or <em>variables</em>. R
@@ -465,8 +465,8 @@ this). Writing code that’s general enough to reuse across multiple problems ca
 be a big time-saver in the long run. Later on, we’ll see ways to make this code
 even easier to reuse.</p>
 </div>
-<div id="strings" class="section level3 hasAnchor" number="1.2.2">
-<h3><span class="header-section-number">1.2.2</span> Strings<a href="getting-started.html#strings" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="strings" class="section level3" number="1.2.2">
+<h3><span class="header-section-number">1.2.2</span> Strings</h3>
 <p>R treats anything inside single or double quotes as literal text rather than as
 an expression to evaluate. In programming jargon, a piece of literal text is
 called a <em>string</em>. You can use whichever kind of quotes you prefer, but the
@@ -482,8 +482,8 @@ arithmetic operators. For instance, this code causes an error:</p>
 <pre><code>## Error in &quot;1&quot; + 3: non-numeric argument to binary operator</code></pre>
 <p>The error message notes that <code>+</code> is not defined for non-numeric values.</p>
 </div>
-<div id="comparisons" class="section level3 hasAnchor" number="1.2.3">
-<h3><span class="header-section-number">1.2.3</span> Comparisons<a href="getting-started.html#comparisons" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="comparisons" class="section level3" number="1.2.3">
+<h3><span class="header-section-number">1.2.3</span> Comparisons</h3>
 <p>Besides arithmetic, you can also use R to compare values. The comparison
 operators are:</p>
 <ul>
@@ -527,8 +527,8 @@ two different types of data:</p>
 <a href="appendix.html#more-about-comparisons">5.1</a> explains several other ways to compare
 values.</p>
 </div>
-<div id="calling-functions" class="section level3 hasAnchor" number="1.2.4">
-<h3><span class="header-section-number">1.2.4</span> Calling Functions<a href="getting-started.html#calling-functions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="calling-functions" class="section level3" number="1.2.4">
+<h3><span class="header-section-number">1.2.4</span> Calling Functions</h3>
 <p>Most of R’s features are provided through <em>functions</em>, pieces of reusable code.
 You can think of a function as a machine that takes some inputs and uses them
 to produce some output. In programming jargon, the inputs to a function are
@@ -591,8 +591,8 @@ an argument (for the parameter <code>x</code>):</p>
 the same name. The variable <code>x</code> is not the same thing as the parameter <code>x</code>.</p>
 </div>
 </div>
-<div id="getting-help" class="section level2 hasAnchor" number="1.3">
-<h2><span class="header-section-number">1.3</span> Getting Help<a href="getting-started.html#getting-help" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="getting-help" class="section level2" number="1.3">
+<h2><span class="header-section-number">1.3</span> Getting Help</h2>
 <p>Learning and using a language is hard, so it’s important to know how to get
 help. The first place to look for help is R’s built-in documentation. In the
 console, you can access a specific help page by name with <code>?</code> followed by the
@@ -622,8 +622,8 @@ models:</p>
 use an online search engine. When you search for help with R online, include
 “R” as a search term. Alternatively, you can use <a href="https://rseek.org/">RSeek</a>, which
 restricts the search to a selection of R-related websites.</p>
-<div id="when-something-goes-wrong" class="section level3 hasAnchor" number="1.3.1">
-<h3><span class="header-section-number">1.3.1</span> When Something Goes Wrong<a href="getting-started.html#when-something-goes-wrong" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="when-something-goes-wrong" class="section level3" number="1.3.1">
+<h3><span class="header-section-number">1.3.1</span> When Something Goes Wrong</h3>
 <p>As a programmer, sooner or later you’ll run some code and get an error message
 or result you didn’t expect. Don’t panic! Even experienced programmers make
 mistakes regularly, so learning how to diagnose and fix problems is vital.</p>
@@ -643,8 +643,8 @@ popular question and answer website for programmers. Before posting, make sure
 to read about <a href="https://stackoverflow.com/help/how-to-ask">how to ask a good question</a>.</p>
 </div>
 </div>
-<div id="file-systems" class="section level2 hasAnchor" number="1.4">
-<h2><span class="header-section-number">1.4</span> File Systems<a href="getting-started.html#file-systems" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="file-systems" class="section level2" number="1.4">
+<h2><span class="header-section-number">1.4</span> File Systems</h2>
 <p>Most of the time, you won’t just write code directly into the R console.
 Reproducibility and reusability are important benefits of R over
 point-and-click software, and in order to realize these, you have to save your
@@ -692,8 +692,8 @@ slashes <code>/</code> for all paths, regardless of the operating system. So whe
 working in R, use forward slashes and don’t worry about the operating system.
 This is especially convenient when you want to share code with someone that
 uses a different operating system than you.</p>
-<div id="absolute-relative-paths" class="section level3 hasAnchor" number="1.4.1">
-<h3><span class="header-section-number">1.4.1</span> Absolute &amp; Relative Paths<a href="getting-started.html#absolute-relative-paths" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="absolute-relative-paths" class="section level3" number="1.4.1">
+<h3><span class="header-section-number">1.4.1</span> Absolute &amp; Relative Paths</h3>
 <p>A path that starts from the root directory, like all of the ones we’ve seen so
 far, is called an <em>absolute path</em>. The path is “absolute” because it
 unambiguously describes where a file or directory is located. The downside is
@@ -763,8 +763,8 @@ means the current directory, a path like <code>./cats.csv</code> is identical to
 specific situations where <code>.</code> is necessary, but they fall outside the scope of
 this text.</p>
 </div>
-<div id="r-scripts" class="section level3 hasAnchor" number="1.4.2">
-<h3><span class="header-section-number">1.4.2</span> R Scripts<a href="getting-started.html#r-scripts" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="r-scripts" class="section level3" number="1.4.2">
+<h3><span class="header-section-number">1.4.2</span> R Scripts</h3>
 <p>Now that you know how file systems and paths work, you’re ready to learn how to
 save your R code to a file. R code is usually saved into an <em>R script</em>
 (extension <code>.R</code>) or an <em>R Markdown file</em> (extension <code>.Rmd</code>). R scripts are
@@ -809,8 +809,8 @@ richer set of formatting options, and are usually a better choice than R
 scripts if you’re writing a report that contains code. You can learn more
 about R Markdown files <a href="https://rmarkdown.rstudio.com/">here</a>.</p>
 </div>
-<div id="the-working-directory" class="section level3 hasAnchor" number="1.4.3">
-<h3><span class="header-section-number">1.4.3</span> The Working Directory<a href="getting-started.html#the-working-directory" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="the-working-directory" class="section level3" number="1.4.3">
+<h3><span class="header-section-number">1.4.3</span> The Working Directory</h3>
 <p>Section <a href="getting-started.html#absolute-relative-paths">1.4.1</a> explained that relative paths have a
 starting point that depends on the context where the path is used. We can make
 that idea more concrete for R. The <em>working directory</em> is the starting point R
@@ -859,8 +859,7 @@ path. For instance:</p>
 ## [21] &quot;LICENSE&quot;                    &quot;makefile&quot;                  
 ## [23] &quot;notes&quot;                      &quot;R&quot;                         
 ## [25] &quot;raw&quot;                        &quot;README.md&quot;                 
-## [27] &quot;rendere73e1982629f.rds&quot;     &quot;renv&quot;                      
-## [29] &quot;renv.lock&quot;</code></pre>
+## [27] &quot;render3155136aa8f2.rds&quot;</code></pre>
 <p>As usual, since you have a different computer, you’re likely to see different
 output if you run this code. If you call <code>list.files</code> with an invalid path or
 an empty directory, the output is <code>character(0)</code>:</p>
@@ -869,8 +868,8 @@ an empty directory, the output is <code>character(0)</code>:</p>
 <p>Later on, we’ll learn about what <code>character(0)</code> means more generally.</p>
 </div>
 </div>
-<div id="reading-files" class="section level2 hasAnchor" number="1.5">
-<h2><span class="header-section-number">1.5</span> Reading Files<a href="getting-started.html#reading-files" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="reading-files" class="section level2" number="1.5">
+<h2><span class="header-section-number">1.5</span> Reading Files</h2>
 <p>Analyzing data sets is one of the most common things to do in R. The first step
 is to get R to read your data. Data sets come in a variety of file formats, and
 you need to identify the format in order to tell R how to read the data.</p>
@@ -1035,21 +1034,20 @@ and take up less storage space (bytes).</p>
 they can store any kind of R object, even ones that are not tabular. You can
 learn more about how to create an RDS file on the <code>?saveRDS</code> help page, and how
 to read one on the <code>?readRDS</code> help page.</p>
-<div id="hello-data" class="section level3 hasAnchor" number="1.5.1">
-<h3><span class="header-section-number">1.5.1</span> Hello, Data!<a href="getting-started.html#hello-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="hello-data" class="section level3" number="1.5.1">
+<h3><span class="header-section-number">1.5.1</span> Hello, Data!</h3>
 <p>Let’s read our first data set! Over the next few sections, we’re going to
-explore data from the U.S. Bureau of Labor Statistics about median employee
-earnings. The data set was prepared as part of the Tidy Tuesday R community
-project. You can find more details about the data set <a href="https://github.com/rfordatascience/tidytuesday/tree/master/data/2021/2021-02-23">here</a>, and you can
-download the data set <a href="https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-02-23/earn.csv">here</a> (you may need to choose <code>File -&gt; Save As...</code> in your browser’s menu).</p>
-<p>The data set is a file called <code>earn.csv</code>, which suggests it’s a CSV file. In
+explore data from The Pudding about the people who are depicted on paper money
+around the world. You can find more details about the data set <a href="https://pudding.cool/2022/04/banknotes/">here</a>, and you can
+download the data set <a href="https://raw.githubusercontent.com/ucdavisdatalab/workshop_r_basics/dev/data/banknotes.csv">here</a> (you may need to choose <code>File -&gt; Save As...</code> in your browser’s menu).</p>
+<p>The data set is a file called <code>banknotes.csv</code>, which suggests it’s a CSV file. In
 this case, the extension is correct, so we can read the file into R with the
 built-in <code>read.csv</code> function. The first argument is the path to where you saved
 the file, which may be different on your computer. The <code>read.csv</code> function
 returns the data set, but R won’t keep the data in memory unless we assign the
 returned result to a variable:</p>
-<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="getting-started.html#cb78-1" aria-hidden="true" tabindex="-1"></a>earn <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/earn.csv&quot;</span>)</span></code></pre></div>
-<p>The variable name <code>earn</code> here is arbitrary; you can choose something different
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="getting-started.html#cb78-1" aria-hidden="true" tabindex="-1"></a>banknotes <span class="ot">=</span> <span class="fu">read.csv</span>( <span class="st">&quot;data/banknotes.csv&quot;</span> )</span></code></pre></div>
+<p>The variable name <code>banknotes</code> here is arbitrary; you can choose something different
 if you want. However, in general, it’s a good habit to choose variable names
 that describe the contents of the variable somehow.</p>
 <p>If you tried running the line of code above and got an error message, pay
@@ -1061,29 +1059,50 @@ right.</p>
 you’ve read your first data set into R!</p>
 </div>
 </div>
-<div id="data-frames" class="section level2 hasAnchor" number="1.6">
-<h2><span class="header-section-number">1.6</span> Data Frames<a href="getting-started.html#data-frames" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="data-frames" class="section level2" number="1.6">
+<h2><span class="header-section-number">1.6</span> Data Frames</h2>
 <p>Now that we’ve loaded the data, let’s take a look at it. When you’re working
 with a new data set, it’s usually not a good idea to print it out directly (by
-typing <code>earn</code>, in this case) until you know how big it is. Big data sets can
+typing <code>banknotes</code>, in this case) until you know how big it is. Big data sets can
 take a long time to print, and the output can be difficult to read.</p>
 <p>Instead, you can use the <code>head</code> function to print only the beginning, or
 <em>head</em>, of a data set. Let’s take a peek:</p>
-<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="getting-started.html#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(earn)</span></code></pre></div>
-<pre><code>##          sex      race ethnic_origin               age year quarter n_persons
-## 1 Both Sexes All Races   All Origins 16 years and over 2010       1  96821000
-## 2 Both Sexes All Races   All Origins 16 years and over 2010       2  99798000
-## 3 Both Sexes All Races   All Origins 16 years and over 2010       3 101385000
-## 4 Both Sexes All Races   All Origins 16 years and over 2010       4 100120000
-## 5 Both Sexes All Races   All Origins 16 years and over 2011       1  98329000
-## 6 Both Sexes All Races   All Origins 16 years and over 2011       2 100593000
-##   median_weekly_earn
-## 1                754
-## 2                740
-## 3                740
-## 4                752
-## 5                755
-## 6                753</code></pre>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="getting-started.html#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>( banknotes )</span></code></pre></div>
+<pre><code>##     country currency_code     currency_name                       name gender
+## 1 Argentina           ARS  Argentinian Peso                  Eva Perón      F
+## 2 Argentina           ARS  Argentinian Peso       Julio Argentino Roca      M
+## 3 Argentina           ARS  Argentinian Peso Domingo Faustino Sarmiento      M
+## 4 Argentina           ARS  Argentinian Peso       Juan Manuel de Rosas      M
+## 5 Argentina           ARS  Argentinian Peso            Manuel Belgrano      M
+## 6 Australia           AUD Australian Dollar              David Unaipon      M
+##   bill_count    profession known_for_being_first current_bill_value
+## 1        1.0      Activist                    No                100
+## 2        1.0 Head of Gov&#39;t                    No                100
+## 3        1.0 Head of Gov&#39;t                    No                 50
+## 4        1.0    Politician                    No                 20
+## 5        1.0       Founder                   Yes                 10
+## 6        0.5          STEM                   Yes                 50
+##   prop_total_bills first_appearance_date death_date
+## 1               NA                  2012       1952
+## 2               NA                  1988       1914
+## 3               NA                  1999       1888
+## 4               NA                  1992       1877
+## 5               NA                  1970       1820
+## 6             0.48                  1995       1967
+##                                                                                                                                                              comments
+## 1                                                                                                                                                                    
+## 2                                                                                                                                                                    
+## 3                                                                                                                                                                    
+## 4                                                                                                                                                                    
+## 5                                                                                                                              Came up with the first Argentine flag.
+## 6 Shares with another person. In 1927 when his book of Aboriginal legends, Hurgarrda was published, he became the first Australian Aboriginal writer to be published.
+##                                           hover_text has_portrait            id
+## 1                                                            true     ARS_Evita
+## 2                                                            true ARS_Argentino
+## 3                                                            true   ARS_Domingo
+## 4                                                            true     ARS_Rosas
+## 5                      Designed first Argentine flag         true  ARS_Belgrano
+## 6 First Australian Aboriginal writer to be published         true   AUD_Unaipon</code></pre>
 <p>This data set is tabular—as you might have already guessed, since it came
 from a CSV file. In R, it’s represented by a <em>data frame</em>, a table with rows
 and columns. R uses data frames to represent most (but not all) kinds of
@@ -1096,34 +1115,40 @@ output across lines.</p>
 frame. One way to check is visually, by printing it, as we just did. A better
 way to check is with the <code>class</code> function, which returns information about what
 an object is. For a data frame, the result will always contain <code>data.frame</code>:</p>
-<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="getting-started.html#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(earn)</span></code></pre></div>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="getting-started.html#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>( banknotes )</span></code></pre></div>
 <pre><code>## [1] &quot;data.frame&quot;</code></pre>
 <p>We’ll learn more about classes in Section <a href="data-structures.html#data-types-classes">2.2</a>, but for
 now you can use this function to identify data frames.</p>
-<p>By counting the columns in the output from <code>head(earn)</code>, we can see that this
+<p>By counting the columns in the output from <code>head( banknotes )</code>, we can see that this
 data set has eight columns. A more convenient way to check the number of
 columns in a data set is with the <code>ncol</code> function:</p>
-<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="getting-started.html#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ncol</span>(earn)</span></code></pre></div>
-<pre><code>## [1] 8</code></pre>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="getting-started.html#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ncol</span>( banknotes )</span></code></pre></div>
+<pre><code>## [1] 16</code></pre>
 <p>The similarly-named <code>nrow</code> function returns the number of rows:</p>
-<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="getting-started.html#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(earn)</span></code></pre></div>
-<pre><code>## [1] 4224</code></pre>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="getting-started.html#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>( banknotes )</span></code></pre></div>
+<pre><code>## [1] 279</code></pre>
 <p>Alternatively, you can get both numbers at the same time with the <code>dim</code> (short
 for “dimensions”) function.</p>
 <p>Since the columns have names, we might also want to get just these. You can do
 that with the <code>names</code> or <code>colnames</code> functions. Both return the same result:</p>
-<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="getting-started.html#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(earn)</span></code></pre></div>
-<pre><code>## [1] &quot;sex&quot;                &quot;race&quot;               &quot;ethnic_origin&quot;     
-## [4] &quot;age&quot;                &quot;year&quot;               &quot;quarter&quot;           
-## [7] &quot;n_persons&quot;          &quot;median_weekly_earn&quot;</code></pre>
-<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="getting-started.html#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(earn)</span></code></pre></div>
-<pre><code>## [1] &quot;sex&quot;                &quot;race&quot;               &quot;ethnic_origin&quot;     
-## [4] &quot;age&quot;                &quot;year&quot;               &quot;quarter&quot;           
-## [7] &quot;n_persons&quot;          &quot;median_weekly_earn&quot;</code></pre>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="getting-started.html#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>( banknotes )</span></code></pre></div>
+<pre><code>##  [1] &quot;country&quot;               &quot;currency_code&quot;         &quot;currency_name&quot;        
+##  [4] &quot;name&quot;                  &quot;gender&quot;                &quot;bill_count&quot;           
+##  [7] &quot;profession&quot;            &quot;known_for_being_first&quot; &quot;current_bill_value&quot;   
+## [10] &quot;prop_total_bills&quot;      &quot;first_appearance_date&quot; &quot;death_date&quot;           
+## [13] &quot;comments&quot;              &quot;hover_text&quot;            &quot;has_portrait&quot;         
+## [16] &quot;id&quot;</code></pre>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="getting-started.html#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>( banknotes )</span></code></pre></div>
+<pre><code>##  [1] &quot;country&quot;               &quot;currency_code&quot;         &quot;currency_name&quot;        
+##  [4] &quot;name&quot;                  &quot;gender&quot;                &quot;bill_count&quot;           
+##  [7] &quot;profession&quot;            &quot;known_for_being_first&quot; &quot;current_bill_value&quot;   
+## [10] &quot;prop_total_bills&quot;      &quot;first_appearance_date&quot; &quot;death_date&quot;           
+## [13] &quot;comments&quot;              &quot;hover_text&quot;            &quot;has_portrait&quot;         
+## [16] &quot;id&quot;</code></pre>
 <p>If the rows have names, you can get those with the <code>rownames</code> function. For
 this particular data set, the rows don’t have names.</p>
-<div id="summarizing-data" class="section level3 hasAnchor" number="1.6.1">
-<h3><span class="header-section-number">1.6.1</span> Summarizing Data<a href="getting-started.html#summarizing-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="summarizing-data" class="section level3" number="1.6.1">
+<h3><span class="header-section-number">1.6.1</span> Summarizing Data</h3>
 <p>An efficient way to get a sense of what’s actually in a data set is to have R
 compute summary information. This works especially well for data frames, but
 also applies to other data. R provides two different functions to get
@@ -1131,17 +1156,25 @@ summaries: <code>str</code> and <code>summary</code>.</p>
 <p>The <code>str</code> function returns a <em>structural summary</em> of an object. This kind of
 summary tells us about the structure of the data—the number of rows, the
 number and names of columns, what kind of data is in each column, and some
-sample values. Here’s the structural summary for the earnings data:</p>
-<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="getting-started.html#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(earn)</span></code></pre></div>
-<pre><code>## &#39;data.frame&#39;:    4224 obs. of  8 variables:
-##  $ sex               : chr  &quot;Both Sexes&quot; &quot;Both Sexes&quot; &quot;Both Sexes&quot; &quot;Both Sexes&quot; ...
-##  $ race              : chr  &quot;All Races&quot; &quot;All Races&quot; &quot;All Races&quot; &quot;All Races&quot; ...
-##  $ ethnic_origin     : chr  &quot;All Origins&quot; &quot;All Origins&quot; &quot;All Origins&quot; &quot;All Origins&quot; ...
-##  $ age               : chr  &quot;16 years and over&quot; &quot;16 years and over&quot; &quot;16 years and over&quot; &quot;16 years and over&quot; ...
-##  $ year              : int  2010 2010 2010 2010 2011 2011 2011 2011 2012 2012 ...
-##  $ quarter           : int  1 2 3 4 1 2 3 4 1 2 ...
-##  $ n_persons         : int  96821000 99798000 101385000 100120000 98329000 100593000 101447000 101458000 100830000 102769000 ...
-##  $ median_weekly_earn: int  754 740 740 752 755 753 753 764 769 771 ...</code></pre>
+sample values. Here’s the structural summary for the banknotes data:</p>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="getting-started.html#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>( banknotes )</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    279 obs. of  16 variables:
+##  $ country              : chr  &quot;Argentina&quot; &quot;Argentina&quot; &quot;Argentina&quot; &quot;Argentina&quot; ...
+##  $ currency_code        : chr  &quot;ARS&quot; &quot;ARS&quot; &quot;ARS&quot; &quot;ARS&quot; ...
+##  $ currency_name        : chr  &quot;Argentinian Peso&quot; &quot;Argentinian Peso&quot; &quot;Argentinian Peso&quot; &quot;Argentinian Peso&quot; ...
+##  $ name                 : chr  &quot;Eva Perón&quot; &quot;Julio Argentino Roca&quot; &quot;Domingo Faustino Sarmiento&quot; &quot;Juan Manuel de Rosas&quot; ...
+##  $ gender               : chr  &quot;F&quot; &quot;M&quot; &quot;M&quot; &quot;M&quot; ...
+##  $ bill_count           : num  1 1 1 1 1 0.5 0.5 0.5 0.5 0.5 ...
+##  $ profession           : chr  &quot;Activist&quot; &quot;Head of Gov&#39;t&quot; &quot;Head of Gov&#39;t&quot; &quot;Politician&quot; ...
+##  $ known_for_being_first: chr  &quot;No&quot; &quot;No&quot; &quot;No&quot; &quot;No&quot; ...
+##  $ current_bill_value   : int  100 100 50 20 10 50 10 20 10 50 ...
+##  $ prop_total_bills     : num  NA NA NA NA NA 0.48 0.08 0.1 0.08 0.48 ...
+##  $ first_appearance_date: int  2012 1988 1999 1992 1970 1995 1993 1994 1993 1995 ...
+##  $ death_date           : chr  &quot;1952&quot; &quot;1914&quot; &quot;1888&quot; &quot;1877&quot; ...
+##  $ comments             : chr  &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; ...
+##  $ hover_text           : chr  &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; ...
+##  $ has_portrait         : chr  &quot;true&quot; &quot;true&quot; &quot;true&quot; &quot;true&quot; ...
+##  $ id                   : chr  &quot;ARS_Evita&quot; &quot;ARS_Argentino&quot; &quot;ARS_Domingo&quot; &quot;ARS_Rosas&quot; ...</code></pre>
 <p>This summary lists information about each column, and includes most of what we
 found earlier by using several different functions separately. The summary uses
 <code>chr</code> to indicate columns of text (“characters”) and <code>int</code> to indicate columns
@@ -1151,51 +1184,74 @@ an object. This summary includes summary statistics for each column, choosing
 appropriate statistics based on the kind of data in the column. For numbers,
 this is generally the mean, median, and quantiles. For categories, this is the
 frequencies. Other kinds of statistics are shown for other kinds of data.
-Here’s the statistical summary for the earnings data:</p>
-<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="getting-started.html#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(earn)</span></code></pre></div>
-<pre><code>##      sex                race           ethnic_origin          age           
-##  Length:4224        Length:4224        Length:4224        Length:4224       
+Here’s the statistical summary for the banknotes data:</p>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="getting-started.html#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>( banknotes )</span></code></pre></div>
+<pre><code>##    country          currency_code      currency_name          name          
+##  Length:279         Length:279         Length:279         Length:279        
 ##  Class :character   Class :character   Class :character   Class :character  
 ##  Mode  :character   Mode  :character   Mode  :character   Mode  :character  
 ##                                                                             
 ##                                                                             
 ##                                                                             
-##       year         quarter       n_persons         median_weekly_earn
-##  Min.   :2010   Min.   :1.00   Min.   :   103000   Min.   : 318.0    
-##  1st Qu.:2012   1st Qu.:1.75   1st Qu.:  2614000   1st Qu.: 605.0    
-##  Median :2015   Median :2.50   Median :  7441000   Median : 755.0    
-##  Mean   :2015   Mean   :2.50   Mean   : 16268338   Mean   : 762.2    
-##  3rd Qu.:2018   3rd Qu.:3.25   3rd Qu.: 17555250   3rd Qu.: 911.0    
-##  Max.   :2020   Max.   :4.00   Max.   :118358000   Max.   :1709.0</code></pre>
+##                                                                             
+##     gender            bill_count      profession        known_for_being_first
+##  Length:279         Min.   :0.2500   Length:279         Length:279           
+##  Class :character   1st Qu.:0.5000   Class :character   Class :character     
+##  Mode  :character   Median :1.0000   Mode  :character   Mode  :character     
+##                     Mean   :0.8456                                           
+##                     3rd Qu.:1.0000                                           
+##                     Max.   :1.0000                                           
+##                                                                              
+##  current_bill_value prop_total_bills first_appearance_date  death_date       
+##  Min.   :     1     Min.   :0.0100   Min.   :1869          Length:279        
+##  1st Qu.:    20     1st Qu.:0.0550   1st Qu.:1980          Class :character  
+##  Median :   100     Median :0.1000   Median :1996          Mode  :character  
+##  Mean   :  4039     Mean   :0.1669   Mean   :1992                            
+##  3rd Qu.:  1000     3rd Qu.:0.2300   3rd Qu.:2012                            
+##  Max.   :100000     Max.   :0.7500   Max.   :2021                            
+##                     NA&#39;s   :220                                              
+##    comments          hover_text        has_portrait            id           
+##  Length:279         Length:279         Length:279         Length:279        
+##  Class :character   Class :character   Class :character   Class :character  
+##  Mode  :character   Mode  :character   Mode  :character   Mode  :character  
+##                                                                             
+##                                                                             
+##                                                                             
+## </code></pre>
 </div>
-<div id="selecting-columns" class="section level3 hasAnchor" number="1.6.2">
-<h3><span class="header-section-number">1.6.2</span> Selecting Columns<a href="getting-started.html#selecting-columns" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="selecting-columns" class="section level3" number="1.6.2">
+<h3><span class="header-section-number">1.6.2</span> Selecting Columns</h3>
 <p>You can select an individual column from a data frame by name with <code>$</code>, the
 dollar sign operator. The syntax is:</p>
 <div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="getting-started.html#cb95-1" aria-hidden="true" tabindex="-1"></a>VARIABLE<span class="sc">$</span>COLUMN_NAME</span></code></pre></div>
-<p>For instance, for the earnings data, <code>earn$age</code> selects
-the <code>age</code> column, and <code>earn$n_persons</code> selects the <code>n_persons</code> column. So one
-way to compute the mean of the <code>n_persons</code> column is:</p>
-<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="getting-started.html#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(earn<span class="sc">$</span>n_persons)</span></code></pre></div>
-<pre><code>## [1] 16268338</code></pre>
-<p>Similarly, to compute the range of the <code>year</code> column:</p>
-<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="getting-started.html#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(earn<span class="sc">$</span>year)</span></code></pre></div>
-<pre><code>## [1] 2010 2020</code></pre>
+<p>For instance, for the banknotes data, <code>banknotes$country</code> selects
+the <code>country</code> column, and <code>banknotes$death_year</code> selects the <code>death_year</code> column. So one
+way to compute the mean of the <code>death_year</code> column is:</p>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="getting-started.html#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>( banknotes<span class="sc">$</span>death_year )</span></code></pre></div>
+<pre><code>## Warning in mean.default(banknotes$death_year): argument is not numeric or
+## logical: returning NA</code></pre>
+<pre><code>## [1] NA</code></pre>
+<p>Similarly, to compute the range of the <code>value</code> column:</p>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="getting-started.html#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>( banknotes<span class="sc">$</span>value )</span></code></pre></div>
+<pre><code>## Warning in min(x, na.rm = na.rm): no non-missing arguments to min; returning Inf</code></pre>
+<pre><code>## Warning in max(x, na.rm = na.rm): no non-missing arguments to max; returning
+## -Inf</code></pre>
+<pre><code>## [1]  Inf -Inf</code></pre>
 <p>You can also use the dollar sign operator to assign values to columns. For
-instance, to assign <code>0</code> to the entire <code>quarter</code> column:</p>
-<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="getting-started.html#cb100-1" aria-hidden="true" tabindex="-1"></a>earn<span class="sc">$</span>quarter <span class="ot">=</span> <span class="dv">0</span></span></code></pre></div>
+instance, to assign <code>USD</code> to the entire <code>abbr</code> column:</p>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="getting-started.html#cb103-1" aria-hidden="true" tabindex="-1"></a>banknotes<span class="sc">$</span>abbr <span class="ot">=</span> <span class="st">&quot;USD&quot;</span></span></code></pre></div>
 <p>Be careful when you do this, as there is no undo. Fortunately, we haven’t
-applied any transformations to the earnings data yet, so we can reset the
-<code>earn</code> variable back to what it was by reloading the data set:</p>
-<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="getting-started.html#cb101-1" aria-hidden="true" tabindex="-1"></a>earn <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/earn.csv&quot;</span>)</span></code></pre></div>
+applied any transformations to the banknotes data yet, so we can reset the
+<code>banknotes</code> variable back to what it was by reloading the data set:</p>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="getting-started.html#cb104-1" aria-hidden="true" tabindex="-1"></a>banknotes <span class="ot">=</span> <span class="fu">read.csv</span>( <span class="st">&quot;data/banknotes.csv&quot;</span> )</span></code></pre></div>
 <p>In Section <a href="data-structures.html#indexing">2.4</a>, we’ll learn how to select rows and individual
 elements from a data frame, as well as other ways to select columns.</p>
 </div>
 </div>
-<div id="exercises" class="section level2 hasAnchor" number="1.7">
-<h2><span class="header-section-number">1.7</span> Exercises<a href="getting-started.html#exercises" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="exercise" class="section level3 hasAnchor" number="1.7.1">
-<h3><span class="header-section-number">1.7.1</span> Exercise<a href="getting-started.html#exercise" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="exercises" class="section level2" number="1.7">
+<h2><span class="header-section-number">1.7</span> Exercises</h2>
+<div id="exercise" class="section level3" number="1.7.1">
+<h3><span class="header-section-number">1.7.1</span> Exercise</h3>
 <p>In a string, an <em>escape sequence</em> or <em>escape code</em> consists of a backslash
 followed by one or more characters. Escape sequences make it possible to:</p>
 <ul>
@@ -1217,8 +1273,8 @@ function to print <code>newline</code>.</li>
 you think they differ?</li>
 </ol>
 </div>
-<div id="exercise-1" class="section level3 hasAnchor" number="1.7.2">
-<h3><span class="header-section-number">1.7.2</span> Exercise<a href="getting-started.html#exercise-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="exercise-1" class="section level3" number="1.7.2">
+<h3><span class="header-section-number">1.7.2</span> Exercise</h3>
 <ol style="list-style-type: decimal">
 <li><p>Choose a directory on your computer that you’re familiar with, such as one
 you created. Determine the path to the directory, then use <code>list.files</code> to
@@ -1227,8 +1283,8 @@ system’s file browser?</p></li>
 <li><p>What does the <code>all.files</code> parameter of <code>list.files</code> do? Give an example.</p></li>
 </ol>
 </div>
-<div id="exercise-2" class="section level3 hasAnchor" number="1.7.3">
-<h3><span class="header-section-number">1.7.3</span> Exercise<a href="getting-started.html#exercise-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="exercise-2" class="section level3" number="1.7.3">
+<h3><span class="header-section-number">1.7.3</span> Exercise</h3>
 <p>The <code>read.table</code> function is another function for reading tabular data. Take a
 look at the help file for <code>read.table</code>. Recall that <code>read.csv</code> reads tabular
 data where the values are separated by commas, and <code>read.delim</code> reads tabular
@@ -1236,7 +1292,7 @@ data where the values are separated by tabs.</p>
 <ol style="list-style-type: decimal">
 <li>What value-separator does <code>read.table</code> expect by default?</li>
 <li>Is it possible to use <code>read.table</code> to read a CSV? Explain. If your answer is
-yes, show how to use <code>read.table</code> to load the employee earnings data from
+yes, show how to use <code>read.table</code> to load the banknotes data from
 Section <a href="getting-started.html#hello-data">1.5.1</a>.</li>
 </ol>
 
@@ -1253,6 +1309,7 @@ Section <a href="getting-started.html#hello-data">1.5.1</a>.</li>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -1282,10 +1339,6 @@ gitbook.start({
 "text": null
 },
 "download": null,
-"search": {
-"engine": "fuse",
-"options": null
-},
 "toc": {
 "collapse": "section"
 }
@@ -1299,7 +1352,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');
