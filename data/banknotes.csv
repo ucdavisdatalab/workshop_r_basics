@@ -1,4 +1,4 @@
-country,country_abbr,currency,name,gender,bill_count,profession,known_for_being_first,value,prop_total_bills,first_appearance_year,death_year,comments,hover_text,has_portrait,id
+country,abbr,currency,name,gender,bill_count,profession,known_for_being_first,value,prop_total_bills,first_appearance_year,death_year,comments,hover_text,has_portrait,id
 Argentina,ARS,Argentinian Peso,Eva Perón,F,1,Activist,No,100,NA,2012,1952,,,TRUE,ARS_Evita
 Argentina,ARS,Argentinian Peso,Julio Argentino Roca,M,1,Head of Gov't,No,100,NA,1988,1914,,,TRUE,ARS_Argentino
 Argentina,ARS,Argentinian Peso,Domingo Faustino Sarmiento,M,1,Head of Gov't,No,50,NA,1999,1888,,,TRUE,ARS_Domingo
