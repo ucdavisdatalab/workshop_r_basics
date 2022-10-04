@@ -818,9 +818,9 @@ to read one on the `?readRDS` help page.
 ### Hello, Data!
 
 Let's read our first data set! Over the next few sections, you're going to
-explore a data set about the people who are depicted on paper money from around
-the world. [Click here to download the data set][banknotes-dl] (you may need to
-choose `File -> Save As...` in your browser's menu).
+explore a data set about the people who are depicted on banknotes (paper money)
+from around the world. [Click here to download the data set][banknotes-dl] (you
+may need to choose `File -> Save As...` in your browser's menu).
 
 The banknotes data set is derived from one created by [The Pudding][pudding], a
 digital publication that makes awesome stories and visualizations with data.
@@ -893,9 +893,9 @@ class(banknotes)
 You'll learn more about classes in Section \@ref(data-types-classes), but for
 now you can use this function to identify data frames.
 
-By counting the columns in the output from `head( banknotes )`, you can see
-that this data set has eight columns. A more convenient way to check the number
-of columns in a data set is with the `ncol` function:
+By counting the columns in the output from `head(banknotes)`, you can see
+that this data set has `r ncol(banknotes)` columns. A more convenient way to
+check the number of columns in a data set is with the `ncol` function:
 
 ```{r}
 ncol(banknotes)
@@ -964,11 +964,12 @@ VARIABLE$COLUMN_NAME
 ```
 
 For instance, for the banknotes data, `banknotes$country` selects the `country`
-column, and `banknotes$death_year` selects the `death_year` column. So one way
-to compute the mean of the `death_year` column is:
+column, and `banknotes$first_appearance_year` selects the
+`first_appearance_year` column. So one way to compute the mean of the
+`first_appearance_year` column is:
 
 ```{r}
-mean(banknotes$death_year)
+mean(banknotes$first_appearance_year)
 ```
 
 Similarly, to compute the range of the `current_bill_value` column:
