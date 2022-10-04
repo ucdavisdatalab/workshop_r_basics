@@ -1,7 +1,7 @@
 ---
 title: R Basics
 subtitle: An Introduction to Programming for Researchers
-author: [Nick Ulle]
+author: [Nick Ulle, Wesley Brooks]
 date: "`r Sys.Date()`"
 
 github-repo: ucdavisdatalab/workshop_r-basics

@@ -73,8 +73,8 @@ return the result.
 On the right are the environment pane and the plots pane. The environment pane
 shows data in your R workspace. The plots pane shows any plots you make, and
 also has tabs to browse your file system and to view R's built-in help files.
-We'll learn more about these gradually, but to get started we'll focus on the
-console pane.
+You'll learn more about these gradually, but for now, focus on the console
+pane.
 
 Let's start by using R to do some arithmetic. In the console, you'll see that
 the cursor is on a line that begins with `>`, called the *prompt*. You can make
@@ -87,7 +87,7 @@ this:
 R always puts the result on a separate line (or lines) from your code. In this
 case, the result begins with the tag `[1]`, which is a hint from R that the
 result is a *vector* and that this line starts with the *element* at position 1.
-We'll learn more about vectors in Section \@ref(vectors), and eventually learn
+You'll learn more about vectors in Section \@ref(vectors), and eventually learn
 about other data types that are displayed differently. The result of the sum,
 `4`, is displayed after the tag. In this reader, results from R will usually be
 typeset in monospace and further prefixed with `##` to indicate that they
@@ -158,7 +158,7 @@ in most programming languages.
 
 The main reason to use variables is to save results so that you can use them
 on other expressions later. For example, to save the area of the circle in a
-variable called `area`, we can write:
+variable called `area`, you can write:
 
 ```{r}
 area = pi * 3^2
@@ -168,7 +168,7 @@ In R, variable names can contain any combination of letters, numbers, dots `.`,
 and underscores `_`, but must always start with a letter or a dot. Spaces and
 other symbols are not allowed in variable names.
 
-Now we can use the `area` variable anywhere we want the computed area. Notice
+Now you can use the `area` variable anywhere you want the computed area. Notice
 that when you assign a result to a variable, R doesn't automatically display
 that result. If you want to see the result as well, you have to enter the
 variable's name as a separate expression:
@@ -193,8 +193,8 @@ area
 Now if you want to compute the area for a different radius, all you have to do
 is change `r` and run the code again (R will not change `area` until you do
 this). Writing code that's general enough to reuse across multiple problems can
-be a big time-saver in the long run. Later on, we'll see ways to make this code
-even easier to reuse.
+be a big time-saver in the long run. Later on, you'll learn ways to make this
+code even easier to reuse.
 
 ### Strings
 
@@ -275,12 +275,12 @@ values.
 Most of R's features are provided through _functions_, pieces of reusable code.
 You can think of a function as a machine that takes some inputs and uses them
 to produce some output. In programming jargon, the inputs to a function are
-called _arguments_, the output is called the _return value_, and when we use a
-function, we say we're _calling_ the function.
+called _arguments_, the output is called the _return value_, and when you use a
+function, you're _calling_ the function.
 
 To call a function, write its name followed by parentheses. Put any arguments
 to the function inside the parentheses. For example, in R, the sine function is
-named `sin` (there are also `cos` and `tan`). So we can compute the sine of
+named `sin` (there are also `cos` and `tan`). So you can compute the sine of
 $\pi / 4$ with this code:
 
 ```{r}
@@ -305,7 +305,7 @@ how to look up the parameters for a function.
 
 By default, R assigns arguments to parameters based on their order. The first
 argument is assigned to the function's first parameter, the second to the
-second, and so on. So we can compute the logarithm of 64, base 2, with this
+second, and so on. So you can compute the logarithm of 64, base 2, with this
 code:
 
 ```{r}
@@ -314,7 +314,7 @@ log(64, 2)
 
 The argument 64 is assigned to the parameter `x`, and the argument 2 is
 assigned to the parameter `base`. You can also assign arguments to parameters
-by name with `=` (not `<-`), overriding their positions. So some other ways we
+by name with `=` (not `<-`), overriding their positions. So some other ways you
 could write the call above are:
 
 ```{r}
@@ -337,8 +337,8 @@ x = 64
 log(base = 2)
 ```
 
-In the error message, R says that we forgot to assign an argument to the
-parameter `x`. We can keep the variable `x` and correct the call by making `x`
+In the error message, R says that you forgot to assign an argument to the
+parameter `x`. You can keep the variable `x` and correct the call by making `x`
 an argument (for the parameter `x`):
 
 ```{r}
@@ -462,9 +462,9 @@ depending on the computer's hardware.
 
 A _path_ is a list of directories that leads to a specific file or directory on
 a file system (imagine giving directons to someone as they walk through the
-file system). We use forward slashes `/` to separate the directories in a path,
-rather than commas or spaces. The root directory includes a forward slash as
-part of its name, and doesn't need an extra one.
+file system). Use forward slashes `/` to separate the directories in a path.
+The root directory includes a forward slash as part of its name, and doesn't
+need an extra one.
 
 For example, suppose Ada wants to write a path to the file `cats.csv`. She can
 write the path like this:
@@ -508,7 +508,7 @@ uses a different operating system than you.
 
 ### Absolute & Relative Paths
 
-A path that starts from the root directory, like all of the ones we've seen so
+A path that starts from the root directory, like all of the ones you've seen so
 far, is called an _absolute path_. The path is "absolute" because it
 unambiguously describes where a file or directory is located. The downside is
 that absolute paths usually don't work well if you share your code.
@@ -674,7 +674,7 @@ about R Markdown files [here][rmd].
 ### The Working Directory
 
 Section \@ref(absolute-relative-paths) explained that relative paths have a
-starting point that depends on the context where the path is used. We can make
+starting point that depends on the context where the path is used. Let's make
 that idea more concrete for R. The _working directory_ is the starting point R
 uses for relative paths. Think of the working directory as the directory R is
 currently "at" or watching.
@@ -730,7 +730,7 @@ an empty directory, the output is `character(0)`:
 list.files("/this/path/is/fake/")
 ```
 
-Later on, we'll learn about what `character(0)` means more generally.
+Later on, you'll learn about what `character(0)` means more generally.
 
 
 Reading Files
@@ -777,8 +777,9 @@ format:
 [arrow]: https://arrow.apache.org/
 
 A _tabular_ data set is one that's structured as a table, with rows and columns.
-We'll focus on tabular data sets for most of this reader, since they're easier
-to get started with. Here's an example of a tabular data set:
+This reader focuses on tabular data sets, since they're common in practice and
+present the fewest programming challenges. Here's an example of a tabular data
+set:
 
 | Fruit  | Quantity | Price
 | :----  | -------: | ----:
@@ -816,24 +817,28 @@ to read one on the `?readRDS` help page.
 
 ### Hello, Data!
 
-Let's read our first data set! Over the next few sections, we're going to
-explore data from The Pudding about the people who are depicted on paper money
-around the world. You can find more details about the data set [here][banknotes], and you can
-download the data set [here][banknotes-dl] (you may need to choose `File -> Save
-As...` in your browser's menu).
+Let's read our first data set! Over the next few sections, you're going to
+explore a data set about the people who are depicted on paper money from around
+the world. [Click here to download the data set][banknotes-dl] (you may need to
+choose `File -> Save As...` in your browser's menu).
 
+The banknotes data set is derived from one created by [The Pudding][pudding], a
+digital publication that makes awesome stories and visualizations with data.
+Check out [their article about banknotes around the world][banknotes].
+
+[pudding]: https://pudding.cool/
 [banknotes]: https://pudding.cool/2022/04/banknotes/
 [banknotes-dl]: https://raw.githubusercontent.com/ucdavisdatalab/workshop_r_basics/dev/data/banknotes.csv
 
-The data set is a file called `banknotes.csv`, which suggests it's a CSV file. In
-this case, the extension is correct, so we can read the file into R with the
-built-in `read.csv` function. The first argument is the path to where you saved
-the file, which may be different on your computer. The `read.csv` function
-returns the data set, but R won't keep the data in memory unless we assign the
-returned result to a variable:
+The data set is in a file called `banknotes.csv`, which suggests it's a CSV
+file. In this case, the extension is correct, so you can read the file into R
+with the built-in `read.csv` function. The first argument is the path to where
+you saved the file, which may be different on your computer. The `read.csv`
+function returns the data set, but R won't keep the data in memory unless you
+assign the returned result to a variable:
 
 ```{r}
-banknotes = read.csv( "data/banknotes.csv" )
+banknotes = read.csv("data/banknotes.csv")
 ```
 
 The variable name `banknotes` here is arbitrary; you can choose something different
@@ -853,7 +858,7 @@ you've read your first data set into R!
 Data Frames
 -----------
 
-Now that we've loaded the data, let's take a look at it. When you're working
+Now that you've loaded the data, let's take a look at it. When you're working
 with a new data set, it's usually not a good idea to print it out directly (by
 typing `banknotes`, in this case) until you know how big it is. Big data sets can
 take a long time to print, and the output can be difficult to read.
@@ -862,13 +867,13 @@ Instead, you can use the `head` function to print only the beginning, or
 _head_, of a data set. Let's take a peek:
 
 ```{r}
-head( banknotes )
+head(banknotes)
 ```
 
 This data set is tabular---as you might have already guessed, since it came
 from a CSV file. In R, it's represented by a _data frame_, a table with rows
 and columns. R uses data frames to represent most (but not all) kinds of
-tabular data. The `read.csv` function, which we used to read this data, always
+tabular data. The `read.csv` function, which you used to read this data, always
 returns a data frame.
 
 For a data frame, the `head` function only prints the first six rows. If there
@@ -876,44 +881,46 @@ are lots of columns or the columns are wide, as is the case here, R wraps the
 output across lines.
 
 When you first read an object into R, you might not know whether it's a data
-frame. One way to check is visually, by printing it, as we just did. A better
-way to check is with the `class` function, which returns information about what
-an object is. For a data frame, the result will always contain `data.frame`:
+frame. One way to check is visually, by printing it (as you just did with
+`head`). A better way to check is with the `class` function, which returns
+information about what an object is. For a data frame, the result will always
+contain `data.frame`:
 
 ```{r}
-class( banknotes )
+class(banknotes)
 ```
 
-We'll learn more about classes in Section \@ref(data-types-classes), but for
+You'll learn more about classes in Section \@ref(data-types-classes), but for
 now you can use this function to identify data frames.
 
-By counting the columns in the output from `head( banknotes )`, we can see that this
-data set has eight columns. A more convenient way to check the number of
-columns in a data set is with the `ncol` function:
+By counting the columns in the output from `head( banknotes )`, you can see
+that this data set has eight columns. A more convenient way to check the number
+of columns in a data set is with the `ncol` function:
 
 ```{r}
-ncol( banknotes )
+ncol(banknotes)
 ```
 
 The similarly-named `nrow` function returns the number of rows:
 
 ```{r}
-nrow( banknotes )
+nrow(banknotes)
 ```
 
 Alternatively, you can get both numbers at the same time with the `dim` (short
 for "dimensions") function.
 
-Since the columns have names, we might also want to get just these. You can do
+Since the columns have names, you might also want to get just these. You can do
 that with the `names` or `colnames` functions. Both return the same result:
 
 ```{r}
-names( banknotes )
-colnames( banknotes )
+names(banknotes)
+colnames(banknotes)
 ```
 
 If the rows have names, you can get those with the `rownames` function. For
 this particular data set, the rows don't have names.
+ 
 
 ### Summarizing Data
 
@@ -928,10 +935,10 @@ number and names of columns, what kind of data is in each column, and some
 sample values. Here's the structural summary for the banknotes data:
 
 ```{r}
-str( banknotes )
+str(banknotes)
 ```
 
-This summary lists information about each column, and includes most of what we
+This summary lists information about each column, and includes most of what you
 found earlier by using several different functions separately. The summary uses
 `chr` to indicate columns of text ("characters") and `int` to indicate columns
 of integers.
@@ -944,7 +951,7 @@ frequencies. Other kinds of statistics are shown for other kinds of data.
 Here's the statistical summary for the banknotes data:
 
 ```{r}
-summary( banknotes )
+summary(banknotes)
 ```
 
 ### Selecting Columns
@@ -956,36 +963,37 @@ dollar sign operator. The syntax is:
 VARIABLE$COLUMN_NAME
 ```
 
-For instance, for the banknotes data, `banknotes$country` selects
-the `country` column, and `banknotes$death_year` selects the `death_year` column. So one
-way to compute the mean of the `death_year` column is:
+For instance, for the banknotes data, `banknotes$country` selects the `country`
+column, and `banknotes$death_year` selects the `death_year` column. So one way
+to compute the mean of the `death_year` column is:
 
 ```{r}
-mean( banknotes$death_year )
+mean(banknotes$death_year)
 ```
 
-Similarly, to compute the range of the `value` column:
+Similarly, to compute the range of the `current_bill_value` column:
 
 ```{r}
-range( banknotes$value )
+range(banknotes$current_bill_value)
 ```
 
 You can also use the dollar sign operator to assign values to columns. For
-instance, to assign `USD` to the entire `abbr` column:
+instance, to assign `USD` to the entire `currency_code` column:
 
 ```{r}
-banknotes$abbr = "USD"
+banknotes$currency_code = "USD"
 ```
 
-Be careful when you do this, as there is no undo. Fortunately, we haven't
-applied any transformations to the banknotes data yet, so we can reset the
-`banknotes` variable back to what it was by reloading the data set:
+Be careful when you do this, as there is no undo. Fortunately, you haven't
+saved any transformations to the banknotes data to your computer's hard drive
+yet, so you can reset the `banknotes` variable back to what it was by reloading
+the data set:
 
 ```{r}
-banknotes = read.csv( "data/banknotes.csv" )
+banknotes = read.csv("data/banknotes.csv")
 ```
 
-In Section \@ref(indexing), we'll learn how to select rows and individual
+In Section \@ref(indexing), you'll learn how to select rows and individual
 elements from a data frame, as well as other ways to select columns.
 
 
