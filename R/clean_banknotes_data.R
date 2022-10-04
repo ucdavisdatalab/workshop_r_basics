@@ -8,6 +8,8 @@
 # Things this script does:
 #
 # * Remove the `appearanceDeathDiff` column (students can compute this).
+# * Rename the `countryAbbr` column to `currency_code`.
+# * Convert the column names to snake case.
 #
 # Interesting features of the original dataset:
 #
@@ -26,6 +28,16 @@ all(diff[has_diff] == banknotes$appearanceDeathDiff[has_diff])
 # Remove `appearanceDeathDiff`:
 id = match("appearanceDeathDiff", names(banknotes))
 banknotes = banknotes[-id]
+
+# Rename `country_abbr` to `currency_code`:
+id = match("countryAbbr", names(banknotes))
+names(banknotes)[id] = "currency_code"
+
+# Convert column names to snake case.
+cols = names(banknotes)
+cols = gsub("([A-Z])", "_\\1", cols)
+cols = tolower(cols)
+names(banknotes) = cols
 
 # Can we get birth year?
 # names = unique(banknotes$name)
