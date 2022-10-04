@@ -18,7 +18,7 @@
 # * The death date for Genoveva Rios is unknown.
 #
 
-banknotes = read.csv("../data/2022-10-03_banknotes_data_original.csv")
+banknotes = read.csv("data/2022-10-03_banknotes_data_original.csv")
 
 # Check that there's nothing special about `appearanceDeathDiff`:
 diff = banknotes$firstAppearanceDate - as.numeric(banknotes$deathDate)
@@ -39,7 +39,12 @@ cols = gsub("([A-Z])", "_\\1", cols)
 cols = tolower(cols)
 names(banknotes) = cols
 
+# Change 'date' in column names to 'year'
+cols = names(banknotes)
+cols = gsub("_date", "_year", cols)
+names(banknotes) = cols
+
 # Can we get birth year?
 # names = unique(banknotes$name)
 
-write.csv(banknotes, "../data/banknotes.csv", row.names = FALSE)
+write.csv(banknotes, "data/banknotes.csv", row.names = FALSE)
