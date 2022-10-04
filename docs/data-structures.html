@@ -21,6 +21,7 @@
   
 
 <meta name="author" content="Nick Ulle" />
+<meta name="author" content="Wesley Brooks" />
 
 
 <meta name="date" content="2022-10-04" />
@@ -291,7 +292,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.4" data-path="appendix.html"><a href="appendix.html#date-processing"><i class="fa fa-check"></i><b>5.4</b> Date Processing</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="where-to-learn-more.html"><a href="where-to-learn-more.html"><i class="fa fa-check"></i>Where to Learn More</a></li>
-<li class="chapter" data-level="" data-path="acknowledgements.html"><a href="acknowledgements.html"><i class="fa fa-check"></i>Acknowledgements</a></li>
+<li class="chapter" data-level="" data-path="acknowledgements.html"><a href="acknowledgements.html"><i class="fa fa-check"></i>Acknowledgements</a>
+<ul>
+<li class="chapter" data-level="" data-path="acknowledgements.html"><a href="acknowledgements.html#nicks-acknowledgements"><i class="fa fa-check"></i>Nick’s Acknowledgements</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="assessment.html"><a href="assessment.html"><i class="fa fa-check"></i>Assessment</a></li>
 </ul>
 
@@ -339,7 +343,7 @@ in R, and you’ve already used them in the previous sections.</p>
 in the earnings data from Section <a href="getting-started.html#data-frames">1.6</a> is a vector. Take a look
 at it now. You can use <code>head</code> to avoid printing too much. Set the second
 argument to <code>10</code> so that exactly 10 values are printed:</p>
-<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="data-structures.html#cb105-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(earn<span class="sc">$</span>quarter, <span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="data-structures.html#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(earn<span class="sc">$</span>quarter, <span class="dv">10</span>)</span></code></pre></div>
 <pre><code>##  [1] 1 2 3 4 1 2 3 4 1 2</code></pre>
 <p>Like all vectors, this vector is <em>ordered</em>, which just means the values, or
 <em>elements</em>, have specific positions. The value of the 1st element is <code>1</code>, the
@@ -351,7 +355,7 @@ integers, decimal numbers, strings, or several other types of data, but not a
 mix these all at once.</p>
 <p>The other columns in the earnings data frame are also vectors. For instance,
 the <code>age</code> column is a vector of strings:</p>
-<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="data-structures.html#cb107-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(earn<span class="sc">$</span>age)</span></code></pre></div>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="data-structures.html#cb105-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(earn<span class="sc">$</span>age)</span></code></pre></div>
 <pre><code>## [1] &quot;16 years and over&quot; &quot;16 years and over&quot; &quot;16 years and over&quot;
 ## [4] &quot;16 years and over&quot; &quot;16 years and over&quot; &quot;16 years and over&quot;</code></pre>
 <p>Vectors can contain any number of elements, including 0 or 1 element. Unlike
@@ -360,11 +364,11 @@ values). So as far as R is concerned, a solitary value, like <code>3</code>, is 
 with 1 element.</p>
 <p>You can check the length of a vector (and other objects) with the <code>length</code>
 function:</p>
-<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="data-structures.html#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="data-structures.html#cb107-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="dv">3</span>)</span></code></pre></div>
 <pre><code>## [1] 1</code></pre>
-<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="data-structures.html#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="st">&quot;hello&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="data-structures.html#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="st">&quot;hello&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] 1</code></pre>
-<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="data-structures.html#cb113-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(earn<span class="sc">$</span>age)</span></code></pre></div>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="data-structures.html#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(earn<span class="sc">$</span>age)</span></code></pre></div>
 <pre><code>## [1] 4224</code></pre>
 <p>Since the last of these is a column from the data frame <code>earn</code>, the length is
 the same as the number of rows in <code>earn</code>.</p>
@@ -373,15 +377,15 @@ the same as the number of rows in <code>earn</code>.</p>
 <p>Sometimes you’ll want to create your own vectors. You can do this by
 concatenating several vectors together with the <code>c</code> function. It accepts any
 number of vector arguments, and combines them into a single vector:</p>
-<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="data-structures.html#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">19</span>, <span class="sc">-</span><span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="data-structures.html#cb113-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">19</span>, <span class="sc">-</span><span class="dv">3</span>)</span></code></pre></div>
 <pre><code>## [1]  1  2 19 -3</code></pre>
-<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="data-structures.html#cb117-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="st">&quot;hi&quot;</span>, <span class="st">&quot;hello&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="data-structures.html#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="st">&quot;hi&quot;</span>, <span class="st">&quot;hello&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;hi&quot;    &quot;hello&quot;</code></pre>
-<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="data-structures.html#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">4</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="data-structures.html#cb117-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">4</span>))</span></code></pre></div>
 <pre><code>## [1] 1 2 3 4</code></pre>
 <p>If the arguments you pass to the <code>c</code> function have different data types, R will
 attempt to convert them to a common data type that preserves the information:</p>
-<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="data-structures.html#cb121-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>, <span class="st">&quot;cool&quot;</span>, <span class="fl">2.3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="data-structures.html#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>, <span class="st">&quot;cool&quot;</span>, <span class="fl">2.3</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;1&quot;    &quot;cool&quot; &quot;2.3&quot;</code></pre>
 <p>Section <a href="data-structures.html#implicit-coercion">2.2.2</a> explains the rules for this conversion in more
 detail.</p>
@@ -389,11 +393,11 @@ detail.</p>
 is useful for creating “toy” data to test things on, and later we’ll see that
 it’s also important in several other contexts. Here are a few different
 sequences:</p>
-<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="data-structures.html#cb123-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">3</span></span></code></pre></div>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="data-structures.html#cb121-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">3</span></span></code></pre></div>
 <pre><code>## [1] 1 2 3</code></pre>
-<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="data-structures.html#cb125-1" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span><span class="dv">3</span><span class="sc">:</span><span class="dv">5</span></span></code></pre></div>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="data-structures.html#cb123-1" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span><span class="dv">3</span><span class="sc">:</span><span class="dv">5</span></span></code></pre></div>
 <pre><code>## [1] -3 -2 -1  0  1  2  3  4  5</code></pre>
-<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="data-structures.html#cb127-1" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span><span class="sc">:</span><span class="dv">1</span></span></code></pre></div>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="data-structures.html#cb125-1" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span><span class="sc">:</span><span class="dv">1</span></span></code></pre></div>
 <pre><code>##  [1] 10  9  8  7  6  5  4  3  2  1</code></pre>
 <p>Beware that both endpoints are included in the sequence, even in sequences like
 <code>1:0</code>, and that the difference between elements is always <code>-1</code> or <code>1</code>. If you
@@ -406,16 +410,16 @@ want more control over the generated sequence, use the <code>seq</code> function
 <pre><code>VECTOR[INDEXES]</code></pre>
 <p>Here <code>INDEXES</code> is a vector of positions of elements you want to get or set.</p>
 <p>For example, let’s make a vector with 5 elements and get the 2nd element:</p>
-<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="data-structures.html#cb130-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">8</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">1</span>)</span>
-<span id="cb130-2"><a href="data-structures.html#cb130-2" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">2</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="data-structures.html#cb128-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">8</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">1</span>)</span>
+<span id="cb128-2"><a href="data-structures.html#cb128-2" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">2</span>]</span></code></pre></div>
 <pre><code>## [1] 8</code></pre>
 <p>Now let’s get the 3rd and 1st element:</p>
-<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="data-structures.html#cb132-1" aria-hidden="true" tabindex="-1"></a>x[<span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">1</span>)]</span></code></pre></div>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="data-structures.html#cb130-1" aria-hidden="true" tabindex="-1"></a>x[<span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">1</span>)]</span></code></pre></div>
 <pre><code>## [1] 3 4</code></pre>
 <p>You can use the indexing operator together with the assignment operator to
 assign elements of a vector:</p>
-<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="data-structures.html#cb134-1" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">3</span>] <span class="ot">=</span> <span class="dv">0</span></span>
-<span id="cb134-2"><a href="data-structures.html#cb134-2" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="data-structures.html#cb132-1" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">3</span>] <span class="ot">=</span> <span class="dv">0</span></span>
+<span id="cb132-2"><a href="data-structures.html#cb132-2" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
 <pre><code>## [1] 4 8 0 2 1</code></pre>
 <p>Indexing is among the most frequently used operations in R, so take some time
 to try it out with few different vectors and indexes. We’ll revisit indexing in
@@ -425,12 +429,12 @@ Section <a href="data-structures.html#indexing">2.4</a> to learn a lot more abou
 <h3><span class="header-section-number">2.1.3</span> Vectorization<a href="data-structures.html#vectorization" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Let’s look at what happens if we call a mathematical function, like <code>sin</code>, on a
 vector:</p>
-<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="data-structures.html#cb136-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">0</span>, pi)</span>
-<span id="cb136-2"><a href="data-structures.html#cb136-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sin</span>(x)</span></code></pre></div>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="data-structures.html#cb134-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">0</span>, pi)</span>
+<span id="cb134-2"><a href="data-structures.html#cb134-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sin</span>(x)</span></code></pre></div>
 <pre><code>## [1] 8.414710e-01 1.411200e-01 0.000000e+00 1.224647e-16</code></pre>
 <p>This gives us the same result as if we had called the function separately on
 each element. That is, the result is the same as:</p>
-<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="data-structures.html#cb138-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="fu">sin</span>(<span class="dv">1</span>), <span class="fu">sin</span>(<span class="dv">3</span>), <span class="fu">sin</span>(<span class="dv">0</span>), <span class="fu">sin</span>(pi))</span></code></pre></div>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="data-structures.html#cb136-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="fu">sin</span>(<span class="dv">1</span>), <span class="fu">sin</span>(<span class="dv">3</span>), <span class="fu">sin</span>(<span class="dv">0</span>), <span class="fu">sin</span>(pi))</span></code></pre></div>
 <pre><code>## [1] 8.414710e-01 1.411200e-01 0.000000e+00 1.224647e-16</code></pre>
 <p>Of course, the first version is much easier to type.</p>
 <p>Functions that take a vector argument and get applied element-by-element like
@@ -443,17 +447,17 @@ values in some way. For instance, the <code>sum</code>, <code>mean</code>, <code
 <p>A function can be vectorized across multiple arguments. This is easiest to
 understand in terms of the arithmetic operators. Let’s see what happens if we
 add two vectors together:</p>
-<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="data-structures.html#cb140-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)</span>
-<span id="cb140-2"><a href="data-structures.html#cb140-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">7</span>, <span class="dv">10</span>, <span class="sc">-</span><span class="dv">10</span>)</span>
-<span id="cb140-3"><a href="data-structures.html#cb140-3" aria-hidden="true" tabindex="-1"></a>x <span class="sc">+</span> y</span></code></pre></div>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="data-structures.html#cb138-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)</span>
+<span id="cb138-2"><a href="data-structures.html#cb138-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">7</span>, <span class="dv">10</span>, <span class="sc">-</span><span class="dv">10</span>)</span>
+<span id="cb138-3"><a href="data-structures.html#cb138-3" aria-hidden="true" tabindex="-1"></a>x <span class="sc">+</span> y</span></code></pre></div>
 <pre><code>## [1]  0  9 13 -6</code></pre>
 <p>The elements are paired up and added according to their positions. The other
 arithmetic operators are also vectorized:</p>
-<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="data-structures.html#cb142-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">-</span> y</span></code></pre></div>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="data-structures.html#cb140-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">-</span> y</span></code></pre></div>
 <pre><code>## [1]  2 -5 -7 14</code></pre>
-<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="data-structures.html#cb144-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">*</span> y</span></code></pre></div>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="data-structures.html#cb142-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">*</span> y</span></code></pre></div>
 <pre><code>## [1]  -1  14  30 -40</code></pre>
-<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="data-structures.html#cb146-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">/</span> y</span></code></pre></div>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="data-structures.html#cb144-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">/</span> y</span></code></pre></div>
 <pre><code>## [1] -1.0000000  0.2857143  0.3000000 -0.4000000</code></pre>
 </div>
 <div id="recycling" class="section level3 hasAnchor" number="2.1.4">
@@ -462,9 +466,9 @@ arithmetic operators are also vectorized:</p>
 vectors have different lengths? Whenever you think of a question like this as
 you’re learning R, the best way to find out is to create some toy data and test
 it yourself. Let’s try that now:</p>
-<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="data-structures.html#cb148-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)</span>
-<span id="cb148-2"><a href="data-structures.html#cb148-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>)</span>
-<span id="cb148-3"><a href="data-structures.html#cb148-3" aria-hidden="true" tabindex="-1"></a>x <span class="sc">+</span> y</span></code></pre></div>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="data-structures.html#cb146-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)</span>
+<span id="cb146-2"><a href="data-structures.html#cb146-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="cb146-3"><a href="data-structures.html#cb146-3" aria-hidden="true" tabindex="-1"></a>x <span class="sc">+</span> y</span></code></pre></div>
 <pre><code>## [1] 0 3 2 5</code></pre>
 <p>The elements of the shorter vector are <em>recycled</em> to match the length of the
 longer vector. That is, after the second element, the elements of <code>y</code> are
@@ -479,9 +483,9 @@ and then vectorized addition is carried out as usual.</p>
 shorter vector, R issues a warning, but still returns the result. The warning
 as meant as a reminder, because unintended recycling is a common source of
 bugs:</p>
-<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="data-structures.html#cb151-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
-<span id="cb151-2"><a href="data-structures.html#cb151-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>)</span>
-<span id="cb151-3"><a href="data-structures.html#cb151-3" aria-hidden="true" tabindex="-1"></a>x <span class="sc">+</span> y</span></code></pre></div>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="data-structures.html#cb149-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
+<span id="cb149-2"><a href="data-structures.html#cb149-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="cb149-3"><a href="data-structures.html#cb149-3" aria-hidden="true" tabindex="-1"></a>x <span class="sc">+</span> y</span></code></pre></div>
 <pre><code>## Warning in x + y: longer object length is not a multiple of shorter object
 ## length</code></pre>
 <pre><code>## [1] 0 3 2 5 4</code></pre>
@@ -489,7 +493,7 @@ bugs:</p>
 specific value (or pattern of values) with a vector. For instance, suppose you
 want to multiply all the elements of a vector by <code>2</code>. Recycling makes this
 easy:</p>
-<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="data-structures.html#cb154-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">*</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="data-structures.html#cb152-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">*</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span></code></pre></div>
 <pre><code>## [1] 2 4 6</code></pre>
 <p>When you use recycling, most of the time one of the arguments will be a scalar
 like this.</p>
@@ -578,23 +582,23 @@ what an object is, checking its classes should be the first thing you do.</p>
 </table>
 <p>R doesn’t distinguish between scalars and vectors, so the class of a vector is
 the same as the class of its elements:</p>
-<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="data-structures.html#cb156-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(<span class="st">&quot;hi&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="data-structures.html#cb154-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(<span class="st">&quot;hi&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;character&quot;</code></pre>
-<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="data-structures.html#cb158-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(<span class="fu">c</span>(<span class="st">&quot;hello&quot;</span>, <span class="st">&quot;hi&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="data-structures.html#cb156-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(<span class="fu">c</span>(<span class="st">&quot;hello&quot;</span>, <span class="st">&quot;hi&quot;</span>))</span></code></pre></div>
 <pre><code>## [1] &quot;character&quot;</code></pre>
 <p>In addition, for most vectors, the class and the type are the same:</p>
-<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="data-structures.html#cb160-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>)</span>
-<span id="cb160-2"><a href="data-structures.html#cb160-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x)</span></code></pre></div>
+<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="data-structures.html#cb158-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>)</span>
+<span id="cb158-2"><a href="data-structures.html#cb158-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x)</span></code></pre></div>
 <pre><code>## [1] &quot;logical&quot;</code></pre>
-<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="data-structures.html#cb162-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(x)</span></code></pre></div>
+<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="data-structures.html#cb160-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(x)</span></code></pre></div>
 <pre><code>## [1] &quot;logical&quot;</code></pre>
 <p>The exception to this rule is numeric vectors, which have type <code>double</code> for
 historical reasons:</p>
-<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="data-structures.html#cb164-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(pi)</span></code></pre></div>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="data-structures.html#cb162-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(pi)</span></code></pre></div>
 <pre><code>## [1] &quot;numeric&quot;</code></pre>
-<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="data-structures.html#cb166-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(pi)</span></code></pre></div>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="data-structures.html#cb164-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(pi)</span></code></pre></div>
 <pre><code>## [1] &quot;double&quot;</code></pre>
-<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="data-structures.html#cb168-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(<span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="data-structures.html#cb166-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(<span class="dv">3</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;double&quot;</code></pre>
 <p>The word “double” here stands for <a href="https://en.wikipedia.org/wiki/Double-precision_floating-point_format"><em>double-precision floating point
 number</em></a>, a standard way to represent real numbers on computers.</p>
@@ -605,11 +609,11 @@ as <code>numeric</code>. A few functions, such as the sequence operator <code>:<
 <code>length</code> function, return integers. You can also force R to create an integer
 by adding the suffix <code>L</code> to a number, but there are no major drawbacks to using
 the <code>double</code> default:</p>
-<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="data-structures.html#cb170-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="data-structures.html#cb168-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;integer&quot;</code></pre>
-<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="data-structures.html#cb172-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(<span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="data-structures.html#cb170-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(<span class="dv">3</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;numeric&quot;</code></pre>
-<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="data-structures.html#cb174-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(3L)</span></code></pre></div>
+<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="data-structures.html#cb172-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(3L)</span></code></pre></div>
 <pre><code>## [1] &quot;integer&quot;</code></pre>
 <p>Besides the classes for vectors and lists, there are several built-in classes
 that represent more sophisticated data structures:</p>
@@ -656,18 +660,18 @@ types (they are <em>heterogeneous</em>). This differs from a vector, where the
 elements all have to have the same type, as we saw in Section <a href="data-structures.html#vectors">2.1</a>.
 The tradeoff is that most vectorized functions do not work with lists.</p>
 <p>You can make an ordinary list with the <code>list</code> function:</p>
-<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="data-structures.html#cb176-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">list</span>(<span class="dv">1</span>, <span class="fu">c</span>(<span class="st">&quot;hi&quot;</span>, <span class="st">&quot;bye&quot;</span>))</span>
-<span id="cb176-2"><a href="data-structures.html#cb176-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x)</span></code></pre></div>
+<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="data-structures.html#cb174-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">list</span>(<span class="dv">1</span>, <span class="fu">c</span>(<span class="st">&quot;hi&quot;</span>, <span class="st">&quot;bye&quot;</span>))</span>
+<span id="cb174-2"><a href="data-structures.html#cb174-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x)</span></code></pre></div>
 <pre><code>## [1] &quot;list&quot;</code></pre>
-<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="data-structures.html#cb178-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(x)</span></code></pre></div>
+<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="data-structures.html#cb176-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(x)</span></code></pre></div>
 <pre><code>## [1] &quot;list&quot;</code></pre>
 <p>For ordinary lists, the type and the class are both <code>list</code>. In Section
 <a href="data-structures.html#indexing">2.4</a>, we’ll learn how to get and set list elements, and in later
 sections we’ll learn more about when and why to use lists.</p>
 <p>You’ve already seen one list, the earnings data frame:</p>
-<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="data-structures.html#cb180-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(earn)</span></code></pre></div>
+<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="data-structures.html#cb178-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(earn)</span></code></pre></div>
 <pre><code>## [1] &quot;data.frame&quot;</code></pre>
-<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="data-structures.html#cb182-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(earn)</span></code></pre></div>
+<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="data-structures.html#cb180-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(earn)</span></code></pre></div>
 <pre><code>## [1] &quot;list&quot;</code></pre>
 <p>Under the hood, data frames are lists, and each column is a list element.
 Because the class is <code>data.frame</code> rather than <code>list</code>, R treats data frames
@@ -688,7 +692,7 @@ right along the types in the hierarchy. In fact, R will automatically and
 silently convert from types on the left to types on the right as needed. This
 is called <em>implicit coercion</em>.</p>
 <p>As an example, consider what happens if we add a logical value to a number:</p>
-<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="data-structures.html#cb184-1" aria-hidden="true" tabindex="-1"></a><span class="cn">TRUE</span> <span class="sc">+</span> <span class="dv">2</span></span></code></pre></div>
+<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="data-structures.html#cb182-1" aria-hidden="true" tabindex="-1"></a><span class="cn">TRUE</span> <span class="sc">+</span> <span class="dv">2</span></span></code></pre></div>
 <pre><code>## [1] 3</code></pre>
 <p>R automatically converts the <code>TRUE</code> to the numeric value <code>1</code>, and then carries
 out the arithmetic as usual.</p>
@@ -696,33 +700,33 @@ out the arithmetic as usual.</p>
 <code>c</code> function. Since the elements of a vector all have to have the same type, if
 you pass several different types to <code>c</code>, then R tries to use implicit coercion
 to make them the same:</p>
-<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="data-structures.html#cb186-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="st">&quot;hi&quot;</span>, <span class="dv">1</span>, <span class="dv">1</span><span class="sc">+</span>3i)</span>
-<span id="cb186-2"><a href="data-structures.html#cb186-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x)</span></code></pre></div>
+<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="data-structures.html#cb184-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="st">&quot;hi&quot;</span>, <span class="dv">1</span>, <span class="dv">1</span><span class="sc">+</span>3i)</span>
+<span id="cb184-2"><a href="data-structures.html#cb184-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x)</span></code></pre></div>
 <pre><code>## [1] &quot;character&quot;</code></pre>
-<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="data-structures.html#cb188-1" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
+<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="data-structures.html#cb186-1" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
 <pre><code>## [1] &quot;TRUE&quot; &quot;hi&quot;   &quot;1&quot;    &quot;1+3i&quot;</code></pre>
 <p>Implicit coercion is strictly one-way; it never occurs in the other direction.
 If you want to coerce a type on the right to one on the left, you can do it
 explicitly with one of the <code>as.TYPE</code> functions. For instance, the <code>as.numeric</code>
 (or <code>as.double</code>) function coerces to numeric:</p>
-<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="data-structures.html#cb190-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.numeric</span>(<span class="st">&quot;3.1&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="data-structures.html#cb188-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.numeric</span>(<span class="st">&quot;3.1&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] 3.1</code></pre>
 <p>There are a few types that fall outside of the hierarchy entirely, like
 functions. Implicit coercion doesn’t apply to these. If you try to use these
 types where it doesn’t make sense to, R generally returns an error:</p>
-<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="data-structures.html#cb192-1" aria-hidden="true" tabindex="-1"></a>sin <span class="sc">+</span> <span class="dv">3</span></span></code></pre></div>
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="data-structures.html#cb190-1" aria-hidden="true" tabindex="-1"></a>sin <span class="sc">+</span> <span class="dv">3</span></span></code></pre></div>
 <pre><code>## Error in sin + 3: non-numeric argument to binary operator</code></pre>
 <p>If you try to use these types as elements of a vector, you get back a list
 instead:</p>
-<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="data-structures.html#cb194-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, sum)</span>
-<span id="cb194-2"><a href="data-structures.html#cb194-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x)</span></code></pre></div>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="data-structures.html#cb192-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, sum)</span>
+<span id="cb192-2"><a href="data-structures.html#cb192-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x)</span></code></pre></div>
 <pre><code>## [1] &quot;list&quot;</code></pre>
 <p>Understanding how implicit coercion works will help you avoid bugs, and can
 also be a time-saver. For example, we can use implicit coercion to succinctly
 count how many elements of a vector satisfy a some condition:</p>
-<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="data-structures.html#cb196-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">10</span>, <span class="sc">-</span><span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">8</span>, <span class="dv">2</span>)</span>
-<span id="cb196-2"><a href="data-structures.html#cb196-2" aria-hidden="true" tabindex="-1"></a>condition <span class="ot">=</span> x <span class="sc">&lt;</span> <span class="dv">4</span></span>
-<span id="cb196-3"><a href="data-structures.html#cb196-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(condition)    <span class="co"># or sum(x &lt; 4)</span></span></code></pre></div>
+<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="data-structures.html#cb194-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">10</span>, <span class="sc">-</span><span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">8</span>, <span class="dv">2</span>)</span>
+<span id="cb194-2"><a href="data-structures.html#cb194-2" aria-hidden="true" tabindex="-1"></a>condition <span class="ot">=</span> x <span class="sc">&lt;</span> <span class="dv">4</span></span>
+<span id="cb194-3"><a href="data-structures.html#cb194-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(condition)    <span class="co"># or sum(x &lt; 4)</span></span></code></pre></div>
 <pre><code>## [1] 6</code></pre>
 <p>If you still don’t quite understand how the code above works, try inspecting
 each variable. In general, inspecting each step or variable is a good strategy
@@ -735,21 +739,21 @@ implicit coercion happens in the third line.</p>
 arranged into rows and columns, are ordered and homogeneous.</p>
 <p>You can create a matrix from a vector with the <code>matrix</code> function. By default,
 the columns are filled first:</p>
-<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="data-structures.html#cb198-1" aria-hidden="true" tabindex="-1"></a><span class="co"># A matrix with 2 rows and 3 columns:</span></span>
-<span id="cb198-2"><a href="data-structures.html#cb198-2" aria-hidden="true" tabindex="-1"></a><span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="data-structures.html#cb196-1" aria-hidden="true" tabindex="-1"></a><span class="co"># A matrix with 2 rows and 3 columns:</span></span>
+<span id="cb196-2"><a href="data-structures.html#cb196-2" aria-hidden="true" tabindex="-1"></a><span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    1    3    5
 ## [2,]    2    4    6</code></pre>
 <p>The class of a matrix is always <code>matrix</code>, and the type matches the type of the
 elements:</p>
-<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="data-structures.html#cb200-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="cn">NA</span>, <span class="st">&quot;c&quot;</span>), <span class="dv">2</span>, <span class="dv">2</span>)</span>
-<span id="cb200-2"><a href="data-structures.html#cb200-2" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="data-structures.html#cb198-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="cn">NA</span>, <span class="st">&quot;c&quot;</span>), <span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb198-2"><a href="data-structures.html#cb198-2" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
 <pre><code>##      [,1] [,2]
 ## [1,] &quot;a&quot;  NA  
 ## [2,] &quot;b&quot;  &quot;c&quot;</code></pre>
-<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="data-structures.html#cb202-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x)</span></code></pre></div>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="data-structures.html#cb200-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x)</span></code></pre></div>
 <pre><code>## [1] &quot;matrix&quot; &quot;array&quot;</code></pre>
-<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="data-structures.html#cb204-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(x)</span></code></pre></div>
+<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="data-structures.html#cb202-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(x)</span></code></pre></div>
 <pre><code>## [1] &quot;character&quot;</code></pre>
 <p>You can use the matrix multiplication operator <code>%*%</code> to multiply two matrices
 with compatible dimensions.</p>
@@ -786,7 +790,7 @@ of the analysis.</p>
 <p>Let’s think about which features are categorical in earnings data set. To
 refresh our memory of what’s in the data set, we can look at the structural
 summary:</p>
-<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="data-structures.html#cb206-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(earn)</span></code></pre></div>
+<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="data-structures.html#cb204-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(earn)</span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    4224 obs. of  8 variables:
 ##  $ sex               : chr  &quot;Both Sexes&quot; &quot;Both Sexes&quot; &quot;Both Sexes&quot; &quot;Both Sexes&quot; ...
 ##  $ race              : chr  &quot;All Races&quot; &quot;All Races&quot; &quot;All Races&quot; &quot;All Races&quot; ...
@@ -801,21 +805,21 @@ categorical, since they measure quantities of people and dollars, respectively.<
 <p>The <code>sex</code>, <code>race</code>, <code>ethnic_origin</code>, and <code>age</code> columns are all categorical,
 since they are all qualitative measurements. We can see this better if we use
 the <code>table</code> function to compute frequencies for the values in the columns:</p>
-<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="data-structures.html#cb208-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(earn<span class="sc">$</span>sex)</span></code></pre></div>
+<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="data-structures.html#cb206-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(earn<span class="sc">$</span>sex)</span></code></pre></div>
 <pre><code>## 
 ## Both Sexes        Men      Women 
 ##       1408       1408       1408</code></pre>
-<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="data-structures.html#cb210-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(earn<span class="sc">$</span>race)</span></code></pre></div>
+<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="data-structures.html#cb208-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(earn<span class="sc">$</span>race)</span></code></pre></div>
 <pre><code>## 
 ##                 All Races                     Asian Black or African American 
 ##                      2244                       660                       660 
 ##                     White 
 ##                       660</code></pre>
-<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="data-structures.html#cb212-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(earn<span class="sc">$</span>ethnic_origin)</span></code></pre></div>
+<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="data-structures.html#cb210-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(earn<span class="sc">$</span>ethnic_origin)</span></code></pre></div>
 <pre><code>## 
 ##        All Origins Hispanic or Latino 
 ##               3564                660</code></pre>
-<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="data-structures.html#cb214-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(earn<span class="sc">$</span>age)</span></code></pre></div>
+<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="data-structures.html#cb212-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(earn<span class="sc">$</span>age)</span></code></pre></div>
 <pre><code>## 
 ##    16 to 19 years    16 to 24 years 16 years and over    20 to 24 years 
 ##               132               660               660               132 
@@ -834,21 +838,21 @@ columns can be treated as quantitative or categorical data, depending on how we
 want to use them to analyze the data.</p>
 <p>Let’s convert the <code>age</code> column to a factor. To do this, use the <code>factor</code>
 function:</p>
-<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="data-structures.html#cb216-1" aria-hidden="true" tabindex="-1"></a>age <span class="ot">=</span> <span class="fu">factor</span>(earn<span class="sc">$</span>age)</span>
-<span id="cb216-2"><a href="data-structures.html#cb216-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(age)</span></code></pre></div>
+<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="data-structures.html#cb214-1" aria-hidden="true" tabindex="-1"></a>age <span class="ot">=</span> <span class="fu">factor</span>(earn<span class="sc">$</span>age)</span>
+<span id="cb214-2"><a href="data-structures.html#cb214-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(age)</span></code></pre></div>
 <pre><code>## [1] 16 years and over 16 years and over 16 years and over 16 years and over
 ## [5] 16 years and over 16 years and over
 ## 12 Levels: 16 to 19 years 16 to 24 years 16 years and over ... 65 years and over</code></pre>
 <p>Notice that factors are printed differently than strings.</p>
 <p>The categories of a factor are called <em>levels</em>. You can list the levels with
 the <code>levels</code> function:</p>
-<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="data-structures.html#cb218-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(age)</span></code></pre></div>
+<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="data-structures.html#cb216-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(age)</span></code></pre></div>
 <pre><code>##  [1] &quot;16 to 19 years&quot;    &quot;16 to 24 years&quot;    &quot;16 years and over&quot;
 ##  [4] &quot;20 to 24 years&quot;    &quot;25 to 34 years&quot;    &quot;25 to 54 years&quot;   
 ##  [7] &quot;25 years and over&quot; &quot;35 to 44 years&quot;    &quot;45 to 54 years&quot;   
 ## [10] &quot;55 to 64 years&quot;    &quot;55 years and over&quot; &quot;65 years and over&quot;</code></pre>
 <p>Factors remember all possible levels even if you take a subset:</p>
-<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="data-structures.html#cb220-1" aria-hidden="true" tabindex="-1"></a>age[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="data-structures.html#cb218-1" aria-hidden="true" tabindex="-1"></a>age[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>]</span></code></pre></div>
 <pre><code>## [1] 16 years and over 16 years and over 16 years and over
 ## 12 Levels: 16 to 19 years 16 to 24 years 16 years and over ... 65 years and over</code></pre>
 <p>This is another way factors are different from strings. Factors “remember” all
@@ -856,7 +860,7 @@ possible levels even if they aren’t present. This ensures that if you plot a
 factor, the missing levels will still be represented on the plot.</p>
 <p>You can make a factor forget levels that aren’t present with the <code>droplevels</code>
 function:</p>
-<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="data-structures.html#cb222-1" aria-hidden="true" tabindex="-1"></a><span class="fu">droplevels</span>(age[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="data-structures.html#cb220-1" aria-hidden="true" tabindex="-1"></a><span class="fu">droplevels</span>(age[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>])</span></code></pre></div>
 <pre><code>## [1] 16 years and over 16 years and over 16 years and over
 ## Levels: 16 years and over</code></pre>
 </div>
@@ -874,32 +878,32 @@ set, their answers for those questions can be recorded as <code>NA</code>.</p>
 <p>The missing value is a chameleon: it can be a logical, integer, numeric,
 complex, or character value. By default, the missing value is logical, and the
 other types occur through coercion (<a href="data-structures.html#implicit-coercion">2.2.2</a>):</p>
-<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="data-structures.html#cb224-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(<span class="cn">NA</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="data-structures.html#cb222-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(<span class="cn">NA</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;logical&quot;</code></pre>
-<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="data-structures.html#cb226-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="cn">NA</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="data-structures.html#cb224-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="cn">NA</span>))</span></code></pre></div>
 <pre><code>## [1] &quot;numeric&quot;</code></pre>
-<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="data-structures.html#cb228-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(<span class="fu">c</span>(<span class="st">&quot;hi&quot;</span>, <span class="cn">NA</span>, <span class="cn">NA</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="data-structures.html#cb226-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(<span class="fu">c</span>(<span class="st">&quot;hi&quot;</span>, <span class="cn">NA</span>, <span class="cn">NA</span>))</span></code></pre></div>
 <pre><code>## [1] &quot;character&quot;</code></pre>
 <p>The missing value is also contagious: it represents an unknown quantity, so
 using it as an argument to a function usually produces another missing value.
 The idea is that if the inputs to a computation are unknown, generally so is
 the output:</p>
-<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="data-structures.html#cb230-1" aria-hidden="true" tabindex="-1"></a><span class="cn">NA</span> <span class="sc">-</span> <span class="dv">3</span></span></code></pre></div>
+<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="data-structures.html#cb228-1" aria-hidden="true" tabindex="-1"></a><span class="cn">NA</span> <span class="sc">-</span> <span class="dv">3</span></span></code></pre></div>
 <pre><code>## [1] NA</code></pre>
-<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="data-structures.html#cb232-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="cn">NA</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="data-structures.html#cb230-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="cn">NA</span>))</span></code></pre></div>
 <pre><code>## [1] NA</code></pre>
 <p>As a consequence, testing whether an object is equal to the missing value with
 <code>==</code> doesn’t return a meaningful result:</p>
-<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="data-structures.html#cb234-1" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span> <span class="sc">==</span> <span class="cn">NA</span></span></code></pre></div>
+<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="data-structures.html#cb232-1" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span> <span class="sc">==</span> <span class="cn">NA</span></span></code></pre></div>
 <pre><code>## [1] NA</code></pre>
-<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="data-structures.html#cb236-1" aria-hidden="true" tabindex="-1"></a><span class="cn">NA</span> <span class="sc">==</span> <span class="cn">NA</span></span></code></pre></div>
+<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="data-structures.html#cb234-1" aria-hidden="true" tabindex="-1"></a><span class="cn">NA</span> <span class="sc">==</span> <span class="cn">NA</span></span></code></pre></div>
 <pre><code>## [1] NA</code></pre>
 <p>You can use the <code>is.na</code> function instead:</p>
-<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="data-structures.html#cb238-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.na</span>(<span class="dv">5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="data-structures.html#cb236-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.na</span>(<span class="dv">5</span>)</span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
-<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="data-structures.html#cb240-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.na</span>(<span class="cn">NA</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="data-structures.html#cb238-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.na</span>(<span class="cn">NA</span>)</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="data-structures.html#cb242-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.na</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="cn">NA</span>, <span class="dv">3</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="data-structures.html#cb240-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.na</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="cn">NA</span>, <span class="dv">3</span>))</span></code></pre></div>
 <pre><code>## [1] FALSE  TRUE FALSE</code></pre>
 <p>Missing values are a feature that sets R apart from most other programming
 languages.</p>
@@ -908,27 +912,27 @@ languages.</p>
 <h3><span class="header-section-number">2.3.2</span> Infinity<a href="data-structures.html#infinity" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The value <code>Inf</code> represents infinity, and can be numeric or complex. You’re most
 likely to encounter it as the result of certain computations:</p>
-<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="data-structures.html#cb244-1" aria-hidden="true" tabindex="-1"></a><span class="dv">13</span> <span class="sc">/</span> <span class="dv">0</span></span></code></pre></div>
+<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="data-structures.html#cb242-1" aria-hidden="true" tabindex="-1"></a><span class="dv">13</span> <span class="sc">/</span> <span class="dv">0</span></span></code></pre></div>
 <pre><code>## [1] Inf</code></pre>
-<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb246-1"><a href="data-structures.html#cb246-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(<span class="cn">Inf</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="data-structures.html#cb244-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(<span class="cn">Inf</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;numeric&quot;</code></pre>
 <p>You can use the <code>is.infinite</code> function to test whether a value is infinite:</p>
-<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="data-structures.html#cb248-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.infinite</span>(<span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb246-1"><a href="data-structures.html#cb246-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.infinite</span>(<span class="dv">3</span>)</span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
-<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb250-1"><a href="data-structures.html#cb250-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.infinite</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="cn">Inf</span>, <span class="dv">0</span>, <span class="cn">Inf</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="data-structures.html#cb248-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.infinite</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="cn">Inf</span>, <span class="dv">0</span>, <span class="cn">Inf</span>))</span></code></pre></div>
 <pre><code>## [1]  TRUE FALSE  TRUE</code></pre>
 </div>
 <div id="not-a-number" class="section level3 hasAnchor" number="2.3.3">
 <h3><span class="header-section-number">2.3.3</span> Not a Number<a href="data-structures.html#not-a-number" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The value <code>NaN</code>, called <em>not a number</em>, represents a quantity that’s undefined
 mathematically. For instance, dividing 0 by 0 is undefined:</p>
-<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb252-1"><a href="data-structures.html#cb252-1" aria-hidden="true" tabindex="-1"></a><span class="dv">0</span> <span class="sc">/</span> <span class="dv">0</span></span></code></pre></div>
+<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb250-1"><a href="data-structures.html#cb250-1" aria-hidden="true" tabindex="-1"></a><span class="dv">0</span> <span class="sc">/</span> <span class="dv">0</span></span></code></pre></div>
 <pre><code>## [1] NaN</code></pre>
-<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb254-1"><a href="data-structures.html#cb254-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(<span class="cn">NaN</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb252-1"><a href="data-structures.html#cb252-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(<span class="cn">NaN</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;numeric&quot;</code></pre>
 <p>Like <code>Inf</code>, <code>NaN</code> can be numeric or complex.</p>
 <p>You can use the <code>is.nan</code> function to test whether a value is <code>NaN</code>:</p>
-<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb256-1"><a href="data-structures.html#cb256-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.nan</span>(<span class="fu">c</span>(<span class="fl">10.1</span>, <span class="fu">log</span>(<span class="sc">-</span><span class="dv">1</span>), <span class="dv">3</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb254-1"><a href="data-structures.html#cb254-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.nan</span>(<span class="fu">c</span>(<span class="fl">10.1</span>, <span class="fu">log</span>(<span class="sc">-</span><span class="dv">1</span>), <span class="dv">3</span>))</span></code></pre></div>
 <pre><code>## Warning in log(-1): NaNs produced</code></pre>
 <pre><code>## [1] FALSE  TRUE FALSE</code></pre>
 </div>
@@ -937,17 +941,17 @@ mathematically. For instance, dividing 0 by 0 is undefined:</p>
 <p>The value <code>NULL</code> represents a quantity that’s undefined in R. Most of the time,
 <code>NULL</code> indicates the absence of a result. For instance, vectors don’t have
 dimensions, so the <code>dim</code> function returns <code>NULL</code> for vectors:</p>
-<div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb259-1"><a href="data-structures.html#cb259-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb257-1"><a href="data-structures.html#cb257-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span></code></pre></div>
 <pre><code>## NULL</code></pre>
-<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb261-1"><a href="data-structures.html#cb261-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(<span class="cn">NULL</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb259-1"><a href="data-structures.html#cb259-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(<span class="cn">NULL</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;NULL&quot;</code></pre>
-<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb263-1"><a href="data-structures.html#cb263-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(<span class="cn">NULL</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb261-1"><a href="data-structures.html#cb261-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(<span class="cn">NULL</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;NULL&quot;</code></pre>
 <p>Unlike the other special values, <code>NULL</code> has its own unique type and class.</p>
 <p>You can use the <code>is.null</code> function to test whether a value is <code>NULL</code>:</p>
-<div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb265-1"><a href="data-structures.html#cb265-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.null</span>(<span class="st">&quot;null&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb263-1"><a href="data-structures.html#cb263-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.null</span>(<span class="st">&quot;null&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
-<div class="sourceCode" id="cb267"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb267-1"><a href="data-structures.html#cb267-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.null</span>(<span class="cn">NULL</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb265-1"><a href="data-structures.html#cb265-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.null</span>(<span class="cn">NULL</span>)</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 </div>
 </div>
@@ -972,8 +976,8 @@ ways to select elements are:</p>
 </ol>
 <p>Let’s examine each in more detail. We’ll use this vector as an example, to keep
 things concise:</p>
-<div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb269-1"><a href="data-structures.html#cb269-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="at">a =</span> <span class="dv">10</span>, <span class="at">b =</span> <span class="dv">20</span>, <span class="at">c =</span> <span class="dv">30</span>, <span class="at">d =</span> <span class="dv">40</span>, <span class="at">e =</span> <span class="dv">50</span>)</span>
-<span id="cb269-2"><a href="data-structures.html#cb269-2" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
+<div class="sourceCode" id="cb267"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb267-1"><a href="data-structures.html#cb267-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="at">a =</span> <span class="dv">10</span>, <span class="at">b =</span> <span class="dv">20</span>, <span class="at">c =</span> <span class="dv">30</span>, <span class="at">d =</span> <span class="dv">40</span>, <span class="at">e =</span> <span class="dv">50</span>)</span>
+<span id="cb267-2"><a href="data-structures.html#cb267-2" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
 <pre><code>##  a  b  c  d  e 
 ## 10 20 30 40 50</code></pre>
 <p>Even though we’re using a vector here, the indexing operator works with almost
@@ -983,29 +987,29 @@ look at unique behavior for some of these later on.</p>
 <h3><span class="header-section-number">2.4.1</span> All Elements<a href="data-structures.html#all-elements" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The first way to use <code>[</code> to select elements is to leave the index blank. This
 selects all elements:</p>
-<div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb271-1"><a href="data-structures.html#cb271-1" aria-hidden="true" tabindex="-1"></a>x[]</span></code></pre></div>
+<div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb269-1"><a href="data-structures.html#cb269-1" aria-hidden="true" tabindex="-1"></a>x[]</span></code></pre></div>
 <pre><code>##  a  b  c  d  e 
 ## 10 20 30 40 50</code></pre>
 <p>This way of indexing is rarely used for getting elements, since it’s the same
 as entering the variable name without the indexing operator. Instead, its main
 use is for setting elements. Suppose we want to set all the elements of <code>x</code> to
 <code>5</code>. You might try writing this:</p>
-<div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb273-1"><a href="data-structures.html#cb273-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="dv">5</span></span>
-<span id="cb273-2"><a href="data-structures.html#cb273-2" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
+<div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb271-1"><a href="data-structures.html#cb271-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="dv">5</span></span>
+<span id="cb271-2"><a href="data-structures.html#cb271-2" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
 <pre><code>## [1] 5</code></pre>
 <p>Rather than setting each element to <code>5</code>, this sets <code>x</code> to the scalar <code>5</code>, which
 is not what we want. Let’s reset the vector and try again, this time using the
 indexing operator:</p>
-<div class="sourceCode" id="cb275"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb275-1"><a href="data-structures.html#cb275-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="at">a =</span> <span class="dv">10</span>, <span class="at">b =</span> <span class="dv">20</span>, <span class="at">c =</span> <span class="dv">30</span>, <span class="at">d =</span> <span class="dv">40</span>, <span class="at">e =</span> <span class="dv">50</span>)</span>
-<span id="cb275-2"><a href="data-structures.html#cb275-2" aria-hidden="true" tabindex="-1"></a>x[] <span class="ot">=</span> <span class="dv">5</span></span>
-<span id="cb275-3"><a href="data-structures.html#cb275-3" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
+<div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb273-1"><a href="data-structures.html#cb273-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="at">a =</span> <span class="dv">10</span>, <span class="at">b =</span> <span class="dv">20</span>, <span class="at">c =</span> <span class="dv">30</span>, <span class="at">d =</span> <span class="dv">40</span>, <span class="at">e =</span> <span class="dv">50</span>)</span>
+<span id="cb273-2"><a href="data-structures.html#cb273-2" aria-hidden="true" tabindex="-1"></a>x[] <span class="ot">=</span> <span class="dv">5</span></span>
+<span id="cb273-3"><a href="data-structures.html#cb273-3" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
 <pre><code>## a b c d e 
 ## 5 5 5 5 5</code></pre>
 <p>As you can see, now all the elements are <code>5</code>. So the indexing operator is
 necessary to specify that we want to set the elements rather than the whole
 variable.</p>
 <p>Let’s reset <code>x</code> one more time, so that we can use it again in the next example:</p>
-<div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb277-1"><a href="data-structures.html#cb277-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="at">a =</span> <span class="dv">10</span>, <span class="at">b =</span> <span class="dv">20</span>, <span class="at">c =</span> <span class="dv">30</span>, <span class="at">d =</span> <span class="dv">40</span>, <span class="at">e =</span> <span class="dv">50</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb275"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb275-1"><a href="data-structures.html#cb275-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="at">a =</span> <span class="dv">10</span>, <span class="at">b =</span> <span class="dv">20</span>, <span class="at">c =</span> <span class="dv">30</span>, <span class="at">d =</span> <span class="dv">40</span>, <span class="at">e =</span> <span class="dv">50</span>)</span></code></pre></div>
 </div>
 <div id="by-position" class="section level3 hasAnchor" number="2.4.2">
 <h3><span class="header-section-number">2.4.2</span> By Position<a href="data-structures.html#by-position" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -1016,32 +1020,32 @@ Section <a href="data-structures.html#indexing-vectors">2.1.2</a>.</p>
 to numbers starting from 1 for the first element. This way of indexing is
 frequently used together with the sequence operator <code>:</code> to get ranges of
 values. For instance, let’s get the 2nd through 4th elements of <code>x</code>:</p>
-<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb278-1"><a href="data-structures.html#cb278-1" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb276-1"><a href="data-structures.html#cb276-1" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>]</span></code></pre></div>
 <pre><code>##  b  c  d 
 ## 20 30 40</code></pre>
 <p>You can also use this way of indexing to set specific elements or ranges of
 elements. For example, let’s set the 3rd and 5th elements of <code>x</code> to <code>9</code> and
 <code>7</code>, respectively:</p>
-<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="data-structures.html#cb280-1" aria-hidden="true" tabindex="-1"></a>x[<span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">5</span>)] <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">9</span>, <span class="dv">7</span>)</span>
-<span id="cb280-2"><a href="data-structures.html#cb280-2" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
+<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb278-1"><a href="data-structures.html#cb278-1" aria-hidden="true" tabindex="-1"></a>x[<span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">5</span>)] <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">9</span>, <span class="dv">7</span>)</span>
+<span id="cb278-2"><a href="data-structures.html#cb278-2" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
 <pre><code>##  a  b  c  d  e 
 ## 10 20  9 40  7</code></pre>
 <p>When getting elements, you can repeat numbers in the index to get the same
 element more than once. You can also use the order of the numbers to control
 the order of the elements:</p>
-<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb282-1"><a href="data-structures.html#cb282-1" aria-hidden="true" tabindex="-1"></a>x[<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>)]</span></code></pre></div>
+<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="data-structures.html#cb280-1" aria-hidden="true" tabindex="-1"></a>x[<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>)]</span></code></pre></div>
 <pre><code>##  b  a  b  b 
 ## 20 10 20 20</code></pre>
 <p>Finally, if the index contains only negative numbers, the elements at those
 positions are excluded rather than selected. For instance, let’s get all
 elements except the 1st and 5th:</p>
-<div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb284-1"><a href="data-structures.html#cb284-1" aria-hidden="true" tabindex="-1"></a>x[<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">5</span>)]</span></code></pre></div>
+<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb282-1"><a href="data-structures.html#cb282-1" aria-hidden="true" tabindex="-1"></a>x[<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">5</span>)]</span></code></pre></div>
 <pre><code>##  b  c  d 
 ## 20  9 40</code></pre>
 <p>When you index by position, the index should always be all positive or all
 negative. Using a mix of positive and negative numbers causes R to emit error
 rather than returning elements, since it’s unclear what the result should be:</p>
-<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb286-1"><a href="data-structures.html#cb286-1" aria-hidden="true" tabindex="-1"></a>x[<span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">2</span>)]</span></code></pre></div>
+<div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb284-1"><a href="data-structures.html#cb284-1" aria-hidden="true" tabindex="-1"></a>x[<span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">2</span>)]</span></code></pre></div>
 <pre><code>## Error in x[c(-1, 2)]: only 0&#39;s may be mixed with negative subscripts</code></pre>
 </div>
 <div id="by-name" class="section level3 hasAnchor" number="2.4.3">
@@ -1051,17 +1055,17 @@ use a character vector as the index, and only works with named data structures.<
 <p>Like indexing by position, you can use indexing by name to get or set elements.
 You can also use it to repeat elements or change the order. Let’s get elements
 <code>a</code>, <code>c</code>, <code>d</code>, and <code>a</code> again from the vector <code>x</code>:</p>
-<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb288-1"><a href="data-structures.html#cb288-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> x[<span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;d&quot;</span>, <span class="st">&quot;a&quot;</span>)]</span>
-<span id="cb288-2"><a href="data-structures.html#cb288-2" aria-hidden="true" tabindex="-1"></a>y</span></code></pre></div>
+<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb286-1"><a href="data-structures.html#cb286-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> x[<span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;d&quot;</span>, <span class="st">&quot;a&quot;</span>)]</span>
+<span id="cb286-2"><a href="data-structures.html#cb286-2" aria-hidden="true" tabindex="-1"></a>y</span></code></pre></div>
 <pre><code>##  a  c  d  a 
 ## 10  9 40 10</code></pre>
 <p>Element names are generally unique, but if they’re not, indexing by name gets
 or sets the first element whose name matches the index:</p>
-<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb290-1"><a href="data-structures.html#cb290-1" aria-hidden="true" tabindex="-1"></a>y[<span class="st">&quot;a&quot;</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb288-1"><a href="data-structures.html#cb288-1" aria-hidden="true" tabindex="-1"></a>y[<span class="st">&quot;a&quot;</span>]</span></code></pre></div>
 <pre><code>##  a 
 ## 10</code></pre>
 <p>Let’s reset <code>x</code> again to prepare for learning about the final way to index:</p>
-<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb292-1"><a href="data-structures.html#cb292-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="at">a =</span> <span class="dv">10</span>, <span class="at">b =</span> <span class="dv">20</span>, <span class="at">c =</span> <span class="dv">30</span>, <span class="at">d =</span> <span class="dv">40</span>, <span class="at">e =</span> <span class="dv">50</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb290-1"><a href="data-structures.html#cb290-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="at">a =</span> <span class="dv">10</span>, <span class="at">b =</span> <span class="dv">20</span>, <span class="at">c =</span> <span class="dv">30</span>, <span class="at">d =</span> <span class="dv">40</span>, <span class="at">e =</span> <span class="dv">50</span>)</span></code></pre></div>
 </div>
 <div id="by-condition" class="section level3 hasAnchor" number="2.4.4">
 <h3><span class="header-section-number">2.4.4</span> By Condition<a href="data-structures.html#by-condition" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -1078,8 +1082,8 @@ correspond element-by-element.</p>
 animal and age. These are two different vectors of information, but each person
 will have a response for both. So you’ll have two vectors that are the same
 length:</p>
-<div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb293-1"><a href="data-structures.html#cb293-1" aria-hidden="true" tabindex="-1"></a>animal <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;dog&quot;</span>, <span class="st">&quot;cat&quot;</span>, <span class="st">&quot;iguana&quot;</span>)</span>
-<span id="cb293-2"><a href="data-structures.html#cb293-2" aria-hidden="true" tabindex="-1"></a>age <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">31</span>, <span class="dv">24</span>, <span class="dv">72</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb291"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb291-1"><a href="data-structures.html#cb291-1" aria-hidden="true" tabindex="-1"></a>animal <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;dog&quot;</span>, <span class="st">&quot;cat&quot;</span>, <span class="st">&quot;iguana&quot;</span>)</span>
+<span id="cb291-2"><a href="data-structures.html#cb291-2" aria-hidden="true" tabindex="-1"></a>age <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">31</span>, <span class="dv">24</span>, <span class="dv">72</span>)</span></code></pre></div>
 <p>The 1st element of each vector corresponds to the 1st person, the 2nd to the
 2nd person, and so on. These vectors are congruent.</p>
 <p>Notice that columns in a data frame are always congruent!</p>
@@ -1091,8 +1095,8 @@ object you’re indexing. Elements where the index is <code>TRUE</code> are kept
 elements where the index is <code>FALSE</code> are dropped.</p>
 <p>If you create the index from a condition on the object, it’s automatically
 congruent. For instance, let’s make a condition based on the vector <code>x</code>:</p>
-<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb294-1"><a href="data-structures.html#cb294-1" aria-hidden="true" tabindex="-1"></a>is_small <span class="ot">=</span> x <span class="sc">&lt;</span> <span class="dv">25</span></span>
-<span id="cb294-2"><a href="data-structures.html#cb294-2" aria-hidden="true" tabindex="-1"></a>is_small</span></code></pre></div>
+<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb292-1"><a href="data-structures.html#cb292-1" aria-hidden="true" tabindex="-1"></a>is_small <span class="ot">=</span> x <span class="sc">&lt;</span> <span class="dv">25</span></span>
+<span id="cb292-2"><a href="data-structures.html#cb292-2" aria-hidden="true" tabindex="-1"></a>is_small</span></code></pre></div>
 <pre><code>##     a     b     c     d     e 
 ##  TRUE  TRUE FALSE FALSE FALSE</code></pre>
 <p>The 1st element in the logical vector <code>is_small</code> corresponds to the 1st element
@@ -1100,11 +1104,11 @@ of <code>x</code>, the 2nd to the 2nd, and so on. The vectors <code>x</code> and
 congruent.</p>
 <p>It makes sense to use <code>is_small</code> as an index for <code>x</code>, and it gives us all the
 elements less than <code>25</code>:</p>
-<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="data-structures.html#cb296-1" aria-hidden="true" tabindex="-1"></a>x[is_small]</span></code></pre></div>
+<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb294-1"><a href="data-structures.html#cb294-1" aria-hidden="true" tabindex="-1"></a>x[is_small]</span></code></pre></div>
 <pre><code>##  a  b 
 ## 10 20</code></pre>
 <p>Of course, you can also avoid using an intermediate variable for the condition:</p>
-<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb298-1"><a href="data-structures.html#cb298-1" aria-hidden="true" tabindex="-1"></a>x[x <span class="sc">&gt;</span> <span class="dv">10</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="data-structures.html#cb296-1" aria-hidden="true" tabindex="-1"></a>x[x <span class="sc">&gt;</span> <span class="dv">10</span>]</span></code></pre></div>
 <pre><code>##  b  c  d  e 
 ## 20 30 40 50</code></pre>
 <p>If you create index some other way (not using the object), make sure that it’s
@@ -1113,8 +1117,8 @@ might not be meaningful.</p>
 <p>You can also use indexing by condition to set elements, just as the other ways
 of indexing can be used to set elements. For instance, let’s set all the
 elements of <code>x</code> that are greater than <code>10</code> to the missing value <code>NA</code>:</p>
-<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="data-structures.html#cb300-1" aria-hidden="true" tabindex="-1"></a>x[x <span class="sc">&gt;</span> <span class="dv">10</span>] <span class="ot">=</span> <span class="cn">NA</span></span>
-<span id="cb300-2"><a href="data-structures.html#cb300-2" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
+<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb298-1"><a href="data-structures.html#cb298-1" aria-hidden="true" tabindex="-1"></a>x[x <span class="sc">&gt;</span> <span class="dv">10</span>] <span class="ot">=</span> <span class="cn">NA</span></span>
+<span id="cb298-2"><a href="data-structures.html#cb298-2" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
 <pre><code>##  a  b  c  d  e 
 ## 10 NA NA NA NA</code></pre>
 </div>
@@ -1128,14 +1132,14 @@ logical vectors even outside the context of indexing.</p>
 <div id="negation" class="section level4 unnumbered hasAnchor">
 <h4>Negation<a href="data-structures.html#negation" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>The <em>NOT operator</em> <code>!</code> converts <code>TRUE</code> to <code>FALSE</code> and <code>FALSE</code> to <code>TRUE</code>:</p>
-<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb302-1"><a href="data-structures.html#cb302-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>, <span class="cn">TRUE</span>, <span class="cn">NA</span>)</span>
-<span id="cb302-2"><a href="data-structures.html#cb302-2" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
+<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="data-structures.html#cb300-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>, <span class="cn">TRUE</span>, <span class="cn">NA</span>)</span>
+<span id="cb300-2"><a href="data-structures.html#cb300-2" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
 <pre><code>## [1]  TRUE FALSE  TRUE  TRUE    NA</code></pre>
-<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb304-1"><a href="data-structures.html#cb304-1" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span>x</span></code></pre></div>
+<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb302-1"><a href="data-structures.html#cb302-1" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span>x</span></code></pre></div>
 <pre><code>## [1] FALSE  TRUE FALSE FALSE    NA</code></pre>
 <p>You can use <code>!</code> with a condition:</p>
-<div class="sourceCode" id="cb306"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb306-1"><a href="data-structures.html#cb306-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;hi&quot;</span>, <span class="st">&quot;hello&quot;</span>)</span>
-<span id="cb306-2"><a href="data-structures.html#cb306-2" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span>(y <span class="sc">==</span> <span class="st">&quot;hi&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb304-1"><a href="data-structures.html#cb304-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;hi&quot;</span>, <span class="st">&quot;hello&quot;</span>)</span>
+<span id="cb304-2"><a href="data-structures.html#cb304-2" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span>(y <span class="sc">==</span> <span class="st">&quot;hi&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] FALSE  TRUE</code></pre>
 <p>The NOT operator is vectorized.</p>
 </div>
@@ -1144,27 +1148,27 @@ logical vectors even outside the context of indexing.</p>
 <p>R also has operators for combining logical values.</p>
 <p>The <em>AND operator</em> <code>&amp;</code> returns <code>TRUE</code> only when both arguments are <code>TRUE</code>. Here
 are some examples:</p>
-<div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb308-1"><a href="data-structures.html#cb308-1" aria-hidden="true" tabindex="-1"></a><span class="cn">FALSE</span> <span class="sc">&amp;</span> <span class="cn">FALSE</span></span></code></pre></div>
+<div class="sourceCode" id="cb306"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb306-1"><a href="data-structures.html#cb306-1" aria-hidden="true" tabindex="-1"></a><span class="cn">FALSE</span> <span class="sc">&amp;</span> <span class="cn">FALSE</span></span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
-<div class="sourceCode" id="cb310"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb310-1"><a href="data-structures.html#cb310-1" aria-hidden="true" tabindex="-1"></a><span class="cn">TRUE</span> <span class="sc">&amp;</span> <span class="cn">FALSE</span></span></code></pre></div>
+<div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb308-1"><a href="data-structures.html#cb308-1" aria-hidden="true" tabindex="-1"></a><span class="cn">TRUE</span> <span class="sc">&amp;</span> <span class="cn">FALSE</span></span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
-<div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb312-1"><a href="data-structures.html#cb312-1" aria-hidden="true" tabindex="-1"></a><span class="cn">FALSE</span> <span class="sc">&amp;</span> <span class="cn">TRUE</span></span></code></pre></div>
+<div class="sourceCode" id="cb310"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb310-1"><a href="data-structures.html#cb310-1" aria-hidden="true" tabindex="-1"></a><span class="cn">FALSE</span> <span class="sc">&amp;</span> <span class="cn">TRUE</span></span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
-<div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb314-1"><a href="data-structures.html#cb314-1" aria-hidden="true" tabindex="-1"></a><span class="cn">TRUE</span> <span class="sc">&amp;</span> <span class="cn">TRUE</span></span></code></pre></div>
+<div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb312-1"><a href="data-structures.html#cb312-1" aria-hidden="true" tabindex="-1"></a><span class="cn">TRUE</span> <span class="sc">&amp;</span> <span class="cn">TRUE</span></span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb316"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb316-1"><a href="data-structures.html#cb316-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>) <span class="sc">&amp;</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb314-1"><a href="data-structures.html#cb314-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>) <span class="sc">&amp;</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>)</span></code></pre></div>
 <pre><code>## [1]  TRUE FALSE FALSE</code></pre>
 <p>The <em>OR operator</em> <code>|</code> returns <code>TRUE</code> when at least one argument is <code>TRUE</code>.
 Let’s see some examples:</p>
-<div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb318-1"><a href="data-structures.html#cb318-1" aria-hidden="true" tabindex="-1"></a><span class="cn">FALSE</span> <span class="sc">|</span> <span class="cn">FALSE</span></span></code></pre></div>
+<div class="sourceCode" id="cb316"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb316-1"><a href="data-structures.html#cb316-1" aria-hidden="true" tabindex="-1"></a><span class="cn">FALSE</span> <span class="sc">|</span> <span class="cn">FALSE</span></span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
-<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb320-1"><a href="data-structures.html#cb320-1" aria-hidden="true" tabindex="-1"></a><span class="cn">TRUE</span> <span class="sc">|</span> <span class="cn">FALSE</span></span></code></pre></div>
+<div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb318-1"><a href="data-structures.html#cb318-1" aria-hidden="true" tabindex="-1"></a><span class="cn">TRUE</span> <span class="sc">|</span> <span class="cn">FALSE</span></span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb322-1"><a href="data-structures.html#cb322-1" aria-hidden="true" tabindex="-1"></a><span class="cn">FALSE</span> <span class="sc">|</span> <span class="cn">TRUE</span></span></code></pre></div>
+<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb320-1"><a href="data-structures.html#cb320-1" aria-hidden="true" tabindex="-1"></a><span class="cn">FALSE</span> <span class="sc">|</span> <span class="cn">TRUE</span></span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb324"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb324-1"><a href="data-structures.html#cb324-1" aria-hidden="true" tabindex="-1"></a><span class="cn">TRUE</span> <span class="sc">|</span> <span class="cn">TRUE</span></span></code></pre></div>
+<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb322-1"><a href="data-structures.html#cb322-1" aria-hidden="true" tabindex="-1"></a><span class="cn">TRUE</span> <span class="sc">|</span> <span class="cn">TRUE</span></span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb326"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb326-1"><a href="data-structures.html#cb326-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>) <span class="sc">|</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb324"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb324-1"><a href="data-structures.html#cb324-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>) <span class="sc">|</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## [1] TRUE TRUE</code></pre>
 <p>Be careful: everyday English is less precise than logic. You might say:</p>
 <blockquote>
@@ -1177,11 +1181,11 @@ at least one (OR).</p>
 <p>Rarely, you might want <em>exactly one</em> condition to be true. The <em>XOR (eXclusive
 OR) function</em> <code>xor()</code> returns <code>TRUE</code> when exactly one argument is <code>TRUE</code>. For
 example:</p>
-<div class="sourceCode" id="cb328"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb328-1"><a href="data-structures.html#cb328-1" aria-hidden="true" tabindex="-1"></a><span class="fu">xor</span>(<span class="cn">FALSE</span>, <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb326"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb326-1"><a href="data-structures.html#cb326-1" aria-hidden="true" tabindex="-1"></a><span class="fu">xor</span>(<span class="cn">FALSE</span>, <span class="cn">FALSE</span>)</span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
-<div class="sourceCode" id="cb330"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb330-1"><a href="data-structures.html#cb330-1" aria-hidden="true" tabindex="-1"></a><span class="fu">xor</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb328"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb328-1"><a href="data-structures.html#cb328-1" aria-hidden="true" tabindex="-1"></a><span class="fu">xor</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>)</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb332"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb332-1"><a href="data-structures.html#cb332-1" aria-hidden="true" tabindex="-1"></a><span class="fu">xor</span>(<span class="cn">TRUE</span>, <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb330"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb330-1"><a href="data-structures.html#cb330-1" aria-hidden="true" tabindex="-1"></a><span class="fu">xor</span>(<span class="cn">TRUE</span>, <span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
 <p>The AND, OR, and XOR operators are vectorized.</p>
 </div>
@@ -1201,13 +1205,13 @@ skipping <code>long_computation()</code>. A <em>short-circuit operator</em> does
 </ul>
 <p>These operators only evaluate the second argument if it is necessary to
 determine the result. Here are some of these:</p>
-<div class="sourceCode" id="cb334"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb334-1"><a href="data-structures.html#cb334-1" aria-hidden="true" tabindex="-1"></a><span class="cn">TRUE</span> <span class="sc">&amp;&amp;</span> <span class="cn">FALSE</span></span></code></pre></div>
+<div class="sourceCode" id="cb332"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb332-1"><a href="data-structures.html#cb332-1" aria-hidden="true" tabindex="-1"></a><span class="cn">TRUE</span> <span class="sc">&amp;&amp;</span> <span class="cn">FALSE</span></span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
-<div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb336-1"><a href="data-structures.html#cb336-1" aria-hidden="true" tabindex="-1"></a><span class="cn">TRUE</span> <span class="sc">&amp;&amp;</span> <span class="cn">TRUE</span></span></code></pre></div>
+<div class="sourceCode" id="cb334"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb334-1"><a href="data-structures.html#cb334-1" aria-hidden="true" tabindex="-1"></a><span class="cn">TRUE</span> <span class="sc">&amp;&amp;</span> <span class="cn">TRUE</span></span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb338"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb338-1"><a href="data-structures.html#cb338-1" aria-hidden="true" tabindex="-1"></a><span class="cn">TRUE</span> <span class="sc">||</span> <span class="cn">TRUE</span></span></code></pre></div>
+<div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb336-1"><a href="data-structures.html#cb336-1" aria-hidden="true" tabindex="-1"></a><span class="cn">TRUE</span> <span class="sc">||</span> <span class="cn">TRUE</span></span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb340"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb340-1"><a href="data-structures.html#cb340-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>) <span class="sc">&amp;&amp;</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb338"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb338-1"><a href="data-structures.html#cb338-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>) <span class="sc">&amp;&amp;</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## Warning in c(TRUE, FALSE) &amp;&amp; c(TRUE, TRUE): &#39;length(x) = 2 &gt; 1&#39; in coercion to
 ## &#39;logical(1)&#39;
 
