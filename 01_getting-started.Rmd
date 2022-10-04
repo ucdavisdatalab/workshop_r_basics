@@ -817,16 +817,15 @@ to read one on the `?readRDS` help page.
 ### Hello, Data!
 
 Let's read our first data set! Over the next few sections, we're going to
-explore data from the U.S. Bureau of Labor Statistics about median employee
-earnings. The data set was prepared as part of the Tidy Tuesday R community
-project. You can find more details about the data set [here][earn], and you can
-download the data set [here][earn-dl] (you may need to choose `File -> Save
+explore data from The Pudding about the people who are depicted on paper money
+around the world. You can find more details about the data set [here][banknotes], and you can
+download the data set [here][banknotes-dl] (you may need to choose `File -> Save
 As...` in your browser's menu).
 
-[earn]: https://github.com/rfordatascience/tidytuesday/tree/master/data/2021/2021-02-23
-[earn-dl]: https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-02-23/earn.csv
+[banknotes]: https://pudding.cool/2022/04/banknotes/
+[banknotes-dl]: https://raw.githubusercontent.com/ucdavisdatalab/workshop_r_basics/dev/data/banknotes.csv
 
-The data set is a file called `earn.csv`, which suggests it's a CSV file. In
+The data set is a file called `banknotes.csv`, which suggests it's a CSV file. In
 this case, the extension is correct, so we can read the file into R with the
 built-in `read.csv` function. The first argument is the path to where you saved
 the file, which may be different on your computer. The `read.csv` function
@@ -834,10 +833,10 @@ returns the data set, but R won't keep the data in memory unless we assign the
 returned result to a variable:
 
 ```{r}
-earn = read.csv("data/earn.csv")
+banknotes = read.csv( "data/banknotes.csv" )
 ```
 
-The variable name `earn` here is arbitrary; you can choose something different
+The variable name `banknotes` here is arbitrary; you can choose something different
 if you want. However, in general, it's a good habit to choose variable names
 that describe the contents of the variable somehow.
 
@@ -856,14 +855,14 @@ Data Frames
 
 Now that we've loaded the data, let's take a look at it. When you're working
 with a new data set, it's usually not a good idea to print it out directly (by
-typing `earn`, in this case) until you know how big it is. Big data sets can
+typing `banknotes`, in this case) until you know how big it is. Big data sets can
 take a long time to print, and the output can be difficult to read.
 
 Instead, you can use the `head` function to print only the beginning, or
 _head_, of a data set. Let's take a peek:
 
 ```{r}
-head(earn)
+head( banknotes )
 ```
 
 This data set is tabular---as you might have already guessed, since it came
@@ -882,24 +881,24 @@ way to check is with the `class` function, which returns information about what
 an object is. For a data frame, the result will always contain `data.frame`:
 
 ```{r}
-class(earn)
+class( banknotes )
 ```
 
 We'll learn more about classes in Section \@ref(data-types-classes), but for
 now you can use this function to identify data frames.
 
-By counting the columns in the output from `head(earn)`, we can see that this
+By counting the columns in the output from `head( banknotes )`, we can see that this
 data set has eight columns. A more convenient way to check the number of
 columns in a data set is with the `ncol` function:
 
 ```{r}
-ncol(earn)
+ncol( banknotes )
 ```
 
 The similarly-named `nrow` function returns the number of rows:
 
 ```{r}
-nrow(earn)
+nrow( banknotes )
 ```
 
 Alternatively, you can get both numbers at the same time with the `dim` (short
@@ -909,8 +908,8 @@ Since the columns have names, we might also want to get just these. You can do
 that with the `names` or `colnames` functions. Both return the same result:
 
 ```{r}
-names(earn)
-colnames(earn)
+names( banknotes )
+colnames( banknotes )
 ```
 
 If the rows have names, you can get those with the `rownames` function. For
@@ -926,10 +925,10 @@ summaries: `str` and `summary`.
 The `str` function returns a _structural summary_ of an object. This kind of
 summary tells us about the structure of the data---the number of rows, the
 number and names of columns, what kind of data is in each column, and some
-sample values. Here's the structural summary for the earnings data:
+sample values. Here's the structural summary for the banknotes data:
 
 ```{r}
-str(earn)
+str( banknotes )
 ```
 
 This summary lists information about each column, and includes most of what we
@@ -942,10 +941,10 @@ an object. This summary includes summary statistics for each column, choosing
 appropriate statistics based on the kind of data in the column. For numbers,
 this is generally the mean, median, and quantiles. For categories, this is the
 frequencies. Other kinds of statistics are shown for other kinds of data.
-Here's the statistical summary for the earnings data:
+Here's the statistical summary for the banknotes data:
 
 ```{r}
-summary(earn)
+summary( banknotes )
 ```
 
 ### Selecting Columns
@@ -957,33 +956,33 @@ dollar sign operator. The syntax is:
 VARIABLE$COLUMN_NAME
 ```
 
-For instance, for the earnings data, `earn$age` selects
-the `age` column, and `earn$n_persons` selects the `n_persons` column. So one
-way to compute the mean of the `n_persons` column is:
+For instance, for the banknotes data, `banknotes$country` selects
+the `country` column, and `banknotes$death_year` selects the `death_year` column. So one
+way to compute the mean of the `death_year` column is:
 
 ```{r}
-mean(earn$n_persons)
+mean( banknotes$death_year )
 ```
 
-Similarly, to compute the range of the `year` column:
+Similarly, to compute the range of the `value` column:
 
 ```{r}
-range(earn$year)
+range( banknotes$value )
 ```
 
 You can also use the dollar sign operator to assign values to columns. For
-instance, to assign `0` to the entire `quarter` column:
+instance, to assign `USD` to the entire `abbr` column:
 
 ```{r}
-earn$quarter = 0
+banknotes$abbr = "USD"
 ```
 
 Be careful when you do this, as there is no undo. Fortunately, we haven't
-applied any transformations to the earnings data yet, so we can reset the
-`earn` variable back to what it was by reloading the data set:
+applied any transformations to the banknotes data yet, so we can reset the
+`banknotes` variable back to what it was by reloading the data set:
 
 ```{r}
-earn = read.csv("data/earn.csv")
+banknotes = read.csv( "data/banknotes.csv" )
 ```
 
 In Section \@ref(indexing), we'll learn how to select rows and individual
@@ -1035,5 +1034,5 @@ data where the values are separated by tabs.
 
 1. What value-separator does `read.table` expect by default?
 2. Is it possible to use `read.table` to read a CSV? Explain. If your answer is
-   yes, show how to use `read.table` to load the employee earnings data from
+   yes, show how to use `read.table` to load the banknotes data from
    Section \@ref(hello-data).
