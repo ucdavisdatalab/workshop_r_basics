@@ -10,6 +10,8 @@
 # * Remove the `appearanceDeathDiff` column (students can compute this).
 # * Rename the `countryAbbr` column to `currency_code`.
 # * Convert the column names to snake case.
+# * Rename `_date` in column names to `_year`.
+# * Compute `scaled_bill_value`.
 #
 # Interesting features of the original dataset:
 #
@@ -18,12 +20,14 @@
 # * The death date for Genoveva Rios is unknown.
 #
 
-banknotes = read.csv("data/2022-10-03_banknotes_data_original.csv")
+banknotes = read.csv("../data/2022-10-03_banknotes_data_original.csv")
 
 # Check that there's nothing special about `appearanceDeathDiff`:
-diff = banknotes$firstAppearanceDate - as.numeric(banknotes$deathDate)
+suppressWarnings(
+  diff <- banknotes$firstAppearanceDate - as.numeric(banknotes$deathDate)
+)
 has_diff = !is.na(diff)
-all(diff[has_diff] == banknotes$appearanceDeathDiff[has_diff])
+stopifnot(all(diff[has_diff] == banknotes$appearanceDeathDiff[has_diff]))
 
 # Remove `appearanceDeathDiff`:
 id = match("appearanceDeathDiff", names(banknotes))
@@ -39,12 +43,28 @@ cols = gsub("([A-Z])", "_\\1", cols)
 cols = tolower(cols)
 names(banknotes) = cols
 
-# Change 'date' in column names to 'year'
+# Change `date` in column names to `year`
 cols = names(banknotes)
 cols = gsub("_date", "_year", cols)
 names(banknotes) = cols
 
+
+# Compute `scaled_bill_value`:
+vmin = aggregate(banknotes$current_bill_value, banknotes["currency_code"], min)
+vmax = aggregate(banknotes$current_bill_value, banknotes["currency_code"], max)
+vrange = merge(vmin, vmax, by = "currency_code", all = TRUE)
+cols = c("min_bill_value", "max_bill_value")
+names(vrange)[2:3] = cols
+banknotes = merge(banknotes, vrange, by = "currency_code", all.x = TRUE)
+
+banknotes$scaled_bill_value = with(banknotes,
+  (current_bill_value - min_bill_value) / (max_bill_value - min_bill_value))
+
+id = match(cols, names(banknotes))
+banknotes = banknotes[-id]
+
+
 # Can we get birth year?
 # names = unique(banknotes$name)
 
-write.csv(banknotes, "data/banknotes.csv", row.names = FALSE)
+write.csv(banknotes, "../data/banknotes.csv", row.names = FALSE)
