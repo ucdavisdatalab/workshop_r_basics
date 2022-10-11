@@ -24,7 +24,7 @@
 <meta name="author" content="Wesley Brooks" />
 
 
-<meta name="date" content="2022-10-04" />
+<meta name="date" content="2022-10-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -335,15 +335,15 @@ testing the arguments, the operator applies R’s rules for vectorization
 implicit coercion (Section <a href="data-structures.html#implicit-coercion">2.2.2</a>). Until you’ve fully
 internalized these three rules, some results from the equality operator may
 seem surprising. For example:</p>
-<div class="sourceCode" id="cb522"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb522-1"><a href="appendix.html#cb522-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Recycling:</span></span>
-<span id="cb522-2"><a href="appendix.html#cb522-2" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>) <span class="sc">==</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb536"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb536-1"><a href="appendix.html#cb536-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Recycling:</span></span>
+<span id="cb536-2"><a href="appendix.html#cb536-2" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>) <span class="sc">==</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## [1] TRUE TRUE TRUE TRUE</code></pre>
-<div class="sourceCode" id="cb524"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb524-1"><a href="appendix.html#cb524-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Implicit coercion:</span></span>
-<span id="cb524-2"><a href="appendix.html#cb524-2" aria-hidden="true" tabindex="-1"></a><span class="cn">TRUE</span> <span class="sc">==</span> <span class="dv">1</span></span></code></pre></div>
+<div class="sourceCode" id="cb538"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb538-1"><a href="appendix.html#cb538-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Implicit coercion:</span></span>
+<span id="cb538-2"><a href="appendix.html#cb538-2" aria-hidden="true" tabindex="-1"></a><span class="cn">TRUE</span> <span class="sc">==</span> <span class="dv">1</span></span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb526"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb526-1"><a href="appendix.html#cb526-1" aria-hidden="true" tabindex="-1"></a><span class="cn">TRUE</span> <span class="sc">==</span> <span class="st">&quot;TRUE&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb540"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb540-1"><a href="appendix.html#cb540-1" aria-hidden="true" tabindex="-1"></a><span class="cn">TRUE</span> <span class="sc">==</span> <span class="st">&quot;TRUE&quot;</span></span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb528"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb528-1"><a href="appendix.html#cb528-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">==</span> <span class="st">&quot;TRUE&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb542"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb542-1"><a href="appendix.html#cb542-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">==</span> <span class="st">&quot;TRUE&quot;</span></span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
 <p>The length of the result from the equality operator is usually the same as its
 longest argument (with some exceptions).</p>
@@ -354,26 +354,26 @@ longest argument (with some exceptions).</p>
 acceptable difference called a <em>tolerance</em>. Computer representations for
 decimal numbers are inherently imprecise, so it’s necessary to allow for very
 small differences between computed numbers. For example:</p>
-<div class="sourceCode" id="cb530"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb530-1"><a href="appendix.html#cb530-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fl">0.5</span> <span class="sc">-</span> <span class="fl">0.3</span></span>
-<span id="cb530-2"><a href="appendix.html#cb530-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> <span class="fl">0.3</span> <span class="sc">-</span> <span class="fl">0.1</span></span>
-<span id="cb530-3"><a href="appendix.html#cb530-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb530-4"><a href="appendix.html#cb530-4" aria-hidden="true" tabindex="-1"></a><span class="co"># FALSE on most machines:</span></span>
-<span id="cb530-5"><a href="appendix.html#cb530-5" aria-hidden="true" tabindex="-1"></a>x <span class="sc">==</span> y</span></code></pre></div>
+<div class="sourceCode" id="cb544"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb544-1"><a href="appendix.html#cb544-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fl">0.5</span> <span class="sc">-</span> <span class="fl">0.3</span></span>
+<span id="cb544-2"><a href="appendix.html#cb544-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> <span class="fl">0.3</span> <span class="sc">-</span> <span class="fl">0.1</span></span>
+<span id="cb544-3"><a href="appendix.html#cb544-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb544-4"><a href="appendix.html#cb544-4" aria-hidden="true" tabindex="-1"></a><span class="co"># FALSE on most machines:</span></span>
+<span id="cb544-5"><a href="appendix.html#cb544-5" aria-hidden="true" tabindex="-1"></a>x <span class="sc">==</span> y</span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
-<div class="sourceCode" id="cb532"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb532-1"><a href="appendix.html#cb532-1" aria-hidden="true" tabindex="-1"></a><span class="co"># TRUE:</span></span>
-<span id="cb532-2"><a href="appendix.html#cb532-2" aria-hidden="true" tabindex="-1"></a><span class="fu">all.equal</span>(x, y)</span></code></pre></div>
+<div class="sourceCode" id="cb546"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb546-1"><a href="appendix.html#cb546-1" aria-hidden="true" tabindex="-1"></a><span class="co"># TRUE:</span></span>
+<span id="cb546-2"><a href="appendix.html#cb546-2" aria-hidden="true" tabindex="-1"></a><span class="fu">all.equal</span>(x, y)</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <p>The <code>all.equal</code> function does not apply R’s rules for vectorization, recycling,
 or implicit coercion. The function returns <code>TRUE</code> when the arguments are equal,
 and returns a string summarizing the differences when they are not. For
 instance:</p>
-<div class="sourceCode" id="cb534"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb534-1"><a href="appendix.html#cb534-1" aria-hidden="true" tabindex="-1"></a><span class="fu">all.equal</span>(<span class="dv">1</span>, <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb548"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb548-1"><a href="appendix.html#cb548-1" aria-hidden="true" tabindex="-1"></a><span class="fu">all.equal</span>(<span class="dv">1</span>, <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>))</span></code></pre></div>
 <pre><code>## [1] &quot;Numeric: lengths (1, 3) differ&quot;</code></pre>
 <p>The <code>all.equal</code> function is often used together with the <code>isTRUE</code> function,
 which tests whether the result is <code>TRUE</code>:</p>
-<div class="sourceCode" id="cb536"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb536-1"><a href="appendix.html#cb536-1" aria-hidden="true" tabindex="-1"></a><span class="fu">all.equal</span>(<span class="dv">3</span>, <span class="dv">4</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb550"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb550-1"><a href="appendix.html#cb550-1" aria-hidden="true" tabindex="-1"></a><span class="fu">all.equal</span>(<span class="dv">3</span>, <span class="dv">4</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;Mean relative difference: 0.3333333&quot;</code></pre>
-<div class="sourceCode" id="cb538"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb538-1"><a href="appendix.html#cb538-1" aria-hidden="true" tabindex="-1"></a><span class="fu">isTRUE</span>(<span class="fu">all.equal</span>(<span class="dv">3</span>, <span class="dv">4</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb552"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb552-1"><a href="appendix.html#cb552-1" aria-hidden="true" tabindex="-1"></a><span class="fu">isTRUE</span>(<span class="fu">all.equal</span>(<span class="dv">3</span>, <span class="dv">4</span>))</span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
 <p>You should generally use the <code>all.equal</code> function when you want to compare
 decimal numbers.</p>
@@ -382,13 +382,13 @@ decimal numbers.</p>
 <h4><span class="header-section-number">5.1.1.3</span> The <code>identical</code> Function<a href="appendix.html#the-identical-function" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>The <code>identical</code> function checks whether its arguments are completely identical,
 including their metadata (names, dimensions, and so on). For instance:</p>
-<div class="sourceCode" id="cb540"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb540-1"><a href="appendix.html#cb540-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">list</span>(<span class="at">a =</span> <span class="dv">1</span>)</span>
-<span id="cb540-2"><a href="appendix.html#cb540-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> <span class="fu">list</span>(<span class="at">a =</span> <span class="dv">1</span>)</span>
-<span id="cb540-3"><a href="appendix.html#cb540-3" aria-hidden="true" tabindex="-1"></a>z <span class="ot">=</span> <span class="fu">list</span>(<span class="dv">1</span>)</span>
-<span id="cb540-4"><a href="appendix.html#cb540-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb540-5"><a href="appendix.html#cb540-5" aria-hidden="true" tabindex="-1"></a><span class="fu">identical</span>(x, y)</span></code></pre></div>
+<div class="sourceCode" id="cb554"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb554-1"><a href="appendix.html#cb554-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">list</span>(<span class="at">a =</span> <span class="dv">1</span>)</span>
+<span id="cb554-2"><a href="appendix.html#cb554-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> <span class="fu">list</span>(<span class="at">a =</span> <span class="dv">1</span>)</span>
+<span id="cb554-3"><a href="appendix.html#cb554-3" aria-hidden="true" tabindex="-1"></a>z <span class="ot">=</span> <span class="fu">list</span>(<span class="dv">1</span>)</span>
+<span id="cb554-4"><a href="appendix.html#cb554-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb554-5"><a href="appendix.html#cb554-5" aria-hidden="true" tabindex="-1"></a><span class="fu">identical</span>(x, y)</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb542"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb542-1"><a href="appendix.html#cb542-1" aria-hidden="true" tabindex="-1"></a><span class="fu">identical</span>(x, z)</span></code></pre></div>
+<div class="sourceCode" id="cb556"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb556-1"><a href="appendix.html#cb556-1" aria-hidden="true" tabindex="-1"></a><span class="fu">identical</span>(x, z)</span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
 <p>The <code>identical</code> function does not apply R’s rules for vectorization, recycling,
 or implicit coercion. The result is always a single logical value.</p>
@@ -403,8 +403,8 @@ the time the equality operator <code>==</code> is sufficient.</p>
 <em>contained</em> in another vector at any position. For instance, suppose you want
 to check whether <code>1</code> or <code>2</code> appear anywhere in a longer vector <code>x</code>. Here’s how
 to do it:</p>
-<div class="sourceCode" id="cb544"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb544-1"><a href="appendix.html#cb544-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">7</span>, <span class="dv">3</span>, <span class="dv">7</span>)</span>
-<span id="cb544-2"><a href="appendix.html#cb544-2" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>) <span class="sc">%in%</span> x</span></code></pre></div>
+<div class="sourceCode" id="cb558"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb558-1"><a href="appendix.html#cb558-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">7</span>, <span class="dv">3</span>, <span class="dv">7</span>)</span>
+<span id="cb558-2"><a href="appendix.html#cb558-2" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>) <span class="sc">%in%</span> x</span></code></pre></div>
 <pre><code>## [1] FALSE  TRUE</code></pre>
 <p>R returns <code>FALSE</code> for the <code>1</code> because there’s no <code>1</code> in <code>x</code>, and returns <code>TRUE</code>
 for the <code>2</code> because there is a <code>2</code> in <code>x</code>.</p>
@@ -413,26 +413,26 @@ If you use use the equality operator, the shorter vector is recycled until its
 length matches the longer one, and then compared element-by-element. For the
 example, this means only the elements at odd-numbered positions are compared to
 <code>1</code>, and only the elements at even-numbered positions are compared to <code>2</code>:</p>
-<div class="sourceCode" id="cb546"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb546-1"><a href="appendix.html#cb546-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>) <span class="sc">==</span> x</span></code></pre></div>
+<div class="sourceCode" id="cb560"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb560-1"><a href="appendix.html#cb560-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>) <span class="sc">==</span> x</span></code></pre></div>
 <pre><code>## [1] FALSE FALSE FALSE FALSE FALSE FALSE</code></pre>
 </div>
 <div id="summarizing-comparisons" class="section level3 hasAnchor" number="5.1.3">
 <h3><span class="header-section-number">5.1.3</span> Summarizing Comparisons<a href="appendix.html#summarizing-comparisons" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The comparison operators are vectorized, so they compare their arguments
 element-by-element:</p>
-<div class="sourceCode" id="cb548"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb548-1"><a href="appendix.html#cb548-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>) <span class="sc">&lt;</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="sc">-</span><span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb562"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb562-1"><a href="appendix.html#cb562-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>) <span class="sc">&lt;</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="sc">-</span><span class="dv">3</span>)</span></code></pre></div>
 <pre><code>## [1] FALSE  TRUE FALSE</code></pre>
-<div class="sourceCode" id="cb550"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb550-1"><a href="appendix.html#cb550-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="st">&quot;he&quot;</span>, <span class="st">&quot;saw&quot;</span>, <span class="st">&quot;her&quot;</span>) <span class="sc">==</span> <span class="fu">c</span>(<span class="st">&quot;she&quot;</span>, <span class="st">&quot;saw&quot;</span>, <span class="st">&quot;him&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb564"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb564-1"><a href="appendix.html#cb564-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="st">&quot;he&quot;</span>, <span class="st">&quot;saw&quot;</span>, <span class="st">&quot;her&quot;</span>) <span class="sc">==</span> <span class="fu">c</span>(<span class="st">&quot;she&quot;</span>, <span class="st">&quot;saw&quot;</span>, <span class="st">&quot;him&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] FALSE  TRUE FALSE</code></pre>
 <p>What if you want to summarize whether all the elements in a vector are equal
 (or unequal)? You can use the <code>all</code> function on any logical vector to get a
 summary. The <code>all</code> function takes a vector of logical values and returns <code>TRUE</code>
 if all of them are <code>TRUE</code>, and returns <code>FALSE</code> otherwise:</p>
-<div class="sourceCode" id="cb552"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb552-1"><a href="appendix.html#cb552-1" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>) <span class="sc">&lt;</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="sc">-</span><span class="dv">3</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb566"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb566-1"><a href="appendix.html#cb566-1" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>) <span class="sc">&lt;</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="sc">-</span><span class="dv">3</span>))</span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
 <p>The related <code>any</code> function returns <code>TRUE</code> if any one element is <code>TRUE</code>, and
 returns <code>FALSE</code> otherwise:</p>
-<div class="sourceCode" id="cb554"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb554-1"><a href="appendix.html#cb554-1" aria-hidden="true" tabindex="-1"></a><span class="fu">any</span>(<span class="fu">c</span>(<span class="st">&quot;hi&quot;</span>, <span class="st">&quot;hello&quot;</span>) <span class="sc">==</span> <span class="fu">c</span>(<span class="st">&quot;hi&quot;</span>, <span class="st">&quot;bye&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb568"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb568-1"><a href="appendix.html#cb568-1" aria-hidden="true" tabindex="-1"></a><span class="fu">any</span>(<span class="fu">c</span>(<span class="st">&quot;hi&quot;</span>, <span class="st">&quot;hello&quot;</span>) <span class="sc">==</span> <span class="fu">c</span>(<span class="st">&quot;hi&quot;</span>, <span class="st">&quot;bye&quot;</span>))</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 </div>
 <div id="other-pitfalls" class="section level3 hasAnchor" number="5.1.4">
@@ -452,34 +452,34 @@ appending <code>== FALSE</code>.</p>
 <h3><span class="header-section-number">5.2.1</span> Local Variables<a href="appendix.html#local-variables" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>A variable’s <em>scope</em> is the section of code where it exists and is accessible.
 The <code>exists</code> function checks whether a variable is in scope:</p>
-<div class="sourceCode" id="cb556"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb556-1"><a href="appendix.html#cb556-1" aria-hidden="true" tabindex="-1"></a><span class="fu">exists</span>(<span class="st">&quot;zz&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb570"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb570-1"><a href="appendix.html#cb570-1" aria-hidden="true" tabindex="-1"></a><span class="fu">exists</span>(<span class="st">&quot;zz&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
-<div class="sourceCode" id="cb558"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb558-1"><a href="appendix.html#cb558-1" aria-hidden="true" tabindex="-1"></a>zz <span class="ot">=</span> <span class="dv">3</span></span>
-<span id="cb558-2"><a href="appendix.html#cb558-2" aria-hidden="true" tabindex="-1"></a><span class="fu">exists</span>(<span class="st">&quot;zz&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb572"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb572-1"><a href="appendix.html#cb572-1" aria-hidden="true" tabindex="-1"></a>zz <span class="ot">=</span> <span class="dv">3</span></span>
+<span id="cb572-2"><a href="appendix.html#cb572-2" aria-hidden="true" tabindex="-1"></a><span class="fu">exists</span>(<span class="st">&quot;zz&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <p>When you create a function, you create a new scope. Variables defined inside of
 a function are <em>local</em> to the function. Local variables cannot be accessed from
 outside:</p>
-<div class="sourceCode" id="cb560"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb560-1"><a href="appendix.html#cb560-1" aria-hidden="true" tabindex="-1"></a>rescale <span class="ot">=</span> <span class="cf">function</span>(x, center, scale) {</span>
-<span id="cb560-2"><a href="appendix.html#cb560-2" aria-hidden="true" tabindex="-1"></a>  centered <span class="ot">=</span> x <span class="sc">-</span> center</span>
-<span id="cb560-3"><a href="appendix.html#cb560-3" aria-hidden="true" tabindex="-1"></a>  centered <span class="sc">/</span> scale</span>
-<span id="cb560-4"><a href="appendix.html#cb560-4" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb560-5"><a href="appendix.html#cb560-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb560-6"><a href="appendix.html#cb560-6" aria-hidden="true" tabindex="-1"></a>centered</span></code></pre></div>
+<div class="sourceCode" id="cb574"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb574-1"><a href="appendix.html#cb574-1" aria-hidden="true" tabindex="-1"></a>rescale <span class="ot">=</span> <span class="cf">function</span>(x, center, scale) {</span>
+<span id="cb574-2"><a href="appendix.html#cb574-2" aria-hidden="true" tabindex="-1"></a>  centered <span class="ot">=</span> x <span class="sc">-</span> center</span>
+<span id="cb574-3"><a href="appendix.html#cb574-3" aria-hidden="true" tabindex="-1"></a>  centered <span class="sc">/</span> scale</span>
+<span id="cb574-4"><a href="appendix.html#cb574-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb574-5"><a href="appendix.html#cb574-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb574-6"><a href="appendix.html#cb574-6" aria-hidden="true" tabindex="-1"></a>centered</span></code></pre></div>
 <pre><code>## Error in eval(expr, envir, enclos): object &#39;centered&#39; not found</code></pre>
-<div class="sourceCode" id="cb562"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb562-1"><a href="appendix.html#cb562-1" aria-hidden="true" tabindex="-1"></a><span class="fu">exists</span>(<span class="st">&quot;centered&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb576"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb576-1"><a href="appendix.html#cb576-1" aria-hidden="true" tabindex="-1"></a><span class="fu">exists</span>(<span class="st">&quot;centered&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
 <p>Local variables are reset each time the function is called:</p>
-<div class="sourceCode" id="cb564"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb564-1"><a href="appendix.html#cb564-1" aria-hidden="true" tabindex="-1"></a>f <span class="ot">=</span> <span class="cf">function</span>() {</span>
-<span id="cb564-2"><a href="appendix.html#cb564-2" aria-hidden="true" tabindex="-1"></a>  is_z_in_scope <span class="ot">=</span> <span class="fu">exists</span>(<span class="st">&quot;z&quot;</span>)</span>
-<span id="cb564-3"><a href="appendix.html#cb564-3" aria-hidden="true" tabindex="-1"></a>  z <span class="ot">=</span> <span class="dv">42</span></span>
-<span id="cb564-4"><a href="appendix.html#cb564-4" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb564-5"><a href="appendix.html#cb564-5" aria-hidden="true" tabindex="-1"></a>  is_z_in_scope</span>
-<span id="cb564-6"><a href="appendix.html#cb564-6" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb564-7"><a href="appendix.html#cb564-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb564-8"><a href="appendix.html#cb564-8" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb578"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb578-1"><a href="appendix.html#cb578-1" aria-hidden="true" tabindex="-1"></a>f <span class="ot">=</span> <span class="cf">function</span>() {</span>
+<span id="cb578-2"><a href="appendix.html#cb578-2" aria-hidden="true" tabindex="-1"></a>  is_z_in_scope <span class="ot">=</span> <span class="fu">exists</span>(<span class="st">&quot;z&quot;</span>)</span>
+<span id="cb578-3"><a href="appendix.html#cb578-3" aria-hidden="true" tabindex="-1"></a>  z <span class="ot">=</span> <span class="dv">42</span></span>
+<span id="cb578-4"><a href="appendix.html#cb578-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb578-5"><a href="appendix.html#cb578-5" aria-hidden="true" tabindex="-1"></a>  is_z_in_scope</span>
+<span id="cb578-6"><a href="appendix.html#cb578-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb578-7"><a href="appendix.html#cb578-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb578-8"><a href="appendix.html#cb578-8" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>()</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb566"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb566-1"><a href="appendix.html#cb566-1" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb580"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb580-1"><a href="appendix.html#cb580-1" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>()</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 </div>
 <div id="lexical-scoping" class="section level3 hasAnchor" number="5.2.2">
@@ -491,50 +491,50 @@ called <em>lexical scoping</em>.</p>
 then define a function <code>get_cats</code> in the same place (the top level, not inside
 any functions). As a result, the <code>cats</code> variable is in scope inside of the
 <code>get_cats</code> function:</p>
-<div class="sourceCode" id="cb568"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb568-1"><a href="appendix.html#cb568-1" aria-hidden="true" tabindex="-1"></a>cats <span class="ot">=</span> <span class="dv">3</span></span>
-<span id="cb568-2"><a href="appendix.html#cb568-2" aria-hidden="true" tabindex="-1"></a>get_cats <span class="ot">=</span> <span class="cf">function</span>() cats</span>
-<span id="cb568-3"><a href="appendix.html#cb568-3" aria-hidden="true" tabindex="-1"></a><span class="fu">get_cats</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb582"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb582-1"><a href="appendix.html#cb582-1" aria-hidden="true" tabindex="-1"></a>cats <span class="ot">=</span> <span class="dv">3</span></span>
+<span id="cb582-2"><a href="appendix.html#cb582-2" aria-hidden="true" tabindex="-1"></a>get_cats <span class="ot">=</span> <span class="cf">function</span>() cats</span>
+<span id="cb582-3"><a href="appendix.html#cb582-3" aria-hidden="true" tabindex="-1"></a><span class="fu">get_cats</span>()</span></code></pre></div>
 <pre><code>## [1] 3</code></pre>
 <p>Now let’s define a variable <code>dogs</code> inside of a function <code>create_dogs</code>. We’ll
 also define a function <code>get_dogs</code> at the top level. The variable <code>dogs</code> is not
 in scope at the top level, so it’s not in scope inside of the <code>get_dogs</code>
 function:</p>
-<div class="sourceCode" id="cb570"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb570-1"><a href="appendix.html#cb570-1" aria-hidden="true" tabindex="-1"></a>create_dogs <span class="ot">=</span> <span class="cf">function</span>() {</span>
-<span id="cb570-2"><a href="appendix.html#cb570-2" aria-hidden="true" tabindex="-1"></a>  dogs <span class="ot">=</span> <span class="st">&quot;hello&quot;</span></span>
-<span id="cb570-3"><a href="appendix.html#cb570-3" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb570-4"><a href="appendix.html#cb570-4" aria-hidden="true" tabindex="-1"></a>get_dogs <span class="ot">=</span> <span class="cf">function</span>() dogs</span>
-<span id="cb570-5"><a href="appendix.html#cb570-5" aria-hidden="true" tabindex="-1"></a><span class="fu">create_dogs</span>()</span>
-<span id="cb570-6"><a href="appendix.html#cb570-6" aria-hidden="true" tabindex="-1"></a><span class="fu">get_dogs</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb584"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb584-1"><a href="appendix.html#cb584-1" aria-hidden="true" tabindex="-1"></a>create_dogs <span class="ot">=</span> <span class="cf">function</span>() {</span>
+<span id="cb584-2"><a href="appendix.html#cb584-2" aria-hidden="true" tabindex="-1"></a>  dogs <span class="ot">=</span> <span class="st">&quot;hello&quot;</span></span>
+<span id="cb584-3"><a href="appendix.html#cb584-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb584-4"><a href="appendix.html#cb584-4" aria-hidden="true" tabindex="-1"></a>get_dogs <span class="ot">=</span> <span class="cf">function</span>() dogs</span>
+<span id="cb584-5"><a href="appendix.html#cb584-5" aria-hidden="true" tabindex="-1"></a><span class="fu">create_dogs</span>()</span>
+<span id="cb584-6"><a href="appendix.html#cb584-6" aria-hidden="true" tabindex="-1"></a><span class="fu">get_dogs</span>()</span></code></pre></div>
 <pre><code>## Error in get_dogs(): object &#39;dogs&#39; not found</code></pre>
 <p>Variables defined directly in the R console are <em>global</em> and available to any
 function.</p>
 <p>Local variables <em>mask</em> (hide) non-local variables with the same name:</p>
-<div class="sourceCode" id="cb572"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb572-1"><a href="appendix.html#cb572-1" aria-hidden="true" tabindex="-1"></a>get_parrot <span class="ot">=</span> <span class="cf">function</span>() {</span>
-<span id="cb572-2"><a href="appendix.html#cb572-2" aria-hidden="true" tabindex="-1"></a>  parrot <span class="ot">=</span> <span class="dv">3</span></span>
-<span id="cb572-3"><a href="appendix.html#cb572-3" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb572-4"><a href="appendix.html#cb572-4" aria-hidden="true" tabindex="-1"></a>  parrot</span>
-<span id="cb572-5"><a href="appendix.html#cb572-5" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb572-6"><a href="appendix.html#cb572-6" aria-hidden="true" tabindex="-1"></a>parrot <span class="ot">=</span> <span class="dv">42</span></span>
-<span id="cb572-7"><a href="appendix.html#cb572-7" aria-hidden="true" tabindex="-1"></a><span class="fu">get_parrot</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb586"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb586-1"><a href="appendix.html#cb586-1" aria-hidden="true" tabindex="-1"></a>get_parrot <span class="ot">=</span> <span class="cf">function</span>() {</span>
+<span id="cb586-2"><a href="appendix.html#cb586-2" aria-hidden="true" tabindex="-1"></a>  parrot <span class="ot">=</span> <span class="dv">3</span></span>
+<span id="cb586-3"><a href="appendix.html#cb586-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb586-4"><a href="appendix.html#cb586-4" aria-hidden="true" tabindex="-1"></a>  parrot</span>
+<span id="cb586-5"><a href="appendix.html#cb586-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb586-6"><a href="appendix.html#cb586-6" aria-hidden="true" tabindex="-1"></a>parrot <span class="ot">=</span> <span class="dv">42</span></span>
+<span id="cb586-7"><a href="appendix.html#cb586-7" aria-hidden="true" tabindex="-1"></a><span class="fu">get_parrot</span>()</span></code></pre></div>
 <pre><code>## [1] 3</code></pre>
 <p>There’s one exception to this rule. We often use variables that refer to
 functions in calls:</p>
-<div class="sourceCode" id="cb574"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb574-1"><a href="appendix.html#cb574-1" aria-hidden="true" tabindex="-1"></a><span class="co">#mean()</span></span></code></pre></div>
+<div class="sourceCode" id="cb588"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb588-1"><a href="appendix.html#cb588-1" aria-hidden="true" tabindex="-1"></a><span class="co">#mean()</span></span></code></pre></div>
 <p>In this case, the variable must refer to a function, so R ignores local
 variables that aren’t functions. For example:</p>
-<div class="sourceCode" id="cb575"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb575-1"><a href="appendix.html#cb575-1" aria-hidden="true" tabindex="-1"></a>my_mean <span class="ot">=</span> <span class="cf">function</span>() {</span>
-<span id="cb575-2"><a href="appendix.html#cb575-2" aria-hidden="true" tabindex="-1"></a>  mean <span class="ot">=</span> <span class="dv">0</span></span>
-<span id="cb575-3"><a href="appendix.html#cb575-3" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb575-4"><a href="appendix.html#cb575-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>))</span>
-<span id="cb575-5"><a href="appendix.html#cb575-5" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb575-6"><a href="appendix.html#cb575-6" aria-hidden="true" tabindex="-1"></a><span class="fu">my_mean</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb589"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb589-1"><a href="appendix.html#cb589-1" aria-hidden="true" tabindex="-1"></a>my_mean <span class="ot">=</span> <span class="cf">function</span>() {</span>
+<span id="cb589-2"><a href="appendix.html#cb589-2" aria-hidden="true" tabindex="-1"></a>  mean <span class="ot">=</span> <span class="dv">0</span></span>
+<span id="cb589-3"><a href="appendix.html#cb589-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb589-4"><a href="appendix.html#cb589-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>))</span>
+<span id="cb589-5"><a href="appendix.html#cb589-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb589-6"><a href="appendix.html#cb589-6" aria-hidden="true" tabindex="-1"></a><span class="fu">my_mean</span>()</span></code></pre></div>
 <pre><code>## [1] 2</code></pre>
-<div class="sourceCode" id="cb577"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb577-1"><a href="appendix.html#cb577-1" aria-hidden="true" tabindex="-1"></a>my_get_cats <span class="ot">=</span> <span class="cf">function</span>() {</span>
-<span id="cb577-2"><a href="appendix.html#cb577-2" aria-hidden="true" tabindex="-1"></a>  get_cats <span class="ot">=</span> <span class="dv">10</span></span>
-<span id="cb577-3"><a href="appendix.html#cb577-3" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb577-4"><a href="appendix.html#cb577-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">get_cats</span>()</span>
-<span id="cb577-5"><a href="appendix.html#cb577-5" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb577-6"><a href="appendix.html#cb577-6" aria-hidden="true" tabindex="-1"></a><span class="fu">my_get_cats</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb591"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb591-1"><a href="appendix.html#cb591-1" aria-hidden="true" tabindex="-1"></a>my_get_cats <span class="ot">=</span> <span class="cf">function</span>() {</span>
+<span id="cb591-2"><a href="appendix.html#cb591-2" aria-hidden="true" tabindex="-1"></a>  get_cats <span class="ot">=</span> <span class="dv">10</span></span>
+<span id="cb591-3"><a href="appendix.html#cb591-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb591-4"><a href="appendix.html#cb591-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">get_cats</span>()</span>
+<span id="cb591-5"><a href="appendix.html#cb591-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb591-6"><a href="appendix.html#cb591-6" aria-hidden="true" tabindex="-1"></a><span class="fu">my_get_cats</span>()</span></code></pre></div>
 <pre><code>## [1] 3</code></pre>
 </div>
 <div id="dynamic-lookup" class="section level3 hasAnchor" number="5.2.3">
@@ -543,11 +543,11 @@ variables that aren’t functions. For example:</p>
 This is called <em>dynamic lookup</em>.</p>
 <p>For example, the result from <code>get_cats</code>, which accesses the global variable
 <code>cats</code>, changes if we change the value of <code>cats</code>:</p>
-<div class="sourceCode" id="cb579"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb579-1"><a href="appendix.html#cb579-1" aria-hidden="true" tabindex="-1"></a>cats <span class="ot">=</span> <span class="dv">10</span></span>
-<span id="cb579-2"><a href="appendix.html#cb579-2" aria-hidden="true" tabindex="-1"></a><span class="fu">get_cats</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb593"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb593-1"><a href="appendix.html#cb593-1" aria-hidden="true" tabindex="-1"></a>cats <span class="ot">=</span> <span class="dv">10</span></span>
+<span id="cb593-2"><a href="appendix.html#cb593-2" aria-hidden="true" tabindex="-1"></a><span class="fu">get_cats</span>()</span></code></pre></div>
 <pre><code>## [1] 10</code></pre>
-<div class="sourceCode" id="cb581"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb581-1"><a href="appendix.html#cb581-1" aria-hidden="true" tabindex="-1"></a>cats <span class="ot">=</span> <span class="dv">20</span></span>
-<span id="cb581-2"><a href="appendix.html#cb581-2" aria-hidden="true" tabindex="-1"></a><span class="fu">get_cats</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb595"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb595-1"><a href="appendix.html#cb595-1" aria-hidden="true" tabindex="-1"></a>cats <span class="ot">=</span> <span class="dv">20</span></span>
+<span id="cb595-2"><a href="appendix.html#cb595-2" aria-hidden="true" tabindex="-1"></a><span class="fu">get_cats</span>()</span></code></pre></div>
 <pre><code>## [1] 20</code></pre>
 </div>
 <div id="summary" class="section level3 hasAnchor" number="5.2.4">
@@ -585,8 +585,8 @@ to learn and remember.</p>
 <p>The first time you use stringr, you’ll have to install it with
 <code>install.packages</code> (the same as any other package). Then you can load the
 package with the <code>library</code> function:</p>
-<div class="sourceCode" id="cb583"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb583-1"><a href="appendix.html#cb583-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;stringr&quot;)</span></span>
-<span id="cb583-2"><a href="appendix.html#cb583-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;stringr&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb597"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb597-1"><a href="appendix.html#cb597-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;stringr&quot;)</span></span>
+<span id="cb597-2"><a href="appendix.html#cb597-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;stringr&quot;</span>)</span></code></pre></div>
 <p>The typical syntax of a stringr function is:</p>
 <pre><code>str_NAME(string, pattern, ...)</code></pre>
 <p>Where:</p>
@@ -598,22 +598,22 @@ package with the <code>library</code> function:</p>
 </ul>
 <p>The <code>str_detect</code> function detects whether the pattern appears within the
 string. Here’s an example:</p>
-<div class="sourceCode" id="cb585"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb585-1"><a href="appendix.html#cb585-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_detect</span>(<span class="st">&quot;hello&quot;</span>, <span class="st">&quot;el&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb599"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb599-1"><a href="appendix.html#cb599-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_detect</span>(<span class="st">&quot;hello&quot;</span>, <span class="st">&quot;el&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb587"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb587-1"><a href="appendix.html#cb587-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_detect</span>(<span class="st">&quot;hello&quot;</span>, <span class="st">&quot;ol&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb601"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb601-1"><a href="appendix.html#cb601-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_detect</span>(<span class="st">&quot;hello&quot;</span>, <span class="st">&quot;ol&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
 <p>Most of the stringr functions are vectorized in the <code>string</code> parameter. For
 instance:</p>
-<div class="sourceCode" id="cb589"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb589-1"><a href="appendix.html#cb589-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_detect</span>(<span class="fu">c</span>(<span class="st">&quot;hello&quot;</span>, <span class="st">&quot;goodbye&quot;</span>, <span class="st">&quot;lo&quot;</span>), <span class="st">&quot;lo&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb603"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb603-1"><a href="appendix.html#cb603-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_detect</span>(<span class="fu">c</span>(<span class="st">&quot;hello&quot;</span>, <span class="st">&quot;goodbye&quot;</span>, <span class="st">&quot;lo&quot;</span>), <span class="st">&quot;lo&quot;</span>)</span></code></pre></div>
 <pre><code>## [1]  TRUE FALSE  TRUE</code></pre>
 <p>Most of the stringr functions also have support for <a href="https://en.wikipedia.org/wiki/Regular_expression"><em>regular
 expressions</em></a>, a powerful language for describing patterns. Several
 punctuation characters, such as <code>.</code> and <code>?</code> have special meanings in the
 regular expressions language. You can disable these special meanings by putting
 the pattern in a call to <code>fixed</code>:</p>
-<div class="sourceCode" id="cb591"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb591-1"><a href="appendix.html#cb591-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_detect</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;.&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb605"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb605-1"><a href="appendix.html#cb605-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_detect</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;.&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb593"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb593-1"><a href="appendix.html#cb593-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_detect</span>(<span class="st">&quot;a&quot;</span>, <span class="fu">fixed</span>(<span class="st">&quot;.&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb607"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb607-1"><a href="appendix.html#cb607-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_detect</span>(<span class="st">&quot;a&quot;</span>, <span class="fu">fixed</span>(<span class="st">&quot;.&quot;</span>))</span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
 <p>You can learn more about regular expressions <a href="https://r4ds.had.co.nz/strings.html#matching-patterns-with-regular-expressions">here</a>.</p>
 <p>There are a lot of stringr functions. We’ll focus on two that are especially
@@ -630,16 +630,16 @@ documentation.</p>
 pattern. The characters that match are thrown away.</p>
 <p>For example, suppose we want to split a sentence into words. Since there’s a
 space between each word, we can use a space as the pattern:</p>
-<div class="sourceCode" id="cb595"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb595-1"><a href="appendix.html#cb595-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="st">&quot;The students in this workshop are great!&quot;</span></span>
-<span id="cb595-2"><a href="appendix.html#cb595-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb595-3"><a href="appendix.html#cb595-3" aria-hidden="true" tabindex="-1"></a>result <span class="ot">=</span> <span class="fu">str_split</span>(x, <span class="st">&quot; &quot;</span>)</span>
-<span id="cb595-4"><a href="appendix.html#cb595-4" aria-hidden="true" tabindex="-1"></a>result</span></code></pre></div>
+<div class="sourceCode" id="cb609"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb609-1"><a href="appendix.html#cb609-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="st">&quot;The students in this workshop are great!&quot;</span></span>
+<span id="cb609-2"><a href="appendix.html#cb609-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb609-3"><a href="appendix.html#cb609-3" aria-hidden="true" tabindex="-1"></a>result <span class="ot">=</span> <span class="fu">str_split</span>(x, <span class="st">&quot; &quot;</span>)</span>
+<span id="cb609-4"><a href="appendix.html#cb609-4" aria-hidden="true" tabindex="-1"></a>result</span></code></pre></div>
 <pre><code>## [[1]]
 ## [1] &quot;The&quot;      &quot;students&quot; &quot;in&quot;       &quot;this&quot;     &quot;workshop&quot; &quot;are&quot;      &quot;great!&quot;</code></pre>
 <p>The <code>str_split</code> function always returns a list with one element for each input
 string. Here the list only has one element because <code>x</code> only has one element. We
 can get the first element with:</p>
-<div class="sourceCode" id="cb597"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb597-1"><a href="appendix.html#cb597-1" aria-hidden="true" tabindex="-1"></a>result[[<span class="dv">1</span>]]</span></code></pre></div>
+<div class="sourceCode" id="cb611"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb611-1"><a href="appendix.html#cb611-1" aria-hidden="true" tabindex="-1"></a>result[[<span class="dv">1</span>]]</span></code></pre></div>
 <pre><code>## [1] &quot;The&quot;      &quot;students&quot; &quot;in&quot;       &quot;this&quot;     &quot;workshop&quot; &quot;are&quot;      &quot;great!&quot;</code></pre>
 <p>We have to use the extraction operator <code>[[</code> here because <code>x</code> is a list (for a
 vector, we could use the indexing operator <code>[</code> instead). Notice that in the
@@ -647,12 +647,12 @@ printout for <code>result</code>, R gives us a hint that we should use <code>[[<
 <code>[[1]]</code>.</p>
 <p>To see why the function returns a list, consider what happens if we try to
 split two different sentences at once:</p>
-<div class="sourceCode" id="cb599"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb599-1"><a href="appendix.html#cb599-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(x, <span class="st">&quot;Are you listening?&quot;</span>)</span>
-<span id="cb599-2"><a href="appendix.html#cb599-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb599-3"><a href="appendix.html#cb599-3" aria-hidden="true" tabindex="-1"></a>result <span class="ot">=</span> <span class="fu">str_split</span>(x, <span class="st">&quot; &quot;</span>)</span>
-<span id="cb599-4"><a href="appendix.html#cb599-4" aria-hidden="true" tabindex="-1"></a>result[[<span class="dv">1</span>]]</span></code></pre></div>
+<div class="sourceCode" id="cb613"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb613-1"><a href="appendix.html#cb613-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(x, <span class="st">&quot;Are you listening?&quot;</span>)</span>
+<span id="cb613-2"><a href="appendix.html#cb613-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb613-3"><a href="appendix.html#cb613-3" aria-hidden="true" tabindex="-1"></a>result <span class="ot">=</span> <span class="fu">str_split</span>(x, <span class="st">&quot; &quot;</span>)</span>
+<span id="cb613-4"><a href="appendix.html#cb613-4" aria-hidden="true" tabindex="-1"></a>result[[<span class="dv">1</span>]]</span></code></pre></div>
 <pre><code>## [1] &quot;The&quot;      &quot;students&quot; &quot;in&quot;       &quot;this&quot;     &quot;workshop&quot; &quot;are&quot;      &quot;great!&quot;</code></pre>
-<div class="sourceCode" id="cb601"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb601-1"><a href="appendix.html#cb601-1" aria-hidden="true" tabindex="-1"></a>result[[<span class="dv">2</span>]]</span></code></pre></div>
+<div class="sourceCode" id="cb615"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb615-1"><a href="appendix.html#cb615-1" aria-hidden="true" tabindex="-1"></a>result[[<span class="dv">2</span>]]</span></code></pre></div>
 <pre><code>## [1] &quot;Are&quot;        &quot;you&quot;        &quot;listening?&quot;</code></pre>
 <p>Each sentence has a different number of words, so the vectors in the result
 have different lengths. So a list is the only way to store both.</p>
@@ -660,7 +660,7 @@ have different lengths. So a list is the only way to store both.</p>
 third argument for the maximum number of splits to make. Because the number of
 splits is fixed, the function can return the result in a matrix instead of a
 list. For example:</p>
-<div class="sourceCode" id="cb603"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb603-1"><a href="appendix.html#cb603-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_split_fixed</span>(x, <span class="st">&quot; &quot;</span>, <span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb617"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb617-1"><a href="appendix.html#cb617-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_split_fixed</span>(x, <span class="st">&quot; &quot;</span>, <span class="dv">3</span>)</span></code></pre></div>
 <pre><code>##      [,1]  [,2]       [,3]                         
 ## [1,] &quot;The&quot; &quot;students&quot; &quot;in this workshop are great!&quot;
 ## [2,] &quot;Are&quot; &quot;you&quot;      &quot;listening?&quot;</code></pre>
@@ -668,10 +668,10 @@ list. For example:</p>
 because the <code>n</code>th piece of each input string is just the <code>n</code>th column of the
 result.</p>
 <p>For example, suppose we want to get the area code from some phone numbers:</p>
-<div class="sourceCode" id="cb605"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb605-1"><a href="appendix.html#cb605-1" aria-hidden="true" tabindex="-1"></a>phones <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;717-555-3421&quot;</span>, <span class="st">&quot;629-555-8902&quot;</span>, <span class="st">&quot;903-555-6781&quot;</span>)</span>
-<span id="cb605-2"><a href="appendix.html#cb605-2" aria-hidden="true" tabindex="-1"></a>result <span class="ot">=</span> <span class="fu">str_split_fixed</span>(phones, <span class="st">&quot;-&quot;</span>, <span class="dv">3</span>)</span>
-<span id="cb605-3"><a href="appendix.html#cb605-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb605-4"><a href="appendix.html#cb605-4" aria-hidden="true" tabindex="-1"></a>result[, <span class="dv">1</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb619"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb619-1"><a href="appendix.html#cb619-1" aria-hidden="true" tabindex="-1"></a>phones <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;717-555-3421&quot;</span>, <span class="st">&quot;629-555-8902&quot;</span>, <span class="st">&quot;903-555-6781&quot;</span>)</span>
+<span id="cb619-2"><a href="appendix.html#cb619-2" aria-hidden="true" tabindex="-1"></a>result <span class="ot">=</span> <span class="fu">str_split_fixed</span>(phones, <span class="st">&quot;-&quot;</span>, <span class="dv">3</span>)</span>
+<span id="cb619-3"><a href="appendix.html#cb619-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb619-4"><a href="appendix.html#cb619-4" aria-hidden="true" tabindex="-1"></a>result[, <span class="dv">1</span>]</span></code></pre></div>
 <pre><code>## [1] &quot;717&quot; &quot;629&quot; &quot;903&quot;</code></pre>
 </div>
 <div id="replacing-parts-of-strings" class="section level3 hasAnchor" number="5.3.2">
@@ -679,17 +679,17 @@ result.</p>
 <p>The <code>str_replace</code> function replaces the pattern the first time it appears in
 the string. The replacement goes in the third argument.</p>
 <p>For instance, suppose we want to change the word <code>"dog"</code> to <code>"cat"</code>:</p>
-<div class="sourceCode" id="cb607"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb607-1"><a href="appendix.html#cb607-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;dogs are great, dogs are fun&quot;</span>, <span class="st">&quot;dogs are fluffy&quot;</span>)</span>
-<span id="cb607-2"><a href="appendix.html#cb607-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_replace</span>(x, <span class="st">&quot;dog&quot;</span>, <span class="st">&quot;cat&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb621"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb621-1"><a href="appendix.html#cb621-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;dogs are great, dogs are fun&quot;</span>, <span class="st">&quot;dogs are fluffy&quot;</span>)</span>
+<span id="cb621-2"><a href="appendix.html#cb621-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_replace</span>(x, <span class="st">&quot;dog&quot;</span>, <span class="st">&quot;cat&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;cats are great, dogs are fun&quot; &quot;cats are fluffy&quot;</code></pre>
 <p>The <code>str_replace_all</code> function replaces the pattern every time it appears in
 the string:</p>
-<div class="sourceCode" id="cb609"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb609-1"><a href="appendix.html#cb609-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_replace_all</span>(x, <span class="st">&quot;dog&quot;</span>, <span class="st">&quot;cat&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb623"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb623-1"><a href="appendix.html#cb623-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_replace_all</span>(x, <span class="st">&quot;dog&quot;</span>, <span class="st">&quot;cat&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;cats are great, cats are fun&quot; &quot;cats are fluffy&quot;</code></pre>
 <p>We can also use the <code>str_replace</code> and <code>str_replace_all</code> functions to delete
 part of a string by setting the replacement to the empty string <code>""</code>.</p>
 <p>For example, suppose we want to delete the comma:</p>
-<div class="sourceCode" id="cb611"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb611-1"><a href="appendix.html#cb611-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_replace</span>(x, <span class="st">&quot;,&quot;</span>, <span class="st">&quot;&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb625"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb625-1"><a href="appendix.html#cb625-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_replace</span>(x, <span class="st">&quot;,&quot;</span>, <span class="st">&quot;&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;dogs are great dogs are fun&quot; &quot;dogs are fluffy&quot;</code></pre>
 <p>In general, stringr functions with the <code>_all</code> suffix affect all matches.
 Functions without <code>_all</code> only affect the first match.</p>
@@ -713,8 +713,8 @@ packages for processing dates and times:</p>
 </ul>
 <p>We’ll focus on the lubridate package. As always, you’ll have to install the
 package if you haven’t already, and then load it:</p>
-<div class="sourceCode" id="cb613"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb613-1"><a href="appendix.html#cb613-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;lubridate&quot;)</span></span>
-<span id="cb613-2"><a href="appendix.html#cb613-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;lubridate&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb627"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb627-1"><a href="appendix.html#cb627-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;lubridate&quot;)</span></span>
+<span id="cb627-2"><a href="appendix.html#cb627-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;lubridate&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ## Attaching package: &#39;lubridate&#39;</code></pre>
 <pre><code>## The following objects are masked from &#39;package:base&#39;:
@@ -722,8 +722,8 @@ package if you haven’t already, and then load it:</p>
 ##     date, intersect, setdiff, union</code></pre>
 <p>The most common task is to convert a string into a date or time class. For
 instance, when you load a data set, you might have dates that look like this:</p>
-<div class="sourceCode" id="cb616"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb616-1"><a href="appendix.html#cb616-1" aria-hidden="true" tabindex="-1"></a>dates <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;Jan 10, 2021&quot;</span>, <span class="st">&quot;Sep 3, 2018&quot;</span>, <span class="st">&quot;Feb 28, 1982&quot;</span>)</span>
-<span id="cb616-2"><a href="appendix.html#cb616-2" aria-hidden="true" tabindex="-1"></a>dates</span></code></pre></div>
+<div class="sourceCode" id="cb630"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb630-1"><a href="appendix.html#cb630-1" aria-hidden="true" tabindex="-1"></a>dates <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;Jan 10, 2021&quot;</span>, <span class="st">&quot;Sep 3, 2018&quot;</span>, <span class="st">&quot;Feb 28, 1982&quot;</span>)</span>
+<span id="cb630-2"><a href="appendix.html#cb630-2" aria-hidden="true" tabindex="-1"></a>dates</span></code></pre></div>
 <pre><code>## [1] &quot;Jan 10, 2021&quot; &quot;Sep 3, 2018&quot;  &quot;Feb 28, 1982&quot;</code></pre>
 <p>These are strings, so it’s relatively difficult to sort the dates, do
 arithmetic on them, or extract just one part (such as the year). There are
@@ -731,10 +731,10 @@ several lubridate functions to automatically convert strings into dates. They
 are named with one letter for each part of the date. For instance, the dates in
 the example have the month (m), then the day (d), and then the year (y), so we
 can use the <code>mdy</code> function:</p>
-<div class="sourceCode" id="cb618"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb618-1"><a href="appendix.html#cb618-1" aria-hidden="true" tabindex="-1"></a>result <span class="ot">=</span> <span class="fu">mdy</span>(dates)</span>
-<span id="cb618-2"><a href="appendix.html#cb618-2" aria-hidden="true" tabindex="-1"></a>result</span></code></pre></div>
+<div class="sourceCode" id="cb632"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb632-1"><a href="appendix.html#cb632-1" aria-hidden="true" tabindex="-1"></a>result <span class="ot">=</span> <span class="fu">mdy</span>(dates)</span>
+<span id="cb632-2"><a href="appendix.html#cb632-2" aria-hidden="true" tabindex="-1"></a>result</span></code></pre></div>
 <pre><code>## [1] &quot;2021-01-10&quot; &quot;2018-09-03&quot; &quot;1982-02-28&quot;</code></pre>
-<div class="sourceCode" id="cb620"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb620-1"><a href="appendix.html#cb620-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(result)</span></code></pre></div>
+<div class="sourceCode" id="cb634"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb634-1"><a href="appendix.html#cb634-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(result)</span></code></pre></div>
 <pre><code>## [1] &quot;Date&quot;</code></pre>
 <p>Notice that the dates now have class <code>Date</code>, one of R’s built-in classes for
 representing dates, and that they print differently. You can find a full list
@@ -799,8 +799,8 @@ a few of the most useful ones:</p>
 format string do not have any special meaning. Write the format string so that
 it matches the format of the dates you want to convert.</p>
 <p>For example, let’s try converting an unusual time format:</p>
-<div class="sourceCode" id="cb622"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb622-1"><a href="appendix.html#cb622-1" aria-hidden="true" tabindex="-1"></a>odd_time <span class="ot">=</span> <span class="st">&quot;6 minutes, 32 seconds after 10 o&#39;clock&quot;</span></span>
-<span id="cb622-2"><a href="appendix.html#cb622-2" aria-hidden="true" tabindex="-1"></a><span class="fu">fast_strptime</span>(odd_time, <span class="st">&quot;%M minutes, %S seconds after %H o&#39;clock&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb636"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb636-1"><a href="appendix.html#cb636-1" aria-hidden="true" tabindex="-1"></a>odd_time <span class="ot">=</span> <span class="st">&quot;6 minutes, 32 seconds after 10 o&#39;clock&quot;</span></span>
+<span id="cb636-2"><a href="appendix.html#cb636-2" aria-hidden="true" tabindex="-1"></a><span class="fu">fast_strptime</span>(odd_time, <span class="st">&quot;%M minutes, %S seconds after %H o&#39;clock&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;0-01-01 10:06:32 UTC&quot;</code></pre>
 <p>R usually represents dates with the class <code>Date</code>, and date-times with the
 classes <code>POSIXct</code> and <code>POSIXlt</code>. The difference between the two date-time
@@ -811,9 +811,9 @@ the example above includes a date. Nonetheless, the hms package provides the
 <p>Once you’ve converted a string to a date, the lubridate package provides a
 variety of functions to get or set the parts individually. Here are a few
 examples:</p>
-<div class="sourceCode" id="cb624"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb624-1"><a href="appendix.html#cb624-1" aria-hidden="true" tabindex="-1"></a><span class="fu">day</span>(result)</span></code></pre></div>
+<div class="sourceCode" id="cb638"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb638-1"><a href="appendix.html#cb638-1" aria-hidden="true" tabindex="-1"></a><span class="fu">day</span>(result)</span></code></pre></div>
 <pre><code>## [1] 10  3 28</code></pre>
-<div class="sourceCode" id="cb626"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb626-1"><a href="appendix.html#cb626-1" aria-hidden="true" tabindex="-1"></a><span class="fu">month</span>(result)</span></code></pre></div>
+<div class="sourceCode" id="cb640"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb640-1"><a href="appendix.html#cb640-1" aria-hidden="true" tabindex="-1"></a><span class="fu">month</span>(result)</span></code></pre></div>
 <pre><code>## [1] 1 9 2</code></pre>
 <p>You can find a complete list in the lubridate documentation.</p>
 

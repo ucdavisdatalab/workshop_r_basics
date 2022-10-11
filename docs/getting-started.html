@@ -24,7 +24,7 @@
 <meta name="author" content="Wesley Brooks" />
 
 
-<meta name="date" content="2022-10-04" />
+<meta name="date" content="2022-10-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -863,7 +863,7 @@ path. For instance:</p>
 ## [21] &quot;LICENSE&quot;                    &quot;makefile&quot;                  
 ## [23] &quot;notes&quot;                      &quot;R&quot;                         
 ## [25] &quot;raw&quot;                        &quot;README.md&quot;                 
-## [27] &quot;render807c23eb2e93.rds&quot;</code></pre>
+## [27] &quot;render36945080dbf0.rds&quot;</code></pre>
 <p>As usual, since you have a different computer, you’re likely to see different
 output if you run this code. If you call <code>list.files</code> with an invalid path or
 an empty directory, the output is <code>character(0)</code>:</p>
@@ -1042,9 +1042,9 @@ to read one on the <code>?readRDS</code> help page.</p>
 <div id="hello-data" class="section level3 hasAnchor" number="1.5.1">
 <h3><span class="header-section-number">1.5.1</span> Hello, Data!<a href="getting-started.html#hello-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Let’s read our first data set! Over the next few sections, you’re going to
-explore a data set about the people who are depicted on paper money from around
-the world. <a href="https://raw.githubusercontent.com/ucdavisdatalab/workshop_r_basics/dev/data/banknotes.csv">Click here to download the data set</a> (you may need to
-choose <code>File -&gt; Save As...</code> in your browser’s menu).</p>
+explore a data set about the people who are depicted on banknotes (paper money)
+from around the world. <a href="https://raw.githubusercontent.com/ucdavisdatalab/workshop_r_basics/dev/data/banknotes.csv">Click here to download the data set</a> (you
+may need to choose <code>File -&gt; Save As...</code> in your browser’s menu).</p>
 <p>The banknotes data set is derived from one created by <a href="https://pudding.cool/">The Pudding</a>, a
 digital publication that makes awesome stories and visualizations with data.
 Check out <a href="https://pudding.cool/2022/04/banknotes/">their article about banknotes around the world</a>.</p>
@@ -1076,13 +1076,13 @@ take a long time to print, and the output can be difficult to read.</p>
 <p>Instead, you can use the <code>head</code> function to print only the beginning, or
 <em>head</em>, of a data set. Let’s take a peek:</p>
 <div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="getting-started.html#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(banknotes)</span></code></pre></div>
-<pre><code>##     country currency_code     currency_name                       name gender
-## 1 Argentina           ARS  Argentinian Peso                  Eva Perón      F
-## 2 Argentina           ARS  Argentinian Peso       Julio Argentino Roca      M
-## 3 Argentina           ARS  Argentinian Peso Domingo Faustino Sarmiento      M
-## 4 Argentina           ARS  Argentinian Peso       Juan Manuel de Rosas      M
-## 5 Argentina           ARS  Argentinian Peso            Manuel Belgrano      M
-## 6 Australia           AUD Australian Dollar              David Unaipon      M
+<pre><code>##   currency_code   country     currency_name                       name gender
+## 1           ARS Argentina  Argentinian Peso                  Eva Perón      F
+## 2           ARS Argentina  Argentinian Peso       Julio Argentino Roca      M
+## 3           ARS Argentina  Argentinian Peso Domingo Faustino Sarmiento      M
+## 4           ARS Argentina  Argentinian Peso       Juan Manuel de Rosas      M
+## 5           ARS Argentina  Argentinian Peso            Manuel Belgrano      M
+## 6           AUD Australia Australian Dollar              David Unaipon      M
 ##   bill_count    profession known_for_being_first current_bill_value
 ## 1        1.0      Activist                    No                100
 ## 2        1.0 Head of Gov&#39;t                    No                100
@@ -1090,7 +1090,7 @@ take a long time to print, and the output can be difficult to read.</p>
 ## 4        1.0    Politician                    No                 20
 ## 5        1.0       Founder                   Yes                 10
 ## 6        0.5          STEM                   Yes                 50
-##   prop_total_bills first_appearance_date death_date
+##   prop_total_bills first_appearance_year death_year
 ## 1               NA                  2012       1952
 ## 2               NA                  1988       1914
 ## 3               NA                  1999       1888
@@ -1110,7 +1110,14 @@ take a long time to print, and the output can be difficult to read.</p>
 ## 3                                                            true   ARS_Domingo
 ## 4                                                            true     ARS_Rosas
 ## 5                      Designed first Argentine flag         true  ARS_Belgrano
-## 6 First Australian Aboriginal writer to be published         true   AUD_Unaipon</code></pre>
+## 6 First Australian Aboriginal writer to be published         true   AUD_Unaipon
+##   scaled_bill_value
+## 1         1.0000000
+## 2         1.0000000
+## 3         0.4444444
+## 4         0.1111111
+## 5         0.0000000
+## 6         0.4736842</code></pre>
 <p>This data set is tabular—as you might have already guessed, since it came
 from a CSV file. In R, it’s represented by a <em>data frame</em>, a table with rows
 and columns. R uses data frames to represent most (but not all) kinds of
@@ -1128,11 +1135,11 @@ contain <code>data.frame</code>:</p>
 <pre><code>## [1] &quot;data.frame&quot;</code></pre>
 <p>You’ll learn more about classes in Section <a href="data-structures.html#data-types-classes">2.2</a>, but for
 now you can use this function to identify data frames.</p>
-<p>By counting the columns in the output from <code>head( banknotes )</code>, you can see
-that this data set has eight columns. A more convenient way to check the number
-of columns in a data set is with the <code>ncol</code> function:</p>
+<p>By counting the columns in the output from <code>head(banknotes)</code>, you can see
+that this data set has 17 columns. A more convenient way to
+check the number of columns in a data set is with the <code>ncol</code> function:</p>
 <div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="getting-started.html#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ncol</span>(banknotes)</span></code></pre></div>
-<pre><code>## [1] 16</code></pre>
+<pre><code>## [1] 17</code></pre>
 <p>The similarly-named <code>nrow</code> function returns the number of rows:</p>
 <div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="getting-started.html#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(banknotes)</span></code></pre></div>
 <pre><code>## [1] 279</code></pre>
@@ -1141,19 +1148,19 @@ for “dimensions”) function.</p>
 <p>Since the columns have names, you might also want to get just these. You can do
 that with the <code>names</code> or <code>colnames</code> functions. Both return the same result:</p>
 <div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="getting-started.html#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(banknotes)</span></code></pre></div>
-<pre><code>##  [1] &quot;country&quot;               &quot;currency_code&quot;         &quot;currency_name&quot;        
+<pre><code>##  [1] &quot;currency_code&quot;         &quot;country&quot;               &quot;currency_name&quot;        
 ##  [4] &quot;name&quot;                  &quot;gender&quot;                &quot;bill_count&quot;           
 ##  [7] &quot;profession&quot;            &quot;known_for_being_first&quot; &quot;current_bill_value&quot;   
-## [10] &quot;prop_total_bills&quot;      &quot;first_appearance_date&quot; &quot;death_date&quot;           
+## [10] &quot;prop_total_bills&quot;      &quot;first_appearance_year&quot; &quot;death_year&quot;           
 ## [13] &quot;comments&quot;              &quot;hover_text&quot;            &quot;has_portrait&quot;         
-## [16] &quot;id&quot;</code></pre>
+## [16] &quot;id&quot;                    &quot;scaled_bill_value&quot;</code></pre>
 <div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="getting-started.html#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(banknotes)</span></code></pre></div>
-<pre><code>##  [1] &quot;country&quot;               &quot;currency_code&quot;         &quot;currency_name&quot;        
+<pre><code>##  [1] &quot;currency_code&quot;         &quot;country&quot;               &quot;currency_name&quot;        
 ##  [4] &quot;name&quot;                  &quot;gender&quot;                &quot;bill_count&quot;           
 ##  [7] &quot;profession&quot;            &quot;known_for_being_first&quot; &quot;current_bill_value&quot;   
-## [10] &quot;prop_total_bills&quot;      &quot;first_appearance_date&quot; &quot;death_date&quot;           
+## [10] &quot;prop_total_bills&quot;      &quot;first_appearance_year&quot; &quot;death_year&quot;           
 ## [13] &quot;comments&quot;              &quot;hover_text&quot;            &quot;has_portrait&quot;         
-## [16] &quot;id&quot;</code></pre>
+## [16] &quot;id&quot;                    &quot;scaled_bill_value&quot;</code></pre>
 <p>If the rows have names, you can get those with the <code>rownames</code> function. For
 this particular data set, the rows don’t have names.</p>
 <div id="summarizing-data" class="section level3 hasAnchor" number="1.6.1">
@@ -1167,9 +1174,9 @@ summary tells us about the structure of the data—the number of rows, the
 number and names of columns, what kind of data is in each column, and some
 sample values. Here’s the structural summary for the banknotes data:</p>
 <div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="getting-started.html#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(banknotes)</span></code></pre></div>
-<pre><code>## &#39;data.frame&#39;:    279 obs. of  16 variables:
-##  $ country              : chr  &quot;Argentina&quot; &quot;Argentina&quot; &quot;Argentina&quot; &quot;Argentina&quot; ...
+<pre><code>## &#39;data.frame&#39;:    279 obs. of  17 variables:
 ##  $ currency_code        : chr  &quot;ARS&quot; &quot;ARS&quot; &quot;ARS&quot; &quot;ARS&quot; ...
+##  $ country              : chr  &quot;Argentina&quot; &quot;Argentina&quot; &quot;Argentina&quot; &quot;Argentina&quot; ...
 ##  $ currency_name        : chr  &quot;Argentinian Peso&quot; &quot;Argentinian Peso&quot; &quot;Argentinian Peso&quot; &quot;Argentinian Peso&quot; ...
 ##  $ name                 : chr  &quot;Eva Perón&quot; &quot;Julio Argentino Roca&quot; &quot;Domingo Faustino Sarmiento&quot; &quot;Juan Manuel de Rosas&quot; ...
 ##  $ gender               : chr  &quot;F&quot; &quot;M&quot; &quot;M&quot; &quot;M&quot; ...
@@ -1178,12 +1185,13 @@ sample values. Here’s the structural summary for the banknotes data:</p>
 ##  $ known_for_being_first: chr  &quot;No&quot; &quot;No&quot; &quot;No&quot; &quot;No&quot; ...
 ##  $ current_bill_value   : int  100 100 50 20 10 50 10 20 10 50 ...
 ##  $ prop_total_bills     : num  NA NA NA NA NA 0.48 0.08 0.1 0.08 0.48 ...
-##  $ first_appearance_date: int  2012 1988 1999 1992 1970 1995 1993 1994 1993 1995 ...
-##  $ death_date           : chr  &quot;1952&quot; &quot;1914&quot; &quot;1888&quot; &quot;1877&quot; ...
+##  $ first_appearance_year: int  2012 1988 1999 1992 1970 1995 1993 1994 1993 1995 ...
+##  $ death_year           : chr  &quot;1952&quot; &quot;1914&quot; &quot;1888&quot; &quot;1877&quot; ...
 ##  $ comments             : chr  &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; ...
 ##  $ hover_text           : chr  &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; ...
 ##  $ has_portrait         : chr  &quot;true&quot; &quot;true&quot; &quot;true&quot; &quot;true&quot; ...
-##  $ id                   : chr  &quot;ARS_Evita&quot; &quot;ARS_Argentino&quot; &quot;ARS_Domingo&quot; &quot;ARS_Rosas&quot; ...</code></pre>
+##  $ id                   : chr  &quot;ARS_Evita&quot; &quot;ARS_Argentino&quot; &quot;ARS_Domingo&quot; &quot;ARS_Rosas&quot; ...
+##  $ scaled_bill_value    : num  1 1 0.444 0.111 0 ...</code></pre>
 <p>This summary lists information about each column, and includes most of what you
 found earlier by using several different functions separately. The summary uses
 <code>chr</code> to indicate columns of text (“characters”) and <code>int</code> to indicate columns
@@ -1195,7 +1203,7 @@ this is generally the mean, median, and quantiles. For categories, this is the
 frequencies. Other kinds of statistics are shown for other kinds of data.
 Here’s the statistical summary for the banknotes data:</p>
 <div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="getting-started.html#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(banknotes)</span></code></pre></div>
-<pre><code>##    country          currency_code      currency_name          name          
+<pre><code>##  currency_code        country          currency_name          name          
 ##  Length:279         Length:279         Length:279         Length:279        
 ##  Class :character   Class :character   Class :character   Class :character  
 ##  Mode  :character   Mode  :character   Mode  :character   Mode  :character  
@@ -1211,7 +1219,7 @@ Here’s the statistical summary for the banknotes data:</p>
 ##                     3rd Qu.:1.0000                                           
 ##                     Max.   :1.0000                                           
 ##                                                                              
-##  current_bill_value prop_total_bills first_appearance_date  death_date       
+##  current_bill_value prop_total_bills first_appearance_year  death_year       
 ##  Min.   :     1     Min.   :0.0100   Min.   :1869          Length:279        
 ##  1st Qu.:    20     1st Qu.:0.0550   1st Qu.:1980          Class :character  
 ##  Median :   100     Median :0.1000   Median :1996          Mode  :character  
@@ -1226,7 +1234,15 @@ Here’s the statistical summary for the banknotes data:</p>
 ##                                                                             
 ##                                                                             
 ##                                                                             
-## </code></pre>
+##                                                                             
+##  scaled_bill_value
+##  Min.   :0.00000  
+##  1st Qu.:0.01828  
+##  Median :0.11111  
+##  Mean   :0.30606  
+##  3rd Qu.:0.48914  
+##  Max.   :1.00000  
+##  NA&#39;s   :1</code></pre>
 </div>
 <div id="selecting-columns" class="section level3 hasAnchor" number="1.6.2">
 <h3><span class="header-section-number">1.6.2</span> Selecting Columns<a href="getting-started.html#selecting-columns" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -1234,23 +1250,22 @@ Here’s the statistical summary for the banknotes data:</p>
 dollar sign operator. The syntax is:</p>
 <div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="getting-started.html#cb95-1" aria-hidden="true" tabindex="-1"></a>VARIABLE<span class="sc">$</span>COLUMN_NAME</span></code></pre></div>
 <p>For instance, for the banknotes data, <code>banknotes$country</code> selects the <code>country</code>
-column, and <code>banknotes$death_year</code> selects the <code>death_year</code> column. So one way
-to compute the mean of the <code>death_year</code> column is:</p>
-<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="getting-started.html#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(banknotes<span class="sc">$</span>death_year)</span></code></pre></div>
-<pre><code>## Warning in mean.default(banknotes$death_year): argument is not numeric or
-## logical: returning NA</code></pre>
-<pre><code>## [1] NA</code></pre>
+column, and <code>banknotes$first_appearance_year</code> selects the
+<code>first_appearance_year</code> column. So one way to compute the mean of the
+<code>first_appearance_year</code> column is:</p>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="getting-started.html#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(banknotes<span class="sc">$</span>first_appearance_year)</span></code></pre></div>
+<pre><code>## [1] 1992.319</code></pre>
 <p>Similarly, to compute the range of the <code>current_bill_value</code> column:</p>
-<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="getting-started.html#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(banknotes<span class="sc">$</span>current_bill_value)</span></code></pre></div>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="getting-started.html#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(banknotes<span class="sc">$</span>current_bill_value)</span></code></pre></div>
 <pre><code>## [1]      1 100000</code></pre>
 <p>You can also use the dollar sign operator to assign values to columns. For
 instance, to assign <code>USD</code> to the entire <code>currency_code</code> column:</p>
-<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="getting-started.html#cb101-1" aria-hidden="true" tabindex="-1"></a>banknotes<span class="sc">$</span>currency_code <span class="ot">=</span> <span class="st">&quot;USD&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="getting-started.html#cb100-1" aria-hidden="true" tabindex="-1"></a>banknotes<span class="sc">$</span>currency_code <span class="ot">=</span> <span class="st">&quot;USD&quot;</span></span></code></pre></div>
 <p>Be careful when you do this, as there is no undo. Fortunately, you haven’t
 saved any transformations to the banknotes data to your computer’s hard drive
 yet, so you can reset the <code>banknotes</code> variable back to what it was by reloading
 the data set:</p>
-<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="getting-started.html#cb102-1" aria-hidden="true" tabindex="-1"></a>banknotes <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/banknotes.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="getting-started.html#cb101-1" aria-hidden="true" tabindex="-1"></a>banknotes <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/banknotes.csv&quot;</span>)</span></code></pre></div>
 <p>In Section <a href="data-structures.html#indexing">2.4</a>, you’ll learn how to select rows and individual
 elements from a data frame, as well as other ways to select columns.</p>
 </div>
