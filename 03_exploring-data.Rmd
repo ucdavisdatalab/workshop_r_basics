@@ -138,26 +138,8 @@ result = banknotes[banknotes$gender == "F", c("name", "profession")]
 head(result)
 ```
 
-### The `drop` Parameter
-
-If you use two-dimensional indexing with `[` to select exactly one column, you
-get a vector:
-
-```{r}
-result = banknotes[1:3, 2]
-class(result)
-```
-
-The container is dropped, even though the indexing operator `[` usually keeps
-containers. This also occurs for matrices. You can control this behavior with
-the `drop` parameter:
-
-```{r}
-result = banknotes[1:3, 2, drop = FALSE]
-class(result)
-```
-
-The default is `drop = TRUE`.
+Also see Appendix \@ref(the-drop-parameter) for a case where the `[` operator
+behaves in a surprising way.
 
 
 Packages
