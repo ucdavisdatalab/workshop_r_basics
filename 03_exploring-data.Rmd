@@ -1,15 +1,15 @@
 Exploring Data
 ==============
 
+```{r, echo = FALSE}
+banknotes = read.csv("data/banknotes.csv")
+```
+
 Now that you have a solid foundation in the basic functions and data structures
 of R, you can move on to its most popular application: data analysis. In this
 chapter, you'll learn how to efficiently explore and summarize data with
 visualizations and statistics. Along the way, you'll also learn how to use
 apply functions, which are essential to fluency in R.
-
-```{r, echo = FALSE}
-banknotes = read.csv( "data/banknotes.csv" )
-```
 
 #### Learning Objectives {-}
 
@@ -130,11 +130,11 @@ banknotes[c(3, 5), c("currency_name", "name")]
 ```
 
 For data frames, it's especially common to index the rows by condition and the
-columns by name. For instance, let's get the `name`, `profession`, and `currency`
-columns for all women on banknotes:
+columns by name. For instance, let's get the `name` and `profession` columns
+for all women in the banknotes data set:
 
 ```{r}
-result = banknotes[banknotes$gender == "F", c("name", "profession", "currency")]
+result = banknotes[banknotes$gender == "F", c("name", "profession")]
 head(result)
 ```
 
@@ -351,8 +351,8 @@ annotations | Shapes that are not mapped to data
 coordinates | Coordinate systems (Cartesian, logarithmic, polar)
 
 
-As an example, let's plot the banknotes data. First, we need to load ggplot2. As
-always, if this is your first time using the package, you'll have to install
+As an example, let's plot the banknotes data. First, we need to load ggplot2.
+As always, if this is your first time using the package, you'll have to install
 it. Then you can load the package:
 
 ```{r}
@@ -360,25 +360,18 @@ it. Then you can load the package:
 library("ggplot2")
 ```
 
-What kind of plot should we make? It depends on what data we want the plot to
-show. Let's make a line plot that shows mean year of death of people who first
-appeared on currency since 2012, with separate lines for men and women.
+What kind of plot should we make? It depends on what we want to know about the
+data set. Suppose we want to understand the relationship between a banknote's
+value and how long ago the person on the banknote died, as well as whether this
+is affected by gender. One way to show this is to make a scatter plot.
 
-Before plotting, we need to take a subset of the banknotes that only contains
-information since 2012:
-
-```{r}
-notes12 = banknotes[banknotes$first_appearance_year >= 2012, ]
-```
-
-The data is also broken down across `race`, `ethnic_origin`, and `age`. Since
-we aren't interested in these categories for the plot, we need to further
-subset the data:
+<!-- FIXME: Move this type correction to chapter 2 -->
+Before plotting, we need to make sure that the `death_year` column is numeric:
 
 ```{r}
-notes12 = notes12[notes12$race == "All Races" &
-  notes12$ethnic_origin == "All Origins" &
-  notes12$age == "16 years and over", ]
+is_blank = banknotes$death_year %in% c("", "-")
+banknotes$death_year[is_blank] = NA
+banknotes$death_year = as.numeric(banknotes$death_year)
 ```
 
 Now we're ready to make the plot.
@@ -399,7 +392,7 @@ sets we work with are tidy.
 
 To set up the data layer, call the `ggplot` function on a data frame:
 ```{r}
-ggplot(earn19)
+ggplot(banknotes)
 ```
 
 This returns a blank plot. We still need to add a few more layers.
@@ -416,8 +409,9 @@ a function for each geometry, always prefixed with `geom_`.
 
 To add a geometry layer to the plot, choose the `geom_` function you want and
 add it to the plot with the `+` operator:
+
 ```{r, error=TRUE, fig.show="hide"}
-ggplot(earn19) + geom_line()
+ggplot(banknotes) + geom_point()
 ```
 
 This returns an error message that we're missing aesthetics `x` and `y`. We'll
@@ -445,72 +439,84 @@ The names of the aesthetics depend on the geometry, but some common ones are
 `x`, `y`, `color`, `fill`, `shape`, and `size`. There is more information about
 and examples of aesthetic names in the documentation.
 
-For example, we want to put `quarter` on the x-axis and `median_weekly_earn` on
-the y-axis. We also want to use a separate line style for each `sex` category.
-So the aesthetic layer should be:
-```{r, eval=FALSE}
-aes(x = quarter, y = median_weekly_earn, linetype = sex)
-```
-
-In the `aes` function, column names are never quoted.
-
-Unlike most layers, the aesthetic layer is not added to the plot with the `+`
-operator. Instead, you can pass the aesthetic layer as the second argument to
-the `ggplot` function:
+For example, we want to put `death_year` on the x-axis and `scaled_bill_value`
+on the y-axis. It's best to use `scaled_bill_value` here rather than
+`current_bill_value` because the different countries use different scales of
+currency. For example, 1 United States Dollar is worth approximately 100
+Japanese Yen. So the aesthetic layer should be:
 ```{r}
-ggplot(earn19) +
-  aes(x = quarter, y = median_weekly_earn, linetype = sex) +
-  geom_line()
+ggplot(banknotes) +
+  geom_point() +
+  aes(x = death_year, y = scaled_bill_value)
 ```
 
-If you want to set an aesthetic to a constant value, rather than one that's
-data dependent, do so *outside* of the aesthetic layer. For instance, suppose
-we want to make the lines blue:
-
+In the `aes` function, column names are never quoted. In older versions of
+ggplot2, you must pass the aesthetic layer as the second argument of the
+`ggplot` function rather than using `+` to add it to the plot. This syntax is
+still widely used:
 ```{r}
-ggplot(earn19) +
-  aes(x = quarter, y = median_weekly_earn, linetype = sex) +
-  geom_line(color = "blue")
+ggplot(banknotes, aes(x = death_year, y = scaled_bill_value)) +
+  geom_point()
 ```
 
-If you set an aesthetic to a constant value inside of the aesthetic layer, the
-results you get might not be what you expect:
-```{r}
-ggplot(earn19) +
-  aes(x = quarter, y = median_weekly_earn, linetype = sex, color = "blue") +
-  geom_line()
-```
-
-<!--
 #### Per-geometry Aesthetics {-}
 
-When you pass an aesthetic layer to the `ggplot` function, it applies to the
-entire plot. You can also set an aesthetic layer individually for each
-geometry, by passing the layer as the first argument in the `geom_` function:
+When you add the aesthetic layer or pass it to the `ggplot` function, it
+applies to the entire plot. You can also set an aesthetic layer individually
+for each geometry, by passing the layer as the first argument in the `geom_`
+function:
 ```{r}
-#ggplot(favs) + geom_point(aes(x = distance_mi, y = walk_min))
+ggplot(banknotes) +
+  geom_point(aes(x = death_year, y = scaled_bill_value))
 ```
 
 This is really only useful when you have multiple geometries. As an example,
-let's color-code the points by major:
+let's color-code the points by gender:
 ```{r}
-#ggplot(favs, aes(x = distance_mi, y = walk_min, color = major)) +
-#  geom_point()
+ggplot(banknotes) +
+  geom_point(aes(x = death_year, y = scaled_bill_value, color = gender))
 ```
 
 Now let's also add labels to each point. To do this, we need to add another
 geometry:
 ```{r}
-#ggplot(favs, aes(x = distance_mi, y = walk_min, color = major, label = major)) +
-#  geom_point() + geom_text(size = 2)
+ggplot(banknotes) +
+  geom_point() +
+  aes(x = death_year, y = scaled_bill_value, color = gender, label = name) +
+  geom_text()
 ```
 
 Where we put the aesthetics matters:
 ```{r}
-#ggplot(favs, aes(x = distance_mi, y = walk_min, label = major)) +
-#  geom_point() + geom_text(aes(color = major), size = 2)
+ggplot(banknotes) +
+  geom_point() +
+  aes(x = death_year, y = scaled_bill_value, label = name) +
+  geom_text(aes(color = gender))
 ```
--->
+
+
+#### Constant Aesthetics {-}
+
+If you want to set an aesthetic to a constant value, rather than one that's
+data dependent, do so in the geometry layer rather than the aesthetic layer.
+For instance, suppose use point shape rather than color to indicate gender, and
+we want to make all of the points blue:
+
+```{r}
+ggplot(banknotes) +
+  geom_point(color = "blue") +
+  aes(x = death_year, y = scaled_bill_value, shape = gender)
+```
+
+If you set an aesthetic to a constant value inside of the aesthetic layer, the
+results you get might not be what you expect:
+
+```{r}
+ggplot(banknotes) +
+  geom_point() +
+  aes(x = death_year, y = scaled_bill_value, shape = gender, color = "blue")
+```
+
 
 ### Layer 4: Scales
 
@@ -521,11 +527,11 @@ all of them.
 The `labs` function is especially important, because it's used to set the title
 and axis labels:
 ```{r}
-ggplot(earn19) +
-  aes(x = quarter, y = median_weekly_earn, linetype = sex) +
-  geom_line() +
-  labs(x = "Quarter", y = "Median Weekly Salary (USD)",
-    title = "2019 Median Weekly Salaries, by Sex", linetype = "Sex")
+ggplot(banknotes) +
+  geom_point() +
+  aes(x = death_year, y = scaled_bill_value, shape = gender) +
+  labs(x = "Death Year", y = "Scaled Bill Value",
+    title = "Does death year affect bill value?", shape = "Gender")
 ```
 
 
@@ -534,7 +540,7 @@ ggplot(earn19) +
 In ggplot2, use the `ggsave` function to save the most recent plot you created:
 
 ```{r, eval=FALSE}
-ggsave("line.png")
+ggsave("banknote_scatter.png")
 ```
 
 The file format is selected automatically based on the extension. Common
@@ -554,38 +560,40 @@ This strategy works with any of R's graphics systems (not just ggplot2).
 Here's an example:
 ```{r, eval=FALSE}
 # Run these lines in the console, not the notebook!
-jpeg("line.jpeg")
-ggplot(earn19) +
-  aes(x = quarter, y = median_weekly_earn) +
-  geom_point()
+jpeg("banknote_scatter.jpeg")
+ggplot(banknotes) +
+  geom_point() +
+  aes(x = death_year, y = scaled_bill_value, shape = gender) +
+  labs(x = "Death Year", y = "Scaled Bill Value",
+    title = "Does death year affect bill value?", shape = "Gender")
 dev.off()
 ```
 
 
 ### Example: Bar Plot
 
-Let's say we want to plot the number of persons for each sex, again using the
-earnings data set. A bar plot is an appropriate way to represent this visually.
+Now suppose you want to plot the number of banknotes with people from each
+profession in the banknotes data set. A bar plot is in an appropriate way to
+represent this visually.
 
 The geometry for a bar plot is `geom_bar`. Since bar plots are mainly used to
 display frequencies, the `geom_bar` function automatically computes frequencies
 when given mapped to a categorical feature.
 
-The `n_persons` feature is not categorical, so we don't need `geom_bar` to
-compute frequencies. To prevent `geom_bar` from computing frequencies
-automatically, set `stat = "identity"`.
-
-Here's the code to make the bar plot:
+We can also use a fill color to further breakdown the bars by gender. Here's
+the code to make the bar plot:
 ```{r}
-ggplot(earn19) +
-  aes(x = quarter, y = n_persons, fill = sex) +
-  geom_bar(stat = "identity", position = "dodge") +
-  labs(x = "Quarter", y = "Number of Workers", fill = "Sex",
-    title = "Number of Workers by Quarter and Sex in 2019")
+ggplot(banknotes) +
+  aes(x = profession, fill = gender) +
+  geom_bar(position = "dodge")
 ```
 
 The setting `position = "dodge"` instructs `geom_bar` to put the bars
 side-by-side rather than stacking them.
+
+In some cases, you may want to make a bar plot with frequencies you've already
+computed. To prevent `geom_bar` from computing frequencies automatically, set
+`stat = "identity"`.
 
 
 ### Visualization Design
@@ -655,18 +663,18 @@ some of R's functions---the ones that summarize or aggregate data---are not
 vectorized.
 
 The `class` function is an example of a function that's not vectorized. If we
-call the `class` function on the earnings data set, we get just one result for
+call the `class` function on the banknotes data set, we get just one result for
 the data set as a whole:
 
 ```{r}
-class(earn)
+class(banknotes)
 ```
 
 What if we want to get the class of each column? We can get the class for a
 single column by selecting the column with `$`, the dollar sign operator:
 
 ```{r}
-class(earn$age)
+class(banknotes$currency_code)
 ```
 
 But what if we want the classes for all the columns? We could write a call to
@@ -678,7 +686,7 @@ Section \@ref(lists) pointed out that data frames are technically lists, where
 each column is one element. With that in mind, what we need here is a line of
 code that calls `class` on each element of the data frame. The idea is similar
 to vectorization, but since we have a list and a non-vectorized function, we
-have to do a bit more than just call `class(earn)`.
+have to do a bit more than just call `class(banknotes)`.
 
 The `lapply` function calls, or _applies_, a function on each element of a list
 or vector. The syntax is:
@@ -691,10 +699,10 @@ The function `FUN` is called once for each element of `X`, with the element as
 the first argument. The `...` is for additional arguments to `FUN`, which are
 held constant across all the elements.
 
-Let's try this out with the earnings data and the `class` function:
+Let's try this out with the banknotes data and the `class` function:
 
 ```{r}
-lapply(earn, class)
+lapply(banknotes, class)
 ```
 
 The result is similar to if the `class` function was vectorized. In fact, if we
@@ -737,10 +745,10 @@ have different types or lengths, the result is the same as for `lapply`. The
 "s" in `sapply` stands for "simplify".
 
 For instance, if we use `sapply` to find the classes of the columns in the
-earnings data, we get a character vector:
+banknotes data, we get a character vector:
 
 ```{r}
-sapply(earn, class)
+sapply(banknotes, class)
 ```
 
 Likewise, if we use `sapply` to compute the `sin` values, we get a numeric
@@ -755,22 +763,22 @@ vectorization instead when possible.
 
 Apply functions are incredibly useful for summarizing data. For example,
 suppose we want to compute the frequencies for all of the columns in the
-earnings data set that aren't numeric.
+banknotes data set that aren't numeric.
 
 First, we need to identify the columns. One way to do this is with the
 `is.numeric` function. Despite the name, this function actually tests whether
 its argument is a real number, not whether it its argument is a numeric vector.
 In other words, it also returns true for integer values. We can use `sapply` to
-apply this function to all of the columns in the earnings data set:
+apply this function to all of the columns in the banknotes data set:
 
 ```{r}
-is_not_number = !sapply(earn, is.numeric)
+is_not_number = !sapply(banknotes, is.numeric)
 is_not_number
 ```
 
 Is it worth using R code to identify the non-numeric columns? Since there are
-only 8 columns in the earnings data set, maybe not. But if the data set was
-larger, with say 100 columns, it definitely would be.
+only `r ncol(banknotes)` columns in the banknotes data set, maybe not. But if
+the data set was larger, with say 100 columns, it definitely would be.
 
 In general, it's a good habit to use R to do things rather than do them
 manually. You'll get more practice programming, and your code will be more
@@ -781,7 +789,7 @@ to compute frequencies. We only want to compute frequencies for those columns,
 so we need to subset the data:
 
 ```{r}
-lapply(earn[, is_not_number], table)
+lapply(banknotes[, is_not_number], table)
 ```
 
 We use `lapply` rather than `sapply` for this step because the table for each
@@ -795,22 +803,27 @@ for each category. The `lapply` and `sapply` functions can compute something
 for each element of a data structure, but categories are not necessarily
 elements.
 
-For example, the earnings data set has three different categories in the `sex`
-column. If we want all of the rows in one category, one way to get them is by
-indexing:
-
-```{r}
-women = earn[earn$sex == "Women", ]
-head(women)
+```{r, echo = FALSE}
+n_countries = length(unique(banknotes$country))
 ```
 
-To get all three categories, we'd have to do this three times. If we want to
-compute something for each category, say the mean of the `n_persons` column, we
-also have to repeat that computation three times. Here's what it would look
-like for just the `women` category:
+For example, the banknotes data set has `r n_countries` different categories in
+the `country` column. If we want all of the rows for one country, one way to
+get them is by indexing:
 
 ```{r}
-mean(women$n_persons)
+usa = banknotes[banknotes$country == "United States", ]
+head(usa)
+```
+
+To get all `r n_countries` countries separately, we'd have to do this
+`r n_countries` times. If we want to compute something for each country, say
+the mean of the `first_appearance_year` column, we also have to repeat that
+computation `r n_countries` times. Here's what it would look like for just the
+United States:
+
+```{r}
+mean(usa$first_appearance_year)
 ```
 
 If the categories were elements, we could avoid writing code to index each
@@ -821,28 +834,29 @@ The `split` function splits a vector or data frame into groups based on a
 vector of categories. The first argument to `split` is the data, and the
 second argument is a congruent vector of categories.
 
-We can use `split` to elegantly compute means of `n_persons` broken down by
-sex. First, we split the data by category. Since we only want to compute on the
-`n_persons` column, we only split that column:
+We can use `split` to elegantly compute means of `first_appearance_year` broken
+down by country. First, we split the data by country. Since we only want to
+compute on the `first_appearance_year` column, we only split that column:
 
 ```{r}
-by_sex = split(earn$n_persons, earn$sex)
-class(by_sex)
-names(by_sex)
+by_country = split(banknotes$first_appearance_year, banknotes$country)
+class(by_country)
+names(by_country)
 ```
  
 The result from `split` is a list with one element for each category. The
-individual elements contain pieces of the original `n_persons` column:
+individual elements contain pieces of the original `first_appearance_year`
+column:
 
 ```{r}
-head(by_sex$Women)
+head(by_country$Mexico)
 ```
 
 Since the categories are elements in the split data, now we can use `sapply`
 the same way we did in previous examples:
 
 ```{r}
-sapply(by_sex, mean)
+sapply(by_country, mean)
 ```
 
 This two-step process is an R idiom called the _split-apply pattern_. First you
@@ -856,11 +870,11 @@ shortcut. The `tapply` function is equivalent to calling `split` and then
 is a congruent vector of categories. The third argument is a function to apply,
 like the function argument in `sapply`.
 
-We can use `tapply` to compute the `n_persons` means by `sex` for the earnings
-data:
+We can use `tapply` to compute the `first_appearance_year` means by `country`
+for the banknotes data set:
 
 ```{r}
-tapply(earn$n_persons, earn$sex, mean)
+tapply(banknotes$first_appearance_year, banknotes$country, mean)
 ```
 
 Notice that the result is identical to the one we computed before.
@@ -877,10 +891,10 @@ except that the second argument must be a list or data frame rather than a
 vector. 
 
 As an example, here's the result of using `aggregate` to compute the
-`n_persons` means:
+`first_appearance_year` means:
 
 ```{r}
-aggregate(earn$n_persons, list(earn$sex), mean)
+aggregate(banknotes$first_appearance_year, list(banknotes$country), mean)
 ```
 
 The `lapply`, `sapply`, and `tapply` functions are the three most important
@@ -895,11 +909,29 @@ Exercises
 ---------
 
 ### Exercise
-Count how many rows of the `earn` data have `median_weekly_earn` greater than $700.
+
+Compute the number of banknotes that feature a person who died before 1900.
 
 ### Exercise
-Calculate the median of `median_weekly_earn` for men in 2018.
+
+Compute the range of `first_appearance_year` for each country.
 
 ### Exercise
-1. Adjust the line plot of weekly earnings by quarter so that there is one line per age group.
-2. Further adjust this plot so that each age group line is a different color.
+
+1. Compute the set of banknotes with people who died in this century.
+
+   _Hint: be careful of missing values in the `death_year` column!_
+
+```{r}
+is21 = !is.na(banknotes$death_year) & banknotes$death_year >= 2000
+people21 = banknotes[is21, ]
+```
+
+2. Use ggplot2's `geom_segment` function to create a plot which shows the
+   timespan between death year and first appearance as a horizontal segment,
+   for each banknote in the result from step 1. Put the name of each person on
+   the y-axis. Color code the segments by gender.
+
+   _Hint: You can make the plot more visually appealing if you first sort the
+   data by death year. You can use the `order` function to get indexes that
+   will sort the rows of a data frame according to some column._
