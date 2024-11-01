@@ -118,7 +118,7 @@ associated with them. It's useful to think of functions as factories: raw
 materials (inputs) go in, products (outputs) come out. We can also represent
 this visually:
 
-![](/img/functions.png)
+![](/images/functions.png)
 
 Programmers use several specific terms to describe the parts and usage of
 functions:

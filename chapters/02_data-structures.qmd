@@ -384,7 +384,7 @@ are printed compared to ordinary lists.
 
 R's types fall into a natural hierarchy of expressiveness:
 
-![R's hierarchy of types.](/img/types.png)
+![R's hierarchy of types.](/images/types.png)
 
 Each type on the right is more expressive than the ones to its left. That is,
 with the convention that `FALSE` is `0` and `TRUE` is `1`, we can represent any

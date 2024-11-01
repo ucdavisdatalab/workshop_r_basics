@@ -41,7 +41,7 @@ packages (due to both its age and growing popularity).
 Prerequisites
 -------------
 
-![](/img/rlogo.png){height=5em fig-align="center"}
+![](/images/rlogo.png){height=5em fig-align="center"}
 
 You can download R for free [here](https://cloud.r-project.org/), and can find
 an install guide [here]().
@@ -65,7 +65,7 @@ panes, like this:
   How RStudio typically looks the first time you open it. Don't worry if the
   text in the panes isn't exactly the same on your computer: it depends on your
   operating system and versions of R and RStudio.
-](/img/rstudio_start.png){.lightbox}
+](/images/rstudio_start.png){.lightbox}
 
 The console
 pane, on the left, is the main interface to R. If you type R code into the
@@ -84,7 +84,7 @@ R compute the sum $2 + 2$ by typing the code `2 + 2` after the prompt and then
 pressing the `Enter` key. Your code and the result from R should look like
 this:
 
-![](/img/arithmetic.png)
+![](/images/arithmetic.png)
 
 R always puts the result on a separate line (or lines) from your code. In this
 case, the result begins with the tag `[1]`, which is a hint from R that the
@@ -98,7 +98,7 @@ If you enter an incomplete expression, R will change the prompt to `+`, then
 wait for you to type the rest of the expression and press the `Enter` key.
 Here's what it looks like if you only enter `2 +`:
 
-![](/img/incomplete.png)
+![](/images/incomplete.png)
 
 You can finish entering the expression, or you can cancel it by pressing the
 `Esc` key (or `Ctrl-c` if you're using R without RStudio). R can only tell an
@@ -452,7 +452,7 @@ computing, might look like this:
 ![
   A typical file system. Don't worry if your file system looks a bit different
   from the picture.
-](/img/filesystem.png){width=50%}
+](/images/filesystem.png){width=50%}
 
 File systems have a tree-like structure, with a top-level directory called the
 _root directory_. On Ada and Charles' computer, the root is called `/`, which
@@ -621,7 +621,7 @@ This will open a new pane in RStudio, like this:
 
 ![
   How RStudio typically looks after opening a new R Script.
-](/img/rstudio_script.png)
+](/images/rstudio_script.png)
 
 The new pane is the scripts pane, which displays all of the R scripts you're
 editing. Each script appears in a separate tab. In the screenshot, only one
