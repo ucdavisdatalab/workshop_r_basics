@@ -19,8 +19,7 @@ and data types, then explains a variety of ways to get and set their elements.
 * Negate or combine conditions with logic operators
 
 
-Vectors
--------
+## Vectors {#sec-vectors}
 
 ```{r, echo = FALSE}
 earn = read.csv("data/earn.csv")
@@ -30,9 +29,9 @@ A _vector_ is a collection of values. Vectors are the fundamental unit of data
 in R, and you've already used them in the previous sections.
 
 For instance, each column in a data frame is a vector. So the `quarter` column
-in the earnings data from Section \@ref(data-frames) is a vector. Take a look
-at it now. You can use `head` to avoid printing too much. Set the second
-argument to `10` so that exactly 10 values are printed:
+in the earnings data from @sec-data-frames is a vector. Take a look at it now.
+You can use `head` to avoid printing too much. Set the second argument to `10`
+so that exactly 10 values are printed:
 
 ```{r}
 head(earn$quarter, 10)
@@ -92,8 +91,7 @@ attempt to convert them to a common data type that preserves the information:
 c(1, "cool", 2.3)
 ```
 
-Section \@ref(implicit-coercion) explains the rules for this conversion in more
-detail.
+@sec-implicit-coercion explains the rules for this conversion in more detail.
 
 The colon operator `:` creates vectors that contain sequences of integers. This
 is useful for creating "toy" data to test things on, and later we'll see that
@@ -111,7 +109,7 @@ Beware that both endpoints are included in the sequence, even in sequences like
 want more control over the generated sequence, use the `seq` function instead.
 
 
-### Indexing Vectors
+### Indexing Vectors {#sec-indexing-vectors}
 
 You can access individual elements of a vector with the _indexing operator_ `[`
 (also called the _square bracket operator_). The syntax is:
@@ -145,10 +143,10 @@ x
 
 Indexing is among the most frequently used operations in R, so take some time
 to try it out with few different vectors and indexes. We'll revisit indexing in
-Section \@ref(indexing) to learn a lot more about it.
+@sec-indexing to learn a lot more about it.
 
 
-### Vectorization
+### Vectorization {#sec-vectorization}
 
 Let's look at what happens if we call a mathematical function, like `sin`, on a
 vector:
@@ -195,7 +193,7 @@ x * y
 x / y
 ```
 
-### Recycling
+### Recycling {#sec-recycling}
 
 When a function is vectorized across multiple arguments, what happens if the
 vectors have different lengths? Whenever you think of a question like this as
@@ -246,8 +244,7 @@ When you use recycling, most of the time one of the arguments will be a scalar
 like this.
 
 
-Data Types & Classes
---------------------
+## Data Types & Classes {#sec-data-types-classes}
 
 Data can be categorized into different _types_ based on sets of shared
 characteristics. For instance, statisticians tend to think about whether data
@@ -268,8 +265,8 @@ In R, data objects are categorized in two different ways:
 
 1. The _class_ of an R object describes what the object does, or the role that
    it plays. Sometimes objects can do more than one thing, so objects can have
-   more than one class. The `class` function, which debuted in Section
-   \@ref(data-frames), returns the classes of its argument.
+   more than one class. The `class` function, which debuted
+   in @sec-data-frames, returns the classes of its argument.
 
 2. The _type_ of an R object describes what the object is. Technically, the
    type corresponds to how the object is stored in your computer's memory. Each
@@ -280,7 +277,7 @@ Of the two, classes tend to be more important than types. If you aren't sure
 what an object is, checking its classes should be the first thing you do.
 
 The built-in classes you'll use all the time correspond to vectors and lists
-(which we'll learn more about in Section \@ref(lists)):
+(which we'll learn more about in @sec-lists):
 
 | Class     | Example               | Description
 | :----     | :------               | :----------
@@ -351,12 +348,12 @@ For these, the class is usually different from the type. We'll learn more about
 most of these later on.
 
 
-### Lists
+### Lists {#sec-lists}
 
 A _list_ is an ordered data structure where the elements can have different
 types (they are _heterogeneous_). This differs from a vector, where the
-elements all have to have the same type, as we saw in Section \@ref(vectors).
-The tradeoff is that most vectorized functions do not work with lists.
+elements all have to have the same type, as we saw in @sec-vectors. The
+tradeoff is that most vectorized functions do not work with lists.
 
 You can make an ordinary list with the `list` function:
 
@@ -366,9 +363,9 @@ class(x)
 typeof(x)
 ```
 
-For ordinary lists, the type and the class are both `list`. In Section
-\@ref(indexing), we'll learn how to get and set list elements, and in later
-sections we'll learn more about when and why to use lists.
+For ordinary lists, the type and the class are both `list`. In @sec-indexing,
+we'll learn how to get and set list elements, and in later sections we'll learn
+more about when and why to use lists.
 
 You've already seen one list, the earnings data frame:
 
@@ -383,7 +380,7 @@ differently from ordinary lists. This difference is apparent in how data frames
 are printed compared to ordinary lists.
 
 
-### Implicit Coercion
+### Implicit Coercion {#sec-implicit-coercion}
 
 R's types fall into a natural hierarchy of expressiveness:
 
@@ -590,12 +587,11 @@ droplevels(age[1:3])
 ```
 
 
-Special Values
---------------
+## Special Values
 
 R has four _special_ values to represent missing or invalid data.
 
-### Missing Values
+### Missing Values {#sec-missing-values}
 
 The value `NA`, called the _missing value_, represents missing entries in a
 data set. It's implied that the entries are missing due to how the data was
@@ -605,7 +601,7 @@ set, their answers for those questions can be recorded as `NA`.
 
 The missing value is a chameleon: it can be a logical, integer, numeric,
 complex, or character value. By default, the missing value is logical, and the
-other types occur through coercion (\@ref(implicit-coercion)):
+other types occur through coercion (@sec-implicit-coercion):
 
 ```{r}
 class(NA)
@@ -713,18 +709,17 @@ is.null(NULL)
 ```
 
 
-Indexing
---------
+## Indexing {#sec-indexing}
 
 The way to get and set elements of a data structure is by _indexing_. Sometimes
 this is also called _subsetting_ or (element) _extraction_. Indexing is a
 fundamental operation in R, key to reasoning about how to solve problems with
 the language.
 
-We first saw indexing in Section \@ref(data-frames), where we used `$`, the
-dollar sign operator, to get and set data frame columns. We saw indexing again
-in Section \@ref(indexing-vectors), where we used `[`, the indexing or square
-bracket operator, to get and set elements of vectors.
+We first saw indexing in @sec-data-frames, where we used `$`, the dollar sign
+operator, to get and set data frame columns. We saw indexing again in
+@sec-indexing-vectors, where we used `[`, the indexing or square bracket
+operator, to get and set elements of vectors.
 
 The indexing operator `[` is R's primary operator for indexing. It works in
 four different ways, depending on the type of the index you use. These four
@@ -747,7 +742,7 @@ Even though we're using a vector here, the indexing operator works with almost
 all data structures, including factors, lists, matrices, and data frames. We'll
 look at unique behavior for some of these later on.
 
-### All Elements
+### All Elements {#sec-all-elements}
 
 The first way to use `[` to select elements is to leave the index blank. This
 selects all elements:
@@ -789,7 +784,7 @@ x = c(a = 10, b = 20, c = 30, d = 40, e = 50)
 
 The second way to use `[` is to select elements by position. This happens when
 you use an integer or numeric index. We already saw the basics of this in
-Section \@ref(indexing-vectors).
+@sec-indexing-vectors.
 
 The positions of the elements in a vector (or other data structure) correspond
 to numbers starting from 1 for the first element. This way of indexing is
@@ -933,7 +928,7 @@ x
 ```
 
 
-### Logic
+### Logic {#sec-logic}
 
 All of the conditions we've seen so far have been written in terms of a single
 test. If you want to use more sophisticated conditions, R provides operators to
@@ -1068,7 +1063,7 @@ the `rep` function.
 
 ### Exercise
 
-Considering how implicit coercion works (Section \@ref(implicit-coercion)):
+Considering how implicit coercion works (@sec-implicit-coercion):
 
 1. Why does `"3" + 4` raise an error?
 2. Why does `"TRUE" == TRUE` return `TRUE`?
@@ -1077,9 +1072,9 @@ Considering how implicit coercion works (Section \@ref(implicit-coercion)):
 
 ### Exercise
 
-1. Section \@ref(missing-values) described the missing value as a "chameleon"
-   because it can have many different types. Is `Inf` also a chameleon? Use
-   examples to justify your answer.
+1. @sec-missing-values described the missing value as a "chameleon" because it
+   can have many different types. Is `Inf` also a chameleon? Use examples to
+   justify your answer.
 
 2. The missing value is also "contagious" because using it as an argument
    usually produces another missing value. Is `Inf` contagious? Again, use

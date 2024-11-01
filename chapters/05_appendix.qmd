@@ -4,18 +4,17 @@
 banknotes = read.csv("data/banknotes.csv")
 ```
 
-More About Comparisons
-----------------------
 
+## More About Comparisons {#sec-more-about-comparisons}
 
 ### Equality
 
 The `==` operator is the primary way to test whether two values are equal, as
-explained in Section \@ref(comparisons). Nonetheless, equality can be defined
-in many different ways, especially when dealing with computers. As a result, R
-also provides several different functions to test for different kinds of
-equality. This describes tests of equality in more detail, and also describes
-some other important details of comparisons.
+explained in @sec-comparisons. Nonetheless, equality can be defined in many
+different ways, especially when dealing with computers. As a result, R also
+provides several different functions to test for different kinds of equality.
+This describes tests of equality in more detail, and also describes some other
+important details of comparisons.
 
 
 #### The `==` Operator
@@ -23,10 +22,9 @@ some other important details of comparisons.
 The `==` operator tests whether its two arguments have the exact same
 representation as a _[binary number][binary]_ in your computer's memory. Before
 testing the arguments, the operator applies R's rules for vectorization
-(Section \@ref(vectorization)), recycling (Section \@ref(recycling)), and
-implicit coercion (Section \@ref(implicit-coercion)). Until you've fully
-internalized these three rules, some results from the equality operator  may
-seem surprising. For example:
+(@sec-vectorization), recycling (@sec-recycling), and implicit coercion
+(@sec-implicit-coercion). Until you've fully internalized these three rules,
+some results from the equality operator  may seem surprising. For example:
 
 ```{r}
 # Recycling:
@@ -169,8 +167,7 @@ if you want to invert a condition, choose an appropriate operator rather than
 appending `== FALSE`.
 
 
-The `drop` Parameter
---------------------
+## The `drop` Parameter {#sec-the-drop-parameter}
 
 If you use two-dimensional indexing with `[` to select exactly one column, you
 get a vector:
@@ -192,8 +189,7 @@ class(result)
 The default is `drop = TRUE`.
 
 
-Variable Scope & Lookup
------------------------
+## Variable Scope & Lookup {#sec-variable-scope-lookup}
 
 FIXME: Moved to Intermediate R
 

@@ -109,9 +109,9 @@ Functions
 ---------
 
 The main way to interact with R is by calling functions, which was first
-explained way back in Section \@ref(calling-functions). Since then, you've
-learned how to use many of R's built-in functions. This section explains how
-you can write your own functions.
+explained way back in @sec-calling-functions. Since then, you've learned how to
+use many of R's built-in functions. This section explains how you can write
+your own functions.
 
 To start, let's briefly review what functions are, and some of the jargon
 associated with them. It's useful to think of functions as factories: raw
@@ -217,8 +217,8 @@ vec
 
 In general, R keeps parameters and variables you define inside of a function
 separate from variables you define outside of a function. You can read more
-about the specific rules for how R searches for variables in Section
-\@ref(variable-scope-lookup).
+about the specific rules for how R searches for variables in
+@sec-variable-scope-lookup.
 
 
 As a function for quickly summarizing data, `get_largest` would be more

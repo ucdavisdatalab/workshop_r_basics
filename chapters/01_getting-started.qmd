@@ -88,12 +88,11 @@ this:
 
 R always puts the result on a separate line (or lines) from your code. In this
 case, the result begins with the tag `[1]`, which is a hint from R that the
-result is a *vector* and that this line starts with the *element* at position 1.
-You'll learn more about vectors in Section \@ref(vectors), and eventually learn
-about other data types that are displayed differently. The result of the sum,
-`4`, is displayed after the tag. In this reader, results from R will usually be
-typeset in monospace and further prefixed with `##` to indicate that they
-aren't code.
+result is a *vector* and that this line starts with the *element* at position
+1. You'll learn more about vectors in @sec-vectors, and eventually learn about
+other data types that are displayed differently. The result of the sum, `4`, is
+displayed after the tag. In this reader, results from R will usually be typeset
+in monospace and further prefixed with `##` to indicate that they aren't code.
 
 If you enter an incomplete expression, R will change the prompt to `+`, then
 wait for you to type the rest of the expression and press the `Enter` key.
@@ -221,7 +220,7 @@ arithmetic operators. For instance, this code causes an error:
 The error message notes that `+` is not defined for non-numeric values.
 
 
-### Comparisons
+### Comparisons {#sec-comparisons}
 
 Besides arithmetic, you can also use R to compare values. The comparison
 operators are:
@@ -256,7 +255,7 @@ TRUE
 TRUE == FALSE
 ```
 
-Section \@ref(logic) describes more ways to use and combine logical values.
+@sec-logic describes more ways to use and combine logical values.
 
 Beware that the equality operators don't always return `FALSE` when you compare
 two different types of data:
@@ -267,12 +266,11 @@ two different types of data:
 "FALSE" <= TRUE
 ```
 
-Section \@ref(implicit-coercion) explains why this happens, and Appendix
-\@ref(more-about-comparisons) explains several other ways to compare
-values.
+@sec-implicit-coercion explains why this happens, and
+@sec-more-about-comparisons explains several other ways to compare values.
 
 
-### Calling Functions
+### Calling Functions {#sec-calling-functions}
 
 Most of R's features are provided through _functions_, pieces of reusable code.
 You can think of a function as a machine that takes some inputs and uses them
@@ -302,8 +300,8 @@ When you call a function, R assigns each argument to a _parameter_. Parameters
 are special variables that represent the inputs to a function and only exist
 while that function runs. For example, the `log` function, which computes a
 logarithm, has parameters `x` and `base` for the operand and base of the
-logaritm, respectively. The next section, Section \@ref(getting-help), explains
-how to look up the parameters for a function.
+logarithm, respectively. The next section, @sec-getting-help, explains how to
+look up the parameters for a function.
 
 By default, R assigns arguments to parameters based on their order. The first
 argument is assigned to the function's first parameter, the second to the
@@ -357,8 +355,7 @@ In summary, variables and parameters are distinct, even if they happen to have
 the same name. The variable `x` is not the same thing as the parameter `x`.
 
 
-Getting Help
-------------
+## Getting Help {#sec-getting-help}
 
 Learning and using a language is hard, so it's important to know how to get
 help. The first place to look for help is R's built-in documentation. In the
@@ -509,7 +506,7 @@ working in R, use forward slashes and don't worry about the operating system.
 This is especially convenient when you want to share code with someone that
 uses a different operating system than you.
 
-### Absolute & Relative Paths
+### Absolute & Relative Paths {#sec-absolute-relative-paths}
 
 A path that starts from the root directory, like all of the ones you've seen so
 far, is called an _absolute path_. The path is "absolute" because it
@@ -531,9 +528,9 @@ directory. The path is "relative" to an unspecified starting point, which
 usually depends on the context.
 
 For instance, suppose Ada's code is saved in the file `analysis.R` (more about
-`.R` files in Section \@ref(r-scripts)), which is in the same directory as
-`cats.csv` on her computer. Then instead of an absolute path, she can use a
-relative path in her code:
+`.R` files in @sec-r-scripts), which is in the same directory as `cats.csv` on
+her computer. Then instead of an absolute path, she can use a relative path in
+her code:
 
 ```
 cats.csv
@@ -607,7 +604,7 @@ specific situations where `.` is necessary, but they fall outside the scope of
 this text.
 
 
-### R Scripts
+### R Scripts {#sec-r-scripts}
 
 Now that you know how file systems and paths work, you're ready to learn how to
 save your R code to a file. R code is usually saved into an _R script_
@@ -678,11 +675,11 @@ about R Markdown files [here][rmd].
 
 ### The Working Directory
 
-Section \@ref(absolute-relative-paths) explained that relative paths have a
-starting point that depends on the context where the path is used. Let's make
-that idea more concrete for R. The _working directory_ is the starting point R
-uses for relative paths. Think of the working directory as the directory R is
-currently "at" or watching.
+@sec-absolute-relative-paths explained that relative paths have a starting
+point that depends on the context where the path is used. Let's make that idea
+more concrete for R. The _working directory_ is the starting point R uses for
+relative paths. Think of the working directory as the directory R is currently
+"at" or watching.
 
 The function `getwd` returns the absolute path for the current working
 directory, as a string. It doesn't require any arguments:
@@ -758,8 +755,8 @@ than a guarantee.
 
 R has built-in functions for reading a variety of formats. The R community also
 provides _packages_, shareable and reusable pieces of code, to read even more
-formats. You'll learn more about packages later, in Section \@ref(packages).
-For now, let's focus on data sets that can be read with R's built-in functions.
+formats. You'll learn more about packages later, in @sec-packages. For now,
+let's focus on data sets that can be read with R's built-in functions.
 
 Here are several formats that are frequently used to distribute data, along
 with the name of a built-in function or contributed package that can read the
@@ -820,7 +817,7 @@ learn more about how to create an RDS file on the `?saveRDS` help page, and how
 to read one on the `?readRDS` help page.
 
 
-### Hello, Data!
+### Hello, Data! {#sec-hello-data}
 
 Let's read our first data set! Over the next few sections, you're going to
 explore a data set about the people who are depicted on banknotes (paper money)
@@ -852,16 +849,14 @@ that describe the contents of the variable somehow.
 
 If you tried running the line of code above and got an error message, pay
 attention to what the error message says, and remember the strategies to get
-help in Section \@ref(getting-help). The most common mistake when reading a
-file is incorrectly specifying the path, so first check that you got the path
-right.
+help in @sec-getting-help. The most common mistake when reading a file is
+incorrectly specifying the path, so first check that you got the path right.
 
 If you ran the line of code and there was no error message, congratulations,
 you've read your first data set into R!
 
 
-Data Frames
------------
+## Data Frames {#sec-data-frames}
 
 Now that you've loaded the data, let's take a look at it. When you're working
 with a new data set, it's usually not a good idea to print it out directly (by
@@ -895,8 +890,8 @@ contain `data.frame`:
 class(banknotes)
 ```
 
-You'll learn more about classes in Section \@ref(data-types-classes), but for
-now you can use this function to identify data frames.
+You'll learn more about classes in @sec-data-types-classes, but for now you can
+use this function to identify data frames.
 
 By counting the columns in the output from `head(banknotes)`, you can see
 that this data set has `r ncol(banknotes)` columns. A more convenient way to
@@ -999,8 +994,8 @@ the data set:
 banknotes = read.csv("data/banknotes.csv")
 ```
 
-In Section \@ref(indexing), you'll learn how to select rows and individual
-elements from a data frame, as well as other ways to select columns.
+In @sec-indexing, you'll learn how to select rows and individual elements from
+a data frame, as well as other ways to select columns.
 
 
 Exercises
@@ -1048,5 +1043,5 @@ data where the values are separated by tabs.
 
 1. What value-separator does `read.table` expect by default?
 2. Is it possible to use `read.table` to read a CSV? Explain. If your answer is
-   yes, show how to use `read.table` to load the banknotes data from
-   Section \@ref(hello-data).
+   yes, show how to use `read.table` to load the banknotes data
+   from @sec-hello-data.

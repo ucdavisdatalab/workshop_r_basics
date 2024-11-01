@@ -22,12 +22,11 @@ apply functions, which are essential to fluency in R.
 * Split data into groups and apply a function to each
 
 
-Indexing Data Frames
---------------------
+## Indexing Data Frames
 
 This section explains how to get and set data in a data frame, expanding on the
-indexing techniques you learned in Section \@ref(indexing). Under the hood,
-every data frame is a list, so first you'll learn about indexing lists.
+indexing techniques you learned in @sec-indexing. Under the hood, every data
+frame is a list, so first you'll learn about indexing lists.
 
 
 ### Indexing Lists
@@ -112,8 +111,7 @@ For instance, let's get the first 3 rows and all columns of the banknotes data:
 banknotes[1:3, ]
 ```
 
-As we saw in Section \@ref(all-elements), leaving an index blank means all
-elements.
+As we saw in @sec-all-elements, leaving an index blank means all elements.
 
 As another example, let's get the 3rd and 5th row, and the 2nd and 4th column:
 
@@ -137,19 +135,17 @@ result = banknotes[banknotes$gender == "F", c("name", "profession")]
 head(result)
 ```
 
-Also see Appendix \@ref(the-drop-parameter) for a case where the `[` operator
-behaves in a surprising way.
+Also see @sec-the-drop-parameter for a case where the `[` operator behaves in a
+surprising way.
 
 
-Packages
---------
+## Packages {#sec-packages}
 
 A _package_ is a collection of functions for use in R. Packages usually include
 documentation, and can also contain examples, vignettes, and data sets. Most
 packages are developed by members of the R community, so quality varies. There
 are also a few packages that are built into R but provide extra features. We'll
-use a package in Section \@ref(data-visualization), so we're learning about
-them now.
+use a package in @sec-data-visualization, so we're learning about them now.
 
 The [Comprehensive R Archive Network][cran], or CRAN, is the main place people
 publish packages. As of writing, there were 18,619 packages posted to CRAN.
@@ -285,8 +281,7 @@ its [online documentation][remotes].
 
 
 
-Data Visualization
-------------------
+## Data Visualization {#sec-data-visualization}
 
 There are three popular systems for creating visualizations in R:
 
@@ -638,10 +633,9 @@ Visualization Workshop Reader][dataviz].
 Apply Functions
 ---------------
 
-Section \@ref(vectorization) introduced vectorization, a convenient and
-efficient way to compute multiple results. That section also mentioned that
-some of R's functions---the ones that summarize or aggregate data---are not
-vectorized.
+@sec-vectorization introduced vectorization, a convenient and efficient way to
+compute multiple results. That section also mentioned that some of R's
+functions---the ones that summarize or aggregate data---are not vectorized.
 
 The `class` function is an example of a function that's not vectorized. If we
 call the `class` function on the banknotes data set, we get just one result for
@@ -663,11 +657,11 @@ But what if we want the classes for all the columns? We could write a call to
 programming language, you should try to avoid tedium; there's usually a better,
 more automated way.
 
-Section \@ref(lists) pointed out that data frames are technically lists, where
-each column is one element. With that in mind, what we need here is a line of
-code that calls `class` on each element of the data frame. The idea is similar
-to vectorization, but since we have a list and a non-vectorized function, we
-have to do a bit more than just call `class(banknotes)`.
+@sec-lists pointed out that data frames are technically lists, where each
+column is one element. With that in mind, what we need here is a line of code
+that calls `class` on each element of the data frame. The idea is similar to
+vectorization, but since we have a list and a non-vectorized function, we have
+to do a bit more than just call `class(banknotes)`.
 
 The `lapply` function calls, or _applies_, a function on each element of a list
 or vector. The syntax is:
