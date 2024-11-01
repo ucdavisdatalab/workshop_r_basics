@@ -1,0 +1,7 @@
+digraph {
+  rankdir="LR"
+  logical -> integer
+  integer -> double
+  double -> complex
+  complex -> character
+}
