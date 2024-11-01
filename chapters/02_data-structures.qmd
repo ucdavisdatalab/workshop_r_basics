@@ -1,5 +1,4 @@
-Data Structures
-===============
+# Data Structures
 
 The previous chapter introduced R and gave you enough background to do some
 simple computations on data sets. This chapter focuses on the foundational
@@ -388,7 +387,7 @@ are printed compared to ordinary lists.
 
 R's types fall into a natural hierarchy of expressiveness:
 
-<img src="img/types.png">
+![R's hierarchy of types.](/img/types.png)
 
 Each type on the right is more expressive than the ones to its left. That is,
 with the convention that `FALSE` is `0` and `TRUE` is `1`, we can represent any
@@ -1031,14 +1030,23 @@ determine the result. Here are some of these:
 TRUE && FALSE
 TRUE && TRUE
 TRUE || TRUE
+```
+
+The short-circuit operators are not vectorized---they only accept length-1
+arguments:
+
+```{r, error = TRUE}
 c(TRUE, FALSE) && c(TRUE, TRUE)
 ```
 
-For the final expression, notice R only combines the first element of each
-vector. The others are ignored. In other words, the short-circuit operators are
-_not_ vectorized! Because of this, generally you **should not use** the
-short-circuit operators for indexing. Their main use is in writing conditions
-for if-statements, which we'll learn about later on.
+Because of this, you can't use short-circuit operators for indexing. Their main
+use is in writing conditions for if-statements, which we'll learn about later
+on.
+
+:::{.callout-note}
+Prior to R 4.3.0, short-circuit operators didn't raise an error for inputs with
+length greater than 1 (and thus were a common source of bugs).
+:::
 
 
 Exercises

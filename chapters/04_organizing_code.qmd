@@ -1,5 +1,4 @@
-Organizing Code
-===============
+# Organizing Code
 
 By now, you've learned all of the basic skills necessary to explore a data set
 in R. The focus of this chapter is how to organize your code so that it's
@@ -119,7 +118,7 @@ associated with them. It's useful to think of functions as factories: raw
 materials (inputs) go in, products (outputs) come out. We can also represent
 this visually:
 
-<img src="img/functions.png">
+![](/img/functions.png)
 
 Programmers use several specific terms to describe the parts and usage of
 functions:

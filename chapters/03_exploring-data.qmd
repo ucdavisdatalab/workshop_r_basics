@@ -1,5 +1,4 @@
-Exploring Data
-==============
+# Exploring Data
 
 ```{r, echo = FALSE}
 banknotes = read.csv("data/banknotes.csv")

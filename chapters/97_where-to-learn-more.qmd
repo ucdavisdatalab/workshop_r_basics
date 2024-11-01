@@ -1,5 +1,4 @@
-Where to Learn More {-}
-=======================
+# Where to Learn More {.unnumbered}
 
 This reader provides an introduction to the basics of R, but there's lots more
 to learn. Fortunately, many R and data science learning resources are available

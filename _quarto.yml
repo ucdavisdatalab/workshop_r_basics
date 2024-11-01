@@ -1,0 +1,34 @@
+project:
+  type: book
+  render:
+    - "index.qmd"
+    - "chapters/*.qmd"
+  execute-dir: project  # working directory is always root of project
+  output-dir: "docs/"
+
+book:
+  title: "R Basics"
+  author:
+    - "Nick Ulle"
+    - "Wesley Brooks"
+  date: now
+  chapters:
+    - "index.qmd"
+    - "chapters/01_getting-started.qmd"
+    - "chapters/02_data-structures.qmd"
+    - "chapters/03_exploring-data.qmd"
+    - "chapters/04_organizing_code.qmd"
+    - "chapters/05_appendix.qmd"
+    - "chapters/97_where-to-learn-more.qmd"
+    - "chapters/98_acknowledgements.qmd"
+    - "chapters/99_assessment.qmd"
+  sidebar:
+    logo: "images/datalab-logo-full-color-rgb-1.png"
+    logo-alt: "The logo of the UC Davis DataLab."
+    logo-href: "https://datalab.ucdavis.edu/"
+
+format:
+  html:
+    theme: cosmo
+    toc: true
+

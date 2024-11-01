@@ -1,12 +1,10 @@
-Acknowledgements {-}
-====================
+# Acknowledgements {.unnumbered}
 
 Sincere thanks to the rest of the DataLab team, for support and many thoughtful
 discussions about data science!
 
 
-Nick's Acknowledgements {-}
----------------------------
+## Nick's Acknowledgements
 
 Sincere thanks to:
 
