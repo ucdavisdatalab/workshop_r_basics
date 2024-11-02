@@ -1,5 +1,20 @@
 # Getting Started
 
+:::{.callout-note}
+##### Learning Goals
+
+After completing this chapter, learners should be able to:
+
+* Run code in the R console
+* Call functions and create variables
+* Check (in)equality of values
+* Describe a file system, directory, and working directory
+* Write paths to files or directories
+* Get or set the R working directory
+* Identify RDS, CSV, TSV files and functions for reading these
+* Inspect the structure of a data frame
+:::
+
 R is a program for statistical computing. It provides a rich set of built-in
 tools for cleaning, exploring, modeling, and visualizing data.
 
@@ -25,17 +40,6 @@ programming languages, R's particular strengths are its interactivity, built-in
 support for handling missing data, the ease with which you can produce
 high-quality data visualizations, and its broad base of user-contributed
 packages (due to both its age and growing popularity).
-
-#### Learning Objectives {-}
-
-* Run code in the R console
-* Call functions and create variables
-* Check (in)equality of values
-* Describe a file system, directory, and working directory
-* Write paths to files or directories
-* Get or set the R working directory
-* Identify RDS, CSV, TSV files and functions for reading these
-* Inspect the structure of a data frame
 
 
 Prerequisites

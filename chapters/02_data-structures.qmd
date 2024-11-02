@@ -1,12 +1,9 @@
 # Data Structures
 
-The previous chapter introduced R and gave you enough background to do some
-simple computations on data sets. This chapter focuses on the foundational
-knowledge and skills you'll need in order to use R effectively in the long
-term. Specifically, it begins with a deep dive into R's various data structures
-and data types, then explains a variety of ways to get and set their elements.
+:::{.callout-note}
+##### Learning Goals
 
-#### Learning Objectives {-}
+After completing this chapter, learners should be able to:
 
 * Create vectors, including sequences
 * Identify whether a function is vectorized or not
@@ -17,6 +14,13 @@ and data types, then explains a variety of ways to get and set their elements.
 * Identify, create, and relevel factors
 * Index vectors with empty, integer, string, and logical arguments
 * Negate or combine conditions with logic operators
+:::
+
+The previous chapter introduced R and gave you enough background to do some
+simple computations on data sets. This chapter focuses on the foundational
+knowledge and skills you'll need in order to use R effectively in the long
+term. Specifically, it begins with a deep dive into R's various data structures
+and data types, then explains a variety of ways to get and set their elements.
 
 
 ## Vectors {#sec-vectors}

@@ -1,17 +1,20 @@
 # Organizing Code
 
+:::{.callout-note}
+##### Learning Goals
+
+After completing this chapter, learners should be able to:
+
+* Create code that only runs when a condition is satisfied
+* Create custom functions in order to organize and reuse code
+:::
+
 By now, you've learned all of the basic skills necessary to explore a data set
 in R. The focus of this chapter is how to organize your code so that it's
 concise, clear, and easy to automate. This will help you and your collaborators
 avoid tedious, redundant work, reproduce results efficiently, and run code in
 specialized environments for scientific computing, such as high-performance
 computing clusters.
-
-
-#### Learning Objectives {-}
-
-* Create code that only runs when a condition is satisfied
-* Create custom functions in order to organize and reuse code
 
 
 Conditional Expressions

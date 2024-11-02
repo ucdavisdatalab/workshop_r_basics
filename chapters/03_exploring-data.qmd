@@ -4,13 +4,10 @@
 banknotes = read.csv("data/banknotes.csv")
 ```
 
-Now that you have a solid foundation in the basic functions and data structures
-of R, you can move on to its most popular application: data analysis. In this
-chapter, you'll learn how to efficiently explore and summarize data with
-visualizations and statistics. Along the way, you'll also learn how to use
-apply functions, which are essential to fluency in R.
+:::{.callout-note}
+##### Learning Goals
 
-#### Learning Objectives {-}
+After completing this chapter, learners should be able to:
 
 * Describe when to use `[` versus `[[`
 * Index data frames to get specific rows, columns, or subsets
@@ -20,6 +17,13 @@ apply functions, which are essential to fluency in R.
 * Save a plot to an image file
 * Call a function repeatedly with `sapply` or `lapply`
 * Split data into groups and apply a function to each
+:::
+
+Now that you have a solid foundation in the basic functions and data structures
+of R, you can move on to its most popular application: data analysis. In this
+chapter, you'll learn how to efficiently explore and summarize data with
+visualizations and statistics. Along the way, you'll also learn how to use
+apply functions, which are essential to fluency in R.
 
 
 ## Indexing Data Frames
