@@ -20,8 +20,8 @@ important details of comparisons.
 #### The `==` Operator
 
 The `==` operator tests whether its two arguments have the exact same
-representation as a _[binary number][binary]_ in your computer's memory. Before
-testing the arguments, the operator applies R's rules for vectorization
+representation as a [**binary number**][binary] in your computer's memory.
+Before testing the arguments, the operator applies R's rules for vectorization
 (@sec-vectorization), recycling (@sec-recycling), and implicit coercion
 (@sec-implicit-coercion). Until you've fully internalized these three rules,
 some results from the equality operator  may seem surprising. For example:
@@ -45,7 +45,7 @@ longest argument (with some exceptions).
 #### The `all.equal` Function
 
 The `all.equal` function tests whether its two arguments are equal up to some
-acceptable difference called a _tolerance_. Computer representations for
+acceptable difference called a **tolerance**. Computer representations for
 decimal numbers are inherently imprecise, so it's necessary to allow for very
 small differences between computed numbers. For example:
 
@@ -106,9 +106,9 @@ the time the equality operator `==` is sufficient.
 ### The `%in%` Operator
 
 Another common comparison is to check whether elements of one vector are
-_contained_ in another vector at any position. For instance, suppose you want
-to check whether `1` or `2` appear anywhere in a longer vector `x`. Here's how
-to do it:
+contained in another vector at any position. For instance, suppose you want to
+check whether `1` or `2` appear anywhere in a longer vector `x`. Here's how to
+do it:
 
 ```{r}
 x = c(3, 4, 2, 7, 3, 7)

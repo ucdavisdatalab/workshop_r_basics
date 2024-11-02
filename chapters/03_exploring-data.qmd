@@ -31,7 +31,7 @@ frame is a list, so first you'll learn about indexing lists.
 
 ### Indexing Lists
 
-Lists are a _container_ for other types of R objects. When you select an
+Lists are a **container** for other types of R objects. When you select an
 element from a list, you can either keep the container (the list) or discard
 it. The indexing operator `[` almost always keeps containers.
 
@@ -56,8 +56,8 @@ first element of `x` so that we can use it in a vectorized function? Or in a
 function that only accepts numeric arguments? We need to somehow get the
 element and discard the container.
 
-The solution to this problem is the _extraction operator_ `[[`, which is also
-called the _double square bracket operator_. The extraction operator is the
+The solution to this problem is the **extraction operator** `[[`, which is also
+called the double square bracket operator. The extraction operator is the
 primary way to get and set elements of lists and other containers.
 
 Unlike the indexing operator `[`, the extraction operator always discards the
@@ -141,11 +141,12 @@ surprising way.
 
 ## Packages {#sec-packages}
 
-A _package_ is a collection of functions for use in R. Packages usually include
-documentation, and can also contain examples, vignettes, and data sets. Most
-packages are developed by members of the R community, so quality varies. There
-are also a few packages that are built into R but provide extra features. We'll
-use a package in @sec-data-visualization, so we're learning about them now.
+A **package** is a collection of functions for use in R. Packages usually
+include documentation, and can also contain examples, vignettes, and data sets.
+Most packages are developed by members of the R community, so quality varies.
+There are also a few packages that are built into R but provide extra features.
+We'll use a package in @sec-data-visualization, so we're learning about them
+now.
 
 The [Comprehensive R Archive Network][cran], or CRAN, is the main place people
 publish packages. As of writing, there were 18,619 packages posted to CRAN.
@@ -165,7 +166,7 @@ specific discipline.
 The `install.packages` function installs one or more packages from CRAN. Its
 first argument is the packages to install, as a character vector.
 
-When you run `install.packages`, R will ask you to choose which _mirror_ to
+When you run `install.packages`, R will ask you to choose which **mirror** to
 download the package from. A mirror is a web server that has the same set of
 files as some other server. Mirrors are used to make downloads faster and to
 provide redundancy so that if a server stops working, files are still available
@@ -296,7 +297,7 @@ nice-looking visualization.
 
 The ggplot2 package is so popular that there are now knockoff packages for
 other data-science-oriented programming languages like Python and Julia. The
-package is also part of the [_Tidyverse_][tidy], a popular collection of R
+package is also part of the [Tidyverse][tidy], a popular collection of R
 packages designed to work well together. Because of these advantages, we'll use
 ggplot2 for visualizations in this and all future lessons.
 
@@ -308,8 +309,8 @@ ggplot2 has detailed [documentation][ggplot2-docs] and also a
 [ggplot2-docs]: https://ggplot2.tidyverse.org/
 [ggplot2-cheat]: https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf
 
-The "gg" in ggplot2 stands for _grammar of graphics_. The idea of a grammar of
-graphics is that visualizations can be built up in layers. In ggplot2, the
+The "gg" in ggplot2 stands for **grammar of graphics**. The idea of a grammar
+of graphics is that visualizations can be built up in layers. In ggplot2, the
 three layers every plot must have are:
 
 * Data
@@ -355,8 +356,8 @@ Now we're ready to make the plot.
 ### Layer 1: Data
 
 The data layer determines the data set used to make the plot. ggplot and most
-other Tidyverse packages are designed for working with _tidy_ data frames. Tidy
-means:
+other Tidyverse packages are designed for working with **tidy** data frames.
+Tidy means:
 
 1. Each observation has its own row.
 2. Each feature has its own column.

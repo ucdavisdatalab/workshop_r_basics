@@ -18,7 +18,7 @@ Conditional Expressions
 -----------------------
 
 Sometimes you'll need code to do different things, depending on a condition.
-_If-statements_ provide a way to write conditional code.
+**If-expressions** provide a way to write conditional code.
 
 For example, suppose we want to greet one person differently from the others:
 ```{r}
@@ -33,10 +33,10 @@ if (name == "Nick") {
 }
 ```
 
-Indent code inside of the if-statement by 2 or 4 spaces. Indentation makes your
-code easier to read.
+Indent code inside of the if-expression by 2 or 4 spaces. Indentation makes
+your code easier to read.
 
-The condition in an if-statement has to be a scalar:
+The condition in an if-expression has to be a scalar:
 ```{r, error = TRUE}
 name = c("Nick", "Susan")
 if (name == "Nick") {
@@ -46,7 +46,7 @@ if (name == "Nick") {
 }
 ```
 
-You can chain together if-statements:
+You can chain together if-expressions:
 ```{r}
 name = "Susan"
 if (name == "Nick") {
@@ -59,7 +59,7 @@ if (name == "Nick") {
 msg
 ```
 
-If-statements return the value of the last expression in the evaluated block:
+If-expressions return the value of the last expression in the evaluated block:
 ```{r}
 name = "Tom"
 msg = if (name == "Nick") {
@@ -123,11 +123,11 @@ this visually:
 Programmers use several specific terms to describe the parts and usage of
 functions:
 
-* _Parameters_ are placeholder variables for inputs.
-    + _Arguments_ are the actual values assigned to the parameters in a call.
-* The _return value_ is the output.
-* The _body_ is the code inside.
-* _Calling_ a function means using a function to compute something.
+* **Parameters** are placeholder variables for inputs.
+    + **Arguments** are the actual values assigned to the parameters in a call.
+* The **return value** is the output.
+* The **body** is the code inside.
+* **Calling** a function means using a function to compute something.
 
 Almost every command in R is a function, even the arithmetic operators and the
 parentheses! You can view the body of a function by typing its name without
@@ -224,11 +224,11 @@ about the specific rules for how R searches for variables in
 As a function for quickly summarizing data, `get_largest` would be more
 convenient if the parameter `n` for the number of values to return was optional
 (again, compare to the `head` function). You can make the parameter `n`
-optional by setting a _default argument_: an argument assigned to the parameter
-if no argument is assigned in the call to the function. You can use `=` to
-assign default arguments to parameters when you define a function with the
-`function` keyword. Here's a new definition of the function with the default `n
-= 5`:
+optional by setting a **default argument**: an argument assigned to the
+parameter if no argument is assigned in the call to the function. You can use
+`=` to assign default arguments to parameters when you define a function with
+the `function` keyword. Here's a new definition of the function with the
+default `n = 5`:
 
 ```{r}
 get_largest = function(vec, n = 5) {
@@ -255,8 +255,8 @@ last line.
 
 The `return` keyword causes a function to return a result immediately, without
 running any subsequent code in its body. It only makes sense to use `return`
-from inside of an if-statement. If your function doesn't have any
-if-statements, you don't need to use `return`.
+from inside of an if-expression. If your function doesn't have any
+if-expressions, you don't need to use `return`.
 
 For example, suppose you want the `get_largest` function to immediately return
 `NULL` if the argument for `vec` is a list. Here's the code, along with some

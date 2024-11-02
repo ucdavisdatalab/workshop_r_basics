@@ -3,20 +3,20 @@
 R is a program for statistical computing. It provides a rich set of built-in
 tools for cleaning, exploring, modeling, and visualizing data.
 
-The main way you'll interact with R is by writing code or _expressions_ in the
-R programming language. Most people use "R" as a blanket term to refer to both
-the program and the programming language. Usually, the distinction doesn't
+The main way you'll interact with R is by writing code or **expressions** in
+the R programming language. Most people use "R" as a blanket term to refer to
+both the program and the programming language. Usually, the distinction doesn't
 matter, but in cases where it does, we'll point it out and be specific.
 
 By writing code, you create an unambiguous record of every step taken in an
 analysis. This it one of the major advantages of R (and other programming
 languages) over point-and-click software like Tableau and Microsoft Excel.
-Code you write in R is *reproducible*: you can share it with someone else, and
-if they run it with the same inputs, they'll get the same results.
+Code you write in R is **reproducible**: you can share it with someone else,
+and if they run it with the same inputs, they'll get the same results.
 
-Another advantage of writing code is that it's often *reusable*. This can mean
-automating a repetitive task within a single analysis, recycling code from one
-analysis into another, or _packaging_ useful code for distribution to the
+Another advantage of writing code is that it's often **reusable**. This can
+mean automating a repetitive task within a single analysis, recycling code from
+one analysis into another, or **packaging** useful code for distribution to the
 general public. At the time of writing, there were over 17,000 user-contributed
 packages available for R, spanning a broad range of disciplines.
 
@@ -46,8 +46,8 @@ Prerequisites
 You can download R for free [here](https://cloud.r-project.org/), and can find
 an install guide [here]().
 
-In addition to R, you'll need RStudio. RStudio is an *integrated development
-environment* (IDE), which means it's a comprehensive program for writing,
+In addition to R, you'll need RStudio. RStudio is an **integrated development
+environment** (IDE), which means it's a comprehensive program for writing,
 editing, searching, and running code. You can do all of these things without
 RStudio, but RStudio makes the process easier. You can download RStudio Desktop
 Open-Source Edition for free
@@ -88,11 +88,12 @@ this:
 
 R always puts the result on a separate line (or lines) from your code. In this
 case, the result begins with the tag `[1]`, which is a hint from R that the
-result is a *vector* and that this line starts with the *element* at position
-1. You'll learn more about vectors in @sec-vectors, and eventually learn about
-other data types that are displayed differently. The result of the sum, `4`, is
-displayed after the tag. In this reader, results from R will usually be typeset
-in monospace and further prefixed with `##` to indicate that they aren't code.
+result is a **vector** and that this line starts with the **element** at
+position 1. You'll learn more about vectors in @sec-vectors, and eventually
+learn about other data types that are displayed differently. The result of the
+sum, `4`, is displayed after the tag. In this reader, results from R will
+usually be typeset in monospace and further prefixed with `##` to indicate that
+they aren't code.
 
 If you enter an incomplete expression, R will change the prompt to `+`, then
 wait for you to type the rest of the expression and press the `Enter` key.
@@ -136,7 +137,7 @@ it a habit. Put spaces around most operators, after commas, and after keywords.
 
 Since R is designed for mathematics and statistics, you might expect that it
 provides a better appoximation for $\pi$ than `3.14`. R and most other
-programming languages allow you to create named values, or _variables_. R
+programming languages allow you to create named values, or **variables**. R
 provides a built-in variable called `pi` for the value of $\pi$. You can
 display a variable's value by entering its name in the console:
 
@@ -201,7 +202,7 @@ code even easier to reuse.
 
 R treats anything inside single or double quotes as literal text rather than as
 an expression to evaluate. In programming jargon, a piece of literal text is
-called a _string_. You can use whichever kind of quotes you prefer, but the
+called a **string**. You can use whichever kind of quotes you prefer, but the
 quote at the beginning of the string must match the quote at the end.
 
 ```{r}
@@ -243,8 +244,8 @@ pi == 3.14
 "hi" == 'hi'
 ```
 
-When you make a comparison, R returns a _logical_ value, `TRUE` or `FALSE`, to
-indicate the result. Logical values are not the same as strings, so they are
+When you make a comparison, R returns a **logical** value, `TRUE` or `FALSE`,
+to indicate the result. Logical values are not the same as strings, so they are
 not quoted.
 
 Logical values are values, so you can use them in other computations. For
@@ -272,11 +273,11 @@ two different types of data:
 
 ### Calling Functions {#sec-calling-functions}
 
-Most of R's features are provided through _functions_, pieces of reusable code.
-You can think of a function as a machine that takes some inputs and uses them
-to produce some output. In programming jargon, the inputs to a function are
-called _arguments_, the output is called the _return value_, and when you use a
-function, you're _calling_ the function.
+Most of R's features are provided through **functions**, pieces of reusable
+code. You can think of a function as a machine that takes some inputs and uses
+them to produce some output. In programming jargon, the inputs to a function
+are called **arguments**, the output is called the **return value**, and when
+you use a function, you're **calling** the function.
 
 To call a function, write its name followed by parentheses. Put any arguments
 to the function inside the parentheses. For example, in R, the sine function is
@@ -296,12 +297,12 @@ commas. So another way to compute $2 + 2$ in R is:
 sum(2, 2)
 ```
 
-When you call a function, R assigns each argument to a _parameter_. Parameters
-are special variables that represent the inputs to a function and only exist
-while that function runs. For example, the `log` function, which computes a
-logarithm, has parameters `x` and `base` for the operand and base of the
-logarithm, respectively. The next section, @sec-getting-help, explains how to
-look up the parameters for a function.
+When you call a function, R assigns each argument to a **parameter**.
+Parameters are special variables that represent the inputs to a function and
+only exist while that function runs. For example, the `log` function, which
+computes a logarithm, has parameters `x` and `base` for the operand and base of
+the logarithm, respectively. The next section, @sec-getting-help, explains how
+to look up the parameters for a function.
 
 By default, R assigns arguments to parameters based on their order. The first
 argument is assigned to the function's first parameter, the second to the
@@ -441,10 +442,10 @@ code to your computer's hard drive. Let's start by reviewing how files on a
 computer work. You'll need to understand that before you can save your code,
 and it will also be important later on for loading data sets.
 
-Your computer's _file system_ is a collection of _files_ (chunks of data) and
-_directories_ (or "folders") that organize those files. For instance, the file
-system on a computer shared by [Ada][ada] and [Charles][chuck], two pioneers of
-computing, might look like this:
+Your computer's **file system** is a collection of **files** (chunks of data)
+and **directories** (or "folders") that organize those files. For instance, the
+file system on a computer shared by [Ada][ada] and [Charles][chuck], two
+pioneers of computing, might look like this:
 
 [ada]: https://en.wikipedia.org/wiki/Ada_Lovelace
 [chuck]: https://en.wikipedia.org/wiki/Charles_Babbage
@@ -455,13 +456,13 @@ computing, might look like this:
 ](/images/filesystem.png){width=50%}
 
 File systems have a tree-like structure, with a top-level directory called the
-_root directory_. On Ada and Charles' computer, the root is called `/`, which
+**root directory**. On Ada and Charles' computer, the root is called `/`, which
 is also what it's called on all macOS and Linux computers. On Windows, the root
 is usually called `C:/`, but sometimes other letters, like `D:/`, are also used
 depending on the computer's hardware.
 
-A _path_ is a list of directories that leads to a specific file or directory on
-a file system (imagine giving directons to someone as they walk through the
+A **path** is a list of directories that leads to a specific file or directory
+on a file system (imagine giving directons to someone as they walk through the
 file system). Use forward slashes `/` to separate the directories in a path.
 The root directory includes a forward slash as part of its name, and doesn't
 need an extra one.
@@ -495,9 +496,9 @@ a file. Charles could also write the path like this:
 ```
 
 This is still correct, but it's not as obvious that `Programs` is a directory.
-In other words, when a path leads to a directory, including a _trailing slash_
-is optional, but makes the meaning of the path clearer. Paths that lead to
-files never have a trailing slash.
+In other words, when a path leads to a directory, including a **trailing
+slash** is optional, but makes the meaning of the path clearer. Paths that lead
+to files never have a trailing slash.
 
 On Windows computers, paths are usually written with backslashes ```\``` to
 separate directories instead of forward slashes. Fortunately, R uses forward
@@ -509,7 +510,7 @@ uses a different operating system than you.
 ### Absolute & Relative Paths {#sec-absolute-relative-paths}
 
 A path that starts from the root directory, like all of the ones you've seen so
-far, is called an _absolute path_. The path is "absolute" because it
+far, is called an **absolute path**. The path is "absolute" because it
 unambiguously describes where a file or directory is located. The downside is
 that absolute paths usually don't work well if you share your code.
 
@@ -523,7 +524,7 @@ isn't portable to others.
 
 [gladys]: https://en.wikipedia.org/wiki/Gladys_West
 
-On the other hand, a _relative path_ is one that doesn't start from the root
+On the other hand, a **relative path** is one that doesn't start from the root
 directory. The path is "relative" to an unspecified starting point, which
 usually depends on the context.
 
@@ -572,10 +573,10 @@ useful in relative paths, but also work in absolute paths:
 
 * `.` means the current directory.
 * `..` means the directory above the current directory.
-* `~` means the _home directory_. Each user has their own home directory, whose
-  location depends on the operating system and their username. Home directories
-  are typically found inside `C:/Users/` on Windows, `/Users/` on macOS, and
-  `/home/` on Linux.
+* `~` means the **home directory**. Each user has their own home directory,
+  whose location depends on the operating system and their username. Home
+  directories are typically found inside `C:/Users/` on Windows, `/Users/` on
+  macOS, and `/home/` on Linux.
 
 As an example, suppose Ada wants to write a (relative) path from the `ada`
 directory to Charles' cool selfie. Using these shorcuts, she can write:
@@ -607,8 +608,8 @@ this text.
 ### R Scripts {#sec-r-scripts}
 
 Now that you know how file systems and paths work, you're ready to learn how to
-save your R code to a file. R code is usually saved into an _R script_
-(extension `.R`) or an _R Markdown file_ (extension `.Rmd`). R scripts are
+save your R code to a file. R code is usually saved into an **R script**
+(extension `.R`) or an **R Markdown file** (extension `.Rmd`). R scripts are
 slightly simpler, so let's focus on those.
 
 In RStudio, you can create a new R script with this menu option:
@@ -633,7 +634,7 @@ computer's file system. When you do, pay attention to where you save the file,
 as you might need it later.
 
 The contents of an R script should be R code. Anything else you want to write
-in the script (notes, documentation, etc.) should be in a _comment_. In R,
+in the script (notes, documentation, etc.) should be in a **comment**. In R,
 comments begin with `#` and extend to the end of the line:
 
 ```{r}
@@ -656,9 +657,10 @@ While editing, you can run the current line in the R console by pressing
 `Ctrl`+`Enter` on Windows and Linux, or `Cmd`+`Enter` on macOS. This way you
 can test and correct your code as you write it.
 
-If you want, you can instead run (or _source_) the entire R script, by calling
-the `source` function with the path to the script as an argument. This is also
-what the "Source on Save" check box refers to in RStudio. The code runs in
+If you want, you can instead run (or **source**) the entire R script, by
+calling the `source` function with the path to the script as an argument. This
+is also what the "Source on Save" check box refers to in RStudio. The code runs
+in
 order, only stopping if an error occurs.
 
 For instance, if you save the script as `my_cool_script.R`, then you can run
@@ -677,7 +679,7 @@ about R Markdown files [here][rmd].
 
 @sec-absolute-relative-paths explained that relative paths have a starting
 point that depends on the context where the path is used. Let's make that idea
-more concrete for R. The _working directory_ is the starting point R uses for
+more concrete for R. The **working directory** is the starting point R uses for
 relative paths. Think of the working directory as the directory R is currently
 "at" or watching.
 
@@ -743,7 +745,7 @@ is to get R to read your data. Data sets come in a variety of file formats, and
 you need to identify the format in order to tell R how to read the data.
 
 Most of the time, you can guess the format of a file by looking at its
-_extension_, the characters (usually three) after the last dot `.` in the
+**extension**, the characters (usually three) after the last dot `.` in the
 filename. For example, the extension `.jpg` or `.jpeg` indicates a [JPEG image
 file][jpg]. Some operating systems hide extensions by default, but you can find
 instructions to change this setting online by searching for "show file
@@ -754,7 +756,7 @@ than a guarantee.
 [jpg]: https://en.wikipedia.org/wiki/JPEG
 
 R has built-in functions for reading a variety of formats. The R community also
-provides _packages_, shareable and reusable pieces of code, to read even more
+provides **packages**, shareable and reusable pieces of code, to read even more
 formats. You'll learn more about packages later, in @sec-packages. For now,
 let's focus on data sets that can be read with R's built-in functions.
 
@@ -762,26 +764,26 @@ Here are several formats that are frequently used to distribute data, along
 with the name of a built-in function or contributed package that can read the
 format:
 
-| Name                        | Extension  | Function or Package  | Tabular?  | Text?
-| :-------------------------- | :--------  | :------------------- | :-------- | :----
-| Comma-separated Values      | `.csv`     | `read.csv`           | Yes       | Yes
-| Tab-separated Values        | `.tsv`     | `read.delim`         | Yes       | Yes
-| Fixed-width File            | `.fwf`     | `read.fwf`           | Yes       | Yes
-| Microsoft Excel             | `.xlsx`    | **readr** package    | Yes       | No
-| Microsoft Excel 1993-2007   | `.xls`     | **readr** package    | Yes       | No
-| [Apache Arrow][arrow]       | `.feather` | **arrow** package    | Yes       | No
-| R Data                      | `.rds`     | `readRDS`            | Sometimes | No
-| R Data                      | `.rda`     | `load`               | Sometimes | No
-| Plaintext                   | `.txt`     | `readLines`          | Sometimes | Yes
-| Extensible Markup Language  | `.xml`     | **xml2** package     | No        | Yes
-| JavaScript Object Notation  | `.json`    | **jsonlite** package | No        | Yes
+| Name                        | Extension  | Function or Package | Tabular?  | Text?
+| :-------------------------- | :--------  | :------------------ | :-------- | :----
+| Comma-separated Values      | `.csv`     | `read.csv`          | Yes       | Yes
+| Tab-separated Values        | `.tsv`     | `read.delim`        | Yes       | Yes
+| Fixed-width File            | `.fwf`     | `read.fwf`          | Yes       | Yes
+| Microsoft Excel             | `.xlsx`    | readr package       | Yes       | No
+| Microsoft Excel 1993-2007   | `.xls`     | readr package       | Yes       | No
+| [Apache Arrow][arrow]       | `.feather` | arrow package       | Yes       | No
+| R Data                      | `.rds`     | `readRDS`           | Sometimes | No
+| R Data                      | `.rda`     | `load`              | Sometimes | No
+| Plaintext                   | `.txt`     | `readLines`         | Sometimes | Yes
+| Extensible Markup Language  | `.xml`     | xml2 package        | No        | Yes
+| JavaScript Object Notation  | `.json`    | jsonlite package    | No        | Yes
 
 [arrow]: https://arrow.apache.org/
 
-A _tabular_ data set is one that's structured as a table, with rows and columns.
-This reader focuses on tabular data sets, since they're common in practice and
-present the fewest programming challenges. Here's an example of a tabular data
-set:
+A **tabular** data set is one that's structured as a table, with rows and
+columns. This reader focuses on tabular data sets, since they're common in
+practice and present the fewest programming challenges. Here's an example of a
+tabular data set:
 
 | Fruit  | Quantity | Price
 | :----  | -------: | ----:
@@ -789,12 +791,12 @@ set:
 | banana | 541      | 0.79
 | pear   | 10       | 1.99
 
-A _text_ file is one that contains human-readable lines of text. You can check
-this by opening the file with a text editor such as Microsoft Notepad or macOS
-TextEdit. Many file formats use text in order to make the format easier to work
-with.
+A **text file** is a file that contains human-readable lines of text. You can
+check this by opening the file with a text editor such as Microsoft Notepad or
+macOS TextEdit. Many file formats use text in order to make the format easier
+to work with.
 
-For instance, a _comma-separated values_ (CSV) file records a tabular data
+For instance, a **comma-separated values** (CSV) file records a tabular data
 using one line per row, with commas separating columns. If you store the table
 above in a CSV file and open the file in a text editor, here's what you'll see:
 
@@ -805,13 +807,13 @@ banana,541,0.79
 pear,10,1.99
 ```
 
-A _binary_ file is one that's not human-readable. You can't just read off the
+A **binary file** is one that's not human-readable. You can't just read off the
 data if you open a binary file in a text editor, but they have a number of
 other advantages. Compared to text files, binary files are often faster to read
 and take up less storage space (bytes).
 
-As an example, R's built-in binary format is called _RDS_ (which may stand for
-"R data serialized"). RDS files are extremely useful for backing up work, since
+As an example, R's built-in binary format is called RDS (which may stand for "R
+data serialized"). RDS files are extremely useful for backing up work, since
 they can store any kind of R object, even ones that are not tabular. You can
 learn more about how to create an RDS file on the `?saveRDS` help page, and how
 to read one on the `?readRDS` help page.
@@ -863,15 +865,15 @@ with a new data set, it's usually not a good idea to print it out directly (by
 typing `banknotes`, in this case) until you know how big it is. Big data sets can
 take a long time to print, and the output can be difficult to read.
 
-Instead, you can use the `head` function to print only the beginning, or
-_head_, of a data set. Let's take a peek:
+Instead, you can use the `head` function to print only the beginning, or head,
+of a data set. Let's take a peek:
 
 ```{r}
 head(banknotes)
 ```
 
 This data set is tabular---as you might have already guessed, since it came
-from a CSV file. In R, it's represented by a _data frame_, a table with rows
+from a CSV file. In R, it's represented by a **data frame**, a table with rows
 and columns. R uses data frames to represent most (but not all) kinds of
 tabular data. The `read.csv` function, which you used to read this data, always
 returns a data frame.
@@ -929,7 +931,7 @@ compute summary information. This works especially well for data frames, but
 also applies to other data. R provides two different functions to get
 summaries: `str` and `summary`.
 
-The `str` function returns a _structural summary_ of an object. This kind of
+The `str` function returns a **structural summary** of an object. This kind of
 summary tells us about the structure of the data---the number of rows, the
 number and names of columns, what kind of data is in each column, and some
 sample values. Here's the structural summary for the banknotes data:
@@ -943,12 +945,12 @@ found earlier by using several different functions separately. The summary uses
 `chr` to indicate columns of text ("characters") and `int` to indicate columns
 of integers.
 
-In contrast to `str`, the `summary` function returns a _statistical summary_ of
-an object. This summary includes summary statistics for each column, choosing
-appropriate statistics based on the kind of data in the column. For numbers,
-this is generally the mean, median, and quantiles. For categories, this is the
-frequencies. Other kinds of statistics are shown for other kinds of data.
-Here's the statistical summary for the banknotes data:
+In contrast to `str`, the `summary` function returns a **statistical summary**
+of an object. This summary includes summary statistics for each column,
+choosing appropriate statistics based on the kind of data in the column. For
+numbers, this is generally the mean, median, and quantiles. For categories,
+this is the frequencies. Other kinds of statistics are shown for other kinds of
+data. Here's the statistical summary for the banknotes data:
 
 ```{r}
 summary(banknotes)
@@ -1003,7 +1005,7 @@ Exercises
 
 ### Exercise
 
-In a string, an _escape sequence_ or _escape code_ consists of a backslash
+In a string, an **escape sequence** or escape code consists of a backslash
 followed by one or more characters. Escape sequences make it possible to:
 
 * Write quotes or backslashes within a string
