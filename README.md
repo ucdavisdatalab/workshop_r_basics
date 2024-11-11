@@ -60,6 +60,7 @@ To make alterations to the reader:
     - Any files you edited directly
     - Any supporting media you added to `docs/` or `images/`
     - The entire `docs/` directory
+    - The entire `_freeze/` directory
 
     Then `git commit` and `git push`. The live web page will update
     automatically after 1-10 minutes.
