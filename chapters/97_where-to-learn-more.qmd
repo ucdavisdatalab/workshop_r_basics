@@ -1,26 +1,30 @@
 # Where to Learn More {.unnumbered}
 
 This reader provides an introduction to the basics of R, but there's lots more
-to learn. Fortunately, many R and data science learning resources are available
-for free online or through the library.
+to learn!
 
-Here are a few readers and notes created by DataLab staff:
+DataLab's [Intermediate R][intermediate-r] workshops are designed specifically
+for learners who have taken this workshop and want to learn more about R.
 
-* [README, Write Me!][readme], our workshop about how to organize and document
-  computing projects.
-* [Principles of Data Visualization][data-viz], our workshop about how to
-  design clear and effective data visualizations.
-* [Adventures in Data Science][adventures], our course introducing humanities
-  undergraduates to data science techniques.
-* [My personal teaching notes][notes] from several years of teaching
-  statistical computing.
+[intermediate-r]: https://ucdavisdatalab.github.io/workshop_intermediate_r/
 
-[readme]: https://ucdavisdatalab.github.io/workshop_how-to-data-documentation/
+DataLab also teaches [many other workshops about data science][workshops]. If
+you're not sure where to start or how these workshops all fit together, take a
+look at our [Reproducibility Principles and Practices reader][repro].
+
+[workshops]: https://datalab.ucdavis.edu/workshops/descriptions/
+[repro]: https://ucdavisdatalab.github.io/workshop_reproducible_research/
+
+
+If you want to learn more about how to design clear and effective data
+visualizations, take a look at our [Principles of Data Visualization
+reader][data-viz].
+
 [data-viz]: https://ucdavisdatalab.github.io/workshop_data_viz_principles/
-[adventures]: https://ucdavisdatalab.github.io/adventures_in_data_science/
-[notes]: https://github.com/nick-ulle/teaching-notes
 
-And here are a few books created by others that we've found useful:
+Many R and data science learning resources are available for free online or
+through the library. Here are a few books created by others that we've found
+useful:
 
 * [R for Data Science][r4ds] by Wickham & Grolemund. An introduction to using R
   for data science, but with a very heavy focus on Tidyverse packages.
