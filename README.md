@@ -48,7 +48,7 @@ To make alterations to the reader:
       of your chapter. Subsequent section headers should be second-level
       headers (like `## This`) or below.
 
-    Put any supporting resources in `data/` or `img/`. Store large files in
+    Put any supporting resources in `data/` or `images/`. Store large files in
     Google Drive or other cloud storage rather than committing them to the
     repo. You do not need to add generated resources (such as HTML files). The
     render step saves these in `docs/` automatically.
@@ -58,7 +58,7 @@ To make alterations to the reader:
 
 5.  When you're finished, `git add`:
     - Any files you edited directly
-    - Any supporting media you added to `docs/` or `img/`
+    - Any supporting media you added to `docs/` or `images/`
     - The entire `docs/` directory
 
     Then `git commit` and `git push`. The live web page will update
