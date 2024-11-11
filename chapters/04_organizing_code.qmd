@@ -220,9 +220,10 @@ vec
 
 In general, R keeps parameters and variables you define inside of a function
 separate from variables you define outside of a function. You can read more
-about the specific rules for how R searches for variables in
-@sec-variable-scope-lookup.
+about the specific rules for how R searches for variables in DataLab's
+[Intermediate R reader][intermediate-r].
 
+[intermediate-r]: https://ucdavisdatalab.github.io/workshop_intermediate_r/
 
 As a function for quickly summarizing data, `get_largest` would be more
 convenient if the parameter `n` for the number of values to return was optional

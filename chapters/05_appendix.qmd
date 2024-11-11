@@ -187,25 +187,3 @@ class(result)
 ```
 
 The default is `drop = TRUE`.
-
-
-## Variable Scope & Lookup {#sec-variable-scope-lookup}
-
-FIXME: Moved to Intermediate R
-
-
-Loops
------
-
-FIXME: Moved to Intermediate R
-
-
-String Processing
------------------
-
-FIXME: Moved to Intermediate R
-
-Date Processing
----------------
-
-FIXME: Moved to Intermediate R
