@@ -1,8 +1,8 @@
 # Workshop: R Basics
 
 _[UC Davis DataLab](https://datalab.ucdavis.edu/)_  
-_Summer 2022_  
-_Instructors: Wesley Brooks, Nick Ulle_  
+_Fall 2024_  
+_Instructors: Michele Tobias, Wesley Brooks_  
 _Maintainer: Nick Ulle <<naulle@ucdavis.edu>>_
 
 This 4-part workshop series provides an introduction to using the R programming
