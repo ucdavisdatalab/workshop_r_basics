@@ -22,6 +22,8 @@ book:
     - "chapters/97_where-to-learn-more.qmd"
     - "chapters/98_acknowledgements.qmd"
     - "chapters/99_assessment.qmd"
+  repo-url: "https://github.com/ucdavisdatalab/workshop_r_basics"
+  repo-actions: [issue, source]
   sidebar:
     logo: "images/datalab-logo-full-color-rgb-1.png"
     logo-alt: "The logo of the UC Davis DataLab."
