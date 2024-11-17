@@ -836,7 +836,7 @@ Check out [their article about banknotes around the world][banknotes].
 
 [pudding]: https://pudding.cool/
 [banknotes]: https://pudding.cool/2022/04/banknotes/
-[banknotes-dl]: https://raw.githubusercontent.com/ucdavisdatalab/workshop_r_basics/dev/data/banknotes.csv
+[banknotes-dl]: https://raw.githubusercontent.com/ucdavisdatalab/workshop_r_basics/refs/heads/main/data/banknotes.csv
 
 The data set is in a file called `banknotes.csv`, which suggests it's a CSV
 file. In this case, the extension is correct, so you can read the file into R
