@@ -827,8 +827,8 @@ to read one on the `?readRDS` help page.
 
 Let's read our first data set! Over the next few sections, you're going to
 explore a data set about the people who are depicted on banknotes (paper money)
-from around the world. [Click here to download the data set][banknotes-dl] (you
-may need to choose `File -> Save As...` in your browser's menu).
+from around the world. [Click here to download the data set][banknotes-dl]
+(you'll need to click the "Download raw file" button).
 
 The banknotes data set is derived from one created by [The Pudding][pudding], a
 digital publication that makes awesome stories and visualizations with data.
@@ -836,7 +836,7 @@ Check out [their article about banknotes around the world][banknotes].
 
 [pudding]: https://pudding.cool/
 [banknotes]: https://pudding.cool/2022/04/banknotes/
-[banknotes-dl]: https://raw.githubusercontent.com/ucdavisdatalab/workshop_r_basics/dev/data/banknotes.csv
+[banknotes-dl]: https://github.com/ucdavisdatalab/workshop_r_basics/blob/main/data/banknotes.csv
 
 The data set is in a file called `banknotes.csv`, which suggests it's a CSV
 file. In this case, the extension is correct, so you can read the file into R
