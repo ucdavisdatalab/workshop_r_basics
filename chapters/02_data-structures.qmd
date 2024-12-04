@@ -26,36 +26,35 @@ and data types, then explains a variety of ways to get and set their elements.
 ## Vectors {#sec-vectors}
 
 ```{r, echo = FALSE}
-earn = read.csv("data/earn.csv")
+banknotes = read.csv("data/banknotes.csv")
 ```
 
 A **vector** is a collection of values. Vectors are the fundamental unit of
 data in R, and you've already used them in the previous sections.
 
-For instance, each column in a data frame is a vector. So the `quarter` column
-in the earnings data from @sec-data-frames is a vector. Take a look at it now.
-You can use `head` to avoid printing too much. Set the second argument to `10`
-so that exactly 10 values are printed:
+For instance, each column in a data frame is a vector. So the
+`first_appearance_year` column in the banknotes data from @sec-data-frames is a
+vector. Take a look at it now. You can use `head` to avoid printing too much.
+Set the second argument to `10` so that exactly 10 values are printed:
 
 ```{r}
-head(earn$quarter, 10)
+head(banknotes$first_appearance_year, 10)
 ```
 
 Like all vectors, this vector is **ordered**, which just means the values, or
-**elements**, have specific positions. The value of the 1st element is `1`, the
-2nd is `2`, the 5th is also `1`, and so on.
+**elements**, have specific positions. The value of the 1st element is `2012`,
+the 2nd is `1988`, the 5th is `1970`, and so on.
 
-Notice that the elements of this vector are all integers. This isn't just a
-quirk of the earnings data set. In R, the elements of a vector must all be the
-same type of data (we say the elements are **homogeneous**). A vector can
-contain integers, decimal numbers, strings, or several other types of data, but
-not a mix these all at once.
+Notice that the elements of this vector are all integers. In R, the elements of
+a vector must all be the same type of data (we say the elements are
+**homogeneous**). A vector can contain integers, decimal numbers, strings, or
+several other types of data, but not a mix these all at once.
 
-The other columns in the earnings data frame are also vectors. For instance,
-the `age` column is a vector of strings:
+The other columns in the banknotes data frame are also vectors. For instance,
+the `name` column is a vector of strings:
 
 ```{r}
-head(earn$age)
+head(banknotes$name)
 ```
 
 Vectors can contain any number of elements, including 0 or 1 element. Unlike
@@ -69,11 +68,11 @@ function:
 ```{r}
 length(3)
 length("hello")
-length(earn$age)
+length(banknotes$first_appearance_year)
 ```
 
-Since the last of these is a column from the data frame `earn`, the length is
-the same as the number of rows in `earn`.
+Since the last of these is a column from the data frame `banknotes`, the length
+is the same as the number of rows in `banknotes`.
 
 
 ### Creating Vectors
@@ -371,11 +370,11 @@ For ordinary lists, the type and the class are both `list`. In @sec-indexing,
 we'll learn how to get and set list elements, and in later sections we'll learn
 more about when and why to use lists.
 
-You've already seen one list, the earnings data frame:
+You've already seen one list, the banknotes data frame:
 
 ```{r}
-class(earn)
-typeof(earn)
+class(banknotes)
+typeof(banknotes)
 ```
 
 Under the hood, data frames are lists, and each column is a list element.
@@ -525,29 +524,31 @@ The bottom line is that you have to think about what you'll be doing in the
 analysis. In some cases, you might treat a feature as categorical only for part
 of the analysis.
 
-Let's think about which features are categorical in earnings data set. To
+Let's think about which features are categorical in banknotes data set. To
 refresh our memory of what's in the data set, we can look at the structural
 summary:
 
 ```{r}
-str(earn)
+str(banknotes)
 ```
 
-The columns `n_persons` and `median_weekly_earn` are quantitative rather than
-categorical, since they measure quantities of people and dollars, respectively.
+The columns `bill_count`, `current_bill_value`, and `prop_total_bills` are
+quantitative rather than categorical, since they measure values and proportions
+of bills.
 
-The `sex`, `race`, `ethnic_origin`, and `age` columns are all categorical,
-since they are all qualitative measurements. We can see this better if we use
-the `table` function to compute frequencies for the values in the columns:
+The `currency_code`, `country`, `currency_name`, `gender`, `profession`,
+`known_for_being_first`, and `has_portrait` columns are all categorical. We can
+see this better if we use the `table` function to compute frequencies for the
+values in the columns:
 
 ```{r}
-table(earn$sex)
+table(banknotes$currency_code)
 
-table(earn$race)
+table(banknotes$country)
 
-table(earn$ethnic_origin)
+table(banknotes$gender)
 
-table(earn$age)
+table(banknotes$known_for_being_first)
 ```
 
 Each column has only a few unique values, repeated many times. These are ideal
@@ -556,16 +557,21 @@ range, it would probably be better to treat it as quantitative, since there
 would be far more unique values. Columns with many unique values don't make
 good categorical features, because each group will only have a few elements!
 
-That leaves us with the `year` and `quarter` columns. It's easy to imagine
-grouping the data by year or quarter, but these are also clearly numbers. These
-columns can be treated as quantitative or categorical data, depending on how we
-want to use them to analyze the data.
+The `name`, `comments`, `hover_text`, and `id` columns contain qualitative
+strings rather than categories, where values are rarely or never repeated. This
+means using them for grouping is generally unhelpful, since most of the groups
+will just be single observations.
 
-Let's convert the `age` column to a factor. To do this, use the `factor`
-function:
+That leaves us with the `first_appearance_year` and `death_year` columns. It's
+easy to imagine grouping the data by year, but these are also clearly numbers.
+These columns can be treated as quantitative or categorical data, depending on
+how we want to use them to analyze the data.
+
+Let's convert the `currency_code` column to a factor. To do this, use the
+`factor` function:
 ```{r}
-age = factor(earn$age)
-head(age)
+currency_codes = factor(banknotes$currency_code)
+head(currency_codes)
 ```
 
 Notice that factors are printed differently than strings.
@@ -573,12 +579,12 @@ Notice that factors are printed differently than strings.
 The categories of a factor are called **levels**. You can list the levels with
 the `levels` function:
 ```{r}
-levels(age)
+levels(currency_codes)
 ```
 
 Factors remember all possible levels even if you take a subset:
 ```{r}
-age[1:3]
+currency_codes[1:3]
 ```
 
 This is another way factors are different from strings. Factors "remember" all
@@ -588,7 +594,7 @@ factor, the missing levels will still be represented on the plot.
 You can make a factor forget levels that aren't present with the `droplevels`
 function:
 ```{r}
-droplevels(age[1:3])
+droplevels(currency_codes[1:3])
 ```
 
 
@@ -1092,6 +1098,5 @@ The `table` function is useful for counting all sorts of things, not just level
 frequencies for a factor. For instance, you can use `table` to count how many
 `TRUE` and `FALSE` values there are in a logical vector.
 
-1. For the earnings data, how many rows had median weekly earnings below \$750?
-2. Based on how the data is structured, is your answer in part 1 the same as
-   the number of quarters that had median weekly earnings below \$750? Explain.
+1. For the banknotes data, how many bills have value below 1,000?
+2. How many bills with value above 1,000 depict women?
