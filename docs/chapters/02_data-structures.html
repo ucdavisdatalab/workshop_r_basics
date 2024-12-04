@@ -299,21 +299,22 @@ Learning Goals
 <section id="sec-vectors" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="sec-vectors"><span class="header-section-number">2.1</span> Vectors</h2>
 <p>A <strong>vector</strong> is a collection of values. Vectors are the fundamental unit of data in R, and you’ve already used them in the previous sections.</p>
-<p>For instance, each column in a data frame is a vector. So the <code>quarter</code> column in the earnings data from <a href="01_getting-started.html#sec-data-frames" class="quarto-xref"><span>Section 1.6</span></a> is a vector. Take a look at it now. You can use <code>head</code> to avoid printing too much. Set the second argument to <code>10</code> so that exactly 10 values are printed:</p>
+<p>For instance, each column in a data frame is a vector. So the <code>first_appearance_year</code> column in the banknotes data from <a href="01_getting-started.html#sec-data-frames" class="quarto-xref"><span>Section 1.6</span></a> is a vector. Take a look at it now. You can use <code>head</code> to avoid printing too much. Set the second argument to <code>10</code> so that exactly 10 values are printed:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(earn<span class="sc">$</span>quarter, <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(banknotes<span class="sc">$</span>first_appearance_year, <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 1 2 3 4 1 2 3 4 1 2</code></pre>
+<pre><code> [1] 2012 1988 1999 1992 1970 1995 1993 1994 1993 1995</code></pre>
 </div>
 </div>
-<p>Like all vectors, this vector is <strong>ordered</strong>, which just means the values, or <strong>elements</strong>, have specific positions. The value of the 1st element is <code>1</code>, the 2nd is <code>2</code>, the 5th is also <code>1</code>, and so on.</p>
-<p>Notice that the elements of this vector are all integers. This isn’t just a quirk of the earnings data set. In R, the elements of a vector must all be the same type of data (we say the elements are <strong>homogeneous</strong>). A vector can contain integers, decimal numbers, strings, or several other types of data, but not a mix these all at once.</p>
-<p>The other columns in the earnings data frame are also vectors. For instance, the <code>age</code> column is a vector of strings:</p>
+<p>Like all vectors, this vector is <strong>ordered</strong>, which just means the values, or <strong>elements</strong>, have specific positions. The value of the 1st element is <code>2012</code>, the 2nd is <code>1988</code>, the 5th is <code>1970</code>, and so on.</p>
+<p>Notice that the elements of this vector are all integers. In R, the elements of a vector must all be the same type of data (we say the elements are <strong>homogeneous</strong>). A vector can contain integers, decimal numbers, strings, or several other types of data, but not a mix these all at once.</p>
+<p>The other columns in the banknotes data frame are also vectors. For instance, the <code>name</code> column is a vector of strings:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(earn<span class="sc">$</span>age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(banknotes<span class="sc">$</span>name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "16 years and over" "16 years and over" "16 years and over"
-[4] "16 years and over" "16 years and over" "16 years and over"</code></pre>
+<pre><code>[1] "Eva Perón"                  "Julio Argentino Roca"      
+[3] "Domingo Faustino Sarmiento" "Juan Manuel de Rosas"      
+[5] "Manuel Belgrano"            "David Unaipon"             </code></pre>
 </div>
 </div>
 <p>Vectors can contain any number of elements, including 0 or 1 element. Unlike mathematics, R does not distinguish between vectors and <strong>scalars</strong> (solitary values). So as far as R is concerned, a solitary value, like <code>3</code>, is a vector with 1 element.</p>
@@ -327,12 +328,12 @@ Learning Goals
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(earn<span class="sc">$</span>age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(banknotes<span class="sc">$</span>first_appearance_year)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 4224</code></pre>
+<pre><code>[1] 279</code></pre>
 </div>
 </div>
-<p>Since the last of these is a column from the data frame <code>earn</code>, the length is the same as the number of rows in <code>earn</code>.</p>
+<p>Since the last of these is a column from the data frame <code>banknotes</code>, the length is the same as the number of rows in <code>banknotes</code>.</p>
 <section id="creating-vectors" class="level3" data-number="2.1.1">
 <h3 data-number="2.1.1" class="anchored" data-anchor-id="creating-vectors"><span class="header-section-number">2.1.1</span> Creating Vectors</h3>
 <p>Sometimes you’ll want to create your own vectors. You can do this by concatenating several vectors together with the <code>c</code> function. It accepts any number of vector arguments, and combines them into a single vector:</p>
@@ -666,13 +667,13 @@ length</code></pre>
 </div>
 </div>
 <p>For ordinary lists, the type and the class are both <code>list</code>. In <a href="#sec-indexing" class="quarto-xref"><span>Section 2.4</span></a>, we’ll learn how to get and set list elements, and in later sections we’ll learn more about when and why to use lists.</p>
-<p>You’ve already seen one list, the earnings data frame:</p>
+<p>You’ve already seen one list, the banknotes data frame:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(earn)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(banknotes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "data.frame"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(earn)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(banknotes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "list"</code></pre>
 </div>
@@ -785,93 +786,122 @@ length</code></pre>
 <p>For example, if we want to know how many songs are in the <code>rock</code> genre, we first need to divide the songs by genre, and then count the number of songs in each group (or at least the <code>rock</code> group).</p>
 <p>As a second example, months recorded as numbers can be categorical or not, depending on how you want to use them. You might want to treat them as categorical (for example, to compute max rainfall in each month) or you might want to treat them as numbers (for example, to compute the number of months time between two events).</p>
 <p>The bottom line is that you have to think about what you’ll be doing in the analysis. In some cases, you might treat a feature as categorical only for part of the analysis.</p>
-<p>Let’s think about which features are categorical in earnings data set. To refresh our memory of what’s in the data set, we can look at the structural summary:</p>
+<p>Let’s think about which features are categorical in banknotes data set. To refresh our memory of what’s in the data set, we can look at the structural summary:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb102"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb102-1"><a href="#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(earn)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb102"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb102-1"><a href="#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(banknotes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>'data.frame':   4224 obs. of  8 variables:
- $ sex               : chr  "Both Sexes" "Both Sexes" "Both Sexes" "Both Sexes" ...
- $ race              : chr  "All Races" "All Races" "All Races" "All Races" ...
- $ ethnic_origin     : chr  "All Origins" "All Origins" "All Origins" "All Origins" ...
- $ age               : chr  "16 years and over" "16 years and over" "16 years and over" "16 years and over" ...
- $ year              : int  2010 2010 2010 2010 2011 2011 2011 2011 2012 2012 ...
- $ quarter           : int  1 2 3 4 1 2 3 4 1 2 ...
- $ n_persons         : int  96821000 99798000 101385000 100120000 98329000 100593000 101447000 101458000 100830000 102769000 ...
- $ median_weekly_earn: int  754 740 740 752 755 753 753 764 769 771 ...</code></pre>
+<pre><code>'data.frame':   279 obs. of  17 variables:
+ $ currency_code        : chr  "ARS" "ARS" "ARS" "ARS" ...
+ $ country              : chr  "Argentina" "Argentina" "Argentina" "Argentina" ...
+ $ currency_name        : chr  "Argentinian Peso" "Argentinian Peso" "Argentinian Peso" "Argentinian Peso" ...
+ $ name                 : chr  "Eva Perón" "Julio Argentino Roca" "Domingo Faustino Sarmiento" "Juan Manuel de Rosas" ...
+ $ gender               : chr  "F" "M" "M" "M" ...
+ $ bill_count           : num  1 1 1 1 1 0.5 0.5 0.5 0.5 0.5 ...
+ $ profession           : chr  "Activist" "Head of Gov't" "Head of Gov't" "Politician" ...
+ $ known_for_being_first: chr  "No" "No" "No" "No" ...
+ $ current_bill_value   : int  100 100 50 20 10 50 10 20 10 50 ...
+ $ prop_total_bills     : num  NA NA NA NA NA 0.48 0.08 0.1 0.08 0.48 ...
+ $ first_appearance_year: int  2012 1988 1999 1992 1970 1995 1993 1994 1993 1995 ...
+ $ death_year           : chr  "1952" "1914" "1888" "1877" ...
+ $ comments             : chr  "" "" "" "" ...
+ $ hover_text           : chr  "" "" "" "" ...
+ $ has_portrait         : chr  "true" "true" "true" "true" ...
+ $ id                   : chr  "ARS_Evita" "ARS_Argentino" "ARS_Domingo" "ARS_Rosas" ...
+ $ scaled_bill_value    : num  1 1 0.444 0.111 0 ...</code></pre>
 </div>
 </div>
-<p>The columns <code>n_persons</code> and <code>median_weekly_earn</code> are quantitative rather than categorical, since they measure quantities of people and dollars, respectively.</p>
-<p>The <code>sex</code>, <code>race</code>, <code>ethnic_origin</code>, and <code>age</code> columns are all categorical, since they are all qualitative measurements. We can see this better if we use the <code>table</code> function to compute frequencies for the values in the columns:</p>
+<p>The columns <code>bill_count</code>, <code>current_bill_value</code>, and <code>prop_total_bills</code> are quantitative rather than categorical, since they measure values and proportions of bills.</p>
+<p>The <code>currency_code</code>, <code>country</code>, <code>currency_name</code>, <code>gender</code>, <code>profession</code>, <code>known_for_being_first</code>, and <code>has_portrait</code> columns are all categorical. We can see this better if we use the <code>table</code> function to compute frequencies for the values in the columns:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb104"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb104-1"><a href="#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(earn<span class="sc">$</span>sex)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb104"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb104-1"><a href="#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(banknotes<span class="sc">$</span>currency_code)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
-Both Sexes        Men      Women 
-      1408       1408       1408 </code></pre>
+ARS AUD BDT BOB CAD CLP COP CRC CVE CZK DOP GBP GEL IDR ILS ISK JMD JPY KGS KRW 
+  5   9   9  15   9   5  11   6   5   6  11   8   9  12   4   5   5   3   7   4 
+MWK MXN NGN NZD PEN PGK PHP RMB RSD SEK STD TND TRY UAH USD UYU VES​ VES ZAR 
+  7  11   9   5   7   1   9   6   9   6   8   4  12  10   7   7   2   6   5 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb106"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb106-1"><a href="#cb106-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(earn<span class="sc">$</span>race)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb106"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb106-1"><a href="#cb106-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(banknotes<span class="sc">$</span>country)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
-                All Races                     Asian Black or African American 
-                     2244                       660                       660 
-                    White 
-                      660 </code></pre>
+            Argentina             Australia            Bangladesh 
+                    5                     9                     9 
+              Bolivia                Canada            Cape Verde 
+                   15                     9                     5 
+                Chile                 China              Colombia 
+                    5                     6                    11 
+           Costa Rica        Czech Republic    Dominican Republic 
+                    6                     6                    11 
+              England               Georgia               Iceland 
+                    8                     9                     5 
+            Indonesia                Israel               Jamaica 
+                   12                     4                     5 
+                Japan            Kyrgyzstan                Malawi 
+                    3                     7                     7 
+               Mexico           New Zealand               Nigeria 
+                   11                     5                     9 
+     Papua New Guinea                  Peru           Philippines 
+                    1                     7                     9 
+São Tomé and Príncipe                Serbia          South Africa 
+                    8                     9                     5 
+          South Korea                Sweden               Tunisia 
+                    4                     6                     4 
+               Turkey               Ukraine         United States 
+                   12                    10                     7 
+              Uruguay             Venezuela 
+                    7                     8 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb108"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb108-1"><a href="#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(earn<span class="sc">$</span>ethnic_origin)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb108"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb108-1"><a href="#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(banknotes<span class="sc">$</span>gender)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
-       All Origins Hispanic or Latino 
-              3564                660 </code></pre>
+  F   M 
+ 59 220 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb110"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb110-1"><a href="#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(earn<span class="sc">$</span>age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb110"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb110-1"><a href="#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(banknotes<span class="sc">$</span>known_for_being_first)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
-   16 to 19 years    16 to 24 years 16 years and over    20 to 24 years 
-              132               660               660               132 
-   25 to 34 years    25 to 54 years 25 years and over    35 to 44 years 
-              132               660               660               132 
-   45 to 54 years    55 to 64 years 55 years and over 65 years and over 
-              132               132               660               132 </code></pre>
+ No Yes 
+185  94 </code></pre>
 </div>
 </div>
 <p>Each column has only a few unique values, repeated many times. These are ideal for grouping the data. If age had been recorded as a number, rather than a range, it would probably be better to treat it as quantitative, since there would be far more unique values. Columns with many unique values don’t make good categorical features, because each group will only have a few elements!</p>
-<p>That leaves us with the <code>year</code> and <code>quarter</code> columns. It’s easy to imagine grouping the data by year or quarter, but these are also clearly numbers. These columns can be treated as quantitative or categorical data, depending on how we want to use them to analyze the data.</p>
-<p>Let’s convert the <code>age</code> column to a factor. To do this, use the <code>factor</code> function:</p>
+<p>The <code>name</code>, <code>comments</code>, <code>hover_text</code>, and <code>id</code> columns contain qualitative strings rather than categories, where values are rarely or never repeated. This means using them for grouping is generally unhelpful, since most of the groups will just be single observations.</p>
+<p>That leaves us with the <code>first_appearance_year</code> and <code>death_year</code> columns. It’s easy to imagine grouping the data by year, but these are also clearly numbers. These columns can be treated as quantitative or categorical data, depending on how we want to use them to analyze the data.</p>
+<p>Let’s convert the <code>currency_code</code> column to a factor. To do this, use the <code>factor</code> function:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb112"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb112-1"><a href="#cb112-1" aria-hidden="true" tabindex="-1"></a>age <span class="ot">=</span> <span class="fu">factor</span>(earn<span class="sc">$</span>age)</span>
-<span id="cb112-2"><a href="#cb112-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb112"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb112-1"><a href="#cb112-1" aria-hidden="true" tabindex="-1"></a>currency_codes <span class="ot">=</span> <span class="fu">factor</span>(banknotes<span class="sc">$</span>currency_code)</span>
+<span id="cb112-2"><a href="#cb112-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(currency_codes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 16 years and over 16 years and over 16 years and over 16 years and over
-[5] 16 years and over 16 years and over
-12 Levels: 16 to 19 years 16 to 24 years 16 years and over ... 65 years and over</code></pre>
+<pre><code>[1] ARS ARS ARS ARS ARS AUD
+39 Levels: ARS AUD BDT BOB CAD CLP COP CRC CVE CZK DOP GBP GEL IDR ILS ... ZAR</code></pre>
 </div>
 </div>
 <p>Notice that factors are printed differently than strings.</p>
 <p>The categories of a factor are called <strong>levels</strong>. You can list the levels with the <code>levels</code> function:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb114"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb114-1"><a href="#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb114"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb114-1"><a href="#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(currency_codes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] "16 to 19 years"    "16 to 24 years"    "16 years and over"
- [4] "20 to 24 years"    "25 to 34 years"    "25 to 54 years"   
- [7] "25 years and over" "35 to 44 years"    "45 to 54 years"   
-[10] "55 to 64 years"    "55 years and over" "65 years and over"</code></pre>
+<pre><code> [1] "ARS" "AUD" "BDT" "BOB" "CAD" "CLP" "COP" "CRC" "CVE" "CZK" "DOP" "GBP"
+[13] "GEL" "IDR" "ILS" "ISK" "JMD" "JPY" "KGS" "KRW" "MWK" "MXN" "NGN" "NZD"
+[25] "PEN" "PGK" "PHP" "RMB" "RSD" "SEK" "STD" "TND" "TRY" "UAH" "USD" "UYU"
+[37] "VES​" "VES" "ZAR"</code></pre>
 </div>
 </div>
 <p>Factors remember all possible levels even if you take a subset:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb116"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb116-1"><a href="#cb116-1" aria-hidden="true" tabindex="-1"></a>age[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb116"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb116-1"><a href="#cb116-1" aria-hidden="true" tabindex="-1"></a>currency_codes[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 16 years and over 16 years and over 16 years and over
-12 Levels: 16 to 19 years 16 to 24 years 16 years and over ... 65 years and over</code></pre>
+<pre><code>[1] ARS ARS ARS
+39 Levels: ARS AUD BDT BOB CAD CLP COP CRC CVE CZK DOP GBP GEL IDR ILS ... ZAR</code></pre>
 </div>
 </div>
 <p>This is another way factors are different from strings. Factors “remember” all possible levels even if they aren’t present. This ensures that if you plot a factor, the missing levels will still be represented on the plot.</p>
 <p>You can make a factor forget levels that aren’t present with the <code>droplevels</code> function:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb118"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb118-1"><a href="#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="fu">droplevels</span>(age[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb118"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb118-1"><a href="#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="fu">droplevels</span>(currency_codes[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 16 years and over 16 years and over 16 years and over
-Levels: 16 years and over</code></pre>
+<pre><code>[1] ARS ARS ARS
+Levels: ARS</code></pre>
 </div>
 </div>
 </section>
@@ -1379,8 +1409,8 @@ Note
 <h3 data-number="2.5.4" class="anchored" data-anchor-id="exercise-3"><span class="header-section-number">2.5.4</span> Exercise</h3>
 <p>The <code>table</code> function is useful for counting all sorts of things, not just level frequencies for a factor. For instance, you can use <code>table</code> to count how many <code>TRUE</code> and <code>FALSE</code> values there are in a logical vector.</p>
 <ol type="1">
-<li>For the earnings data, how many rows had median weekly earnings below $750?</li>
-<li>Based on how the data is structured, is your answer in part 1 the same as the number of quarters that had median weekly earnings below $750? Explain.</li>
+<li>For the banknotes data, how many bills have value below 1,000?</li>
+<li>How many bills with value above 1,000 depict women?</li>
 </ol>
 
 
