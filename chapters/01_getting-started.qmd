@@ -926,7 +926,7 @@ colnames(banknotes)
 
 If the rows have names, you can get those with the `rownames` function. For
 this particular data set, the rows don't have names.
- 
+
 
 ### Summarizing Data
 
