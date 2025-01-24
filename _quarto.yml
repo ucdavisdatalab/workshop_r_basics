@@ -33,6 +33,7 @@ format:
   html:
     theme: cosmo
     toc: true
+    css: "styles/datalab-workshop.scss"
 
 execute:
   freeze: auto
