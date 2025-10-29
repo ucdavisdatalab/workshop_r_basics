@@ -1,4 +1,4 @@
-## Contributing
+# Contributing
 
 [top]: #contributing
 
@@ -12,7 +12,10 @@ enter curriculum content and post it to a public-facing site for learners.
 
 If it's your first time contributing, see [Installation](#installation).
 
-To make alterations to the reader:
+The workshop reader is written in Markdown and rendered with [Quarto][]. To
+make alterations to the reader:
+
+[Quarto]: https://quarto.org/
 
 1.  Check in with the reader's current maintainer and notify them about your 
     intended changes. Maintainers might ask you to open an issue, use pull 
@@ -59,7 +62,7 @@ To make alterations to the reader:
 ## Installation
 
 We use [Pixi][], a fast package manager based on the conda ecosystem, to
-install the packages required to build this reader. To install pixi, follow
+install the packages required to build this reader. To install Pixi, follow
 [the official instructions][Pixi]. 
 
 [pixi]: https://pixi.sh/
