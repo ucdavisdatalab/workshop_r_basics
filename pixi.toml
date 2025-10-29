@@ -1,0 +1,31 @@
+[workspace]
+authors = [
+  "Nick Ulle <nick.ulle@gmail.com>",
+  "Wesley Brooks"
+]
+channels = ["conda-forge"]
+name = "r-basics"
+description = "Reader for the R Basics workshop series."
+platforms = ["linux-64", "osx-64", "osx-arm64", "win-64"]
+version = "2024.fall.1"  # <year>.<quarter>.<revision #>
+
+[tasks]
+build = { cmd = "quarto render", description = "Build the reader." }
+publish = { cmd = "ghp-import --no-jekyll --no-history --push _build", description = "Publish the reader to the `gh-pages` branch on GitHub." }
+clean = { cmd = "rm -rf _build/", description = "Remove the build directory." }
+rebuild = { depends-on = ["clean", "build"], description = "Remove the build directory and build the reader." }
+
+[dependencies]
+quarto = ">=1.8.25,<2"
+ghp-import = ">=2.1.0,<3"
+r = ">=4.5,<4.6"
+r-remotes = ">=2.5.0,<3"
+r-ggplot2 = ">=4.0.0,<5"
+r-knitr = ">=1.50,<2"
+r-rmarkdown = ">=2.30,<3"
+
+[activation.env]
+# Make sure R only searches for packages within the Pixi environment.
+PIXI_R_LIBS = "$CONDA_PREFIX/lib/R/library"
+R_LIBS = "$PIXI_R_LIBS"
+R_LIBS_USER = "$PIXI_R_LIBS"

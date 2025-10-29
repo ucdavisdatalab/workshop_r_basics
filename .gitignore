@@ -27,6 +27,12 @@ Temporary Items
 # Bookdown intermediate files
 _main*
 docs/*.md
+_build/*
 
 /.quarto/
 data/*
+# pixi environments
+.pixi/*
+!.pixi/config.toml
+
+**/*.quarto_ipynb
