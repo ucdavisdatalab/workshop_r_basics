@@ -1,3 +1,7 @@
+# Project-specific
+
+assessment/solutions/*
+
 # General
 .DS_Store
 .AppleDouble
@@ -24,15 +28,16 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
-# Bookdown intermediate files
+# Quarto/Bookdown files
 _main*
 docs/*.md
 _build/*
 
 /.quarto/
 data/*
-# pixi environments
+**/*.quarto_ipynb
+
+# Pixi environments
 .pixi/*
 !.pixi/config.toml
 
-**/*.quarto_ipynb
