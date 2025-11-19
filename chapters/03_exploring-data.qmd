@@ -1,7 +1,7 @@
 # Exploring Data
 
 ```{r, echo = FALSE}
-banknotes = read.csv("data/banknotes.csv")
+terns = read.csv("data/2000-2023_ca_least_tern.csv")
 ```
 
 :::{.callout-note}
@@ -109,10 +109,11 @@ dimension. The rows come first:
 DATA[ROWS, COLUMNS]
 ```
 
-For instance, let's get the first 3 rows and all columns of the banknotes data:
+For instance, let's get the first 3 rows and all columns of the least terns
+data:
 
 ```{r}
-banknotes[1:3, ]
+terns[1:3, ]
 ```
 
 As we saw in @sec-all-elements, leaving an index blank means all elements.
@@ -120,22 +121,22 @@ As we saw in @sec-all-elements, leaving an index blank means all elements.
 As another example, let's get the 3rd and 5th row, and the 2nd and 4th column:
 
 ```{r}
-banknotes[c(3, 5), c(2, 4)]
+terns[c(3, 5), c(2, 4)]
 ```
 
 Mixing several different ways of indexing is allowed. So for example, we can
 get the same above, but use column names instead of positions:
 
 ```{r}
-banknotes[c(3, 5), c("currency_name", "name")]
+terns[c(3, 5), c("year", "site_name")]
 ```
 
 For data frames, it's especially common to index the rows by condition and the
-columns by name. For instance, let's get the `name` and `profession` columns
-for all women in the banknotes data set:
+columns by name. For instance, let's get the `site_name` and `bp_min` columns
+for all year 2000 observations in the least terns data set:
 
 ```{r}
-result = banknotes[banknotes$gender == "F", c("name", "profession")]
+result = terns[terns$year == 2000, c("site_name", "bp_min")]
 head(result)
 ```
 
@@ -332,48 +333,52 @@ annotations | Shapes that are not mapped to data
 coordinates | Coordinate systems (Cartesian, logarithmic, polar)
 
 
-As an example, let's plot the banknotes data. First, we need to load ggplot2.
-As always, if this is your first time using the package, you'll have to install
-it. Then you can load the package:
+Let's visualize the California least terns data set from @sec-ca-least-terns to
+see how the grammar of graphics works in practice. But what kind of plot should
+we make? It depends on what we want to know about the data set!
+
+Suppose we want to understand the relationship between the number of breeding
+pairs and the total number of nests at each site, and whether this relationship
+is affected by climate events. One way to show the relationship between two
+numerical features like these is to make a scatter plot.
+
+
+### Loading ggplot2
+
+Before we can make the plot, we need to load ggplot2. As always, if this is
+your first time using the package, you'll have to install it. Then you can load
+the package:
 
 ```{r}
 # install.packages("ggplot2")
 library("ggplot2")
 ```
 
-What kind of plot should we make? It depends on what we want to know about the
-data set. Suppose we want to understand the relationship between a banknote's
-value and how long ago the person on the banknote died, as well as whether this
-is affected by gender. One way to show this is to make a scatter plot.
-
-<!-- FIXME: Move this type correction to chapter 2 -->
-Before plotting, we need to make sure that the `death_year` column is numeric:
-
-```{r}
-is_blank = banknotes$death_year %in% c("", "-")
-banknotes$death_year[is_blank] = NA
-banknotes$death_year = as.numeric(banknotes$death_year)
-```
-
-Now we're ready to make the plot.
-
 ### Layer 1: Data
 
-The data layer determines the data set used to make the plot. ggplot and most
-other Tidyverse packages are designed for working with **tidy** data frames.
-Tidy means:
+The **data layer** determines the data set(s) used to make the plot.
 
-1. Each observation has its own row.
-2. Each feature has its own column.
+ggplot2 and most other Tidyverse packages are designed to work with **tidy**
+data, which means:
+
+1. Each feature has its own column.
+2. Each observation has its own row.
 3. Each value has its own cell.
 
-Tidy data sets are convenient in general. A later lesson will cover how to make
-an untidy data set tidy. Until then, we'll take it for granted that the data
-sets we work with are tidy.
+These rules ensure data are easy to read visually and access with indexing. The
+least terns data set satisfies all of these rules.
+
+:::{.callout-note title="See also"}
+All of the data sets we use in this reader are tidy. To learn how to tidy an
+untidy data set, see the [Untidy & Relational Data][dl-r-tidy] chapter of
+DataLab's Intermediate R workshop reader.
+
+[dl-r-tidy]: https://ucdavisdatalab.github.io/workshop_intermediate_r/tidy-relational-data.html
+:::
 
 To set up the data layer, call the `ggplot` function on a data frame:
 ```{r}
-ggplot(banknotes)
+ggplot(terns)
 ```
 
 This returns a blank plot. We still need to add a few more layers.
@@ -381,7 +386,7 @@ This returns a blank plot. We still need to add a few more layers.
 
 ### Layer 2: Geometry
 
-The **geom**etry layer determines the shape or appearance of the visual
+The **geometry layer** determines the shape or appearance of the visual
 elements of the plot. In other words, the geometry layer determines what kind
 of plot to make: one with points, lines, boxes, or something else.
 
@@ -389,10 +394,11 @@ There are many different geometries available in ggplot2. The package provides
 a function for each geometry, always prefixed with `geom_`.
 
 To add a geometry layer to the plot, choose the `geom_` function you want and
-add it to the plot with the `+` operator:
+add it to the plot with the `+` operator. We'll use `geom_point`, which makes a
+scatter plot (a plot with points):
 
 ```{r, error=TRUE, fig.show="hide"}
-ggplot(banknotes) + geom_point()
+ggplot(terns) + geom_point()
 ```
 
 This returns an error message that we're missing aesthetics `x` and `y`. We'll
@@ -407,12 +413,13 @@ As we'll see later, it's possible to add multiple geometries to a plot.
 
 ### Layer 3: Aesthetics
 
-The **aes**thetic layer determines the relationship between the data and the
-geometry. Use the aesthetic layer to map features in the data to **aesthetics**
+The **aesthetic layer** determines the relationship between the data and the
+geometry. Use the aesthetic layer to map features in the data to aesthetics
 (visual elements) of the geometry.
 
 The `aes` function creates an aesthetic layer. The syntax is:
-```
+
+```{r, eval = FALSE}
 aes(AESTHETIC = FEATURE, ...)
 ```
 
@@ -420,115 +427,185 @@ The names of the aesthetics depend on the geometry, but some common ones are
 `x`, `y`, `color`, `fill`, `shape`, and `size`. There is more information about
 and examples of aesthetic names in the documentation.
 
-For example, we want to put `death_year` on the x-axis and `scaled_bill_value`
-on the y-axis. It's best to use `scaled_bill_value` here rather than
-`current_bill_value` because the different countries use different scales of
-currency. For example, 1 United States Dollar is worth approximately 100
-Japanese Yen. So the aesthetic layer should be:
-```{r}
-ggplot(banknotes) +
-  geom_point() +
-  aes(x = death_year, y = scaled_bill_value)
-```
 
-In the `aes` function, column names are never quoted. In older versions of
-ggplot2, you must pass the aesthetic layer as the second argument of the
-`ggplot` function rather than using `+` to add it to the plot. This syntax is
-still widely used:
+For the scatter plot of breeding pairs against total nests, we'll put `bp_min`
+on the x-axis and `total_nests` on the y-axis. Below, we set both of these
+aesthetics. We also enclose all of the code for the plot in parentheses `()` so
+that we can put the code for each layer on a separate line, which makes the
+layers easier to distinguish:
+
 ```{r}
-ggplot(banknotes, aes(x = death_year, y = scaled_bill_value)) +
+ggplot(terns) +
+  aes(x = bp_min, y = total_nests) +
   geom_point()
 ```
 
-#### Per-geometry Aesthetics {-}
+:::{.callout-important}
+In the `aes` function, column names are never quoted.
+:::
 
-When you add the aesthetic layer or pass it to the `ggplot` function, it
-applies to the entire plot. You can also set an aesthetic layer individually
-for each geometry, by passing the layer as the first argument in the `geom_`
-function:
+:::{.callout-note collapse="true" title="Note: The Old Aesthetic Layer Syntax"}
+In older versions of ggplot2, you must pass the aesthetic layer as the second
+argument of the `ggplot` function rather than using `+` to add it to the plot.
+This syntax is still widely used:
+
 ```{r}
-ggplot(banknotes) +
-  geom_point(aes(x = death_year, y = scaled_bill_value))
+ggplot(terns, aes(x = bp_min, y = total_nests)) +
+  geom_point()
+```
+:::
+
+At this point, we've supplied all three layers necessary to make a plot: data,
+geometry, and aesthetics. The plot shows what looks like a linear relationship
+between number of breeding pairs and total nests. To refine the plot, you can
+add more layers and/or set parameters on the layers you have.
+
+Let's add another aesthetic to the plot: we'll make the color and shape of each
+point correspond to `event`, the climate event for each observation:
+
+```{r}
+ggplot(terns) +
+  aes(x = bp_min, y = total_nests, color = event, shape = event) +
+  geom_point()
 ```
 
-This is really only useful when you have multiple geometries. As an example,
-let's color-code the points by gender:
-```{r}
-ggplot(banknotes) +
-  geom_point(aes(x = death_year, y = scaled_bill_value, color = gender))
-```
+Using color and shape for the same feature is redundant, but ensures that the
+plot is accessible to colorblind people.
 
-Now let's also add labels to each point. To do this, we need to add another
-geometry:
+
+#### Additional Geometries {-}
+
+Each observation in the least terns data corresponds to a specific year and
+site. What if we label the points with their years? You can add text labels to
+a plot with `geom_text`. The required aesthetic for this geometry is `label`:
+
 ```{r}
-ggplot(banknotes) +
+ggplot(terns) +
+  aes(
+    x = bp_min, y = total_nests,
+    color = event, shape = event,
+    label = year
+  ) +
   geom_point() +
-  aes(x = death_year, y = scaled_bill_value, color = gender, label = name) +
   geom_text()
 ```
 
-Where we put the aesthetics matters:
+The labels make the plot more difficult to read and probably would even if we
+made them smaller, because there are so many points on the plot. Making a
+high-quality visualization is typically a process of drafting and revising,
+similar to writing a high-quality essay. In this example, adding year labels to
+the plot doesn't work well, so we'll backtrack and leave them off of the plot.
+If accounting for year was critical to our research question, we could do it in
+other ways, such as by making separate plots for each year.
+
+#### Per-geometry Aesthetics {-}
+
+Before we remove the labels, let's use them to demonstrate an important point
+about using multiple geometry and aesthetic layers: when you add an aesthetic
+layer to a plot, it applies to the entire plot. You can also set an aesthetic
+layer for an individual geometry by passing the layer as the first argument in
+the `geom_` function. Here's the same plot as above, but with the `color`
+aesthetic only set for the labels:
+
 ```{r}
-ggplot(banknotes) +
+ggplot(terns) +
+  aes(
+    x = bp_min, y = total_nests,
+    shape = event,
+    label = year
+  ) +
   geom_point() +
-  aes(x = death_year, y = scaled_bill_value, label = name) +
-  geom_text(aes(color = gender))
+  geom_text(aes(color = event))
 ```
+
+Notice that the points are no longer color-coded. Where you put aesthetic
+layers matters.
 
 
 #### Constant Aesthetics {-}
 
 If you want to set an aesthetic to a constant value, rather than one that's
 data dependent, do so in the geometry layer rather than the aesthetic layer.
-For instance, suppose use point shape rather than color to indicate gender, and
-we want to make all of the points blue:
+
+For instance, suppose we want to make all of the points blue and use only point
+shape to indicate climate events:
 
 ```{r}
-ggplot(banknotes) +
-  geom_point(color = "blue") +
-  aes(x = death_year, y = scaled_bill_value, shape = gender)
+ggplot(terns) +
+  aes(
+    x = bp_min, y = total_nests,
+    shape = event
+  ) +
+  geom_point(color = "blue")
 ```
 
 If you set an aesthetic to a constant value inside of the aesthetic layer, the
 results you get might not be what you expect:
 
 ```{r}
-ggplot(banknotes) +
+ggplot(terns) +
+  aes(
+    x = bp_min, y = total_nests,
+    color = "blue", shape = event,
+    label = year
+  ) +
   geom_point() +
-  aes(x = death_year, y = scaled_bill_value, shape = gender, color = "blue")
+  geom_text()
 ```
 
 
 ### Layer 4: Scales
 
-The scales layer controls the title, axis labels, and axis scales of the plot.
-Most of the functions in the scales layer are prefixed with `scale_`, but not
-all of them.
+The **scales layer** controls the title, axis labels, and axis scales of the
+plot. Most of the functions in the scales layer are prefixed with `scale_`, but
+not all of them.
 
 The `labs` function is especially important, because it's used to set the title
-and axis labels:
+and axis labels. Visualizations should generally have a title and axis labels,
+to aid the viewer:
+
 ```{r}
-ggplot(banknotes) +
+ggplot(terns) +
+  aes(
+    x = bp_min, y = total_nests,
+    color = event, shape = event
+  ) +
   geom_point() +
-  aes(x = death_year, y = scaled_bill_value, shape = gender) +
-  labs(x = "Death Year", y = "Scaled Bill Value",
-    title = "Does death year affect bill value?", shape = "Gender")
+  labs(
+    x = "Minimum Reported Breeding Pairs",
+    y = "Total Nests",
+    color = "Climate Event", shape = "Climate Event",
+    title = "California Least Terns: Breeding Pairs vs. Nests"
+  )
 ```
+
+Notice that to set the title for a legend with `labs`, you can set the
+parameters of the same names as the corresponding aesthetics. While our plot is
+still far from perfect---some of the points are hard to see because of how many
+there are---it's now good enough to provide some insight into the relationship
+between number of breeding pairs and nests.
 
 
 ### Saving Plots
 
-In ggplot2, use the `ggsave` function to save the most recent plot you created:
+You can use the `ggsave` function to save a plot you've assigned to a variable
+or the most recent plot you created (with no argument to `ggsave`):
 
 ```{r, eval=FALSE}
-ggsave("banknote_scatter.png")
+ggsave("myplot.png")
 ```
 
 The file format is selected automatically based on the extension. Common
-formats are PNG and PDF.
+formats include PNG, TIFF, SVG, and PDF.
 
-#### The Plot Device {-}
+:::{tip}
+PNG and SVG are good choices for sharing visualizations online, while TIFF and
+PDF are good choices for print. Many journals require that visualizations be in
+TIFF format.
+:::
 
+
+:::{.callout-note collapse="true" title="Note: R Plot Devices"}
 You can also save a plot with one of R's "plot device" functions. The steps
 are:
 
@@ -541,40 +618,100 @@ This strategy works with any of R's graphics systems (not just ggplot2).
 Here's an example:
 ```{r, eval=FALSE}
 # Run these lines in the console, not the notebook!
-jpeg("banknote_scatter.jpeg")
-ggplot(banknotes) +
+jpeg("myplot.jpeg")
+ggplot(terns) +
+  aes(
+    x = bp_min, y = total_nests,
+    color = event, shape = event
+  ) +
   geom_point() +
-  aes(x = death_year, y = scaled_bill_value, shape = gender) +
-  labs(x = "Death Year", y = "Scaled Bill Value",
-    title = "Does death year affect bill value?", shape = "Gender")
+  labs(
+    x = "Minimum Reported Breeding Pairs",
+    y = "Total Nests",
+    color = "Climate Event", shape = "Climate Event",
+    title = "California Least Terns: Breeding Pairs vs. Nests"
+  )
 dev.off()
 ```
+:::
 
 
-### Example: Bar Plot
+### Example: Bar Plot {#sec-example-bar-plot}
 
-Now suppose you want to plot the number of banknotes with people from each
-profession in the banknotes data set. A bar plot is in an appropriate way to
-represent this visually.
+Suppose we want to visualize how many fledglings there are each year, further
+broken down by region. A bar plot is one appropriate way to represent this
+visually.
 
 The geometry for a bar plot is `geom_bar`. Since bar plots are mainly used to
-display frequencies, the `geom_bar` function automatically computes frequencies
-when given mapped to a categorical feature.
+display frequencies, by default the `geom_bar` function counts the number of
+observations in each category on the x-axis and displays these counts on the
+y-axis. You can make `geom_bar` display values from a column on the y-axis by
+setting the `weight` aesthetic:
 
-We can also use a fill color to further breakdown the bars by gender. Here's
-the code to make the bar plot:
 ```{r}
-ggplot(banknotes) +
-  aes(x = profession, fill = gender) +
-  geom_bar(position = "dodge")
+ggplot(terns) +
+  aes(x = year, weight = fl_min, fill = region_3) +
+  geom_bar()
 ```
 
+:::{.callout-note collapse="true" title="Note: Setting the Statistics Layer"}
+Every geometry layer has a corresponding statistics layer, which transforms
+feature values into quantities to plot. For many geometries, the default
+statistics layer is the only one that makes sense.
+
+Bar plots are an exception. The default statistics layer is `stat_count`, which
+counts observations. If you already have counts (or just want to display some
+quantities as bars), you need `stat_identity` (or the `weight` aesthetic
+described above). Here's one way to change the statistics layer:
+
+```{r}
+ggplot(terns) +
+  aes(x = year, y = fl_min, fill = region_3) +
+  geom_bar(stat = "identity")
+```
+
+This produces the same plot as setting `weight` and using the default
+statistics layer `stat_count`.
+:::
+
+The plot reveals that there are a few extraneous categories in the `region_3`
+column: `ARIZONA`, `KINGS`, and `SACRAMENTO`. These might or might not be
+erroneous---and it would be good to investigate---but they don't add anything
+to this plot, so let's exclude them.
+
+Let's also change the **color map**, the palette of colors used for the
+categories. These are both properties of the scale layer for the `fill`
+aesthetic, so we'll use a `scale_fill_` function. In particular, we'll use the
+"viridis" color map, and since the fill color corresponds to categorical
+(discrete) data, we'll use `scale_fill_viridis_d`. We'll also add labels:
+
+```{r}
+terms_to_keep = c("S.F._BAY", "CENTRAL", "SOUTHERN")
+terns_filtered = terns[terns$region_3 %in% terms_to_keep, ]
+
+ggplot(terns_filtered) +
+  aes(x = year, weight = fl_min, fill = region_3) +
+  geom_bar() +
+  scale_fill_viridis_d() +
+  labs(
+    title = "California Least Terns: Fledglings",
+    x = "Year",
+    y = "Minimum Reported Fledglings",
+    fill = "Region"
+  )
+```
+
+You can read more about the viridis color map in ggplot2's [documentation for
+this function][gg-viridis]. The plot reveals that the data set is missing
+2001-2003 and that overall, fledgling counts seem to be declining in recent
+years.
+
+[gg-viridis]: https://ggplot2.tidyverse.org/reference/scale_viridis.html
+
+:::{.callout-tip}
 The setting `position = "dodge"` instructs `geom_bar` to put the bars
 side-by-side rather than stacking them.
-
-In some cases, you may want to make a bar plot with frequencies you've already
-computed. To prevent `geom_bar` from computing frequencies automatically, set
-`stat = "identity"`.
+:::
 
 
 ### Visualization Design
@@ -629,32 +766,34 @@ follow:
 * For side-by-side plots, use the same axis scales for both plots so that
   comparing them is not deceptive.
 
+:::{.callout-note title="See also"}
 Visualization design is a deep topic, and whole books have been written about
 it. One resource where you can learn more is DataLab's [Principles of Data
 Visualization Workshop Reader][dataviz].
 
 [dataviz]: https://ucdavisdatalab.github.io/workshop_data_viz_principles/
+:::
 
-Apply Functions
----------------
+
+## Apply Functions
 
 @sec-vectorization introduced vectorization, a convenient and efficient way to
 compute multiple results. That section also mentioned that some of R's
 functions---the ones that summarize or aggregate data---are not vectorized.
 
 The `class` function is an example of a function that's not vectorized. If we
-call the `class` function on the banknotes data set, we get just one result for
-the data set as a whole:
+call the `class` function on the least terns data set, we get just one result
+for the data set as a whole:
 
 ```{r}
-class(banknotes)
+class(terns)
 ```
 
 What if we want to get the class of each column? We can get the class for a
 single column by selecting the column with `$`, the dollar sign operator:
 
 ```{r}
-class(banknotes$currency_code)
+class(terns$year)
 ```
 
 But what if we want the classes for all the columns? We could write a call to
@@ -666,7 +805,7 @@ more automated way.
 column is one element. With that in mind, what we need here is a line of code
 that calls `class` on each element of the data frame. The idea is similar to
 vectorization, but since we have a list and a non-vectorized function, we have
-to do a bit more than just call `class(banknotes)`.
+to do a bit more than just call `class(terns)`.
 
 The `lapply` function calls, or _applies_, a function on each element of a list
 or vector. The syntax is:
@@ -679,10 +818,10 @@ The function `FUN` is called once for each element of `X`, with the element as
 the first argument. The `...` is for additional arguments to `FUN`, which are
 held constant across all the elements.
 
-Let's try this out with the banknotes data and the `class` function:
+Let's try this out with the least terns data and the `class` function:
 
 ```{r}
-lapply(banknotes, class)
+lapply(terns, class)
 ```
 
 The result is similar to if the `class` function was vectorized. In fact, if we
@@ -701,8 +840,8 @@ The only difference is that the result from `lapply` is a list. In fact, the
 `lapply` function always returns a list with one element for each element of
 the input data. The "l" in `lapply` stands for "list".
 
-The `lapply` function is one member of a family of functions called _apply
-functions_. All of the apply functions provide ways to apply a function
+The `lapply` function is one member of a family of functions called **apply
+functions**. All of the apply functions provide ways to apply a function
 repeatedly to different parts of a data structure. We'll meet a few more apply
 functions soon.
 
@@ -715,6 +854,7 @@ As we saw with the `class` function, there are some situations where
 vectorization is not possible. That's when you should think about using an
 apply function.
 
+
 ### The `sapply` Function
 
 The related `sapply` function calls a function on each element of a list or
@@ -725,10 +865,10 @@ have different types or lengths, the result is the same as for `lapply`. The
 "s" in `sapply` stands for "simplify".
 
 For instance, if we use `sapply` to find the classes of the columns in the
-banknotes data, we get a character vector:
+least terns data, we get a character vector:
 
 ```{r}
-sapply(banknotes, class)
+sapply(terns, class)
 ```
 
 Likewise, if we use `sapply` to compute the `sin` values, we get a numeric
@@ -743,22 +883,22 @@ vectorization instead when possible.
 
 Apply functions are incredibly useful for summarizing data. For example,
 suppose we want to compute the frequencies for all of the columns in the
-banknotes data set that aren't numeric.
+least terns data set that aren't numeric.
 
 First, we need to identify the columns. One way to do this is with the
 `is.numeric` function. Despite the name, this function actually tests whether
 its argument is a real number, not whether it its argument is a numeric vector.
 In other words, it also returns true for integer values. We can use `sapply` to
-apply this function to all of the columns in the banknotes data set:
+apply this function to all of the columns in the least terns data set:
 
 ```{r}
-is_not_number = !sapply(banknotes, is.numeric)
+is_not_number = !sapply(terns, is.numeric)
 is_not_number
 ```
 
 Is it worth using R code to identify the non-numeric columns? Since there are
-only `r ncol(banknotes)` columns in the banknotes data set, maybe not. But if
-the data set was larger, with say 100 columns, it definitely would be.
+only `r ncol(terns)` columns in the least terns data set, maybe not. But if the
+data set was larger, with say 100 columns, it definitely would be.
 
 In general, it's a good habit to use R to do things rather than do them
 manually. You'll get more practice programming, and your code will be more
@@ -769,7 +909,7 @@ to compute frequencies. We only want to compute frequencies for those columns,
 so we need to subset the data:
 
 ```{r}
-lapply(banknotes[, is_not_number], table)
+lapply(terns[, is_not_number], table)
 ```
 
 We use `lapply` rather than `sapply` for this step because the table for each
@@ -784,63 +924,61 @@ for each element of a data structure, but categories are not necessarily
 elements.
 
 ```{r, echo = FALSE}
-n_countries = length(unique(banknotes$country))
+n_regions = length(unique(terns$region_3))
 ```
 
-For example, the banknotes data set has `r n_countries` different categories in
-the `country` column. If we want all of the rows for one country, one way to
+For example, the least terns data set has `r n_regions` different categories in
+the `region_3` column. If we want all of the rows for one region, one way to
 get them is by indexing:
 
 ```{r}
-usa = banknotes[banknotes$country == "United States", ]
-head(usa)
+southern = terns[terns$region_3 == "SOUTHERN", ]
+head(southern)
 ```
 
-To get all `r n_countries` countries separately, we'd have to do this
-`r n_countries` times. If we want to compute something for each country, say
-the mean of the `first_appearance_year` column, we also have to repeat that
-computation `r n_countries` times. Here's what it would look like for just the
-United States:
+To get all `r n_regions` regions separately, we'd have to do this `r n_regions`
+times. If we want to compute something for each region, say the median of the
+`total_nests` column, we also have to repeat that computation `r n_regions`
+times. Here's what it would look like for just the `SOUTHERN` region:
 
 ```{r}
-mean(usa$first_appearance_year)
+median(southern$total_nests, na.rm = TRUE)
 ```
 
 If the categories were elements, we could avoid writing code to index each
-category, and just use the `sapply` (or `lapply`) function to apply the `mean`
-function to each.
+category, and just use the `sapply` (or `lapply`) function to apply the
+`median` function to each.
 
 The `split` function splits a vector or data frame into groups based on a
 vector of categories. The first argument to `split` is the data, and the
 second argument is a congruent vector of categories.
 
-We can use `split` to elegantly compute means of `first_appearance_year` broken
-down by country. First, we split the data by country. Since we only want to
-compute on the `first_appearance_year` column, we only split that column:
+We can use `split` to elegantly compute medians of `total_nests` broken down by
+country. First, we split the data by region Since we only want to compute on
+the `total_nests` column, we only split that column:
 
 ```{r}
-by_country = split(banknotes$first_appearance_year, banknotes$country)
-class(by_country)
-names(by_country)
+by_region = split(terns$total_nests, terns$region_3)
+class(by_region)
+names(by_region)
 ```
- 
+
 The result from `split` is a list with one element for each category. The
-individual elements contain pieces of the original `first_appearance_year`
-column:
+individual elements contain pieces of the original `total_nests` column:
 
 ```{r}
-head(by_country$Mexico)
+head(by_region$SOUTHERN)
 ```
 
 Since the categories are elements in the split data, now we can use `sapply`
 the same way we did in previous examples:
 
 ```{r}
-sapply(by_country, mean)
+sapply(by_region, median, na.rm = TRUE)
 ```
 
-This two-step process is an R idiom called the _split-apply pattern_. First you
-use `split` to convert categories into list elements, then you use an apply
+This two-step process is an R idiom called the **split-apply pattern**. First
+you use `split` to convert categories into list elements, then you use an apply
 function to compute something on each category. Any time you want to compute
 results by category, you should think of this pattern.
 
@@ -850,11 +988,11 @@ shortcut. The `tapply` function is equivalent to calling `split` and then
 is a congruent vector of categories. The third argument is a function to apply,
 like the function argument in `sapply`.
 
-We can use `tapply` to compute the `first_appearance_year` means by `country`
-for the banknotes data set:
+We can use `tapply` to compute the `total_nests` medians by `region_3` for the
+least terns data set:
 
 ```{r}
-tapply(banknotes$first_appearance_year, banknotes$country, mean)
+tapply(terns$total_nests, terns$region_3, median, na.rm = TRUE)
 ```
 
 Notice that the result is identical to the one we computed before.
@@ -868,13 +1006,13 @@ The `aggregate` function is closely related to `tapply`. It computes the same
 results, but organizes them into a data frame with one row for each category.
 In some cases, this format is more convenient. The arguments are the same,
 except that the second argument must be a list or data frame rather than a
-vector. 
+vector.
 
 As an example, here's the result of using `aggregate` to compute the
-`first_appearance_year` means:
+`total_nests` medians:
 
 ```{r}
-aggregate(banknotes$first_appearance_year, list(banknotes$country), mean)
+aggregate(terns$total_nests, list(terns$region_3), mean)
 ```
 
 The `lapply`, `sapply`, and `tapply` functions are the three most important
@@ -885,33 +1023,25 @@ post][apply].
 [apply]: https://stackoverflow.com/a/7141669
 
 
-Exercises
----------
+## Exercises
 
 ### Exercise
 
-Compute the number of banknotes that feature a person who died before 1900.
+1. Compute the total number of fledglings (with `fl_min`) for each year and
+   region combination.
+2. Another way to present the data in @sec-example-bar-plot is with a
+   line plot. Use the data from part 1 to make this plot with points for each
+   total and lines connecting the totals. Hint: find the appropriate geometries
+   in the ggplot2 documentation.
 
 ### Exercise
 
-Compute the range of `first_appearance_year` for each country.
+1. Compute the number of sites with no egg mortalities due to predation.
+2. Of those, how many had at least one fledgling?
 
 ### Exercise
 
-1. Compute the set of banknotes with people who died in this century.
-
-   _Hint: be careful of missing values in the `death_year` column!_
-
-```{r}
-is21 = !is.na(banknotes$death_year) & banknotes$death_year >= 2000
-people21 = banknotes[is21, ]
-```
-
-2. Use ggplot2's `geom_segment` function to create a plot which shows the
-   timespan between death year and first appearance as a horizontal segment,
-   for each banknote in the result from step 1. Put the name of each person on
-   the y-axis. Color code the segments by gender.
-
-   _Hint: You can make the plot more visually appealing if you first sort the
-   data by death year. You can use the `order` function to get indexes that
-   will sort the rows of a data frame according to some column._
+1. Compute the range (minimum and maximum) of `year` for each site.
+2. How many many sites have observations over the entire range of the data set
+   (2000 and 2004-2023)? Hint: use the `unique` and `length` functions to find
+   the number of unique years for each site.
