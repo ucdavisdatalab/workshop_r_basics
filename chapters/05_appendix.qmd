@@ -1,7 +1,7 @@
 # Appendix
 
 ```{r, echo = FALSE}
-banknotes = read.csv("data/banknotes.csv")
+terns = read.csv("data/2000-2023_ca_least_tern.csv")
 ```
 
 
@@ -173,7 +173,7 @@ If you use two-dimensional indexing with `[` to select exactly one column, you
 get a vector:
 
 ```{r}
-result = banknotes[1:3, 2]
+result = terns[1:3, 2]
 class(result)
 ```
 
@@ -182,7 +182,7 @@ containers. This also occurs for matrices. You can control this behavior with
 the `drop` parameter:
 
 ```{r}
-result = banknotes[1:3, 2, drop = FALSE]
+result = terns[1:3, 2, drop = FALSE]
 class(result)
 ```
 
