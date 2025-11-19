@@ -823,7 +823,7 @@ learn more about how to create an RDS file on the `?saveRDS` help page, and how
 to read one on the `?readRDS` help page.
 
 
-## Dataset: CA Least Terns {#sec-hello-data}
+## Dataset: CA Least Terns {#sec-ca-least-terns}
 
 The California least tern is a endangered subspecies of seabird that nests
 along the coast of California and Mexico. The California Department of Fish and
@@ -1195,4 +1195,4 @@ data where the values are separated by tabs.
 1. What value-separator does `read.table` expect by default?
 2. Is it possible to use `read.table` to read a CSV? Explain. If your answer is
    yes, show how to use `read.table` to load the least terns data set
-   from @sec-hello-data.
+   from @sec-ca-least-terns.
