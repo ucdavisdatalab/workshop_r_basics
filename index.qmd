@@ -10,4 +10,5 @@ compute simple summaries and visualizations, do common data-tidying tasks,
 write reusable functions, and identify where to go to learn more.
 
 No prior programming experience is necessary. All learners will need access to
-an internet-connected computer and the latest version of Zoom, R, and RStudio.
+an internet-connected computer and the latest version of R and RStudio. For
+sessions presented online, learners will also need the latest version of Zoom.
