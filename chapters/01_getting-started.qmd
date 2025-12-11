@@ -443,15 +443,17 @@ console, you can access a specific help page by name with `?` followed by the
 name of the page.
 
 There are help pages for all of R's built-in functions, usually with the same
-name as the function itself. So the code to open the help page for the `log`
+name as the function itself. So the code to open the help page for the `round`
 function is:
 
 ```{r, eval = FALSE}
-?log
+?round
 ```
 
 For functions, help pages usually include a brief description, a list of
-parameters, a description of the return value, and some examples.
+parameters, a description of the return value, and some examples. The help page
+for `round` shows that there are two parameters `x` and `digits`. It also says
+that `digits = 0`, meaning the default argument for `digits` is `0`.
 
 There are also help pages for other topics, such as built-in mathematical
 constants (such as `?pi`), data sets (such as `?iris`), and operators. To look
