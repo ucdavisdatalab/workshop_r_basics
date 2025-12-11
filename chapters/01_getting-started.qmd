@@ -15,48 +15,75 @@ After completing this chapter, learners should be able to:
 * Inspect the structure of a data frame
 :::
 
-R is a program for statistical computing. It provides a rich set of built-in
-tools for cleaning, exploring, modeling, and visualizing data.
+## Why R?
 
-The main way you'll interact with R is by writing code or **expressions** in
-the R programming language. Most people use "R" as a blanket term to refer to
-both the program and the programming language. Usually, the distinction doesn't
-matter, but in cases where it does, we'll point it out and be specific.
+:::{.callout-note title="Why should you use a programming language?"}
+Code you write is **reproducible**: you can share it with someone else, and if
+they run it with the same inputs, they'll get the same results. By writing
+code, you create an unambiguous record of every step taken in your analysis.
+This is one of the major advantages of programming languages over
+point-and-click software like *Tableau* or *Microsoft Excel*.
 
-By writing code, you create an unambiguous record of every step taken in an
-analysis. This it one of the major advantages of R (and other programming
-languages) over point-and-click software like Tableau and Microsoft Excel.
-Code you write in R is **reproducible**: you can share it with someone else,
-and if they run it with the same inputs, they'll get the same results.
+Another advantage of writing code is that it's often **reusable**. This means
+you can:
 
-Another advantage of writing code is that it's often **reusable**. This can
-mean automating a repetitive task within a single analysis, recycling code from
-one analysis into another, or **packaging** useful code for distribution to the
-general public. At the time of writing, there were over 17,000 user-contributed
-packages available for R, spanning a broad range of disciplines.
-
-R is one of many programming languages used in data science. Compared to other
-programming languages, R's particular strengths are its interactivity, built-in
-support for handling missing data, the ease with which you can produce
-high-quality data visualizations, and its broad base of user-contributed
-packages (due to both its age and growing popularity).
-
-
-Prerequisites
--------------
+* Automate repetitive tasks within an analysis
+* Recycle code from one analysis into another
+* Package useful code for distribution to your colleagues or the general
+  public
+:::
 
 ![](/images/rlogo.png){height=5em fig-align="center"}
 
-You can download R for free [here](https://cloud.r-project.org/), and can find
-an install guide [here]().
+**[R][]** is a programming language for statistical computing and graphics. It
+provides a rich set of built-in tools for cleaning, exploring, modeling, and
+visualizing data.
 
-In addition to R, you'll need RStudio. RStudio is an **integrated development
-environment** (IDE), which means it's a comprehensive program for writing,
-editing, searching, and running code. You can do all of these things without
-RStudio, but RStudio makes the process easier. You can download RStudio Desktop
-Open-Source Edition for free
-[here](https://www.rstudio.com/products/rstudio/download/), and can find an
-install guide [here]().
+[R]: https://www.r-project.org/
+
+:::{.callout-note}
+The term "R" can mean the R language (the code) or the R interpreter (the
+software which runs the code). Most of the time, the meaning is clear from the
+context, but we'll be explicit in cases where the distinction is important.
+:::
+
+Compared to other programming languages, some of R's particular strengths are
+its:
+
+* Interactive interpreter and debugger
+* Focus on statistical computing
+    - Many statistical estimators, tests, and models are built-in
+    - Statisticians tend to implement new methods in R first
+* Over 23,000 community-developed **packages**: reusable bundles of code, often
+  accompanied by documentation, examples, or data sets
+* Functions and packages for creating high-quality data visualizations
+* Flexible support for many different programming abstractions and paradigms
+
+The main way you'll interact with R is by writing R code or **expressions**.
+We'll explain more soon, but first we need to install R and associated
+software.
+
+:::{.callout-important}
+To follow along with this and subsequent chapters, you'll need a recent
+version of R.
+
+[Click here][r-dl] to download the R installer. When the download is complete,
+run the installer to install (or update) R on your computer. We recommend
+keeping the installer's default settings.
+
+[r-dl]: https://cloud.r-project.org/
+
+In addition to R, you'll need a recent version of RStudio. RStudio is an
+**integrated development environment** (IDE), which means it's a comprehensive
+program for writing, editing, searching, and running code. You can do all of
+these things without RStudio, but RStudio makes the process easier.
+
+[Click here][rstudio-dl] to download the free RStudio Desktop installer. When
+the download is complete, run the installer to install RStudio Deskop on your
+computer.
+
+[rstudio-dl]: https://www.rstudio.com/products/rstudio/download/
+:::
 
 
 The R Interface
