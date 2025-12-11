@@ -332,56 +332,59 @@ types of data:
 
 ### Calling Functions {#sec-calling-functions}
 
-Most of R's features are provided through **functions**, pieces of reusable
-code. You can think of a function as a machine that takes some inputs and uses
-them to produce some output. In programming jargon, the inputs to a function
-are called **arguments**, the output is called the **return value**, and when
-you use a function, you're **calling** the function.
+R can do a lot more than just arithmetic. Most of R's features are provided
+through **functions**, pieces of reusable code. You can think of a function as
+a machine that takes some inputs and uses them to produce some output. In
+programming jargon, the inputs to a function are called **arguments**, the
+output is called the **return value**, and when you use a function, you're
+**calling** the function.
 
 To call a function, write its name followed by parentheses. Put any arguments
-to the function inside the parentheses. For example, in R, the sine function is
-named `sin` (there are also `cos` and `tan`). So you can compute the sine of
-$\pi / 4$ with this code:
+to the function inside the parentheses. For example, the function to round a
+number to a specified decimal place is named `round`. So you can round the
+number `8.153` to the nearest integer with this code:
 
 ```{r}
-sin(pi / 4)
+round(8.153)
 ```
 
-There are many functions that accept more than one argument. For instance, the
-`sum` function accepts any number of arguments and adds them all together. When
-you call a function with multiple arguments, separate the arguments with
-commas. So another way to compute $2 + 2$ in R is:
+Many functions accept more than one argument. For instance, the `round`
+function accepts at least two arguments: the number to round and the number of
+decimal places to keep. When you call a function with multiple arguments,
+separate the arguments with commas. So to round `8.153` to 1 decimal place:
 
 ```{r}
-sum(2, 2)
+round(8.153, 1)
 ```
 
-When you call a function, R assigns each argument to a **parameter**.
-Parameters are special variables that represent the inputs to a function and
-only exist while that function runs. For example, the `log` function, which
-computes a logarithm, has parameters `x` and `base` for the operand and base of
-the logarithm, respectively. The next section, @sec-getting-help, explains how
-to look up the parameters for a function.
+When you call a function, R assigns the arguments to the function's
+**parameter**. Parameters are special variables that represent the inputs to a
+function and only exist while that function runs. For example, the `round`
+function has parameters `x` and `digits`. The next section, @sec-getting-help,
+explains how to look up the parameters of a function.
 
-By default, R assigns arguments to parameters based on their order. The first
-argument is assigned to the function's first parameter, the second to the
-second, and so on. So you can compute the logarithm of 64, base 2, with this
-code:
+Some parameters have **default arguments**. A parameter is automatically
+assigned its default argument whenever the parameter's argument is not
+specified explicitly. As a result, assigning arguments to these parameters is
+optional. For instance, the `digits` parameter of `round` has a default
+argument (round to the nearest integer), so it's okay to call `round` without
+setting `digits`, as in `round(8.153)`. In contrast, the `x` parameter doesn't
+have a default argument. @sec-getting-help explains how to look up the default
+arguments for a function.
+
+By default, R assigns arguments to parameters based on their position. The
+first argument is assigned to the function's first parameter, the second to the
+second, and so on. So in the code above, `8.153` is assigned to `x` and `1` is
+assigned to `digits`.
+
+You can also assign arguments to parameters by name with `=` (not `<-`),
+overriding their positions. So some other ways you could write the call above
+are:
 
 ```{r}
-log(64, 2)
-```
-
-The argument 64 is assigned to the parameter `x`, and the argument 2 is
-assigned to the parameter `base`. You can also assign arguments to parameters
-by name with `=` (not `<-`), overriding their positions. So some other ways you
-could write the call above are:
-
-```{r}
-log(64, base = 2)
-log(x = 64, base = 2)
-log(base = 2, x = 64)
-log(base = 2, 64)
+round(8.153, digits = 1)
+round(x = 8.153, digits = 1)
+round(digits = 1, x = 8.153)
 ```
 
 All of these are equivalent. When you write code, choose whatever seems the
@@ -393,8 +396,8 @@ function runs. You can't set them before a call, nor can you access them after
 a call. So this code causes an error:
 
 ```{r, error = TRUE}
-x = 64
-log(base = 2)
+x = 4.755
+round(digits = 2)
 ```
 
 In the error message, R says that you forgot to assign an argument to the
@@ -402,17 +405,18 @@ parameter `x`. You can keep the variable `x` and correct the call by making `x`
 an argument (for the parameter `x`):
 
 ```{r}
-log(x, base = 2)
+round(x, digits = 2)
 ```
 
 Or, written more explicitly:
 
 ```{r}
-log(x = x, base = 2)
+round(x = x, digits = 2)
 ```
 
-In summary, variables and parameters are distinct, even if they happen to have
-the same name. The variable `x` is not the same thing as the parameter `x`.
+The point is that variables and parameters are distinct, even if they happen to
+have the same name. The variable `x` is not the same thing as the parameter
+`x`.
 
 
 ## Getting Help {#sec-getting-help}
