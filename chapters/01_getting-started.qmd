@@ -823,68 +823,165 @@ learn more about how to create an RDS file on the `?saveRDS` help page, and how
 to read one on the `?readRDS` help page.
 
 
-### Hello, Data! {#sec-hello-data}
+## Dataset: CA Least Terns {#sec-ca-least-terns}
 
-Let's read our first data set! Over the next few sections, you're going to
-explore a data set about the people who are depicted on banknotes (paper money)
-from around the world. [Click here to download the data set][banknotes-dl]
-(you'll need to click the "Download raw file" button).
+The California least tern is a endangered subspecies of seabird that nests
+along the coast of California and Mexico. The California Department of Fish and
+Wildlife (CDFW) monitors least tern nesting sites across the state to estimate
+breeding pairs, fledglings, and predator activity in each annual breeding
+season.
 
-The banknotes data set is derived from one created by [The Pudding][pudding], a
-digital publication that makes awesome stories and visualizations with data.
-Check out [their article about banknotes around the world][banknotes].
+![
+  A California least tern. Original photo by [Mark Pavelka, U.S. Fish &
+  Wildlife Service][pavelka] ([CC BY 2.0][]).
+](/images/ca_least_tern_usfws_pacificsw.jpg){
+  height=24em
+  fig-alt="A gray bird with a white belly, black head, and orange beak sitting
+  on a clutch of eggs."
+}
 
-[pudding]: https://pudding.cool/
-[banknotes]: https://pudding.cool/2022/04/banknotes/
-[banknotes-dl]: https://github.com/ucdavisdatalab/workshop_r_basics/blob/main/data/banknotes.csv
+[pavelka]: https://www.flickr.com/photos/usfws_pacificsw/5704890596/
+[CC BY 2.0]: https://creativecommons.org/licenses/by/2.0/
 
-The data set is in a file called `banknotes.csv`, which suggests it's a CSV
-file. In this case, the extension is correct, so you can read the file into R
-with the built-in `read.csv` function. The first argument is the path to where
-you saved the file, which may be different on your computer. The `read.csv`
-function returns the data set, but R won't keep the data in memory unless you
-assign the returned result to a variable:
+The CDFW publishes most of the data it collects to the [California Open Data
+portal][data.ca.gov]. The examples in this and subsequent chapters use a
+cleaned 2000-2023 version of the California least tern data.
+
+[data.ca.gov]: https://data.ca.gov/
+
+:::{.callout-important}
+[Click here][ca-least-tern] to download the 2000-2023 California least tern
+data set.
+
+[ca-least-tern]: https://ucdavis.box.com/s/m2w5l2ebp2rey2do5lnn38y1e3u31pin
+
+If you haven't already, we recommend you create a directory for this workshop.
+In your workshop directory, create a `data/` subdirectory. Download and save
+the California least tern data set in the `data/` subdirectory.
+:::
+
+:::{.callout-note
+  title="Documentation for 2000-2023 California Least Tern Data Set"
+  collapse=true
+}
+
+Each row in the data set contains measurements from one year-site combination.
+
+| Column                | Description
+| --------------------: | :----------
+| `year`                | Year of the breeding season
+| `site_name`           | Site name
+| `site_name_2013_2018` | Site name from 2013-2018
+| `site_name_1988_2001` | Site name from 1988-2001
+| `site_abbr`           | Abbreviated site name
+| `region_3`            | Region of state: S.F. Bay, Central, or Southern (includes Ventura)
+| `region_4`            | Region of state: S.F. Bay, Central, Ventura, or Southern
+| `event`               | Climate events
+| `bp_min`              | Reported minimum breeding pairs
+| `bp_max`              | Reported maximum breeding pairs
+| `fl_min`              | Reported minimum fledges
+| `fl_max`              | Reported maximum fledges
+| `total_nests`         | Total reported nests (maximum if a range was reported)
+| `nonpred_eggs`        | Total non-predator-related mortalities of eggs
+| `nonpred_chicks`      | Total non-predator-related mortalities of chicks
+| `nonpred_fl`          | Total non-predator-related mortalities of fledges
+| `nonpred_ad`          | Total non-predator-related mortalities of adults
+| `pred_control`        | Site predator control (yes/no)
+| `pred_eggs`           | Total predator-related mortalities of eggs
+| `pred_chicks`         | Total predator-related mortalities of chicks
+| `pred_fl`             | Total predator-related mortalities of fledges
+| `pred_ad`             | Total predator-related mortalities of adults
+| `pred_pefa`           | Predation by peregrine falcons (yes/no)
+| `pred_coy_fox`        | Predation by coyotes or foxes (yes/no)
+| `pred_meso`           | Predation by other mesocarnivores: dogs, cats, skunks, opossums, raccoons, weasels, etc. (yes/no)
+| `pred_owlspp`         | Predation by owls (yes/no)
+| `pred_corvid`         | Predation by corvids: ravens or crows (yes/no)
+| `pred_other_raptor`   | Predation by raptors other than peregrine falcons and owls (yes/no)
+| `pred_other_avian`    | Predation by birds other than raptors and corvids (yes/no)
+| `pred_misc`           | Predation by other animals (yes/no)
+| `total_pefa`          | Total mortalities due to peregrine falcons
+| `total_coy_fox`       | Total mortalities due to coyotes and foxes
+| `total_meso`          | Total mortalities due to other mesocarnivores
+| `total_owlspp`        | Total mortalities due to owls
+| `total_corvid`        | Total mortalities due to ravens and crows
+| `total_other_raptor`  | Total mortalities due to other raptors
+| `total_other_avian`   | Total mortalities due to other birds
+| `total_misc`          | Total mortalities due to other animals
+| `first_observed`      | Date CA least terns first observed at site
+| `last_observed`       | Date CA least terns last observed at site
+| `first_nest`          | Date first egg observed at site
+| `first_chick`         | Date first chick observed at site
+| `first_fledge`        | Date first fledge observed at site
+
+: {.striped .hover tbl-colwidths="[25, 75]"}
+
+The messy source data set (with more years and more columns) is available
+[here][ca-least-tern-source].
+
+[ca-least-tern-source]: https://data.ca.gov/dataset/california-least-tern-monitoring-sites-generalized-cdfw-ds3146
+:::
+
+Let's use R to read the California least tern data set. The data set is in a
+file called is `2000-2023_ca_least_tern.csv`, which suggests it's a CSV file.
+The function to read a CSV file is `read.csv`. The function's first and only
+required argument is the path to the CSV file.
+
+In the following code, the path to the California least tern data set is
+`data/2000-2023_ca_least_tern.csv`, but it might be different for you,
+depending on R's working directory and where you saved the file. We'll save the
+result from the `read.csv` function in a variable called `terns`. We can use
+this variable to access the data in subsequent code.
 
 ```{r}
-banknotes = read.csv("data/banknotes.csv")
+terns = read.csv("data/2000-2023_ca_least_tern.csv")
 ```
 
-The variable name `banknotes` here is arbitrary; you can choose something different
-if you want. However, in general, it's a good habit to choose variable names
-that describe the contents of the variable somehow.
+:::{.callout-note}
+The variable name `terns` is arbitrary; you can choose something different if
+you want. However, in general, it's a good habit to choose variable names that
+describe the contents of the variable somehow.
+:::
 
 If you tried running the line of code above and got an error message, pay
 attention to what the error message says, and remember the strategies to get
-help in @sec-getting-help. The most common mistake when reading a file is
+help from @sec-getting-help. The most common mistake when reading a file is
 incorrectly specifying the path, so first check that you got the path right.
 
-If you ran the line of code and there was no error message, congratulations,
-you've read your first data set into R!
+If the code ran without errors, it's a good idea to check that the data set
+looks like what the documentation describes. When working with a new data set,
+it usually isn't a good idea to print the whole thing (at least until you know
+how big it is). Large data sets can take a long time to print, and the output
+can be difficult to read.
 
+Instead, use the `head` function to print only the beginning, or head, of the
+data set:
 
-## Data Frames {#sec-data-frames}
-
-Now that you've loaded the data, let's take a look at it. When you're working
-with a new data set, it's usually not a good idea to print it out directly (by
-typing `banknotes`, in this case) until you know how big it is. Big data sets can
-take a long time to print, and the output can be difficult to read.
-
-Instead, you can use the `head` function to print only the beginning, or head,
-of a data set. Let's take a peek:
-
-```{r}
-head(banknotes)
+```{r, eval = FALSE}
+head(terns)
 ```
 
-This data set is tabular---as you might have already guessed, since it came
-from a CSV file. In R, it's represented by a **data frame**, a table with rows
-and columns. R uses data frames to represent most (but not all) kinds of
-tabular data. The `read.csv` function, which you used to read this data, always
-returns a data frame.
+```{r, echo = FALSE}
+knitr::kable(head(terns))
+```
 
-For a data frame, the `head` function only prints the first six rows. If there
-are lots of columns or the columns are wide, as is the case here, R wraps the
-output across lines.
+If you run this code and see a similar table, then congratulations, you've read
+your first data set into R! ✨
+
+The California least terns data set is tabular---as you might have already
+guessed, since it came from a CSV file. In R, it's represented by a **data
+frame**, a table with rows and columns. R uses data frames to represent most
+(but not all) kinds of tabular data. The `read.csv` function, which you used to
+read this data, always returns a data frame.
+
+Typically, each row in a data frame corresponds to a single subject and
+is called an **observation**. Each column corresponds to a measurement of the
+subject and is called a **feature** or **covariate**.
+
+:::{.callout-note}
+Sometimes people also refer to columns as “variables," but we'll try to avoid
+this, because in programming contexts a variable is a name for a value (which
+might not be a column).
+:::
 
 When you first read an object into R, you might not know whether it's a data
 frame. One way to check is visually, by printing it (as you just did with
@@ -893,35 +990,53 @@ information about what an object is. For a data frame, the result will always
 contain `data.frame`:
 
 ```{r}
-class(banknotes)
+class(terns)
 ```
 
 You'll learn more about classes in @sec-data-types-classes, but for now you can
 use this function to identify data frames.
 
-By counting the columns in the output from `head(banknotes)`, you can see
-that this data set has `r ncol(banknotes)` columns. A more convenient way to
-check the number of columns in a data set is with the `ncol` function:
+
+## Inspecting a Data Frame {#sec-data-frames}
+
+Similar to how the `head` function shows the first six rows of a data frame,
+the `tail` function shows the last six:
 
 ```{r}
-ncol(banknotes)
+tail(terns)
 ```
 
-The similarly-named `nrow` function returns the number of rows:
+If there are lots of columns or the columns are wide, as is the case here, R
+wraps the output across lines.
+
+:::{.callout-tip}
+Both `head` and `tail` accept an optional second argument that specifies the
+number of rows to print:
 
 ```{r}
-nrow(banknotes)
+head(terns, 1)
+```
+:::
+
+One way to get a quick idea of what your data looks like without having to skim
+through all the columns and rows is by inspecting its **dimensions**. This is
+the number of rows and columns in a data frame, and you can access this
+information with the `dim` function:
+
+```{r}
+dim(terns)
 ```
 
-Alternatively, you can get both numbers at the same time with the `dim` (short
-for "dimensions") function.
+So this data set has `r nrow(terns)` rows and `r ncol(terns)` columns. As an
+alternative to the `dim` function, you can use the `nrow` and `ncol` functions
+to get just the number of rows and number of columns, respectively.
 
 Since the columns have names, you might also want to get just these. You can do
 that with the `names` or `colnames` functions. Both return the same result:
 
 ```{r}
-names(banknotes)
-colnames(banknotes)
+names(terns)
+colnames(terns)
 ```
 
 If the rows have names, you can get those with the `rownames` function. For
@@ -938,10 +1053,10 @@ summaries: `str` and `summary`.
 The `str` function returns a **structural summary** of an object. This kind of
 summary tells us about the structure of the data---the number of rows, the
 number and names of columns, what kind of data is in each column, and some
-sample values. Here's the structural summary for the banknotes data:
+sample values. Here's the structural summary for the least terns data set:
 
 ```{r}
-str(banknotes)
+str(terns)
 ```
 
 This summary lists information about each column, and includes most of what you
@@ -954,11 +1069,12 @@ of an object. This summary includes summary statistics for each column,
 choosing appropriate statistics based on the kind of data in the column. For
 numbers, this is generally the mean, median, and quantiles. For categories,
 this is the frequencies. Other kinds of statistics are shown for other kinds of
-data. Here's the statistical summary for the banknotes data:
+data. Here's the statistical summary for the least terns data set:
 
 ```{r}
-summary(banknotes)
+summary(terns)
 ```
+
 
 ### Selecting Columns
 
@@ -969,43 +1085,72 @@ dollar sign operator. The syntax is:
 VARIABLE$COLUMN_NAME
 ```
 
-For instance, for the banknotes data, `banknotes$country` selects the `country`
-column, and `banknotes$first_appearance_year` selects the
-`first_appearance_year` column. So one way to compute the mean of the
-`first_appearance_year` column is:
+For example, for the least terns data set, `terns$year` selects the `year`
+column, which is the year of observation:
 
 ```{r}
-mean(banknotes$first_appearance_year)
+terns$year
 ```
 
-Similarly, to compute the range of the `current_bill_value` column:
+R provides a variety of functions to compute on columns (and other vectors of
+data). For instance, what if you want to know the time period the data set
+covers? You can use the `range` function to compute the minimum and maximum of
+a column:
 
 ```{r}
-range(banknotes$current_bill_value)
+range(terns$year)
+```
+
+So the oldest observations are from `r min(terns$year)` and the newest are from
+`r max(terns$year)`, although this function and output doesn't tell us whether
+there are observations for the years in between.
+
+You can count the observations for each year with the `table` function:
+
+```{r}
+table(terns$year)
+```
+
+The `table` function is great for summarizing columns of categories, where
+numerical statistics like means and standard deviations aren't defined.
+
+On the other hand, numerical statistics work well for summarizing columns of
+numbers. You can use the `mean` function to compute the mean of a column. For
+instance, let's compute the mean of the `total_nests` column, which is the
+total number of nests seen at a site:
+
+```{r}
+mean(terns$total_nests)
+```
+
+The result is `NA` because column is missing some values (we'll explain this in
+detail in @sec-missing-values). To compute the mean with only the values that
+are present, set `na.rm = TRUE` in the call to `mean`:
+
+```{r}
+mean(terns$total_nests, na.rm = TRUE)
 ```
 
 You can also use the dollar sign operator to assign values to columns. For
-instance, to assign `USD` to the entire `currency_code` column:
+instance, to assign `2000` to the entire `year` column:
 
-```{r}
-banknotes$currency_code = "USD"
+```{r, eval = FALSE}
+terns$year = 2000
 ```
 
 Be careful when you do this, as there is no undo. Fortunately, you haven't
-saved any transformations to the banknotes data to your computer's hard drive
-yet, so you can reset the `banknotes` variable back to what it was by reloading
-the data set:
+saved this change to the least terns data set to your computer's hard drive
+yet, so you can reload the data set to reset it:
 
-```{r}
-banknotes = read.csv("data/banknotes.csv")
+```{r, eval = FALSE}
+terns = read.csv("data/2000-2023_ca_least_tern.csv")
 ```
 
 In @sec-indexing, you'll learn how to select rows and individual elements from
 a data frame, as well as other ways to select columns.
 
 
-Exercises
----------
+## Exercises
 
 ### Exercise
 
@@ -1049,5 +1194,5 @@ data where the values are separated by tabs.
 
 1. What value-separator does `read.table` expect by default?
 2. Is it possible to use `read.table` to read a CSV? Explain. If your answer is
-   yes, show how to use `read.table` to load the banknotes data
-   from @sec-hello-data.
+   yes, show how to use `read.table` to load the least terns data set
+   from @sec-ca-least-terns.

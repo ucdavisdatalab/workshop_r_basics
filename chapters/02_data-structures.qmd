@@ -26,41 +26,42 @@ and data types, then explains a variety of ways to get and set their elements.
 ## Vectors {#sec-vectors}
 
 ```{r, echo = FALSE}
-banknotes = read.csv("data/banknotes.csv")
+terns = read.csv("data/2000-2023_ca_least_tern.csv")
 ```
 
 A **vector** is a collection of values. Vectors are the fundamental unit of
 data in R, and you've already used them in the previous sections.
 
-For instance, each column in a data frame is a vector. So the
-`first_appearance_year` column in the banknotes data from @sec-data-frames is a
+For instance, each column in a data frame is a vector. So the `site_name`
+column in the California least terns data set (@sec-ca-least-terns) is a
 vector. Take a look at it now. You can use `head` to avoid printing too much.
 Set the second argument to `10` so that exactly 10 values are printed:
 
 ```{r}
-head(banknotes$first_appearance_year, 10)
+head(terns$site_name, 10)
 ```
 
 Like all vectors, this vector is **ordered**, which just means the values, or
-**elements**, have specific positions. The value of the 1st element is `2012`,
-the 2nd is `1988`, the 5th is `1970`, and so on.
+**elements**, have specific positions. The value of the 1st element is `r
+terns$site_name[[1]]`, the 2nd is `r terns$site_name[[2]]`, the 5th is `r
+terns$site_name[[5]]`, and so on.
 
-Notice that the elements of this vector are all integers. In R, the elements of
+Notice that the elements of this vector are all strings. In R, the elements of
 a vector must all be the same type of data (we say the elements are
 **homogeneous**). A vector can contain integers, decimal numbers, strings, or
-several other types of data, but not a mix these all at once.
+any of several other types of data, but not a mix these all at once.
 
-The other columns in the banknotes data frame are also vectors. For instance,
-the `name` column is a vector of strings:
+The other columns in the least terns data frame are also vectors. For instance,
+the `year` column is a vector of integers:
 
 ```{r}
-head(banknotes$name)
+head(terns$year)
 ```
 
 Vectors can contain any number of elements, including 0 or 1 element. Unlike
-mathematics, R does not distinguish between vectors and **scalars** (solitary
-values). So as far as R is concerned, a solitary value, like `3`, is a vector
-with 1 element.
+mathematics, R does not distinguish between vectors and scalars (solitary
+values). As far as R is concerned, a solitary value, like `3`, is a vector with
+1 element.
 
 You can check the length of a vector (and other objects) with the `length`
 function:
@@ -68,11 +69,11 @@ function:
 ```{r}
 length(3)
 length("hello")
-length(banknotes$first_appearance_year)
+length(terns$year)
 ```
 
-Since the last of these is a column from the data frame `banknotes`, the length
-is the same as the number of rows in `banknotes`.
+Since the last of these is a column from the data frame `terns`, the length is
+the same as the number of rows in `terns`.
 
 
 ### Creating Vectors
@@ -370,11 +371,11 @@ For ordinary lists, the type and the class are both `list`. In @sec-indexing,
 we'll learn how to get and set list elements, and in later sections we'll learn
 more about when and why to use lists.
 
-You've already seen one list, the banknotes data frame:
+You've already seen one list, the `terns` data frame:
 
 ```{r}
-class(banknotes)
-typeof(banknotes)
+class(terns)
+typeof(terns)
 ```
 
 Under the hood, data frames are lists, and each column is a list element.
@@ -504,13 +505,13 @@ so it's important to make sure you have the right data type. If you're ever
 unsure, remember that you can check the class of an object with the `class`
 function.
 
-When you load a data set, R usually can't tell which features are categorical.
+When it reads a data set, R usually can't tell which features are categorical.
 That means identifying and converting the categorical features is up to you.
 For beginners, it can be difficult to understand whether a feature is
 categorical or not. The key is to think about whether you want to use the
 feature to divide the data into groups.
 
-For example, if we want to know how many songs are in the `rock` genre, we
+For example, if you want to know how many songs are in the `rock` genre, you
 first need to divide the songs by genre, and then count the number of songs in
 each group (or at least the `rock` group).
 
@@ -524,78 +525,73 @@ The bottom line is that you have to think about what you'll be doing in the
 analysis. In some cases, you might treat a feature as categorical only for part
 of the analysis.
 
-Let's think about which features are categorical in banknotes data set. To
-refresh our memory of what's in the data set, we can look at the structural
+Let's think about which features are categorical in least terns data set. To
+refresh your memory of what's in the data set, take a look at the structural
 summary:
 
 ```{r}
-str(banknotes)
+str(terns)
 ```
 
-The columns `bill_count`, `current_bill_value`, and `prop_total_bills` are
-quantitative rather than categorical, since they measure values and proportions
-of bills.
+The `site_name`, `site_abbr`, and `event` columns are all examples of
+categorical data. The `region_` columns and some of the `pred_` columns also
+contain categorical data.
 
-The `currency_code`, `country`, `currency_name`, `gender`, `profession`,
-`known_for_being_first`, and `has_portrait` columns are all categorical. We can
-see this better if we use the `table` function to compute frequencies for the
-values in the columns:
+One way to check whether a feature is useful for grouping (and thus effectively
+categorical) is to count the number of times each value appears. You can do
+this with the `table` function. For instance, to count the number of times each
+category of `event` appears:
 
 ```{r}
-table(banknotes$currency_code)
-
-table(banknotes$country)
-
-table(banknotes$gender)
-
-table(banknotes$known_for_being_first)
+table(terns$event)
 ```
 
-Each column has only a few unique values, repeated many times. These are ideal
-for grouping the data. If age had been recorded as a number, rather than a
-range, it would probably be better to treat it as quantitative, since there
-would be far more unique values. Columns with many unique values don't make
-good categorical features, because each group will only have a few elements!
+Features with only a few unique values, repeated many times, are ideal for
+grouping. Numerical features, like `total_nests`, usually aren't good for
+grouping, both because of what they measure and because they tend to have many
+unique values, which leads to very small groups.
 
-The `name`, `comments`, `hover_text`, and `id` columns contain qualitative
-strings rather than categories, where values are rarely or never repeated. This
-means using them for grouping is generally unhelpful, since most of the groups
-will just be single observations.
+The `year` column can be treated as categorical or quantitative data. It's easy
+to imagine grouping observations by year, but years are also numerical: they
+have an order and we might want to do math on them. The most appropriate type
+for `year` depends on how we want to use it for analysis.
 
-That leaves us with the `first_appearance_year` and `death_year` columns. It's
-easy to imagine grouping the data by year, but these are also clearly numbers.
-These columns can be treated as quantitative or categorical data, depending on
-how we want to use them to analyze the data.
+You can convert a column to the `factor` class with the `factor` function. Try
+this for the `event` column:
 
-Let's convert the `currency_code` column to a factor. To do this, use the
-`factor` function:
 ```{r}
-currency_codes = factor(banknotes$currency_code)
-head(currency_codes)
+event = factor(terns$event)
+event
 ```
 
 Notice that factors are printed differently than strings.
 
 The categories of a factor are called **levels**. You can list the levels with
 the `levels` function:
-```{r}
-levels(currency_codes)
+```{r, eval = FALSE}
+levels(event)
 ```
 
-Factors remember all possible levels even if you take a subset:
+A factor remembers all possible levels even if you take a subset where some of
+the levels aren't present:
+
 ```{r}
-currency_codes[1:3]
+event[1:3]
+levels(event[1:3])
 ```
 
-This is another way factors are different from strings. Factors "remember" all
-possible levels even if they aren't present. This ensures that if you plot a
-factor, the missing levels will still be represented on the plot.
+This is an important way factors are different from strings (or `character`
+vectors). It ensures that if you plot a factor, the missing levels will still
+be represented on the plot.
 
+:::{.callout-tip}
 You can make a factor forget levels that aren't present with the `droplevels`
 function:
+
 ```{r}
-droplevels(currency_codes[1:3])
+droplevels(event[1:3])
 ```
+:::
 
 
 ## Special Values
@@ -1094,9 +1090,16 @@ Considering how implicit coercion works (@sec-implicit-coercion):
 
 ### Exercise
 
-The `table` function is useful for counting all sorts of things, not just level
-frequencies for a factor. For instance, you can use `table` to count how many
-`TRUE` and `FALSE` values there are in a logical vector.
+1.  Create a new data frame from the least terns data with the following
+    characteristics:
+      * Each entry's year is between 2010 and 2019 (inclusive).
+      * Each entry reports at least 100 breeding pairs.
+      * The columns are `year`, `site_name`, `bp_min`, `bp_max`,
+        `total_nests`.
 
-1. For the banknotes data, how many bills have value below 1,000?
-2. How many bills with value above 1,000 depict women?
+    Use this data frame for the remaining questions.
+
+2.  Count the number of entries for each site. How many sites have at least 100
+    breeding pairs across all 10 years?
+
+3.  Which site-year combination has the highest number of nests?
