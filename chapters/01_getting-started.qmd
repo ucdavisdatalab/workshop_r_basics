@@ -280,8 +280,8 @@ The error message notes that `+` is not defined for non-numeric values.
 
 ### Comparisons {#sec-comparisons}
 
-Besides arithmetic, you can also use R to compare values. The comparison
-operators are:
+Besides arithmetic, you can also use R to compare values. Programming tasks
+often involve comparing values. Use **comparison operators** to do so:
 
 * `<` for "less than"
 * `>` for "greater than"
@@ -290,8 +290,8 @@ operators are:
 * `==` for "equal to"
 * `!=` for "not equal to"
 
-The "equal to" operator uses two equal signs so that R can distinguish it from
-`=`, the assignment operator.
+Notice that the "equal to" operator is two equal signs. This is to distinguish
+it from the assignment operator `=`.
 
 Let's look at a few examples:
 ```{r}
@@ -315,8 +315,9 @@ TRUE == FALSE
 
 @sec-logic describes more ways to use and combine logical values.
 
-Beware that the equality operators don't always return `FALSE` when you compare
-two different types of data:
+:::{.callout-warning}
+Some of R's equality operators return `TRUE` even when comparing two different
+types of data:
 
 ```{r}
 "1" == 1
@@ -326,6 +327,7 @@ two different types of data:
 
 @sec-implicit-coercion explains why this happens, and
 @sec-more-about-comparisons explains several other ways to compare values.
+:::
 
 
 ### Calling Functions {#sec-calling-functions}
