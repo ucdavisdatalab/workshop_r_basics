@@ -42,9 +42,9 @@ head(terns$site_name, 10)
 ```
 
 Like all vectors, this vector is **ordered**, which just means the values, or
-**elements**, have specific positions. The value of the 1st element is `r
-terns$site_name[[1]]`, the 2nd is `r terns$site_name[[2]]`, the 5th is `r
-terns$site_name[[5]]`, and so on.
+**elements**, have specific positions. The value of the 1st element is
+`r terns$site_name[[1]]`, the 2nd is `r terns$site_name[[2]]`, the 5th is
+`r terns$site_name[[5]]`, and so on.
 
 Notice that the elements of this vector are all strings. In R, the elements of
 a vector must all be the same type of data (we say the elements are
