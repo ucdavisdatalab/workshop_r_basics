@@ -86,8 +86,7 @@ computer.
 :::
 
 
-The R Interface
----------------
+## The RStudio Interface
 
 The first time you open RStudio, you'll see a window divided into several
 panes, like this:
@@ -98,10 +97,9 @@ panes, like this:
   operating system and versions of R and RStudio.
 ](/images/rstudio_start.png){.lightbox}
 
-The console
-pane, on the left, is the main interface to R. If you type R code into the
-console and press the `Enter` key on your keyboard, R will run your code and
-return the result.
+The console pane, on the left, is the main interface to R. If you type R code
+into the console and press the `Enter` key on your keyboard, R will run your
+code and return the result.
 
 On the right are the environment pane and the plots pane. The environment pane
 shows data in your R workspace. The plots pane shows any plots you make, and
@@ -110,9 +108,9 @@ You'll learn more about these gradually, but for now, focus on the console
 pane.
 
 Let's start by using R to do some arithmetic. In the console, you'll see that
-the cursor is on a line that begins with `>`, called the *prompt*. You can make
-R compute the sum $2 + 2$ by typing the code `2 + 2` after the prompt and then
-pressing the `Enter` key. Your code and the result from R should look like
+the cursor is on a line that begins with `>`, called the **prompt**. You can
+make R compute the sum $2 + 2$ by typing the code `2 + 2` after the prompt and
+then pressing the `Enter` key. Your code and the result from R should look like
 this:
 
 ![](/images/arithmetic.png)
@@ -122,9 +120,7 @@ case, the result begins with the tag `[1]`, which is a hint from R that the
 result is a **vector** and that this line starts with the **element** at
 position 1. You'll learn more about vectors in @sec-vectors, and eventually
 learn about other data types that are displayed differently. The result of the
-sum, `4`, is displayed after the tag. In this reader, results from R will
-usually be typeset in monospace and further prefixed with `##` to indicate that
-they aren't code.
+sum, `4`, is displayed after the tag.
 
 If you enter an incomplete expression, R will change the prompt to `+`, then
 wait for you to type the rest of the expression and press the `Enter` key.
@@ -138,6 +134,9 @@ expression is incomplete if it's missing something, like the second operand in
 `2 +`. So if you mean to enter `2 + 2` but accidentally enter `2`, which is a
 complete expression by itself, don't expect R to read your mind and wait for
 more input!
+
+
+## R Basics
 
 Try out some other arithmetic in the R console. Besides `+` for addition, the
 other arithmetic operators are:
