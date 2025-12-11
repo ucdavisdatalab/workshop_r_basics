@@ -188,39 +188,54 @@ expression for the area of a circle with radius 3:
 pi * 3^2
 ```
 
-You can define your own variables with the assignment operator `=` or `<-`. In
-most circumstances these two operators are interchangeable. For clarity, it's
-best to choose one you like and use it consistently in all of your R code. In
-this reader, we use `=` for assignment because this is the assignment operator
-in most programming languages.
+You can create a variable with the assignment operator `=` by writing a name on
+the left-hand side and a value or expression on the right-hand side. For
+example, to save the area of the circle in a variable called `area`, you can
+write:
 
-The main reason to use variables is to save results so that you can use them
-on other expressions later. For example, to save the area of the circle in a
-variable called `area`, you can write:
 
 ```{r}
 area = pi * 3^2
 ```
 
-In R, variable names can contain any combination of letters, numbers, dots `.`,
-and underscores `_`, but must always start with a letter or a dot. Spaces and
-other symbols are not allowed in variable names.
+:::{.callout-note}
+You can use the arrow operator `<-` instead of the assignment operator:
 
-Now you can use the `area` variable anywhere you want the computed area. Notice
-that when you assign a result to a variable, R doesn't automatically display
-that result. If you want to see the result as well, you have to enter the
-variable's name as a separate expression:
+```{r}
+area <- pi * 3^2
+```
+
+In most cases, the two operators are interchangeable. For clarity, it's best to
+choose one you like and use it consistently in all of your R code. In this
+reader, we use `=` because it's the assignment operator in most programming
+languages and it's easier to type.
+:::
+
+In R, variable names can contain any combination of letters and dots (`.`).
+Names can also include numbers and underscores (`_`), but can't start with a
+them. Spaces and other symbols are not allowed in variable names. So `geese`,
+`top50.dogs`, and `nine_lives` are valid variable names, but `goose teeth`,
+`_fishes`, and `9lives` are not.
+
+The main reason to use variables is to temporarily save results from
+expressions so that you can use them in other expressions. For instance, now
+you can use the `area` variable anywhere you want the area of the circle.
+
+Notice that when you assign a result to a variable, R doesn't automatically
+display that result. If you want to see the result as well, you have to enter
+the variable's name as a separate expression:
 
 ```{r}
 area
 ```
 
-Another reason to use variables is to make an expression more general. For
-instance, you might want to compute the area of several circles with different
-radii. Then the expression `pi * 3^2` is too specific. You can rewrite it as
-`pi * r^2`, and then assign a value to the variable `r` just before you compute
-the area. Here's the code to compute and display the area of a circle with
-radius 1 this way:
+Another reason to use variables is to make an expression clearer and more
+general. For instance, you might want to compute the area of several circles
+with different radii. Then the expression `pi * 3^2` is too specific. Instead,
+you can create a variable `r`, then rewrite the expression as `pi * r^2`. This
+makes the expression easier to understand, because the reader doesn't have to
+intuit that `3` is the radius in the formula. Here's the code to compute and
+display the area of a circle with radius 1 this way:
 
 ```{r}
 r = 1
@@ -233,6 +248,12 @@ is change `r` and run the code again (R will not change `area` until you do
 this). Writing code that's general enough to reuse across multiple problems can
 be a big time-saver in the long run. Later on, you'll learn ways to make this
 code even easier to reuse.
+
+:::{.callout-tip}
+Try to choose descriptive variable names, so that you and your collaborators
+can understand the meaning and purpose of each variable when reading the code.
+:::
+
 
 ### Strings
 
