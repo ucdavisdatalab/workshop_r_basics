@@ -106,7 +106,7 @@ Here's what it looks like if you only enter `2 +`:
 ![](/images/incomplete.png)
 
 You can finish entering the expression, or you can cancel it by pressing the
-`Esc` key (or `Ctrl-c` if you're using R without RStudio). R can only tell an
+`Esc` key (or `Ctrl`-`c` if you're using R without RStudio). R can only tell an
 expression is incomplete if it's missing something, like the second operand in
 `2 +`. So if you mean to enter `2 + 2` but accidentally enter `2`, which is a
 complete expression by itself, don't expect R to read your mind and wait for
@@ -437,20 +437,21 @@ to read about [how to ask a good question][goodq].
 
 ## Saving & Loading Code
 
+:::{.callout-tip}
+When you start a new project, it's a good idea to create a specific directory
+for all of the project's files. If you're using R, you should also store your R
+code in that directory. As you work, periodically save your code.
+:::
 
 Most of the time, you won't just write code directly into the R console.
 Reproducibility and reusability are important benefits of R over
 point-and-click software, and in order to realize these, you have to save your
-code to your computer's hard drive. Let's start by reviewing how files on a
-computer work. You'll need to understand that before you can save your code,
-and it will also be important later on for loading data sets.
+code to your computer's hard drive.
 
-### R Scripts {#sec-r-scripts}
-
-Now that you know how file systems and paths work, you're ready to learn how to
-save your R code to a file. R code is usually saved into an **R script**
-(extension `.R`) or an **R Markdown file** (extension `.Rmd`). R scripts are
-slightly simpler, so let's focus on those.
+The most common way to save R code is as an R **script** with the extension
+`.R` (see @sec-reading-files for more about extensions). Editing a script is
+similar to editing any other text file. You can write, delete, copy, cut, and
+paste code.
 
 In RStudio, you can create a new R script with this menu option:
 
@@ -468,14 +469,9 @@ The new pane is the scripts pane, which displays all of the R scripts you're
 editing. Each script appears in a separate tab. In the screenshot, only one
 script, the new script, is open.
 
-Editing a script is similar to editing any other text document. You can write,
-delete, copy, cut, and paste text. You can also save the file to your
-computer's file system. When you do, pay attention to where you save the file,
-as you might need it later.
-
-The contents of an R script should be R code. Anything else you want to write
-in the script (notes, documentation, etc.) should be in a **comment**. In R,
-comments begin with `#` and extend to the end of the line:
+Every line in an R script must be valid R code. Anything else you want to write
+in the script (notes, documentation, etc.) must be placed in a **comment**. In
+R, comments begin with `#` and extend to the end of the line:
 
 ```{r}
 # This is a comment.
@@ -483,36 +479,105 @@ comments begin with `#` and extend to the end of the line:
 
 R will ignore comments when you run your code.
 
-When you start a new project, it's a good idea to create a specific directory
-for all of the project's files. If you're using R, you should also create one
-or more R scripts in that directory. As you work, write your code directly into
-a script. Arrange your code in the order of the steps to solve the problem,
-even if you write some parts before others. Comment out or delete any lines of
-code that you try but ultimately decide you don't need. Make sure to save the
-file periodically so that you don't lose your work. Following these guidelines
-will help you stay organized and make it easier to share your code with others
+Arrange your code in the order of the steps to solve the problem, even if you
+write some parts before others. Comment out or delete any lines of code that
+you try but ultimately decide you don't need. Make sure to save the file
+periodically so that you don't lose your work. Following these guidelines will
+help you stay organized and make it easier to share your code with others
 later.
 
+:::{.callout-tip}
 While editing, you can run the current line in the R console by pressing
-`Ctrl`+`Enter` on Windows and Linux, or `Cmd`+`Enter` on macOS. This way you
+`Ctrl`-`Enter` on Windows and Linux, or `Cmd`-`Enter` on macOS. This way you
 can test and correct your code as you write it.
+:::
 
-If you want, you can instead run (or **source**) the entire R script, by
-calling the `source` function with the path to the script as an argument. This
-is also what the "Source on Save" check box refers to in RStudio. The code runs
-in
-order, only stopping if an error occurs.
 
-For instance, if you save the script as `my_cool_script.R`, then you can run
-`source("my_cool_script.R")` in the console to run the entire script (pay
-attention to the path---it may be different on your computer).
+### Running Scripts
 
-R Markdown files are an alternative format for storing R code. They provide a
-richer set of formatting options, and are usually a better choice than R
-scripts if you're writing a report that contains code. You can learn more
-about R Markdown files [here][rmd].
+You can **source** (that is, run) an entire R script by calling the `source`
+function with the path to the script as an argument. This is also what the
+"Source on Save" check box refers to in RStudio. The code runs in order, only
+stopping if an error occurs.
 
+For instance, if you save the script as `my_cool_script.R`, then you can enter
+`source("my_cool_script.R")` in the console to run the entire script. Pay
+attention to the path---it may be different on your computer.
+
+
+### Notebooks: Quarto & R Markdown
+
+In the context of data science, a **notebook** is an interactive file that can
+store a mix of code, formatted text, and images. With a notebook, you can
+write, run code, and view results all in one place. Viewing and editing a
+notebook requires a web browser or IDE. Some notebooks can also be converted to
+static documents, such as PDFs. Comments are a good way keep notes as you
+develop and run your code, but notebooks provide much more flexibility of
+expression. Notebooks are a kind of [literate programming][lit].
+
+[lit]: https://en.wikipedia.org/wiki/Literate_programming
+
+Notebooks excel when you want to do highly interactive work and/or want to
+communicate results. Use notebooks to prototype code, analyze data, refine
+plots, generate documents and presentations, and practice programming. Scripts
+excel when you want to reuse code (and perhaps share it as a package) or want
+to run code that doesn't require much user interaction (such as time-consuming
+computations you'll run on a server or high-performance computing cluster). The
+remainder of this reader assumes you're using an R script rather than the R
+console or a notebook, unless otherwise noted.
+
+[Quarto][] is a popular notebook format and system for R. It also supports
+Python, Julia, and other programming languages. Quarto files have the extension
+`.qmd`. Quarto is based on an older notebook format, [R Markdown][rmd], which
+only supports R and can't be converted to as many kinds of documents. R
+Markdown is still widely used. R Markdown files have the extension `.Rmd`.
+
+[Quarto]: https://quarto.org/
 [rmd]: https://rmarkdown.rstudio.com/
+
+:::{.callout-important}
+In order to use [Quarto][], you must first download and install it. It is not
+included with R or RStudio.
+:::
+
+After installing Quarto, you can create a new Quarto file in RStudio with this
+menu option:
+
+```
+File -> New -> Quarto Document...
+```
+
+RStudio will prompt you to provide some details about the purpose of the file.
+
+Notebooks are subdivided into **chunks** (or cells). You can create as many
+chunks as you like, but each chunk can contain only one kind of content. You
+can run a code chunk by clicking on the chunk and pressing `Ctrl`-`Enter`. The
+notebook will display the result.
+
+Markdown is a simple language you can use to add formatting to (non-code) text
+in a notebook. For example, surrounding a word with asterisks, as in `Let
+*sleeping* dogs lie`, makes the surrounded word italic. You can find a short,
+interactive tutorial about Markdown [here][mdtutorial].
+
+[mdtutorial]: https://www.markdowntutorial.com/
+
+:::{.callout-note title="See Also"}
+To learn more about Quarto, see the [official documentation][quarto-docs].
+
+[quarto-docs]: https://quarto.org/docs/guide/
+:::
+
+<!--
+Now that you know how file systems and paths work, you're ready to learn how to
+save your R code to a file. R code is usually saved into an **R script**
+(extension `.R`) or an **R Markdown file** (extension `.Rmd`). R scripts are
+slightly simpler, so let's focus on those.
+
+Editing a script is similar to editing any other text document. You can write,
+delete, copy, cut, and paste text. You can also save the file to your
+computer's file system. When you do, pay attention to where you save the file,
+as you might need it later.
+-->
 
 
 ## File Systems
@@ -753,8 +818,7 @@ list.files("/this/path/is/fake/")
 Later on, you'll learn about what `character(0)` means more generally.
 
 
-Reading Files
--------------
+## Reading Files {#sec-reading-files}
 
 Analyzing data sets is one of the most common things to do in R. The first step
 is to get R to read your data. Data sets come in a variety of file formats, and
