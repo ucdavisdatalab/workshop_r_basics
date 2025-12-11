@@ -785,12 +785,16 @@ getwd()
 ```
 
 :::{.callout-warning}
-Generally, you should avoid using calls to `setwd` in your R scripts and R
-Markdown files. Calling `setwd` makes your code more difficult to understand,
-and can always be avoided by using appropriate relative paths. If you call
-`setwd` with an absolute path, it also makes your code less portable to other
-computers. It's fine to use `setwd` interactively (in the R console), but avoid
-making your saved code dependent on it.
+In your R scripts and notebooks, avoid calls to `setwd`. They make your code
+more difficult to understand and to run on other computers. Use appropriate
+relative paths instead.
+
+In the R console, it's okay to occasionally use `setwd`. You might need to
+change the working directory before you run some code. R's default working
+directory is your home directory. In some cases, such as when you open a
+project, RStudio will automatically change the working directory. However, it
+doesn't always change the working directory, so `setwd` is sometimes still
+necessary.
 :::
 
 Another function that's useful for dealing with the working directory and file
