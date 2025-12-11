@@ -419,6 +419,22 @@ have the same name. The variable `x` is not the same thing as the parameter
 `x`.
 
 
+### Comments
+
+In R and most other programming languages, you can mark parts of your code as
+**comments**: expressions to ignore rather than run. Use comments to plan,
+explain, and document your code. You can also temporarily "comment out" code to
+prevent it from running, which is often helpful for testing and debugging.
+
+R comments begin with number sign `#` and extend to the end of the line:
+
+```{r}
+# This is a comment.
+```
+
+R will ignore comments when you run your code.
+
+
 ## Getting Help {#sec-getting-help}
 
 Learning and using a language is hard, so it's important to know how to get
@@ -529,14 +545,7 @@ editing. Each script appears in a separate tab. In the screenshot, only one
 script, the new script, is open.
 
 Every line in an R script must be valid R code. Anything else you want to write
-in the script (notes, documentation, etc.) must be placed in a **comment**. In
-R, comments begin with `#` and extend to the end of the line:
-
-```{r}
-# This is a comment.
-```
-
-R will ignore comments when you run your code.
+in the script (notes, documentation, etc.) must be placed in a comment.
 
 Arrange your code in the order of the steps to solve the problem, even if you
 write some parts before others. Comment out or delete any lines of code that
