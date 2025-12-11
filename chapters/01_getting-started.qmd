@@ -15,52 +15,78 @@ After completing this chapter, learners should be able to:
 * Inspect the structure of a data frame
 :::
 
-R is a program for statistical computing. It provides a rich set of built-in
-tools for cleaning, exploring, modeling, and visualizing data.
+## Why R?
 
-The main way you'll interact with R is by writing code or **expressions** in
-the R programming language. Most people use "R" as a blanket term to refer to
-both the program and the programming language. Usually, the distinction doesn't
-matter, but in cases where it does, we'll point it out and be specific.
+:::{.callout-note title="Why should you use a programming language?"}
+Code you write is **reproducible**: you can share it with someone else, and if
+they run it with the same inputs, they'll get the same results. By writing
+code, you create an unambiguous record of every step taken in your analysis.
+This is one of the major advantages of programming languages over
+point-and-click software like *Tableau* or *Microsoft Excel*.
 
-By writing code, you create an unambiguous record of every step taken in an
-analysis. This it one of the major advantages of R (and other programming
-languages) over point-and-click software like Tableau and Microsoft Excel.
-Code you write in R is **reproducible**: you can share it with someone else,
-and if they run it with the same inputs, they'll get the same results.
+Another advantage of writing code is that it's often **reusable**. This means
+you can:
 
-Another advantage of writing code is that it's often **reusable**. This can
-mean automating a repetitive task within a single analysis, recycling code from
-one analysis into another, or **packaging** useful code for distribution to the
-general public. At the time of writing, there were over 17,000 user-contributed
-packages available for R, spanning a broad range of disciplines.
-
-R is one of many programming languages used in data science. Compared to other
-programming languages, R's particular strengths are its interactivity, built-in
-support for handling missing data, the ease with which you can produce
-high-quality data visualizations, and its broad base of user-contributed
-packages (due to both its age and growing popularity).
-
-
-Prerequisites
--------------
+* Automate repetitive tasks within an analysis
+* Recycle code from one analysis into another
+* Package useful code for distribution to your colleagues or the general
+  public
+:::
 
 ![](/images/rlogo.png){height=5em fig-align="center"}
 
-You can download R for free [here](https://cloud.r-project.org/), and can find
-an install guide [here]().
+**[R][]** is a programming language for statistical computing and graphics. It
+provides a rich set of built-in tools for cleaning, exploring, modeling, and
+visualizing data.
 
-In addition to R, you'll need RStudio. RStudio is an **integrated development
-environment** (IDE), which means it's a comprehensive program for writing,
-editing, searching, and running code. You can do all of these things without
-RStudio, but RStudio makes the process easier. You can download RStudio Desktop
-Open-Source Edition for free
-[here](https://www.rstudio.com/products/rstudio/download/), and can find an
-install guide [here]().
+[R]: https://www.r-project.org/
+
+:::{.callout-note}
+The term "R" can mean the R language (the code) or the R interpreter (the
+software which runs the code). Most of the time, the meaning is clear from the
+context, but we'll be explicit in cases where the distinction is important.
+:::
+
+Compared to other programming languages, some of R's particular strengths are
+its:
+
+* Interactive interpreter and debugger
+* Focus on statistical computing
+    - Many statistical estimators, tests, and models are built-in
+    - Statisticians tend to implement new methods in R first
+* Over 23,000 community-developed **packages**: reusable bundles of code, often
+  accompanied by documentation, examples, or data sets
+* Functions and packages for creating high-quality data visualizations
+* Flexible support for many different programming abstractions and paradigms
+
+The main way you'll interact with R is by writing R code or **expressions**.
+We'll explain more soon, but first we need to install R and associated
+software.
+
+:::{.callout-important}
+To follow along with this and subsequent chapters, you'll need a recent
+version of R.
+
+[Click here][r-dl] to download the R installer. When the download is complete,
+run the installer to install (or update) R on your computer. We recommend
+keeping the installer's default settings.
+
+[r-dl]: https://cloud.r-project.org/
+
+In addition to R, you'll need a recent version of RStudio. RStudio is an
+**integrated development environment** (IDE), which means it's a comprehensive
+program for writing, editing, searching, and running code. You can do all of
+these things without RStudio, but RStudio makes the process easier.
+
+[Click here][rstudio-dl] to download the free RStudio Desktop installer. When
+the download is complete, run the installer to install RStudio Deskop on your
+computer.
+
+[rstudio-dl]: https://www.rstudio.com/products/rstudio/download/
+:::
 
 
-The R Interface
----------------
+## The RStudio Interface
 
 The first time you open RStudio, you'll see a window divided into several
 panes, like this:
@@ -71,10 +97,9 @@ panes, like this:
   operating system and versions of R and RStudio.
 ](/images/rstudio_start.png){.lightbox}
 
-The console
-pane, on the left, is the main interface to R. If you type R code into the
-console and press the `Enter` key on your keyboard, R will run your code and
-return the result.
+The console pane, on the left, is the main interface to R. If you type R code
+into the console and press the `Enter` key on your keyboard, R will run your
+code and return the result.
 
 On the right are the environment pane and the plots pane. The environment pane
 shows data in your R workspace. The plots pane shows any plots you make, and
@@ -83,9 +108,9 @@ You'll learn more about these gradually, but for now, focus on the console
 pane.
 
 Let's start by using R to do some arithmetic. In the console, you'll see that
-the cursor is on a line that begins with `>`, called the *prompt*. You can make
-R compute the sum $2 + 2$ by typing the code `2 + 2` after the prompt and then
-pressing the `Enter` key. Your code and the result from R should look like
+the cursor is on a line that begins with `>`, called the **prompt**. You can
+make R compute the sum $2 + 2$ by typing the code `2 + 2` after the prompt and
+then pressing the `Enter` key. Your code and the result from R should look like
 this:
 
 ![](/images/arithmetic.png)
@@ -95,9 +120,7 @@ case, the result begins with the tag `[1]`, which is a hint from R that the
 result is a **vector** and that this line starts with the **element** at
 position 1. You'll learn more about vectors in @sec-vectors, and eventually
 learn about other data types that are displayed differently. The result of the
-sum, `4`, is displayed after the tag. In this reader, results from R will
-usually be typeset in monospace and further prefixed with `##` to indicate that
-they aren't code.
+sum, `4`, is displayed after the tag.
 
 If you enter an incomplete expression, R will change the prompt to `+`, then
 wait for you to type the rest of the expression and press the `Enter` key.
@@ -111,6 +134,9 @@ expression is incomplete if it's missing something, like the second operand in
 `2 +`. So if you mean to enter `2 + 2` but accidentally enter `2`, which is a
 complete expression by itself, don't expect R to read your mind and wait for
 more input!
+
+
+## R Basics
 
 Try out some other arithmetic in the R console. Besides `+` for addition, the
 other arithmetic operators are:
@@ -132,9 +158,15 @@ For example, to estimate the area of a circle with radius 3, you can write:
 ```
 
 You can write R expressions with any number of spaces (including none) around
-the operators and R will still compute the result. Nevertheless, putting spaces
-in your code makes it easier for you and others to read, so it's good to make
-it a habit. Put spaces around most operators, after commas, and after keywords.
+the operators and R will still compute the result.
+
+:::{.callout-tip}
+Use spaces!
+
+As with writing text, putting spaces in your code makes it easier for you and
+others to read, so it's good to make it a habit. Put a single space on each
+side of most operators, after commas, and after keywords.
+:::
 
 
 ### Variables
@@ -156,39 +188,54 @@ expression for the area of a circle with radius 3:
 pi * 3^2
 ```
 
-You can define your own variables with the assignment operator `=` or `<-`. In
-most circumstances these two operators are interchangeable. For clarity, it's
-best to choose one you like and use it consistently in all of your R code. In
-this reader, we use `=` for assignment because this is the assignment operator
-in most programming languages.
+You can create a variable with the assignment operator `=` by writing a name on
+the left-hand side and a value or expression on the right-hand side. For
+example, to save the area of the circle in a variable called `area`, you can
+write:
 
-The main reason to use variables is to save results so that you can use them
-on other expressions later. For example, to save the area of the circle in a
-variable called `area`, you can write:
 
 ```{r}
 area = pi * 3^2
 ```
 
-In R, variable names can contain any combination of letters, numbers, dots `.`,
-and underscores `_`, but must always start with a letter or a dot. Spaces and
-other symbols are not allowed in variable names.
+:::{.callout-note}
+You can use the arrow operator `<-` instead of the assignment operator:
 
-Now you can use the `area` variable anywhere you want the computed area. Notice
-that when you assign a result to a variable, R doesn't automatically display
-that result. If you want to see the result as well, you have to enter the
-variable's name as a separate expression:
+```{r}
+area <- pi * 3^2
+```
+
+In most cases, the two operators are interchangeable. For clarity, it's best to
+choose one you like and use it consistently in all of your R code. In this
+reader, we use `=` because it's the assignment operator in most programming
+languages and it's easier to type.
+:::
+
+In R, variable names can contain any combination of letters and dots (`.`).
+Names can also include numbers and underscores (`_`), but can't start with a
+them. Spaces and other symbols are not allowed in variable names. So `geese`,
+`top50.dogs`, and `nine_lives` are valid variable names, but `goose teeth`,
+`_fishes`, and `9lives` are not.
+
+The main reason to use variables is to temporarily save results from
+expressions so that you can use them in other expressions. For instance, now
+you can use the `area` variable anywhere you want the area of the circle.
+
+Notice that when you assign a result to a variable, R doesn't automatically
+display that result. If you want to see the result as well, you have to enter
+the variable's name as a separate expression:
 
 ```{r}
 area
 ```
 
-Another reason to use variables is to make an expression more general. For
-instance, you might want to compute the area of several circles with different
-radii. Then the expression `pi * 3^2` is too specific. You can rewrite it as
-`pi * r^2`, and then assign a value to the variable `r` just before you compute
-the area. Here's the code to compute and display the area of a circle with
-radius 1 this way:
+Another reason to use variables is to make an expression clearer and more
+general. For instance, you might want to compute the area of several circles
+with different radii. Then the expression `pi * 3^2` is too specific. Instead,
+you can create a variable `r`, then rewrite the expression as `pi * r^2`. This
+makes the expression easier to understand, because the reader doesn't have to
+intuit that `3` is the radius in the formula. Here's the code to compute and
+display the area of a circle with radius 1 this way:
 
 ```{r}
 r = 1
@@ -201,6 +248,12 @@ is change `r` and run the code again (R will not change `area` until you do
 this). Writing code that's general enough to reuse across multiple problems can
 be a big time-saver in the long run. Later on, you'll learn ways to make this
 code even easier to reuse.
+
+:::{.callout-tip}
+Try to choose descriptive variable names, so that you and your collaborators
+can understand the meaning and purpose of each variable when reading the code.
+:::
+
 
 ### Strings
 
@@ -227,8 +280,8 @@ The error message notes that `+` is not defined for non-numeric values.
 
 ### Comparisons {#sec-comparisons}
 
-Besides arithmetic, you can also use R to compare values. The comparison
-operators are:
+Besides arithmetic, you can also use R to compare values. Programming tasks
+often involve comparing values. Use **comparison operators** to do so:
 
 * `<` for "less than"
 * `>` for "greater than"
@@ -237,8 +290,8 @@ operators are:
 * `==` for "equal to"
 * `!=` for "not equal to"
 
-The "equal to" operator uses two equal signs so that R can distinguish it from
-`=`, the assignment operator.
+Notice that the "equal to" operator is two equal signs. This is to distinguish
+it from the assignment operator `=`.
 
 Let's look at a few examples:
 ```{r}
@@ -262,8 +315,9 @@ TRUE == FALSE
 
 @sec-logic describes more ways to use and combine logical values.
 
-Beware that the equality operators don't always return `FALSE` when you compare
-two different types of data:
+:::{.callout-warning}
+Some of R's equality operators return `TRUE` even when comparing two different
+types of data:
 
 ```{r}
 "1" == 1
@@ -273,60 +327,64 @@ two different types of data:
 
 @sec-implicit-coercion explains why this happens, and
 @sec-more-about-comparisons explains several other ways to compare values.
+:::
 
 
 ### Calling Functions {#sec-calling-functions}
 
-Most of R's features are provided through **functions**, pieces of reusable
-code. You can think of a function as a machine that takes some inputs and uses
-them to produce some output. In programming jargon, the inputs to a function
-are called **arguments**, the output is called the **return value**, and when
-you use a function, you're **calling** the function.
+R can do a lot more than just arithmetic. Most of R's features are provided
+through **functions**, pieces of reusable code. You can think of a function as
+a machine that takes some inputs and uses them to produce some output. In
+programming jargon, the inputs to a function are called **arguments**, the
+output is called the **return value**, and when you use a function, you're
+**calling** the function.
 
 To call a function, write its name followed by parentheses. Put any arguments
-to the function inside the parentheses. For example, in R, the sine function is
-named `sin` (there are also `cos` and `tan`). So you can compute the sine of
-$\pi / 4$ with this code:
+to the function inside the parentheses. For example, the function to round a
+number to a specified decimal place is named `round`. So you can round the
+number `8.153` to the nearest integer with this code:
 
 ```{r}
-sin(pi / 4)
+round(8.153)
 ```
 
-There are many functions that accept more than one argument. For instance, the
-`sum` function accepts any number of arguments and adds them all together. When
-you call a function with multiple arguments, separate the arguments with
-commas. So another way to compute $2 + 2$ in R is:
+Many functions accept more than one argument. For instance, the `round`
+function accepts at least two arguments: the number to round and the number of
+decimal places to keep. When you call a function with multiple arguments,
+separate the arguments with commas. So to round `8.153` to 1 decimal place:
 
 ```{r}
-sum(2, 2)
+round(8.153, 1)
 ```
 
-When you call a function, R assigns each argument to a **parameter**.
-Parameters are special variables that represent the inputs to a function and
-only exist while that function runs. For example, the `log` function, which
-computes a logarithm, has parameters `x` and `base` for the operand and base of
-the logarithm, respectively. The next section, @sec-getting-help, explains how
-to look up the parameters for a function.
+When you call a function, R assigns the arguments to the function's
+**parameter**. Parameters are special variables that represent the inputs to a
+function and only exist while that function runs. For example, the `round`
+function has parameters `x` and `digits`. The next section, @sec-getting-help,
+explains how to look up the parameters of a function.
 
-By default, R assigns arguments to parameters based on their order. The first
-argument is assigned to the function's first parameter, the second to the
-second, and so on. So you can compute the logarithm of 64, base 2, with this
-code:
+Some parameters have **default arguments**. A parameter is automatically
+assigned its default argument whenever the parameter's argument is not
+specified explicitly. As a result, assigning arguments to these parameters is
+optional. For instance, the `digits` parameter of `round` has a default
+argument (round to the nearest integer), so it's okay to call `round` without
+setting `digits`, as in `round(8.153)`. In contrast, the `x` parameter doesn't
+have a default argument. @sec-getting-help explains how to look up the default
+arguments for a function.
+
+By default, R assigns arguments to parameters based on their position. The
+first argument is assigned to the function's first parameter, the second to the
+second, and so on. So in the code above, `8.153` is assigned to `x` and `1` is
+assigned to `digits`.
+
+You can also assign arguments to parameters by name with `=` (not `<-`),
+overriding their positions. So some other ways you could write the call above
+are:
 
 ```{r}
-log(64, 2)
-```
-
-The argument 64 is assigned to the parameter `x`, and the argument 2 is
-assigned to the parameter `base`. You can also assign arguments to parameters
-by name with `=` (not `<-`), overriding their positions. So some other ways you
-could write the call above are:
-
-```{r}
-log(64, base = 2)
-log(x = 64, base = 2)
-log(base = 2, x = 64)
-log(base = 2, 64)
+round(8.153, digits = 1)
+round(x = 8.153, digits = 1)
+round(digits = 1, x = 8.153)
 ```
 
 All of these are equivalent. When you write code, choose whatever seems the
@@ -338,8 +396,8 @@ function runs. You can't set them before a call, nor can you access them after
 a call. So this code causes an error:
 
 ```{r, error = TRUE}
-x = 64
-log(base = 2)
+x = 4.755
+round(digits = 2)
 ```
 
 In the error message, R says that you forgot to assign an argument to the
@@ -347,17 +405,34 @@ parameter `x`. You can keep the variable `x` and correct the call by making `x`
 an argument (for the parameter `x`):
 
 ```{r}
-log(x, base = 2)
+round(x, digits = 2)
 ```
 
 Or, written more explicitly:
 
 ```{r}
-log(x = x, base = 2)
+round(x = x, digits = 2)
 ```
 
-In summary, variables and parameters are distinct, even if they happen to have
-the same name. The variable `x` is not the same thing as the parameter `x`.
+The point is that variables and parameters are distinct, even if they happen to
+have the same name. The variable `x` is not the same thing as the parameter
+`x`.
+
+
+### Comments
+
+In R and most other programming languages, you can mark parts of your code as
+**comments**: expressions to ignore rather than run. Use comments to plan,
+explain, and document your code. You can also temporarily "comment out" code to
+prevent it from running, which is often helpful for testing and debugging.
+
+R comments begin with number sign `#` and extend to the end of the line:
+
+```{r}
+# This is a comment.
+```
+
+R will ignore comments when you run your code.
 
 
 ## Getting Help {#sec-getting-help}
@@ -368,15 +443,17 @@ console, you can access a specific help page by name with `?` followed by the
 name of the page.
 
 There are help pages for all of R's built-in functions, usually with the same
-name as the function itself. So the code to open the help page for the `log`
+name as the function itself. So the code to open the help page for the `round`
 function is:
 
 ```{r, eval = FALSE}
-?log
+?round
 ```
 
 For functions, help pages usually include a brief description, a list of
-parameters, a description of the return value, and some examples.
+parameters, a description of the return value, and some examples. The help page
+for `round` shows that there are two parameters `x` and `digits`. It also says
+that `digits = 0`, meaning the default argument for `digits` is `0`.
 
 There are also help pages for other topics, such as built-in mathematical
 constants (such as `?pi`), data sets (such as `?iris`), and operators. To look
@@ -433,151 +510,6 @@ to read about [how to ask a good question][goodq].
 
 [stacko]: https://stackoverflow.com/
 [goodq]: https://stackoverflow.com/help/how-to-ask
-
-
-## Saving & Loading Code
-
-:::{.callout-tip}
-When you start a new project, it's a good idea to create a specific directory
-for all of the project's files. If you're using R, you should also store your R
-code in that directory. As you work, periodically save your code.
-:::
-
-Most of the time, you won't just write code directly into the R console.
-Reproducibility and reusability are important benefits of R over
-point-and-click software, and in order to realize these, you have to save your
-code to your computer's hard drive.
-
-The most common way to save R code is as an R **script** with the extension
-`.R` (see @sec-reading-files for more about extensions). Editing a script is
-similar to editing any other text file. You can write, delete, copy, cut, and
-paste code.
-
-In RStudio, you can create a new R script with this menu option:
-
-```
-File -> New File -> R Script
-```
-
-This will open a new pane in RStudio, like this:
-
-![
-  How RStudio typically looks after opening a new R Script.
-](/images/rstudio_script.png)
-
-The new pane is the scripts pane, which displays all of the R scripts you're
-editing. Each script appears in a separate tab. In the screenshot, only one
-script, the new script, is open.
-
-Every line in an R script must be valid R code. Anything else you want to write
-in the script (notes, documentation, etc.) must be placed in a **comment**. In
-R, comments begin with `#` and extend to the end of the line:
-
-```{r}
-# This is a comment.
-```
-
-R will ignore comments when you run your code.
-
-Arrange your code in the order of the steps to solve the problem, even if you
-write some parts before others. Comment out or delete any lines of code that
-you try but ultimately decide you don't need. Make sure to save the file
-periodically so that you don't lose your work. Following these guidelines will
-help you stay organized and make it easier to share your code with others
-later.
-
-:::{.callout-tip}
-While editing, you can run the current line in the R console by pressing
-`Ctrl`-`Enter` on Windows and Linux, or `Cmd`-`Enter` on macOS. This way you
-can test and correct your code as you write it.
-:::
-
-
-### Running Scripts
-
-You can **source** (that is, run) an entire R script by calling the `source`
-function with the path to the script as an argument. This is also what the
-"Source on Save" check box refers to in RStudio. The code runs in order, only
-stopping if an error occurs.
-
-For instance, if you save the script as `my_cool_script.R`, then you can enter
-`source("my_cool_script.R")` in the console to run the entire script. Pay
-attention to the path---it may be different on your computer.
-
-
-### Notebooks: Quarto & R Markdown
-
-In the context of data science, a **notebook** is an interactive file that can
-store a mix of code, formatted text, and images. With a notebook, you can
-write, run code, and view results all in one place. Viewing and editing a
-notebook requires a web browser or IDE. Some notebooks can also be converted to
-static documents, such as PDFs. Comments are a good way keep notes as you
-develop and run your code, but notebooks provide much more flexibility of
-expression. Notebooks are a kind of [literate programming][lit].
-
-[lit]: https://en.wikipedia.org/wiki/Literate_programming
-
-Notebooks excel when you want to do highly interactive work and/or want to
-communicate results. Use notebooks to prototype code, analyze data, refine
-plots, generate documents and presentations, and practice programming. Scripts
-excel when you want to reuse code (and perhaps share it as a package) or want
-to run code that doesn't require much user interaction (such as time-consuming
-computations you'll run on a server or high-performance computing cluster). The
-remainder of this reader assumes you're using an R script rather than the R
-console or a notebook, unless otherwise noted.
-
-[Quarto][] is a popular notebook format and system for R. It also supports
-Python, Julia, and other programming languages. Quarto files have the extension
-`.qmd`. Quarto is based on an older notebook format, [R Markdown][rmd], which
-only supports R and can't be converted to as many kinds of documents. R
-Markdown is still widely used. R Markdown files have the extension `.Rmd`.
-
-[Quarto]: https://quarto.org/
-[rmd]: https://rmarkdown.rstudio.com/
-
-:::{.callout-important}
-In order to use [Quarto][], you must first download and install it. It is not
-included with R or RStudio.
-:::
-
-After installing Quarto, you can create a new Quarto file in RStudio with this
-menu option:
-
-```
-File -> New -> Quarto Document...
-```
-
-RStudio will prompt you to provide some details about the purpose of the file.
-
-Notebooks are subdivided into **chunks** (or cells). You can create as many
-chunks as you like, but each chunk can contain only one kind of content. You
-can run a code chunk by clicking on the chunk and pressing `Ctrl`-`Enter`. The
-notebook will display the result.
-
-Markdown is a simple language you can use to add formatting to (non-code) text
-in a notebook. For example, surrounding a word with asterisks, as in `Let
-*sleeping* dogs lie`, makes the surrounded word italic. You can find a short,
-interactive tutorial about Markdown [here][mdtutorial].
-
-[mdtutorial]: https://www.markdowntutorial.com/
-
-:::{.callout-note title="See Also"}
-To learn more about Quarto, see the [official documentation][quarto-docs].
-
-[quarto-docs]: https://quarto.org/docs/guide/
-:::
-
-<!--
-Now that you know how file systems and paths work, you're ready to learn how to
-save your R code to a file. R code is usually saved into an **R script**
-(extension `.R`) or an **R Markdown file** (extension `.Rmd`). R scripts are
-slightly simpler, so let's focus on those.
-
-Editing a script is similar to editing any other text document. You can write,
-delete, copy, cut, and paste text. You can also save the file to your
-computer's file system. When you do, pay attention to where you save the file,
-as you might need it later.
--->
 
 
 ## File Systems
@@ -820,6 +752,144 @@ list.files("/this/path/is/fake/")
 ```
 
 Later on, you'll learn about what `character(0)` means more generally.
+
+
+## Saving & Loading Code
+
+:::{.callout-tip}
+When you start a new project, it's a good idea to create a specific directory
+for all of the project's files. If you're using R, you should also store your R
+code in that directory. As you work, periodically save your code.
+:::
+
+Most of the time, you won't just write code directly into the R console.
+Reproducibility and reusability are important benefits of R over
+point-and-click software, and in order to realize these, you have to save your
+code to your computer's hard drive.
+
+The most common way to save R code is as an R **script** with the extension
+`.R` (see @sec-reading-files for more about extensions). Editing a script is
+similar to editing any other text file. You can write, delete, copy, cut, and
+paste code.
+
+In RStudio, you can create a new R script with this menu option:
+
+```
+File -> New File -> R Script
+```
+
+This will open a new pane in RStudio, like this:
+
+![
+  How RStudio typically looks after opening a new R Script.
+](/images/rstudio_script.png)
+
+The new pane is the scripts pane, which displays all of the R scripts you're
+editing. Each script appears in a separate tab. In the screenshot, only one
+script, the new script, is open.
+
+Every line in an R script must be valid R code. Anything else you want to write
+in the script (notes, documentation, etc.) must be placed in a comment.
+
+Arrange your code in the order of the steps to solve the problem, even if you
+write some parts before others. Comment out or delete any lines of code that
+you try but ultimately decide you don't need. Make sure to save the file
+periodically so that you don't lose your work. Following these guidelines will
+help you stay organized and make it easier to share your code with others
+later.
+
+:::{.callout-tip}
+While editing, you can run the current line in the R console by pressing
+`Ctrl`-`Enter` on Windows and Linux, or `Cmd`-`Enter` on macOS. This way you
+can test and correct your code as you write it.
+:::
+
+
+### Running Scripts
+
+You can **source** (that is, run) an entire R script by calling the `source`
+function with the path to the script as an argument. This is also what the
+"Source on Save" check box refers to in RStudio. The code runs in order, only
+stopping if an error occurs.
+
+For instance, if you save the script as `my_cool_script.R`, then you can enter
+`source("my_cool_script.R")` in the console to run the entire script. Pay
+attention to the path---it may be different on your computer.
+
+
+### Notebooks: Quarto & R Markdown
+
+In the context of data science, a **notebook** is an interactive file that can
+store a mix of code, formatted text, and images. With a notebook, you can
+write, run code, and view results all in one place. Viewing and editing a
+notebook requires a web browser or IDE. Some notebooks can also be converted to
+static documents, such as PDFs. Comments are a good way keep notes as you
+develop and run your code, but notebooks provide much more flexibility of
+expression. Notebooks are a kind of [literate programming][lit].
+
+[lit]: https://en.wikipedia.org/wiki/Literate_programming
+
+Notebooks excel when you want to do highly interactive work and/or want to
+communicate results. Use notebooks to prototype code, analyze data, refine
+plots, generate documents and presentations, and practice programming. Scripts
+excel when you want to reuse code (and perhaps share it as a package) or want
+to run code that doesn't require much user interaction (such as time-consuming
+computations you'll run on a server or high-performance computing cluster). The
+remainder of this reader assumes you're using an R script rather than the R
+console or a notebook, unless otherwise noted.
+
+[Quarto][] is a popular notebook format and system for R. It also supports
+Python, Julia, and other programming languages. Quarto files have the extension
+`.qmd`. Quarto is based on an older notebook format, [R Markdown][rmd], which
+only supports R and can't be converted to as many kinds of documents. R
+Markdown is still widely used. R Markdown files have the extension `.Rmd`.
+
+[Quarto]: https://quarto.org/
+[rmd]: https://rmarkdown.rstudio.com/
+
+:::{.callout-important}
+In order to use [Quarto][], you must first download and install it. It is not
+included with R or RStudio.
+:::
+
+After installing Quarto, you can create a new Quarto file in RStudio with this
+menu option:
+
+```
+File -> New -> Quarto Document...
+```
+
+RStudio will prompt you to provide some details about the purpose of the file.
+
+Notebooks are subdivided into **chunks** (or cells). You can create as many
+chunks as you like, but each chunk can contain only one kind of content. You
+can run a code chunk by clicking on the chunk and pressing `Ctrl`-`Enter`. The
+notebook will display the result.
+
+Markdown is a simple language you can use to add formatting to (non-code) text
+in a notebook. For example, surrounding a word with asterisks, as in `Let
+*sleeping* dogs lie`, makes the surrounded word italic. You can find a short,
+interactive tutorial about Markdown [here][mdtutorial].
+
+[mdtutorial]: https://www.markdowntutorial.com/
+
+:::{.callout-note title="See Also"}
+To learn more about Quarto, see the [official documentation][quarto-docs].
+
+[quarto-docs]: https://quarto.org/docs/guide/
+:::
+
+<!--
+Now that you know how file systems and paths work, you're ready to learn how to
+save your R code to a file. R code is usually saved into an **R script**
+(extension `.R`) or an **R Markdown file** (extension `.Rmd`). R scripts are
+slightly simpler, so let's focus on those.
+
+Editing a script is similar to editing any other text document. You can write,
+delete, copy, cut, and paste text. You can also save the file to your
+computer's file system. When you do, pay attention to where you save the file,
+as you might need it later.
+-->
 
 
 ## Reading Files {#sec-reading-files}
