@@ -158,9 +158,15 @@ For example, to estimate the area of a circle with radius 3, you can write:
 ```
 
 You can write R expressions with any number of spaces (including none) around
-the operators and R will still compute the result. Nevertheless, putting spaces
-in your code makes it easier for you and others to read, so it's good to make
-it a habit. Put spaces around most operators, after commas, and after keywords.
+the operators and R will still compute the result.
+
+:::{.callout-tip}
+Use spaces!
+
+As with writing text, putting spaces in your code makes it easier for you and
+others to read, so it's good to make it a habit. Put a single space on each
+side of most operators, after commas, and after keywords.
+:::
 
 
 ### Variables
