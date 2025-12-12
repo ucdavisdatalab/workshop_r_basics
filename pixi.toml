@@ -23,6 +23,8 @@ r-remotes = ">=2.5.0,<3"
 r-ggplot2 = ">=4.0.0,<5"
 r-knitr = ">=1.50,<2"
 r-rmarkdown = ">=2.30,<3"
+r-readxl = ">=1.4.5,<2"
+r-stringr = ">=1.6.0,<2"
 
 [activation.env]
 # Make sure R only searches for packages within the Pixi environment.
