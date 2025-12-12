@@ -276,51 +276,109 @@ The names make the result easier to understand for the caller of the function,
 although they certainly aren't required here.
 
 
-Conditional Expressions
------------------------
+## Conditional Expressions
 
 Sometimes you'll need code to do different things, depending on a condition.
-**If-expressions** provide a way to write conditional code.
+You can use an **if-expression** to write conditional code.
 
-For example, suppose we want to greet one person differently from the others:
+For example, suppose you want your code to generate a different greeting
+depending on an input name:
+
 ```{r}
 name = "Nick"
+
+# Default greeting
+greeting = "Nice to meet you!"
+
 if (name == "Nick") {
-   # If name is Nick:
-   message("We went down the TRUE branch")
-   msg = "Hi Nick, nice to see you again!"
-} else {
-   # Anything else:
-   msg = "Nice to meet you!"
+   greeting = "Hi Nick, nice to see you again!"
 }
+
+greeting
 ```
 
 Indent code inside of the if-expression by 2 or 4 spaces. Indentation makes
 your code easier to read.
 
-The condition in an if-expression has to be a scalar:
+:::{.callout-warning}
+The condition in an if-expression has to have length 1:
+
 ```{r, error = TRUE}
 name = c("Nick", "Susan")
+
+# Default greeting
+greeting = "Nice to meet you!"
+
 if (name == "Nick") {
-   msg = "Hi Nick!"
-} else {
-   msg = "Nice to meet you!"
+   greeting = "Hi Nick, nice to see you again!"
 }
 ```
+:::
 
-You can chain together if-expressions:
+Use the `else` keyword if you want to add an alternative when the condition is
+`FALSE`. So the previous code can also be written as:
+
+```{r}
+name = "Nick"
+
+if (name == "Nick") {
+   greeting = "Hi Nick, nice to see you again!"
+} else {
+  # Default greeting
+  greeting = "Nice to meet you!"
+}
+
+greeting
+```
+
+Use `else if` with a condition if you want to add an alternative to the first
+condition that also has its own condition. Only the first case where a
+condition is `TRUE` will run. You can use `else if` as many times as you want,
+and can also use `else`. For example:
+
 ```{r}
 name = "Susan"
+
 if (name == "Nick") {
-   msg = "Hi Nick, nice to see you again!"
+   greeting = "Hi Nick, nice to see you again!"
 } else if (name == "Peter") {
-   msg = "Go away Peter, I'm busy!"
+   greeting = "Go away Peter, I'm busy!"
 } else {
-   msg = "Nice to meet you!"
+   greeting = "Nice to meet you!"
 }
-msg
+
+greeting
 ```
 
+You can create compound conditions with R's logic operators `!`, `&`, and `|`
+(see @sec-logic). For example:
+
+```{r}
+name1 = "Wesley"
+name2 = "Nick"
+
+if (name1 == "Wesley" & name2 == "Nick") {
+  greeting = "These are the authors."
+} else {
+  greeting = "Who are these people?!"
+}
+
+greeting
+```
+
+You can write an if-statement inside of another if-statement. This is called
+**nesting** if-statements. Nesting is useful when you want to check a
+condition, do some computations, and then check another condition under the
+assumption that the first condition was `True`.
+
+:::{.callout-tip}
+If-statements correspond to **special cases** in your code. Lots of special
+cases in code makes the code harder to understand and maintain. If you find
+yourself using lots of if-statements, especially nested if-statements, consider
+whether there is a more general strategy or way to write the code.
+:::
+
+<!--
 If-expressions return the value of the last expression in the evaluated block:
 ```{r}
 name = "Tom"
@@ -365,6 +423,7 @@ msg = if (name == "Nick")
    "Hi Nick, nice to see you again!"
 msg
 ```
+-->
 
 ## Iteration
 
