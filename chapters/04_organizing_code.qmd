@@ -234,33 +234,6 @@ Before you write a function, it's useful to go through several steps:
 3. Write the code to handle a simple case first. For data science
    problems, use a small dataset at this step.
 
-Let's apply this in one final example: a function that detects leap years. A
-year is a leap year if either of these conditions is true:
-
-* It is divisible by 4 and not 100
-* It is divisible by 400
-
-That means the years 2004 and 2000 are leap years, but the year 2200 is not.
-Here's the code and a few test cases:
-
-```{r}
-# If year is divisible by 4 and not 100 -> leap
-# If year is divisible by 400 -> leap
-year = 2004
-is_leap = function(year) {
-  if (year %% 4 == 0 & year %% 100 != 0) {
-    leap = TRUE
-  } else if (year %% 400 == 0) {
-    leap = TRUE
-  } else {
-    leap = FALSE
-  }
-  leap
-}
-is_leap(400)
-is_leap(1997)
-```
-
 Functions are the building blocks for solving larger problems. Take a
 divide-and-conquer approach, breaking large problems into smaller steps. Use a
 short function for each step. This approach makes it easier to:
@@ -359,16 +332,6 @@ msg = if (name == "Nick")
 msg
 ```
 
-
-Exercises
----------
-
-_These exercises are meant to challenge you, so they're quite difficult
-compared to the previous ones. Don't get disheartened, and if you're able to
-complete them, excellent work!_
-
-
-### Exercise
 ## Case Study: CA Hospital Utilization
 
 The California Department of Health Care Access and Information (HCAI) requires
@@ -826,12 +789,61 @@ data and the much easier task of doing a cursory preliminary analysis of the
 data.
 
 
+## Exercises
+
+### Exercise
+
+1.  Write a function `is_leap` that detects leap years. The input to your
+    function should be a numeric year and the output should be a logical value.
+    A year is a leap year if either of these conditions is true:
+
+    * It is divisible by 4 and not 100
+    * It is divisible by 400
+
+    That means the years 2004 and 2000 are leap years, but the year 2200 is
+    not. Test your function on these years, as well as the years 400 and 1997.
+
+    _Hint: the modulo operator `%%` returns the remainder after dividing a
+    number, so for example `4 %% 3` returns `r 4 %% 3`._
+
+2.  Is your `is_leap` function vectorized (see @sec-vectorization)? Explain how
+    you can tell. If it's not vectorized, make a modified version of the
+    function that is.
+
+<!--
+Here's the code and a few test cases:
+
+```{r}
+# If year is divisible by 4 and not 100 -> leap
+# If year is divisible by 400 -> leap
+year = 2004
+is_leap = function(year) {
+  if (year %% 4 == 0 & year %% 100 != 0) {
+    leap = TRUE
+  } else if (year %% 400 == 0) {
+    leap = TRUE
+  } else {
+    leap = FALSE
+  }
+  leap
+}
+is_leap(400)
+is_leap(1997)
+```
+-->
+
+
+### Exercise
+
+:::{.callout-note}
+This exercise is meant to challenge you and is quite difficult compared to the
+previous ones. Don't get disheartened, and if you're able to complete it,
+excellent work!
+:::
 
 Create a function `compute_day` which uses the [Doomsday algorithm][doomsday]
 to compute the day of week for any given date in the 1900s. The function's
 parameters should be `year`, `month`, and `day`. The function's return value
 should be a day of week, as a string (for example, `"Saturday"`).
-
-_Hint: the modulo operator is `%%` in R._
 
 [doomsday]: https://en.wikipedia.org/wiki/Doomsday_rule
