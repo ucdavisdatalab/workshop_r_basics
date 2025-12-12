@@ -775,7 +775,7 @@ Visualization Workshop Reader][dataviz].
 :::
 
 
-## Apply Functions
+## Apply Functions {#sec-apply-functions}
 
 @sec-vectorization introduced vectorization, a convenient and efficient way to
 compute multiple results. That section also mentioned that some of R's

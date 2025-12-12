@@ -1,5 +1,9 @@
 # Organizing Code
 
+```{r, echo = FALSE}
+terns = read.csv("data/2000-2023_ca_least_tern.csv")
+```
+
 :::{.callout-note}
 ##### Learning Goals
 
@@ -361,6 +365,160 @@ msg = if (name == "Nick")
    "Hi Nick, nice to see you again!"
 msg
 ```
+
+## Iteration
+
+R is powerful tool for automating tasks that have repetitive steps. For
+example, you can:
+
+* Apply a transformation to an entire column of data.
+* Compute distances between all pairs from a set of points.
+* Read a large collection of files from disk in order to combine and analyze
+  the data they contain.
+* Simulate how a system evolves over time from a specific set of starting
+  parameters.
+* Scrape data from the pages of a website.
+
+You can implement concise, efficient solutions for these kinds of tasks in R by
+using **iteration**, which means repeating a computation many times. R provides
+four different strategies for writing iterative code:
+
+1. Vectorization, where a function is implicitly called on each element of a
+   vector. This was introduced in @sec-vectorization.
+2. Apply functions, where a function is explicitly called on each element of a
+   data structure. This was introduced in @sec-apply-functions.
+3. Loops, where an expression is evaluated repeatedly until some condition is
+   met.
+4. Recursion, where a function calls itself.
+
+Vectorization is the most efficient and concise iteration strategy, but also
+the least flexible, because it only works with specific functions and with
+vectors. Apply functions are more flexible---they work with any function and
+any data structure with elements---but less efficient and less concise. Loops
+and recursion provide the most flexibility but are the least concise. Recursion
+tends to be the least efficient iteration strategy in R.
+
+<!--
+In recent versions of R, apply functions are slightly more efficient than
+loops.
+-->
+
+The rest of this section explains how to write loops and how to choose which
+iteration strategy to use. We assume you're already comfortable with
+vectorization and have at least some familiarity with apply functions.
+
+### For-Loops
+
+A **for-loop** evaluates the expressions in its body once for each element of a
+data structure. The syntax of a for-loop is:
+
+```r
+# DATA is the data structure
+#
+# X is one element of DATA, assigned automatically at the beginning of each
+# iteration
+#
+for (X in DATA) {
+  # Expression(s) to repeat.
+}
+```
+
+For example, to print out all the column names of the `terns` data, you can
+write:
+
+```{r}
+for (name in names(terns)) {
+  message(name)
+}
+```
+
+Within the body of a for-loop, you can compute values, check conditions, etc.
+
+<!--
+```{code-cell}
+for nests in terns["total_nests"]:
+    if nests > 100:
+        print(nests)
+```
+-->
+
+Oftentimes you'll want to save the result of the code you perform within a
+for-loop. The easiest way to do this is by creating an empty vector and using
+`c` or `append` to append values to it:
+
+```{r}
+values = c(10, 12, 11, 2, 3)
+diffs = c()
+
+for (i in seq(1, length(values) - 1)) {
+  a = values[[i]]
+  b = values[[i + 1]]
+  diffs = append(diffs, a - b)
+}
+
+diffs
+```
+
+This example is just for demonstration, since R's built-in `diff` function is a
+much more concise and efficient way to compute differences. The point is that
+when you use a loop, you have to create a data structure to store the results
+yourself.
+
+:::{.callout-warning}
+Appending values to a vector, as in the example, is quite inefficient. If you
+need to use a loop to produce a lot of results (say, more than 100):
+
+1. Before the loop, create a result vector that's the expected length of the
+   final result. Fill vector with 0s or some other placeholder value. You can
+   use functions such as `integer`, `numeric`, and `character` to do this.
+2. In the loop, use indexing to replace the elements of the result vector as
+   they're computed.
+
+Using this strategy, which is called **pre-allocation** the code in the example
+becomes:
+
+```{r}
+values = c(10, 12, 11, 2, 3)
+diffs = integer(length(values) - 1)
+
+for (i in seq(1, length(values) - 1)) {
+  a = values[[i]]
+  b = values[[i + 1]]
+  diffs[[i]] = a - b
+}
+
+diffs
+```
+:::
+
+### Planning for Iteration
+
+At first it might seem difficult to decide if and what kind of iteration to
+use. Start by thinking about whether you need to do something over and over. If
+you don't, then you probably don't need to use iteration. If you do, then try
+iteration strategies in this order:
+
+1. Vectorization
+2. Apply functions (or the purrr package's `map` functions)
+    * Try an apply function if iterations are independent.
+3. Loops
+    * Try a for-loop if some iterations depend on others.
+    <!--
+    * Try a while-loop if the number of iterations is unknown.
+    -->
+4. Recursion (which isn't covered here)
+    * Convenient for naturally recursive tasks (like Fibonacci), but often
+      there are faster solutions.
+
+Start by writing the code for just one iteration. Make sure that code works;
+it's easy to test code for one iteration.
+
+When you have one iteration working, then try using the code with an iteration
+strategy (you will have to make some small changes). If it doesn't work, try to
+figure out which iteration is causing the problem. One way to do this is to use
+`message` to print out information. Then try to write the code for the broken
+iteration, get that iteration working, and repeat this whole process.
+
 
 ## Case Study: CA Hospital Utilization
 
