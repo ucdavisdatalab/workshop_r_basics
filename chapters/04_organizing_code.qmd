@@ -19,97 +19,6 @@ specialized environments for scientific computing, such as high-performance
 computing clusters.
 
 
-Conditional Expressions
------------------------
-
-Sometimes you'll need code to do different things, depending on a condition.
-**If-expressions** provide a way to write conditional code.
-
-For example, suppose we want to greet one person differently from the others:
-```{r}
-name = "Nick"
-if (name == "Nick") {
-   # If name is Nick:
-   message("We went down the TRUE branch")
-   msg = "Hi Nick, nice to see you again!"
-} else {
-   # Anything else:
-   msg = "Nice to meet you!"
-}
-```
-
-Indent code inside of the if-expression by 2 or 4 spaces. Indentation makes
-your code easier to read.
-
-The condition in an if-expression has to be a scalar:
-```{r, error = TRUE}
-name = c("Nick", "Susan")
-if (name == "Nick") {
-   msg = "Hi Nick!"
-} else {
-   msg = "Nice to meet you!"
-}
-```
-
-You can chain together if-expressions:
-```{r}
-name = "Susan"
-if (name == "Nick") {
-   msg = "Hi Nick, nice to see you again!"
-} else if (name == "Peter") {
-   msg = "Go away Peter, I'm busy!"
-} else {
-   msg = "Nice to meet you!"
-}
-msg
-```
-
-If-expressions return the value of the last expression in the evaluated block:
-```{r}
-name = "Tom"
-msg = if (name == "Nick") {
-   "Hi Nick, nice to see you again!"
-} else {
-   "Nice to meet you!"
-}
-msg
-```
-
-Curly braces `{ }` are optional for single-line expressions:
-```{r}
-name = "Nick"
-msg = if (name == "Nick") "Hi Nick, nice to see you again!" else
-   "Nice to meet you!"
-msg
-```
-
-But you have to be careful if you don't use them:
-```{r, error = TRUE}
-# NO GOOD:
-msg = if (name == "Nick")
-   "Hi Nick, nice to see you again!"
-else
-   "Nice to meet you!"
-```
-
-The `else` block is optional:
-```{r}
-msg = "Hi"
-name = "Tom"
-if (name == "Nick")
-   msg = "Hi Nick, nice to see you again!"
-msg
-```
-
-When there's no `else` block, the value of the `else` block is `NULL`:
-```{r}
-name = "Tom"
-msg = if (name == "Nick")
-   "Hi Nick, nice to see you again!"
-msg
-```
-
-
 Functions
 ---------
 
@@ -358,6 +267,97 @@ short function for each step. This approach makes it easier to:
 
 * Test that each step works correctly.
 * Modify, reuse, or repurpose a step.
+
+
+Conditional Expressions
+-----------------------
+
+Sometimes you'll need code to do different things, depending on a condition.
+**If-expressions** provide a way to write conditional code.
+
+For example, suppose we want to greet one person differently from the others:
+```{r}
+name = "Nick"
+if (name == "Nick") {
+   # If name is Nick:
+   message("We went down the TRUE branch")
+   msg = "Hi Nick, nice to see you again!"
+} else {
+   # Anything else:
+   msg = "Nice to meet you!"
+}
+```
+
+Indent code inside of the if-expression by 2 or 4 spaces. Indentation makes
+your code easier to read.
+
+The condition in an if-expression has to be a scalar:
+```{r, error = TRUE}
+name = c("Nick", "Susan")
+if (name == "Nick") {
+   msg = "Hi Nick!"
+} else {
+   msg = "Nice to meet you!"
+}
+```
+
+You can chain together if-expressions:
+```{r}
+name = "Susan"
+if (name == "Nick") {
+   msg = "Hi Nick, nice to see you again!"
+} else if (name == "Peter") {
+   msg = "Go away Peter, I'm busy!"
+} else {
+   msg = "Nice to meet you!"
+}
+msg
+```
+
+If-expressions return the value of the last expression in the evaluated block:
+```{r}
+name = "Tom"
+msg = if (name == "Nick") {
+   "Hi Nick, nice to see you again!"
+} else {
+   "Nice to meet you!"
+}
+msg
+```
+
+Curly braces `{ }` are optional for single-line expressions:
+```{r}
+name = "Nick"
+msg = if (name == "Nick") "Hi Nick, nice to see you again!" else
+   "Nice to meet you!"
+msg
+```
+
+But you have to be careful if you don't use them:
+```{r, error = TRUE}
+# NO GOOD:
+msg = if (name == "Nick")
+   "Hi Nick, nice to see you again!"
+else
+   "Nice to meet you!"
+```
+
+The `else` block is optional:
+```{r}
+msg = "Hi"
+name = "Tom"
+if (name == "Nick")
+   msg = "Hi Nick, nice to see you again!"
+msg
+```
+
+When there's no `else` block, the value of the `else` block is `NULL`:
+```{r}
+name = "Tom"
+msg = if (name == "Nick")
+   "Hi Nick, nice to see you again!"
+msg
+```
 
 
 Exercises
