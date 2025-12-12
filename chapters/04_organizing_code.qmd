@@ -5,8 +5,10 @@
 
 After completing this chapter, learners should be able to:
 
+* Write functions to organize and encapsulate reusable code
 * Create code that only runs when a condition is satisfied
-* Create custom functions in order to organize and reuse code
+* Identify when a problem requires iteration
+* Select appropriate iteration strategies for problems
 :::
 
 By now, you've learned all of the basic skills necessary to explore a data set
