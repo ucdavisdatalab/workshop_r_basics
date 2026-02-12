@@ -3,17 +3,23 @@
 [top]: #contributing
 
 > [!IMPORTANT]
+> If it's your first time contributing, see [Installation](#installation).
 >
 > Do not commit large files (> 1 MB) to the repository. Upload these to cloud
 > storage (such as Google Drive or Box) instead.
+>
+> Before you contribute, make sure to take a look at the
+> [workshop reader style guide][style] in the [DataLab Handbook][handbook].
 
-The workshop reader is a live webpage, hosted through GitHub, where you can
-enter curriculum content and post it to a public-facing site for learners.
+[style]: https://github.com/datalab-dev/handbook/tree/main/workshops
+[handbook]: https://github.com/datalab-dev/handbook
 
-If it's your first time contributing, see [Installation](#installation).
+The reader is a live webpage, hosted through GitHub, where you can enter
+curriculum content and post it to a public-facing site for learners.
 
-The workshop reader is written in Markdown and rendered with [Quarto][]. To
-make alterations to the reader:
+
+The reader is written in Markdown and rendered with [Quarto][]. To make
+alterations to the reader:
 
 [Quarto]: https://quarto.org/
 
@@ -92,5 +98,16 @@ You can run the `pixi shell` command from the repo directory or any of its
 subdirectories. Use the virtual environment to run any commands related to
 building the reader. When you're finished using the virtual environment, you
 can use the `exit` command to exit the shell.
+
+([back to top][top])
+
+
+### R Packages
+
+When you build the course reader, Quarto will run the R code in the chapters in
+the Pixi environment. We try to ensure that the Pixi environment contains every
+package necessary, but if one is missing, Quarto will raise an error. Pay
+attention to error messages from Quarto! If a package is missing, add it to the
+Pixi environment (ask the maintainer if you need help with this).
 
 ([back to top][top])

@@ -7,7 +7,7 @@ channels = ["conda-forge"]
 name = "r-basics"
 description = "Reader for the R Basics workshop series."
 platforms = ["linux-64", "osx-64", "osx-arm64", "win-64"]
-version = "2024.fall.1"  # <year>.<quarter>.<revision #>
+version = "2026.fall.1"  # <year>.<quarter>.<revision #>
 
 [tasks]
 build = { cmd = "quarto render", description = "Build the reader." }
@@ -31,3 +31,4 @@ r-stringr = ">=1.6.0,<2"
 PIXI_R_LIBS = "$CONDA_PREFIX/lib/R/library"
 R_LIBS = "$PIXI_R_LIBS"
 R_LIBS_USER = "$PIXI_R_LIBS"
+QUARTO_R = "$CONDA_PREFIX/bin/R"
