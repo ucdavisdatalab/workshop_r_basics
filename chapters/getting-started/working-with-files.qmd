@@ -241,9 +241,8 @@ than a guarantee.
 [jpg]: https://en.wikipedia.org/wiki/JPEG
 
 R has built-in functions for reading a variety of formats. The R community also
-provides **packages**, shareable and reusable pieces of code, to read even more
-formats. You'll learn more about packages later, in @sec-packages. For now,
-let's focus on datasets that can be read with R's built-in functions.
+provides packages (@sec-packages) to read even more formats. For now, let's
+focus on datasets that can be read with R's built-in functions.
 
 Here are several formats that are frequently used to distribute data, along
 with the name of a built-in function or contributed package that can read the
